@@ -88,7 +88,9 @@ footer b{font-family:var(--display)}
 .lang a,.lang span{font:700 14px/1 var(--display);padding:9px 14px;border-radius:999px;text-decoration:none;color:var(--blue-deep);letter-spacing:.04em}
 .lang span.on{background:var(--blue-deep);color:#fff}
 .lang a:hover{background:var(--paper)}
-@media (max-width:640px){.bar{gap:8px}.lang{margin-left:auto}.nav{order:3}.nav button.ddb{padding:10px 10px;font-size:15px}}
+.bar{max-width:1320px}
+@media (max-width:1400px){.bar{row-gap:4px}.lang{margin-left:auto}.nav{order:3;width:100%;margin-left:0;justify-content:center;border-top:1px solid var(--line);padding-top:6px}}
+@media (max-width:640px){.bar{gap:8px}.nav{justify-content:flex-start;border-top:0;padding-top:0}.nav button.ddb{padding:10px 10px;font-size:15px}}
 
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
 .card{position:relative;display:grid;align-content:start;gap:6px;text-decoration:none;color:var(--ink)!important;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:20px;padding:18px 54px 18px 20px;transition:border-color .15s,box-shadow .15s,transform .15s}
@@ -157,11 +159,53 @@ footer b{font-family:var(--display)}
 .spec.live .btns{margin-top:6px}
 .spec .live-tag{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#DDF3F2;color:var(--teal-deep);border-radius:999px;padding:6px 9px}
 @media (max-width:640px){.spec.live{grid-template-columns:1fr}.search{padding:18px}}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.fc{border-radius:22px;background:var(--paper);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,border-color .2s}
+.fc.open{border-color:var(--teal);box-shadow:0 10px 26px rgba(28,118,117,.14)}
+.fq{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center;padding:18px;background:linear-gradient(135deg,var(--mist),#fff);width:100%}
+.fq:focus-visible{outline:3px solid var(--sun);outline-offset:-3px}
+.fe{grid-row:span 2;font-size:34px;width:56px;height:56px;border-radius:16px;background:#fff;display:grid;place-items:center;box-shadow:0 2px 8px rgba(31,42,48,.08)}
+.fn{font:700 12px/1 var(--display);letter-spacing:.08em;color:var(--teal-deep)}
+.ft{font:700 18px/1.3 var(--display);color:var(--ink)}
+.tap{grid-column:1/-1;justify-self:start;margin-top:8px;font:600 13px/1 var(--display);color:var(--blue-deep);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 11px}
+.fc.open .tap{display:none}
+.fa{padding:4px 18px 18px;font-size:17px}
+.fa p{margin:0 0 8px}.fa small{color:var(--muted)}
+.js-games .fc:not(.open) .fa{display:none}
+.fc.open .fa{animation:pop .25s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.gbar{position:sticky;top:76px;z-index:3;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--blue-deep);color:#fff;border-radius:18px;padding:12px 16px;box-shadow:0 8px 20px rgba(31,110,147,.2)}
+.gbar b{font:800 20px/1 var(--display)}
+.gbar .meter{flex:1 1 140px;height:10px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden}
+.gbar .meter i{display:block;height:100%;width:0;background:var(--sun);border-radius:99px;transition:width .3s}
+.gbar button{font:600 14px/1 var(--display);color:var(--blue-deep);background:#fff;border:0;border-radius:999px;padding:9px 14px;cursor:pointer}
+.quiz{display:grid;gap:14px}
+.mf{border:1px solid var(--line);border-radius:22px;padding:18px;background:var(--paper);display:grid;gap:12px}
+.ms{margin:0;font:600 19px/1.4 var(--display);display:flex;gap:12px;align-items:flex-start}
+.mn{flex:none;width:32px;height:32px;border-radius:50%;background:var(--mist);color:var(--blue-deep);font:700 15px/32px var(--display);text-align:center}
+.mb{display:flex;gap:10px;flex-wrap:wrap}
+.mb button{flex:1 1 120px;font:700 17px/1 var(--display);padding:14px 18px;border-radius:999px;cursor:pointer;border:2px solid var(--blue-deep);background:#fff;color:var(--blue-deep)}
+.mb button:hover:not(:disabled){background:var(--mist)}
+.mb button:disabled{cursor:default;opacity:.55}
+.mb button.pick{opacity:1;color:#fff}
+.mf.right .mb button.pick{background:#1E7B4F;border-color:#1E7B4F}
+.mf.wrong .mb button.pick{background:#B3261E;border-color:#B3261E}
+.mf.right{border-color:#1E7B4F;background:#F1FAF5}.mf.wrong{border-color:#B3261E;background:#FDF3F2}
+.mx{font-size:17px}.mx p{margin:0 0 6px}.mx small{color:var(--muted)}
+.js-games .mf:not(.done) .mx{display:none}
+.verdict{font:800 17px var(--display);color:var(--blue-deep)}
+.mres{font-weight:700;font-family:var(--display)}
+.mf .res{font:700 15px var(--display)}
+.mf.right .res{color:#1E7B4F}.mf.wrong .res{color:#B3261E}
+.gdone{background:var(--sun-soft);border-radius:22px;padding:20px;text-align:center;font:700 20px/1.4 var(--display)}
+.gdone button{margin-top:10px;font:700 15px/1 var(--display);color:#fff;background:var(--blue-deep);border:0;border-radius:999px;padding:12px 18px;cursor:pointer}
+@media (max-width:640px){.gbar{position:static}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
 <a class="skip" href="#main">Langkau ke kandungan</a>
-<header class="site"><div class="bar"><a class="brand" href="../../"><img src="../../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Menu utama"><a href="../../">Utama</a><div class="dd"><button type="button" class="ddb on" aria-expanded="false">Penyakit Mata<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/penyakit-mata/" class="all" aria-current="page">Samua penyakit mata</a><a href="../../bahasa-melayu/katarak/">Katarak</a><a href="../../bahasa-melayu/glaukoma/">Glaukoma</a><a href="../../bahasa-melayu/ulser-kornea/"><small>Kornea</small>Ulser Kornea</a><a href="../../bahasa-melayu/retinopati-kencing-manis/"><small>Retina</small>Retinopati Kencing Manis</a><a href="../../bahasa-melayu/kelopak-mata-jatuh/"><small>Neuro-oftalmologi</small>Kelopak Mata Jatuh</a><a href="../../bahasa-melayu/ektropion-entropion/"><small>Okuloplastik & Orbit</small>Ektropion dan Entropion</a><a href="../../bahasa-melayu/uveitis-anterior/"><small>Uveitis</small>Uveitis Anterior</a><a href="../../bahasa-melayu/juling/"><small>Kanak-kanak</small>Mata Juling</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata Akut<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/penyakit-mata-akut/" class="all">Samua penyakit mata akut</a><a href="../../bahasa-melayu/retina-tertanggal/"><small>Retina</small>Retina Tertanggal</a><a href="../../bahasa-melayu/glaukoma-akut/"><small>Tekanan mata</small>Glaukoma Akut</a><a href="../../bahasa-melayu/endoftalmitis/"><small>Jangkitan</small>Endoftalmitis</a></div></div><a href="../../klinik-mata/">Klinik Mata</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Pasal Kami<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/pasal-kami/">Pasal InfoSihat</a><a href="../../bahasa-melayu/rakan-kerjasama/">Rakan Kerjasama</a></div></div></nav><div class="lang" role="group" aria-label="Bahasa"><span class="on" aria-current="true" lang="ms">BM</span><a href="../../english/eye-conditions/" lang="en" hreflang="en" title="English">EN</a></div></div></header>
+<header class="site"><div class="bar"><a class="brand" href="../../"><img src="../../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Menu utama"><a href="../../">Utama</a><div class="dd"><button type="button" class="ddb on" aria-expanded="false">Penyakit Mata<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/penyakit-mata/" class="all" aria-current="page">Samua penyakit mata</a><a href="../../bahasa-melayu/katarak/">Katarak</a><a href="../../bahasa-melayu/glaukoma/">Glaukoma</a><a href="../../bahasa-melayu/ulser-kornea/"><small>Kornea</small>Ulser Kornea</a><a href="../../bahasa-melayu/retinopati-kencing-manis/"><small>Retina</small>Retinopati Kencing Manis</a><a href="../../bahasa-melayu/kelopak-mata-jatuh/"><small>Neuro-oftalmologi</small>Kelopak Mata Jatuh</a><a href="../../bahasa-melayu/ektropion-entropion/"><small>Okuloplastik & Orbit</small>Ektropion dan Entropion</a><a href="../../bahasa-melayu/uveitis-anterior/"><small>Uveitis</small>Uveitis Anterior</a><a href="../../bahasa-melayu/juling/"><small>Kanak-kanak</small>Mata Juling</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata Akut<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/penyakit-mata-akut/" class="all">Samua penyakit mata akut</a><a href="../../bahasa-melayu/retina-tertanggal/"><small>Retina</small>Retina Tertanggal</a><a href="../../bahasa-melayu/glaukoma-akut/"><small>Tekanan mata</small>Glaukoma Akut</a><a href="../../bahasa-melayu/endoftalmitis/"><small>Jangkitan</small>Endoftalmitis</a></div></div><a href="../../klinik-mata/">Klinik Mata</a><a href="../../bahasa-melayu/petua/">Petua</a><a href="../../bahasa-melayu/mitos-atau-fakta/">Mitos atau Fakta</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Pasal Kami<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/pasal-kami/">Pasal InfoSihat</a><a href="../../bahasa-melayu/rakan-kerjasama/">Rakan Kerjasama</a></div></div></nav><div class="lang" role="group" aria-label="Bahasa"><span class="on" aria-current="true" lang="ms">BM</span><a href="../../english/eye-conditions/" lang="en" hreflang="en" title="English">EN</a></div></div></header>
 <main id="main"><div class="band"><div class="inner"><h1>Penyakit Mata</h1></div></div><div class="content"><p>Penyakit mata disusun ikut <strong>bahagian mata</strong> yang terkena. Tekan nombor di gambar mata, atau tatal ke bawah untuk memilih topik. Kami akan tambah lagi topik dalam setiap kumpulan dari masa ke masa.</p>
 <figure class="anat"><svg viewBox="96 0 540 360" role="img" aria-labelledby="anat-t"><title id="anat-t">Gambar rajah mata dari tepi, dengan bahagian bernombor</title><defs><radialGradient id="vit" cx="45%" cy="45%" r="60%"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EAF4F8"/></radialGradient></defs>
 <path d="M455 162 L566 150 Q578 180 566 210 L455 198 Z" fill="#F3DCA8" stroke="#C9A84A" stroke-width="3"/>
@@ -219,8 +263,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelect
 </script>
 
 
+
 <script>
-(function(){var B='20261006112442';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261006113659';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

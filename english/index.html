@@ -88,7 +88,9 @@ footer b{font-family:var(--display)}
 .lang a,.lang span{font:700 14px/1 var(--display);padding:9px 14px;border-radius:999px;text-decoration:none;color:var(--blue-deep);letter-spacing:.04em}
 .lang span.on{background:var(--blue-deep);color:#fff}
 .lang a:hover{background:var(--paper)}
-@media (max-width:640px){.bar{gap:8px}.lang{margin-left:auto}.nav{order:3}.nav button.ddb{padding:10px 10px;font-size:15px}}
+.bar{max-width:1320px}
+@media (max-width:1400px){.bar{row-gap:4px}.lang{margin-left:auto}.nav{order:3;width:100%;margin-left:0;justify-content:center;border-top:1px solid var(--line);padding-top:6px}}
+@media (max-width:640px){.bar{gap:8px}.nav{justify-content:flex-start;border-top:0;padding-top:0}.nav button.ddb{padding:10px 10px;font-size:15px}}
 
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
 .card{position:relative;display:grid;align-content:start;gap:6px;text-decoration:none;color:var(--ink)!important;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:20px;padding:18px 54px 18px 20px;transition:border-color .15s,box-shadow .15s,transform .15s}
@@ -157,11 +159,53 @@ footer b{font-family:var(--display)}
 .spec.live .btns{margin-top:6px}
 .spec .live-tag{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#DDF3F2;color:var(--teal-deep);border-radius:999px;padding:6px 9px}
 @media (max-width:640px){.spec.live{grid-template-columns:1fr}.search{padding:18px}}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;align-items:start}
+.fc{border-radius:22px;background:var(--paper);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,border-color .2s}
+.fc.open{border-color:var(--teal);box-shadow:0 10px 26px rgba(28,118,117,.14)}
+.fq{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center;padding:18px;background:linear-gradient(135deg,var(--mist),#fff);width:100%}
+.fq:focus-visible{outline:3px solid var(--sun);outline-offset:-3px}
+.fe{grid-row:span 2;font-size:34px;width:56px;height:56px;border-radius:16px;background:#fff;display:grid;place-items:center;box-shadow:0 2px 8px rgba(31,42,48,.08)}
+.fn{font:700 12px/1 var(--display);letter-spacing:.08em;color:var(--teal-deep)}
+.ft{font:700 18px/1.3 var(--display);color:var(--ink)}
+.tap{grid-column:1/-1;justify-self:start;margin-top:8px;font:600 13px/1 var(--display);color:var(--blue-deep);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 11px}
+.fc.open .tap{display:none}
+.fa{padding:4px 18px 18px;font-size:17px}
+.fa p{margin:0 0 8px}.fa small{color:var(--muted)}
+.js-games .fc:not(.open) .fa{display:none}
+.fc.open .fa{animation:pop .25s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.gbar{position:sticky;top:76px;z-index:3;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--blue-deep);color:#fff;border-radius:18px;padding:12px 16px;box-shadow:0 8px 20px rgba(31,110,147,.2)}
+.gbar b{font:800 20px/1 var(--display)}
+.gbar .meter{flex:1 1 140px;height:10px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden}
+.gbar .meter i{display:block;height:100%;width:0;background:var(--sun);border-radius:99px;transition:width .3s}
+.gbar button{font:600 14px/1 var(--display);color:var(--blue-deep);background:#fff;border:0;border-radius:999px;padding:9px 14px;cursor:pointer}
+.quiz{display:grid;gap:14px}
+.mf{border:1px solid var(--line);border-radius:22px;padding:18px;background:var(--paper);display:grid;gap:12px}
+.ms{margin:0;font:600 19px/1.4 var(--display);display:flex;gap:12px;align-items:flex-start}
+.mn{flex:none;width:32px;height:32px;border-radius:50%;background:var(--mist);color:var(--blue-deep);font:700 15px/32px var(--display);text-align:center}
+.mb{display:flex;gap:10px;flex-wrap:wrap}
+.mb button{flex:1 1 120px;font:700 17px/1 var(--display);padding:14px 18px;border-radius:999px;cursor:pointer;border:2px solid var(--blue-deep);background:#fff;color:var(--blue-deep)}
+.mb button:hover:not(:disabled){background:var(--mist)}
+.mb button:disabled{cursor:default;opacity:.55}
+.mb button.pick{opacity:1;color:#fff}
+.mf.right .mb button.pick{background:#1E7B4F;border-color:#1E7B4F}
+.mf.wrong .mb button.pick{background:#B3261E;border-color:#B3261E}
+.mf.right{border-color:#1E7B4F;background:#F1FAF5}.mf.wrong{border-color:#B3261E;background:#FDF3F2}
+.mx{font-size:17px}.mx p{margin:0 0 6px}.mx small{color:var(--muted)}
+.js-games .mf:not(.done) .mx{display:none}
+.verdict{font:800 17px var(--display);color:var(--blue-deep)}
+.mres{font-weight:700;font-family:var(--display)}
+.mf .res{font:700 15px var(--display)}
+.mf.right .res{color:#1E7B4F}.mf.wrong .res{color:#B3261E}
+.gdone{background:var(--sun-soft);border-radius:22px;padding:20px;text-align:center;font:700 20px/1.4 var(--display)}
+.gdone button{margin-top:10px;font:700 15px/1 var(--display);color:#fff;background:var(--blue-deep);border:0;border-radius:999px;padding:12px 18px;cursor:pointer}
+@media (max-width:640px){.gbar{position:static}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="home">
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="bar"><a class="brand" href="../"><img src="../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Main menu"><a href="../english/" class="on" aria-current="page">Home</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../english/eye-conditions/" class="all">All eye conditions</a><a href="../english/cataract/">Cataract</a><a href="../english/glaucoma/">Glaucoma</a><a href="../english/corneal-ulcer/"><small>Cornea</small>Corneal Ulcer</a><a href="../english/diabetic-retinopathy/"><small>Retina</small>Diabetic Retinopathy</a><a href="../english/ptosis/"><small>Neuro-ophthalmology</small>Ptosis (Droopy Eyelid)</a><a href="../english/ectropion-entropion/"><small>Oculoplastics & Orbit</small>Ectropion and Entropion</a><a href="../english/anterior-uveitis/"><small>Uveitis</small>Anterior Uveitis</a><a href="../english/squint/"><small>Paediatric</small>Squint in Children</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Acute Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../english/acute-eye-conditions/" class="all">All acute eye conditions</a><a href="../english/retinal-detachment/"><small>Retina</small>Retinal Detachment</a><a href="../english/acute-angle-closure-glaucoma/"><small>Eye pressure</small>Acute Angle-Closure Glaucoma</a><a href="../english/endophthalmitis/"><small>Infection</small>Endophthalmitis</a></div></div><a href="../eye-clinics/">Eye Clinics</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">About Us<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../english/about/">About InfoSihat</a><a href="../english/collaborators/">Collaborators</a></div></div></nav><div class="lang" role="group" aria-label="Language"><a href="../" lang="ms" hreflang="ms" title="Bahasa Melayu">BM</a><span class="on" aria-current="true" lang="en">EN</span></div></div></header>
+<header class="site"><div class="bar"><a class="brand" href="../"><img src="../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Main menu"><a href="../english/" class="on" aria-current="page">Home</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../english/eye-conditions/" class="all">All eye conditions</a><a href="../english/cataract/">Cataract</a><a href="../english/glaucoma/">Glaucoma</a><a href="../english/corneal-ulcer/"><small>Cornea</small>Corneal Ulcer</a><a href="../english/diabetic-retinopathy/"><small>Retina</small>Diabetic Retinopathy</a><a href="../english/ptosis/"><small>Neuro-ophthalmology</small>Ptosis (Droopy Eyelid)</a><a href="../english/ectropion-entropion/"><small>Oculoplastics & Orbit</small>Ectropion and Entropion</a><a href="../english/anterior-uveitis/"><small>Uveitis</small>Anterior Uveitis</a><a href="../english/squint/"><small>Paediatric</small>Squint in Children</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Acute Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../english/acute-eye-conditions/" class="all">All acute eye conditions</a><a href="../english/retinal-detachment/"><small>Retina</small>Retinal Detachment</a><a href="../english/acute-angle-closure-glaucoma/"><small>Eye pressure</small>Acute Angle-Closure Glaucoma</a><a href="../english/endophthalmitis/"><small>Infection</small>Endophthalmitis</a></div></div><a href="../eye-clinics/">Eye Clinics</a><a href="../english/fun-facts/">Fun Facts</a><a href="../english/myths-or-facts/">Myths or Facts</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">About Us<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../english/about/">About InfoSihat</a><a href="../english/collaborators/">Collaborators</a></div></div></nav><div class="lang" role="group" aria-label="Language"><a href="../" lang="ms" hreflang="ms" title="Bahasa Melayu">BM</a><span class="on" aria-current="true" lang="en">EN</span></div></div></header>
 <main id="main"><div class="band"><div class="inner"><h1>InfoSihat · Home</h1></div></div><div class="content"><iframe class="embed" src="../embeds/home-hero.html" title="home hero" style="height:470px" loading="lazy"></iframe>
 <section class="search" id="search" role="search" data-lang="en" data-none="No results. Try another word, or browse Eye Conditions."><label for="q">Search InfoSihat</label><div class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Try: cataract, red eye, floaters" autocomplete="off" enterkeyhint="search"></div><div class="chips-q"><span>Popular:</span><button type="button">red eye</button><button type="button">floaters</button><button type="button">diabetes</button><button type="button">children</button><button type="button">after cataract surgery</button></div><div id="sres" aria-live="polite"></div></section>
 <h2 id="health-topics-by-specialty">Health topics by specialty</h2>
@@ -172,13 +216,9 @@ footer b{font-family:var(--display)}
 <article class="topic"><img src="../assets/topic-glaucoma.jpg" alt=""><div><h3>Glaucoma</h3><p>The "silent thief of sight" that takes side vision first. Find out who should be checked, and how treatment protects your sight.</p><div class="btns"><a class="btn" href="../english/glaucoma/">Read more</a></div></div></article>
 <p><strong>More eye topics</strong>, grouped by part of the eye: cataract, corneal ulcer, ptosis, eyelid problems, uveitis and squint in children.</p>
 <div class="btns"><a class="btn" href="../english/eye-conditions/">All eye conditions</a><a class="btn ghost" href="../english/acute-eye-conditions/">Acute Eye Conditions</a></div>
-<h2 id="get-your-eyes-checked">Get your eyes checked</h2>
-<p><strong>No referral needed.</strong> Walk in to any Community Eye Clinic to see an eye doctor, a service unique to Brunei Darussalam.</p>
-<div class="btns"><a class="btn" href="../eye-clinics/">Community Eye Clinics</a></div>
-<h2 id="why-infosihat">Why InfoSihat?</h2>
-<ul><li><strong>Simple:</strong> plain words, no medical jargon.</li><li><strong>Bilingual:</strong> Bahasa Melayu Brunei and English. Tap <strong>BM</strong> at the top to switch language.</li><li><strong>By doctors:</strong> written and reviewed by doctors in Brunei.</li><li><strong>Referenced:</strong> every page lists its sources.</li></ul>
 <h2 id="tip">Tip</h2>
 <blockquote><strong>Have diabetes? Get your eyes checked every year, even if you see well.</strong></blockquote>
+<div class="btns"><a class="btn" href="../english/fun-facts/">More fun facts</a><a class="btn ghost" href="../english/myths-or-facts/">Myths or Facts quiz</a></div>
 <iframe class="embed" src="../embeds/home-emergency.html" title="home emergency" style="height:230px" loading="lazy"></iframe></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>For education only, not a substitute for medical advice.</span><span>Emergency: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
@@ -212,8 +252,9 @@ q.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(run,120)});
 box.querySelectorAll('.chips-q button').forEach(b=>b.addEventListener('click',()=>{q.value=b.textContent;run();q.focus()}));
 const u=new URLSearchParams(location.search).get('q');if(u){q.value=u;run()}})();
 </script>
+
 <script>
-(function(){var B='20261006112442';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261006113659';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
