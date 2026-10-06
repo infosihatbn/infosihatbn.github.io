@@ -43,6 +43,30 @@
  "sea": {
   "items": [
    {
+    "t": "Intravitreal faricimab in patients with nAMD: French data from the Fight Retinal Blindness! Registry",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42837224/"
+   },
+   {
+    "t": "Impact of retinal break location on surgical outcomes in primary uncomplicated rhegmatogenous retinal detachment: Superior versus inferior breaks",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42837189/"
+   },
+   {
+    "t": "Predictors of visual acuity, intraocular pressure and pain in neovascular glaucoma",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42836502/"
+   },
+   {
+    "t": "Win Ratios in Ophthalmology-a Hierarchical Metric to Evaluate Adverse Outcomes in Comparative Studies",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42835583/"
+   },
+   {
     "t": "Visual Impairment and Blindness in Indian Myopes Aged 10-40 Years: A Multicenter Hospital-Based Study",
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
@@ -53,30 +77,6 @@
     "src": "Acta Ophthalmologica",
     "d": "2026 Oct",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42834336/"
-   },
-   {
-    "t": "A scoping review of integrated blink analysis technologies for ocular surface diseases",
-    "src": "Eye",
-    "d": "2026 Oct 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42834135/"
-   },
-   {
-    "t": "Systematic review of eyecare Patient-Reported Experience Measures (PREMs) following COSMIN guidelines",
-    "src": "Eye",
-    "d": "2026 Oct 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42834130/"
-   },
-   {
-    "t": "Risk factors, microbiological profiles, and clinical outcomes of paediatric infectious keratitis: The Midlands Infectious Keratitis Study",
-    "src": "Eye",
-    "d": "2026 Oct 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42834129/"
-   },
-   {
-    "t": "Endphthalmitis after cataract surgery in Sweden 2018-2024: associations with preoperative visual acuity and intracameral antibiotic regimens",
-    "src": "British Journal of Ophthalmology",
-    "d": "2026 Oct 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42833872/"
    }
   ],
   "updated": "2026-10-06"
@@ -98,7 +98,7 @@
   ],
   "updated": "2026-10-06"
  },
- "checked": "2026-10-06T12:15+00:00",
+ "checked": "2026-10-06T22:07+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
