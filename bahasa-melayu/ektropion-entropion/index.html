@@ -121,6 +121,42 @@ footer b{font-family:var(--display)}
 .dd.urgent .menu a small{color:#B3261E}
 .dd.urgent button.ddb::before{content:"";width:8px;height:8px;border-radius:50%;background:#B3261E}
 @media (max-width:760px){.anat{grid-template-columns:1fr}.card{padding-right:50px}}
+
+.content .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:st}
+.steps li{position:relative;background:var(--mist);border-radius:20px;padding:18px 18px 16px;border-top:6px solid var(--teal)}
+.steps .st{display:inline-block;font:800 20px/1 var(--display);color:var(--blue-deep);margin-bottom:8px}
+.steps p{margin:0;font-size:17px}
+.search{background:linear-gradient(135deg,var(--blue-deep),#2A8BB5 60%,var(--teal));border-radius:26px;padding:24px;color:#fff;display:grid;gap:12px;scroll-margin-top:90px}
+.search label{font:700 clamp(22px,3vw,28px)/1.2 var(--display)}
+.sbox{display:flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:6px 8px 6px 18px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.sbox svg{flex:none;width:22px;height:22px;color:var(--blue-deep)}
+.sbox input{flex:1;min-width:0;border:0;outline:0;font:500 19px/1.4 var(--body);color:var(--ink);padding:10px 0;background:none}
+.sbox input::-webkit-search-cancel-button{cursor:pointer}
+.sbox:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+.chips-q{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:15px}
+.chips-q button{font:600 14px/1 var(--display);color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:8px 12px;cursor:pointer}
+.chips-q button:hover{background:rgba(255,255,255,.3)}
+#sres{display:grid;gap:8px}
+#sres:empty{display:none}
+.sr{display:block;background:#fff;color:var(--ink)!important;text-decoration:none;border-radius:16px;padding:14px 16px}
+.sr:hover,.sr:focus{outline:3px solid var(--sun)}
+.sr b{display:block;font:700 18px/1.3 var(--display);color:var(--blue-deep)}
+.sr small{display:block;font:600 12px/1.3 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:2px 0 4px}
+.sr span{display:block;color:var(--muted);font-size:16px;line-height:1.45}
+.sr mark{background:var(--sun-soft);color:inherit;border-radius:4px;padding:0 2px}
+.snone{background:rgba(255,255,255,.14);border-radius:14px;padding:12px 16px}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.spec{border:1px dashed var(--line);border-radius:20px;padding:16px;background:#FAFCFD;color:var(--muted);display:grid;gap:6px;align-content:start}
+.spec .ico{width:44px;height:44px;border-radius:14px;background:var(--mist);display:grid;place-items:center;font-size:22px}
+.spec h3{font:700 17px/1.25 var(--display)!important;color:var(--ink)}
+.spec .soon{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#EEF0F2;color:#5B6770;border-radius:999px;padding:6px 9px}
+.spec.live{grid-column:1/-1;border:1px solid var(--blue);border-left:8px solid var(--blue-deep);background:#fff;color:var(--ink);display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:20px;box-shadow:0 8px 24px rgba(31,110,147,.08)}
+.spec.live .sl{display:grid;gap:8px;align-content:start}.spec.live .ico{width:64px;height:64px;font-size:32px;background:var(--blue-deep)}
+.spec.live h3{font-size:24px!important;color:var(--blue-deep)}
+.spec.live p{margin:0}
+.spec.live .btns{margin-top:6px}
+.spec .live-tag{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#DDF3F2;color:var(--teal-deep);border-radius:999px;padding:6px 9px}
+@media (max-width:640px){.spec.live{grid-template-columns:1fr}.search{padding:18px}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
@@ -135,7 +171,7 @@ footer b{font-family:var(--display)}
 <p>Kedua-duanya biasanya kena <strong>kelopak mata bawah</strong>, dan boleh berlaku pada sebelah atau kedua-dua mata.</p>
 <figure class="ph"><span>Image to add</span><p>Lukisan tiga kelopak mata bawah bersebelahan: kelopak normal, kelopak terbalik ke luar (ektropion) yang menunjukkan lapisan dalam warna merah jambu, dan kelopak terbalik ke dalam (entropion) dengan bulu mata menyentuh mata. Teks alt: "Lukisan membandingkan kelopak mata bawah normal dengan kelopak yang terbalik ke luar dan kelopak yang terbalik ke dalam dengan bulu mata menggesel mata."</p></figure>
 </div></details>
-<details class="sec" id="tinggi-kah-risiko-ku"><summary><h2>Tinggi kah risiko ku?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Risiko kamu lagi tinggi mun kamu:</p>
+<details class="sec" id="tinggi-kah-risiko-ku"><summary><h2>Tinggi kah risiko ku?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Risiko abiskita lagi tinggi mun abiskita:</p>
 <ul><li>sudah <strong>berumur</strong>, pasal tisu kelopak mata jadi longgar bila tua [2][3]</li><li>pernah kena <strong>lumpuh saraf muka</strong> (sebelah muka jadi lemah, contohnya Bell's palsy), yang boleh menyebabkan ektropion [1][2]</li><li>ada <strong>parut</strong> pada kulit kelopak atau lapisan dalam kelopak, pasal melecur, cedera, operasi, atau terkena bahan kimia [1][3]</li><li>pernah ada penyakit mata yang meninggalkan parut pada lapisan kelopak, contohnya <strong>trakoma</strong> (sejenis jangkitan mata) atau <strong>sindrom Stevens-Johnson</strong> (tindak balas teruk, selalunya pada ubat) [3]</li><li>ada <strong>ketulan</strong> pada kelopak yang menarik kelopak ke bawah [1]</li></ul>
 </div></details>
 <details class="sec" id="apa-boleh-terjadi-tu"><summary><h2>Apa boleh terjadi tu?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Mun ektropion:</strong></p>
@@ -145,29 +181,29 @@ footer b{font-family:var(--display)}
 </div></details>
 <details class="sec" id="apa-punca-nya-tu"><summary><h2>Apa punca nya tu?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li><strong>Pasal umur (involutional):</strong> punca paling biasa untuk kedua-duanya. Kelopak mata dan tendon yang menyokongnya jadi longgar bila tua [2][3].</li><li><strong>Parut (cicatricial):</strong> tisu parut memendekkan kulit (ektropion) atau lapisan dalam (entropion) dan menarik kelopak dari tempatnya [2][3].</li><li><strong>Lumpuh saraf muka (paralytic):</strong> otot yang menahan kelopak bawah jadi lemah, jadi kelopak terlondeh ke luar [2].</li><li><strong>Ketulan (mechanical):</strong> ketulan pada kelopak boleh menolak atau menarik kelopak dari tempatnya [2].</li><li><strong>Pada kanak-kanak (epiblepharon):</strong> setengah budak, terutama keturunan <strong>Asia Timur</strong>, ada lipatan kulit lebih di bawah kelopak bawah yang menolak bulu mata ke arah mata. Ani bukan entropion sebenar. Ramai budak inda ada masalah dan ganya perlu ubat titis pelembap dan pemeriksaan, tapi setengah perlu operasi kecil mun kornea sudah rosak [4].</li></ul>
 </div></details>
-<details class="sec" id="cemana-kan-tau-aku-tedapat-ektropion-atau-entropion-ani"><summary><h2>Cemana kan tau aku tedapat Ektropion atau Entropion ani?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Kamu mungkin nampak kelopak bawah <strong>terlondeh jauh dari mata</strong>, atau <strong>bulu mata menghala ke dalam</strong>. Doktor mata selalunya boleh tau dengan menengok saja. Doktor jua akan:</p>
+<details class="sec" id="cemana-kan-tau-aku-tedapat-ektropion-atau-entropion-ani"><summary><h2>Cemana kan tau aku tedapat Ektropion atau Entropion ani?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Abiskita mungkin nampak kelopak bawah <strong>terlondeh jauh dari mata</strong>, atau <strong>bulu mata menghala ke dalam</strong>. Doktor mata selalunya boleh tau dengan menengok saja. Doktor jua akan:</p>
 <ul><li>memeriksa sama ada kelopak atu <strong>longgar</strong></li><li>pakai <strong>pewarna khas dan cahaya biru</strong> untuk mencari calar pada kornea</li><li>mencari <strong>parut</strong> atau <strong>ketulan</strong> pada kelopak</li><li>memeriksa <strong>pergerakan muka</strong> mun disyaki ada masalah saraf</li></ul>
 </div></details>
-<details class="sec" id="bila-perlu-dapatkan-bantuan-segera" open><summary><h2>Bila perlu dapatkan bantuan segera?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><div class="alert" role="note"><span class="ai" aria-hidden="true">!</span><p>Pergi ke <strong>Unit Kecemasan</strong> hospital atau telefon <strong>991</strong> mun mata kamu <strong>merah, sangat sakit dan penglihatan kabur</strong>, ada <strong>tompok putih</strong> pada bahagian mata yang berwarna, atau <strong>inda dapat membuka mata</strong> pasal sakit. Ani mungkin <strong>ulser kornea</strong>, yang boleh merosakkan penglihatan dengan cepat.</p></div>
+<details class="sec" id="bila-perlu-dapatkan-bantuan-segera" open><summary><h2>Bila perlu dapatkan bantuan segera?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><div class="alert" role="note"><span class="ai" aria-hidden="true">!</span><p>Pergi ke <strong>Unit Kecemasan</strong> hospital atau telefon <strong>991</strong> mun mata abiskita <strong>merah, sangat sakit dan penglihatan kabur</strong>, ada <strong>tompok putih</strong> pada bahagian mata yang berwarna, atau <strong>inda dapat membuka mata</strong> pasal sakit. Ani mungkin <strong>ulser kornea</strong>, yang boleh merosakkan penglihatan dengan cepat.</p></div>
 <p>Jumpa doktor mata <strong>cepat</strong> mun:</p>
-<ul><li>mata kamu <strong>selalu rasa berpasir, merah atau berair</strong></li><li>kamu pernah kena <strong>lumpuh saraf muka</strong> dan <strong>inda dapat menutup mata dengan rapat</strong></li></ul>
+<ul><li>mata abiskita <strong>selalu rasa berpasir, merah atau berair</strong></li><li>abiskita pernah kena <strong>lumpuh saraf muka</strong> dan <strong>inda dapat menutup mata dengan rapat</strong></li></ul>
 <div class="btns"><a class="btn" href="../../bahasa-melayu/ulser-kornea/">Ulser kornea</a></div>
 </div></details>
 <details class="sec" id="apa-ubat-nya-tu"><summary><h2>Apa ubat nya tu?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Rawatan untuk melindungi mata sementara menunggu (sementara saja)</strong></p>
 <ol><li><strong>Ubat titis dan salap pelembap</strong> supaya mata lembap dan selesa [1][2].</li><li><strong>Tampal kelopak dengan pita:</strong> pita kulit khas boleh menahan kelopak di kedudukan yang lagi baik, atau membantu menutup mata masa tidur malam [1][3].</li><li><strong>Kanta sentuh pelindung (bandage contact lens):</strong> kanta lembut yang melindungi kornea dari digesel bulu mata (entropion).</li><li><strong>Suntikan botulinum toxin (Botox):</strong> boleh melemahkan otot yang menggulung kelopak ke dalam. Kesannya tahan beberapa bulan saja (entropion) [3].</li></ol>
 <p><strong>Operasi (rawatan jangka panjang)</strong></p>
-<p>Operasi atu <strong>rawatan utama</strong> untuk kedua-dua masalah ani [2]. Doktor <strong>mengetatkan kelopak yang longgar</strong> dan meletakkannya balik di tempat yang betul. Mun ada parut, mungkin perlu tampalan kulit atau tisu (graft). Selalunya dibuat dengan <strong>bius setempat</strong> (kamu sedar tapi kawasan atu kebas) dan boleh <strong>balik hari yang sama</strong>, dan ambil masa kurang dari sejam [5]. Lepas operasi, kelopak mungkin lebam dan bengkak satu hingga dua minggu [5]. Kadang-kadang masalah atu <strong>datang balik</strong>, terutama mun ada parut, dan perlu operasi lagi [3][5].</p>
+<p>Operasi atu <strong>rawatan utama</strong> untuk kedua-dua masalah ani [2]. Doktor <strong>mengetatkan kelopak yang longgar</strong> dan meletakkannya balik di tempat yang betul. Mun ada parut, mungkin perlu tampalan kulit atau tisu (graft). Selalunya dibuat dengan <strong>bius setempat</strong> (abiskita sedar tapi kawasan atu kebas) dan boleh <strong>balik hari yang sama</strong>, dan ambil masa kurang dari sejam [5]. Lepas operasi, kelopak mungkin lebam dan bengkak satu hingga dua minggu [5]. Kadang-kadang masalah atu <strong>datang balik</strong>, terutama mun ada parut, dan perlu operasi lagi [3][5].</p>
 <p>Mun ektropion pasal <strong>lumpuh saraf muka</strong>, doktor mata jua akan fokus melindungi kornea, pasal mata mungkin inda dapat ditutup dengan betul.</p>
 </div></details>
 <details class="sec" id="cemana-kitani-kan-jaga-jaga-supaya-inda-tekana"><summary><h2>Cemana kitani kan jaga-jaga supaya inda tekana?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Ektropion dan entropion pasal umur <strong>inda selalu dapat dicegah</strong>, tapi kitani boleh melindungi mata:</p>
 <ul><li><strong>Jangan gosok mata</strong>, dan lap air mata perlahan-lahan dengan tisu yang bersih [1].</li><li><strong>Lindungi mata</strong> dari bahan kimia dan kecederaan dengan pakai goggle masa bekerja dan di rumah.</li><li><strong>Jangan cabut bulu mata</strong> sendiri; jumpa doktor mata.</li><li>Periksa <strong>mata yang berpasir, berair dan merah awal-awal</strong>, sebelum kornea rosak.</li></ul>
 </div></details>
-<details class="sec" id="di-mana-kan-dapatkan-bantuan-di-brunei"><summary><h2>Di mana kan dapatkan bantuan di Brunei?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Kamu boleh terus datang (walk-in) ke mana-mana <strong>Klinik Mata Komuniti</strong> di pusat kesihatan. <strong>Inda perlu surat rujukan.</strong> Pasukan di sana boleh memeriksa kelopak mata kamu dan merujuk ke pakar kelopak mata (oculoplastic) mun perlu operasi.</p>
+<details class="sec" id="di-mana-kan-dapatkan-bantuan-di-brunei"><summary><h2>Di mana kan dapatkan bantuan di Brunei?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Abiskita boleh terus datang (walk-in) ke mana-mana <strong>Klinik Mata Komuniti</strong> di pusat kesihatan. <strong>Inda perlu surat rujukan.</strong> Pasukan di sana boleh memeriksa kelopak mata abiskita dan merujuk ke pakar kelopak mata (oculoplastic) mun perlu operasi.</p>
 <div class="btns"><a class="btn" href="../../klinik-mata/">Klinik Mata Komuniti</a></div>
 <p>Mun mata <strong>merah, sangat sakit dan kabur</strong>, pergi ke <strong>Unit Kecemasan</strong> hospital atau telefon <strong>991</strong>.</p>
 </div></details>
 <details class="sec" id="rujukan"><summary><h2>Rujukan</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ol><li>NHS. Ectropion. <a href="https://www.nhs.uk/conditions/ectropion/" target="_blank" rel="noopener">https://www.nhs.uk/conditions/ectropion/</a></li><li>EyeWiki, American Academy of Ophthalmology. Ectropion. <a href="https://eyewiki.org/Ectropion" target="_blank" rel="noopener">https://eyewiki.org/Ectropion</a></li><li>EyeWiki, American Academy of Ophthalmology. Entropion. <a href="https://eyewiki.org/Entropion" target="_blank" rel="noopener">https://eyewiki.org/Entropion</a></li><li>EyeWiki, American Academy of Ophthalmology. Epiblepharon. <a href="https://eyewiki.org/Epiblepharon" target="_blank" rel="noopener">https://eyewiki.org/Epiblepharon</a></li><li>Cambridge University Hospitals NHS Foundation Trust. Entropion correction. Patient information. <a href="https://www.cuh.nhs.uk/patient-information/entropion-correction/" target="_blank" rel="noopener">https://www.cuh.nhs.uk/patient-information/entropion-correction/</a></li></ol>
-<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor kamu sendiri.</em></p></div></details>
+<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor abiskita sendiri.</em></p></div></details>
 </div></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>Untuk pendidikan saja, inda menggantikan nasihat doktor.</span><span>Kecemasan: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
@@ -188,6 +224,11 @@ document.querySelectorAll('details.sec').forEach(d=>d.addEventListener('toggle',
 function openHash(){const h=decodeURIComponent(location.hash.slice(1));const d=h&&document.getElementById(h);if(d&&d.tagName==='DETAILS'){d.open=true;d.scrollIntoView()}}
 addEventListener('hashchange',openHash);openHash();
 addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forEach(d=>d.open=true));
+</script>
+
+<script>
+(function(){var B='20261006112442';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
 </html>

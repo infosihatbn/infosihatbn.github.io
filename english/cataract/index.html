@@ -121,6 +121,42 @@ footer b{font-family:var(--display)}
 .dd.urgent .menu a small{color:#B3261E}
 .dd.urgent button.ddb::before{content:"";width:8px;height:8px;border-radius:50%;background:#B3261E}
 @media (max-width:760px){.anat{grid-template-columns:1fr}.card{padding-right:50px}}
+
+.content .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:st}
+.steps li{position:relative;background:var(--mist);border-radius:20px;padding:18px 18px 16px;border-top:6px solid var(--teal)}
+.steps .st{display:inline-block;font:800 20px/1 var(--display);color:var(--blue-deep);margin-bottom:8px}
+.steps p{margin:0;font-size:17px}
+.search{background:linear-gradient(135deg,var(--blue-deep),#2A8BB5 60%,var(--teal));border-radius:26px;padding:24px;color:#fff;display:grid;gap:12px;scroll-margin-top:90px}
+.search label{font:700 clamp(22px,3vw,28px)/1.2 var(--display)}
+.sbox{display:flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:6px 8px 6px 18px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.sbox svg{flex:none;width:22px;height:22px;color:var(--blue-deep)}
+.sbox input{flex:1;min-width:0;border:0;outline:0;font:500 19px/1.4 var(--body);color:var(--ink);padding:10px 0;background:none}
+.sbox input::-webkit-search-cancel-button{cursor:pointer}
+.sbox:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+.chips-q{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:15px}
+.chips-q button{font:600 14px/1 var(--display);color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:8px 12px;cursor:pointer}
+.chips-q button:hover{background:rgba(255,255,255,.3)}
+#sres{display:grid;gap:8px}
+#sres:empty{display:none}
+.sr{display:block;background:#fff;color:var(--ink)!important;text-decoration:none;border-radius:16px;padding:14px 16px}
+.sr:hover,.sr:focus{outline:3px solid var(--sun)}
+.sr b{display:block;font:700 18px/1.3 var(--display);color:var(--blue-deep)}
+.sr small{display:block;font:600 12px/1.3 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:2px 0 4px}
+.sr span{display:block;color:var(--muted);font-size:16px;line-height:1.45}
+.sr mark{background:var(--sun-soft);color:inherit;border-radius:4px;padding:0 2px}
+.snone{background:rgba(255,255,255,.14);border-radius:14px;padding:12px 16px}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.spec{border:1px dashed var(--line);border-radius:20px;padding:16px;background:#FAFCFD;color:var(--muted);display:grid;gap:6px;align-content:start}
+.spec .ico{width:44px;height:44px;border-radius:14px;background:var(--mist);display:grid;place-items:center;font-size:22px}
+.spec h3{font:700 17px/1.25 var(--display)!important;color:var(--ink)}
+.spec .soon{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#EEF0F2;color:#5B6770;border-radius:999px;padding:6px 9px}
+.spec.live{grid-column:1/-1;border:1px solid var(--blue);border-left:8px solid var(--blue-deep);background:#fff;color:var(--ink);display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:20px;box-shadow:0 8px 24px rgba(31,110,147,.08)}
+.spec.live .sl{display:grid;gap:8px;align-content:start}.spec.live .ico{width:64px;height:64px;font-size:32px;background:var(--blue-deep)}
+.spec.live h3{font-size:24px!important;color:var(--blue-deep)}
+.spec.live p{margin:0}
+.spec.live .btns{margin-top:6px}
+.spec .live-tag{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#DDF3F2;color:var(--teal-deep);border-radius:999px;padding:6px 9px}
+@media (max-width:640px){.spec.live{grid-template-columns:1fr}.search{padding:18px}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
@@ -155,10 +191,23 @@ footer b{font-family:var(--display)}
 <p><strong>When should I have surgery?</strong> You do <strong>not</strong> need to wait for the cataract to be <strong>"ripe"</strong> (very thick). This is an old belief. Surgery is offered when the cataract <strong>affects your daily life</strong>, such as reading, driving, working or looking after yourself [3][7]. In fact, very advanced cataracts can make surgery harder.</p>
 <p><strong>The operation</strong></p>
 <ul><li>The most common method is <strong>phacoemulsification</strong> (phaco for short). The surgeon makes a tiny cut in the eye, uses sound waves to break up the cloudy lens, and removes it.</li><li>A clear <strong>artificial lens</strong> (intraocular lens, or IOL) is put in its place. It stays in the eye for life.</li><li>It is usually done under <strong>local anaesthetic</strong> (eye drops or an injection to numb the eye). You are awake but should not feel pain.</li><li>It usually takes <strong>less than an hour</strong>, and most people go <strong>home the same day</strong> (day case) [4].</li><li>If both eyes need surgery, they are usually done on <strong>different days</strong>.</li></ul>
-<p><strong>After surgery</strong> [4][5]</p>
-<ul><li>Use your <strong>eye drops</strong> exactly as prescribed, usually for <strong>about 4 weeks</strong>.</li><li><strong>Do not rub</strong> or press on your eye. Wear the eye shield at night if you are given one.</li><li>Keep soap, shampoo and dirty water out of the eye for the first few weeks.</li><li>Avoid heavy lifting, swimming and dusty places for a few weeks, or as your doctor advises.</li><li>You may need <strong>new glasses</strong> a few weeks after surgery.</li></ul>
 <p><strong>Cloudy again after months or years?</strong> Some people find their vision slowly becomes cloudy again. This is usually <strong>posterior capsule opacification</strong> (PCO), sometimes called a "secondary cataract". The thin bag that holds the new lens becomes cloudy. It is <strong>not</strong> the cataract coming back, and it is fixed with a quick, painless <strong>YAG laser</strong> treatment in the clinic [4][5].</p>
 <p><em>Brunei data:</em> [Add local Brunei data here when available.]</p>
+</div></details>
+<details class="sec" id="caring-for-your-eye-after-cataract-surgery"><summary><h2>Caring for your eye after cataract surgery</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Most people recover quickly, and many notice brighter, clearer vision within a few days. Good care in the first month helps your eye heal well and lowers the risk of infection [4][5].</p>
+<p><strong>Your check-up appointments</strong></p>
+<p>In Brunei, you will usually be seen <strong>three times</strong> after surgery. Your clinic may give you slightly different dates, so always follow the appointment card you are given.</p>
+<ol class="steps"><li><span class="st">Day 1</span><p>The day after surgery. The doctor checks your vision, the eye pressure and the wound, and makes sure there is no early infection. You start or continue your eye drops.</p></li><li><span class="st">Day 7</span><p>About one week later. The doctor checks that the eye is healing, the inflammation is settling and there is no infection. Your drops may be changed.</p></li><li><span class="st">Day 30</span><p>About one month later. The doctor checks your final vision. Your drops are usually stopped, and you are told when to get new glasses, and plans are made for your other eye if needed.</p></li></ol>
+<p><strong>Your eye drops</strong></p>
+<ul><li>You will usually be given <strong>antibiotic drops</strong> (to prevent infection) and <strong>anti-inflammatory drops</strong> (steroid drops, to calm the swelling). Most people use them for <strong>about 4 weeks</strong>, often reducing them step by step.</li><li><strong>Wash your hands</strong> before putting in drops. Do not let the bottle tip touch your eye.</li><li>If you use more than one type of drop, <strong>wait about 5 minutes</strong> between them.</li><li><strong>Do not stop early</strong>, even if your eye feels fine. <strong>Bring all your drops</strong> to every check-up.</li></ul>
+<p><strong>Protecting your eye</strong></p>
+<ul><li>Wear the <strong>eye shield at night</strong> for the first week, or as your doctor advises, so you do not rub your eye in your sleep.</li><li><strong>Do not rub or press</strong> on your eye.</li><li>Clean around the eye gently with <strong>cooled boiled water</strong> and clean cotton wool, wiping from the nose outwards. Do not wash inside the eye.</li></ul>
+<p><strong>For the first 2 to 4 weeks</strong></p>
+<ul><li><strong>Keep soap, shampoo and water out of the eye.</strong> You can shower or bathe, but keep your eye closed and avoid splashing your face.</li><li><strong>Taking wudhu?</strong> Wipe around the eye gently with a damp hand instead of splashing water into the operated eye. Ask your doctor or religious teacher if you are unsure.</li><li><strong>No swimming</strong>, and avoid dusty or smoky places, gardening and dirty water.</li><li>Avoid <strong>heavy lifting</strong> and straining for the first week.</li><li>Do not wear <strong>eye make-up</strong>.</li><li><strong>You can</strong> read, watch TV, use your phone and walk as normal.</li><li><strong>Drive</strong> only when your doctor says your vision is good enough.</li></ul>
+<p><strong>What is normal?</strong></p>
+<p>For the first few days, it is normal for the eye to feel a little <strong>gritty, watery or sensitive to light</strong>, and for vision to be slightly blurred. Colours may look <strong>brighter or bluer</strong> than before. This settles as the eye heals.</p>
+<p><strong>What is not normal?</strong> <strong>Increasing pain, vision getting worse, a redder eye, or flashes, many new floaters or a dark curtain</strong> need checking <strong>the same day</strong> (see "When to get help urgently" above).</p>
+<p><strong>New glasses:</strong> you may need new glasses, especially for reading. Wait until your doctor says the eye has settled, usually <strong>after the Day 30 check</strong>, before you get an eye test for glasses.</p>
 </div></details>
 <details class="sec" id="how-can-i-prevent-it"><summary><h2>How can I prevent it?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>There is no proven way to stop age-related cataract, but you may be able to <strong>slow it down</strong>:</p>
 <ul><li><strong>Stop smoking.</strong></li><li>Keep <strong>diabetes</strong> well controlled.</li><li>Wear <strong>sunglasses and a hat</strong> in strong sun.</li><li>Do not use <strong>steroid</strong> medicines or eye drops unless a doctor prescribed them.</li><li>Wear <strong>eye protection</strong> for sports, DIY and work with tools.</li><li>Have <strong>regular eye checks</strong>, especially if you are over 60 or have diabetes.</li></ul>
@@ -189,6 +238,11 @@ document.querySelectorAll('details.sec').forEach(d=>d.addEventListener('toggle',
 function openHash(){const h=decodeURIComponent(location.hash.slice(1));const d=h&&document.getElementById(h);if(d&&d.tagName==='DETAILS'){d.open=true;d.scrollIntoView()}}
 addEventListener('hashchange',openHash);openHash();
 addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forEach(d=>d.open=true));
+</script>
+
+<script>
+(function(){var B='20261006112442';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
 </html>

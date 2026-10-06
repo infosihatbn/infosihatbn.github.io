@@ -121,6 +121,42 @@ footer b{font-family:var(--display)}
 .dd.urgent .menu a small{color:#B3261E}
 .dd.urgent button.ddb::before{content:"";width:8px;height:8px;border-radius:50%;background:#B3261E}
 @media (max-width:760px){.anat{grid-template-columns:1fr}.card{padding-right:50px}}
+
+.content .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:st}
+.steps li{position:relative;background:var(--mist);border-radius:20px;padding:18px 18px 16px;border-top:6px solid var(--teal)}
+.steps .st{display:inline-block;font:800 20px/1 var(--display);color:var(--blue-deep);margin-bottom:8px}
+.steps p{margin:0;font-size:17px}
+.search{background:linear-gradient(135deg,var(--blue-deep),#2A8BB5 60%,var(--teal));border-radius:26px;padding:24px;color:#fff;display:grid;gap:12px;scroll-margin-top:90px}
+.search label{font:700 clamp(22px,3vw,28px)/1.2 var(--display)}
+.sbox{display:flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:6px 8px 6px 18px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.sbox svg{flex:none;width:22px;height:22px;color:var(--blue-deep)}
+.sbox input{flex:1;min-width:0;border:0;outline:0;font:500 19px/1.4 var(--body);color:var(--ink);padding:10px 0;background:none}
+.sbox input::-webkit-search-cancel-button{cursor:pointer}
+.sbox:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+.chips-q{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:15px}
+.chips-q button{font:600 14px/1 var(--display);color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:8px 12px;cursor:pointer}
+.chips-q button:hover{background:rgba(255,255,255,.3)}
+#sres{display:grid;gap:8px}
+#sres:empty{display:none}
+.sr{display:block;background:#fff;color:var(--ink)!important;text-decoration:none;border-radius:16px;padding:14px 16px}
+.sr:hover,.sr:focus{outline:3px solid var(--sun)}
+.sr b{display:block;font:700 18px/1.3 var(--display);color:var(--blue-deep)}
+.sr small{display:block;font:600 12px/1.3 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:2px 0 4px}
+.sr span{display:block;color:var(--muted);font-size:16px;line-height:1.45}
+.sr mark{background:var(--sun-soft);color:inherit;border-radius:4px;padding:0 2px}
+.snone{background:rgba(255,255,255,.14);border-radius:14px;padding:12px 16px}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.spec{border:1px dashed var(--line);border-radius:20px;padding:16px;background:#FAFCFD;color:var(--muted);display:grid;gap:6px;align-content:start}
+.spec .ico{width:44px;height:44px;border-radius:14px;background:var(--mist);display:grid;place-items:center;font-size:22px}
+.spec h3{font:700 17px/1.25 var(--display)!important;color:var(--ink)}
+.spec .soon{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#EEF0F2;color:#5B6770;border-radius:999px;padding:6px 9px}
+.spec.live{grid-column:1/-1;border:1px solid var(--blue);border-left:8px solid var(--blue-deep);background:#fff;color:var(--ink);display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:20px;box-shadow:0 8px 24px rgba(31,110,147,.08)}
+.spec.live .sl{display:grid;gap:8px;align-content:start}.spec.live .ico{width:64px;height:64px;font-size:32px;background:var(--blue-deep)}
+.spec.live h3{font-size:24px!important;color:var(--blue-deep)}
+.spec.live p{margin:0}
+.spec.live .btns{margin-top:6px}
+.spec .live-tag{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#DDF3F2;color:var(--teal-deep);border-radius:999px;padding:6px 9px}
+@media (max-width:640px){.spec.live{grid-template-columns:1fr}.search{padding:18px}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
@@ -130,16 +166,16 @@ footer b{font-family:var(--display)}
 
 <div class="fold-bar"><span>Tekan tajuk untuk buka atau tutup.</span><span class="fold-btns"><button type="button" data-fold="open">Buka semua</button><button type="button" data-fold="close">Tutup semua</button></span></div>
 <div class="folds">
-<details class="sec" id="bila-perlu-dapatkan-bantuan-segera" open><summary><h2>Bila perlu dapatkan bantuan segera?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><div class="alert" role="note"><span class="ai" aria-hidden="true">!</span><p><strong>Pergi ke Unit Kecemasan hospital sekarang, atau telefon 991</strong>, mun mata kamu jadi <strong>makin sakit, makin merah, atau penglihatan makin kabur</strong> lepas operasi mata, suntikan mata atau mata cedera. <strong>Jangan tunggu temujanji klinik yang akan datang.</strong> Pergi hari atu jua, walaupun malam atau hujung minggu.</p></div>
+<details class="sec" id="bila-perlu-dapatkan-bantuan-segera" open><summary><h2>Bila perlu dapatkan bantuan segera?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><div class="alert" role="note"><span class="ai" aria-hidden="true">!</span><p><strong>Pergi ke Unit Kecemasan hospital sekarang, atau telefon 991</strong>, mun mata abiskita jadi <strong>makin sakit, makin merah, atau penglihatan makin kabur</strong> lepas operasi mata, suntikan mata atau mata cedera. <strong>Jangan tunggu temujanji klinik yang akan datang.</strong> Pergi hari atu jua, walaupun malam atau hujung minggu.</p></div>
 <p>Lepas operasi mata atau suntikan mata, biasa saja mata rasa macam berpasir, merah sikit atau kabur beberapa hari, dan ia patut <strong>beransur baik tiap-tiap hari</strong>.</p>
-<p>Tapi pergi <strong>dengan segera</strong> mun kamu perasan [1]:</p>
+<p>Tapi pergi <strong>dengan segera</strong> mun abiskita perasan [1]:</p>
 <ul><li><strong>sakit yang makin teruk</strong>, bukan makin baik</li><li><strong>penglihatan yang makin kabur</strong>, atau ada <strong>kabus keputihan</strong> di depan mata</li><li><strong>merah yang makin bertambah</strong></li><li>mata atau kelopak mata <strong>bengkak</strong></li><li>ada <strong>tahi mata yang melekit</strong> (nanah)</li></ul>
-<p>Tanda-tanda ani selalunya bermula <strong>dalam beberapa hari</strong> lepas operasi atau suntikan, tapi boleh jua muncul lambat lagi [1]. Mun kamu kurang pasti, <strong>pergi periksa</strong>. Lebih baik diperiksa dan diberitahu samua okay.</p>
+<p>Tanda-tanda ani selalunya bermula <strong>dalam beberapa hari</strong> lepas operasi atau suntikan, tapi boleh jua muncul lambat lagi [1]. Mun abiskita kurang pasti, <strong>pergi periksa</strong>. Lebih baik diperiksa dan diberitahu samua okay.</p>
 <p>Urang yang <strong>sedang sakit badan</strong> (contohnya demam, ada nanah dalam hati (liver abscess) atau jangkitan darah) dan perasan <strong>mata merah, sakit atau kabur</strong>, mesti terus beritahu doktor, pasal jangkitan atu mungkin sudah merebak ke mata [1][4].</p>
 </div></details>
 <details class="sec" id="apa-kan-endoftalmitis-ani"><summary><h2>Apa kan Endoftalmitis ani?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Endoftalmitis</strong> (endophthalmitis) atu jangkitan <strong>di dalam</strong> bola mata, iaitu dalam jeli jernih (<strong>vitreous</strong>) dan air yang mengisi mata [1]. Selalunya disebabkan <strong>bakteria</strong>, dan kadang-kadang <strong>kulat</strong>.</p>
 <p>Ani lain banar dari "sakit mata" biasa (konjunktivitis), yang kena di permukaan mata saja. Endoftalmitis <strong>jarang berlaku</strong>, tapi ia boleh merosakkan mata dengan cepat, jadi ia dirawat sebagai <strong>kecemasan</strong>.</p>
-<p><strong>Kebanyakan operasi dan suntikan mata berjalan lancar.</strong> Pasukan mata kamu membuat banyak langkah untuk mencegah jangkitan, contohnya membersihkan mata dengan antiseptik sebelum tiap-tiap operasi dan suntikan. Laman ani bukan untuk menakutkan kamu, tapi supaya kamu <strong>tau apa yang perlu diperhatikan</strong> dan <strong>bertindak cepat</strong>.</p>
+<p><strong>Kebanyakan operasi dan suntikan mata berjalan lancar.</strong> Pasukan mata abiskita membuat banyak langkah untuk mencegah jangkitan, contohnya membersihkan mata dengan antiseptik sebelum tiap-tiap operasi dan suntikan. Laman ani bukan untuk menakutkan abiskita, tapi supaya abiskita <strong>tau apa yang perlu diperhatikan</strong> dan <strong>bertindak cepat</strong>.</p>
 </div></details>
 <details class="sec" id="tinggi-kah-risiko-ku"><summary><h2>Tinggi kah risiko ku?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Endoftalmitis boleh berlaku [1]:</p>
 <ul><li><strong>lepas operasi mata</strong>, paling selalu <strong>operasi katarak</strong> pasal ia operasi mata yang paling banyak dibuat</li><li><strong>lepas suntikan mata</strong>, macam <strong>suntikan anti-VEGF</strong> untuk penyakit mata kencing manis atau degenerasi makula</li><li><strong>lepas kecederaan</strong> yang menembusi dinding mata, lagi-lagi dengan benda kotor, besi, tanah atau tumbuhan</li><li><strong>dari jangkitan di tempat lain dalam badan</strong> yang merebak melalui darah ke mata. Ani dipanggil endoftalmitis <strong>endogenous</strong></li></ul>
@@ -159,18 +195,18 @@ footer b{font-family:var(--display)}
 </div></details>
 <details class="sec" id="apa-ubat-nya-tu"><summary><h2>Apa ubat nya tu?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Rawatan dimulakan <strong>secepat mungkin</strong>, selalunya hari atu jua [1].</p>
 <ol><li><strong>Ambil sampel vitreous dan suntik antibiotik:</strong> lepas mata dibius, doktor mengambil sampel air yang sedikit dari dalam mata untuk diuji, kemudian <strong>menyuntik antibiotik terus ke dalam mata</strong> (intravitreal antibiotics). Ani rawatan utama [1][2].</li><li><strong>Vitrektomi (kadang-kadang):</strong> operasi untuk <strong>membuang jeli yang dijangkiti</strong> dari dalam mata. Satu kajian besar, <strong>Endophthalmitis Vitrectomy Study</strong>, mendapati untuk jangkitan lepas operasi katarak, vitrektomi segera banyak membantu urang yang penglihatannya sudah jatuh sampai <strong>nampak cahaya saja</strong>. Untuk kebanyakan urang yang lain, suntikan dalam mata saja sudah cukup [2][3].</li><li><strong>Ubat lain:</strong> ubat titis untuk meredakan radang, dan kadang-kadang <strong>steroid</strong> atau suntikan antibiotik tambahan. Suntikan mungkin perlu diulang.</li><li><strong>Endoftalmitis endogenous:</strong> perlu <strong>antibiotik (atau ubat antikulat) melalui drip</strong> dan rawatan <strong>punca jangkitan</strong>, macam mengeluarkan nanah dari hati, berserta rawatan untuk mata. Ani selalunya dibuat bersama pasukan perubatan di hospital [1][4].</li></ol>
-<p>Kamu perlu <strong>diperiksa selalu</strong>, selalunya tiap-tiap hari pada awalnya.</p>
+<p>Abiskita perlu <strong>diperiksa selalu</strong>, selalunya tiap-tiap hari pada awalnya.</p>
 <p><em>Data Brunei:</em> [Tambah data tempatan Brunei di sini bila ada.]</p>
 </div></details>
-<details class="sec" id="cemana-kitani-kan-jaga-jaga-supaya-inda-tekana"><summary><h2>Cemana kitani kan jaga-jaga supaya inda tekana?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Inda samua risiko dapat dikawal, tapi kamu boleh membantu:</p>
-<ul><li>Lepas operasi atau suntikan mata, <strong>pakai ubat titis betul-betul macam yang disuruh</strong> dan <strong>jaga kebersihan mata</strong>.</li><li><strong>Jangan gosok</strong> mata, dan jangan biarkan air paip, sabun dan habuk masuk ke mata selama yang dinasihatkan pasukan mata kamu.</li><li><strong>Pakai pelindung mata</strong> (eye shield) masa tidur mun kamu dibagi.</li><li><strong>Kenal tanda bahaya</strong> dan pergi ke Unit Kecemasan <strong>hari atu jua</strong> mun ia muncul.</li><li><strong>Lindungi mata</strong> dengan pakai goggle masa bertukang, memotong rumput, dan bersukan.</li><li>Mun kamu ada <strong>kencing manis</strong>, kawal baik-baik, dan rawat sebarang jangkitan awal-awal.</li></ul>
+<details class="sec" id="cemana-kitani-kan-jaga-jaga-supaya-inda-tekana"><summary><h2>Cemana kitani kan jaga-jaga supaya inda tekana?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Inda samua risiko dapat dikawal, tapi abiskita boleh membantu:</p>
+<ul><li>Lepas operasi atau suntikan mata, <strong>pakai ubat titis betul-betul macam yang disuruh</strong> dan <strong>jaga kebersihan mata</strong>.</li><li><strong>Jangan gosok</strong> mata, dan jangan biarkan air paip, sabun dan habuk masuk ke mata selama yang dinasihatkan pasukan mata abiskita.</li><li><strong>Pakai pelindung mata</strong> (eye shield) masa tidur mun abiskita dibagi.</li><li><strong>Kenal tanda bahaya</strong> dan pergi ke Unit Kecemasan <strong>hari atu jua</strong> mun ia muncul.</li><li><strong>Lindungi mata</strong> dengan pakai goggle masa bertukang, memotong rumput, dan bersukan.</li><li>Mun abiskita ada <strong>kencing manis</strong>, kawal baik-baik, dan rawat sebarang jangkitan awal-awal.</li></ul>
 </div></details>
-<details class="sec" id="di-mana-kan-dapatkan-bantuan-di-brunei"><summary><h2>Di mana kan dapatkan bantuan di Brunei?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Lepas operasi mata, suntikan mata atau mata cedera, mun mata jadi makin sakit, makin merah atau penglihatan makin kabur, pergi ke Unit Kecemasan hospital sekarang, atau telefon 991.</strong> Kamu boleh jua menghubungi klinik mata yang membuat operasi atau suntikan kamu, tapi <strong>jangan tunggu</strong> temujanji yang akan datang.</p>
-<p>Untuk masalah mata lain yang inda segera, kamu boleh terus datang ke <strong>Klinik Mata Komuniti</strong> di pusat kesihatan. Inda perlu surat rujukan.</p>
+<details class="sec" id="di-mana-kan-dapatkan-bantuan-di-brunei"><summary><h2>Di mana kan dapatkan bantuan di Brunei?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Lepas operasi mata, suntikan mata atau mata cedera, mun mata jadi makin sakit, makin merah atau penglihatan makin kabur, pergi ke Unit Kecemasan hospital sekarang, atau telefon 991.</strong> Abiskita boleh jua menghubungi klinik mata yang membuat operasi atau suntikan abiskita, tapi <strong>jangan tunggu</strong> temujanji yang akan datang.</p>
+<p>Untuk masalah mata lain yang inda segera, abiskita boleh terus datang ke <strong>Klinik Mata Komuniti</strong> di pusat kesihatan. Inda perlu surat rujukan.</p>
 <div class="btns"><a class="btn" href="../../klinik-mata/">Klinik Mata Komuniti</a></div>
 </div></details>
 <details class="sec" id="rujukan"><summary><h2>Rujukan</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ol><li>Durand ML. Endophthalmitis. <em>Clinical Microbiology and Infection</em>. 2013;19(3):227–234. <a href="https://doi.org/10.1111/1469-0691.12118" target="_blank" rel="noopener">https://doi.org/10.1111/1469-0691.12118</a></li><li>Endophthalmitis Vitrectomy Study Group. Results of the Endophthalmitis Vitrectomy Study: a randomized trial of immediate vitrectomy and of intravenous antibiotics for the treatment of postoperative bacterial endophthalmitis. <em>Archives of Ophthalmology</em>. 1995;113(12):1479–1496.</li><li>National Eye Institute (NIH). New treatment options for people with blinding eye infection. 1995. <a href="https://www.nei.nih.gov/about/news-and-events/news/new-treatment-options-people-blinding-eye-infection" target="_blank" rel="noopener">https://www.nei.nih.gov/about/news-and-events/news/new-treatment-options-people-blinding-eye-infection</a></li><li>Hasbi A, Mohd Nafeez M, Tai E, et al. Endogenous endophthalmitis: a 10-year review of cases on the east coast of Malaysia. <em>Cureus</em>. 2024;16(5):e60132. <a href="https://doi.org/10.7759/cureus.60132" target="_blank" rel="noopener">https://doi.org/10.7759/cureus.60132</a></li></ol>
-<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor kamu sendiri.</em></p></div></details>
+<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor abiskita sendiri.</em></p></div></details>
 </div></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>Untuk pendidikan saja, inda menggantikan nasihat doktor.</span><span>Kecemasan: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
@@ -191,6 +227,11 @@ document.querySelectorAll('details.sec').forEach(d=>d.addEventListener('toggle',
 function openHash(){const h=decodeURIComponent(location.hash.slice(1));const d=h&&document.getElementById(h);if(d&&d.tagName==='DETAILS'){d.open=true;d.scrollIntoView()}}
 addEventListener('hashchange',openHash);openHash();
 addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forEach(d=>d.open=true));
+</script>
+
+<script>
+(function(){var B='20261006112442';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
 </html>

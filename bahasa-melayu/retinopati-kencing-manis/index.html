@@ -121,6 +121,42 @@ footer b{font-family:var(--display)}
 .dd.urgent .menu a small{color:#B3261E}
 .dd.urgent button.ddb::before{content:"";width:8px;height:8px;border-radius:50%;background:#B3261E}
 @media (max-width:760px){.anat{grid-template-columns:1fr}.card{padding-right:50px}}
+
+.content .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:st}
+.steps li{position:relative;background:var(--mist);border-radius:20px;padding:18px 18px 16px;border-top:6px solid var(--teal)}
+.steps .st{display:inline-block;font:800 20px/1 var(--display);color:var(--blue-deep);margin-bottom:8px}
+.steps p{margin:0;font-size:17px}
+.search{background:linear-gradient(135deg,var(--blue-deep),#2A8BB5 60%,var(--teal));border-radius:26px;padding:24px;color:#fff;display:grid;gap:12px;scroll-margin-top:90px}
+.search label{font:700 clamp(22px,3vw,28px)/1.2 var(--display)}
+.sbox{display:flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:6px 8px 6px 18px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.sbox svg{flex:none;width:22px;height:22px;color:var(--blue-deep)}
+.sbox input{flex:1;min-width:0;border:0;outline:0;font:500 19px/1.4 var(--body);color:var(--ink);padding:10px 0;background:none}
+.sbox input::-webkit-search-cancel-button{cursor:pointer}
+.sbox:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+.chips-q{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:15px}
+.chips-q button{font:600 14px/1 var(--display);color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:8px 12px;cursor:pointer}
+.chips-q button:hover{background:rgba(255,255,255,.3)}
+#sres{display:grid;gap:8px}
+#sres:empty{display:none}
+.sr{display:block;background:#fff;color:var(--ink)!important;text-decoration:none;border-radius:16px;padding:14px 16px}
+.sr:hover,.sr:focus{outline:3px solid var(--sun)}
+.sr b{display:block;font:700 18px/1.3 var(--display);color:var(--blue-deep)}
+.sr small{display:block;font:600 12px/1.3 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:2px 0 4px}
+.sr span{display:block;color:var(--muted);font-size:16px;line-height:1.45}
+.sr mark{background:var(--sun-soft);color:inherit;border-radius:4px;padding:0 2px}
+.snone{background:rgba(255,255,255,.14);border-radius:14px;padding:12px 16px}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.spec{border:1px dashed var(--line);border-radius:20px;padding:16px;background:#FAFCFD;color:var(--muted);display:grid;gap:6px;align-content:start}
+.spec .ico{width:44px;height:44px;border-radius:14px;background:var(--mist);display:grid;place-items:center;font-size:22px}
+.spec h3{font:700 17px/1.25 var(--display)!important;color:var(--ink)}
+.spec .soon{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#EEF0F2;color:#5B6770;border-radius:999px;padding:6px 9px}
+.spec.live{grid-column:1/-1;border:1px solid var(--blue);border-left:8px solid var(--blue-deep);background:#fff;color:var(--ink);display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:20px;box-shadow:0 8px 24px rgba(31,110,147,.08)}
+.spec.live .sl{display:grid;gap:8px;align-content:start}.spec.live .ico{width:64px;height:64px;font-size:32px;background:var(--blue-deep)}
+.spec.live h3{font-size:24px!important;color:var(--blue-deep)}
+.spec.live p{margin:0}
+.spec.live .btns{margin-top:6px}
+.spec .live-tag{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#DDF3F2;color:var(--teal-deep);border-radius:999px;padding:6px 9px}
+@media (max-width:640px){.spec.live{grid-template-columns:1fr}.search{padding:18px}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
@@ -137,8 +173,8 @@ footer b{font-family:var(--display)}
 <p><strong>Peringkat-peringkat nya, senang cerita</strong></p>
 <ul><li><strong>Peringkat awal (non-proliferatif):</strong> saluran darah bengkak sikit dan bocor. Selalunya <strong>inda rasa apa-apa</strong>.</li><li><strong>Peringkat teruk (proliferatif):</strong> retina menumbuhkan saluran darah baru yang lemah. Ani boleh berdarah dalam mata atau menarik retina.</li><li><strong>Bengkak makula (macular oedema):</strong> air berkumpul di <strong>makula</strong>, iaitu bahagian tengah retina yang kitani pakai untuk membaca dan mengenal muka urang. Ani boleh berlaku bila-bila masa saja, dan inilah sebab paling biasa urang kencing manis hilang penglihatan.</li></ul>
 </div></details>
-<details class="sec" id="tinggi-kah-risiko-ku"><summary><h2>Tinggi kah risiko ku?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Samua urang yang ada kencing manis ada risiko. Risiko kamu <strong>lagi tinggi</strong> mun:</p>
-<ul><li>sudah lama kamu ada kencing manis</li><li>gula darah (HbA1c) kamu selalu tinggi</li><li>kamu ada darah tinggi</li><li>kolesterol kamu tinggi</li><li>buah pinggang kamu ada masalah, contohnya ada protein dalam kencing</li><li>kamu mengandung dan ada kencing manis</li><li>kamu merokok</li></ul>
+<details class="sec" id="tinggi-kah-risiko-ku"><summary><h2>Tinggi kah risiko ku?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Samua urang yang ada kencing manis ada risiko. Risiko abiskita <strong>lagi tinggi</strong> mun:</p>
+<ul><li>sudah lama abiskita ada kencing manis</li><li>gula darah (HbA1c) abiskita selalu tinggi</li><li>abiskita ada darah tinggi</li><li>kolesterol abiskita tinggi</li><li>buah pinggang abiskita ada masalah, contohnya ada protein dalam kencing</li><li>abiskita mengandung dan ada kencing manis</li><li>abiskita merokok</li></ul>
 <p><strong>Di Brunei:</strong> satu kajian urang dewasa yang ada kencing manis jenis 2 menjumpai lebih kurang <strong>1 dalam 5 urang</strong> ada Retinopati Kencing Manis, dan lebih kurang <strong>1 dalam 10 urang</strong> ada jenis yang boleh merosakkan penglihatan. Ada kencing manis lebih 10 tahun, HbA1c lebih 9%, dan ada protein dalam kencing semua ani berkait dengan risiko yang lebih tinggi.</p>
 <iframe class="embed" src="../../embeds/dr-risk-bm.html" title="dr risk bm" style="height:640px" loading="lazy"></iframe>
 </div></details>
@@ -147,16 +183,16 @@ footer b{font-family:var(--display)}
 <p>Berita baiknya: kebanyakan kes buta disebabkan kencing manis <strong>boleh dielakkan</strong> mun dikesan awal dan dirawat ikut masa.</p>
 <iframe class="embed" src="../../embeds/vision-sim-bm.html" title="vision sim bm" style="height:640px" loading="lazy"></iframe>
 </div></details>
-<details class="sec" id="apa-punca-nya-tu"><summary><h2>Apa punca nya tu?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Gula darah yang tinggi, bertahun-tahun lamanya, perlahan-lahan merosakkan dinding saluran darah halus di serata badan, termasuk mata, buah pinggang dan saraf. Darah tinggi dan kolesterol tinggi menambah lagi kerosakan ani. Makin lama kamu ada kencing manis, dan makin inda terkawal, makin senang mata tekana.</p>
+<details class="sec" id="apa-punca-nya-tu"><summary><h2>Apa punca nya tu?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Gula darah yang tinggi, bertahun-tahun lamanya, perlahan-lahan merosakkan dinding saluran darah halus di serata badan, termasuk mata, buah pinggang dan saraf. Darah tinggi dan kolesterol tinggi menambah lagi kerosakan ani. Makin lama abiskita ada kencing manis, dan makin inda terkawal, makin senang mata tekana.</p>
 </div></details>
-<details class="sec" id="cemana-kan-tau-aku-tedapat-retinopati-kencing-manis-ani"><summary><h2>Cemana kan tau aku tedapat Retinopati Kencing Manis ani?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Masa peringkat awal, kamu <strong>inda rasa apa-apa</strong>, dan mata kamu mungkin masih nampak terang. Sebab atu tah periksa mata selalu penting banar.</p>
-<p>Lama-lama, kamu mungkin perasan:</p>
+<details class="sec" id="cemana-kan-tau-aku-tedapat-retinopati-kencing-manis-ani"><summary><h2>Cemana kan tau aku tedapat Retinopati Kencing Manis ani?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Masa peringkat awal, abiskita <strong>inda rasa apa-apa</strong>, dan mata abiskita mungkin masih nampak terang. Sebab atu tah periksa mata selalu penting banar.</p>
+<p>Lama-lama, abiskita mungkin perasan:</p>
 <ul><li>penglihatan kabur atau berubah-ubah</li><li>ada bintik hitam atau benda terapung-apung (floaters)</li><li>warna nampak pudar</li><li>ada kawasan gelap atau kosong dalam penglihatan</li><li>susah nampak waktu malam</li></ul>
 <p><strong>Cemana mata diperiksa?</strong></p>
-<ul><li><strong>Gambar retina (saringan mata):</strong> gambar belakang mata, sekejap saja dan inda sakit. Di Brunei, ada pusat yang sudah pakai kecerdasan buatan (AI) untuk membantu membaca gambar ani.</li><li><strong>Periksa mata dengan ubat titis pembesar anak mata:</strong> ubat ani membesarkan anak mata supaya doktor nampak retina dengan jelas. Mata kamu mungkin kabur dan silau beberapa jam, jadi <strong>jangan memandu sendiri balik</strong>.</li><li><strong>Imbasan OCT:</strong> imbasan yang inda sakit untuk memeriksa bengkak di makula.</li></ul>
+<ul><li><strong>Gambar retina (saringan mata):</strong> gambar belakang mata, sekejap saja dan inda sakit. Di Brunei, ada pusat yang sudah pakai kecerdasan buatan (AI) untuk membantu membaca gambar ani.</li><li><strong>Periksa mata dengan ubat titis pembesar anak mata:</strong> ubat ani membesarkan anak mata supaya doktor nampak retina dengan jelas. Mata abiskita mungkin kabur dan silau beberapa jam, jadi <strong>jangan memandu sendiri balik</strong>.</li><li><strong>Imbasan OCT:</strong> imbasan yang inda sakit untuk memeriksa bengkak di makula.</li></ul>
 <p><strong>Berapa kali patut aku periksa?</strong></p>
 <ul><li><strong>Kencing manis jenis 2:</strong> masa mula-mula didiagnos, lepas atu <strong>tiap-tiap tahun</strong> (atau ikut nasihat doktor).</li><li><strong>Kencing manis jenis 1:</strong> dalam masa 5 tahun lepas didiagnos, lepas atu tiap-tiap tahun.</li><li><strong>Mengandung, atau merancang kan mengandung:</strong> sebelum atau awal mengandung, lepas atu ikut nasihat doktor, sebab mata boleh berubah lakas masa mengandung.</li></ul>
-<p>Tanya doktor atau jururawat di pusat kesihatan atau klinik kencing manis kamu bila saringan mata kamu yang seterusnya.</p>
+<p>Tanya doktor atau jururawat di pusat kesihatan atau klinik kencing manis abiskita bila saringan mata abiskita yang seterusnya.</p>
 </div></details>
 <details class="sec" id="apa-ubat-nya-tu"><summary><h2>Apa ubat nya tu?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ol><li><strong>Kawal gula, darah tinggi dan kolesterol.</strong> Ani asas untuk samua rawatan, dan melambatkan kerosakan.</li><li><strong>Suntikan ubat dalam mata (anti-VEGF):</strong> ubat dicucuk ke dalam mata lepas mata dibius dengan ubat titis. Ia mengurangkan bengkak dan menghentikan saluran darah baru daripada tumbuh. Selalunya perlu beberapa kali suntikan.</li><li><strong>Rawatan laser:</strong> menutup saluran darah yang bocor atau mengecutkan saluran darah baru yang inda normal.</li><li><strong>Suntikan atau implan steroid:</strong> untuk setengah urang yang ada bengkak di makula.</li><li><strong>Operasi mata (vitrektomi):</strong> untuk membuang darah atau parut dari dalam mata.</li></ol>
 <p>Rawatan inda semestinya dapat membalikkan penglihatan yang sudah hilang, tapi ia boleh <strong>menghalang jadi lagi teruk</strong>. Makin awal dirawat, makin bagus hasilnya.</p>
@@ -171,7 +207,7 @@ footer b{font-family:var(--display)}
 <details class="sec" id="maklumat-terkini-kaji-selidik-negara"><summary><h2>Maklumat terkini / Kaji Selidik Negara</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li><strong>Saringan mata AI:</strong> Jerudong Park Medical Centre (JPMC) memperkenalkan perkhidmatan saringan Retinopati Kencing Manis menggunakan kecerdasan buatan (AI) yang pertama di Brunei pada 24 April 2024. [9]</li><li><strong>Berapa ramai di Brunei?</strong> Lebih kurang 1 dalam 5 urang dewasa yang ada kencing manis jenis 2 ada Retinopati Kencing Manis (22.6%), dan lebih kurang 1 dalam 10 ada jenis yang mengancam penglihatan (9.7%). [7]</li><li><strong>Kesedaran di Brunei:</strong> kajian tahun 2025 meninjau sejauh mana pesakit di klinik mata komuniti Brunei tau pasal Retinopati Kencing Manis. [8]</li></ul>
 </div></details>
 <details class="sec" id="rujukan"><summary><h2>Rujukan</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ol><li>National Eye Institute (NIH). Diabetic Retinopathy. <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy</a></li><li>Flaxel CJ, Adelman RA, Bailey ST, et al. Diabetic Retinopathy Preferred Practice Pattern®. American Academy of Ophthalmology. <em>Ophthalmology</em>. 2020;127(1):P66–P145. <a href="https://doi.org/10.1016/j.ophtha.2019.09.025" target="_blank" rel="noopener">https://doi.org/10.1016/j.ophtha.2019.09.025</a></li><li>American Diabetes Association Professional Practice Committee. 12. Retinopathy, Neuropathy, and Foot Care: Standards of Care in Diabetes—2025. <em>Diabetes Care</em>. 2025;48(Suppl 1). <a href="https://diabetesjournals.org/care/issue/48/Supplement_1" target="_blank" rel="noopener">https://diabetesjournals.org/care/issue/48/Supplement_1</a></li><li>Teo ZL, Tham YC, Yu M, et al. Global prevalence of diabetic retinopathy and projection of burden through 2045. <em>Ophthalmology</em>. 2021;128(11):1580–1591. <a href="https://doi.org/10.1016/j.ophtha.2021.04.027" target="_blank" rel="noopener">https://doi.org/10.1016/j.ophtha.2021.04.027</a></li><li>UK Prospective Diabetes Study (UKPDS) Group. Intensive blood-glucose control with sulphonylureas or insulin compared with conventional treatment and risk of complications in patients with type 2 diabetes (UKPDS 33). <em>Lancet</em>. 1998;352(9131):837–853.</li><li>UK Prospective Diabetes Study Group. Tight blood pressure control and risk of macrovascular and microvascular complications in type 2 diabetes (UKPDS 38). <em>BMJ</em>. 1998;317(7160):703–713.</li><li>Raja SA, Chong VH, Rahman NA, Shakir LMP, Knights J. Prevalence and associated factors of diabetic retinopathy among type 2 diabetes mellitus patients in Brunei Darussalam: a cross-sectional study. <em>Korean Journal of Ophthalmology</em>. 2021. <a href="https://doi.org/10.3341/kjo.2021.0040" target="_blank" rel="noopener">https://doi.org/10.3341/kjo.2021.0040</a></li><li>Awareness of diabetic retinopathy among diabetic patients in community ophthalmology clinics, Brunei Darussalam. <em>Journal of Clinical Ophthalmology and Research</em>. 2025. <a href="https://journals.lww.com/jcor/fulltext/2025/04000/awareness_of_diabetic_retinopathy_among_diabetic.5.aspx" target="_blank" rel="noopener">https://journals.lww.com/jcor/fulltext/2025/04000/awareness_of_diabetic_retinopathy_among_diabetic.5.aspx</a></li><li>Jerudong Park Medical Centre. JPMC took a leap forward by introducing first artificial intelligence diabetic retinopathy screening services. 2024. <a href="https://jpmcbrunei.com/jpmc-took-a-leap-forward-by-introducing-first-artificial-intelligence-diabetic-retinopathy-screening-services/" target="_blank" rel="noopener">https://jpmcbrunei.com/jpmc-took-a-leap-forward-by-introducing-first-artificial-intelligence-diabetic-retinopathy-screening-services/</a></li><li>NHS. Diabetic retinopathy. <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/" target="_blank" rel="noopener">https://www.nhs.uk/conditions/diabetic-retinopathy/</a></li></ol>
-<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor kamu sendiri.</em></p></div></details>
+<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor abiskita sendiri.</em></p></div></details>
 </div></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>Untuk pendidikan saja, inda menggantikan nasihat doktor.</span><span>Kecemasan: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
@@ -192,6 +228,11 @@ document.querySelectorAll('details.sec').forEach(d=>d.addEventListener('toggle',
 function openHash(){const h=decodeURIComponent(location.hash.slice(1));const d=h&&document.getElementById(h);if(d&&d.tagName==='DETAILS'){d.open=true;d.scrollIntoView()}}
 addEventListener('hashchange',openHash);openHash();
 addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forEach(d=>d.open=true));
+</script>
+
+<script>
+(function(){var B='20261006112442';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
 </html>
