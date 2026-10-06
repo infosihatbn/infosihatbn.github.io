@@ -414,15 +414,15 @@ fetch('./data/feeds.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).catch(()
 </script>
 
 
-<script>
+<script id="music-js">
 (function(){
-const SRC='./assets/calm-ambient.mp3',K='is-music',T='is-music-t',VOL=.22;
-const btn=document.querySelector('.music-btn');if(!btn)return;
+const SRC=new URL('./assets/calm-ambient.mp3',location.href).href,K='is-music',T='is-music-t',VOL=.22;
+let btn=document.querySelector('.music-btn');if(!btn)return;
 let pref='on';try{pref=localStorage.getItem(K)||'on'}catch(e){}
 const a=new Audio();a.src=SRC;a.loop=true;a.preload='none';a.volume=0;
 try{const t=parseFloat(sessionStorage.getItem(T));if(t)a.currentTime=t}catch(e){}
 function ui(){const on=!a.paused;btn.setAttribute('aria-pressed',on);btn.setAttribute('aria-label',on?btn.dataset.on:btn.dataset.off)}
-function fade(to,done){clearInterval(a._f);a._f=setInterval(()=>{const v=a.volume+(to>a.volume?.02:-.02);if(Math.abs(to-a.volume)<=.02){a.volume=to;clearInterval(a._f);done&&done()}else a.volume=Math.max(0,Math.min(1,v))},60)}
+function fade(to,done){clearInterval(a._f);a._f=setInterval(()=>{if(Math.abs(to-a.volume)<=.02){a.volume=to;clearInterval(a._f);done&&done()}else a.volume=Math.max(0,Math.min(1,a.volume+(to>a.volume?.02:-.02)))},60)}
 function play(){if(!a.paused)return Promise.resolve();a.volume=0;return a.play().then(()=>{fade(VOL);ui()}).catch(()=>{ui()})}
 function stop(){fade(0,()=>{a.pause();ui()});btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label',btn.dataset.off)}
 function save(){try{sessionStorage.setItem(T,a.currentTime||0)}catch(e){}}
@@ -430,14 +430,43 @@ btn.addEventListener('click',e=>{e.stopPropagation();if(a.paused){pref='on';play
 function first(e){if(btn.contains(e.target))return;off();if(pref==='on')play()}
 function off(){['pointerdown','keydown','touchstart'].forEach(x=>removeEventListener(x,first,true))}
 if(pref==='on'){play().then(()=>{if(!a.paused)off()});['pointerdown','keydown','touchstart'].forEach(x=>addEventListener(x,first,true))}
-let wasOn=false;document.addEventListener('visibilitychange',()=>{if(document.hidden){wasOn=!a.paused;if(wasOn){a.pause();ui()}save()}else if(wasOn&&pref==='on'){play()}});
 addEventListener('pagehide',save);setInterval(()=>{if(!a.paused)save()},2000);
-addEventListener('beforeprint',()=>{if(!a.paused){a.pause();ui()}});
 ui();
+/* Keep the music going between pages: while it plays, internal links swap the page content in place instead of reloading. */
+const html=u=>fetch(u,{credentials:'same-origin'}).then(r=>{if(!r.ok||!(r.headers.get('content-type')||'').includes('text/html'))throw 0;return r.text()});
+function internal(u){return u.origin===location.origin&&!/\.(mp3|pdf|png|jpe?g|svg|json|zip)$/i.test(u.pathname)&&!u.pathname.includes('/embeds/')}
+let busy=false;
+async function go(url,push){
+ if(busy)return;busy=true;
+ try{
+  const t=await html(url),d=new DOMParser().parseFromString(t,'text/html');
+  if(!d.querySelector('main')||!d.querySelector('header.site'))throw 0;
+  save();if(push)history.pushState({soft:1},'',url);
+  document.title=d.title;document.documentElement.lang=d.documentElement.lang;document.body.className=d.body.className;
+  const keep=document.querySelector('.music'),nh=document.importNode(d.querySelector('header.site'),true),nm=nh.querySelector('.music');
+  if(nm&&keep)nm.replaceWith(keep);
+  document.querySelector('header.site').replaceWith(nh);
+  document.querySelector('main').replaceWith(document.importNode(d.querySelector('main'),true));
+  const of=document.querySelector('footer'),nf=d.querySelector('footer');if(of&&nf)of.replaceWith(document.importNode(nf,true));
+  document.querySelectorAll('body>script:not(#music-js)').forEach(x=>x.remove());
+  d.querySelectorAll('body>script:not(#music-js)').forEach(x=>{const n=document.createElement('script');n.textContent='{\n'+x.textContent+'\n}';document.body.appendChild(n)});
+  const h=new URL(url,location.href).hash;const el=h&&document.getElementById(decodeURIComponent(h.slice(1)));
+  if(el)el.scrollIntoView();else scrollTo(0,0);
+  const m=document.querySelector('main');if(m){m.setAttribute('tabindex','-1');m.focus({preventScroll:true})}
+ }catch(e){location.href=url}
+ busy=false}
+document.addEventListener('click',e=>{
+ if(a.paused||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+ const l=e.target.closest&&e.target.closest('a[href]');if(!l||l.target&&l.target!=='_self'||l.hasAttribute('download'))return;
+ const u=new URL(l.href,location.href);if(!internal(u))return;
+ if(u.pathname===location.pathname&&u.search===location.search&&u.hash)return;
+ e.preventDefault();go(u.href,true)});
+history.replaceState(Object.assign({},history.state,{soft:1}),'');
+addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)});
 })();
 </script>
 <script>
-(function(){var B='20261006121301';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261006121915';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('./version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
