@@ -20,13 +20,20 @@ button{font:inherit;color:inherit}
 
 .em{display:flex;gap:20px;align-items:center;background:var(--alert-soft);border:2px solid var(--alert);border-radius:22px;padding:20px 24px}
 .num{flex:none;display:grid;place-items:center;width:96px;height:96px;border-radius:50%;background:var(--alert);color:#fff;font:800 30px/1 var(--display);letter-spacing:.02em}
+.num{position:relative;overflow:hidden}
+.num .t{animation:numt 6s infinite}
+.num svg{position:absolute;inset:0;margin:auto;width:78%;height:auto;opacity:0;animation:numt 6s infinite reverse}
+.num svg path{fill:none;stroke:#fff;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:200;stroke-dashoffset:200;animation:ecg 6s infinite}
+@keyframes numt{0%,44%{opacity:1;transform:scale(1)}50%,94%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
+@keyframes ecg{0%,50%{stroke-dashoffset:200}72%,94%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.num .t,.num svg,.num svg path{animation:none}}
 .em h3{font-size:22px;color:var(--alert)}
 .em p{margin-top:6px}
 .em ul{margin:10px 0 0;padding-left:22px;display:grid;gap:4px}
 @media (max-width:520px){.em{flex-direction:column;align-items:flex-start}.num{width:76px;height:76px;font-size:24px}}
 </style></head><body><div class="wrap">
 <section class="em" aria-label="Emergency">
-  <div class="num" aria-hidden="true">991</div>
+  <div class="num" aria-hidden="true"><span class="t">991</span><svg viewBox="0 0 100 60"><path d="M2 34H28L32 29L36 34H43L47 39L53 6L59 52L63 34H70Q75 25 80 34H98"/></svg></div>
   <div>
     <h3>Emergency? Call 991</h3>
     <p>For <b>any medical emergency</b>, call <b>991</b> for an ambulance, or go to the nearest hospital <b>Emergency Department</b> straight away.</p>
