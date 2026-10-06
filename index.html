@@ -79,6 +79,7 @@ footer b{font-family:var(--display)}
 .refs{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
 .refs h2{font:700 18px/1.2 var(--display)!important;color:var(--ink)!important;margin:0 0 10px!important}
 .refs ol{padding-left:22px;display:grid;gap:6px}.refs p{font-size:15px}
+.refs-dd{margin-top:18px}.refs-dd summary h2{font-size:18px!important}.refs-dd .sec-body{font-size:15px;color:var(--muted)}.refs-dd ol{padding-left:22px;display:grid;gap:6px}
 @media print{.fold-bar{display:none}.sec summary .chev{display:none}}
 
 .nav button.ddb{display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--display);padding:12px 12px;border-radius:10px}
@@ -221,20 +222,47 @@ footer b{font-family:var(--display)}
 .hero2 .side{display:grid;gap:16px;justify-items:center;text-align:center}
 .hero2 .word{font:800 clamp(32px,4.6vw,46px)/1 var(--display)}.hero2 .word b{color:#333}.hero2 .word i{font-style:normal;color:var(--teal)}
 .hero2 .pill{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 15px/1 var(--display);color:var(--blue-deep)}
-.feed{color:#fff;display:grid;align-content:start;gap:14px}
-.feed.f-news{background:linear-gradient(135deg,#17506B,var(--blue-deep) 55%,#2A8BB5)}
-.feed.f-sea{background:linear-gradient(135deg,#145958,var(--teal-deep) 55%,#3AA3A2)}
-.feed.f-bimj{background:linear-gradient(135deg,#2B2F5E,#3B4C8C 55%,#5A6FB3)}
+.feed{position:relative;color:#fff;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:26px;align-items:center;isolation:isolate;overflow:hidden}
+.feed::before,.feed::after{content:"";position:absolute;border-radius:50%;z-index:-1;filter:blur(2px)}
+.feed::before{width:340px;height:340px;right:-90px;top:-120px;background:radial-gradient(circle,rgba(255,255,255,.22),rgba(255,255,255,0) 70%)}
+.feed::after{width:260px;height:260px;left:-80px;bottom:-110px;background:radial-gradient(circle,rgba(244,192,78,.35),rgba(244,192,78,0) 70%)}
+.feed.f-news{background:radial-gradient(120% 140% at 0% 0%,#2FA4D6 0%,#1F6E93 45%,#123F57 100%)}
+.feed.f-sea{background:radial-gradient(120% 140% at 0% 0%,#4FD1B5 0%,#1C7675 48%,#0F4342 100%)}
+.feed.f-bimj{background:radial-gradient(120% 140% at 0% 0%,#8C7BF0 0%,#4A47A3 48%,#262566 100%)}
+.feed .cov{display:grid;gap:12px;align-content:center}
+.feed .ico{width:84px;height:84px;border-radius:24px;display:grid;place-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.feed .ico svg{width:46px;height:46px}
 .feed .eb{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.16);border-radius:999px;padding:7px 11px;justify-self:start;margin:0}
-.feed .eb::before{content:"";width:8px;height:8px;border-radius:50%;background:#7CF0B5;box-shadow:0 0 0 3px rgba(124,240,181,.3)}
-.feed h2.fh{margin:0!important;font:800 clamp(24px,3.4vw,34px)/1.15 var(--display)!important;color:#fff!important}
-.feed .fd{margin:0;opacity:.9;font-size:17px}
-.feed ul{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:10px}
-.feed li a{display:block;color:#fff!important;text-decoration:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px 14px}
-.feed li a:hover,.feed li a:focus-visible{background:rgba(255,255,255,.2)}
-.feed li b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:600 17px/1.35 var(--display)}
-.feed li small{display:block;margin-top:4px;opacity:.85;font-size:14px}
-.feed .ff{margin:0;font-size:13px;opacity:.8}.feed .ff a{color:#fff!important}
+.feed .eb::before{content:"";width:8px;height:8px;border-radius:50%;background:#7CF0B5;box-shadow:0 0 0 3px rgba(124,240,181,.3);animation:livep 1.6s ease-in-out infinite}
+@keyframes livep{50%{box-shadow:0 0 0 6px rgba(124,240,181,0)}}
+.feed h2.fh{margin:0!important;font:800 clamp(24px,3.2vw,34px)/1.12 var(--display)!important;color:#fff!important;text-wrap:balance}
+.feed .fd{margin:0;opacity:.9;font-size:16px}
+.feed .ff{margin:0;font-size:13px;opacity:.85}.feed .ff a{color:#fff!important;font-weight:700}
+.feed ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:fi}
+.feed li a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;color:var(--ink)!important;text-decoration:none;background:rgba(255,255,255,.96);border-radius:18px;padding:13px 16px;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .2s,box-shadow .2s}
+.feed li a:hover,.feed li a:focus-visible{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.feed li .n{font:800 22px/1 var(--display);color:var(--acc);min-width:30px}
+.feed li b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:600 16px/1.35 var(--display)}
+.feed li small{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px;font-size:13px;color:var(--muted)}
+.feed li small em{font-style:normal;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:3px 8px}
+.feed li .fgo{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc);font:700 15px/1 var(--display)}
+.feed.f-news{--acc:#1F6E93;--acc-soft:#E2F1F8}.feed.f-sea{--acc:#1C7675;--acc-soft:#DDF3F1}.feed.f-bimj{--acc:#4A47A3;--acc-soft:#ECEBFB}
+.feed li.wait a{background:rgba(255,255,255,.18);color:#fff!important;box-shadow:none;grid-template-columns:1fr}
+@media (max-width:860px){.feed{grid-template-columns:1fr;gap:16px}.feed .ico{width:60px;height:60px;border-radius:18px}.feed .ico svg{width:34px;height:34px}.feed .cov{grid-template-columns:auto 1fr;column-gap:14px}.feed .cov>:not(.ico){grid-column:1/-1}.feed .cov .ico{grid-row:1/3}.feed .cov .eb{align-self:end}.feed .fd{display:none}}
+@media (max-width:640px){.feed li a{padding:11px 12px;gap:10px}.feed li .fgo{display:none}.feed li .n{font-size:18px;min-width:22px}.feed li b{font-size:15px}}
+@media (prefers-reduced-motion:reduce){.feed .eb::before{animation:none}.feed li a{transition:none}}
+.tipd{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(120% 140% at 0% 0%,#FFE7A3 0%,#F4C04E 40%,#E89A2C 100%);color:#3A2A05;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px 28px;align-items:center}
+.tipd::before{content:"";position:absolute;width:360px;height:360px;right:-100px;bottom:-160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.45),rgba(255,255,255,0) 70%);z-index:-1}
+.tipd .eb{display:inline-flex;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.55);border-radius:999px;padding:7px 11px;margin:0 0 10px;color:#6B4A00}
+.tipd h2.fh{margin:0!important;font:800 clamp(28px,4vw,42px)/1.1 var(--display)!important;color:#3A2A05!important}
+.tpool{list-style:none;margin:0;padding:0}
+.tpool li{display:none;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:#fff;border-radius:24px;padding:22px 24px;box-shadow:0 10px 30px rgba(120,70,0,.22)}
+.tpool li.on{display:grid}
+.tpool .te{font-size:52px;line-height:1;width:84px;height:84px;display:grid;place-items:center;background:var(--sun-soft);border-radius:22px}
+.tpool p{margin:0;font:700 clamp(18px,2.3vw,23px)/1.35 var(--display);color:var(--ink)}
+.tipd .btns{grid-column:2}
+.tipd .btn{background:#3A2A05}.tipd .btn.ghost{background:rgba(255,255,255,.7);color:#3A2A05!important;border-color:transparent}
+@media (max-width:860px){.tipd{grid-template-columns:1fr}.tipd .btns{grid-column:1}.tpool li{padding:16px;gap:14px}.tpool .te{width:60px;height:60px;font-size:36px}}
 .carousel .ctl{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;align-items:center;gap:10px;pointer-events:none}
 .carousel .ctl>*{pointer-events:auto}
 .carousel .dots{display:flex;gap:8px;background:rgba(31,42,48,.35);border-radius:999px;padding:8px 10px}
@@ -243,30 +271,94 @@ footer b{font-family:var(--display)}
 .carousel .cb{width:36px;height:36px;border-radius:50%;border:0;background:rgba(31,42,48,.35);color:#fff;cursor:pointer;display:grid;place-items:center;font:700 16px/1 var(--display)}
 .carousel .cb:hover,.carousel .dots button:hover{background:rgba(31,42,48,.6)}
 .carousel .cbar{position:absolute;left:0;top:0;height:4px;background:var(--sun);width:0}
-.carousel.playing .bar{animation:carbar 10s linear}
+.carousel.playing .cbar{animation:carbar 10s linear}
 @keyframes carbar{from{width:0}to{width:100%}}
 @media (max-width:640px){.carousel .slide{padding:24px 18px 64px}.hero2{grid-template-columns:1fr}.hero2 .side{order:-1}.hero2 .side svg{width:150px}}
-@media (prefers-reduced-motion:reduce){.carousel .slide{transition:none}.carousel.playing .bar{animation:none}}
+@media (prefers-reduced-motion:reduce){.carousel .slide{transition:none}.carousel.playing .cbar{animation:none}}
+
+.music{position:relative;flex:none}
+.music-btn{position:relative;width:42px;height:42px;border-radius:50%;border:0;background:var(--mist);color:var(--blue-deep);display:grid;place-items:center;cursor:pointer}
+.music-btn:hover{background:var(--line)}
+.music-btn:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.music-btn .m-on,.music-btn[aria-pressed="true"] .m-off{display:none}
+.music-btn[aria-pressed="true"] .m-on{display:block}
+.music-btn[aria-pressed="true"]{background:var(--blue-deep);color:#fff}
+.eq{position:absolute;right:-2px;bottom:-2px;display:none;gap:1px;align-items:flex-end;height:12px;padding:2px 3px;background:var(--teal);border-radius:6px}
+.music-btn[aria-pressed="true"] .eq{display:flex}
+.eq i{width:2px;background:#fff;border-radius:1px;animation:eq 1s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:-.4s}.eq i:nth-child(3){animation-delay:-.7s}
+@keyframes eq{0%,100%{height:3px}50%{height:8px}}
+@media (prefers-reduced-motion:reduce){.eq i{animation:none;height:6px}}
+.music-tip{position:absolute;right:0;top:calc(100% + 8px);width:max-content;max-width:240px;background:var(--ink);color:#fff;font:400 13px/1.35 var(--body);padding:7px 10px;border-radius:8px;opacity:0;visibility:hidden;transition:opacity .15s;z-index:30;pointer-events:none}
+.music:hover .music-tip,.music-btn:focus-visible+.music-tip{opacity:1;visibility:visible}
+.credit{font-size:12px;opacity:.7}
+
+.band-tools{margin-top:18px}
+.print-btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--display);color:var(--blue-deep);background:#fff;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.print-btn:hover{background:var(--sun-soft)}
+.print-btn:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.print-head,.print-end,.pclone{display:none}
+@page{size:A4;margin:14mm 15mm 15mm}
+@media print{
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none!important;animation:none!important;transition:none!important}
+html,body{background:#fff!important}
+body{font-size:10.5pt;line-height:1.45;color:#111}
+header.site,footer,.skip,.fold-bar,.band-tools,.btns,.btn,figure.ph,.music,.music-tip,.gbar,iframe[src*="vision-sim"],iframe[src*="myths"]{display:none!important}
+.print-head{display:flex!important;align-items:center;gap:10px;padding-bottom:8pt;border-bottom:2.5pt solid #1F6E93;margin-bottom:10pt}
+.print-head img{width:34px;height:34px}
+.print-head b{display:block;font:800 16pt/1 Lexend,sans-serif;color:#1F6E93}.print-head b i{font-style:normal;color:#4FBAB9}
+.print-head span{font-size:8.5pt;color:#555}
+.print-head em{margin-left:auto;font:600 9pt/1.2 Lexend,sans-serif;font-style:normal;text-transform:uppercase;letter-spacing:.08em;color:#1F6E93;border:1pt solid #1F6E93;border-radius:999px;padding:4pt 9pt}
+.band{background:none!important;color:#111}
+.band .inner{max-width:none;padding:0 0 6pt}
+.band h1{color:#1F6E93!important;font-size:22pt!important;text-wrap:balance}
+.byline{color:#555;font-size:8.5pt;margin-top:3pt;opacity:1}
+.content{max-width:none;padding:0;gap:8pt}
+.content p,.content li{font-size:10.5pt}
+.folds{gap:0}
+.sec{border:0!important;border-radius:0;background:none;overflow:visible}
+.sec summary{display:block;padding:0;min-height:0}
+.sec summary h2{font-size:13.5pt!important;color:#1F6E93!important;border-bottom:.75pt solid #9cc3d6;padding-bottom:2pt;margin-top:10pt!important;break-after:avoid;page-break-after:avoid}
+.sec-body{padding:5pt 0 0;gap:6pt}
+h2,h3{break-after:avoid;page-break-after:avoid}
+p,li{orphans:3;widows:3}
+.glance,.alert,.steps li,table,figure,iframe,.pnotes,.pfoot,.card,.content blockquote{break-inside:avoid;page-break-inside:avoid}
+.glance{padding:8pt 12pt;border-radius:8pt}
+.alert{padding:8pt 12pt;border-radius:8pt;border-width:1.5pt}.alert p{font-size:10.5pt}
+.content .steps{grid-template-columns:repeat(3,1fr);gap:6pt}.steps li{padding:8pt;border-radius:8pt}.steps p{font-size:9.5pt}
+.cards{grid-template-columns:1fr 1fr;gap:6pt}.card{padding:8pt 10pt;border-radius:8pt}
+a{color:inherit!important;text-decoration:none}
+iframe.embed{width:100%!important}
+.refs{font-size:8pt;margin-top:10pt;padding-top:6pt}.refs p,.refs li{font-size:8pt}.refs h2{font-size:10pt!important}
+.refs a{word-break:break-all}
+iframe.embed{display:none!important}
+.pclone{display:block!important;break-inside:avoid;page-break-inside:avoid;margin:2pt 0}
+.print-end{display:block!important;margin-top:12pt;break-inside:avoid;page-break-inside:avoid}
+.pnotes{border:1.25pt solid #1F6E93;border-radius:8pt;padding:8pt 12pt 10pt}
+.pnotes h3{margin:0 0 2pt!important;font:700 11pt/1.2 Lexend,sans-serif!important;color:#1F6E93}
+.pnotes>i{display:block;height:20pt;border-bottom:.75pt dotted #777}
+.pl{display:flex;gap:8pt;align-items:flex-end;margin-top:8pt}.pl span{font-weight:700;font-size:9.5pt;white-space:nowrap}.pl i{flex:1;border-bottom:.75pt dotted #777;height:14pt}
+.pfoot{display:flex;gap:12pt;align-items:center;margin-top:10pt;padding-top:8pt;border-top:.75pt solid #ccc}
+.pqr svg{width:26mm;height:26mm;display:block}
+.pfoot p{margin:0 0 3pt;font-size:8.5pt;color:#333}.pfoot .pem{font-weight:700;color:#8C1D18}.pfoot .pdate{color:#777}
+}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="home">
 <a class="skip" href="#main">Langkau ke kandungan</a>
-<header class="site"><div class="bar"><a class="brand" href="./"><img src="assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Menu utama"><a href="" class="on" aria-current="page">Utama</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="bahasa-melayu/penyakit-mata/" class="all">Samua penyakit mata</a><a href="bahasa-melayu/katarak/">Katarak</a><a href="bahasa-melayu/glaukoma/">Glaukoma</a><a href="bahasa-melayu/ulser-kornea/"><small>Kornea</small>Ulser Kornea</a><a href="bahasa-melayu/retinopati-kencing-manis/"><small>Retina</small>Retinopati Kencing Manis</a><a href="bahasa-melayu/kelopak-mata-jatuh/"><small>Neuro-oftalmologi</small>Kelopak Mata Jatuh</a><a href="bahasa-melayu/ektropion-entropion/"><small>Okuloplastik & Orbit</small>Ektropion dan Entropion</a><a href="bahasa-melayu/uveitis-anterior/"><small>Uveitis</small>Uveitis Anterior</a><a href="bahasa-melayu/juling/"><small>Kanak-kanak</small>Mata Juling</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata Akut<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="bahasa-melayu/penyakit-mata-akut/" class="all">Samua penyakit mata akut</a><a href="bahasa-melayu/retina-tertanggal/"><small>Retina</small>Retina Tertanggal</a><a href="bahasa-melayu/glaukoma-akut/"><small>Tekanan mata</small>Glaukoma Akut</a><a href="bahasa-melayu/endoftalmitis/"><small>Jangkitan</small>Endoftalmitis</a></div></div><a href="klinik-mata/">Klinik Mata</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Tau Kah Abiskita?<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="bahasa-melayu/petua/">Petua</a><a href="bahasa-melayu/mitos-atau-fakta/">Mitos atau Fakta</a></div></div><div class="dd"><button type="button" class="ddb" aria-expanded="false">Pasal Kami<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="bahasa-melayu/pasal-kami/">Pasal InfoSihat</a><a href="bahasa-melayu/rakan-kerjasama/">Rakan Kerjasama</a></div></div></nav><div class="lang" role="group" aria-label="Bahasa"><span class="on" aria-current="true" lang="ms">BM</span><a href="english/" lang="en" hreflang="en" title="English">EN</a></div></div></header>
-<main id="main"><div class="band"><div class="inner"><h1>InfoSihat · Laman Utama</h1></div></div><div class="content"><div class="carousel" role="region" aria-roledescription="carousel" aria-label="Sorotan" data-pause="Berhenti" data-play="Main" data-upd="Dikemas kini" data-empty="Maklumat baru akan keluar di sini tidak lama lagi."><span class="cbar"></span><div class="slides" aria-live="off"><section class="slide hero2 on" aria-roledescription="slide" aria-label="1 / 4"><div>
+<header class="site"><div class="bar"><a class="brand" href="./"><img src="assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Menu utama"><a href="" class="on" aria-current="page">Utama</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="bahasa-melayu/penyakit-mata/" class="all">Samua penyakit mata</a><a href="bahasa-melayu/katarak/">Katarak</a><a href="bahasa-melayu/glaukoma/">Glaukoma</a><a href="bahasa-melayu/ulser-kornea/"><small>Kornea</small>Ulser Kornea</a><a href="bahasa-melayu/retinopati-kencing-manis/"><small>Retina</small>Retinopati Kencing Manis</a><a href="bahasa-melayu/kelopak-mata-jatuh/"><small>Neuro-oftalmologi</small>Kelopak Mata Jatuh</a><a href="bahasa-melayu/ektropion-entropion/"><small>Okuloplastik & Orbit</small>Ektropion dan Entropion</a><a href="bahasa-melayu/uveitis-anterior/"><small>Uveitis</small>Uveitis Anterior</a><a href="bahasa-melayu/juling/"><small>Kanak-kanak</small>Mata Juling</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata Akut<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="bahasa-melayu/penyakit-mata-akut/" class="all">Samua penyakit mata akut</a><a href="bahasa-melayu/retina-tertanggal/"><small>Retina</small>Retina Tertanggal</a><a href="bahasa-melayu/glaukoma-akut/"><small>Tekanan mata</small>Glaukoma Akut</a><a href="bahasa-melayu/endoftalmitis/"><small>Jangkitan</small>Endoftalmitis</a></div></div><a href="klinik-mata/">Klinik Mata</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Tau Kah Abiskita?<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="bahasa-melayu/petua/">Petua</a><a href="bahasa-melayu/mitos-atau-fakta/">Mitos atau Fakta</a></div></div><div class="dd"><button type="button" class="ddb" aria-expanded="false">Pasal Kami<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="bahasa-melayu/pasal-kami/">Pasal InfoSihat</a><a href="bahasa-melayu/rakan-kerjasama/">Rakan Kerjasama</a></div></div></nav><div class="lang" role="group" aria-label="Bahasa"><span class="on" aria-current="true" lang="ms">BM</span><a href="english/" lang="en" hreflang="en" title="English">EN</a></div><div class="music"><button type="button" class="music-btn" aria-pressed="false" aria-label="Muzik disenyapkan. Tekan untuk main" data-on="Muzik dimainkan. Tekan untuk senyapkan" data-off="Muzik disenyapkan. Tekan untuk main"><svg class="m-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="m-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button><span class="music-tip" role="note">Muzik: "Calm Ambient" oleh Velariomusic. Terima kasih!</span></div></div></header>
+<main id="main"><div class="band"><div class="inner"><h1>InfoSihat · Laman Utama</h1></div></div><div class="content"><div class="carousel" role="region" aria-roledescription="carousel" aria-label="Sorotan" data-pause="Berhenti" data-play="Main" data-upd="Dikemas kini" data-empty="Maklumat baru akan keluar di sini tidak lama lagi."><span class="cbar"></span><div class="slides" aria-live="off"><section class="slide hero2 on" aria-roledescription="slide" aria-label="1 / 5"><div>
 <p class="eb">Kesihatan Mata · Eye Health</p>
 <div class="chart" aria-hidden="true"><div class="row r1"><small>6/60</small>E</div><div class="row r2"><small>6/24</small>JAGA</div><div class="row r3"><small>6/12</small>MATA KITANI</div><div class="row r4"><small>6/6</small>LOOK AFTER OUR EYES</div></div>
 <div class="tag"><strong>Maklumat Kesihatan dihujung Jari</strong><span>Health information at your fingertips, in Bahasa Melayu Brunei and English.</span></div></div>
 <div class="side"><svg viewBox="0 0 220 130" width="220" height="130" style="max-width:100%;height:auto" aria-hidden="true"><path d="M10 65 Q110 -15 210 65 Q110 145 10 65 Z" fill="#FFFFFF" stroke="#1F6E93" stroke-width="5"/><circle cx="110" cy="65" r="42" fill="#4DA3CA"/><circle cx="110" cy="65" r="42" fill="none" stroke="#4FBAB9" stroke-width="8" opacity=".7"/><circle cx="110" cy="65" r="19" fill="#1F2A30"/><circle cx="122" cy="53" r="7" fill="#FFFFFF"/></svg>
-<div class="word"><b>Info</b><i>Sihat</i></div><span class="pill">Ditulis doktor · Written by doctors</span></div></section><section class="slide feed f-news" data-feed="news" aria-roledescription="slide" aria-label="2 / 4" hidden><p class="eb">Terkini · dikemas kini tiap hari</p><h2 class="fh">Berita kesihatan Brunei</h2><p class="fd">Tajuk berita kesihatan dari media Brunei, dikumpul secara automatik. (dalam bahasa Inggeris)</p><ul><li><a href="https://news.google.com/search?q=Brunei%20health" target="_blank" rel="noopener"><b>Sedang memuatkan…</b></a></li></ul><p class="ff"><span class="fu"></span><a href="https://news.google.com/search?q=Brunei%20health" target="_blank" rel="noopener">Tengok lagi: Google News ↗</a></p></section><section class="slide feed f-sea" data-feed="sea" aria-roledescription="slide" aria-label="3 / 4" hidden><p class="eb">Terkini · dikemas kini tiap hari</p><h2 class="fh">Kajian mata terbaru di Asia Tenggara</h2><p class="fd">Kajian mata paling baru dari penyelidik di rantau kitani. (dalam bahasa Inggeris)</p><ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=%28eye+OR+ophthalmology%29+AND+%28Brunei+OR+Malaysia+OR+Singapore+OR+Indonesia+OR+Thailand+OR+Philippines+OR+Vietnam%29&sort=date" target="_blank" rel="noopener"><b>Sedang memuatkan…</b></a></li></ul><p class="ff"><span class="fu"></span><a href="https://pubmed.ncbi.nlm.nih.gov/?term=%28eye+OR+ophthalmology%29+AND+%28Brunei+OR+Malaysia+OR+Singapore+OR+Indonesia+OR+Thailand+OR+Philippines+OR+Vietnam%29&sort=date" target="_blank" rel="noopener">Tengok lagi: PubMed ↗</a></p></section><section class="slide feed f-bimj" data-feed="bimj" aria-roledescription="slide" aria-label="4 / 4" hidden><p class="eb">Terkini · dikemas kini tiap hari</p><h2 class="fh">Kajian mata dari Brunei International Medical Journal</h2><p class="fd">Artikel pasal mata dalam jurnal perubatan Brunei sendiri. (dalam bahasa Inggeris)</p><ul><li><a href="https://moh.gov.bn/draft-bimj-page/" target="_blank" rel="noopener"><b>Sedang memuatkan…</b></a></li></ul><p class="ff"><span class="fu"></span><a href="https://moh.gov.bn/draft-bimj-page/" target="_blank" rel="noopener">Tengok lagi: BIMJ ↗</a></p></section></div><div class="ctl"><button type="button" class="cb prev" aria-label="Slaid sebelum">‹</button><div class="dots"><button type="button" aria-label="Slaid 1" aria-current="true"></button><button type="button" aria-label="Slaid 2"></button><button type="button" aria-label="Slaid 3"></button><button type="button" aria-label="Slaid 4"></button></div><button type="button" class="cb pp" aria-label="Berhenti">❚❚</button><button type="button" class="cb next" aria-label="Slaid seterusnya">›</button></div></div><p class="car-note" style="margin:6px 0 0;font-size:13px;color:var(--muted)">Pautan luar dibuka di tab baru. InfoSihat inda bertanggungjawab atas kandungan luar.</p>
+<div class="word"><b>Info</b><i>Sihat</i></div><span class="pill">Ditulis doktor · Written by doctors</span></div></section><section class="slide feed f-news" data-feed="news" aria-roledescription="slide" aria-label="2 / 5" hidden><div class="cov"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v13a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v9a2 2 0 0 1-2 2"/><path d="M7 8h7M7 12h7M7 16h4"/></svg></span><p class="eb">Terkini · dikemas kini tiap hari</p><h2 class="fh">Berita kesihatan Brunei</h2><p class="fd">Tajuk berita kesihatan dari media Brunei, dikumpul secara automatik. (dalam bahasa Inggeris)</p><p class="ff"><span class="fu"></span><a href="https://news.google.com/search?q=Brunei%20health" target="_blank" rel="noopener">Tengok lagi: Google News ↗</a></p></div><ul><li class="wait"><a href="https://news.google.com/search?q=Brunei%20health" target="_blank" rel="noopener"><b>Sedang memuatkan…</b></a></li></ul></section><section class="slide feed f-sea" data-feed="sea" aria-roledescription="slide" aria-label="3 / 5" hidden><div class="cov"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span><p class="eb">Terkini · dikemas kini tiap hari</p><h2 class="fh">Kajian mata terbaru</h2><p class="fd">Kajian paling baru dari jurnal oftalmologi terkemuka, macam Ophthalmology, JAMA Ophthalmology dan BJO. (dalam bahasa Inggeris)</p><p class="ff"><span class="fu"></span><a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Ophthalmology%22%5Bta%5D+OR+%22JAMA+Ophthalmol%22%5Bta%5D+OR+%22Br+J+Ophthalmol%22%5Bta%5D+OR+%22Am+J+Ophthalmol%22%5Bta%5D&sort=date" target="_blank" rel="noopener">Tengok lagi: PubMed ↗</a></p></div><ul><li class="wait"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Ophthalmology%22%5Bta%5D+OR+%22JAMA+Ophthalmol%22%5Bta%5D+OR+%22Br+J+Ophthalmol%22%5Bta%5D+OR+%22Am+J+Ophthalmol%22%5Bta%5D&sort=date" target="_blank" rel="noopener"><b>Sedang memuatkan…</b></a></li></ul></section><section class="slide feed f-bimj" data-feed="bimj" aria-roledescription="slide" aria-label="4 / 5" hidden><div class="cov"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5c3-1 6-1 10 1 4-2 7-2 10-1v14c-3-1-6-1-10 1-4-2-7-2-10-1z"/><path d="M12 6v14"/><path d="M4.5 11.5s1.3-2 3-2 3 2 3 2-1.3 2-3 2-3-2-3-2z"/></svg></span><p class="eb">Terkini · dikemas kini tiap hari</p><h2 class="fh">Kajian mata dari Brunei International Medical Journal</h2><p class="fd">Artikel pasal mata dalam jurnal perubatan Brunei sendiri. (dalam bahasa Inggeris)</p><p class="ff"><span class="fu"></span><a href="https://moh.gov.bn/draft-bimj-page/" target="_blank" rel="noopener">Tengok lagi: BIMJ ↗</a></p></div><ul><li class="wait"><a href="https://moh.gov.bn/draft-bimj-page/" target="_blank" rel="noopener"><b>Sedang memuatkan…</b></a></li></ul></section><section class="slide tipd" aria-roledescription="slide" aria-label="5 / 5" hidden><div class="tcov"><p class="eb">Bertukar tiap hari</p><h2 class="fh">Petua hari ani</h2></div><ul class="tpool"><li data-i="0"><span class="te" aria-hidden="true">🩸</span><p>Ada kencing manis? Periksa mata tiap tahun, walaupun penglihatan abiskita masih terang.</p></li><li data-i="1"><span class="te" aria-hidden="true">📱</span><p>Lama menengok skrin? Tiap 20 minit, tengok jauh (kira-kira 6 meter) selama 20 saat.</p></li><li data-i="2"><span class="te" aria-hidden="true">🕶️</span><p>Keluar panas? Pakai cermin mata hitam yang menyekat cahaya UV, dan pakai topi.</p></li><li data-i="3"><span class="te" aria-hidden="true">🌳</span><p>Bagi anak-anak main di luar rumah tiap hari. Ani membantu melindungi mereka dari rabun jauh.</p></li><li data-i="4"><span class="te" aria-hidden="true">🧼</span><p>Basuh tangan dulu sebelum menyentuh mata atau membubuh ubat titis mata.</p></li><li data-i="5"><span class="te" aria-hidden="true">🚭</span><p>Berhenti merokok mengurangkan risiko katarak dan penyakit mata yang lain.</p></li><li data-i="6"><span class="te" aria-hidden="true">👪</span><p>Ada keluarga kena glaukoma? Periksa mata selalu bermula umur 40 tahun.</p></li><li data-i="7"><span class="te" aria-hidden="true">🥽</span><p>Merumput, menggerudi atau mengetuk paku? Pakai cermin mata keselamatan.</p></li><li data-i="8"><span class="te" aria-hidden="true">🚨</span><p>Tiba-tiba inda nampak, ada kilat cahaya, atau macam langsir gelap? Pergi ke Jabatan Kecemasan hari atu jua.</p></li><li data-i="9"><span class="te" aria-hidden="true">💊</span><p>Pakai ubat titis mata steroid kalau doktor bagi saja. Pakai lama boleh menyebabkan glaukoma dan katarak.</p></li><li data-i="10"><span class="te" aria-hidden="true">👀</span><p>Anak selalu mengecilkan mata, atau duduk dekat sangat dengan TV? Bawa periksa mata.</p></li><li data-i="11"><span class="te" aria-hidden="true">🌿</span><p>Jangan bubuh susu ibu, daun-daun atau ubat tradisional dalam mata. Ani boleh menyebabkan jangkitan teruk.</p></li><li data-i="12"><span class="te" aria-hidden="true">😴</span><p>Tanggalkan kanta lekap sebelum tidur, dan jangan basuh dengan air paip.</p></li><li data-i="13"><span class="te" aria-hidden="true">🥗</span><p>Makan banyak sayur hijau, buah dan ikan. Bagus untuk badan, termasuk mata.</p></li><li data-i="14"><span class="te" aria-hidden="true">🩺</span><p>Periksa tekanan darah selalu. Darah tinggi boleh merosakkan mata, jantung dan buah pinggang.</p></li><li data-i="15"><span class="te" aria-hidden="true">🏃</span><p>Cuba bergerak aktif 30 minit kebanyakan hari, macam berjalan laju.</p></li><li data-i="16"><span class="te" aria-hidden="true">🥤</span><p>Pilih air kosong daripada minuman manis. Ani membantu menjaga paras gula dalam darah.</p></li><li data-i="17"><span class="te" aria-hidden="true">🌙</span><p>Puasa bulan Ramadan? Jangan berhenti ubat titis glaukoma. Tanya doktor bila masa terbaik memakainya.</p></li><li data-i="18"><span class="te" aria-hidden="true">🏥</span><p>Klinik Mata Komuniti di Brunei boleh terus datang. Inda payah surat rujukan.</p></li><li data-i="19"><span class="te" aria-hidden="true">🚗</span><p>Silau lampu kereta waktu malam makin teruk? Mungkin katarak. Periksa mata abiskita.</p></li><li data-i="20"><span class="te" aria-hidden="true">🧪</span><p>Bahan kimia tepercik ke mata? Bilas dengan air bersih sekurang-kurangnya 15 minit, lepas atu pergi ke Jabatan Kecemasan.</p></li></ul><div class="btns"><a class="btn" href="bahasa-melayu/petua/">Petua lagi</a><a class="btn ghost" href="bahasa-melayu/mitos-atau-fakta/">Kuiz Mitos atau Fakta</a></div></section></div><div class="ctl"><button type="button" class="cb prev" aria-label="Slaid sebelum">‹</button><div class="dots"><button type="button" aria-label="Slaid 1" aria-current="true"></button><button type="button" aria-label="Slaid 2"></button><button type="button" aria-label="Slaid 3"></button><button type="button" aria-label="Slaid 4"></button><button type="button" aria-label="Slaid 5"></button></div><button type="button" class="cb pp" aria-label="Berhenti">❚❚</button><button type="button" class="cb next" aria-label="Slaid seterusnya">›</button></div></div><p class="car-note" style="margin:6px 0 0;font-size:13px;color:var(--muted)">Pautan luar dibuka di tab baru. InfoSihat inda bertanggungjawab atas kandungan luar.</p>
 <section class="search" id="search" role="search" data-lang="ms" data-none="Inda jumpa. Cuba perkataan lain, atau tengok Penyakit Mata."><label for="q">Cari di InfoSihat</label><div class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Cuba: katarak, mata merah, floaters" autocomplete="off" enterkeyhint="search"></div><div class="chips-q"><span>Selalu dicari:</span><button type="button">mata merah</button><button type="button">floaters</button><button type="button">kencing manis</button><button type="button">kanak-kanak</button><button type="button">lepas operasi katarak</button></div><div id="sres" aria-live="polite"></div></section>
 <h2 id="topik-kesihatan-ikut-kepakaran">Topik kesihatan ikut kepakaran</h2>
 <p>Kami bermula dengan <strong>kesihatan mata</strong>. Lagi kepakaran akan datang.</p>
 <div class="specs"><article class="spec live"><span class="ico" aria-hidden="true">👁️</span><div class="sl"><span class="live-tag">Sudah ada</span><h3>Oftalmologi <span style="font-weight:500;color:var(--muted)">· Kesihatan mata</span></h3><p>Penyakit mata disusun ikut bahagian mata, kecemasan mata, dan tempat periksa mata di Brunei.</p><div class="btns"><a class="btn" href="bahasa-melayu/penyakit-mata/">Penyakit Mata</a><a class="btn ghost" href="bahasa-melayu/penyakit-mata-akut/">Penyakit Mata Akut</a><a class="btn ghost" href="klinik-mata/">Klinik Mata</a></div></div></article><article class="spec" aria-label="Endokrinologi, Akan datang"><span class="ico" aria-hidden="true">🩸</span><h3>Endokrinologi</h3><span>Kencing manis dan hormon</span><span class="soon">Akan datang</span></article><article class="spec" aria-label="Kardiologi, Akan datang"><span class="ico" aria-hidden="true">❤️</span><h3>Kardiologi</h3><span>Jantung dan darah tinggi</span><span class="soon">Akan datang</span></article><article class="spec" aria-label="Kesihatan Mental, Akan datang"><span class="ico" aria-hidden="true">🧠</span><h3>Kesihatan Mental</h3><span>Minda dan kesejahteraan</span><span class="soon">Akan datang</span></article></div>
-<h2 id="petua">Petua</h2>
-<blockquote><strong>Ada kencing manis? Periksa mata tiap-tiap tahun, walaupun mata nampak terang.</strong></blockquote>
-<div class="btns"><a class="btn" href="bahasa-melayu/petua/">Lagi petua</a><a class="btn ghost" href="bahasa-melayu/mitos-atau-fakta/">Kuiz Mitos atau Fakta</a></div>
 <iframe class="embed" src="embeds/home-emergency-bm.html" title="home emergency bm" style="height:200px" loading="lazy"></iframe></div></main>
-<footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>Untuk pendidikan saja, inda menggantikan nasihat doktor.</span><span>Kecemasan: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
+<footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>Untuk pendidikan saja, inda menggantikan nasihat doktor.</span><span>Kecemasan: 991 · © 2026 InfoSihat, Brunei Darussalam</span><span class="credit">Muzik: "Calm Ambient" oleh Velariomusic. Terima kasih!</span></div></footer>
 <script>
 function sizeAll(){document.querySelectorAll('iframe.embed').forEach(size)}
 function size(f){try{const d=f.contentDocument;const w=d.querySelector('.wrap');const h=w?Math.ceil(w.getBoundingClientRect().height):d.body.scrollHeight;if(h)f.style.height=(h+4)+'px'}catch(e){}}
@@ -311,17 +403,41 @@ c.addEventListener('focusin',()=>{hold=true;restart()});c.addEventListener('focu
 document.addEventListener('visibilitychange',restart);
 let x0=null;c.addEventListener('pointerdown',e=>{x0=e.clientX});c.addEventListener('pointerup',e=>{if(x0!==null&&Math.abs(e.clientX-x0)>50)show(i+(e.clientX<x0?1:-1));x0=null});
 setPaused(paused);show(0);
+{const T=[...c.querySelectorAll('.tpool li')];if(T.length){const q=new URLSearchParams(location.search).get('day');const day=q!==null?+q:Math.floor((Date.now()+8*3600e3)/864e5);T[((day%T.length)+T.length)%T.length].classList.add('on')}}
 const esc=s=>String(s||'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 fetch('./data/feeds.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(j=>{
  c.querySelectorAll('.feed').forEach(s=>{const f=j[s.dataset.feed],ul=s.querySelector('ul');
   if(!f||!f.items||!f.items.length){ul.querySelector('b').textContent=c.dataset.empty;return}
-  ul.innerHTML=f.items.slice(0,4).map(it=>`<li><a href="${esc(it.url)}" target="_blank" rel="noopener"><b>${esc(it.t)}</b><small>${esc([it.src,it.d].filter(Boolean).join(' · '))}</small></a></li>`).join('');
+  ul.innerHTML=f.items.slice(0,3).map((it,n)=>`<li><a href="${esc(it.url)}" target="_blank" rel="noopener"><span class="n">0${n+1}</span><span><b>${esc(it.t)}</b><small>${it.src?`<em>${esc(it.src)}</em>`:''}${esc(it.d||'')}</small></span><span class="fgo" aria-hidden="true">↗</span></a></li>`).join('');
   if(f.updated)s.querySelector('.fu').textContent=c.dataset.upd+' '+f.updated+' · '})});
 })();
 </script>
 
+
 <script>
-(function(){var B='20261006115653';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){
+const SRC='./assets/calm-ambient.mp3',K='is-music',T='is-music-t',VOL=.22;
+const btn=document.querySelector('.music-btn');if(!btn)return;
+let pref='on';try{pref=localStorage.getItem(K)||'on'}catch(e){}
+const a=new Audio();a.src=SRC;a.loop=true;a.preload='none';a.volume=0;
+try{const t=parseFloat(sessionStorage.getItem(T));if(t)a.currentTime=t}catch(e){}
+function ui(){const on=!a.paused;btn.setAttribute('aria-pressed',on);btn.setAttribute('aria-label',on?btn.dataset.on:btn.dataset.off)}
+function fade(to,done){clearInterval(a._f);a._f=setInterval(()=>{const v=a.volume+(to>a.volume?.02:-.02);if(Math.abs(to-a.volume)<=.02){a.volume=to;clearInterval(a._f);done&&done()}else a.volume=Math.max(0,Math.min(1,v))},60)}
+function play(){if(!a.paused)return Promise.resolve();a.volume=0;return a.play().then(()=>{fade(VOL);ui()}).catch(()=>{ui()})}
+function stop(){fade(0,()=>{a.pause();ui()});btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label',btn.dataset.off)}
+function save(){try{sessionStorage.setItem(T,a.currentTime||0)}catch(e){}}
+btn.addEventListener('click',e=>{e.stopPropagation();if(a.paused){pref='on';play()}else{pref='off';stop()}try{localStorage.setItem(K,pref)}catch(e){}});
+function first(e){if(btn.contains(e.target))return;off();if(pref==='on')play()}
+function off(){['pointerdown','keydown','touchstart'].forEach(x=>removeEventListener(x,first,true))}
+if(pref==='on'){play().then(()=>{if(!a.paused)off()});['pointerdown','keydown','touchstart'].forEach(x=>addEventListener(x,first,true))}
+let wasOn=false;document.addEventListener('visibilitychange',()=>{if(document.hidden){wasOn=!a.paused;if(wasOn){a.pause();ui()}save()}else if(wasOn&&pref==='on'){play()}});
+addEventListener('pagehide',save);setInterval(()=>{if(!a.paused)save()},2000);
+addEventListener('beforeprint',()=>{if(!a.paused){a.pause();ui()}});
+ui();
+})();
+</script>
+<script>
+(function(){var B='20261006121301';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('./version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

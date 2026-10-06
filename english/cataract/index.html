@@ -79,6 +79,7 @@ footer b{font-family:var(--display)}
 .refs{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
 .refs h2{font:700 18px/1.2 var(--display)!important;color:var(--ink)!important;margin:0 0 10px!important}
 .refs ol{padding-left:22px;display:grid;gap:6px}.refs p{font-size:15px}
+.refs-dd{margin-top:18px}.refs-dd summary h2{font-size:18px!important}.refs-dd .sec-body{font-size:15px;color:var(--muted)}.refs-dd ol{padding-left:22px;display:grid;gap:6px}
 @media print{.fold-bar{display:none}.sec summary .chev{display:none}}
 
 .nav button.ddb{display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--display);padding:12px 12px;border-radius:10px}
@@ -221,20 +222,47 @@ footer b{font-family:var(--display)}
 .hero2 .side{display:grid;gap:16px;justify-items:center;text-align:center}
 .hero2 .word{font:800 clamp(32px,4.6vw,46px)/1 var(--display)}.hero2 .word b{color:#333}.hero2 .word i{font-style:normal;color:var(--teal)}
 .hero2 .pill{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 15px/1 var(--display);color:var(--blue-deep)}
-.feed{color:#fff;display:grid;align-content:start;gap:14px}
-.feed.f-news{background:linear-gradient(135deg,#17506B,var(--blue-deep) 55%,#2A8BB5)}
-.feed.f-sea{background:linear-gradient(135deg,#145958,var(--teal-deep) 55%,#3AA3A2)}
-.feed.f-bimj{background:linear-gradient(135deg,#2B2F5E,#3B4C8C 55%,#5A6FB3)}
+.feed{position:relative;color:#fff;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:26px;align-items:center;isolation:isolate;overflow:hidden}
+.feed::before,.feed::after{content:"";position:absolute;border-radius:50%;z-index:-1;filter:blur(2px)}
+.feed::before{width:340px;height:340px;right:-90px;top:-120px;background:radial-gradient(circle,rgba(255,255,255,.22),rgba(255,255,255,0) 70%)}
+.feed::after{width:260px;height:260px;left:-80px;bottom:-110px;background:radial-gradient(circle,rgba(244,192,78,.35),rgba(244,192,78,0) 70%)}
+.feed.f-news{background:radial-gradient(120% 140% at 0% 0%,#2FA4D6 0%,#1F6E93 45%,#123F57 100%)}
+.feed.f-sea{background:radial-gradient(120% 140% at 0% 0%,#4FD1B5 0%,#1C7675 48%,#0F4342 100%)}
+.feed.f-bimj{background:radial-gradient(120% 140% at 0% 0%,#8C7BF0 0%,#4A47A3 48%,#262566 100%)}
+.feed .cov{display:grid;gap:12px;align-content:center}
+.feed .ico{width:84px;height:84px;border-radius:24px;display:grid;place-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.feed .ico svg{width:46px;height:46px}
 .feed .eb{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.16);border-radius:999px;padding:7px 11px;justify-self:start;margin:0}
-.feed .eb::before{content:"";width:8px;height:8px;border-radius:50%;background:#7CF0B5;box-shadow:0 0 0 3px rgba(124,240,181,.3)}
-.feed h2.fh{margin:0!important;font:800 clamp(24px,3.4vw,34px)/1.15 var(--display)!important;color:#fff!important}
-.feed .fd{margin:0;opacity:.9;font-size:17px}
-.feed ul{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:10px}
-.feed li a{display:block;color:#fff!important;text-decoration:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px 14px}
-.feed li a:hover,.feed li a:focus-visible{background:rgba(255,255,255,.2)}
-.feed li b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:600 17px/1.35 var(--display)}
-.feed li small{display:block;margin-top:4px;opacity:.85;font-size:14px}
-.feed .ff{margin:0;font-size:13px;opacity:.8}.feed .ff a{color:#fff!important}
+.feed .eb::before{content:"";width:8px;height:8px;border-radius:50%;background:#7CF0B5;box-shadow:0 0 0 3px rgba(124,240,181,.3);animation:livep 1.6s ease-in-out infinite}
+@keyframes livep{50%{box-shadow:0 0 0 6px rgba(124,240,181,0)}}
+.feed h2.fh{margin:0!important;font:800 clamp(24px,3.2vw,34px)/1.12 var(--display)!important;color:#fff!important;text-wrap:balance}
+.feed .fd{margin:0;opacity:.9;font-size:16px}
+.feed .ff{margin:0;font-size:13px;opacity:.85}.feed .ff a{color:#fff!important;font-weight:700}
+.feed ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:fi}
+.feed li a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;color:var(--ink)!important;text-decoration:none;background:rgba(255,255,255,.96);border-radius:18px;padding:13px 16px;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .2s,box-shadow .2s}
+.feed li a:hover,.feed li a:focus-visible{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.feed li .n{font:800 22px/1 var(--display);color:var(--acc);min-width:30px}
+.feed li b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:600 16px/1.35 var(--display)}
+.feed li small{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px;font-size:13px;color:var(--muted)}
+.feed li small em{font-style:normal;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:3px 8px}
+.feed li .fgo{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc);font:700 15px/1 var(--display)}
+.feed.f-news{--acc:#1F6E93;--acc-soft:#E2F1F8}.feed.f-sea{--acc:#1C7675;--acc-soft:#DDF3F1}.feed.f-bimj{--acc:#4A47A3;--acc-soft:#ECEBFB}
+.feed li.wait a{background:rgba(255,255,255,.18);color:#fff!important;box-shadow:none;grid-template-columns:1fr}
+@media (max-width:860px){.feed{grid-template-columns:1fr;gap:16px}.feed .ico{width:60px;height:60px;border-radius:18px}.feed .ico svg{width:34px;height:34px}.feed .cov{grid-template-columns:auto 1fr;column-gap:14px}.feed .cov>:not(.ico){grid-column:1/-1}.feed .cov .ico{grid-row:1/3}.feed .cov .eb{align-self:end}.feed .fd{display:none}}
+@media (max-width:640px){.feed li a{padding:11px 12px;gap:10px}.feed li .fgo{display:none}.feed li .n{font-size:18px;min-width:22px}.feed li b{font-size:15px}}
+@media (prefers-reduced-motion:reduce){.feed .eb::before{animation:none}.feed li a{transition:none}}
+.tipd{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(120% 140% at 0% 0%,#FFE7A3 0%,#F4C04E 40%,#E89A2C 100%);color:#3A2A05;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px 28px;align-items:center}
+.tipd::before{content:"";position:absolute;width:360px;height:360px;right:-100px;bottom:-160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.45),rgba(255,255,255,0) 70%);z-index:-1}
+.tipd .eb{display:inline-flex;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.55);border-radius:999px;padding:7px 11px;margin:0 0 10px;color:#6B4A00}
+.tipd h2.fh{margin:0!important;font:800 clamp(28px,4vw,42px)/1.1 var(--display)!important;color:#3A2A05!important}
+.tpool{list-style:none;margin:0;padding:0}
+.tpool li{display:none;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:#fff;border-radius:24px;padding:22px 24px;box-shadow:0 10px 30px rgba(120,70,0,.22)}
+.tpool li.on{display:grid}
+.tpool .te{font-size:52px;line-height:1;width:84px;height:84px;display:grid;place-items:center;background:var(--sun-soft);border-radius:22px}
+.tpool p{margin:0;font:700 clamp(18px,2.3vw,23px)/1.35 var(--display);color:var(--ink)}
+.tipd .btns{grid-column:2}
+.tipd .btn{background:#3A2A05}.tipd .btn.ghost{background:rgba(255,255,255,.7);color:#3A2A05!important;border-color:transparent}
+@media (max-width:860px){.tipd{grid-template-columns:1fr}.tipd .btns{grid-column:1}.tpool li{padding:16px;gap:14px}.tpool .te{width:60px;height:60px;font-size:36px}}
 .carousel .ctl{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;align-items:center;gap:10px;pointer-events:none}
 .carousel .ctl>*{pointer-events:auto}
 .carousel .dots{display:flex;gap:8px;background:rgba(31,42,48,.35);border-radius:999px;padding:8px 10px}
@@ -243,16 +271,83 @@ footer b{font-family:var(--display)}
 .carousel .cb{width:36px;height:36px;border-radius:50%;border:0;background:rgba(31,42,48,.35);color:#fff;cursor:pointer;display:grid;place-items:center;font:700 16px/1 var(--display)}
 .carousel .cb:hover,.carousel .dots button:hover{background:rgba(31,42,48,.6)}
 .carousel .cbar{position:absolute;left:0;top:0;height:4px;background:var(--sun);width:0}
-.carousel.playing .bar{animation:carbar 10s linear}
+.carousel.playing .cbar{animation:carbar 10s linear}
 @keyframes carbar{from{width:0}to{width:100%}}
 @media (max-width:640px){.carousel .slide{padding:24px 18px 64px}.hero2{grid-template-columns:1fr}.hero2 .side{order:-1}.hero2 .side svg{width:150px}}
-@media (prefers-reduced-motion:reduce){.carousel .slide{transition:none}.carousel.playing .bar{animation:none}}
+@media (prefers-reduced-motion:reduce){.carousel .slide{transition:none}.carousel.playing .cbar{animation:none}}
+
+.music{position:relative;flex:none}
+.music-btn{position:relative;width:42px;height:42px;border-radius:50%;border:0;background:var(--mist);color:var(--blue-deep);display:grid;place-items:center;cursor:pointer}
+.music-btn:hover{background:var(--line)}
+.music-btn:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.music-btn .m-on,.music-btn[aria-pressed="true"] .m-off{display:none}
+.music-btn[aria-pressed="true"] .m-on{display:block}
+.music-btn[aria-pressed="true"]{background:var(--blue-deep);color:#fff}
+.eq{position:absolute;right:-2px;bottom:-2px;display:none;gap:1px;align-items:flex-end;height:12px;padding:2px 3px;background:var(--teal);border-radius:6px}
+.music-btn[aria-pressed="true"] .eq{display:flex}
+.eq i{width:2px;background:#fff;border-radius:1px;animation:eq 1s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:-.4s}.eq i:nth-child(3){animation-delay:-.7s}
+@keyframes eq{0%,100%{height:3px}50%{height:8px}}
+@media (prefers-reduced-motion:reduce){.eq i{animation:none;height:6px}}
+.music-tip{position:absolute;right:0;top:calc(100% + 8px);width:max-content;max-width:240px;background:var(--ink);color:#fff;font:400 13px/1.35 var(--body);padding:7px 10px;border-radius:8px;opacity:0;visibility:hidden;transition:opacity .15s;z-index:30;pointer-events:none}
+.music:hover .music-tip,.music-btn:focus-visible+.music-tip{opacity:1;visibility:visible}
+.credit{font-size:12px;opacity:.7}
+
+.band-tools{margin-top:18px}
+.print-btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--display);color:var(--blue-deep);background:#fff;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.print-btn:hover{background:var(--sun-soft)}
+.print-btn:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.print-head,.print-end,.pclone{display:none}
+@page{size:A4;margin:14mm 15mm 15mm}
+@media print{
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none!important;animation:none!important;transition:none!important}
+html,body{background:#fff!important}
+body{font-size:10.5pt;line-height:1.45;color:#111}
+header.site,footer,.skip,.fold-bar,.band-tools,.btns,.btn,figure.ph,.music,.music-tip,.gbar,iframe[src*="vision-sim"],iframe[src*="myths"]{display:none!important}
+.print-head{display:flex!important;align-items:center;gap:10px;padding-bottom:8pt;border-bottom:2.5pt solid #1F6E93;margin-bottom:10pt}
+.print-head img{width:34px;height:34px}
+.print-head b{display:block;font:800 16pt/1 Lexend,sans-serif;color:#1F6E93}.print-head b i{font-style:normal;color:#4FBAB9}
+.print-head span{font-size:8.5pt;color:#555}
+.print-head em{margin-left:auto;font:600 9pt/1.2 Lexend,sans-serif;font-style:normal;text-transform:uppercase;letter-spacing:.08em;color:#1F6E93;border:1pt solid #1F6E93;border-radius:999px;padding:4pt 9pt}
+.band{background:none!important;color:#111}
+.band .inner{max-width:none;padding:0 0 6pt}
+.band h1{color:#1F6E93!important;font-size:22pt!important;text-wrap:balance}
+.byline{color:#555;font-size:8.5pt;margin-top:3pt;opacity:1}
+.content{max-width:none;padding:0;gap:8pt}
+.content p,.content li{font-size:10.5pt}
+.folds{gap:0}
+.sec{border:0!important;border-radius:0;background:none;overflow:visible}
+.sec summary{display:block;padding:0;min-height:0}
+.sec summary h2{font-size:13.5pt!important;color:#1F6E93!important;border-bottom:.75pt solid #9cc3d6;padding-bottom:2pt;margin-top:10pt!important;break-after:avoid;page-break-after:avoid}
+.sec-body{padding:5pt 0 0;gap:6pt}
+h2,h3{break-after:avoid;page-break-after:avoid}
+p,li{orphans:3;widows:3}
+.glance,.alert,.steps li,table,figure,iframe,.pnotes,.pfoot,.card,.content blockquote{break-inside:avoid;page-break-inside:avoid}
+.glance{padding:8pt 12pt;border-radius:8pt}
+.alert{padding:8pt 12pt;border-radius:8pt;border-width:1.5pt}.alert p{font-size:10.5pt}
+.content .steps{grid-template-columns:repeat(3,1fr);gap:6pt}.steps li{padding:8pt;border-radius:8pt}.steps p{font-size:9.5pt}
+.cards{grid-template-columns:1fr 1fr;gap:6pt}.card{padding:8pt 10pt;border-radius:8pt}
+a{color:inherit!important;text-decoration:none}
+iframe.embed{width:100%!important}
+.refs{font-size:8pt;margin-top:10pt;padding-top:6pt}.refs p,.refs li{font-size:8pt}.refs h2{font-size:10pt!important}
+.refs a{word-break:break-all}
+iframe.embed{display:none!important}
+.pclone{display:block!important;break-inside:avoid;page-break-inside:avoid;margin:2pt 0}
+.print-end{display:block!important;margin-top:12pt;break-inside:avoid;page-break-inside:avoid}
+.pnotes{border:1.25pt solid #1F6E93;border-radius:8pt;padding:8pt 12pt 10pt}
+.pnotes h3{margin:0 0 2pt!important;font:700 11pt/1.2 Lexend,sans-serif!important;color:#1F6E93}
+.pnotes>i{display:block;height:20pt;border-bottom:.75pt dotted #777}
+.pl{display:flex;gap:8pt;align-items:flex-end;margin-top:8pt}.pl span{font-weight:700;font-size:9.5pt;white-space:nowrap}.pl i{flex:1;border-bottom:.75pt dotted #777;height:14pt}
+.pfoot{display:flex;gap:12pt;align-items:center;margin-top:10pt;padding-top:8pt;border-top:.75pt solid #ccc}
+.pqr svg{width:26mm;height:26mm;display:block}
+.pfoot p{margin:0 0 3pt;font-size:8.5pt;color:#333}.pfoot .pem{font-weight:700;color:#8C1D18}.pfoot .pdate{color:#777}
+}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="bar"><a class="brand" href="../../"><img src="../../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Main menu"><a href="../../english/">Home</a><div class="dd"><button type="button" class="ddb on" aria-expanded="false">Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/eye-conditions/" class="all">All eye conditions</a><a href="../../english/cataract/" aria-current="page">Cataract</a><a href="../../english/glaucoma/">Glaucoma</a><a href="../../english/corneal-ulcer/"><small>Cornea</small>Corneal Ulcer</a><a href="../../english/diabetic-retinopathy/"><small>Retina</small>Diabetic Retinopathy</a><a href="../../english/ptosis/"><small>Neuro-ophthalmology</small>Ptosis (Droopy Eyelid)</a><a href="../../english/ectropion-entropion/"><small>Oculoplastics & Orbit</small>Ectropion and Entropion</a><a href="../../english/anterior-uveitis/"><small>Uveitis</small>Anterior Uveitis</a><a href="../../english/squint/"><small>Paediatric</small>Squint in Children</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Acute Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/acute-eye-conditions/" class="all">All acute eye conditions</a><a href="../../english/retinal-detachment/"><small>Retina</small>Retinal Detachment</a><a href="../../english/acute-angle-closure-glaucoma/"><small>Eye pressure</small>Acute Angle-Closure Glaucoma</a><a href="../../english/endophthalmitis/"><small>Infection</small>Endophthalmitis</a></div></div><a href="../../eye-clinics/">Eye Clinics</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Did You Know?<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/fun-facts/">Fun Facts</a><a href="../../english/myths-or-facts/">Myths or Facts</a></div></div><div class="dd"><button type="button" class="ddb" aria-expanded="false">About Us<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/about/">About InfoSihat</a><a href="../../english/collaborators/">Collaborators</a></div></div></nav><div class="lang" role="group" aria-label="Language"><a href="../../bahasa-melayu/katarak/" lang="ms" hreflang="ms" title="Bahasa Melayu">BM</a><span class="on" aria-current="true" lang="en">EN</span></div></div></header>
-<main id="main"><div class="band"><div class="inner"><h1>Cataract</h1><p class="byline">Written by Dr Haziq Aziz Shamri, MBChB · Medically reviewed by: [name], [date] · Last updated: [date]</p></div></div><div class="content"><aside class="glance"><h3>At a glance</h3><ul><li>A cataract is <strong>clouding of the lens</strong> inside the eye, most often due to <strong>ageing</strong></li><li>Vision becomes <strong>cloudy, blurred or dim</strong>, with <strong>glare</strong> from lights at night</li><li><strong>Surgery</strong> is the only cure: a quick day operation that replaces the cloudy lens with a clear artificial lens</li><li>You do not need to wait for a cataract to be <strong>"ripe"</strong>: have surgery when it affects your daily life</li></ul></aside>
+<header class="site"><div class="bar"><a class="brand" href="../../"><img src="../../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Main menu"><a href="../../english/">Home</a><div class="dd"><button type="button" class="ddb on" aria-expanded="false">Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/eye-conditions/" class="all">All eye conditions</a><a href="../../english/cataract/" aria-current="page">Cataract</a><a href="../../english/glaucoma/">Glaucoma</a><a href="../../english/corneal-ulcer/"><small>Cornea</small>Corneal Ulcer</a><a href="../../english/diabetic-retinopathy/"><small>Retina</small>Diabetic Retinopathy</a><a href="../../english/ptosis/"><small>Neuro-ophthalmology</small>Ptosis (Droopy Eyelid)</a><a href="../../english/ectropion-entropion/"><small>Oculoplastics & Orbit</small>Ectropion and Entropion</a><a href="../../english/anterior-uveitis/"><small>Uveitis</small>Anterior Uveitis</a><a href="../../english/squint/"><small>Paediatric</small>Squint in Children</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Acute Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/acute-eye-conditions/" class="all">All acute eye conditions</a><a href="../../english/retinal-detachment/"><small>Retina</small>Retinal Detachment</a><a href="../../english/acute-angle-closure-glaucoma/"><small>Eye pressure</small>Acute Angle-Closure Glaucoma</a><a href="../../english/endophthalmitis/"><small>Infection</small>Endophthalmitis</a></div></div><a href="../../eye-clinics/">Eye Clinics</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Did You Know?<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/fun-facts/">Fun Facts</a><a href="../../english/myths-or-facts/">Myths or Facts</a></div></div><div class="dd"><button type="button" class="ddb" aria-expanded="false">About Us<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/about/">About InfoSihat</a><a href="../../english/collaborators/">Collaborators</a></div></div></nav><div class="lang" role="group" aria-label="Language"><a href="../../bahasa-melayu/katarak/" lang="ms" hreflang="ms" title="Bahasa Melayu">BM</a><span class="on" aria-current="true" lang="en">EN</span></div><div class="music"><button type="button" class="music-btn" aria-pressed="false" aria-label="Music off. Tap to play" data-on="Music on. Tap to mute" data-off="Music off. Tap to play"><svg class="m-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="m-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button><span class="music-tip" role="note">Music: "Calm Ambient" by Velariomusic. Thank you!</span></div></div></header>
+<main id="main"><div class="print-head" aria-hidden="true"><img src="../../assets/logo-128.png" alt=""><div><b>Info<i>Sihat</i></b><span>Maklumat Kesihatan dihujung Jari</span></div><em>Patient information leaflet</em></div><div class="band"><div class="inner"><h1>Cataract</h1><p class="byline">Written by Dr Haziq Aziz Shamri, MBChB · Medically reviewed by: [name], [date] · Last updated: [date]</p><div class="band-tools"><button type="button" class="print-btn" onclick="window.print()"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/><path d="M17 12h.01"/></svg><span>Print for patient</span></button></div></div></div><div class="content"><aside class="glance"><h3>At a glance</h3><ul><li>A cataract is <strong>clouding of the lens</strong> inside the eye, most often due to <strong>ageing</strong></li><li>Vision becomes <strong>cloudy, blurred or dim</strong>, with <strong>glare</strong> from lights at night</li><li><strong>Surgery</strong> is the only cure: a quick day operation that replaces the cloudy lens with a clear artificial lens</li><li>You do not need to wait for a cataract to be <strong>"ripe"</strong>: have surgery when it affects your daily life</li></ul></aside>
 
 <div class="fold-bar"><span>Tap a heading to open or close it.</span><span class="fold-btns"><button type="button" data-fold="open">Open all</button><button type="button" data-fold="close">Close all</button></span></div>
 <div class="folds">
@@ -308,8 +403,8 @@ footer b{font-family:var(--display)}
 </div></details>
 </div>
 <section class="refs" id="references"><h2>References</h2><ol><li>World Health Organization. Supporting WHO Regional eye hospital networks. 2025. <a href="https://www.who.int/news-room/articles-detail/supporting-who-regional-eye-hospital-networks" target="_blank" rel="noopener">https://www.who.int/news-room/articles-detail/supporting-who-regional-eye-hospital-networks</a></li><li>National Eye Institute (NIH). Cataracts. <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/cataracts" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/cataracts</a></li><li>NHS. Cataracts in adults. <a href="https://www.nhs.uk/conditions/cataracts/" target="_blank" rel="noopener">https://www.nhs.uk/conditions/cataracts/</a></li><li>NHS. Cataract surgery. <a href="https://www.nhs.uk/tests-and-treatments/cataract-surgery/" target="_blank" rel="noopener">https://www.nhs.uk/tests-and-treatments/cataract-surgery/</a></li><li>National Eye Institute (NIH). Cataract surgery. <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/cataracts/cataract-surgery" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/cataracts/cataract-surgery</a></li><li>NHS. Childhood cataracts. <a href="https://www.nhs.uk/conditions/childhood-cataracts/" target="_blank" rel="noopener">https://www.nhs.uk/conditions/childhood-cataracts/</a></li><li>Miller KM, Oetting TA, Tweeten JP, et al. Cataract in the Adult Eye Preferred Practice Pattern®. American Academy of Ophthalmology. <em>Ophthalmology</em>. 2022;129(1):P1–P126. <a href="https://doi.org/10.1016/j.ophtha.2021.10.006" target="_blank" rel="noopener">https://doi.org/10.1016/j.ophtha.2021.10.006</a></li></ol>
-<p><em>This page is for general education and does not replace advice from your own doctor.</em></p></section></div></main>
-<footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>For education only, not a substitute for medical advice.</span><span>Emergency: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
+<p><em>This page is for general education and does not replace advice from your own doctor.</em></p></section><div class="print-end" aria-hidden="true"><div class="pnotes"><h3>Notes from your doctor</h3><i></i><i></i><i></i><i></i><div class="pl"><span>Next appointment</span><i></i></div><div class="pl"><span>Clinic / contact</span><i></i></div></div><div class="pfoot"><div class="pqr"><svg role="img" aria-label="QR code"  version="1.1" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM10,1H11V2H10zM12,1H13V2H12zM13,1H14V2H13zM15,1H16V2H15zM16,1H17V2H16zM17,1H18V2H17zM19,1H20V2H19zM20,1H21V2H20zM23,1H24V2H23zM24,1H25V2H24zM27,1H28V2H27zM28,1H29V2H28zM29,1H30V2H29zM30,1H31V2H30zM31,1H32V2H31zM32,1H33V2H32zM33,1H34V2H33zM1,2H2V3H1zM7,2H8V3H7zM10,2H11V3H10zM11,2H12V3H11zM16,2H17V3H16zM18,2H19V3H18zM21,2H22V3H21zM23,2H24V3H23zM24,2H25V3H24zM25,2H26V3H25zM27,2H28V3H27zM33,2H34V3H33zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM10,3H11V4H10zM12,3H13V4H12zM15,3H16V4H15zM16,3H17V4H16zM18,3H19V4H18zM20,3H21V4H20zM21,3H22V4H21zM25,3H26V4H25zM27,3H28V4H27zM29,3H30V4H29zM30,3H31V4H30zM31,3H32V4H31zM33,3H34V4H33zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM10,4H11V5H10zM12,4H13V5H12zM13,4H14V5H13zM14,4H15V5H14zM18,4H19V5H18zM20,4H21V5H20zM23,4H24V5H23zM24,4H25V5H24zM27,4H28V5H27zM29,4H30V5H29zM30,4H31V5H30zM31,4H32V5H31zM33,4H34V5H33zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM10,5H11V6H10zM11,5H12V6H11zM13,5H14V6H13zM17,5H18V6H17zM18,5H19V6H18zM20,5H21V6H20zM22,5H23V6H22zM23,5H24V6H23zM24,5H25V6H24zM27,5H28V6H27zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM33,5H34V6H33zM1,6H2V7H1zM7,6H8V7H7zM9,6H10V7H9zM21,6H22V7H21zM22,6H23V7H22zM25,6H26V7H25zM27,6H28V7H27zM33,6H34V7H33zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM25,7H26V8H25zM27,7H28V8H27zM28,7H29V8H28zM29,7H30V8H29zM30,7H31V8H30zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM10,8H11V9H10zM12,8H13V9H12zM13,8H14V9H13zM15,8H16V9H15zM18,8H19V9H18zM19,8H20V9H19zM20,8H21V9H20zM21,8H22V9H21zM22,8H23V9H22zM24,8H25V9H24zM1,9H2V10H1zM4,9H5V10H4zM6,9H7V10H6zM7,9H8V10H7zM9,9H10V10H9zM12,9H13V10H12zM13,9H14V10H13zM14,9H15V10H14zM15,9H16V10H15zM16,9H17V10H16zM17,9H18V10H17zM20,9H21V10H20zM22,9H23V10H22zM24,9H25V10H24zM26,9H27V10H26zM28,9H29V10H28zM1,10H2V11H1zM3,10H4V11H3zM4,10H5V11H4zM8,10H9V11H8zM11,10H12V11H11zM12,10H13V11H12zM13,10H14V11H13zM17,10H18V11H17zM19,10H20V11H19zM21,10H22V11H21zM22,10H23V11H22zM25,10H26V11H25zM26,10H27V11H26zM27,10H28V11H27zM28,10H29V11H28zM32,10H33V11H32zM33,10H34V11H33zM2,11H3V12H2zM7,11H8V12H7zM8,11H9V12H8zM9,11H10V12H9zM10,11H11V12H10zM13,11H14V12H13zM17,11H18V12H17zM18,11H19V12H18zM20,11H21V12H20zM21,11H22V12H21zM23,11H24V12H23zM26,11H27V12H26zM27,11H28V12H27zM28,11H29V12H28zM29,11H30V12H29zM31,11H32V12H31zM33,11H34V12H33zM1,12H2V13H1zM2,12H3V13H2zM5,12H6V13H5zM10,12H11V13H10zM11,12H12V13H11zM15,12H16V13H15zM16,12H17V13H16zM18,12H19V13H18zM22,12H23V13H22zM24,12H25V13H24zM25,12H26V13H25zM29,12H30V13H29zM30,12H31V13H30zM3,13H4V14H3zM6,13H7V14H6zM7,13H8V14H7zM11,13H12V14H11zM13,13H14V14H13zM16,13H17V14H16zM20,13H21V14H20zM22,13H23V14H22zM23,13H24V14H23zM24,13H25V14H24zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM30,13H31V14H30zM32,13H33V14H32zM33,13H34V14H33zM2,14H3V15H2zM5,14H6V15H5zM9,14H10V15H9zM10,14H11V15H10zM11,14H12V15H11zM12,14H13V15H12zM13,14H14V15H13zM14,14H15V15H14zM16,14H17V15H16zM17,14H18V15H17zM18,14H19V15H18zM23,14H24V15H23zM25,14H26V15H25zM27,14H28V15H27zM29,14H30V15H29zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM6,15H7V16H6zM7,15H8V16H7zM8,15H9V16H8zM9,15H10V16H9zM10,15H11V16H10zM12,15H13V16H12zM13,15H14V16H13zM18,15H19V16H18zM21,15H22V16H21zM23,15H24V16H23zM24,15H25V16H24zM25,15H26V16H25zM26,15H27V16H26zM27,15H28V16H27zM28,15H29V16H28zM30,15H31V16H30zM31,15H32V16H31zM32,15H33V16H32zM2,16H3V17H2zM3,16H4V17H3zM4,16H5V17H4zM9,16H10V17H9zM10,16H11V17H10zM12,16H13V17H12zM15,16H16V17H15zM16,16H17V17H16zM18,16H19V17H18zM20,16H21V17H20zM22,16H23V17H22zM27,16H28V17H27zM29,16H30V17H29zM32,16H33V17H32zM3,17H4V18H3zM4,17H5V18H4zM6,17H7V18H6zM7,17H8V18H7zM9,17H10V18H9zM10,17H11V18H10zM14,17H15V18H14zM15,17H16V18H15zM18,17H19V18H18zM20,17H21V18H20zM21,17H22V18H21zM22,17H23V18H22zM23,17H24V18H23zM25,17H26V18H25zM27,17H28V18H27zM29,17H30V18H29zM32,17H33V18H32zM3,18H4V19H3zM6,18H7V19H6zM8,18H9V19H8zM9,18H10V19H9zM10,18H11V19H10zM11,18H12V19H11zM13,18H14V19H13zM14,18H15V19H14zM17,18H18V19H17zM21,18H22V19H21zM24,18H25V19H24zM25,18H26V19H25zM26,18H27V19H26zM28,18H29V19H28zM30,18H31V19H30zM32,18H33V19H32zM4,19H5V20H4zM6,19H7V20H6zM7,19H8V20H7zM8,19H9V20H8zM9,19H10V20H9zM10,19H11V20H10zM11,19H12V20H11zM12,19H13V20H12zM15,19H16V20H15zM17,19H18V20H17zM19,19H20V20H19zM21,19H22V20H21zM22,19H23V20H22zM25,19H26V20H25zM27,19H28V20H27zM31,19H32V20H31zM32,19H33V20H32zM33,19H34V20H33zM2,20H3V21H2zM3,20H4V21H3zM12,20H13V21H12zM13,20H14V21H13zM15,20H16V21H15zM18,20H19V21H18zM19,20H20V21H19zM20,20H21V21H20zM21,20H22V21H21zM22,20H23V21H22zM25,20H26V21H25zM26,20H27V21H26zM28,20H29V21H28zM33,20H34V21H33zM1,21H2V22H1zM4,21H5V22H4zM5,21H6V22H5zM6,21H7V22H6zM7,21H8V22H7zM9,21H10V22H9zM14,21H15V22H14zM15,21H16V22H15zM16,21H17V22H16zM17,21H18V22H17zM18,21H19V22H18zM19,21H20V22H19zM20,21H21V22H20zM23,21H24V22H23zM24,21H25V22H24zM26,21H27V22H26zM32,21H33V22H32zM33,21H34V22H33zM3,22H4V23H3zM6,22H7V23H6zM12,22H13V23H12zM14,22H15V23H14zM16,22H17V23H16zM17,22H18V23H17zM19,22H20V23H19zM20,22H21V23H20zM21,22H22V23H21zM22,22H23V23H22zM25,22H26V23H25zM27,22H28V23H27zM28,22H29V23H28zM30,22H31V23H30zM31,22H32V23H31zM32,22H33V23H32zM33,22H34V23H33zM1,23H2V24H1zM2,23H3V24H2zM3,23H4V24H3zM4,23H5V24H4zM6,23H7V24H6zM7,23H8V24H7zM8,23H9V24H8zM9,23H10V24H9zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM16,23H17V24H16zM19,23H20V24H19zM21,23H22V24H21zM26,23H27V24H26zM30,23H31V24H30zM31,23H32V24H31zM33,23H34V24H33zM2,24H3V25H2zM4,24H5V25H4zM5,24H6V25H5zM6,24H7V25H6zM8,24H9V25H8zM9,24H10V25H9zM12,24H13V25H12zM13,24H14V25H13zM14,24H15V25H14zM15,24H16V25H15zM17,24H18V25H17zM22,24H23V25H22zM23,24H24V25H23zM27,24H28V25H27zM28,24H29V25H28zM29,24H30V25H29zM30,24H31V25H30zM1,25H2V26H1zM5,25H6V26H5zM7,25H8V26H7zM8,25H9V26H8zM10,25H11V26H10zM12,25H13V26H12zM13,25H14V26H13zM14,25H15V26H14zM15,25H16V26H15zM16,25H17V26H16zM17,25H18V26H17zM18,25H19V26H18zM20,25H21V26H20zM21,25H22V26H21zM22,25H23V26H22zM25,25H26V26H25zM26,25H27V26H26zM27,25H28V26H27zM28,25H29V26H28zM29,25H30V26H29zM30,25H31V26H30zM32,25H33V26H32zM9,26H10V27H9zM10,26H11V27H10zM11,26H12V27H11zM12,26H13V27H12zM13,26H14V27H13zM15,26H16V27H15zM17,26H18V27H17zM19,26H20V27H19zM20,26H21V27H20zM21,26H22V27H21zM24,26H25V27H24zM25,26H26V27H25zM29,26H30V27H29zM30,26H31V27H30zM33,26H34V27H33zM1,27H2V28H1zM2,27H3V28H2zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM6,27H7V28H6zM7,27H8V28H7zM10,27H11V28H10zM14,27H15V28H14zM17,27H18V28H17zM22,27H23V28H22zM25,27H26V28H25zM27,27H28V28H27zM29,27H30V28H29zM30,27H31V28H30zM31,27H32V28H31zM32,27H33V28H32zM1,28H2V29H1zM7,28H8V29H7zM9,28H10V29H9zM10,28H11V29H10zM12,28H13V29H12zM25,28H26V29H25zM29,28H30V29H29zM1,29H2V30H1zM3,29H4V30H3zM4,29H5V30H4zM5,29H6V30H5zM7,29H8V30H7zM10,29H11V30H10zM15,29H16V30H15zM17,29H18V30H17zM20,29H21V30H20zM23,29H24V30H23zM25,29H26V30H25zM26,29H27V30H26zM27,29H28V30H27zM28,29H29V30H28zM29,29H30V30H29zM30,29H31V30H30zM33,29H34V30H33zM1,30H2V31H1zM3,30H4V31H3zM4,30H5V31H4zM5,30H6V31H5zM7,30H8V31H7zM9,30H10V31H9zM10,30H11V31H10zM11,30H12V31H11zM12,30H13V31H12zM13,30H14V31H13zM14,30H15V31H14zM15,30H16V31H15zM16,30H17V31H16zM20,30H21V31H20zM21,30H22V31H21zM22,30H23V31H22zM25,30H26V31H25zM27,30H28V31H27zM29,30H30V31H29zM32,30H33V31H32zM1,31H2V32H1zM3,31H4V32H3zM4,31H5V32H4zM5,31H6V32H5zM7,31H8V32H7zM11,31H12V32H11zM12,31H13V32H12zM13,31H14V32H13zM24,31H25V32H24zM29,31H30V32H29zM30,31H31V32H30zM33,31H34V32H33zM1,32H2V33H1zM7,32H8V33H7zM10,32H11V33H10zM13,32H14V33H13zM14,32H15V33H14zM15,32H16V33H15zM16,32H17V33H16zM17,32H18V33H17zM18,32H19V33H18zM19,32H20V33H19zM22,32H23V33H22zM23,32H24V33H23zM24,32H25V33H24zM25,32H26V33H25zM26,32H27V33H26zM1,33H2V34H1zM2,33H3V34H2zM3,33H4V34H3zM4,33H5V34H4zM5,33H6V34H5zM6,33H7V34H6zM7,33H8V34H7zM9,33H10V34H9zM17,33H18V34H17zM22,33H23V34H22zM25,33H26V34H25zM29,33H30V34H29zM30,33H31V34H30zM32,33H33V34H32z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><div><p>Scan to read this page online, in English or Bahasa Melayu.<br><b>infosihatbn.github.io/english/cataract/</b></p><p>This leaflet gives general information only. Always follow the advice of your own doctor or nurse.</p><p class="pem">Emergency: call 991 or go to the nearest Emergency Department.</p><p class="pdate">Printed: <span data-pdate></span> · © 2026 InfoSihat, Brunei Darussalam</p></div></div></div></div></main>
+<footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>For education only, not a substitute for medical advice.</span><span>Emergency: 991 · © 2026 InfoSihat, Brunei Darussalam</span><span class="credit">Music: "Calm Ambient" by Velariomusic. Thank you!</span></div></footer>
 <script>
 function sizeAll(){document.querySelectorAll('iframe.embed').forEach(size)}
 function size(f){try{const d=f.contentDocument;const w=d.querySelector('.wrap');const h=w?Math.ceil(w.getBoundingClientRect().height):d.body.scrollHeight;if(h)f.style.height=(h+4)+'px'}catch(e){}}
@@ -333,7 +428,37 @@ addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forE
 
 
 <script>
-(function(){var B='20261006115653';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+document.querySelectorAll('iframe.embed[loading="lazy"]').forEach(f=>{if(!/vision-sim|myths/.test(f.src))f.loading='eager'});
+function printClones(){document.querySelectorAll('iframe.embed').forEach(f=>{if(/vision-sim|myths/.test(f.src))return;let d;try{d=f.contentDocument}catch(e){return}if(!d||!d.body)return;
+ let h=f.nextElementSibling;if(!h||!h.classList.contains('pclone')){h=document.createElement('div');h.className='pclone';h.attachShadow({mode:'open'});f.after(h)}
+ const css=[...d.querySelectorAll('style')].map(s=>s.textContent).join('\n').replace(/:root|\bhtml\b|\bbody\b/g,'.pbody');
+ h.shadowRoot.innerHTML='<style>'+css+'.pbody{margin:0;background:none!important;min-height:0!important}*{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none!important}button{display:none}.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style><div class="pbody">'+d.body.innerHTML+'</div>'})}
+(function(){const s=()=>{const d=new Date();document.querySelectorAll('[data-pdate]').forEach(e=>e.textContent=d.toLocaleDateString(document.documentElement.lang==='ms'?'ms-BN':'en-GB',{day:'numeric',month:'long',year:'numeric'}))};s();addEventListener('beforeprint',()=>{s();printClones();document.querySelectorAll('details.sec').forEach(d=>d.open=true);if(window.sizeAll)sizeAll()})})();
+</script>
+<script>
+(function(){
+const SRC='../../assets/calm-ambient.mp3',K='is-music',T='is-music-t',VOL=.22;
+const btn=document.querySelector('.music-btn');if(!btn)return;
+let pref='on';try{pref=localStorage.getItem(K)||'on'}catch(e){}
+const a=new Audio();a.src=SRC;a.loop=true;a.preload='none';a.volume=0;
+try{const t=parseFloat(sessionStorage.getItem(T));if(t)a.currentTime=t}catch(e){}
+function ui(){const on=!a.paused;btn.setAttribute('aria-pressed',on);btn.setAttribute('aria-label',on?btn.dataset.on:btn.dataset.off)}
+function fade(to,done){clearInterval(a._f);a._f=setInterval(()=>{const v=a.volume+(to>a.volume?.02:-.02);if(Math.abs(to-a.volume)<=.02){a.volume=to;clearInterval(a._f);done&&done()}else a.volume=Math.max(0,Math.min(1,v))},60)}
+function play(){if(!a.paused)return Promise.resolve();a.volume=0;return a.play().then(()=>{fade(VOL);ui()}).catch(()=>{ui()})}
+function stop(){fade(0,()=>{a.pause();ui()});btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label',btn.dataset.off)}
+function save(){try{sessionStorage.setItem(T,a.currentTime||0)}catch(e){}}
+btn.addEventListener('click',e=>{e.stopPropagation();if(a.paused){pref='on';play()}else{pref='off';stop()}try{localStorage.setItem(K,pref)}catch(e){}});
+function first(e){if(btn.contains(e.target))return;off();if(pref==='on')play()}
+function off(){['pointerdown','keydown','touchstart'].forEach(x=>removeEventListener(x,first,true))}
+if(pref==='on'){play().then(()=>{if(!a.paused)off()});['pointerdown','keydown','touchstart'].forEach(x=>addEventListener(x,first,true))}
+let wasOn=false;document.addEventListener('visibilitychange',()=>{if(document.hidden){wasOn=!a.paused;if(wasOn){a.pause();ui()}save()}else if(wasOn&&pref==='on'){play()}});
+addEventListener('pagehide',save);setInterval(()=>{if(!a.paused)save()},2000);
+addEventListener('beforeprint',()=>{if(!a.paused){a.pause();ui()}});
+ui();
+})();
+</script>
+<script>
+(function(){var B='20261006121301';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

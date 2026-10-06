@@ -43,13 +43,20 @@ def news():
     items.sort(key=lambda x: x["d"], reverse=True)
     return items[:6]
 
-# 2. New eye research from Southeast Asia (PubMed E-utilities)
-EYE_TIAB = "(ophthalm*[ti] OR retina*[ti] OR retinopathy[ti] OR glaucoma*[ti] OR cataract*[ti] OR myopi*[ti] OR cornea*[ti] OR keratitis[ti] OR keratoconus[ti] OR uveitis[ti] OR strabism*[ti] OR amblyopi*[ti] OR macula*[ti] OR vitreo*[ti] OR ocular[ti] OR eye disease*[ti] OR eye care[ti] OR visual impairment[ti] OR vision loss[ti] OR blindness[ti] OR pterygium[ti] OR intraocular[ti])"
-SEA_AD = "(Brunei[ad] OR Malaysia[ad] OR Singapore[ad] OR Indonesia[ad] OR Thailand[ad] OR Philippines[ad] OR Vietnam[ad] OR \"Viet Nam\"[ad] OR Cambodia[ad] OR Laos[ad] OR \"Lao PDR\"[ad] OR Myanmar[ad] OR \"Timor-Leste\"[ad])"
+# 2. New eye research from leading ophthalmology journals (PubMed E-utilities)
+JOURNALS = ["Ophthalmology", "JAMA Ophthalmol", "Am J Ophthalmol", "Br J Ophthalmol", "Prog Retin Eye Res",
+            "Surv Ophthalmol", "Ophthalmol Retina", "Ophthalmol Glaucoma", "Invest Ophthalmol Vis Sci",
+            "Eye (Lond)", "Acta Ophthalmol", "Retina", "Asia Pac J Ophthalmol (Phila)", "Ophthalmol Sci"]
+NICE = {"JAMA Ophthalmol": "JAMA Ophthalmology", "Am J Ophthalmol": "American Journal of Ophthalmology", "Br J Ophthalmol": "British Journal of Ophthalmology",
+        "Prog Retin Eye Res": "Progress in Retinal and Eye Research", "Surv Ophthalmol": "Survey of Ophthalmology", "Ophthalmol Retina": "Ophthalmology Retina",
+        "Ophthalmol Glaucoma": "Ophthalmology Glaucoma", "Invest Ophthalmol Vis Sci": "IOVS", "Eye (Lond)": "Eye", "Acta Ophthalmol": "Acta Ophthalmologica",
+        "Asia Pac J Ophthalmol (Phila)": "Asia-Pacific Journal of Ophthalmology", "Ophthalmol Sci": "Ophthalmology Science"}
+JOURNAL_Q = "(" + " OR ".join(f'"{j}"[ta]' for j in JOURNALS) + ")"
+TYPES_Q = "(journal article[pt] OR review[pt]) NOT (comment[pt] OR letter[pt] OR editorial[pt] OR published erratum[pt] OR retracted publication[pt] OR news[pt])"
 EU = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 def sea():
-    q = {"db": "pubmed", "term": f"{EYE_TIAB} AND {SEA_AD}", "sort": "pub_date", "retmax": "8", "retmode": "json",
-         "datetype": "edat", "reldate": "90", "tool": "infosihat"}
+    q = {"db": "pubmed", "term": f"{JOURNAL_Q} AND {TYPES_Q} AND hasabstract", "retmax": "12", "retmode": "json",
+         "datetype": "edat", "reldate": "21", "tool": "infosihat"}
     ids = json.loads(get(EU + "esearch.fcgi?" + urllib.parse.urlencode(q)))["esearchresult"]["idlist"]
     if not ids:
         return []
@@ -58,8 +65,8 @@ def sea():
     for i in ids:
         r = res.get(i) or {}
         t = clean(re.sub(r"<[^>]+>", "", r.get("title", ""))).rstrip(".")
-        if t:
-            out.append({"t": t, "src": clean(r.get("source", "")), "d": clean(r.get("pubdate", "")), "url": f"https://pubmed.ncbi.nlm.nih.gov/{i}/"})
+        if t and not re.match(r"(erratum|correction|reply|re:|comment on|in memoriam)", t, re.I):
+            out.append({"t": t, "src": NICE.get(clean(r.get("source", "")), clean(r.get("source", ""))), "d": clean(r.get("pubdate", "")), "url": f"https://pubmed.ncbi.nlm.nih.gov/{i}/"})
     return out[:6]
 
 # 3. Eye articles in the Brunei International Medical Journal (MOH contents page)

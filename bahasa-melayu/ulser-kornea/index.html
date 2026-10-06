@@ -79,6 +79,7 @@ footer b{font-family:var(--display)}
 .refs{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
 .refs h2{font:700 18px/1.2 var(--display)!important;color:var(--ink)!important;margin:0 0 10px!important}
 .refs ol{padding-left:22px;display:grid;gap:6px}.refs p{font-size:15px}
+.refs-dd{margin-top:18px}.refs-dd summary h2{font-size:18px!important}.refs-dd .sec-body{font-size:15px;color:var(--muted)}.refs-dd ol{padding-left:22px;display:grid;gap:6px}
 @media print{.fold-bar{display:none}.sec summary .chev{display:none}}
 
 .nav button.ddb{display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--display);padding:12px 12px;border-radius:10px}
@@ -221,20 +222,47 @@ footer b{font-family:var(--display)}
 .hero2 .side{display:grid;gap:16px;justify-items:center;text-align:center}
 .hero2 .word{font:800 clamp(32px,4.6vw,46px)/1 var(--display)}.hero2 .word b{color:#333}.hero2 .word i{font-style:normal;color:var(--teal)}
 .hero2 .pill{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 15px/1 var(--display);color:var(--blue-deep)}
-.feed{color:#fff;display:grid;align-content:start;gap:14px}
-.feed.f-news{background:linear-gradient(135deg,#17506B,var(--blue-deep) 55%,#2A8BB5)}
-.feed.f-sea{background:linear-gradient(135deg,#145958,var(--teal-deep) 55%,#3AA3A2)}
-.feed.f-bimj{background:linear-gradient(135deg,#2B2F5E,#3B4C8C 55%,#5A6FB3)}
+.feed{position:relative;color:#fff;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:26px;align-items:center;isolation:isolate;overflow:hidden}
+.feed::before,.feed::after{content:"";position:absolute;border-radius:50%;z-index:-1;filter:blur(2px)}
+.feed::before{width:340px;height:340px;right:-90px;top:-120px;background:radial-gradient(circle,rgba(255,255,255,.22),rgba(255,255,255,0) 70%)}
+.feed::after{width:260px;height:260px;left:-80px;bottom:-110px;background:radial-gradient(circle,rgba(244,192,78,.35),rgba(244,192,78,0) 70%)}
+.feed.f-news{background:radial-gradient(120% 140% at 0% 0%,#2FA4D6 0%,#1F6E93 45%,#123F57 100%)}
+.feed.f-sea{background:radial-gradient(120% 140% at 0% 0%,#4FD1B5 0%,#1C7675 48%,#0F4342 100%)}
+.feed.f-bimj{background:radial-gradient(120% 140% at 0% 0%,#8C7BF0 0%,#4A47A3 48%,#262566 100%)}
+.feed .cov{display:grid;gap:12px;align-content:center}
+.feed .ico{width:84px;height:84px;border-radius:24px;display:grid;place-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.feed .ico svg{width:46px;height:46px}
 .feed .eb{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.16);border-radius:999px;padding:7px 11px;justify-self:start;margin:0}
-.feed .eb::before{content:"";width:8px;height:8px;border-radius:50%;background:#7CF0B5;box-shadow:0 0 0 3px rgba(124,240,181,.3)}
-.feed h2.fh{margin:0!important;font:800 clamp(24px,3.4vw,34px)/1.15 var(--display)!important;color:#fff!important}
-.feed .fd{margin:0;opacity:.9;font-size:17px}
-.feed ul{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:10px}
-.feed li a{display:block;color:#fff!important;text-decoration:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px 14px}
-.feed li a:hover,.feed li a:focus-visible{background:rgba(255,255,255,.2)}
-.feed li b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:600 17px/1.35 var(--display)}
-.feed li small{display:block;margin-top:4px;opacity:.85;font-size:14px}
-.feed .ff{margin:0;font-size:13px;opacity:.8}.feed .ff a{color:#fff!important}
+.feed .eb::before{content:"";width:8px;height:8px;border-radius:50%;background:#7CF0B5;box-shadow:0 0 0 3px rgba(124,240,181,.3);animation:livep 1.6s ease-in-out infinite}
+@keyframes livep{50%{box-shadow:0 0 0 6px rgba(124,240,181,0)}}
+.feed h2.fh{margin:0!important;font:800 clamp(24px,3.2vw,34px)/1.12 var(--display)!important;color:#fff!important;text-wrap:balance}
+.feed .fd{margin:0;opacity:.9;font-size:16px}
+.feed .ff{margin:0;font-size:13px;opacity:.85}.feed .ff a{color:#fff!important;font-weight:700}
+.feed ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:fi}
+.feed li a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;color:var(--ink)!important;text-decoration:none;background:rgba(255,255,255,.96);border-radius:18px;padding:13px 16px;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .2s,box-shadow .2s}
+.feed li a:hover,.feed li a:focus-visible{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.feed li .n{font:800 22px/1 var(--display);color:var(--acc);min-width:30px}
+.feed li b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:600 16px/1.35 var(--display)}
+.feed li small{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px;font-size:13px;color:var(--muted)}
+.feed li small em{font-style:normal;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:3px 8px}
+.feed li .fgo{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc);font:700 15px/1 var(--display)}
+.feed.f-news{--acc:#1F6E93;--acc-soft:#E2F1F8}.feed.f-sea{--acc:#1C7675;--acc-soft:#DDF3F1}.feed.f-bimj{--acc:#4A47A3;--acc-soft:#ECEBFB}
+.feed li.wait a{background:rgba(255,255,255,.18);color:#fff!important;box-shadow:none;grid-template-columns:1fr}
+@media (max-width:860px){.feed{grid-template-columns:1fr;gap:16px}.feed .ico{width:60px;height:60px;border-radius:18px}.feed .ico svg{width:34px;height:34px}.feed .cov{grid-template-columns:auto 1fr;column-gap:14px}.feed .cov>:not(.ico){grid-column:1/-1}.feed .cov .ico{grid-row:1/3}.feed .cov .eb{align-self:end}.feed .fd{display:none}}
+@media (max-width:640px){.feed li a{padding:11px 12px;gap:10px}.feed li .fgo{display:none}.feed li .n{font-size:18px;min-width:22px}.feed li b{font-size:15px}}
+@media (prefers-reduced-motion:reduce){.feed .eb::before{animation:none}.feed li a{transition:none}}
+.tipd{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(120% 140% at 0% 0%,#FFE7A3 0%,#F4C04E 40%,#E89A2C 100%);color:#3A2A05;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px 28px;align-items:center}
+.tipd::before{content:"";position:absolute;width:360px;height:360px;right:-100px;bottom:-160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.45),rgba(255,255,255,0) 70%);z-index:-1}
+.tipd .eb{display:inline-flex;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.55);border-radius:999px;padding:7px 11px;margin:0 0 10px;color:#6B4A00}
+.tipd h2.fh{margin:0!important;font:800 clamp(28px,4vw,42px)/1.1 var(--display)!important;color:#3A2A05!important}
+.tpool{list-style:none;margin:0;padding:0}
+.tpool li{display:none;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:#fff;border-radius:24px;padding:22px 24px;box-shadow:0 10px 30px rgba(120,70,0,.22)}
+.tpool li.on{display:grid}
+.tpool .te{font-size:52px;line-height:1;width:84px;height:84px;display:grid;place-items:center;background:var(--sun-soft);border-radius:22px}
+.tpool p{margin:0;font:700 clamp(18px,2.3vw,23px)/1.35 var(--display);color:var(--ink)}
+.tipd .btns{grid-column:2}
+.tipd .btn{background:#3A2A05}.tipd .btn.ghost{background:rgba(255,255,255,.7);color:#3A2A05!important;border-color:transparent}
+@media (max-width:860px){.tipd{grid-template-columns:1fr}.tipd .btns{grid-column:1}.tpool li{padding:16px;gap:14px}.tpool .te{width:60px;height:60px;font-size:36px}}
 .carousel .ctl{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;align-items:center;gap:10px;pointer-events:none}
 .carousel .ctl>*{pointer-events:auto}
 .carousel .dots{display:flex;gap:8px;background:rgba(31,42,48,.35);border-radius:999px;padding:8px 10px}
@@ -243,16 +271,83 @@ footer b{font-family:var(--display)}
 .carousel .cb{width:36px;height:36px;border-radius:50%;border:0;background:rgba(31,42,48,.35);color:#fff;cursor:pointer;display:grid;place-items:center;font:700 16px/1 var(--display)}
 .carousel .cb:hover,.carousel .dots button:hover{background:rgba(31,42,48,.6)}
 .carousel .cbar{position:absolute;left:0;top:0;height:4px;background:var(--sun);width:0}
-.carousel.playing .bar{animation:carbar 10s linear}
+.carousel.playing .cbar{animation:carbar 10s linear}
 @keyframes carbar{from{width:0}to{width:100%}}
 @media (max-width:640px){.carousel .slide{padding:24px 18px 64px}.hero2{grid-template-columns:1fr}.hero2 .side{order:-1}.hero2 .side svg{width:150px}}
-@media (prefers-reduced-motion:reduce){.carousel .slide{transition:none}.carousel.playing .bar{animation:none}}
+@media (prefers-reduced-motion:reduce){.carousel .slide{transition:none}.carousel.playing .cbar{animation:none}}
+
+.music{position:relative;flex:none}
+.music-btn{position:relative;width:42px;height:42px;border-radius:50%;border:0;background:var(--mist);color:var(--blue-deep);display:grid;place-items:center;cursor:pointer}
+.music-btn:hover{background:var(--line)}
+.music-btn:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.music-btn .m-on,.music-btn[aria-pressed="true"] .m-off{display:none}
+.music-btn[aria-pressed="true"] .m-on{display:block}
+.music-btn[aria-pressed="true"]{background:var(--blue-deep);color:#fff}
+.eq{position:absolute;right:-2px;bottom:-2px;display:none;gap:1px;align-items:flex-end;height:12px;padding:2px 3px;background:var(--teal);border-radius:6px}
+.music-btn[aria-pressed="true"] .eq{display:flex}
+.eq i{width:2px;background:#fff;border-radius:1px;animation:eq 1s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:-.4s}.eq i:nth-child(3){animation-delay:-.7s}
+@keyframes eq{0%,100%{height:3px}50%{height:8px}}
+@media (prefers-reduced-motion:reduce){.eq i{animation:none;height:6px}}
+.music-tip{position:absolute;right:0;top:calc(100% + 8px);width:max-content;max-width:240px;background:var(--ink);color:#fff;font:400 13px/1.35 var(--body);padding:7px 10px;border-radius:8px;opacity:0;visibility:hidden;transition:opacity .15s;z-index:30;pointer-events:none}
+.music:hover .music-tip,.music-btn:focus-visible+.music-tip{opacity:1;visibility:visible}
+.credit{font-size:12px;opacity:.7}
+
+.band-tools{margin-top:18px}
+.print-btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--display);color:var(--blue-deep);background:#fff;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.print-btn:hover{background:var(--sun-soft)}
+.print-btn:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.print-head,.print-end,.pclone{display:none}
+@page{size:A4;margin:14mm 15mm 15mm}
+@media print{
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none!important;animation:none!important;transition:none!important}
+html,body{background:#fff!important}
+body{font-size:10.5pt;line-height:1.45;color:#111}
+header.site,footer,.skip,.fold-bar,.band-tools,.btns,.btn,figure.ph,.music,.music-tip,.gbar,iframe[src*="vision-sim"],iframe[src*="myths"]{display:none!important}
+.print-head{display:flex!important;align-items:center;gap:10px;padding-bottom:8pt;border-bottom:2.5pt solid #1F6E93;margin-bottom:10pt}
+.print-head img{width:34px;height:34px}
+.print-head b{display:block;font:800 16pt/1 Lexend,sans-serif;color:#1F6E93}.print-head b i{font-style:normal;color:#4FBAB9}
+.print-head span{font-size:8.5pt;color:#555}
+.print-head em{margin-left:auto;font:600 9pt/1.2 Lexend,sans-serif;font-style:normal;text-transform:uppercase;letter-spacing:.08em;color:#1F6E93;border:1pt solid #1F6E93;border-radius:999px;padding:4pt 9pt}
+.band{background:none!important;color:#111}
+.band .inner{max-width:none;padding:0 0 6pt}
+.band h1{color:#1F6E93!important;font-size:22pt!important;text-wrap:balance}
+.byline{color:#555;font-size:8.5pt;margin-top:3pt;opacity:1}
+.content{max-width:none;padding:0;gap:8pt}
+.content p,.content li{font-size:10.5pt}
+.folds{gap:0}
+.sec{border:0!important;border-radius:0;background:none;overflow:visible}
+.sec summary{display:block;padding:0;min-height:0}
+.sec summary h2{font-size:13.5pt!important;color:#1F6E93!important;border-bottom:.75pt solid #9cc3d6;padding-bottom:2pt;margin-top:10pt!important;break-after:avoid;page-break-after:avoid}
+.sec-body{padding:5pt 0 0;gap:6pt}
+h2,h3{break-after:avoid;page-break-after:avoid}
+p,li{orphans:3;widows:3}
+.glance,.alert,.steps li,table,figure,iframe,.pnotes,.pfoot,.card,.content blockquote{break-inside:avoid;page-break-inside:avoid}
+.glance{padding:8pt 12pt;border-radius:8pt}
+.alert{padding:8pt 12pt;border-radius:8pt;border-width:1.5pt}.alert p{font-size:10.5pt}
+.content .steps{grid-template-columns:repeat(3,1fr);gap:6pt}.steps li{padding:8pt;border-radius:8pt}.steps p{font-size:9.5pt}
+.cards{grid-template-columns:1fr 1fr;gap:6pt}.card{padding:8pt 10pt;border-radius:8pt}
+a{color:inherit!important;text-decoration:none}
+iframe.embed{width:100%!important}
+.refs{font-size:8pt;margin-top:10pt;padding-top:6pt}.refs p,.refs li{font-size:8pt}.refs h2{font-size:10pt!important}
+.refs a{word-break:break-all}
+iframe.embed{display:none!important}
+.pclone{display:block!important;break-inside:avoid;page-break-inside:avoid;margin:2pt 0}
+.print-end{display:block!important;margin-top:12pt;break-inside:avoid;page-break-inside:avoid}
+.pnotes{border:1.25pt solid #1F6E93;border-radius:8pt;padding:8pt 12pt 10pt}
+.pnotes h3{margin:0 0 2pt!important;font:700 11pt/1.2 Lexend,sans-serif!important;color:#1F6E93}
+.pnotes>i{display:block;height:20pt;border-bottom:.75pt dotted #777}
+.pl{display:flex;gap:8pt;align-items:flex-end;margin-top:8pt}.pl span{font-weight:700;font-size:9.5pt;white-space:nowrap}.pl i{flex:1;border-bottom:.75pt dotted #777;height:14pt}
+.pfoot{display:flex;gap:12pt;align-items:center;margin-top:10pt;padding-top:8pt;border-top:.75pt solid #ccc}
+.pqr svg{width:26mm;height:26mm;display:block}
+.pfoot p{margin:0 0 3pt;font-size:8.5pt;color:#333}.pfoot .pem{font-weight:700;color:#8C1D18}.pfoot .pdate{color:#777}
+}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
 <a class="skip" href="#main">Langkau ke kandungan</a>
-<header class="site"><div class="bar"><a class="brand" href="../../"><img src="../../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Menu utama"><a href="../../">Utama</a><div class="dd"><button type="button" class="ddb on" aria-expanded="false">Penyakit Mata<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/penyakit-mata/" class="all">Samua penyakit mata</a><a href="../../bahasa-melayu/katarak/">Katarak</a><a href="../../bahasa-melayu/glaukoma/">Glaukoma</a><a href="../../bahasa-melayu/ulser-kornea/" aria-current="page"><small>Kornea</small>Ulser Kornea</a><a href="../../bahasa-melayu/retinopati-kencing-manis/"><small>Retina</small>Retinopati Kencing Manis</a><a href="../../bahasa-melayu/kelopak-mata-jatuh/"><small>Neuro-oftalmologi</small>Kelopak Mata Jatuh</a><a href="../../bahasa-melayu/ektropion-entropion/"><small>Okuloplastik & Orbit</small>Ektropion dan Entropion</a><a href="../../bahasa-melayu/uveitis-anterior/"><small>Uveitis</small>Uveitis Anterior</a><a href="../../bahasa-melayu/juling/"><small>Kanak-kanak</small>Mata Juling</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata Akut<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/penyakit-mata-akut/" class="all">Samua penyakit mata akut</a><a href="../../bahasa-melayu/retina-tertanggal/"><small>Retina</small>Retina Tertanggal</a><a href="../../bahasa-melayu/glaukoma-akut/"><small>Tekanan mata</small>Glaukoma Akut</a><a href="../../bahasa-melayu/endoftalmitis/"><small>Jangkitan</small>Endoftalmitis</a></div></div><a href="../../klinik-mata/">Klinik Mata</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Tau Kah Abiskita?<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/petua/">Petua</a><a href="../../bahasa-melayu/mitos-atau-fakta/">Mitos atau Fakta</a></div></div><div class="dd"><button type="button" class="ddb" aria-expanded="false">Pasal Kami<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/pasal-kami/">Pasal InfoSihat</a><a href="../../bahasa-melayu/rakan-kerjasama/">Rakan Kerjasama</a></div></div></nav><div class="lang" role="group" aria-label="Bahasa"><span class="on" aria-current="true" lang="ms">BM</span><a href="../../english/corneal-ulcer/" lang="en" hreflang="en" title="English">EN</a></div></div></header>
-<main id="main"><div class="band"><div class="inner"><h1>Ulser Kornea</h1><p class="byline">Ditulis oleh Dr Haziq Aziz Shamri, MBChB · Disemak oleh: [nama], [tarikh] · Dikemas kini: [tarikh]</p></div></div><div class="content"><aside class="glance"><h3>Sekilas pandang</h3><ul><li>Ulser kornea atu <strong>luka terbuka di "tingkap" jernih</strong> di depan mata, selalunya pasal <strong>jangkitan kuman</strong></li><li>Ani <strong>kecemasan mata</strong>: mesti jumpa doktor mata <strong>hari atu jua</strong></li><li><strong>Pakai kanta lekap</strong> (contact lens) atu risiko paling besar, lagi-lagi mun tidur, berenang atau mandi dengan kanta lekap</li><li><strong>Jangan</strong> rawat sendiri dengan ubat titis lama atau pinjam urang, lagi-lagi <strong>ubat titis steroid</strong></li></ul></aside>
+<header class="site"><div class="bar"><a class="brand" href="../../"><img src="../../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Menu utama"><a href="../../">Utama</a><div class="dd"><button type="button" class="ddb on" aria-expanded="false">Penyakit Mata<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/penyakit-mata/" class="all">Samua penyakit mata</a><a href="../../bahasa-melayu/katarak/">Katarak</a><a href="../../bahasa-melayu/glaukoma/">Glaukoma</a><a href="../../bahasa-melayu/ulser-kornea/" aria-current="page"><small>Kornea</small>Ulser Kornea</a><a href="../../bahasa-melayu/retinopati-kencing-manis/"><small>Retina</small>Retinopati Kencing Manis</a><a href="../../bahasa-melayu/kelopak-mata-jatuh/"><small>Neuro-oftalmologi</small>Kelopak Mata Jatuh</a><a href="../../bahasa-melayu/ektropion-entropion/"><small>Okuloplastik & Orbit</small>Ektropion dan Entropion</a><a href="../../bahasa-melayu/uveitis-anterior/"><small>Uveitis</small>Uveitis Anterior</a><a href="../../bahasa-melayu/juling/"><small>Kanak-kanak</small>Mata Juling</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata Akut<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/penyakit-mata-akut/" class="all">Samua penyakit mata akut</a><a href="../../bahasa-melayu/retina-tertanggal/"><small>Retina</small>Retina Tertanggal</a><a href="../../bahasa-melayu/glaukoma-akut/"><small>Tekanan mata</small>Glaukoma Akut</a><a href="../../bahasa-melayu/endoftalmitis/"><small>Jangkitan</small>Endoftalmitis</a></div></div><a href="../../klinik-mata/">Klinik Mata</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Tau Kah Abiskita?<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/petua/">Petua</a><a href="../../bahasa-melayu/mitos-atau-fakta/">Mitos atau Fakta</a></div></div><div class="dd"><button type="button" class="ddb" aria-expanded="false">Pasal Kami<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/pasal-kami/">Pasal InfoSihat</a><a href="../../bahasa-melayu/rakan-kerjasama/">Rakan Kerjasama</a></div></div></nav><div class="lang" role="group" aria-label="Bahasa"><span class="on" aria-current="true" lang="ms">BM</span><a href="../../english/corneal-ulcer/" lang="en" hreflang="en" title="English">EN</a></div><div class="music"><button type="button" class="music-btn" aria-pressed="false" aria-label="Muzik disenyapkan. Tekan untuk main" data-on="Muzik dimainkan. Tekan untuk senyapkan" data-off="Muzik disenyapkan. Tekan untuk main"><svg class="m-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="m-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button><span class="music-tip" role="note">Muzik: "Calm Ambient" oleh Velariomusic. Terima kasih!</span></div></div></header>
+<main id="main"><div class="print-head" aria-hidden="true"><img src="../../assets/logo-128.png" alt=""><div><b>Info<i>Sihat</i></b><span>Maklumat Kesihatan dihujung Jari</span></div><em>Risalah maklumat pesakit</em></div><div class="band"><div class="inner"><h1>Ulser Kornea</h1><p class="byline">Ditulis oleh Dr Haziq Aziz Shamri, MBChB · Disemak oleh: [nama], [tarikh] · Dikemas kini: [tarikh]</p><div class="band-tools"><button type="button" class="print-btn" onclick="window.print()"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/><path d="M17 12h.01"/></svg><span>Cetak untuk pesakit</span></button></div></div></div><div class="content"><aside class="glance"><h3>Sekilas pandang</h3><ul><li>Ulser kornea atu <strong>luka terbuka di "tingkap" jernih</strong> di depan mata, selalunya pasal <strong>jangkitan kuman</strong></li><li>Ani <strong>kecemasan mata</strong>: mesti jumpa doktor mata <strong>hari atu jua</strong></li><li><strong>Pakai kanta lekap</strong> (contact lens) atu risiko paling besar, lagi-lagi mun tidur, berenang atau mandi dengan kanta lekap</li><li><strong>Jangan</strong> rawat sendiri dengan ubat titis lama atau pinjam urang, lagi-lagi <strong>ubat titis steroid</strong></li></ul></aside>
 
 <div class="fold-bar"><span>Tekan tajuk untuk buka atau tutup.</span><span class="fold-btns"><button type="button" data-fold="open">Buka semua</button><button type="button" data-fold="close">Tutup semua</button></span></div>
 <div class="folds">
@@ -293,8 +388,8 @@ footer b{font-family:var(--display)}
 </div></details>
 </div>
 <section class="refs" id="rujukan"><h2>Rujukan</h2><ol><li>Rhee MK, Ahmad S, Amescua G, et al. Bacterial Keratitis Preferred Practice Pattern®. American Academy of Ophthalmology. <em>Ophthalmology</em>. 2024;131(4):P87–P133. <a href="https://doi.org/10.1016/j.ophtha.2023.12.035" target="_blank" rel="noopener">https://doi.org/10.1016/j.ophtha.2023.12.035</a></li><li>Centers for Disease Control and Prevention (CDC). About Contact Lenses. <a href="https://www.cdc.gov/contact-lenses/about/index.html" target="_blank" rel="noopener">https://www.cdc.gov/contact-lenses/about/index.html</a></li><li>Centers for Disease Control and Prevention (CDC). Healthy Contact Lens Wear and Care: Prevention. <a href="https://www.cdc.gov/contact-lenses/prevention/index.html" target="_blank" rel="noopener">https://www.cdc.gov/contact-lenses/prevention/index.html</a></li><li>Centers for Disease Control and Prevention (CDC). Fungal Eye Infections Basics. <a href="https://www.cdc.gov/fungal-eye-infections/about/index.html" target="_blank" rel="noopener">https://www.cdc.gov/fungal-eye-infections/about/index.html</a></li><li>Centers for Disease Control and Prevention (CDC). About Acanthamoeba. <a href="https://www.cdc.gov/acanthamoeba/about/index.html" target="_blank" rel="noopener">https://www.cdc.gov/acanthamoeba/about/index.html</a></li><li>Srinivasan M, Mascarenhas J, Rajaraman R, et al. Corticosteroids for bacterial keratitis: the Steroids for Corneal Ulcers Trial (SCUT). <em>Archives of Ophthalmology</em>. 2012;130(2):143–150. <a href="https://doi.org/10.1001/archophthalmol.2011.315" target="_blank" rel="noopener">https://doi.org/10.1001/archophthalmol.2011.315</a></li><li>Prajna NV, Krishnan T, Mascarenhas J, et al. The Mycotic Ulcer Treatment Trial: a randomized trial comparing natamycin vs voriconazole. <em>JAMA Ophthalmology</em>. 2013;131(4):422–429. <a href="https://doi.org/10.1001/jamaophthalmol.2013.1497" target="_blank" rel="noopener">https://doi.org/10.1001/jamaophthalmol.2013.1497</a></li></ol>
-<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor abiskita sendiri.</em></p></section></div></main>
-<footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>Untuk pendidikan saja, inda menggantikan nasihat doktor.</span><span>Kecemasan: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
+<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor abiskita sendiri.</em></p></section><div class="print-end" aria-hidden="true"><div class="pnotes"><h3>Catatan doktor</h3><i></i><i></i><i></i><i></i><div class="pl"><span>Temujanji seterusnya</span><i></i></div><div class="pl"><span>Klinik / hubungi</span><i></i></div></div><div class="pfoot"><div class="pqr"><svg role="img" aria-label="QR code"  version="1.1" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM12,1H13V2H12zM14,1H15V2H14zM15,1H16V2H15zM17,1H18V2H17zM18,1H19V2H18zM19,1H20V2H19zM22,1H23V2H22zM23,1H24V2H23zM27,1H28V2H27zM28,1H29V2H28zM29,1H30V2H29zM30,1H31V2H30zM31,1H32V2H31zM32,1H33V2H32zM33,1H34V2H33zM1,2H2V3H1zM7,2H8V3H7zM9,2H10V3H9zM11,2H12V3H11zM12,2H13V3H12zM17,2H18V3H17zM18,2H19V3H18zM19,2H20V3H19zM21,2H22V3H21zM23,2H24V3H23zM27,2H28V3H27zM33,2H34V3H33zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM9,3H10V4H9zM10,3H11V4H10zM11,3H12V4H11zM12,3H13V4H12zM13,3H14V4H13zM15,3H16V4H15zM17,3H18V4H17zM19,3H20V4H19zM20,3H21V4H20zM21,3H22V4H21zM22,3H23V4H22zM23,3H24V4H23zM24,3H25V4H24zM25,3H26V4H25zM27,3H28V4H27zM29,3H30V4H29zM30,3H31V4H30zM31,3H32V4H31zM33,3H34V4H33zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM9,4H10V5H9zM12,4H13V5H12zM13,4H14V5H13zM15,4H16V5H15zM16,4H17V5H16zM17,4H18V5H17zM18,4H19V5H18zM22,4H23V5H22zM27,4H28V5H27zM29,4H30V5H29zM30,4H31V5H30zM31,4H32V5H31zM33,4H34V5H33zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM11,5H12V6H11zM12,5H13V6H12zM14,5H15V6H14zM15,5H16V6H15zM16,5H17V6H16zM17,5H18V6H17zM18,5H19V6H18zM19,5H20V6H19zM20,5H21V6H20zM21,5H22V6H21zM24,5H25V6H24zM27,5H28V6H27zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM33,5H34V6H33zM1,6H2V7H1zM7,6H8V7H7zM13,6H14V7H13zM14,6H15V7H14zM15,6H16V7H15zM16,6H17V7H16zM19,6H20V7H19zM21,6H22V7H21zM27,6H28V7H27zM33,6H34V7H33zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM25,7H26V8H25zM27,7H28V8H27zM28,7H29V8H28zM29,7H30V8H29zM30,7H31V8H30zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM9,8H10V9H9zM12,8H13V9H12zM15,8H16V9H15zM16,8H17V9H16zM17,8H18V9H17zM20,8H21V9H20zM21,8H22V9H21zM23,8H24V9H23zM24,8H25V9H24zM1,9H2V10H1zM7,9H8V10H7zM9,9H10V10H9zM11,9H12V10H11zM12,9H13V10H12zM13,9H14V10H13zM14,9H15V10H14zM15,9H16V10H15zM18,9H19V10H18zM20,9H21V10H20zM23,9H24V10H23zM24,9H25V10H24zM26,9H27V10H26zM27,9H28V10H27zM30,9H31V10H30zM31,9H32V10H31zM32,9H33V10H32zM2,10H3V11H2zM3,10H4V11H3zM4,10H5V11H4zM6,10H7V11H6zM10,10H11V11H10zM13,10H14V11H13zM14,10H15V11H14zM15,10H16V11H15zM16,10H17V11H16zM18,10H19V11H18zM20,10H21V11H20zM22,10H23V11H22zM23,10H24V11H23zM24,10H25V11H24zM29,10H30V11H29zM30,10H31V11H30zM31,10H32V11H31zM1,11H2V12H1zM2,11H3V12H2zM3,11H4V12H3zM4,11H5V12H4zM7,11H8V12H7zM8,11H9V12H8zM9,11H10V12H9zM10,11H11V12H10zM14,11H15V12H14zM15,11H16V12H15zM16,11H17V12H16zM17,11H18V12H17zM18,11H19V12H18zM22,11H23V12H22zM23,11H24V12H23zM26,11H27V12H26zM29,11H30V12H29zM31,11H32V12H31zM32,11H33V12H32zM1,12H2V13H1zM3,12H4V13H3zM4,12H5V13H4zM5,12H6V13H5zM10,12H11V13H10zM11,12H12V13H11zM14,12H15V13H14zM19,12H20V13H19zM20,12H21V13H20zM21,12H22V13H21zM24,12H25V13H24zM26,12H27V13H26zM28,12H29V13H28zM29,12H30V13H29zM30,12H31V13H30zM31,12H32V13H31zM2,13H3V14H2zM4,13H5V14H4zM5,13H6V14H5zM6,13H7V14H6zM7,13H8V14H7zM12,13H13V14H12zM14,13H15V14H14zM21,13H22V14H21zM25,13H26V14H25zM27,13H28V14H27zM28,13H29V14H28zM32,13H33V14H32zM1,14H2V15H1zM2,14H3V15H2zM3,14H4V15H3zM5,14H6V15H5zM12,14H13V15H12zM13,14H14V15H13zM14,14H15V15H14zM19,14H20V15H19zM20,14H21V15H20zM21,14H22V15H21zM22,14H23V15H22zM23,14H24V15H23zM24,14H25V15H24zM25,14H26V15H25zM27,14H28V15H27zM28,14H29V15H28zM31,14H32V15H31zM32,14H33V15H32zM33,14H34V15H33zM1,15H2V16H1zM3,15H4V16H3zM4,15H5V16H4zM7,15H8V16H7zM10,15H11V16H10zM11,15H12V16H11zM16,15H17V16H16zM17,15H18V16H17zM21,15H22V16H21zM22,15H23V16H22zM26,15H27V16H26zM27,15H28V16H27zM30,15H31V16H30zM31,15H32V16H31zM32,15H33V16H32zM1,16H2V17H1zM5,16H6V17H5zM9,16H10V17H9zM10,16H11V17H10zM12,16H13V17H12zM14,16H15V17H14zM17,16H18V17H17zM19,16H20V17H19zM20,16H21V17H20zM21,16H22V17H21zM23,16H24V17H23zM26,16H27V17H26zM28,16H29V17H28zM30,16H31V17H30zM31,16H32V17H31zM33,16H34V17H33zM3,17H4V18H3zM5,17H6V18H5zM6,17H7V18H6zM7,17H8V18H7zM11,17H12V18H11zM16,17H17V18H16zM18,17H19V18H18zM20,17H21V18H20zM23,17H24V18H23zM25,17H26V18H25zM26,17H27V18H26zM28,17H29V18H28zM29,17H30V18H29zM30,17H31V18H30zM33,17H34V18H33zM1,18H2V19H1zM3,18H4V19H3zM9,18H10V19H9zM10,18H11V19H10zM12,18H13V19H12zM16,18H17V19H16zM17,18H18V19H17zM19,18H20V19H19zM20,18H21V19H20zM24,18H25V19H24zM27,18H28V19H27zM30,18H31V19H30zM31,18H32V19H31zM33,18H34V19H33zM1,19H2V20H1zM2,19H3V20H2zM3,19H4V20H3zM7,19H8V20H7zM10,19H11V20H10zM12,19H13V20H12zM16,19H17V20H16zM17,19H18V20H17zM18,19H19V20H18zM20,19H21V20H20zM21,19H22V20H21zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM28,19H29V20H28zM30,19H31V20H30zM31,19H32V20H31zM33,19H34V20H33zM3,20H4V21H3zM4,20H5V21H4zM8,20H9V21H8zM9,20H10V21H9zM13,20H14V21H13zM14,20H15V21H14zM15,20H16V21H15zM16,20H17V21H16zM17,20H18V21H17zM20,20H21V21H20zM21,20H22V21H21zM23,20H24V21H23zM24,20H25V21H24zM29,20H30V21H29zM30,20H31V21H30zM31,20H32V21H31zM32,20H33V21H32zM1,21H2V22H1zM2,21H3V22H2zM4,21H5V22H4zM5,21H6V22H5zM7,21H8V22H7zM9,21H10V22H9zM18,21H19V22H18zM20,21H21V22H20zM23,21H24V22H23zM26,21H27V22H26zM28,21H29V22H28zM29,21H30V22H29zM30,21H31V22H30zM1,22H2V23H1zM2,22H3V23H2zM3,22H4V23H3zM5,22H6V23H5zM6,22H7V23H6zM8,22H9V23H8zM10,22H11V23H10zM11,22H12V23H11zM15,22H16V23H15zM18,22H19V23H18zM19,22H20V23H19zM20,22H21V23H20zM23,22H24V23H23zM24,22H25V23H24zM28,22H29V23H28zM29,22H30V23H29zM31,22H32V23H31zM1,23H2V24H1zM3,23H4V24H3zM7,23H8V24H7zM9,23H10V24H9zM11,23H12V24H11zM13,23H14V24H13zM14,23H15V24H14zM15,23H16V24H15zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM27,23H28V24H27zM30,23H31V24H30zM32,23H33V24H32zM1,24H2V25H1zM3,24H4V25H3zM4,24H5V25H4zM6,24H7V25H6zM8,24H9V25H8zM9,24H10V25H9zM10,24H11V25H10zM14,24H15V25H14zM15,24H16V25H15zM16,24H17V25H16zM17,24H18V25H17zM19,24H20V25H19zM21,24H22V25H21zM23,24H24V25H23zM25,24H26V25H25zM26,24H27V25H26zM28,24H29V25H28zM29,24H30V25H29zM30,24H31V25H30zM31,24H32V25H31zM32,24H33V25H32zM1,25H2V26H1zM2,25H3V26H2zM3,25H4V26H3zM5,25H6V26H5zM6,25H7V26H6zM7,25H8V26H7zM8,25H9V26H8zM15,25H16V26H15zM17,25H18V26H17zM21,25H22V26H21zM25,25H26V26H25zM26,25H27V26H26zM27,25H28V26H27zM28,25H29V26H28zM29,25H30V26H29zM30,25H31V26H30zM32,25H33V26H32zM9,26H10V27H9zM11,26H12V27H11zM16,26H17V27H16zM20,26H21V27H20zM21,26H22V27H21zM23,26H24V27H23zM25,26H26V27H25zM29,26H30V27H29zM31,26H32V27H31zM33,26H34V27H33zM1,27H2V28H1zM2,27H3V28H2zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM6,27H7V28H6zM7,27H8V28H7zM13,27H14V28H13zM15,27H16V28H15zM16,27H17V28H16zM19,27H20V28H19zM22,27H23V28H22zM23,27H24V28H23zM24,27H25V28H24zM25,27H26V28H25zM27,27H28V28H27zM29,27H30V28H29zM31,27H32V28H31zM32,27H33V28H32zM1,28H2V29H1zM7,28H8V29H7zM10,28H11V29H10zM11,28H12V29H11zM16,28H17V29H16zM17,28H18V29H17zM20,28H21V29H20zM21,28H22V29H21zM24,28H25V29H24zM25,28H26V29H25zM29,28H30V29H29zM30,28H31V29H30zM31,28H32V29H31zM1,29H2V30H1zM3,29H4V30H3zM4,29H5V30H4zM5,29H6V30H5zM7,29H8V30H7zM13,29H14V30H13zM14,29H15V30H14zM15,29H16V30H15zM16,29H17V30H16zM18,29H19V30H18zM19,29H20V30H19zM23,29H24V30H23zM25,29H26V30H25zM26,29H27V30H26zM27,29H28V30H27zM28,29H29V30H28zM29,29H30V30H29zM30,29H31V30H30zM1,30H2V31H1zM3,30H4V31H3zM4,30H5V31H4zM5,30H6V31H5zM7,30H8V31H7zM10,30H11V31H10zM13,30H14V31H13zM15,30H16V31H15zM19,30H20V31H19zM20,30H21V31H20zM23,30H24V31H23zM26,30H27V31H26zM28,30H29V31H28zM29,30H30V31H29zM31,30H32V31H31zM32,30H33V31H32zM33,30H34V31H33zM1,31H2V32H1zM3,31H4V32H3zM4,31H5V32H4zM5,31H6V32H5zM7,31H8V32H7zM10,31H11V32H10zM12,31H13V32H12zM14,31H15V32H14zM15,31H16V32H15zM16,31H17V32H16zM18,31H19V32H18zM20,31H21V32H20zM21,31H22V32H21zM22,31H23V32H22zM26,31H27V32H26zM28,31H29V32H28zM29,31H30V32H29zM31,31H32V32H31zM32,31H33V32H32zM33,31H34V32H33zM1,32H2V33H1zM7,32H8V33H7zM12,32H13V33H12zM13,32H14V33H13zM15,32H16V33H15zM16,32H17V33H16zM17,32H18V33H17zM20,32H21V33H20zM24,32H25V33H24zM28,32H29V33H28zM29,32H30V33H29zM31,32H32V33H31zM1,33H2V34H1zM2,33H3V34H2zM3,33H4V34H3zM4,33H5V34H4zM5,33H6V34H5zM6,33H7V34H6zM7,33H8V34H7zM9,33H10V34H9zM12,33H13V34H12zM13,33H14V34H13zM14,33H15V34H14zM15,33H16V34H15zM18,33H19V34H18zM23,33H24V34H23zM24,33H25V34H24zM25,33H26V34H25zM26,33H27V34H26zM28,33H29V34H28zM32,33H33V34H32z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div><div><p>Imbas untuk baca laman ani dalam talian, dalam Bahasa Melayu atau English.<br><b>infosihatbn.github.io/bahasa-melayu/ulser-kornea/</b></p><p>Risalah ani memberi maklumat am saja. Ikut nasihat doktor atau jururawat abiskita.</p><p class="pem">Kecemasan: telefon 991 atau pergi ke Jabatan Kecemasan yang paling dekat.</p><p class="pdate">Dicetak: <span data-pdate></span> · © 2026 InfoSihat, Brunei Darussalam</p></div></div></div></div></main>
+<footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>Untuk pendidikan saja, inda menggantikan nasihat doktor.</span><span>Kecemasan: 991 · © 2026 InfoSihat, Brunei Darussalam</span><span class="credit">Muzik: "Calm Ambient" oleh Velariomusic. Terima kasih!</span></div></footer>
 <script>
 function sizeAll(){document.querySelectorAll('iframe.embed').forEach(size)}
 function size(f){try{const d=f.contentDocument;const w=d.querySelector('.wrap');const h=w?Math.ceil(w.getBoundingClientRect().height):d.body.scrollHeight;if(h)f.style.height=(h+4)+'px'}catch(e){}}
@@ -318,7 +413,37 @@ addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forE
 
 
 <script>
-(function(){var B='20261006115653';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+document.querySelectorAll('iframe.embed[loading="lazy"]').forEach(f=>{if(!/vision-sim|myths/.test(f.src))f.loading='eager'});
+function printClones(){document.querySelectorAll('iframe.embed').forEach(f=>{if(/vision-sim|myths/.test(f.src))return;let d;try{d=f.contentDocument}catch(e){return}if(!d||!d.body)return;
+ let h=f.nextElementSibling;if(!h||!h.classList.contains('pclone')){h=document.createElement('div');h.className='pclone';h.attachShadow({mode:'open'});f.after(h)}
+ const css=[...d.querySelectorAll('style')].map(s=>s.textContent).join('\n').replace(/:root|\bhtml\b|\bbody\b/g,'.pbody');
+ h.shadowRoot.innerHTML='<style>'+css+'.pbody{margin:0;background:none!important;min-height:0!important}*{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none!important}button{display:none}.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style><div class="pbody">'+d.body.innerHTML+'</div>'})}
+(function(){const s=()=>{const d=new Date();document.querySelectorAll('[data-pdate]').forEach(e=>e.textContent=d.toLocaleDateString(document.documentElement.lang==='ms'?'ms-BN':'en-GB',{day:'numeric',month:'long',year:'numeric'}))};s();addEventListener('beforeprint',()=>{s();printClones();document.querySelectorAll('details.sec').forEach(d=>d.open=true);if(window.sizeAll)sizeAll()})})();
+</script>
+<script>
+(function(){
+const SRC='../../assets/calm-ambient.mp3',K='is-music',T='is-music-t',VOL=.22;
+const btn=document.querySelector('.music-btn');if(!btn)return;
+let pref='on';try{pref=localStorage.getItem(K)||'on'}catch(e){}
+const a=new Audio();a.src=SRC;a.loop=true;a.preload='none';a.volume=0;
+try{const t=parseFloat(sessionStorage.getItem(T));if(t)a.currentTime=t}catch(e){}
+function ui(){const on=!a.paused;btn.setAttribute('aria-pressed',on);btn.setAttribute('aria-label',on?btn.dataset.on:btn.dataset.off)}
+function fade(to,done){clearInterval(a._f);a._f=setInterval(()=>{const v=a.volume+(to>a.volume?.02:-.02);if(Math.abs(to-a.volume)<=.02){a.volume=to;clearInterval(a._f);done&&done()}else a.volume=Math.max(0,Math.min(1,v))},60)}
+function play(){if(!a.paused)return Promise.resolve();a.volume=0;return a.play().then(()=>{fade(VOL);ui()}).catch(()=>{ui()})}
+function stop(){fade(0,()=>{a.pause();ui()});btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label',btn.dataset.off)}
+function save(){try{sessionStorage.setItem(T,a.currentTime||0)}catch(e){}}
+btn.addEventListener('click',e=>{e.stopPropagation();if(a.paused){pref='on';play()}else{pref='off';stop()}try{localStorage.setItem(K,pref)}catch(e){}});
+function first(e){if(btn.contains(e.target))return;off();if(pref==='on')play()}
+function off(){['pointerdown','keydown','touchstart'].forEach(x=>removeEventListener(x,first,true))}
+if(pref==='on'){play().then(()=>{if(!a.paused)off()});['pointerdown','keydown','touchstart'].forEach(x=>addEventListener(x,first,true))}
+let wasOn=false;document.addEventListener('visibilitychange',()=>{if(document.hidden){wasOn=!a.paused;if(wasOn){a.pause();ui()}save()}else if(wasOn&&pref==='on'){play()}});
+addEventListener('pagehide',save);setInterval(()=>{if(!a.paused)save()},2000);
+addEventListener('beforeprint',()=>{if(!a.paused){a.pause();ui()}});
+ui();
+})();
+</script>
+<script>
+(function(){var B='20261006121301';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
