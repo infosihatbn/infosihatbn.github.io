@@ -21,6 +21,7 @@ def clean(t):
 
 # 1. Brunei health news (Google News RSS search)
 NEWS_Q = 'Brunei (health OR hospital OR "Ministry of Health" OR clinic OR disease OR doctors) when:14d'
+HEALTH_RE = re.compile(r"\b(health\w*|hospital\w*|MOH|clinic\w*|disease\w*|doctors?|nurs\w+|patients?|medic\w*|vaccin\w*|dengue|covid\w*|influenza|flu|virus\w*|infect\w*|outbreak|diabet\w*|cancer|heart|stroke|mental|obesity|smok\w*|vap\w*|air quality|haze|eye|vision|blind\w*|dialysis|kidney|pharmac\w*|drugs?|surgery|screening|wellness|nutrition|ambulance|RIPAS|JPMC)\b", re.I)
 def news():
     url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": NEWS_Q, "hl": "en-SG", "gl": "SG", "ceid": "SG:en"})
     root = ET.fromstring(get(url))
@@ -31,7 +32,7 @@ def news():
         if src and title.endswith(" - " + src):
             title = title[: -len(src) - 3]
         key = title.lower()[:80]
-        if not title or key in seen:
+        if not title or key in seen or not HEALTH_RE.search(title):
             continue
         seen.add(key)
         try:
@@ -43,7 +44,7 @@ def news():
     return items[:6]
 
 # 2. New eye research from Southeast Asia (PubMed E-utilities)
-EYE_TIAB = "(eye[tiab] OR eyes[tiab] OR ocular[tiab] OR ophthalm*[tiab] OR retina*[tiab] OR glaucoma[tiab] OR cataract*[tiab] OR myopi*[tiab] OR cornea*[tiab] OR uveitis[tiab] OR strabism*[tiab] OR amblyopi*[tiab] OR macula*[tiab] OR visual impairment[tiab])"
+EYE_TIAB = "(ophthalm*[ti] OR retina*[ti] OR retinopathy[ti] OR glaucoma*[ti] OR cataract*[ti] OR myopi*[ti] OR cornea*[ti] OR keratitis[ti] OR keratoconus[ti] OR uveitis[ti] OR strabism*[ti] OR amblyopi*[ti] OR macula*[ti] OR vitreo*[ti] OR ocular[ti] OR eye disease*[ti] OR eye care[ti] OR visual impairment[ti] OR vision loss[ti] OR blindness[ti] OR pterygium[ti] OR intraocular[ti])"
 SEA_AD = "(Brunei[ad] OR Malaysia[ad] OR Singapore[ad] OR Indonesia[ad] OR Thailand[ad] OR Philippines[ad] OR Vietnam[ad] OR \"Viet Nam\"[ad] OR Cambodia[ad] OR Laos[ad] OR \"Lao PDR\"[ad] OR Myanmar[ad] OR \"Timor-Leste\"[ad])"
 EU = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 def sea():
@@ -103,8 +104,12 @@ def bimj():
         if key in seen: continue
         seen.add(key)
         title = bold if len(bold) >= 15 and EYE_RE.search(bold) else t
-        out.append({"t": title, "src": "Brunei Int Med J" + (f" {year}" if year else ""), "d": year,
-                    "url": urllib.parse.urljoin(BIMJ_URL, href) if href else BIMJ_URL})
+        title = re.sub(r"^\s*\d+\s*[-–]\s*", "", title)
+        title = re.sub(r"^(Original Article|Case Reports?|Review Article|Reviews?|Images? of Interest|Short Communication|Brief Report|Editorial|Letters? to the Editor|Commentary|Clinical Audit)\s*[:-]?\s*", "", title, flags=re.I).strip().rstrip(".")
+        url = urllib.parse.urljoin(BIMJ_URL, href) if href else BIMJ_URL
+        yu = re.search(r"BIMJ[_-]?((?:19|20)\d\d)", url)
+        yr = year or (yu.group(1) if yu else "")
+        out.append({"t": title, "src": "Brunei Int Med J", "d": yr, "url": url})
     return out[:6]
 
 def main():
