@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Open today</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&display=swap"><style>
+/* InfoSihat embed: brand blue + teal from the logo, Lexend display, Atkinson Hyperlegible body (built for low-vision readers) */
+:root{
+  --ink:#1F2A30; --muted:#4A5A62; --paper:#FFFFFF; --mist:#EEF6F9; --line:#D3E3EA;
+  --blue:#4DA3CA; --blue-deep:#1F6E93; --teal:#4FBAB9; --teal-deep:#1C7675;
+  --sun:#F4C04E; --sun-soft:#FFF4D6; --alert:#B3261E; --alert-soft:#FDECEA;
+  --display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:transparent;color:var(--ink);font:400 18px/1.55 var(--body)}
+h2,h3,h4{font-family:var(--display);line-height:1.2;margin:0;text-wrap:balance;color:var(--ink)}
+p{margin:0}
+.wrap{padding:8px 4px 12px}
+.eyebrow{font:600 13px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.sc{display:grid;gap:16px}
+.today{background:linear-gradient(135deg,var(--mist),#E3F4F3);border-radius:24px;padding:22px 24px;display:grid;gap:12px}
+.today h2{font-size:22px}
+.today .when{color:var(--muted);font-size:16px}
+.chips-today{display:flex;flex-wrap:wrap;gap:8px}
+.ct{display:inline-flex;align-items:center;gap:8px;background:var(--paper);border:2px solid var(--teal);border-radius:999px;padding:8px 14px;font:600 16px/1.1 var(--display)}
+.ct::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--teal)}
+.none{font-weight:700}
+.status{display:inline-flex;align-items:center;gap:8px;font:700 15px/1 var(--display);border-radius:999px;padding:7px 12px;width:max-content;max-width:100%}
+.status.open{background:#DDF3EA;color:#145C3D}.status.shut{background:var(--alert-soft);color:var(--alert)}.status.soon{background:var(--sun-soft);color:#6B4A00}
+.list{display:grid;gap:10px}
+.cl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:14px 16px;background:var(--paper)}
+.cl.is-today{border-color:var(--teal);box-shadow:0 0 0 2px rgba(79,186,185,.25)}
+.cl h3{font-size:18px}
+.cl .note{font-size:14px;color:var(--muted);margin-top:2px}
+.days{display:flex;gap:5px;flex-wrap:wrap}
+.d{width:42px;height:34px;border-radius:10px;display:grid;place-items:center;font:600 13px/1 var(--display);background:#F2F5F6;color:#97A6AD}
+.d.on{background:var(--blue-deep);color:#fff}
+.d.tdy{outline:3px solid var(--sun);outline-offset:1px}
+.hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.hr{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 16px}
+.hr b{display:block;font:700 20px/1.2 var(--display);color:var(--blue-deep);font-variant-numeric:tabular-nums}
+.hr span{font-size:14px;color:var(--muted)}
+.er{background:var(--alert-soft);border-radius:16px;padding:12px 16px;font-size:16px}
+@media (max-width:560px){.cl{grid-template-columns:1fr}.d{width:38px}}
+</style></head><body><div class="wrap">
+<section class="sc" aria-label="Open today">
+  <div class="today" aria-live="polite">
+    <h2>Open today</h2>
+    <p class="when">Brunei time now: <b id="clock"></b></p>
+    <div class="chips-today" id="chips"></div>
+    <span class="status" id="st" hidden></span>
+    <p class="when">Walk in to any clinic. No referral needed.</p>
+  </div>
+  <div class="hours"><div class="hr"><b>7.45 – 12.15</b><span>Morning</span></div><div class="hr"><b>1.30 – 4.30</b><span>Afternoon</span></div></div>
+  <div class="list"><div class="cl"><div><h3>Rimba Health Centre</h3><span class="sr" style="position:absolute;left:-9999px">Mon, Tue, Wed, Thu, Sat</span></div><div class="days"><span class="d on" aria-hidden="true">Mon</span><span class="d on" aria-hidden="true">Tue</span><span class="d on" aria-hidden="true">Wed</span><span class="d on" aria-hidden="true">Thu</span><span class="d" aria-hidden="true">Fri</span><span class="d on" aria-hidden="true">Sat</span><span class="d" aria-hidden="true">Sun</span></div></div><div class="cl"><div><h3>Berakas Health Centre</h3><span class="sr" style="position:absolute;left:-9999px">Mon, Tue, Wed, Sat</span></div><div class="days"><span class="d on" aria-hidden="true">Mon</span><span class="d on" aria-hidden="true">Tue</span><span class="d on" aria-hidden="true">Wed</span><span class="d" aria-hidden="true">Thu</span><span class="d" aria-hidden="true">Fri</span><span class="d on" aria-hidden="true">Sat</span><span class="d" aria-hidden="true">Sun</span></div></div><div class="cl"><div><h3>Sengkurong Health Centre</h3><span class="sr" style="position:absolute;left:-9999px">Tue, Wed, Sat</span></div><div class="days"><span class="d" aria-hidden="true">Mon</span><span class="d on" aria-hidden="true">Tue</span><span class="d on" aria-hidden="true">Wed</span><span class="d" aria-hidden="true">Thu</span><span class="d" aria-hidden="true">Fri</span><span class="d on" aria-hidden="true">Sat</span><span class="d" aria-hidden="true">Sun</span></div></div><div class="cl"><div><h3>Muara Health Centre</h3><span class="sr" style="position:absolute;left:-9999px">Thu</span></div><div class="days"><span class="d" aria-hidden="true">Mon</span><span class="d" aria-hidden="true">Tue</span><span class="d" aria-hidden="true">Wed</span><span class="d on" aria-hidden="true">Thu</span><span class="d" aria-hidden="true">Fri</span><span class="d" aria-hidden="true">Sat</span><span class="d" aria-hidden="true">Sun</span></div></div><div class="cl"><div><h3>Temburong</h3><p class="note">1st &amp; 3rd Saturday of the month</p><span class="sr" style="position:absolute;left:-9999px">Sat</span></div><div class="days"><span class="d" aria-hidden="true">Mon</span><span class="d" aria-hidden="true">Tue</span><span class="d" aria-hidden="true">Wed</span><span class="d" aria-hidden="true">Thu</span><span class="d" aria-hidden="true">Fri</span><span class="d on" aria-hidden="true">Sat</span><span class="d" aria-hidden="true">Sun</span></div></div></div>
+  <p class="er"><b>After hours, Fridays and Sundays:</b> go to the Emergency Department. Eye emergency? Call <b>991</b>.</p>
+</section></div><script>
+const T={"names": ["Rimba Health Centre", "Berakas Health Centre", "Sengkurong Health Centre", "Muara Health Centre", "Temburong"], "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], "none": "No Community Eye Clinic today. After hours, go to the Emergency Department.", "open": "Open now", "lunch": "Lunch break · reopens 1.30 pm", "before": "Opens 7.45 am", "after": "Closed for today"};const DAYS=[[0, 1, 2, 3, 5], [0, 1, 2, 5], [1, 2, 5], [3], [5]];
+function bn(){const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Brunei',weekday:'short',day:'numeric',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date());
+ const g=k=>p.find(x=>x.type===k).value;return{wd:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].indexOf(g('weekday')),day:+g('day'),min:(+g('hour'))*60+(+g('minute')),hh:g('hour'),mm:g('minute')}}
+function openOn(i,t){if(!DAYS[i].includes(t.wd))return false;if(i===4)return t.day<=7||(t.day>=15&&t.day<=21);return true}
+function render(){const t=bn();const open=T.names.map((n,i)=>openOn(i,t)?n:null).filter(Boolean);
+ document.getElementById('clock').textContent=`${T.days[t.wd]} ${t.hh}.${t.mm}`;
+ const c=document.getElementById('chips');c.innerHTML='';
+ if(!open.length){c.innerHTML=`<p class="none">${T.none}</p>`}else open.forEach(n=>{const s=document.createElement('span');s.className='ct';s.textContent=n;c.appendChild(s)});
+ const st=document.getElementById('st');let k=null;
+ if(open.length){const m=t.min;k=m<465?['soon',T.before]:m<735?['open',T.open]:m<810?['soon',T.lunch]:m<990?['open',T.open]:['shut',T.after]}
+ st.hidden=!k;if(k){st.className='status '+k[0];st.textContent=k[1]}
+ document.querySelectorAll('.cl').forEach((el,i)=>{el.classList.toggle('is-today',openOn(i,t));el.querySelectorAll('.d').forEach((d,j)=>d.classList.toggle('tdy',j===t.wd))});}
+render();setInterval(render,60000);</script></body></html>
