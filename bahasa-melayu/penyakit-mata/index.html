@@ -76,6 +76,9 @@ footer b{font-family:var(--display)}
 .sec-body{padding:4px 22px 24px;display:grid;gap:16px}
 .sec-body>*{margin:0;min-width:0}
 @media (max-width:640px){.sec summary{padding:16px 16px}.sec-body{padding:4px 16px 20px}}
+.refs{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.refs h2{font:700 18px/1.2 var(--display)!important;color:var(--ink)!important;margin:0 0 10px!important}
+.refs ol{padding-left:22px;display:grid;gap:6px}.refs p{font-size:15px}
 @media print{.fold-bar{display:none}.sec summary .chev{display:none}}
 
 .nav button.ddb{display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--display);padding:12px 12px;border-radius:10px}
@@ -265,7 +268,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelect
 
 
 <script>
-(function(){var B='20261006113659';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261006114055';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

@@ -76,6 +76,9 @@ footer b{font-family:var(--display)}
 .sec-body{padding:4px 22px 24px;display:grid;gap:16px}
 .sec-body>*{margin:0;min-width:0}
 @media (max-width:640px){.sec summary{padding:16px 16px}.sec-body{padding:4px 16px 20px}}
+.refs{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.refs h2{font:700 18px/1.2 var(--display)!important;color:var(--ink)!important;margin:0 0 10px!important}
+.refs ol{padding-left:22px;display:grid;gap:6px}.refs p{font-size:15px}
 @media print{.fold-bar{display:none}.sec summary .chev{display:none}}
 
 .nav button.ddb{display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--display);padding:12px 12px;border-radius:10px}
@@ -219,7 +222,7 @@ footer b{font-family:var(--display)}
 <details class="sec" id="hari-dan-masa"><summary><h2>Hari dan masa</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Waktu pejabat:</strong> 7.45 pagi hingga 12.15 tengah hari, dan 1.30 petang hingga 4.30 petang.</p>
 <ul><li><strong>Pusat Kesihatan Rimba:</strong> Isnin, Selasa, Rabu, Khamis, Sabtu</li><li><strong>Pusat Kesihatan Berakas:</strong> Isnin, Selasa, Rabu, Sabtu</li><li><strong>Pusat Kesihatan Sengkurong:</strong> Selasa, Rabu, Sabtu</li><li><strong>Pusat Kesihatan Muara:</strong> Khamis</li><li><strong>Temburong:</strong> Sabtu pertama dan Sabtu ketiga setiap bulan</li></ul>
 </div></details>
-<details class="sec" id="lepas-waktu-pejabat-atau-kecemasan" open><summary><h2>Lepas waktu pejabat atau kecemasan?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li><strong>Lepas waktu pejabat</strong>, hari Jumaat dan Ahad: pergi ke <strong>Unit Kecemasan</strong> hospital.</li><li><strong>Kecemasan mata</strong> (penglihatan hilang tiba-tiba, kecederaan mata, bahan kimia masuk mata, mata merah dan sakit teruk dengan penglihatan kabur): pergi ke Unit Kecemasan dengan segera atau telefon <strong>991</strong>. Mun bahan kimia masuk mata, bilas dulu dengan air bersih yang banyak.</li></ul>
+<details class="sec" id="lepas-waktu-pejabat-atau-kecemasan" open><summary><h2>Lepas waktu pejabat atau kecemasan?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li><strong>Lepas waktu pejabat</strong>, hari Jumaat dan Ahad: pergi ke <strong>Unit Kecemasan</strong> hospital.</li><li><strong>Apa-apa kecemasan:</strong> pergi terus ke <strong>Unit Kecemasan</strong> hospital yang paling dekat, atau telefon <strong>991</strong>.</li></ul>
 </div></details>
 <details class="sec" id="apa-patut-dibawa"><summary><h2>Apa patut dibawa?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li>Kad pengenalan abiskita</li><li>Cermin mata atau kanta sentuh yang abiskita pakai</li><li>Samua ubat titis mata dan senarai ubat yang abiskita makan</li><li>Mun mata abiskita akan dititis ubat pembesar anak mata, penglihatan boleh kabur beberapa jam. <strong>Jangan memandu sendiri balik</strong>: bawa urang yang boleh menghantar abiskita.</li></ul>
 <p><em>Maklumat ani betul pada [tarikh]. Hari dan masa boleh berubah, terutama masa cuti umum.</em></p></div></details>
@@ -247,7 +250,7 @@ addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forE
 
 
 <script>
-(function(){var B='20261006113659';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261006114055';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

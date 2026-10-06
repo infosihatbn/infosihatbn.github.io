@@ -76,6 +76,9 @@ footer b{font-family:var(--display)}
 .sec-body{padding:4px 22px 24px;display:grid;gap:16px}
 .sec-body>*{margin:0;min-width:0}
 @media (max-width:640px){.sec summary{padding:16px 16px}.sec-body{padding:4px 16px 20px}}
+.refs{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.refs h2{font:700 18px/1.2 var(--display)!important;color:var(--ink)!important;margin:0 0 10px!important}
+.refs ol{padding-left:22px;display:grid;gap:6px}.refs p{font-size:15px}
 @media print{.fold-bar{display:none}.sec summary .chev{display:none}}
 
 .nav button.ddb{display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--display);padding:12px 12px;border-radius:10px}
@@ -219,7 +222,7 @@ footer b{font-family:var(--display)}
 <details class="sec" id="days-and-times"><summary><h2>Days and times</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Office hours:</strong> 7.45 am to 12.15 pm, and 1.30 pm to 4.30 pm.</p>
 <ul><li><strong>Rimba Health Centre:</strong> Monday, Tuesday, Wednesday, Thursday, Saturday</li><li><strong>Berakas Health Centre:</strong> Monday, Tuesday, Wednesday, Saturday</li><li><strong>Sengkurong Health Centre:</strong> Tuesday, Wednesday, Saturday</li><li><strong>Muara Health Centre:</strong> Thursday</li><li><strong>Temburong:</strong> first and third Saturday of every month</li></ul>
 </div></details>
-<details class="sec" id="after-hours-or-an-emergency" open><summary><h2>After hours or an emergency?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li><strong>After office hours</strong>, on Fridays and on Sundays: go to a hospital <strong>Emergency Department</strong>.</li><li><strong>Eye emergencies</strong> (sudden loss of vision, an eye injury, chemicals in the eye, a very painful red eye with blurred vision): go to the Emergency Department straight away or call <strong>991</strong>. If a chemical gets in your eye, rinse it with plenty of clean water first.</li></ul>
+<details class="sec" id="after-hours-or-an-emergency" open><summary><h2>After hours or an emergency?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li><strong>After office hours</strong>, on Fridays and on Sundays: go to a hospital <strong>Emergency Department</strong>.</li><li><strong>Any emergency:</strong> go to the nearest hospital <strong>Emergency Department</strong> straight away, or call <strong>991</strong>.</li></ul>
 </div></details>
 <details class="sec" id="what-to-bring"><summary><h2>What to bring</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li>Your identity card</li><li>Your glasses or contact lenses</li><li>All your eye drops, and a list of the medicines you take</li><li>If your pupils are widened with eye drops, your vision may be blurry for a few hours. <strong>Do not drive yourself home</strong>: bring someone who can take you.</li></ul>
 <p><em>This information is correct as of [date]. Days and times can change, especially on public holidays.</em></p></div></details>
@@ -247,7 +250,7 @@ addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forE
 
 
 <script>
-(function(){var B='20261006113659';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261006114055';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
