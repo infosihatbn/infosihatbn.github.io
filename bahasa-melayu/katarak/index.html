@@ -224,9 +224,9 @@ footer b{font-family:var(--display)}
 .hero2 .side{display:grid;gap:16px;justify-items:center;text-align:center}
 .hero2 .word{font:800 clamp(32px,4.6vw,46px)/1 var(--display)}.hero2 .word b{color:#333}.hero2 .word i{font-style:normal;color:var(--teal)}
 .brand img{animation:logopop 7s ease-in-out infinite;transform-origin:50% 60%}
-@keyframes logopop{0%,100%{transform:none}2%{transform:translateY(-6px) rotate(-12deg) scale(1.08)}5%{transform:translateY(0) rotate(14deg) scale(1.12)}8%{transform:rotate(-6deg)}11%{transform:rotate(0) scale(1)}}
-.brand .ch{display:inline-block;animation:chhop 7s ease-in-out infinite;animation-delay:calc(var(--i) * .07s)}
-@keyframes chhop{0%,9%,100%{transform:none}3%{transform:translateY(-7px) scale(1.06)}6%{transform:translateY(1px)}}
+@keyframes logopop{0%,18%,100%{transform:none}3%{transform:translateY(-9px) rotate(-18deg) scale(1.15)}7%{transform:translateY(0) rotate(360deg) scale(1.2)}11%{transform:rotate(350deg) scale(1.05)}14%{transform:rotate(366deg) scale(1)}17%{transform:rotate(360deg)}}
+.brand .ch{display:inline-block;animation:chhop 7s ease-in-out infinite;animation-delay:calc(.5s + var(--i) * .08s)}
+@keyframes chhop{0%,12%,100%{transform:none}4%{transform:translateY(-10px) scale(1.12)}8%{transform:translateY(2px) scale(.98)}}
 @media (prefers-reduced-motion:reduce){.brand img,.brand .ch{animation:none}}
 .hero2 .blink{transform-box:fill-box;transform-origin:center;animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,84%,100%{transform:scaleY(1)}90%{transform:scaleY(.06)}}
@@ -601,7 +601,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261006135045';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261006135246';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
