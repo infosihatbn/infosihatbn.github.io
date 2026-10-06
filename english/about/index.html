@@ -56,6 +56,26 @@ footer .in{max-width:860px;margin:0 auto;padding:32px 16px;display:grid;gap:6px;
 footer b{font-family:var(--display)}
 :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
 @media (max-width:640px){.topic{grid-template-columns:1fr}.nav{margin-left:0;width:100%}.nav a{padding:10px 10px;font-size:15px}.menu{left:0;right:auto}}
+
+.fold-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;color:var(--muted);font-size:16px;margin-top:8px}
+.fold-btns{display:flex;gap:8px}
+.fold-btns button{font:600 14px/1 var(--display);color:var(--blue-deep);background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer}
+.fold-btns button:hover{border-color:var(--blue-deep)}
+.folds{display:grid;gap:12px}
+.sec{border:1px solid var(--line);border-radius:20px;background:var(--paper);overflow:hidden}
+.sec[open]{border-color:var(--blue);box-shadow:0 6px 22px rgba(31,110,147,.08)}
+.sec summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;justify-content:space-between;padding:18px 22px;min-height:64px}
+.sec summary::-webkit-details-marker{display:none}
+.sec summary:hover{background:var(--mist)}
+.sec summary h2{margin:0!important;font:700 clamp(19px,2.6vw,23px)/1.25 var(--display);color:var(--ink)}
+.sec[open] summary h2{color:var(--blue-deep)}
+.chev{flex:none;width:36px;height:36px;border-radius:50%;background:var(--mist);position:relative;transition:transform .2s}
+.chev::before{content:"";position:absolute;left:50%;top:45%;width:10px;height:10px;border-right:3px solid var(--blue-deep);border-bottom:3px solid var(--blue-deep);transform:translate(-50%,-50%) rotate(45deg)}
+.sec[open] .chev{transform:rotate(180deg)}
+.sec-body{padding:4px 22px 24px;display:grid;gap:16px}
+.sec-body>*{margin:0;min-width:0}
+@media (max-width:640px){.sec summary{padding:16px 16px}.sec-body{padding:4px 16px 20px}}
+@media print{.fold-bar{display:none}.sec summary .chev{display:none}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
@@ -64,32 +84,43 @@ footer b{font-family:var(--display)}
 <main id="main"><div class="band"><div class="inner"><h1>About InfoSihat</h1></div></div><div class="content"><div class="btns"><a class="btn" href="../../bahasa-melayu/pasal-kami/">Baca dalam Bahasa Melayu</a></div>
 <p><strong>InfoSihat: health information at your fingertips.</strong><br><em>Maklumat Kesihatan dihujung Jari.</em></p>
 <p>InfoSihat is a free website that explains health conditions in simple, everyday language, in <strong>English</strong> and <strong>Bahasa Melayu Brunei</strong>. It is written by doctors in Brunei for the people of Brunei.</p>
-<h2>Our vision</h2>
-<p>To empower every individual in Brunei Darussalam with accessible, accurate, and culturally relevant health information, for a healthier and more informed nation.</p>
-<h2>Our mission</h2>
-<p>InfoSihat is dedicated to improving health literacy across Brunei by providing culturally appropriate, evidence-based and user-friendly health information. Through digital platforms, community outreach and collaboration with healthcare professionals, we aim to promote informed health choices, disease prevention and community well-being.</p>
-<h2>Why we started</h2>
-<p>Health literacy is the ability to find, understand and use health information. In Brunei, many people prefer to read in Malay, yet most reliable health information online is in English, written for other countries, and full of medical terms.</p>
+
+<div class="fold-bar"><span>Tap a heading to open or close it.</span><span class="fold-btns"><button type="button" data-fold="open">Open all</button><button type="button" data-fold="close">Close all</button></span></div>
+<div class="folds">
+<details class="sec" id="our-vision"><summary><h2>Our vision</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>To empower every individual in Brunei Darussalam with accessible, accurate, and culturally relevant health information, for a healthier and more informed nation.</p>
+</div></details>
+<details class="sec" id="our-mission"><summary><h2>Our mission</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>InfoSihat is dedicated to improving health literacy across Brunei by providing culturally appropriate, evidence-based and user-friendly health information. Through digital platforms, community outreach and collaboration with healthcare professionals, we aim to promote informed health choices, disease prevention and community well-being.</p>
+</div></details>
+<details class="sec" id="why-we-started"><summary><h2>Why we started</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Health literacy is the ability to find, understand and use health information. In Brunei, many people prefer to read in Malay, yet most reliable health information online is in English, written for other countries, and full of medical terms.</p>
 <p>Speaking at the 2nd ASEAN Digital Public Health Conference in 2022, the Minister of Health said:</p>
 <blockquote>"Health literacy is still quite low in the country, and it is hoped that digitisation of public health information will help to 'nudge' the public to take better care of their health."</blockquote>
 <p>A local study at RIPAS Hospital found that <strong>69.5%</strong> of patients with diabetes had inadequate knowledge of their condition. InfoSihat aims to help close that gap, starting with the eye.</p>
-<h2>What you will find here</h2>
-<ul><li><strong>Clear explanations</strong> of eye conditions, starting with diabetic retinopathy and glaucoma</li><li><strong>Two languages</strong>, written to sound like how we actually talk</li><li><strong>Local context:</strong> Brunei research, Brunei services, and Brunei life (including fasting in Ramadan)</li><li><strong>Pages you can print</strong> or show during a clinic visit</li><li><strong>References</strong> at the end of every page</li></ul>
-<h2>How we write our content</h2>
-<ol><li><strong>Written by doctors</strong> or medical students, in plain language.</li><li><strong>Checked by a doctor</strong> for accuracy before it is published.</li><li><strong>Based on evidence:</strong> international guidelines and research, plus Brunei studies where available.</li><li><strong>Reviewed regularly:</strong> each page shows when it was last reviewed.</li></ol>
-<h2>Who it is for</h2>
-<p>Everyone in Brunei, especially Malay-speaking adults, older people, youth and students, caregivers, and families in rural areas.</p>
-<h2>Important</h2>
-<p>InfoSihat is for <strong>general education only</strong>. It does not replace a consultation with your own doctor. If you are worried about your health, please see a doctor. <strong>In an emergency, call 991.</strong></p>
-<h2>Sources for this page</h2>
-<ul><li>Minister of Health's remarks, 2nd ASEAN Digital Public Health Conference, November 2022. [Add news link]</li><li>Health literacy among patients with diabetes in RIPAS Hospital. [Add full citation]</li></ul>
-<h2>Contact us</h2>
-<p>Email: [your InfoSihat email]<br>Instagram / Facebook / WhatsApp: [add your links]</p></div></main>
+</div></details>
+<details class="sec" id="what-you-will-find-here"><summary><h2>What you will find here</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li><strong>Clear explanations</strong> of eye conditions, starting with diabetic retinopathy and glaucoma</li><li><strong>Two languages</strong>, written to sound like how we actually talk</li><li><strong>Local context:</strong> Brunei research, Brunei services, and Brunei life (including fasting in Ramadan)</li><li><strong>Pages you can print</strong> or show during a clinic visit</li><li><strong>References</strong> at the end of every page</li></ul>
+</div></details>
+<details class="sec" id="how-we-write-our-content"><summary><h2>How we write our content</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ol><li><strong>Written by doctors</strong> or medical students, in plain language.</li><li><strong>Checked by a doctor</strong> for accuracy before it is published.</li><li><strong>Based on evidence:</strong> international guidelines and research, plus Brunei studies where available.</li><li><strong>Reviewed regularly:</strong> each page shows when it was last reviewed.</li></ol>
+</div></details>
+<details class="sec" id="who-it-is-for"><summary><h2>Who it is for</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Everyone in Brunei, especially Malay-speaking adults, older people, youth and students, caregivers, and families in rural areas.</p>
+</div></details>
+<details class="sec" id="important"><summary><h2>Important</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>InfoSihat is for <strong>general education only</strong>. It does not replace a consultation with your own doctor. If you are worried about your health, please see a doctor. <strong>In an emergency, call 991.</strong></p>
+</div></details>
+<details class="sec" id="sources-for-this-page"><summary><h2>Sources for this page</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li>Minister of Health's remarks, 2nd ASEAN Digital Public Health Conference, November 2022. [Add news link]</li><li>Health literacy among patients with diabetes in RIPAS Hospital. [Add full citation]</li></ul>
+</div></details>
+<details class="sec" id="contact-us"><summary><h2>Contact us</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Email: [your InfoSihat email]<br>Instagram / Facebook / WhatsApp: [add your links]</p></div></details>
+</div></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>Untuk pendidikan saja, inda menggantikan nasihat doktor. For education only, not a substitute for medical advice.</span><span>Kecemasan / Emergency: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
+function sizeAll(){document.querySelectorAll('iframe.embed').forEach(size)}
 function size(f){try{const d=f.contentDocument;const w=d.querySelector('.wrap');const h=w?Math.ceil(w.getBoundingClientRect().height):d.body.scrollHeight;if(h)f.style.height=(h+4)+'px'}catch(e){}}
 document.querySelectorAll('iframe.embed').forEach(f=>{const go=()=>{size(f);try{new ResizeObserver(()=>size(f)).observe(f.contentDocument.body);f.contentDocument.fonts.ready.then(()=>size(f))}catch(e){}};
  if(f.contentDocument&&f.contentDocument.readyState==='complete')go();f.addEventListener('load',go)});
+</script>
+<script>
+document.querySelectorAll('[data-fold]').forEach(b=>b.addEventListener('click',()=>{const o=b.dataset.fold==='open';document.querySelectorAll('details.sec').forEach(d=>d.open=o);if(o)sizeAll()}));
+document.querySelectorAll('details.sec').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)sizeAll()}));
+function openHash(){const h=decodeURIComponent(location.hash.slice(1));const d=h&&document.getElementById(h);if(d&&d.tagName==='DETAILS'){d.open=true;d.scrollIntoView()}}
+addEventListener('hashchange',openHash);openHash();
+addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forEach(d=>d.open=true));
 </script>
 </body>
 </html>

@@ -56,6 +56,26 @@ footer .in{max-width:860px;margin:0 auto;padding:32px 16px;display:grid;gap:6px;
 footer b{font-family:var(--display)}
 :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
 @media (max-width:640px){.topic{grid-template-columns:1fr}.nav{margin-left:0;width:100%}.nav a{padding:10px 10px;font-size:15px}.menu{left:0;right:auto}}
+
+.fold-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;color:var(--muted);font-size:16px;margin-top:8px}
+.fold-btns{display:flex;gap:8px}
+.fold-btns button{font:600 14px/1 var(--display);color:var(--blue-deep);background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer}
+.fold-btns button:hover{border-color:var(--blue-deep)}
+.folds{display:grid;gap:12px}
+.sec{border:1px solid var(--line);border-radius:20px;background:var(--paper);overflow:hidden}
+.sec[open]{border-color:var(--blue);box-shadow:0 6px 22px rgba(31,110,147,.08)}
+.sec summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;justify-content:space-between;padding:18px 22px;min-height:64px}
+.sec summary::-webkit-details-marker{display:none}
+.sec summary:hover{background:var(--mist)}
+.sec summary h2{margin:0!important;font:700 clamp(19px,2.6vw,23px)/1.25 var(--display);color:var(--ink)}
+.sec[open] summary h2{color:var(--blue-deep)}
+.chev{flex:none;width:36px;height:36px;border-radius:50%;background:var(--mist);position:relative;transition:transform .2s}
+.chev::before{content:"";position:absolute;left:50%;top:45%;width:10px;height:10px;border-right:3px solid var(--blue-deep);border-bottom:3px solid var(--blue-deep);transform:translate(-50%,-50%) rotate(45deg)}
+.sec[open] .chev{transform:rotate(180deg)}
+.sec-body{padding:4px 22px 24px;display:grid;gap:16px}
+.sec-body>*{margin:0;min-width:0}
+@media (max-width:640px){.sec summary{padding:16px 16px}.sec-body{padding:4px 16px 20px}}
+@media print{.fold-bar{display:none}.sec summary .chev{display:none}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
@@ -78,9 +98,11 @@ footer b{font-family:var(--display)}
 <p><em>Contributors write and review in their personal capacity. The views on this website do not necessarily represent those of their employers.</em></p></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>Untuk pendidikan saja, inda menggantikan nasihat doktor. For education only, not a substitute for medical advice.</span><span>Kecemasan / Emergency: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
+function sizeAll(){document.querySelectorAll('iframe.embed').forEach(size)}
 function size(f){try{const d=f.contentDocument;const w=d.querySelector('.wrap');const h=w?Math.ceil(w.getBoundingClientRect().height):d.body.scrollHeight;if(h)f.style.height=(h+4)+'px'}catch(e){}}
 document.querySelectorAll('iframe.embed').forEach(f=>{const go=()=>{size(f);try{new ResizeObserver(()=>size(f)).observe(f.contentDocument.body);f.contentDocument.fonts.ready.then(()=>size(f))}catch(e){}};
  if(f.contentDocument&&f.contentDocument.readyState==='complete')go();f.addEventListener('load',go)});
 </script>
+
 </body>
 </html>
