@@ -1,0 +1,30 @@
+name: Fetch free photos
+on:
+  workflow_dispatch:
+    inputs:
+      files:
+        description: "Commons file titles, separated by |"
+        required: true
+      outdir:
+        description: "Folder to save into"
+        default: "assets/sim-candidates"
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download photos
+        env:
+          FILES: ${{ github.event.inputs.files }}
+          OUTDIR: ${{ github.event.inputs.outdir }}
+        run: |
+          IFS='|' read -ra T <<< "$FILES"
+          python3 .github/scripts/fetch_photos.py "$OUTDIR" "${T[@]}"
+      - name: Commit
+        run: |
+          git config user.name "InfoSihat bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || (git commit -m "Fetch free-licensed photos" && git push)
