@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Myth or fact?</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&display=swap"><style>
+/* InfoSihat embed: brand blue + teal from the logo, Lexend display, Atkinson Hyperlegible body (built for low-vision readers) */
+:root{
+  --ink:#1F2A30; --muted:#4A5A62; --paper:#FFFFFF; --mist:#EEF6F9; --line:#D3E3EA;
+  --blue:#4DA3CA; --blue-deep:#1F6E93; --teal:#4FBAB9; --teal-deep:#1C7675;
+  --sun:#F4C04E; --sun-soft:#FFF4D6; --alert:#B3261E; --alert-soft:#FDECEA;
+  --display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:transparent;color:var(--ink);font:400 18px/1.55 var(--body)}
+h2,h3,h4{font-family:var(--display);line-height:1.2;margin:0;text-wrap:balance;color:var(--ink)}
+p{margin:0}
+.wrap{padding:8px 4px 12px}
+.eyebrow{font:600 13px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.my{display:grid;gap:14px}
+.my h2{font-size:24px}
+.my .sub{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.card{text-align:left;border:2px solid var(--line);background:var(--paper);border-radius:20px;padding:18px;cursor:pointer;display:grid;gap:10px;align-content:start;transition:border-color .2s,background .2s}
+.card:hover{border-color:var(--blue)}
+.tagm{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--alert)}
+.q{font:600 18px/1.35 var(--display)}
+.a{display:none;gap:6px}
+.card[aria-expanded="true"]{background:var(--mist);border-color:var(--teal-deep)}
+.card[aria-expanded="true"] .a{display:grid}
+.tagf{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep)}
+.hint{font-size:14px;color:var(--blue-deep);font-weight:700}
+.card[aria-expanded="true"] .hint{display:none}
+</style></head><body><div class="wrap"><section class="my" aria-label="Myth or fact?"><h2>Myth or fact?</h2><p class="sub">Tap a card to see the answer.</p><div class="cards"><button class="card" type="button" aria-expanded="false"><span class="tagm">Myth</span><span class="q">“No pain means no glaucoma.”</span><span class="hint">Tap to see the fact</span><span class="a"><span class="tagf">Fact</span><span>The most common type of glaucoma is painless. You will not feel anything until a lot of vision is lost.</span></span></button><button class="card" type="button" aria-expanded="false"><span class="tagm">Myth</span><span class="q">“Glaucoma only happens to old people.”</span><span class="hint">Tap to see the fact</span><span class="a"><span class="tagf">Fact</span><span>It is more common after 40, but it can happen at any age, even in babies.</span></span></button><button class="card" type="button" aria-expanded="false"><span class="tagm">Myth</span><span class="q">“My eyes feel fine now, so I can stop my drops.”</span><span class="hint">Tap to see the fact</span><span class="a"><span class="tagf">Fact</span><span>The drops work by keeping the pressure down. If you stop, the pressure goes back up and damage continues silently.</span></span></button><button class="card" type="button" aria-expanded="false"><span class="tagm">Myth</span><span class="q">“If I have glaucoma, I will surely go blind.”</span><span class="hint">Tap to see the fact</span><span class="a"><span class="tagf">Fact</span><span>Most people who are diagnosed early and use their treatment keep useful sight for life.</span></span></button></div></section></div><script>document.querySelectorAll('.card').forEach(c=>c.addEventListener('click',()=>c.setAttribute('aria-expanded',c.getAttribute('aria-expanded')!=='true')));</script></body></html>

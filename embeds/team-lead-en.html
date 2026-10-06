@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Project Lead</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&display=swap"><style>
+/* InfoSihat embed: brand blue + teal from the logo, Lexend display, Atkinson Hyperlegible body (built for low-vision readers) */
+:root{
+  --ink:#1F2A30; --muted:#4A5A62; --paper:#FFFFFF; --mist:#EEF6F9; --line:#D3E3EA;
+  --blue:#4DA3CA; --blue-deep:#1F6E93; --teal:#4FBAB9; --teal-deep:#1C7675;
+  --sun:#F4C04E; --sun-soft:#FFF4D6; --alert:#B3261E; --alert-soft:#FDECEA;
+  --display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:transparent;color:var(--ink);font:400 18px/1.55 var(--body)}
+h2,h3,h4{font-family:var(--display);line-height:1.2;margin:0;text-wrap:balance;color:var(--ink)}
+p{margin:0}
+.wrap{padding:8px 4px 12px}
+.eyebrow{font:600 13px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.tm{display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:center;background:linear-gradient(135deg,var(--mist),#E3F4F3);border-radius:26px;padding:28px}
+.av{width:150px;height:150px;border-radius:50%;background:var(--blue);display:grid;place-items:center;color:#fff;font:800 50px/1 var(--display);letter-spacing:.02em;border:6px solid var(--paper);overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.tm h3{font-size:clamp(24px,3.4vw,30px)}
+.role{font:600 17px/1.4 var(--display);color:var(--blue-deep);margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:15px}
+@media (max-width:560px){.tm{grid-template-columns:1fr;justify-items:center;text-align:center}.chips{justify-content:center}}
+</style></head><body><div class="wrap">
+<section class="tm" aria-label="Project Lead">
+  <!-- To use a photo: replace HA below with <img src="YOUR-PHOTO-URL" alt="Dr Haziq Aziz Shamri"> -->
+  <div class="av" aria-hidden="true">HA</div>
+  <div><p class="eyebrow">Project Lead</p><h3 style="margin-top:8px">Dr Haziq Aziz Shamri</h3><p class="role">Ophthalmology Resident, Brunei Eye Centre</p><div class="chips"><span class="chip">MBChB</span><span class="chip">Founder and Editor-in-Chief</span><span class="chip">Brunei Darussalam</span></div></div>
+</section></div></body></html>

@@ -1,0 +1,84 @@
+<!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cemana rupa penglihatan nya?</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&display=swap"><style>
+/* InfoSihat embed: brand blue + teal from the logo, Lexend display, Atkinson Hyperlegible body (built for low-vision readers) */
+:root{
+  --ink:#1F2A30; --muted:#4A5A62; --paper:#FFFFFF; --mist:#EEF6F9; --line:#D3E3EA;
+  --blue:#4DA3CA; --blue-deep:#1F6E93; --teal:#4FBAB9; --teal-deep:#1C7675;
+  --sun:#F4C04E; --sun-soft:#FFF4D6; --alert:#B3261E; --alert-soft:#FDECEA;
+  --display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:transparent;color:var(--ink);font:400 18px/1.55 var(--body)}
+h2,h3,h4{font-family:var(--display);line-height:1.2;margin:0;text-wrap:balance;color:var(--ink)}
+p{margin:0}
+.wrap{padding:8px 4px 12px}
+.eyebrow{font:600 13px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.sim{display:grid;gap:14px}
+.sim h2{font-size:24px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tab{border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 16px;cursor:pointer;font:600 15px/1.1 var(--display)}
+.tab[aria-pressed="true"]{background:var(--blue-deep);border-color:var(--blue-deep);color:#fff}
+.view{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;max-width:100%;background:#cfe8f1}
+.view svg{position:absolute;inset:0;width:100%;height:100%;transition:filter .4s}
+.ov{position:absolute;inset:0;pointer-events:none;transition:opacity .4s,background .4s}
+.ctrl{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.ctrl label{font:600 15px/1 var(--display)}
+.ctrl input{flex:1;min-width:160px;accent-color:var(--blue-deep)}
+.ctrl .lv{font-size:14px;color:var(--muted);min-width:0}
+.cap{font-size:15px;color:var(--muted)}
+.desc{font-size:17px}
+</style></head><body><div class="wrap">
+<section class="sim" aria-label="Cemana rupa penglihatan nya?">
+  <h2>Cemana rupa penglihatan nya?</h2>
+  <div class="tabs" role="group"><button class="tab" type="button" aria-pressed="false">Penglihatan normal</button><button class="tab" type="button" aria-pressed="false">Retinopati Kencing Manis</button><button class="tab" type="button" aria-pressed="false">Glaukoma</button></div>
+  <div class="view">
+<svg viewBox="0 0 800 450" role="img" aria-label="Pemandangan masjid berkubah emas, rumah Kampong Ayer dan perahu di sungai" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FD0EA"/><stop offset="1" stop-color="#E4F5FA"/></linearGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3E9DBF"/><stop offset="1" stop-color="#1F6E93"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F8D46A"/><stop offset="1" stop-color="#D99A1E"/></linearGradient>
+ </defs>
+ <rect width="800" height="450" fill="url(#sky)"/>
+ <circle cx="660" cy="80" r="38" fill="#FFE59A"/>
+ <ellipse cx="160" cy="70" rx="70" ry="18" fill="#FFFFFF" opacity=".85"/><ellipse cx="210" cy="60" rx="50" ry="16" fill="#FFFFFF" opacity=".85"/>
+ <rect x="0" y="300" width="800" height="150" fill="url(#sea)"/>
+ <!-- mosque with golden dome -->
+ <rect x="300" y="215" width="200" height="85" fill="#F7F7F2"/>
+ <rect x="350" y="185" width="100" height="32" fill="#F7F7F2"/>
+ <path d="M352 187 Q352 110 400 98 Q448 110 448 187 Z" fill="url(#gold)"/>
+ <rect x="397" y="78" width="6" height="22" fill="#D99A1E"/>
+ <rect x="520" y="120" width="22" height="180" fill="#F7F7F2"/>
+ <path d="M518 122 Q531 92 544 122 Z" fill="url(#gold)"/>
+ <g fill="#2E7DA1" opacity=".55"><rect x="318" y="235" width="14" height="40" rx="7"/><rect x="346" y="235" width="14" height="40" rx="7"/><rect x="374" y="235" width="14" height="40" rx="7"/><rect x="412" y="235" width="14" height="40" rx="7"/><rect x="440" y="235" width="14" height="40" rx="7"/><rect x="468" y="235" width="14" height="40" rx="7"/></g>
+ <!-- water village houses on stilts -->
+ <g><rect x="40" y="250" width="120" height="50" fill="#E8B07A"/><path d="M30 252 L100 215 L170 252 Z" fill="#B5542F"/>
+ <rect x="640" y="245" width="130" height="55" fill="#9FD3C7"/><path d="M630 248 L705 210 L780 248 Z" fill="#2E6F6E"/></g>
+ <g stroke="#6B4A2F" stroke-width="5"><line x1="55" y1="300" x2="55" y2="330"/><line x1="100" y1="300" x2="100" y2="330"/><line x1="145" y1="300" x2="145" y2="330"/><line x1="655" y1="300" x2="655" y2="330"/><line x1="705" y1="300" x2="705" y2="330"/><line x1="755" y1="300" x2="755" y2="330"/></g>
+ <!-- boat -->
+ <path d="M250 370 L380 370 L360 392 L270 392 Z" fill="#F4C04E"/><rect x="300" y="352" width="30" height="18" fill="#FFFFFF"/>
+ <g stroke="#FFFFFF" stroke-width="3" opacity=".5"><line x1="420" y1="400" x2="480" y2="400"/><line x1="560" y1="360" x2="610" y2="360"/><line x1="120" y1="410" x2="170" y2="410"/></g>
+ <!-- palm -->
+ <rect x="580" y="190" width="10" height="110" fill="#7A5634"/>
+ <g fill="#2F8F5B"><path d="M585 192 Q545 170 520 190 Q550 178 585 196Z"/><path d="M585 192 Q625 168 652 188 Q620 178 585 196Z"/><path d="M585 192 Q570 150 548 140 Q578 160 585 196Z"/><path d="M585 192 Q605 150 630 142 Q596 162 585 196Z"/></g>
+</svg><div class="ov" id="sp"></div><div class="ov" id="ov"></div></div>
+  <div class="ctrl"><label for="sev">Tahap</label><input type="range" id="sev" min="0" max="100" value="45"><span class="lv" id="lv"></span></div>
+  <p class="desc" id="desc" aria-live="polite"></p>
+  <p class="cap">Simulasi untuk gambaran saja. Kehilangan penglihatan berbeza bagi setiap urang.</p>
+</section></div><script>
+const D={"early": "Awal", "late": "Teruk", "desc": ["Penglihatan normal: samua jelas, dari tengah sampai ke tepi.", "Retinopati Kencing Manis boleh menyebabkan penglihatan kabur dan tompok-tompok gelap atau benda terapung. Peringkat awal, ramai urang inda perasan apa-apa.", "Glaukoma perlahan-lahan menghilangkan penglihatan tepi dulu. Ramai urang inda perasan sampailah penglihatan jadi macam meninjau dalam paip."]};let mode=0;const s=document.querySelector('.view svg'),ov=document.getElementById('ov'),sp=document.getElementById('sp'),
+rg=document.getElementById('sev'),lv=document.getElementById('lv'),ds=document.getElementById('desc'),tabs=[...document.querySelectorAll('.tab')];
+const spots=[[28,40,9],[62,30,7],[45,62,11],[74,58,8],[36,22,6],[55,45,5],[20,66,7]];
+function draw(){const v=+rg.value;lv.textContent=v<34?D.early:v>66?D.late:'';
+ tabs.forEach((t,i)=>t.setAttribute('aria-pressed',i===mode));ds.textContent=D.desc[mode];rg.disabled=mode===0;
+ if(mode===0){s.style.filter='none';ov.style.background='none';sp.style.background='none';return}
+ if(mode===1){const k=v/100;s.style.filter=`blur(${(0.6+k*3.4).toFixed(1)}px) saturate(${(1-k*0.45).toFixed(2)})`;
+  ov.style.background='none';const n=Math.max(2,Math.round(2+k*5));
+  sp.style.background=spots.slice(0,n).map(([x,y,r])=>`radial-gradient(circle at ${x}% ${y}%, rgba(25,15,10,${(0.55+k*0.35).toFixed(2)}) 0, rgba(25,15,10,${(0.35+k*0.3).toFixed(2)}) ${(r*(0.6+k)).toFixed(1)}%, transparent ${(r*(0.9+k*1.2)).toFixed(1)}%)`).join(',');return}
+ const r=Math.round(62-v*0.48);s.style.filter=`blur(${(v/100*0.8).toFixed(1)}px)`;sp.style.background='none';
+ ov.style.background=`radial-gradient(ellipse at 50% 52%, transparent ${r}%, rgba(8,12,16,.92) ${r+16}%, #05080b 100%)`;}
+tabs.forEach((t,i)=>t.addEventListener('click',()=>{mode=i;draw()}));rg.addEventListener('input',draw);draw();</script></body></html>
