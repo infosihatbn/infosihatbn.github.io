@@ -43,40 +43,40 @@
  "sea": {
   "items": [
    {
-    "t": "Medical gas: dual role in ocular treatment and diagnostic applications",
-    "src": "Med Gas Res",
-    "d": "2027 Jan 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42545723/"
-   },
-   {
-    "t": "Incorporation of low-oxidation graphene oxide into electrospun poly(ε-caprolactone) /gelatin scaffolds for human embryonic stem cell-derived retinal pigment epithelium cell transplantation",
-    "src": "Biomaterials",
-    "d": "2027 Jan",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42472489/"
-   },
-   {
-    "t": "A hybrid CNN-GNN and multitask learning pipeline for improving mild diabetic retinopathy sensitivity",
-    "src": "MethodsX",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42436968/"
-   },
-   {
-    "t": "Retinal Vascularity Index in Parkinson's Disease",
-    "src": "Ophthalmol Sci",
+    "t": "Visual Impairment and Blindness in Indian Myopes Aged 10-40 Years: A Multicenter Hospital-Based Study",
+    "src": "Ophthalmology Science",
     "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42828215/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42834931/"
    },
    {
-    "t": "Clinical applications of artificial intelligence in myopia: beyond algorithms to real-world implementation",
-    "src": "Curr Opin Ophthalmol",
-    "d": "2026 Nov 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42803605/"
+    "t": "Insights into the modulation of age-related macular degeneration: Molecular and systems-level perspectives",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42834336/"
    },
    {
-    "t": "Molecular biomarker profiling in noninfectious uveitis: a chronological review of discovery",
-    "src": "Curr Opin Ophthalmol",
-    "d": "2026 Nov 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42750565/"
+    "t": "A scoping review of integrated blink analysis technologies for ocular surface diseases",
+    "src": "Eye",
+    "d": "2026 Oct 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42834135/"
+   },
+   {
+    "t": "Systematic review of eyecare Patient-Reported Experience Measures (PREMs) following COSMIN guidelines",
+    "src": "Eye",
+    "d": "2026 Oct 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42834130/"
+   },
+   {
+    "t": "Risk factors, microbiological profiles, and clinical outcomes of paediatric infectious keratitis: The Midlands Infectious Keratitis Study",
+    "src": "Eye",
+    "d": "2026 Oct 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42834129/"
+   },
+   {
+    "t": "Endphthalmitis after cataract surgery in Sweden 2018-2024: associations with preoperative visual acuity and intracameral antibiotic regimens",
+    "src": "British Journal of Ophthalmology",
+    "d": "2026 Oct 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42833872/"
    }
   ],
   "updated": "2026-10-06"
@@ -98,7 +98,7 @@
   ],
   "updated": "2026-10-06"
  },
- "checked": "2026-10-06T11:58+00:00",
+ "checked": "2026-10-06T12:15+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
