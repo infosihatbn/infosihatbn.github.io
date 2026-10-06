@@ -82,35 +82,68 @@ footer b{font-family:var(--display)}
 .nav button.ddb:hover,.nav button.ddb.on,.dd.open button.ddb{background:var(--mist);color:var(--blue-deep)}
 .car{width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}
 .dd.open .menu{display:grid}
+.dd.open,.dd:hover,.dd:focus-within{z-index:20}.menu{z-index:20;background:#fff}
 .menu a[aria-current]{background:var(--mist);color:var(--blue-deep)}
 .lang{display:flex;background:var(--mist);border-radius:999px;padding:4px;gap:2px;flex:none}
 .lang a,.lang span{font:700 14px/1 var(--display);padding:9px 14px;border-radius:999px;text-decoration:none;color:var(--blue-deep);letter-spacing:.04em}
 .lang span.on{background:var(--blue-deep);color:#fff}
 .lang a:hover{background:var(--paper)}
 @media (max-width:640px){.bar{gap:8px}.lang{margin-left:auto}.nav{order:3}.nav button.ddb{padding:10px 10px;font-size:15px}}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{position:relative;display:grid;align-content:start;gap:6px;text-decoration:none;color:var(--ink)!important;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:20px;padding:18px 54px 18px 20px;transition:border-color .15s,box-shadow .15s,transform .15s}
+.card:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(31,110,147,.12);transform:translateY(-1px)}
+.card h3{font:700 20px/1.25 var(--display)!important;color:var(--blue-deep)}
+.card p{margin:0;color:var(--muted);font-size:17px}
+.kick{font:700 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+.go{position:absolute;right:18px;top:50%;width:28px;height:28px;margin-top:-14px;border-radius:50%;background:var(--mist)}
+.go::before{content:"";position:absolute;left:8px;top:9px;width:8px;height:8px;border-top:3px solid var(--blue-deep);border-right:3px solid var(--blue-deep);transform:rotate(45deg)}
+.card.urgent{border-left-color:#B3261E}.card.urgent h3{color:#8C1D18}.card.urgent .kick{color:#B3261E}.card.urgent .go{background:#FCE8E6}.card.urgent .go::before{border-color:#B3261E}
+.glance{background:var(--mist);border-radius:22px;padding:20px 24px;border:1px solid var(--line)}
+.glance h3{font:700 14px/1 var(--display)!important;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-deep);margin:0 0 12px!important}
+.glance ul{margin:0;padding-left:22px;display:grid;gap:8px}
+.alert{display:flex;gap:14px;align-items:flex-start;background:#FCE8E6;border:2px solid #B3261E;border-radius:20px;padding:16px 20px;color:#5C1410}
+.alert p{margin:0;font:500 18px/1.5 var(--body)}
+.alert strong{color:#8C1D18}
+.ai{flex:none;width:32px;height:32px;border-radius:50%;background:#B3261E;color:#fff;font:800 20px/32px var(--display);text-align:center}
+.anat{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:center;background:linear-gradient(180deg,var(--mist),#fff);border:1px solid var(--line);border-radius:24px;padding:18px}
+.anat svg{width:100%;height:auto;display:block}
+.anat svg a:hover circle,.anat svg a:focus circle{fill:var(--teal-deep)}
+.anat ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.anat li a{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);padding:6px 8px;border-radius:12px;font-size:16px;line-height:1.3}
+.anat li a:hover{background:var(--paper)}
+.anat li b{display:block;font:600 16px/1.25 var(--display);color:var(--blue-deep)}
+.anat .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--blue-deep);color:#fff;font:700 14px/28px var(--display);text-align:center}
+.content h2[id]{scroll-margin-top:90px}
+.menu{max-height:min(72vh,560px);overflow:auto}
+.menu a small{display:block;font:700 11px/1.2 var(--display);letter-spacing:.07em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:3px}
+.menu a.all{font-weight:700;color:var(--blue-deep);border-bottom:1px solid var(--line);border-radius:10px 10px 0 0}
+.dd.urgent .menu a small{color:#B3261E}
+.dd.urgent button.ddb::before{content:"";width:8px;height:8px;border-radius:50%;background:#B3261E}
+@media (max-width:760px){.anat{grid-template-columns:1fr}.card{padding-right:50px}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
 </head>
 <body class="">
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="bar"><a class="brand" href="../../"><img src="../../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Main menu"><a href="../../english/">Home</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/diabetic-retinopathy/">Diabetic Retinopathy</a><a href="../../english/glaucoma/">Glaucoma</a></div></div><a href="../../eye-clinics/">Eye Clinics</a><div class="dd"><button type="button" class="ddb on" aria-expanded="false">About Us<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/about/">About InfoSihat</a><a href="../../english/collaborators/" aria-current="page">Collaborators</a></div></div></nav><div class="lang" role="group" aria-label="Language"><a href="../../bahasa-melayu/rakan-kerjasama/" lang="ms" hreflang="ms" title="Bahasa Melayu">BM</a><span class="on" aria-current="true" lang="en">EN</span></div></div></header>
+<header class="site"><div class="bar"><a class="brand" href="../../"><img src="../../assets/logo-128.png" alt=""><span>Info<i>Sihat</i></span></a><nav class="nav" aria-label="Main menu"><a href="../../english/">Home</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/eye-conditions/" class="all">All eye conditions</a><a href="../../english/cataract/">Cataract</a><a href="../../english/glaucoma/">Glaucoma</a><a href="../../english/corneal-ulcer/"><small>Cornea</small>Corneal Ulcer</a><a href="../../english/diabetic-retinopathy/"><small>Retina</small>Diabetic Retinopathy</a><a href="../../english/ptosis/"><small>Neuro-ophthalmology</small>Ptosis (Droopy Eyelid)</a><a href="../../english/ectropion-entropion/"><small>Oculoplastics & Orbit</small>Ectropion and Entropion</a><a href="../../english/anterior-uveitis/"><small>Uveitis</small>Anterior Uveitis</a><a href="../../english/squint/"><small>Paediatric</small>Squint in Children</a></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Acute Eye Conditions<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/acute-eye-conditions/" class="all">All acute eye conditions</a><a href="../../english/retinal-detachment/"><small>Retina</small>Retinal Detachment</a><a href="../../english/acute-angle-closure-glaucoma/"><small>Eye pressure</small>Acute Angle-Closure Glaucoma</a><a href="../../english/endophthalmitis/"><small>Infection</small>Endophthalmitis</a></div></div><a href="../../eye-clinics/">Eye Clinics</a><div class="dd"><button type="button" class="ddb on" aria-expanded="false">About Us<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../english/about/">About InfoSihat</a><a href="../../english/collaborators/" aria-current="page">Collaborators</a></div></div></nav><div class="lang" role="group" aria-label="Language"><a href="../../bahasa-melayu/rakan-kerjasama/" lang="ms" hreflang="ms" title="Bahasa Melayu">BM</a><span class="on" aria-current="true" lang="en">EN</span></div></div></header>
 <main id="main"><div class="band"><div class="inner"><h1>Collaborators</h1></div></div><div class="content"><p>InfoSihat is a team effort by doctors, medical students and volunteers who want health information in Brunei to be clear, trustworthy and easy to read.</p>
-<h2>Initiative Supervisor</h2>
+<h2 id="initiative-supervisor">Initiative Supervisor</h2>
 <iframe class="embed" src="../../embeds/team-supervisor-en.html" title="team supervisor en" style="height:260px" loading="lazy"></iframe>
 <p>Dr Noor Affizan supervises the InfoSihat initiative and guides its clinical direction. She is President of the Brunei Ophthalmology Society and an Equity Initiative Fellow (2021), a regional programme for leaders working on health equity in Southeast Asia.</p>
 <p>During the COVID-19 pandemic she served as Medical Superintendent of the National Isolation Centre, and was named one of the "50 Leading Lights for Kindness &amp; Leadership – Asia Pacific" in 2022. She has led the Ministry of Health's Climate, Health and Sustainability Taskforce, and in 2019 founded You Can Lead BN, an online platform that connects young Bruneians with personal and professional development opportunities.</p>
-<h2>Initiative Lead</h2>
+<h2 id="initiative-lead">Initiative Lead</h2>
 <iframe class="embed" src="../../embeds/team-lead-en.html" title="team lead en" style="height:260px" loading="lazy"></iframe>
 <p>Dr Haziq is an Ophthalmology Resident at the Brunei Eye Centre and the founder of InfoSihat. Before that, Dr Haziq founded the Brunei Medical Students' Association (BMSA) and served as its First President.</p>
 <p>Dr Haziq started InfoSihat after seeing how many patients in clinic, especially those more comfortable in Malay, struggled to find health information that was trustworthy, local and easy to understand.</p>
 <p><strong>Role in the initiative</strong></p>
 <ul><li><strong>Vision and direction:</strong> sets the overall vision of InfoSihat and decides which health topics come first, starting with eye health.</li><li><strong>Editor-in-Chief:</strong> oversees all content and makes sure every page is accurate, evidence-based and written in plain language.</li><li><strong>Writing and review:</strong> writes and medically reviews the eye health pages, including diabetic retinopathy, glaucoma and the Community Eye Clinics guide.</li><li><strong>Bilingual and local:</strong> makes sure each page works in both Bahasa Melayu Brunei and English, and reflects life and health services in Brunei.</li><li><strong>Building the team:</strong> recruits and guides doctors, medical students and volunteers who write, review, translate and design for InfoSihat.</li><li><strong>Partnerships and outreach:</strong> works with healthcare professionals and the community to share InfoSihat, so patients can use it at home and doctors can use it during consultations.</li></ul>
-<h2>Editorial Board</h2>
+<h2 id="editorial-board">Editorial Board</h2>
 <ul><li><strong>Editorial Manager:</strong> [Name, title]</li><li><strong>Medical Peer Reviewers (doctors):</strong> [Name, specialty]</li><li><strong>Health Content Editors (doctors and medical students):</strong> [Names]</li></ul>
-<h2>Design and Technology</h2>
+<h2 id="design-and-technology">Design and Technology</h2>
 <ul><li><strong>Website:</strong> [Name]</li><li><strong>Design and infographics:</strong> [Name]</li></ul>
-<h2>Community and Outreach</h2>
+<h2 id="community-and-outreach">Community and Outreach</h2>
 <ul><li><strong>Community Manager:</strong> [Name]</li><li><strong>Social Media:</strong> [Name]</li></ul>
-<h2>Want to contribute?</h2>
+<h2 id="want-to-contribute">Want to contribute?</h2>
 <p>We welcome doctors, medical students, nurses, allied health professionals, translators and designers who want to help. Email us at [your InfoSihat email].</p>
 <p><em>Contributors write and review in their personal capacity. The views on this website do not necessarily represent those of their employers.</em></p></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><span>For education only, not a substitute for medical advice.</span><span>Emergency: 991 · © 2026 InfoSihat, Brunei Darussalam</span></div></footer>
