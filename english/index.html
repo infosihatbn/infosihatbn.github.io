@@ -522,6 +522,44 @@ iframe.embed{display:none!important}
 .sc-nav button{background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 15px/1 var(--body);color:var(--ink);cursor:pointer}
 .sc-disc{margin:18px 0 0;font-size:14px;color:#5b6770;background:#F6F7F8;border-radius:12px;padding:10px 12px}
 
+.tm{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;min-width:0}
+.tm-hint{margin:0;color:var(--muted);font-size:16px}
+.tm-card small{font:400 14px/1.4 var(--body);color:var(--muted)}
+.tm-card{flex-basis:210px}
+@media (max-width:640px){.tm-card{flex-basis:66%}}
+.tm-ov{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(18,30,36,.32);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);opacity:0;transition:opacity .25s}
+.tm-ov.on{opacity:1}
+.tm-ov[hidden]{display:none}
+.tm-sheet{position:relative;width:min(560px,100%);max-height:min(78vh,720px);overflow:auto;background:#FFFDF7;color:var(--ink);border-radius:24px;padding:22px 24px 26px;box-shadow:0 24px 60px rgba(0,0,0,.28);transform:translateY(30px) scale(.96);transition:transform .3s cubic-bezier(.2,.8,.3,1.15);display:grid;gap:12px}
+.tm-ov.on .tm-sheet{transform:none}
+.tm-sheet h3{margin:0;font:700 22px/1.25 var(--display)}
+.tm-body{display:grid;gap:12px;font-size:17px;line-height:1.55}
+.tm-body>*{margin:0}.tm-body ul{padding-left:22px;display:grid;gap:6px}
+.tm-x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:1px solid #E4DCC8;background:#fff;color:var(--ink);font:400 26px/1 var(--body);cursor:pointer}
+.tm-d.big{width:170px;max-width:60%}
+@media (max-width:640px){.tm-ov{align-items:flex-end;padding:0}.tm-sheet{border-radius:24px 24px 0 0;max-height:82vh;padding:20px 18px 28px}.tm-ov .tm-sheet{transform:translateY(60px)}}
+html.tm-lock{overflow:hidden}
+.t-doc .t-beam{animation:tBlink 1.6s ease-in-out infinite}
+.t-doc .t-pup{transform-box:fill-box;transform-origin:center;animation:tPup 1.6s ease-in-out infinite}
+.t-opt .t-ptr{transform-box:view-box;transform-origin:40px 34px;animation:tPtr 2.4s ease-in-out infinite}
+.t-ort .t-pen{animation:tPen 3s ease-in-out infinite}
+.t-ort .t-fol{animation:tFol 3s ease-in-out infinite}
+.t-nurse .t-drop{animation:tDrop 1.8s ease-in infinite}
+.t-asst .t-scan{animation:tScan 2.2s linear infinite}
+.t-optn .t-bob{animation:tBob 2.6s ease-in-out infinite}
+.t-optn .t-spk{animation:tBlink 1.3s ease-in-out infinite}
+.t-optn .t-cloth{animation:tRub 1.2s ease-in-out infinite}
+@keyframes tBlink{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes tPup{0%,100%{transform:scale(1)}50%{transform:scale(.55)}}
+@keyframes tPtr{0%,100%{transform:rotate(0)}50%{transform:rotate(14deg)}}
+@keyframes tPen{0%,100%{transform:translateX(-16px)}50%{transform:translateX(10px)}}
+@keyframes tFol{0%,100%{transform:translateX(-6px)}50%{transform:translateX(6px)}}
+@keyframes tDrop{0%,30%{opacity:0;transform:translateY(0)}45%{opacity:1}90%{opacity:1;transform:translateY(16px)}100%{opacity:0;transform:translateY(18px)}}
+@keyframes tScan{from{transform:translateX(0)}to{transform:translateX(28px)}}
+@keyframes tBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes tRub{0%,100%{transform:translate(0,0)}50%{transform:translate(-6px,4px)}}
+@media (prefers-reduced-motion:reduce){.tm-d *{animation:none!important}}
+
 .hotlines{display:grid;gap:10px}
 .hotlines h2{margin:0!important}.hotlines>p{margin:0;color:var(--muted)}
 .hlg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
@@ -599,7 +637,7 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 @media (max-width:480px){.bar{column-gap:6px!important}.lang a,.lang span{padding:8px 9px!important;font-size:13px!important}.brand img{width:38px!important;height:38px!important}.brand{gap:6px!important}}
 @media (max-width:380px){.brand>span{font-size:18px!important}.accb,.music-btn{width:32px!important;height:32px!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../assets/dark.css?v=20261007115749">
+<link rel="stylesheet" href="../assets/dark.css?v=20261007122040">
 </head>
 <body class="home">
 <a class="skip" href="#main">Skip to content</a>
@@ -631,7 +669,7 @@ sc.querySelector('.sc-back').onclick=()=>{const h=H.pop();if(h!==undefined)show(
 <h2 id="health-topics-by-specialty">Health topics by specialty</h2>
 <p>We are starting with <strong>eye health</strong>. More specialties are on the way.</p>
 <div class="specs"><article class="spec live"><span class="ico" aria-hidden="true">👁️</span><div class="sl"><span class="live-tag">Available now</span><h3>Ophthalmology <span style="font-weight:500;color:var(--muted)">· Eye health</span></h3><p>Eye conditions grouped by the part of the eye, eye emergencies, and where to get your eyes checked in Brunei.</p><div class="btns"><a class="btn" href="../english/eye-conditions/">Common Eye Conditions</a><a class="btn ghost" href="../english/acute-eye-conditions/">Acute Eye Conditions</a><a class="btn ghost" href="../eye-clinics/">Eye Clinics</a></div></div></article><article class="spec" aria-label="Endocrinology, Coming soon"><span class="ico" aria-hidden="true">🩸</span><h3>Endocrinology</h3><span>Diabetes and hormones</span><span class="soon">Coming soon</span></article><article class="spec" aria-label="Cardiology, Coming soon"><span class="ico" aria-hidden="true">❤️</span><h3>Cardiology</h3><span>Heart and blood pressure</span><span class="soon">Coming soon</span></article><article class="spec" aria-label="Mental Health, Coming soon"><span class="ico" aria-hidden="true">🧠</span><h3>Mental Health</h3><span>Mind and wellbeing</span><span class="soon">Coming soon</span></article></div>
-<iframe class="embed" src="../embeds/home-emergency-en.html?v=20261007115749" title="home emergency en" style="height:200px" loading="lazy"></iframe>
+<iframe class="embed" src="../embeds/home-emergency-en.html?v=20261007122040" title="home emergency en" style="height:200px" loading="lazy"></iframe>
 <section class="hotlines" aria-labelledby="hl-h"><h2 id="hl-h">Emergency Hotlines</h2><p>Tap a number to call.</p><div class="hlg"><a class="hl hl-u" href="tel:991"><span class="hle" aria-hidden="true">🚑</span><span class="hlt"><b>Ambulance (EMAS)</b></span><span class="hln">991</span></a><a class="hl hl-u" href="tel:995"><span class="hle" aria-hidden="true">🚒</span><span class="hlt"><b>Fire & Rescue</b></span><span class="hln">995</span></a><a class="hl hl-u" href="tel:993"><span class="hle" aria-hidden="true">🚓</span><span class="hlt"><b>Police</b></span><span class="hln">993</span></a><a class="hl hl-u" href="tel:998"><span class="hle" aria-hidden="true">🛟</span><span class="hlt"><b>Search & Rescue</b></span><span class="hln">998</span></a><a class="hl" href="tel:123"><span class="hle" aria-hidden="true">☎️</span><span class="hlt"><b>Talian Darussalam</b><small>Government helpline</small></span><span class="hln">123</span></a><a class="hl" href="tel:145"><span class="hle" aria-hidden="true">💚</span><span class="hlt"><b>Talian Harapan</b><small>Emotional support</small></span><span class="hln">145</span></a><a class="hl" href="tel:148"><span class="hle" aria-hidden="true">🩺</span><span class="hlt"><b>Talian Nasihat Kesihatan</b><small>Health advice line</small></span><span class="hln">148</span></a><a class="hl" href="https://wa.me/6738333123" target="_blank" rel="noopener"><span class="hle" aria-hidden="true">💬</span><span class="hlt"><b>WhatsApp Livechat</b><small>Chat on WhatsApp</small></span><span class="hln hln-l">8333123</span></a></div></section></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><p class="disc"><strong>Disclaimer:</strong> InfoSihat provides general health information for education only. It is not medical advice and does not replace an examination, diagnosis or treatment by a qualified doctor or health professional. Always ask your own doctor about any health concern, and never ignore or delay medical advice because of something you read here. Our content is reviewed regularly, but it may not cover every situation or the very latest guidance. InfoSihat and its contributors are not responsible for any loss or harm arising from the use of this website, or for the content of external websites we link to. Contributors write in their personal capacity, and the views here do not necessarily represent those of their employers or the Ministry of Health.</p><p class="disc-em">In an emergency, call 991 or go to the nearest Emergency Department.</p><span>© 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
@@ -763,7 +801,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261007115749';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261007122040';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

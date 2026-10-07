@@ -522,6 +522,44 @@ iframe.embed{display:none!important}
 .sc-nav button{background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 15px/1 var(--body);color:var(--ink);cursor:pointer}
 .sc-disc{margin:18px 0 0;font-size:14px;color:#5b6770;background:#F6F7F8;border-radius:12px;padding:10px 12px}
 
+.tm{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;min-width:0}
+.tm-hint{margin:0;color:var(--muted);font-size:16px}
+.tm-card small{font:400 14px/1.4 var(--body);color:var(--muted)}
+.tm-card{flex-basis:210px}
+@media (max-width:640px){.tm-card{flex-basis:66%}}
+.tm-ov{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(18,30,36,.32);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);opacity:0;transition:opacity .25s}
+.tm-ov.on{opacity:1}
+.tm-ov[hidden]{display:none}
+.tm-sheet{position:relative;width:min(560px,100%);max-height:min(78vh,720px);overflow:auto;background:#FFFDF7;color:var(--ink);border-radius:24px;padding:22px 24px 26px;box-shadow:0 24px 60px rgba(0,0,0,.28);transform:translateY(30px) scale(.96);transition:transform .3s cubic-bezier(.2,.8,.3,1.15);display:grid;gap:12px}
+.tm-ov.on .tm-sheet{transform:none}
+.tm-sheet h3{margin:0;font:700 22px/1.25 var(--display)}
+.tm-body{display:grid;gap:12px;font-size:17px;line-height:1.55}
+.tm-body>*{margin:0}.tm-body ul{padding-left:22px;display:grid;gap:6px}
+.tm-x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:1px solid #E4DCC8;background:#fff;color:var(--ink);font:400 26px/1 var(--body);cursor:pointer}
+.tm-d.big{width:170px;max-width:60%}
+@media (max-width:640px){.tm-ov{align-items:flex-end;padding:0}.tm-sheet{border-radius:24px 24px 0 0;max-height:82vh;padding:20px 18px 28px}.tm-ov .tm-sheet{transform:translateY(60px)}}
+html.tm-lock{overflow:hidden}
+.t-doc .t-beam{animation:tBlink 1.6s ease-in-out infinite}
+.t-doc .t-pup{transform-box:fill-box;transform-origin:center;animation:tPup 1.6s ease-in-out infinite}
+.t-opt .t-ptr{transform-box:view-box;transform-origin:40px 34px;animation:tPtr 2.4s ease-in-out infinite}
+.t-ort .t-pen{animation:tPen 3s ease-in-out infinite}
+.t-ort .t-fol{animation:tFol 3s ease-in-out infinite}
+.t-nurse .t-drop{animation:tDrop 1.8s ease-in infinite}
+.t-asst .t-scan{animation:tScan 2.2s linear infinite}
+.t-optn .t-bob{animation:tBob 2.6s ease-in-out infinite}
+.t-optn .t-spk{animation:tBlink 1.3s ease-in-out infinite}
+.t-optn .t-cloth{animation:tRub 1.2s ease-in-out infinite}
+@keyframes tBlink{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes tPup{0%,100%{transform:scale(1)}50%{transform:scale(.55)}}
+@keyframes tPtr{0%,100%{transform:rotate(0)}50%{transform:rotate(14deg)}}
+@keyframes tPen{0%,100%{transform:translateX(-16px)}50%{transform:translateX(10px)}}
+@keyframes tFol{0%,100%{transform:translateX(-6px)}50%{transform:translateX(6px)}}
+@keyframes tDrop{0%,30%{opacity:0;transform:translateY(0)}45%{opacity:1}90%{opacity:1;transform:translateY(16px)}100%{opacity:0;transform:translateY(18px)}}
+@keyframes tScan{from{transform:translateX(0)}to{transform:translateX(28px)}}
+@keyframes tBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes tRub{0%,100%{transform:translate(0,0)}50%{transform:translate(-6px,4px)}}
+@media (prefers-reduced-motion:reduce){.tm-d *{animation:none!important}}
+
 .hotlines{display:grid;gap:10px}
 .hotlines h2{margin:0!important}.hotlines>p{margin:0;color:var(--muted)}
 .hlg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
@@ -599,7 +637,7 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 @media (max-width:480px){.bar{column-gap:6px!important}.lang a,.lang span{padding:8px 9px!important;font-size:13px!important}.brand img{width:38px!important;height:38px!important}.brand{gap:6px!important}}
 @media (max-width:380px){.brand>span{font-size:18px!important}.accb,.music-btn{width:32px!important;height:32px!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../../assets/dark.css?v=20261007115749">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261007122040">
 </head>
 <body class="">
 <a class="skip" href="#main">Langkau ke kandungan</a>
@@ -608,8 +646,8 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 <div class="accp" role="group" aria-label="Saiz tulisan dan paparan" hidden><p>Saiz tulisan</p><div class="accr"><button type="button" data-fs="-1" aria-label="Tulisan lebih kecil">A−</button><button type="button" data-fs="0" aria-label="Tulisan biasa">A</button><button type="button" data-fs="1" aria-label="Tulisan lebih besar">A+</button></div>
 <p>Paparan</p><div class="accr"><button type="button" data-th="light">☀️ Cerah</button><button type="button" data-th="dark">🌙 Gelap</button></div>
 <p>Muzik latar</p><div class="acct"><button type="button" data-trk="0"><b>♪ Calm Ambient</b><small>oleh Velariomusic</small></button><button type="button" data-trk="1"><b>♪ Relax</b><small>oleh The Mountain</small></button><button type="button" data-trk="2"><b>♪ Calm</b><small>oleh MarloweMusic</small></button></div></div></div><div class="music"><button type="button" class="music-btn" aria-pressed="false" aria-label="Muzik disenyapkan. Tekan untuk main" data-on="Muzik dimainkan. Tekan untuk senyapkan" data-off="Muzik disenyapkan. Tekan untuk main"><svg class="m-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="m-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button><span class="music-tip" role="note" data-tpl="Muzik: &quot;{t}&quot; oleh {a}. Terima kasih!">Muzik: "Calm Ambient" oleh Velariomusic. Terima kasih!</span></div></div></header>
-<main id="main"><div class="band"><div class="inner"><h1>Prosedur dan Pembedahan Mata</h1><p class="byline">Ditulis dan disemak dari segi perubatan oleh Dr Haziq Aziz Shamri, MBChB · Disemak: 6 Oktober 2026 · Dikemas kini: 6 Oktober 2026</p><div class="band-tools"><div class="ra" data-l="ms-MY" data-t-read="🔊 Bacakan" data-t-pause="⏸ Berhenti sekejap" data-t-resume="▶️ Sambung"><button type="button" class="ra-p">🔊 Bacakan</button><button type="button" class="ra-x" hidden>⏹ Henti</button></div></div></div></div><div class="content has-side"><div class="main-col"><p>Ani apa yang abiskita boleh jangka untuk empat prosedur mata yang biasa dibuat di Brunei.</p>
-<aside class="glance"><h3>Sekilas pandang</h3><ul><li><strong>Suntikan mata</strong> memasukkan ubat ke dalam mata untuk mengurangkan bengkak dan salur darah yang bocor di belakang mata</li><li><strong>Operasi utik</strong> menukar kanta yang keruh dengan kanta tiruan yang jernih, selalunya balik hari atu jua</li><li><strong>Bekikis</strong> membuang kurita, lepas atu tempat atu ditutup dengan tisu sihat abiskita sendiri</li><li><strong>Laser PRP</strong> menutup salur darah yang inda normal pasal kencing manis, supaya penglihatan terjaga</li></ul></aside>
+<main id="main"><div class="band"><div class="inner"><h1>Prosedur dan Pembedahan Mata</h1><p class="byline">Ditulis dan disemak dari segi perubatan oleh Dr Haziq Aziz Shamri, MBChB · Disemak: 6 Oktober 2026 · Dikemas kini: 7 Oktober 2026</p><div class="band-tools"><div class="ra" data-l="ms-MY" data-t-read="🔊 Bacakan" data-t-pause="⏸ Berhenti sekejap" data-t-resume="▶️ Sambung"><button type="button" class="ra-p">🔊 Bacakan</button><button type="button" class="ra-x" hidden>⏹ Henti</button></div></div></div></div><div class="content has-side"><div class="main-col"><p>Ani apa yang abiskita boleh jangka untuk enam prosedur mata yang biasa dibuat di Brunei.</p>
+<aside class="glance"><h3>Sekilas pandang</h3><ul><li><strong>Suntikan mata</strong> memasukkan ubat ke dalam mata untuk mengurangkan bengkak dan salur darah yang bocor di belakang mata</li><li><strong>Operasi utik</strong> menukar kanta yang keruh dengan kanta tiruan yang jernih, selalunya balik hari atu jua</li><li><strong>Bekikis</strong> membuang kurita, lepas atu tempat atu ditutup dengan tisu sihat abiskita sendiri</li><li><strong>Laser PRP</strong> menutup salur darah yang inda normal pasal kencing manis, supaya penglihatan terjaga</li><li><strong>Laser YAG dan iridotomi</strong> ialah laser cepat di klinik untuk penglihatan kabur lepas operasi utik dan untuk sudut saliran yang sempit</li></ul></aside>
 
 <div class="fold-bar"><span>Tekan tajuk untuk buka atau tutup.</span><span class="fold-btns"><button type="button" data-fold="open">Buka semua</button><button type="button" data-fold="close">Tutup semua</button></span></div>
 <div class="folds">
@@ -663,11 +701,33 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 <ul><li>Penglihatan <strong>di tepi</strong> dan penglihatan <strong>waktu malam</strong> mungkin berkurang sikit.</li><li>PRP <strong>melindungi dari hilang penglihatan yang teruk</strong>. Selalunya ia <strong>inda</strong> membuat penglihatan lagi terang.</li></ul>
 <div class="btns"><a class="btn" href="../../bahasa-melayu/retinopati-kencing-manis/">Retinopati Kencing Manis</a></div>
 </div></details>
+<details class="sec" id="laser-yag-kapsulotomi"><summary><h2>Laser YAG kapsulotomi</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Apa kan ani?</strong></p>
+<ul><li>Beberapa bulan atau tahun lepas operasi utik, uncang nipis yang memegang kanta baru boleh jadi <strong>keruh</strong> (<strong>posterior capsule opacification</strong>). Penglihatan jadi <strong>kabur atau silau balik</strong>, macam utik datang lagi [7].</li><li><strong>Laser YAG</strong> membuat bukaan kecil di uncang yang keruh atu supaya cahaya boleh masuk dengan jelas. Utik <strong>inda</strong> sebenarnya tumbuh balik.</li></ul>
+<p><strong>Pada hari atu</strong></p>
+<ul><li>Dibuat <strong>di klinik</strong>. <strong>Ubat titis pembesar anak mata</strong> dikasi dulu, lepas atu abiskita duduk di mesin macam yang dipakai masa pemeriksaan mata.</li><li>Ambil masa <strong>beberapa minit</strong> saja dan <strong>inda sakit</strong>. Abiskita mungkin dengar bunyi klik dan nampak kilat cahaya.</li></ul>
+<p><strong>Lepas atu</strong></p>
+<ul><li>Penglihatan selalunya lagi jelas <strong>dalam sehari dua</strong>. Kabur dari ubat titis hilang lepas beberapa jam, jadi <strong>jangan memandu hari atu</strong>.</li><li>Beberapa <strong>bintik terapung</strong> baru biasa berlaku pada mulanya, dan selalunya berkurang.</li><li>Doktor mungkin kasi <strong>ubat titis anti-radang</strong> untuk masa singkat, dan mungkin memeriksa <strong>tekanan mata</strong> lepas atu.</li></ul>
+<p><strong>Risiko yang mungkin</strong></p>
+<ul><li><strong>Tekanan mata naik</strong> sekejap atau <strong>radang</strong> ringan.</li><li><strong>Retina tertanggal</strong> (jarang): tiba-tiba nampak kilat cahaya, banyak bintik terapung baru atau macam tirai gelap mesti diperiksa <strong>hari atu jua</strong>.</li></ul>
+<div class="btns"><a class="btn" href="../../bahasa-melayu/katarak/">Utik (Katarak)</a></div>
+</div></details>
+<details class="sec" id="iridotomi-periferi-laser-untuk-sudut-sempit"><summary><h2>Iridotomi periferi (laser untuk sudut sempit)</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Apa kan ani?</strong></p>
+<ul><li>Laser membuat <strong>lubang halus</strong> dekat tepi <strong>iris</strong> (bahagian mata yang berwarna). Ani membuka jalan lain untuk cecair dalam mata mengalir keluar, jadi sudut saliran <strong>kurang mungkin tesumbat</strong> [8].</li></ul>
+<p><strong>Kenapa dibuat?</strong></p>
+<ul><li><strong>Sudut saliran yang sempit</strong>, dijumpai masa pemeriksaan mata, untuk <strong>mencegah</strong> serangan tiba-tiba <strong>glaukoma akut</strong>.</li><li>Lepas serangan, untuk merawat mata atu, dan selalunya <strong>mata sebelah</strong> jua, pasal ia pun berisiko.</li></ul>
+<p><strong>Pada hari atu</strong></p>
+<ul><li>Dibuat <strong>di klinik</strong>. Ubat titis dipakai untuk <strong>mengecilkan anak mata</strong> dan <strong>membiuskan mata</strong>, lepas atu <strong>kanta lekap khas</strong> diletak di mata.</li><li>Ambil masa <strong>beberapa minit</strong>. Kebanyakan urang rasa <strong>pedih sekejap</strong> atau macam diketuk setiap kali laser ditembak.</li></ul>
+<p><strong>Lepas atu</strong></p>
+<ul><li>Penglihatan mungkin <strong>kabur</strong> beberapa jam, jadi <strong>jangan memandu hari atu</strong>.</li><li>Abiskita mungkin pakai <strong>ubat titis steroid</strong> beberapa hari. <strong>Tekanan mata</strong> diperiksa, kadang-kadang lebih kurang sejam lepas laser.</li><li>Lubang halus atu selalunya tesembunyi di bawah kelopak mata. Segelintir urang perasan <strong>silau atau garisan cahaya</strong> yang samar.</li></ul>
+<p><strong>Risiko yang mungkin</strong></p>
+<ul><li><strong>Tekanan mata naik</strong> sekejap, <strong>radang</strong> ringan, atau sikit <strong>pendarahan</strong> dalam mata yang hilang sendiri.</li><li>Kadang-kadang lubang atu tertutup balik dan laser perlu <strong>diulang</strong>.</li></ul>
+<div class="btns"><a class="btn" href="../../bahasa-melayu/glaukoma-akut/">Glaukoma Akut</a></div>
+</div></details>
 <details class="sec" id="ada-soalan-sebelum-prosedur"><summary><h2>Ada soalan sebelum prosedur?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Tanya <strong>doktor mata atau jururawat</strong> abiskita: inda ada soalan yang terlalu kecil. Mun kecemasan, pergi ke <strong>Unit Kecemasan</strong> hospital atau telefon <strong>991</strong>.</p>
 </div></details>
 </div>
-<section class="refs" id="rujukan"><h2>Rujukan</h2><ol><li>National Eye Institute (NIH). Age-Related Macular Degeneration (AMD). <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/age-related-macular-degeneration" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/age-related-macular-degeneration</a></li><li>NHS. Cataract surgery. <a href="https://www.nhs.uk/tests-and-treatments/cataract-surgery/" target="_blank" rel="noopener">https://www.nhs.uk/tests-and-treatments/cataract-surgery/</a></li><li>American Academy of Ophthalmology. What Is Cataract Surgery? <a href="https://www.aao.org/eye-health/treatments/what-is-cataract-surgery" target="_blank" rel="noopener">https://www.aao.org/eye-health/treatments/what-is-cataract-surgery</a></li><li>American Academy of Ophthalmology. What Are Pinguecula and Pterygium (Surfer's Eye)? <a href="https://www.aao.org/eye-health/diseases/pinguecula-pterygium" target="_blank" rel="noopener">https://www.aao.org/eye-health/diseases/pinguecula-pterygium</a></li><li>National Eye Institute (NIH). Diabetic Retinopathy. <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy</a></li><li>NHS. Diabetic retinopathy. <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/" target="_blank" rel="noopener">https://www.nhs.uk/conditions/diabetic-retinopathy/</a></li></ol>
-<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor abiskita sendiri.</em></p></section></div><aside class="pside" aria-label="Dalam laman ani"><div class="pside-in"><p class="pside-h">Dalam laman ani</p><ol class="toc"><li><a href="#suntikan-mata-anti-vegf">Suntikan mata (anti-VEGF)</a></li><li><a href="#operasi-utik-katarak">Operasi utik (katarak)</a></li><li><a href="#bekikis-operasi-membuang-kurita">Bekikis (operasi membuang kurita)</a></li><li><a href="#laser-prp-panretinal-photocoagulation">Laser PRP (panretinal photocoagulation)</a></li><li><a href="#ada-soalan-sebelum-prosedur">Ada soalan sebelum prosedur?</a></li><li><a href="#rujukan">Rujukan</a></li></ol><div class="pside-em"><b>Kecemasan?</b><span>Telefon 991 atau pergi ke Jabatan Kecemasan yang paling dekat.</span></div><a class="pside-clinic" href="../../klinik-mata/">Cari Klinik Mata Komuniti →</a></div></aside></div></main>
+<section class="refs" id="rujukan"><h2>Rujukan</h2><ol><li>National Eye Institute (NIH). Age-Related Macular Degeneration (AMD). <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/age-related-macular-degeneration" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/age-related-macular-degeneration</a></li><li>NHS. Cataract surgery. <a href="https://www.nhs.uk/tests-and-treatments/cataract-surgery/" target="_blank" rel="noopener">https://www.nhs.uk/tests-and-treatments/cataract-surgery/</a></li><li>American Academy of Ophthalmology. What Is Cataract Surgery? <a href="https://www.aao.org/eye-health/treatments/what-is-cataract-surgery" target="_blank" rel="noopener">https://www.aao.org/eye-health/treatments/what-is-cataract-surgery</a></li><li>American Academy of Ophthalmology. What Are Pinguecula and Pterygium (Surfer's Eye)? <a href="https://www.aao.org/eye-health/diseases/pinguecula-pterygium" target="_blank" rel="noopener">https://www.aao.org/eye-health/diseases/pinguecula-pterygium</a></li><li>National Eye Institute (NIH). Diabetic Retinopathy. <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy</a></li><li>NHS. Diabetic retinopathy. <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/" target="_blank" rel="noopener">https://www.nhs.uk/conditions/diabetic-retinopathy/</a></li><li>NHS. Cataract surgery: recovery (posterior capsule opacification). <a href="https://www.nhs.uk/tests-and-treatments/cataract-surgery/recovery/" target="_blank" rel="noopener">https://www.nhs.uk/tests-and-treatments/cataract-surgery/recovery/</a></li><li>American Academy of Ophthalmology. Laser Peripheral Iridotomy. <a href="https://www.aao.org/eye-health/treatments/laser-peripheral-iridotomy" target="_blank" rel="noopener">https://www.aao.org/eye-health/treatments/laser-peripheral-iridotomy</a></li></ol>
+<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor abiskita sendiri.</em></p></section></div><aside class="pside" aria-label="Dalam laman ani"><div class="pside-in"><p class="pside-h">Dalam laman ani</p><ol class="toc"><li><a href="#suntikan-mata-anti-vegf">Suntikan mata (anti-VEGF)</a></li><li><a href="#operasi-utik-katarak">Operasi utik (katarak)</a></li><li><a href="#bekikis-operasi-membuang-kurita">Bekikis (operasi membuang kurita)</a></li><li><a href="#laser-prp-panretinal-photocoagulation">Laser PRP (panretinal photocoagulation)</a></li><li><a href="#laser-yag-kapsulotomi">Laser YAG kapsulotomi</a></li><li><a href="#iridotomi-periferi-laser-untuk-sudut-sempit">Iridotomi periferi (laser untuk sudut sempit)</a></li><li><a href="#ada-soalan-sebelum-prosedur">Ada soalan sebelum prosedur?</a></li><li><a href="#rujukan">Rujukan</a></li></ol><div class="pside-em"><b>Kecemasan?</b><span>Telefon 991 atau pergi ke Jabatan Kecemasan yang paling dekat.</span></div><a class="pside-clinic" href="../../klinik-mata/">Cari Klinik Mata Komuniti →</a></div></aside></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><p class="disc"><strong>Penafian:</strong> InfoSihat memberi maklumat kesihatan am untuk pendidikan saja. Ia bukan nasihat perubatan, dan inda menggantikan pemeriksaan, diagnosis atau rawatan oleh doktor atau pengamal kesihatan yang bertauliah. Sentiasa dapatkan nasihat doktor abiskita pasal apa-apa masalah kesihatan, dan jangan abaikan atau lambatkan nasihat doktor kerana sesuatu yang abiskita baca di sini. Kandungan kami disemak selalu, tapi mungkin inda meliputi setiap keadaan atau panduan yang paling terkini. InfoSihat dan penyumbangnya inda bertanggungjawab atas apa-apa kerugian atau kemudaratan akibat penggunaan laman web ani, atau atas kandungan laman web luar yang kami pautkan. Penyumbang menulis atas kapasiti peribadi, dan pandangan di sini inda semestinya mewakili majikan mereka atau Kementerian Kesihatan.</p><p class="disc-em">Kecemasan: telefon 991 atau pergi ke Jabatan Kecemasan yang paling dekat.</p><span>© 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
 function sizeAll(){document.querySelectorAll('iframe.embed').forEach(size)}
@@ -778,7 +838,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261007115749';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261007122040';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

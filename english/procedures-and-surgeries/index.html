@@ -522,6 +522,44 @@ iframe.embed{display:none!important}
 .sc-nav button{background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 15px/1 var(--body);color:var(--ink);cursor:pointer}
 .sc-disc{margin:18px 0 0;font-size:14px;color:#5b6770;background:#F6F7F8;border-radius:12px;padding:10px 12px}
 
+.tm{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;min-width:0}
+.tm-hint{margin:0;color:var(--muted);font-size:16px}
+.tm-card small{font:400 14px/1.4 var(--body);color:var(--muted)}
+.tm-card{flex-basis:210px}
+@media (max-width:640px){.tm-card{flex-basis:66%}}
+.tm-ov{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(18,30,36,.32);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);opacity:0;transition:opacity .25s}
+.tm-ov.on{opacity:1}
+.tm-ov[hidden]{display:none}
+.tm-sheet{position:relative;width:min(560px,100%);max-height:min(78vh,720px);overflow:auto;background:#FFFDF7;color:var(--ink);border-radius:24px;padding:22px 24px 26px;box-shadow:0 24px 60px rgba(0,0,0,.28);transform:translateY(30px) scale(.96);transition:transform .3s cubic-bezier(.2,.8,.3,1.15);display:grid;gap:12px}
+.tm-ov.on .tm-sheet{transform:none}
+.tm-sheet h3{margin:0;font:700 22px/1.25 var(--display)}
+.tm-body{display:grid;gap:12px;font-size:17px;line-height:1.55}
+.tm-body>*{margin:0}.tm-body ul{padding-left:22px;display:grid;gap:6px}
+.tm-x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:1px solid #E4DCC8;background:#fff;color:var(--ink);font:400 26px/1 var(--body);cursor:pointer}
+.tm-d.big{width:170px;max-width:60%}
+@media (max-width:640px){.tm-ov{align-items:flex-end;padding:0}.tm-sheet{border-radius:24px 24px 0 0;max-height:82vh;padding:20px 18px 28px}.tm-ov .tm-sheet{transform:translateY(60px)}}
+html.tm-lock{overflow:hidden}
+.t-doc .t-beam{animation:tBlink 1.6s ease-in-out infinite}
+.t-doc .t-pup{transform-box:fill-box;transform-origin:center;animation:tPup 1.6s ease-in-out infinite}
+.t-opt .t-ptr{transform-box:view-box;transform-origin:40px 34px;animation:tPtr 2.4s ease-in-out infinite}
+.t-ort .t-pen{animation:tPen 3s ease-in-out infinite}
+.t-ort .t-fol{animation:tFol 3s ease-in-out infinite}
+.t-nurse .t-drop{animation:tDrop 1.8s ease-in infinite}
+.t-asst .t-scan{animation:tScan 2.2s linear infinite}
+.t-optn .t-bob{animation:tBob 2.6s ease-in-out infinite}
+.t-optn .t-spk{animation:tBlink 1.3s ease-in-out infinite}
+.t-optn .t-cloth{animation:tRub 1.2s ease-in-out infinite}
+@keyframes tBlink{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes tPup{0%,100%{transform:scale(1)}50%{transform:scale(.55)}}
+@keyframes tPtr{0%,100%{transform:rotate(0)}50%{transform:rotate(14deg)}}
+@keyframes tPen{0%,100%{transform:translateX(-16px)}50%{transform:translateX(10px)}}
+@keyframes tFol{0%,100%{transform:translateX(-6px)}50%{transform:translateX(6px)}}
+@keyframes tDrop{0%,30%{opacity:0;transform:translateY(0)}45%{opacity:1}90%{opacity:1;transform:translateY(16px)}100%{opacity:0;transform:translateY(18px)}}
+@keyframes tScan{from{transform:translateX(0)}to{transform:translateX(28px)}}
+@keyframes tBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes tRub{0%,100%{transform:translate(0,0)}50%{transform:translate(-6px,4px)}}
+@media (prefers-reduced-motion:reduce){.tm-d *{animation:none!important}}
+
 .hotlines{display:grid;gap:10px}
 .hotlines h2{margin:0!important}.hotlines>p{margin:0;color:var(--muted)}
 .hlg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
@@ -599,7 +637,7 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 @media (max-width:480px){.bar{column-gap:6px!important}.lang a,.lang span{padding:8px 9px!important;font-size:13px!important}.brand img{width:38px!important;height:38px!important}.brand{gap:6px!important}}
 @media (max-width:380px){.brand>span{font-size:18px!important}.accb,.music-btn{width:32px!important;height:32px!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../../assets/dark.css?v=20261007115749">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261007122040">
 </head>
 <body class="">
 <a class="skip" href="#main">Skip to content</a>
@@ -608,8 +646,8 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 <div class="accp" role="group" aria-label="Text size and display" hidden><p>Text size</p><div class="accr"><button type="button" data-fs="-1" aria-label="Smaller text">A−</button><button type="button" data-fs="0" aria-label="Normal text">A</button><button type="button" data-fs="1" aria-label="Bigger text">A+</button></div>
 <p>Display</p><div class="accr"><button type="button" data-th="light">☀️ Light</button><button type="button" data-th="dark">🌙 Dark</button></div>
 <p>Background music</p><div class="acct"><button type="button" data-trk="0"><b>♪ Calm Ambient</b><small>by Velariomusic</small></button><button type="button" data-trk="1"><b>♪ Relax</b><small>by The Mountain</small></button><button type="button" data-trk="2"><b>♪ Calm</b><small>by MarloweMusic</small></button></div></div></div><div class="music"><button type="button" class="music-btn" aria-pressed="false" aria-label="Music off. Tap to play" data-on="Music on. Tap to mute" data-off="Music off. Tap to play"><svg class="m-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="m-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button><span class="music-tip" role="note" data-tpl="Music: &quot;{t}&quot; by {a}. Thank you!">Music: "Calm Ambient" by Velariomusic. Thank you!</span></div></div></header>
-<main id="main"><div class="band"><div class="inner"><h1>Procedures and Surgeries</h1><p class="byline">Written and medically reviewed by Dr Haziq Aziz Shamri, MBChB · Reviewed: 6 October 2026 · Last updated: 6 October 2026</p><div class="band-tools"><div class="ra" data-l="en-GB" data-t-read="🔊 Read aloud" data-t-pause="⏸ Pause" data-t-resume="▶️ Resume"><button type="button" class="ra-p">🔊 Read aloud</button><button type="button" class="ra-x" hidden>⏹ Stop</button></div></div></div></div><div class="content has-side"><div class="main-col"><p>Here is what to expect from four common eye procedures in Brunei.</p>
-<aside class="glance"><h3>At a glance</h3><ul><li><strong>Eye injections</strong> put medicine inside the eye to treat swelling and leaky vessels at the back of the eye</li><li><strong>Cataract surgery</strong> swaps the cloudy lens for a clear artificial one, usually as a day case</li><li><strong>Pterygium surgery</strong> removes the fleshy growth and covers the area with your own healthy tissue</li><li><strong>PRP laser</strong> seals off abnormal blood vessels in diabetic eye disease to protect your sight</li></ul></aside>
+<main id="main"><div class="band"><div class="inner"><h1>Procedures and Surgeries</h1><p class="byline">Written and medically reviewed by Dr Haziq Aziz Shamri, MBChB · Reviewed: 6 October 2026 · Last updated: 7 October 2026</p><div class="band-tools"><div class="ra" data-l="en-GB" data-t-read="🔊 Read aloud" data-t-pause="⏸ Pause" data-t-resume="▶️ Resume"><button type="button" class="ra-p">🔊 Read aloud</button><button type="button" class="ra-x" hidden>⏹ Stop</button></div></div></div></div><div class="content has-side"><div class="main-col"><p>Here is what to expect from six common eye procedures in Brunei.</p>
+<aside class="glance"><h3>At a glance</h3><ul><li><strong>Eye injections</strong> put medicine inside the eye to treat swelling and leaky vessels at the back of the eye</li><li><strong>Cataract surgery</strong> swaps the cloudy lens for a clear artificial one, usually as a day case</li><li><strong>Pterygium surgery</strong> removes the fleshy growth and covers the area with your own healthy tissue</li><li><strong>PRP laser</strong> seals off abnormal blood vessels in diabetic eye disease to protect your sight</li><li><strong>YAG and iridotomy lasers</strong> are quick clinic lasers for cloudy vision after cataract surgery and for narrow drainage angles</li></ul></aside>
 
 <div class="fold-bar"><span>Tap a heading to open or close it.</span><span class="fold-btns"><button type="button" data-fold="open">Open all</button><button type="button" data-fold="close">Close all</button></span></div>
 <div class="folds">
@@ -663,11 +701,33 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 <ul><li>Some loss of <strong>side vision</strong> and <strong>night vision</strong>.</li><li>PRP <strong>protects against severe vision loss</strong>. It does <strong>not</strong> usually make your vision better.</li></ul>
 <div class="btns"><a class="btn" href="../../english/diabetic-retinopathy/">Diabetic Retinopathy</a></div>
 </div></details>
+<details class="sec" id="yag-laser-capsulotomy"><summary><h2>YAG laser capsulotomy</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>What is it?</strong></p>
+<ul><li>Months or years after cataract surgery, the thin bag holding the new lens can turn <strong>cloudy</strong> (<strong>posterior capsule opacification</strong>). Vision becomes <strong>blurry or glary again</strong>, like the cataract has come back [7].</li><li>A <strong>YAG laser</strong> makes a small opening in the cloudy bag so light can pass through clearly. The cataract <strong>does not</strong> really come back.</li></ul>
+<p><strong>On the day</strong></p>
+<ul><li>Done <strong>in the clinic</strong>. <strong>Dilating drops</strong> widen your pupil first, and you sit at a machine like the one used for eye checks.</li><li>It takes only <strong>a few minutes</strong> and is <strong>painless</strong>. You may hear clicks and see flashes of light.</li></ul>
+<p><strong>Afterwards</strong></p>
+<ul><li>Vision is often clearer <strong>within a day or so</strong>. Blurriness from the drops wears off in a few hours, so <strong>do not drive that day</strong>.</li><li>A few new <strong>floaters</strong> are common at first and usually settle.</li><li>Your doctor may give <strong>anti-inflammatory drops</strong> for a short time and may check your <strong>eye pressure</strong> afterwards.</li></ul>
+<p><strong>Possible risks</strong></p>
+<ul><li>A short <strong>rise in eye pressure</strong> or mild <strong>inflammation</strong>.</li><li><strong>Retinal detachment</strong> (rare): sudden flashes, many new floaters or a dark curtain need checking <strong>the same day</strong>.</li></ul>
+<div class="btns"><a class="btn" href="../../english/cataract/">Cataract</a></div>
+</div></details>
+<details class="sec" id="peripheral-iridotomy-laser-for-narrow-angles"><summary><h2>Peripheral iridotomy (laser for narrow angles)</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>What is it?</strong></p>
+<ul><li>A laser makes a <strong>tiny hole</strong> near the edge of the <strong>iris</strong> (the coloured part of the eye). This gives fluid inside the eye another path to drain, so the drainage angle is <strong>less likely to block</strong> [8].</li></ul>
+<p><strong>Why is it done?</strong></p>
+<ul><li><strong>Narrow drainage angles</strong>, found at an eye check, to <strong>prevent</strong> a sudden attack of <strong>acute angle-closure glaucoma</strong>.</li><li>After an attack, to treat that eye, and usually the <strong>other eye</strong> too, because it is also at risk.</li></ul>
+<p><strong>On the day</strong></p>
+<ul><li>Done <strong>in the clinic</strong>. Drops are used to <strong>make the pupil small</strong> and to <strong>numb the eye</strong>, and a <strong>special contact lens</strong> is held on the eye.</li><li>It takes <strong>a few minutes</strong>. Most people feel a <strong>brief sting</strong> or a tap with each pulse.</li></ul>
+<p><strong>Afterwards</strong></p>
+<ul><li>Vision may be <strong>blurry</strong> for a few hours, so <strong>do not drive that day</strong>.</li><li>You may use <strong>steroid drops</strong> for a few days. Your <strong>eye pressure</strong> is checked, sometimes about an hour after the laser.</li><li>The tiny hole is usually hidden under the eyelid. A few people notice <strong>glare or a faint line of light</strong>.</li></ul>
+<p><strong>Possible risks</strong></p>
+<ul><li>A short <strong>rise in eye pressure</strong>, mild <strong>inflammation</strong>, or a little <strong>bleeding</strong> in the eye that clears by itself.</li><li>Sometimes the hole closes and the laser needs to be <strong>repeated</strong>.</li></ul>
+<div class="btns"><a class="btn" href="../../english/acute-angle-closure-glaucoma/">Acute Angle-Closure Glaucoma</a></div>
+</div></details>
 <details class="sec" id="questions-before-your-procedure"><summary><h2>Questions before your procedure?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Ask your <strong>eye doctor or nurse</strong>: no question is too small. In an emergency, go to the hospital <strong>Emergency Department</strong> or call <strong>991</strong>.</p>
 </div></details>
 </div>
-<section class="refs" id="references"><h2>References</h2><ol><li>National Eye Institute (NIH). Age-Related Macular Degeneration (AMD). <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/age-related-macular-degeneration" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/age-related-macular-degeneration</a></li><li>NHS. Cataract surgery. <a href="https://www.nhs.uk/tests-and-treatments/cataract-surgery/" target="_blank" rel="noopener">https://www.nhs.uk/tests-and-treatments/cataract-surgery/</a></li><li>American Academy of Ophthalmology. What Is Cataract Surgery? <a href="https://www.aao.org/eye-health/treatments/what-is-cataract-surgery" target="_blank" rel="noopener">https://www.aao.org/eye-health/treatments/what-is-cataract-surgery</a></li><li>American Academy of Ophthalmology. What Are Pinguecula and Pterygium (Surfer's Eye)? <a href="https://www.aao.org/eye-health/diseases/pinguecula-pterygium" target="_blank" rel="noopener">https://www.aao.org/eye-health/diseases/pinguecula-pterygium</a></li><li>National Eye Institute (NIH). Diabetic Retinopathy. <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy</a></li><li>NHS. Diabetic retinopathy. <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/" target="_blank" rel="noopener">https://www.nhs.uk/conditions/diabetic-retinopathy/</a></li></ol>
-<p><em>This page is for general education and does not replace advice from your own doctor.</em></p></section></div><aside class="pside" aria-label="On this page"><div class="pside-in"><p class="pside-h">On this page</p><ol class="toc"><li><a href="#eye-injections-anti-vegf">Eye injections (anti-VEGF)</a></li><li><a href="#cataract-surgery">Cataract surgery</a></li><li><a href="#pterygium-surgery">Pterygium surgery</a></li><li><a href="#prp-laser-panretinal-photocoagulation">PRP laser (panretinal photocoagulation)</a></li><li><a href="#questions-before-your-procedure">Questions before your procedure?</a></li><li><a href="#references">References</a></li></ol><div class="pside-em"><b>Emergency?</b><span>Call 991 or go to the nearest Emergency Department.</span></div><a class="pside-clinic" href="../../eye-clinics/">Find a Community Eye Clinic →</a></div></aside></div></main>
+<section class="refs" id="references"><h2>References</h2><ol><li>National Eye Institute (NIH). Age-Related Macular Degeneration (AMD). <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/age-related-macular-degeneration" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/age-related-macular-degeneration</a></li><li>NHS. Cataract surgery. <a href="https://www.nhs.uk/tests-and-treatments/cataract-surgery/" target="_blank" rel="noopener">https://www.nhs.uk/tests-and-treatments/cataract-surgery/</a></li><li>American Academy of Ophthalmology. What Is Cataract Surgery? <a href="https://www.aao.org/eye-health/treatments/what-is-cataract-surgery" target="_blank" rel="noopener">https://www.aao.org/eye-health/treatments/what-is-cataract-surgery</a></li><li>American Academy of Ophthalmology. What Are Pinguecula and Pterygium (Surfer's Eye)? <a href="https://www.aao.org/eye-health/diseases/pinguecula-pterygium" target="_blank" rel="noopener">https://www.aao.org/eye-health/diseases/pinguecula-pterygium</a></li><li>National Eye Institute (NIH). Diabetic Retinopathy. <a href="https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy" target="_blank" rel="noopener">https://www.nei.nih.gov/learn-about-eye-health/eye-conditions-and-diseases/diabetic-retinopathy</a></li><li>NHS. Diabetic retinopathy. <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/" target="_blank" rel="noopener">https://www.nhs.uk/conditions/diabetic-retinopathy/</a></li><li>NHS. Cataract surgery: recovery (posterior capsule opacification). <a href="https://www.nhs.uk/tests-and-treatments/cataract-surgery/recovery/" target="_blank" rel="noopener">https://www.nhs.uk/tests-and-treatments/cataract-surgery/recovery/</a></li><li>American Academy of Ophthalmology. Laser Peripheral Iridotomy. <a href="https://www.aao.org/eye-health/treatments/laser-peripheral-iridotomy" target="_blank" rel="noopener">https://www.aao.org/eye-health/treatments/laser-peripheral-iridotomy</a></li></ol>
+<p><em>This page is for general education and does not replace advice from your own doctor.</em></p></section></div><aside class="pside" aria-label="On this page"><div class="pside-in"><p class="pside-h">On this page</p><ol class="toc"><li><a href="#eye-injections-anti-vegf">Eye injections (anti-VEGF)</a></li><li><a href="#cataract-surgery">Cataract surgery</a></li><li><a href="#pterygium-surgery">Pterygium surgery</a></li><li><a href="#prp-laser-panretinal-photocoagulation">PRP laser (panretinal photocoagulation)</a></li><li><a href="#yag-laser-capsulotomy">YAG laser capsulotomy</a></li><li><a href="#peripheral-iridotomy-laser-for-narrow-angles">Peripheral iridotomy (laser for narrow angles)</a></li><li><a href="#questions-before-your-procedure">Questions before your procedure?</a></li><li><a href="#references">References</a></li></ol><div class="pside-em"><b>Emergency?</b><span>Call 991 or go to the nearest Emergency Department.</span></div><a class="pside-clinic" href="../../eye-clinics/">Find a Community Eye Clinic →</a></div></aside></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><p class="disc"><strong>Disclaimer:</strong> InfoSihat provides general health information for education only. It is not medical advice and does not replace an examination, diagnosis or treatment by a qualified doctor or health professional. Always ask your own doctor about any health concern, and never ignore or delay medical advice because of something you read here. Our content is reviewed regularly, but it may not cover every situation or the very latest guidance. InfoSihat and its contributors are not responsible for any loss or harm arising from the use of this website, or for the content of external websites we link to. Contributors write in their personal capacity, and the views here do not necessarily represent those of their employers or the Ministry of Health.</p><p class="disc-em">In an emergency, call 991 or go to the nearest Emergency Department.</p><span>© 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
 function sizeAll(){document.querySelectorAll('iframe.embed').forEach(size)}
@@ -778,7 +838,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261007115749';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261007122040';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

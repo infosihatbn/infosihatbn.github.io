@@ -45,7 +45,7 @@ canvas{display:block;width:100%;height:100%}
 <script type="module">
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/OrbitControls.js';
-const TXT={"more": "Baca pasal penyakit ani", "nogl": "Maaf, pelayar abiskita inda dapat menunjukkan grafik 3D. Cuba pelayar baru atau peranti lain.", "lab": {"cornea": "Kornea", "iris": "Iris", "lens": "Kanta", "vitreous": "Jeli vitreus", "retina": "Retina", "macula": "Makula", "disc": "Cakera optik", "nerve": "Saraf optik", "sclera": "Sklera (putih mata)"}, "c": {"normal": {"n": "Mata sihat", "v": "side", "d": "Model mata yang sihat, dibelah dua supaya abiskita dapat menengok bahagian dalam. Mata kira-kira 24 mm lebar, sebesar guli besar.", "s": ["<b>Kornea:</b> 'cermin' jernih di depan yang memfokuskan cahaya.", "<b>Iris dan anak mata:</b> cincin berwarna dan lubang di tengahnya.", "<b>Kanta:</b> di belakang iris, menajamkan fokus.", "<b>Retina:</b> lapisan peka cahaya di belakang mata. <b>Makula</b> memberi penglihatan tengah yang tajam; <b>cakera optik</b> tempat saraf ke otak."]}, "dr": {"n": "Retinopati kencing manis", "v": "fundus", "d": "Gula darah tinggi merosakkan salur darah halus di retina. Ani pandangan yang doktor nampak bila memeriksa dalam mata abiskita.", "s": ["<b>Pendarahan titik dan tompok:</b> bintik merah gelap kecil.", "<b>Eksudat keras:</b> mendapan lemak kuning yang bocor dari salur darah rosak, selalunya membentuk cincin.", "<b>Tompok kapas:</b> tompok putih gebu bila retina kurang darah.", "Awal-awal selalunya <b>inda ada simptom</b>, jadi saringan mata tiap tahun penting."]}, "dmo": {"n": "Bengkak makula (edema makula)", "v": "mac", "d": "Cecair bocor ke bawah dan ke dalam makula, jadi tengah retina bengkak macam lepuh. Pusingkan model untuk menengok makula yang terangkat.", "s": ["<b>Makula bengkak</b> dengan cecair di bawahnya (kubah pucat).", "<b>Eksudat keras</b> membentuk cincin di sekeliling bengkak.", "Penglihatan tengah jadi <b>kabur atau bengkang-bengkok</b>. Boleh dirawat, selalunya dengan suntikan mata."]}, "vh": {"n": "Pendarahan vitreus", "v": "side", "d": "Darah bocor ke dalam jeli vitreus yang jernih, selalunya dari salur darah baru yang rapuh (kencing manis) atau dari retina yang koyak.", "s": ["<b>Kabus merah</b> dalam jeli, lebih tebal di bawah tempat darah mendap.", "Tiba-tiba nampak <b>'lalat terbang' gelap</b>, kabus merah atau hilang penglihatan.", "Mesti diperiksa <b>hari atu jua</b>."]}, "fl": {"n": "'Lalat terbang' (floaters)", "v": "side", "d": "'Lalat terbang' ialah gumpalan dan helaian dalam jeli vitreus yang membuat bayang di retina. Ia bergerak bila mata bergerak.", "s": ["<b>Helaian dan bintik</b> terapung dalam jeli.", "<b>Cincin</b> di depan cakera optik boleh muncul bila jeli tertanggal dari retina.", "'Lalat terbang' <b>baru</b> dengan kilat atau bayang mesti diperiksa hari atu jua."]}, "rd": {"n": "Retina tertanggal", "v": "side", "d": "Retina tertanggal dari dinding belakang mata, macam kertas dinding tercabut. Pusingkan model untuk menengok retina yang terangkat dan berkedut.", "s": ["<b>Retina tertanggal</b> (kawasan kelabu berkedut) terangkat ke dalam mata.", "<b>Koyakan berbentuk ladam</b> di tepinya tempat cecair masuk.", "Simptom: kilat, 'lalat terbang' baru, <b>bayang atau langsir</b>. Ani <b>kecemasan</b>."]}, "cu": {"n": "Ulser kornea", "v": "front", "d": "Luka berjangkit di kornea, paling kerap pada pemakai kanta lekap.", "s": ["<b>Tompok putih</b> di kornea: jangkitan (infiltrat).", "<b>Kornea kabur</b> di sekelilingnya dan <b>mata merah</b>.", "Sakit, silau dan kabur. Mesti dirawat <b>hari atu jua</b>."]}, "sei": {"n": "Bintik kornea lepas konjunktivitis virus", "v": "front", "d": "Lepas konjunktivitis adenovirus ('mata merah' virus), bintik bulat kecil yang dipanggil infiltrat subepitelium (SEI) boleh muncul di kornea.", "s": ["<b>Banyak bintik putih kecil yang samar</b> di tengah kornea.", "Boleh menyebabkan silau dan kabur berminggu-minggu lepas mata merah baik.", "Selalunya hilang perlahan-lahan; kadang-kadang perlu ubat titis steroid (dari doktor saja)."]}, "endo": {"n": "Endoftalmitis", "v": "front", "d": "Jangkitan teruk di dalam mata, paling kerap lepas operasi atau suntikan mata.", "s": ["<b>Hipopion:</b> lapisan nanah putih yang mendap di bawah bahagian depan mata.", "<b>Vitreus kabur dan keruh</b> dan mata sangat merah.", "Sakit dan penglihatan makin teruk beberapa hari lepas operasi: <b>kecemasan</b>."]}, "cat": {"n": "Utik (katarak)", "v": "side", "d": "Kanta dalam mata jadi keruh, selalunya kerana umur.", "s": ["<b>Nukleus kuning keperangan</b> di tengah (katarak nuklear).", "<b>Jejari putih</b> di bahagian luar kanta (katarak kortikal).", "Penglihatan jadi kabur dan silau. Pembedahan menggantikan kanta dengan yang jernih."]}}}, LINKS={"dr": "../bahasa-melayu/retinopati-kencing-manis/", "dmo": "../bahasa-melayu/retinopati-kencing-manis/", "fl": "../bahasa-melayu/retina-tertanggal/", "rd": "../bahasa-melayu/retina-tertanggal/", "cu": "../bahasa-melayu/ulser-kornea/", "sei": "../bahasa-melayu/konjunktivitis/", "endo": "../bahasa-melayu/endoftalmitis/", "cat": "../bahasa-melayu/katarak/"};
+const TXT={"more": "Baca pasal penyakit ani", "nogl": "Maaf, pelayar abiskita inda dapat menunjukkan grafik 3D. Cuba pelayar baru atau peranti lain.", "lab": {"cornea": "Kornea", "iris": "Iris", "lens": "Kanta", "vitreous": "Jeli vitreus", "retina": "Retina", "macula": "Makula", "disc": "Cakera optik", "nerve": "Saraf optik", "sclera": "Sklera (putih mata)"}, "c": {"normal": {"n": "Mata sihat", "v": "side", "d": "Model mata yang sihat, dibelah dua supaya abiskita dapat menengok bahagian dalam. Mata kira-kira 24 mm lebar, sebesar guli besar.", "s": ["<b>Kornea:</b> 'cermin' jernih di depan yang memfokuskan cahaya.", "<b>Iris dan anak mata:</b> cincin berwarna dan lubang di tengahnya.", "<b>Kanta:</b> di belakang iris, menajamkan fokus.", "<b>Retina:</b> lapisan peka cahaya di belakang mata. <b>Makula</b> memberi penglihatan tengah yang tajam; <b>cakera optik</b> tempat saraf ke otak."]}, "dr": {"n": "Retinopati kencing manis", "v": "fundus", "d": "Gula darah tinggi merosakkan salur darah halus di retina. Ani pandangan yang doktor nampak bila memeriksa dalam mata abiskita.", "s": ["<b>Pendarahan titik dan tompok:</b> bintik merah gelap kecil.", "<b>Eksudat keras:</b> mendapan lemak kuning yang bocor dari salur darah rosak, selalunya membentuk cincin.", "<b>Tompok kapas:</b> tompok putih gebu bila retina kurang darah.", "Awal-awal selalunya <b>inda ada simptom</b>, jadi saringan mata tiap tahun penting."]}, "dmo": {"n": "Bengkak makula (edema makula)", "v": "mac", "d": "Cecair bocor ke bawah dan ke dalam makula, jadi tengah retina bengkak macam lepuh. Model ani dibelah melalui makula, macam imbasan OCT, untuk menunjukkan kubah yang terangkat.", "s": ["<b>Makula bengkak</b> dengan cecair di bawahnya (kubah pucat).", "<b>Eksudat keras</b> membentuk cincin di sekeliling bengkak.", "Penglihatan tengah jadi <b>kabur atau bengkang-bengkok</b>. Boleh dirawat, selalunya dengan suntikan mata."]}, "vh": {"n": "Pendarahan vitreus", "v": "side", "d": "Darah bocor ke dalam jeli vitreus yang jernih, selalunya dari salur darah baru yang rapuh (kencing manis) atau dari retina yang koyak.", "s": ["<b>Kabus merah</b> dalam jeli, lebih tebal di bawah tempat darah mendap.", "Tiba-tiba nampak <b>'lalat terbang' gelap</b>, kabus merah atau hilang penglihatan.", "Mesti diperiksa <b>hari atu jua</b>."]}, "fl": {"n": "'Lalat terbang' (floaters)", "v": "side", "d": "'Lalat terbang' ialah gumpalan dan helaian dalam jeli vitreus yang membuat bayang di retina. Ia bergerak bila mata bergerak.", "s": ["<b>Helaian dan bintik</b> terapung dalam jeli.", "<b>Cincin</b> di depan cakera optik boleh muncul bila jeli tertanggal dari retina.", "'Lalat terbang' <b>baru</b> dengan kilat atau bayang mesti diperiksa hari atu jua."]}, "rd": {"n": "Retina tertanggal", "v": "side", "d": "Retina tertanggal dari dinding belakang mata, macam kertas dinding tercabut. Pusingkan model untuk menengok retina yang menggelembung dan terjuntai ke dalam mata.", "s": ["<b>Retina tertanggal</b> (lapisan kelabu berlipat) beralun ke dalam mata. Di sini makula pun tertanggal.", "<b>Koyakan berbentuk ladam</b> di tepinya tempat cecair masuk.", "Simptom: kilat, 'lalat terbang' baru, <b>bayang atau langsir</b>. Ani <b>kecemasan</b>."]}, "cu": {"n": "Ulser kornea", "v": "cornea", "d": "Luka berjangkit di kornea, paling kerap pada pemakai kanta lekap.", "s": ["<b>Lubang putih</b> yang menghakis kornea: jangkitan (infiltrat) dan tisu yang hilang.", "<b>Kornea kabur</b> di sekelilingnya dan <b>mata merah</b>.", "Sakit, silau dan kabur. Mesti dirawat <b>hari atu jua</b>."]}, "sei": {"n": "Bintik kornea lepas konjunktivitis virus", "v": "front", "d": "Lepas konjunktivitis adenovirus ('mata merah' virus), bintik bulat kecil yang dipanggil infiltrat subepitelium (SEI) boleh muncul di kornea.", "s": ["<b>Banyak bintik putih kecil yang samar</b> di tengah kornea.", "Boleh menyebabkan silau dan kabur berminggu-minggu lepas mata merah baik.", "Selalunya hilang perlahan-lahan; kadang-kadang perlu ubat titis steroid (dari doktor saja)."]}, "endo": {"n": "Endoftalmitis", "v": "front", "d": "Jangkitan teruk di dalam mata, paling kerap lepas operasi atau suntikan mata.", "s": ["<b>Hipopion:</b> lapisan nanah putih yang mendap di bawah bahagian depan mata.", "<b>Vitreus kabur dan keruh</b> dan mata sangat merah.", "Sakit dan penglihatan makin teruk beberapa hari lepas operasi: <b>kecemasan</b>."]}, "cat": {"n": "Utik (katarak)", "v": "side", "d": "Kanta dalam mata jadi keruh, selalunya kerana umur.", "s": ["<b>Nukleus kuning keperangan</b> di tengah (katarak nuklear).", "<b>Jejari putih</b> di bahagian luar kanta (katarak kortikal).", "Penglihatan jadi kabur dan silau. Pembedahan menggantikan kanta dengan yang jernih."]}}}, LINKS={"dr": "../bahasa-melayu/retinopati-kencing-manis/", "dmo": "../bahasa-melayu/retinopati-kencing-manis/", "fl": "../bahasa-melayu/retina-tertanggal/", "rd": "../bahasa-melayu/retina-tertanggal/", "cu": "../bahasa-melayu/ulser-kornea/", "sei": "../bahasa-melayu/konjunktivitis/", "endo": "../bahasa-melayu/endoftalmitis/", "cat": "../bahasa-melayu/katarak/"};
 const stage=document.getElementById('stage'),labs=document.getElementById('labs');
 let renderer;
 try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});}catch(e){document.getElementById('load').innerHTML='<div class="err">'+TXT.nogl+'</div>';throw e}
@@ -96,18 +96,31 @@ for(let k=0;k<4;k++){const g=new THREE.SphereGeometry(1.018,16,40,k*Math.PI/2-.2
 
 // ---------- cornea ----------
 const RC=.62, ZC=Math.sqrt(1-LIMB*LIMB)-RC*Math.cos(Math.asin(LIMB/RC));
-const corneaGeo=new THREE.SphereGeometry(RC,96,48,0,Math.PI*2,0,Math.asin(LIMB/RC));corneaGeo.rotateX(Math.PI/2);corneaGeo.translate(0,0,ZC);
+const corneaGeo=new THREE.SphereGeometry(RC,192,96,0,Math.PI*2,0,Math.asin(LIMB/RC));corneaGeo.rotateX(Math.PI/2);corneaGeo.translate(0,0,ZC);
 const corneaMat=P({color:0xffffff,transmission:1,thickness:.04,roughness:.03,ior:1.376,transparent:true,opacity:.22,clearcoat:1,clearcoatRoughness:.02,side:THREE.DoubleSide});
 const cornea=new THREE.Mesh(corneaGeo,corneaMat);eye.add(cornea);
 // corneal overlay (ulcer / SEIs): planar projection in x,y
 const coC=canvas(1024,1024),coT=tex(coC);
-const coGeo=new THREE.SphereGeometry(RC+.004,96,48,0,Math.PI*2,0,Math.asin(LIMB/RC));coGeo.rotateX(Math.PI/2);coGeo.translate(0,0,ZC);
+const coGeo=new THREE.SphereGeometry(RC+.004,192,96,0,Math.PI*2,0,Math.asin(LIMB/RC));coGeo.rotateX(Math.PI/2);coGeo.translate(0,0,ZC);
 {const p=coGeo.attributes.position,uv=coGeo.attributes.uv;for(let i=0;i<p.count;i++)uv.setXY(i,.5+p.getX(i)/(2*LIMB),.5+p.getY(i)/(2*LIMB))}
-const coOver=new THREE.Mesh(coGeo,M({map:coT,transparent:true,roughness:.4,depthWrite:false}));coOver.renderOrder=3;eye.add(coOver);
-function drawCornea(mode){const g=coC.getContext('2d');g.clearRect(0,0,1024,1024);
- if(mode==='cu'){const x=600,y=640;let r=g.createRadialGradient(x,y,0,x,y,190);r.addColorStop(0,'rgba(245,245,235,.55)');r.addColorStop(1,'rgba(245,245,235,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,190,0,7);g.fill();
-  r=g.createRadialGradient(x,y,0,x,y,95);r.addColorStop(0,'rgba(255,253,240,1)');r.addColorStop(.75,'rgba(250,246,225,.95)');r.addColorStop(1,'rgba(250,246,225,0)');g.fillStyle=r;g.beginPath();
-  for(let a=0;a<6.3;a+=.2){const rr=88+Math.sin(a*5)*8+rnd()*6;g.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}g.fill()}
+const coOver=new THREE.Mesh(coGeo,M({map:coT,transparent:true,roughness:.35,depthWrite:false,side:THREE.DoubleSide}));coOver.renderOrder=3;eye.add(coOver);
+const UL=[.09,-.12,.1]; // ulcer centre (x,y) and radius
+const cBase=corneaGeo.attributes.position.array.slice(),oBase=coGeo.attributes.position.array.slice();
+function crater(on){const c=new THREE.Vector3(0,0,ZC),v=new THREE.Vector3(),n=new THREE.Vector3();
+ for(const [geo,b] of [[corneaGeo,cBase],[coGeo,oBase]]){const p=geo.attributes.position;
+  for(let i=0;i<p.count;i++){v.fromArray(b,i*3);if(on){const r=Math.hypot(v.x-UL[0],v.y-UL[1])/UL[2];let d=0;
+    if(r<1)d=.07*Math.pow(1-r*r,.7);else if(r<1.7)d=-.012*Math.sin((r-1)/.7*Math.PI);
+    if(d){n.copy(v).sub(c).normalize();v.addScaledVector(n,-d)}}p.setXYZ(i,v.x,v.y,v.z)}
+  p.needsUpdate=true;geo.computeVertexNormals()}}
+function drawCornea(mode){crater(mode==='cu');const g=coC.getContext('2d');g.clearRect(0,0,1024,1024);
+ if(mode==='cu'){const x=512+UL[0]/(2*LIMB)*1024,y=512-UL[1]/(2*LIMB)*1024,R0=UL[2]/(2*LIMB)*1024;
+  let r=g.createRadialGradient(x,y,R0*.6,x,y,R0*2.3);r.addColorStop(0,'rgba(235,235,225,.6)');r.addColorStop(1,'rgba(235,235,225,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,R0*2.3,0,7);g.fill();
+  const RU=(s=>()=>(s=(s*16807)%2147483647)/2147483647)(5);
+  g.beginPath();for(let a=0;a<6.3;a+=.12){const rr=R0*(.95+Math.sin(a*5)*.06+RU()*.06);g.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}g.closePath();
+  r=g.createRadialGradient(x,y,0,x,y,R0);r.addColorStop(0,'rgba(232,214,150,1)');r.addColorStop(.55,'rgba(246,240,214,1)');r.addColorStop(.86,'rgba(255,253,244,1)');r.addColorStop(1,'rgba(150,140,125,.9)');g.fillStyle=r;g.fill();
+  g.save();g.clip();r=g.createRadialGradient(x+R0*.1,y+R0*.35,R0*.55,x+R0*.1,y+R0*.35,R0*1.25);r.addColorStop(0,'rgba(90,75,50,0)');r.addColorStop(1,'rgba(90,75,50,.6)');g.fillStyle=r;g.fillRect(x-R0,y-R0,R0*2,R0*2);g.restore();
+  g.strokeStyle='rgba(110,100,90,.75)';g.lineWidth=5;g.stroke();
+  for(let i=0;i<26;i++){const a=RU()*6.28,d=R0*(1+RU()*.5);g.strokeStyle='rgba(250,250,240,.5)';g.lineWidth=2+RU()*3;g.beginPath();g.moveTo(x+Math.cos(a)*R0*.95,y+Math.sin(a)*R0*.95);g.lineTo(x+Math.cos(a+(RU()-.5)*.3)*d,y+Math.sin(a+(RU()-.5)*.3)*d);g.stroke()}}
  if(mode==='sei'){for(let i=0;i<34;i++){const a=rnd()*6.28,d=Math.sqrt(rnd())*300,x=512+Math.cos(a)*d,y=512+Math.sin(a)*d,s=9+rnd()*14;const r=g.createRadialGradient(x,y,0,x,y,s);r.addColorStop(0,'rgba(255,255,250,.85)');r.addColorStop(1,'rgba(255,255,250,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,s,0,7);g.fill()}}
  coT.needsUpdate=true;coOver.visible=!!mode}
 
@@ -134,7 +147,7 @@ const retGeo=new THREE.SphereGeometry(RR,180,90,0,Math.PI*2,Math.PI-AMAX,AMAX);r
 const base=retGeo.attributes.position.array.slice();
 {const p=retGeo.attributes.position,uv=retGeo.attributes.uv;for(let i=0;i<p.count;i++){const x=p.getX(i),y=p.getY(i),z=p.getZ(i),al=Math.acos(Math.max(-1,Math.min(1,-z/RR))),h=Math.hypot(x,y)||1;uv.setXY(i,.5+.5*al/AMAX*x/h,.5+.5*al/AMAX*y/h)}}
 const reC=canvas(2048,2048),reT=tex(reC);
-const retina=new THREE.Mesh(retGeo,M({map:reT,roughness:.65,side:THREE.BackSide}));eye.add(retina);
+const retina=new THREE.Mesh(retGeo,M({map:reT,roughness:.65,side:THREE.DoubleSide}));eye.add(retina);
 const DEG=1024/(AMAX*180/Math.PI); // px per degree
 const D=(deg)=>deg*DEG, CX=1024, CY=1024, DISC=[CX-D(15),CY+D(1.5)];
 let vessels=[];
@@ -167,18 +180,28 @@ function drawRetina(f){const g=reC.getContext('2d');g.setTransform(1,0,0,1,0,0);
   if(f.dr){ring(CX+D(7),CY-D(5),D(3.2),45);ring(CX-D(9),CY+D(6),D(2.5),30);
    for(let i=0;i<3;i++){const x=CX+D(-12+i*11),y=CY+D(i%2?-10:9);for(let j=0;j<5;j++){const xx=x+(R2()-.5)*D(1.2),yy=y+(R2()-.5)*D(.8),rr=D(.6+R2()*.5);const r=g.createRadialGradient(xx,yy,0,xx,yy,rr);r.addColorStop(0,'rgba(250,248,235,.85)');r.addColorStop(1,'rgba(250,248,235,0)');g.fillStyle=r;g.beginPath();g.arc(xx,yy,rr,0,7);g.fill()}}}
   if(f.dmo){g.save();g.globalCompositeOperation='destination-out';const ho=g.createRadialGradient(CX,CY,0,CX,CY,D(5.5));ho.addColorStop(0,'rgba(0,0,0,.5)');ho.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=ho;g.beginPath();g.arc(CX,CY,D(5.5),0,7);g.fill();g.restore();ring(CX,CY,D(4.5),70);b=g.createRadialGradient(CX,CY,0,CX,CY,D(6));b.addColorStop(0,'rgba(255,235,200,.28)');b.addColorStop(1,'rgba(255,235,200,0)');g.fillStyle=b;g.beginPath();g.arc(CX,CY,D(6),0,7);g.fill()}}
- if(f.rd){g.save();g.fillStyle='rgba(205,200,195,.42)';g.beginPath();g.moveTo(CX,CY-D(4));for(let a=-2.9;a<=-.25;a+=.05){const r=D(30+Math.sin(a*7)*3);g.lineTo(CX+Math.cos(a)*r*1.0+D(4),CY+Math.sin(a)*r)}g.lineTo(CX+D(70)*Math.cos(-.25),CY+D(70)*Math.sin(-.25));g.arc(CX,CY,D(110),-.25,-2.9,true);g.closePath();g.fill();
-  const tx=CX-D(38),ty=CY-D(62);g.fillStyle='#8b1a10';g.beginPath();g.moveTo(tx-D(5),ty);g.quadraticCurveTo(tx,ty+D(8),tx+D(5),ty);g.quadraticCurveTo(tx,ty+D(3),tx-D(5),ty);g.fill();g.restore()}
+ if(f.rd){const N=512,id=g.createImageData(N,N),sc=2048/N;
+  for(let py=0;py<N;py++)for(let px=0;px<N;px++){const ux=(px*sc-CX)/1024*AMAX,uy=-(py*sc-CY)/1024*AMAX,w=rdW8(ux,uy);if(w<=0)continue;
+   const al=Math.hypot(ux,uy),az=Math.atan2(uy,ux),fold=Math.sin(az*6+al*4)+.6*Math.sin(az*13-al*9),k=(px+py*N)*4,sh=1-.25*Math.max(0,fold-.4);
+   id.data[k]=200*sh;id.data[k+1]=196*sh;id.data[k+2]=192*sh;id.data[k+3]=255*Math.min(.78,Math.pow(w,.6)*.7)}
+  const tc=canvas(N,N);tc.getContext('2d').putImageData(id,0,0);g.drawImage(tc,0,0,2048,2048);
+  const tx=CX+.62*1024/AMAX,ty=CY-1.0*1024/AMAX;g.save();g.translate(tx,ty);g.rotate(-.5);g.fillStyle='#7a140c';g.beginPath();g.moveTo(-D(7),0);g.quadraticCurveTo(0,D(11),D(7),0);g.quadraticCurveTo(0,D(4),-D(7),0);g.fill();
+  g.strokeStyle='rgba(235,230,225,.9)';g.lineWidth=4;g.beginPath();g.moveTo(-D(7),0);g.quadraticCurveTo(0,D(4),D(7),0);g.stroke();g.restore()}
  reT.needsUpdate=true}
 
 // retinal shape: macular swelling, detachment
-const pos=retGeo.attributes.position;
-function shapeRetina(f){const v=new THREE.Vector3();for(let i=0;i<pos.count;i++){v.fromArray(base,i*3);let lift=0;const al=Math.acos(Math.max(-1,Math.min(1,-v.z/RR))),az=Math.atan2(v.y,v.x);
-  if(f.dmo){const d=al/(7*Math.PI/180);if(d<1.8)lift+=.075*Math.exp(-d*d*1.3)*(1-.25*Math.exp(-(d*d)/.02))}
-  if(f.rd){const ux=Math.cos(az)*al,uy=Math.sin(az)*al,cx=-.6,cy=.55;const dd=Math.hypot(ux-cx,uy-cy);if(uy>-.05&&ux<.35){const k=Math.max(0,1-dd/1.05);lift+=.2*Math.pow(k,.7)*(1+.25*Math.sin(az*9+al*14))}}
-  v.multiplyScalar((RR-lift)/RR);pos.setXYZ(i,v.x,v.y,v.z)}pos.needsUpdate=true;retGeo.computeVertexNormals()}
+const pos=retGeo.attributes.position,AL=new Float32Array(pos.count),AZ=new Float32Array(pos.count),RDW=new Float32Array(pos.count);
+const sst=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
+function rdW8(ux,uy){const al=Math.hypot(ux,uy);if(al>AMAX)return 0;const edge=-.34+.12*Math.sin(ux*3.2+.6);return sst(edge,edge+.4,uy)*sst(AMAX-.03,AMAX-.5,al)*sst(.1,.3,Math.hypot(ux+.262,uy+.026))}
+for(let i=0;i<pos.count;i++){const x=base[i*3],y=base[i*3+1],z=base[i*3+2];AL[i]=Math.acos(Math.max(-1,Math.min(1,-z/RR)));AZ[i]=Math.atan2(y,x);RDW[i]=rdW8(Math.cos(AZ[i])*AL[i],Math.sin(AZ[i])*AL[i])}
+function shapeRetina(f,t=0){const v=new THREE.Vector3();for(let i=0;i<pos.count;i++){v.fromArray(base,i*3);let lift=0,sag=0;const al=AL[i],az=AZ[i];
+  if(f.dmo){const d=al/(10*Math.PI/180);if(d<2)lift+=.15*Math.exp(-d*d*1.3)*(1-.25*Math.exp(-(d*d)/.02))}
+  if(f.rd&&RDW[i]>0){const w=RDW[i];lift+=.46*Math.pow(w,1.1)*(1+w*(.07*Math.sin(az*6+al*4+t*1.2)+.04*Math.sin(az*13-al*9+t*.8)));sag=.22*w*w*(1+.12*Math.sin(t*.9+al*3))}
+  v.multiplyScalar((RR-lift)/RR);v.y-=sag;pos.setXYZ(i,v.x,v.y,v.z)}pos.needsUpdate=true;retGeo.computeVertexNormals()}
+// RPE / choroid colour seen under lifted retina
+const rpe=shell(RR+.006,Math.PI-AMAX,Math.PI,M({color:0xa4462a,roughness:.85,side:THREE.BackSide}),128);rpe.visible=false;eye.add(rpe);
 // fluid under the macula
-const fluid=new THREE.Mesh(new THREE.SphereGeometry(1,48,24),P({color:0xf5dd9a,transmission:.4,transparent:true,opacity:.65,roughness:.15,side:THREE.DoubleSide}));fluid.scale.set(.085,.085,.03);fluid.position.set(0,0,-RR+.012);eye.add(fluid);
+const fluid=new THREE.Mesh(new THREE.SphereGeometry(1,48,24),P({color:0xf5dd9a,transmission:.4,transparent:true,opacity:.65,roughness:.15,side:THREE.DoubleSide}));fluid.scale.set(.13,.13,.06);fluid.position.set(0,0,-RR+.045);eye.add(fluid);
 
 // ---------- optic nerve ----------
 const nervePos=new THREE.Vector3(-Math.sin(15*Math.PI/180),-Math.sin(1.5*Math.PI/180),-Math.cos(15*Math.PI/180)).multiplyScalar(.98);
@@ -205,15 +228,16 @@ const LAB=[['cornea',new THREE.Vector3(.2,.25,1.08)],['iris',new THREE.Vector3(-
 const labEls=LAB.map(([k])=>{const e=document.createElement('div');e.className='lab';e.textContent=TXT.lab[k];labs.appendChild(e);return e});
 
 // ---------- conditions ----------
-const VIEWS={mac:[[.5,.32,-.3],[0,-.02,-.92]],side:[[2.1,.75,1.85],[-.1,0,-.15]],front:[[.15,.1,2.6],[0,0,.6]],fundus:[[0,0,.05],[0,0,-.95]]};
+const VIEWS={cornea:[[.5,-.8,2.0],[.09,-.12,.98]],mac:[[.5,.32,-.3],[0,-.02,-.92]],side:[[2.1,.75,1.85],[-.1,0,-.15]],front:[[.15,.1,2.6],[0,0,.6]],fundus:[[0,0,.05],[0,0,-.95]]};
 let tween=null;
-function view(n){const [p,t]=VIEWS[n];const fit=(n==='side'||n==='front')&&camera.aspect<1.1?Math.min(2,1.1/camera.aspect):1;const T1=new THREE.Vector3(...t),P1=new THREE.Vector3(...p).sub(T1).multiplyScalar(fit).add(T1);tween={p0:camera.position.clone(),t0:controls.target.clone(),p1:P1,t1:T1,s:performance.now()};
+function view(n){const [p,t]=VIEWS[n];const fit=(n==='side'||n==='front'||n==='cornea')&&camera.aspect<1.1?Math.min(2,1.1/camera.aspect):1;const T1=new THREE.Vector3(...t),P1=new THREE.Vector3(...p).sub(T1).multiplyScalar(fit).add(T1);tween={p0:camera.position.clone(),t0:controls.target.clone(),p1:P1,t1:T1,s:performance.now()};
  document.querySelectorAll('[data-v]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===n));curView=n}
 let curView='side';
 const INNER={macula:1,disc:1},OUTER={cornea:1,iris:1,sclera:1};
 function setCut(on){cutOn=on;clipMats.forEach(m=>m.clippingPlanes=on?[CUT]:[]);document.getElementById('cut').setAttribute('aria-pressed',on)}
+let curK='normal',fr=0;
 function apply(k){const f={dr:k==='dr',dmo:k==='dmo',rd:k==='rd'};
- retina.material.transparent=!!f.dmo;retina.material.needsUpdate=true;drawRetina(f);shapeRetina(f);fluid.visible=k==='dmo';
+ retina.material.transparent=!!f.dmo;retina.material.needsUpdate=true;drawRetina(f);shapeRetina(f);fluid.visible=k==='dmo';rpe.visible=f.rd||f.dmo;curK=k;CUT.constant=k==='dmo'?0:.3;
  drawCornea(k==='cu'?'cu':k==='sei'?'sei':'');
  blood.visible=blood2.visible=k==='vh';floaters.visible=k==='fl';pus.visible=hypo.visible=k==='endo';
  vitMat.opacity=k==='endo'?.28:k==='vh'?.12:0;vitMat.color.set(k==='vh'?0x7a1010:0xf2ead0);
@@ -239,9 +263,10 @@ renderer.setAnimationLoop(()=>{const t=clock.getElapsedTime();
  if(floaters.visible){floaters.rotation.y=Math.sin(t*.4)*.12;floaters.position.y=Math.sin(t*.7)*.03}
  if(blood.visible){blood.rotation.y=t*.03;blood2.rotation.y=-t*.02}
  if(pus.visible)pus.rotation.y=t*.02;
+ if(curK==='rd'&&(++fr&1))shapeRetina({rd:1},t);
  inner.position.copy(camera.position).multiplyScalar(.2);
  renderer.render(scene,camera);
- if(!labs.hidden){const w=stage.clientWidth,h=stage.clientHeight;LAB.forEach(([k,p],i)=>{v3.copy(p).project(camera);const e=labEls[i];const inside=camera.position.length()<.95;const hidden=v3.z>1||Math.abs(v3.x)>1.05||Math.abs(v3.y)>1.05||(cutOn&&p.x>.32)||(inside&&!INNER[k])||(!inside&&!cutOn&&!OUTER[k]);e.style.opacity=hidden?0:1;e.style.left=(v3.x*.5+.5)*w+'px';e.style.top=(-v3.y*.5+.5)*h+'px'})}});
+ if(!labs.hidden){const w=stage.clientWidth,h=stage.clientHeight;LAB.forEach(([k,p],i)=>{v3.copy(p).project(camera);const e=labEls[i];const inside=camera.position.length()<.95;const hidden=v3.z>1||Math.abs(v3.x)>1.05||Math.abs(v3.y)>1.05||(cutOn&&p.x>CUT.constant+.02)||(inside&&!INNER[k])||(!inside&&!cutOn&&!OUTER[k]);e.style.opacity=hidden?0:1;e.style.left=(v3.x*.5+.5)*w+'px';e.style.top=(-v3.y*.5+.5)*h+'px'})}});
 apply('normal');
 </script>
 </body>

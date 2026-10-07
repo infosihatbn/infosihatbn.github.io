@@ -522,6 +522,44 @@ iframe.embed{display:none!important}
 .sc-nav button{background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 15px/1 var(--body);color:var(--ink);cursor:pointer}
 .sc-disc{margin:18px 0 0;font-size:14px;color:#5b6770;background:#F6F7F8;border-radius:12px;padding:10px 12px}
 
+.tm{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;min-width:0}
+.tm-hint{margin:0;color:var(--muted);font-size:16px}
+.tm-card small{font:400 14px/1.4 var(--body);color:var(--muted)}
+.tm-card{flex-basis:210px}
+@media (max-width:640px){.tm-card{flex-basis:66%}}
+.tm-ov{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(18,30,36,.32);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);opacity:0;transition:opacity .25s}
+.tm-ov.on{opacity:1}
+.tm-ov[hidden]{display:none}
+.tm-sheet{position:relative;width:min(560px,100%);max-height:min(78vh,720px);overflow:auto;background:#FFFDF7;color:var(--ink);border-radius:24px;padding:22px 24px 26px;box-shadow:0 24px 60px rgba(0,0,0,.28);transform:translateY(30px) scale(.96);transition:transform .3s cubic-bezier(.2,.8,.3,1.15);display:grid;gap:12px}
+.tm-ov.on .tm-sheet{transform:none}
+.tm-sheet h3{margin:0;font:700 22px/1.25 var(--display)}
+.tm-body{display:grid;gap:12px;font-size:17px;line-height:1.55}
+.tm-body>*{margin:0}.tm-body ul{padding-left:22px;display:grid;gap:6px}
+.tm-x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:1px solid #E4DCC8;background:#fff;color:var(--ink);font:400 26px/1 var(--body);cursor:pointer}
+.tm-d.big{width:170px;max-width:60%}
+@media (max-width:640px){.tm-ov{align-items:flex-end;padding:0}.tm-sheet{border-radius:24px 24px 0 0;max-height:82vh;padding:20px 18px 28px}.tm-ov .tm-sheet{transform:translateY(60px)}}
+html.tm-lock{overflow:hidden}
+.t-doc .t-beam{animation:tBlink 1.6s ease-in-out infinite}
+.t-doc .t-pup{transform-box:fill-box;transform-origin:center;animation:tPup 1.6s ease-in-out infinite}
+.t-opt .t-ptr{transform-box:view-box;transform-origin:40px 34px;animation:tPtr 2.4s ease-in-out infinite}
+.t-ort .t-pen{animation:tPen 3s ease-in-out infinite}
+.t-ort .t-fol{animation:tFol 3s ease-in-out infinite}
+.t-nurse .t-drop{animation:tDrop 1.8s ease-in infinite}
+.t-asst .t-scan{animation:tScan 2.2s linear infinite}
+.t-optn .t-bob{animation:tBob 2.6s ease-in-out infinite}
+.t-optn .t-spk{animation:tBlink 1.3s ease-in-out infinite}
+.t-optn .t-cloth{animation:tRub 1.2s ease-in-out infinite}
+@keyframes tBlink{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes tPup{0%,100%{transform:scale(1)}50%{transform:scale(.55)}}
+@keyframes tPtr{0%,100%{transform:rotate(0)}50%{transform:rotate(14deg)}}
+@keyframes tPen{0%,100%{transform:translateX(-16px)}50%{transform:translateX(10px)}}
+@keyframes tFol{0%,100%{transform:translateX(-6px)}50%{transform:translateX(6px)}}
+@keyframes tDrop{0%,30%{opacity:0;transform:translateY(0)}45%{opacity:1}90%{opacity:1;transform:translateY(16px)}100%{opacity:0;transform:translateY(18px)}}
+@keyframes tScan{from{transform:translateX(0)}to{transform:translateX(28px)}}
+@keyframes tBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes tRub{0%,100%{transform:translate(0,0)}50%{transform:translate(-6px,4px)}}
+@media (prefers-reduced-motion:reduce){.tm-d *{animation:none!important}}
+
 .hotlines{display:grid;gap:10px}
 .hotlines h2{margin:0!important}.hotlines>p{margin:0;color:var(--muted)}
 .hlg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
@@ -599,7 +637,7 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 @media (max-width:480px){.bar{column-gap:6px!important}.lang a,.lang span{padding:8px 9px!important;font-size:13px!important}.brand img{width:38px!important;height:38px!important}.brand{gap:6px!important}}
 @media (max-width:380px){.brand>span{font-size:18px!important}.accb,.music-btn{width:32px!important;height:32px!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../../assets/dark.css?v=20261007115749">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261007122040">
 </head>
 <body class="">
 <a class="skip" href="#main">Langkau ke kandungan</a>
@@ -610,15 +648,12 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 <p>Muzik latar</p><div class="acct"><button type="button" data-trk="0"><b>♪ Calm Ambient</b><small>oleh Velariomusic</small></button><button type="button" data-trk="1"><b>♪ Relax</b><small>oleh The Mountain</small></button><button type="button" data-trk="2"><b>♪ Calm</b><small>oleh MarloweMusic</small></button></div></div></div><div class="music"><button type="button" class="music-btn" aria-pressed="false" aria-label="Muzik disenyapkan. Tekan untuk main" data-on="Muzik dimainkan. Tekan untuk senyapkan" data-off="Muzik disenyapkan. Tekan untuk main"><svg class="m-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="m-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button><span class="music-tip" role="note" data-tpl="Muzik: &quot;{t}&quot; oleh {a}. Terima kasih!">Muzik: "Calm Ambient" oleh Velariomusic. Terima kasih!</span></div></div></header>
 <main id="main"><div class="band"><div class="inner"><h1>Rakan Kerjasama</h1></div></div><div class="content"><p>InfoSihat atu usaha bersama doktor-doktor, pelajar perubatan dan sukarelawan yang kan maklumat kesihatan di Brunei jelas, boleh dipercayai, dan senang dibaca.</p>
 <h2 id="penyelia-inisiatif">Penyelia Inisiatif</h2>
-<iframe class="embed" src="../../embeds/team-supervisor-bm.html?v=20261007115749" title="team supervisor bm" style="height:260px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/team-supervisor-bm.html?v=20261007122040" title="team supervisor bm" style="height:260px" loading="lazy"></iframe>
 <p>Dr Noor Affizan ialah Pakar Perunding Oftalmologi di Brunei Eye Centre, Kementerian Kesihatan. Beliau menyelia inisiatif InfoSihat dan membimbing hala tuju klinikalnya. Beliau ialah Presiden Persatuan Oftalmologi Brunei (Brunei Ophthalmology Society) dan Fellow Equity Initiative (2021), iaitu program serantau untuk pemimpin yang memperjuangkan kesaksamaan kesihatan di Asia Tenggara.</p>
 <p>Masa pandemik COVID-19, beliau berkhidmat sebagai Penguasa Perubatan (Medical Superintendent) di Pusat Isolasi Kebangsaan, dan dinamakan antara "50 Leading Lights for Kindness &amp; Leadership – Asia Pacific" pada tahun 2022. Beliau pernah mengetuai Pasukan Petugas Iklim, Kesihatan dan Kelestarian Kementerian Kesihatan, dan pada tahun 2019 mengasaskan You Can Lead BN, platform dalam talian yang menghubungkan belia Brunei dengan peluang pembangunan diri dan kerjaya.</p>
 <h2 id="ketua-inisiatif">Ketua Inisiatif</h2>
-<iframe class="embed" src="../../embeds/team-lead-bm.html?v=20261007115749" title="team lead bm" style="height:260px" loading="lazy"></iframe>
-<p>Dr Haziq ialah Residen Oftalmologi di Brunei Eye Centre, Kementerian Kesihatan, dan Ketua Editor InfoSihat. Beliau jua Pengasas dan Presiden Pertama Persatuan Pelajar Perubatan Brunei (Brunei Medical Students' Association, BMSA).</p>
-<p>Di klinik, beliau menengok ramai pesakit, terutama yang lebih selesa berbahasa Melayu, susah mendapatkan maklumat kesihatan yang boleh dipercayai, sesuai dengan Brunei, dan senang difaham.</p>
-<p><strong>Peranan beliau dalam inisiatif ani</strong></p>
-<ul><li><strong>Visi dan hala tuju:</strong> dengan berunding bersama Penyelia Inisiatif, menentukan visi keseluruhan InfoSihat dan topik kesihatan yang diutamakan, bermula dengan kesihatan mata.</li><li><strong>Ketua Editor:</strong> mengawasi samua kandungan dan memastikan setiap laman tepat, berasaskan bukti, dan ditulis dalam bahasa yang senang.</li><li><strong>Menulis dan menyemak:</strong> menulis dan menyemak dari segi perubatan laman-laman kesihatan mata, termasuk Retinopati Kencing Manis, Glaukoma dan panduan Klinik Mata Komuniti.</li><li><strong>Dwibahasa dan tempatan:</strong> memastikan setiap laman sesuai dalam Bahasa Melayu Brunei dan English, dan menggambarkan cara hidup serta perkhidmatan kesihatan di Brunei.</li><li><strong>Membina pasukan:</strong> mengumpul dan membimbing doktor, pelajar perubatan dan sukarelawan yang menulis, menyemak, menterjemah dan mereka bentuk untuk InfoSihat.</li><li><strong>Kerjasama dan jangkauan:</strong> bekerjasama dengan pengamal kesihatan dan masyarakat untuk menyebarkan InfoSihat, supaya pesakit boleh guna di rumah dan doktor boleh guna masa konsultasi.</li></ul>
+<iframe class="embed" src="../../embeds/team-lead-bm.html?v=20261007122040" title="team lead bm" style="height:260px" loading="lazy"></iframe>
+<p>Dr Haziq ialah Residen Oftalmologi di Brunei Eye Centre, Kementerian Kesihatan, dan Ketua Editor InfoSihat. Beliau jua Pengasas dan Presiden Pertama Persatuan Pelajar Perubatan Brunei (BMSA). Di klinik, beliau menengok ramai pesakit susah mendapatkan maklumat kesihatan yang boleh dipercayai, sesuai dengan Brunei, dan senang difaham. Dengan berunding bersama Penyelia Inisiatif, beliau menentukan hala tuju InfoSihat, mengawasi samua kandungan, menulis dan menyemak laman kesihatan mata dalam Bahasa Melayu Brunei dan English, dan memimpin pasukan serta rakan kerjasama yang membantu menyebarkannya.</p>
 <h2 id="ketua-penyemak">Ketua Penyemak</h2>
 <ul class="people c2"><li class="pp"><span class="pp-i" aria-hidden="true">HH</span><b>Dr Helena Hurairah</b><small>Pakar Perunding Oftalmologi</small></li><li class="pp"><img src="../../assets/team/affizan.webp" alt="" loading="lazy" width="160" height="160"><b>Dr Noor Affizan Rahman</b><small>Pakar Perunding Oftalmologi</small></li></ul>
 <h2 id="pengarang-bersama">Pengarang Bersama</h2>
@@ -715,7 +750,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261007115749';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261007122040';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
