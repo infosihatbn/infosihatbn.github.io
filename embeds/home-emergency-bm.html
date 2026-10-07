@@ -22,16 +22,17 @@ button{font:inherit;color:inherit}
 .num{flex:none;display:grid;place-items:center;width:96px;height:96px;border-radius:50%;background:var(--alert);color:#fff;font:800 30px/1 var(--display);letter-spacing:.02em}
 .num{position:relative;overflow:hidden}
 .num .t{animation:numt 6s infinite}
-.num svg{position:absolute;inset:0;margin:auto;width:78%;height:auto;opacity:0;animation:numt 6s infinite reverse}
+.num svg{position:absolute;inset:0;margin:auto;width:78%;height:auto;opacity:0;animation:ecgo 6s infinite}
 .num svg path{fill:none;stroke:#fff;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:200;stroke-dashoffset:200;animation:ecg 6s infinite}
-@keyframes numt{0%,44%{opacity:1;transform:scale(1)}50%,94%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
-@keyframes ecg{0%,50%{stroke-dashoffset:200}72%,94%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes numt{0%,40%{opacity:1;transform:scale(1)}46%,94%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
+@keyframes ecgo{0%,48%{opacity:0}52%,84%{opacity:1}89%,100%{opacity:0}}
+@keyframes ecg{0%,50%{stroke-dashoffset:200}74%,100%{stroke-dashoffset:0}}
 @media (prefers-reduced-motion:reduce){.num .t,.num svg,.num svg path{animation:none}}
 .em h3{font-size:22px;color:var(--alert)}
 .em p{margin-top:6px}
 .em ul{margin:10px 0 0;padding-left:22px;display:grid;gap:4px}
 @media (max-width:520px){.em{flex-direction:column;align-items:flex-start}.num{width:76px;height:76px;font-size:24px}}
-</style></head><body><div class="wrap">
+</style><style>@media screen{html[data-theme=dark]{--ink:#E6EEF2;--muted:#A9BAC3;--paper:#16232B;--mist:#1E313B;--line:#2F4651;--blue-deep:#8CCBEA;--teal-deep:#7FD6D4;--sun-soft:#3A3220;--alert-soft:#3B1D1B;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head><body><div class="wrap">
 <section class="em" aria-label="Kecemasan">
   <div class="num" aria-hidden="true"><span class="t">991</span><svg viewBox="0 0 100 60"><path d="M2 34H28L32 29L36 34H43L47 39L53 6L59 52L63 34H70Q75 25 80 34H98"/></svg></div>
   <div>
