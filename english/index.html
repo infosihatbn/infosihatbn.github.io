@@ -661,6 +661,28 @@ html.tm-lock{overflow:hidden}
 .np-lid{transition:transform .25s}
 @media (max-width:640px){.np{padding:16px 14px}.np button{padding:8px 12px;font-size:14px}}
 
+.kq{position:relative;display:grid;gap:14px;margin:22px 0 6px;padding:20px 22px;border-radius:24px;background:linear-gradient(135deg,#FFF7DD,#EEF6F9);border:1px solid var(--line);overflow:hidden}
+.kq-top{display:flex;gap:14px;align-items:center}.kq-top>div{flex:1;min-width:0}
+.kq-ic{font-size:34px;width:56px;height:56px;display:grid;place-items:center;background:#fff;border-radius:18px;flex:none}
+.kq h2{margin:0!important;font:800 22px/1.2 var(--display)!important}.kq-top p{margin:2px 0 0;color:var(--muted);font-size:15px}
+.kq-sc{flex:none;font:800 16px/1 var(--display);color:var(--blue-deep);background:#fff;border-radius:999px;padding:8px 12px}.kq-sc:empty{display:none}
+.kq-card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 22px rgba(31,42,48,.08);animation:kqIn .45s ease both}
+.kq-card.out{animation:kqOut .35s ease both}
+@keyframes kqIn{from{opacity:0;transform:translateY(14px)}}@keyframes kqOut{to{opacity:0;transform:translateY(-10px)}}
+.kq-n{margin:0;font:700 13px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep,#1C7675)}
+.kq-card h3{margin:8px 0 12px;font:700 19px/1.35 var(--display)}
+.kq-opts{display:grid;gap:8px}
+.kq-opts button{text-align:left;border:1.5px solid var(--line);background:#FAFCFD;color:var(--ink);border-radius:14px;padding:12px 14px;font:600 16px/1.35 var(--body);cursor:pointer;transition:border-color .2s,background .2s}
+.kq-opts button:hover:not(:disabled){border-color:var(--blue,#4DA3CA);background:#EEF6F9}
+.kq-opts button.ok{border-color:#2BB673;background:#E3F6EC}.kq-opts button.no{border-color:#E5484D;background:#FDE7E5}
+.kq-opts button:disabled{cursor:default}
+.kq-fb{margin:10px 0 0;font-weight:700}.kq-fb.ok{color:#11663B}.kq-fb.no{color:#B42318}
+.kq-end{text-align:center;display:grid;gap:8px;justify-items:center}.kq-big{margin:0;font:800 46px/1 var(--display);color:var(--blue-deep)}
+.kq-end h3{margin:0}
+.kq-conf{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+@media (max-width:640px){.kq{padding:16px 14px}.kq-ic{width:46px;height:46px;font-size:26px}.kq h2{font-size:19px!important}}
+@media print{.kq{display:none}}
+
 .hotlines{display:grid;gap:10px}
 .hotlines h2{margin:0!important}.hotlines>p{margin:0;color:var(--muted)}
 .hlg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
@@ -738,7 +760,7 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 @media (max-width:480px){.bar{column-gap:6px!important}.lang a,.lang span{padding:8px 9px!important;font-size:13px!important}.brand img{width:38px!important;height:38px!important}.brand{gap:6px!important}}
 @media (max-width:380px){.brand>span{font-size:18px!important}.accb,.music-btn{width:32px!important;height:32px!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../assets/dark.css?v=20261007223220">
+<link rel="stylesheet" href="../assets/dark.css?v=20261007230359">
 </head>
 <body class="home">
 <a class="skip" href="#main">Skip to content</a>
@@ -770,7 +792,7 @@ sc.querySelector('.sc-back').onclick=()=>{const h=H.pop();if(h!==undefined)show(
 <h2 id="health-topics-by-specialty">Health topics by specialty</h2>
 <p>We are starting with <strong>eye health</strong>. More specialties are on the way.</p>
 <div class="specs"><article class="spec live"><span class="ico" aria-hidden="true">👁️</span><div class="sl"><span class="live-tag">Available now</span><h3>Ophthalmology <span style="font-weight:500;color:var(--muted)">· Eye health</span></h3><p>Eye conditions grouped by the part of the eye, eye emergencies, and where to get your eyes checked in Brunei.</p><div class="btns"><a class="btn" href="../english/eye-conditions/">Common Eye Conditions</a><a class="btn ghost" href="../english/acute-eye-conditions/">Acute Eye Conditions</a><a class="btn ghost" href="../eye-clinics/">Eye Clinics</a></div></div></article><article class="spec" aria-label="Endocrinology, Coming soon"><span class="ico" aria-hidden="true">🩸</span><h3>Endocrinology</h3><span>Diabetes and hormones</span><span class="soon">Coming soon</span></article><article class="spec" aria-label="Cardiology, Coming soon"><span class="ico" aria-hidden="true">❤️</span><h3>Cardiology</h3><span>Heart and blood pressure</span><span class="soon">Coming soon</span></article><article class="spec" aria-label="Mental Health, Coming soon"><span class="ico" aria-hidden="true">🧠</span><h3>Mental Health</h3><span>Mind and wellbeing</span><span class="soon">Coming soon</span></article></div>
-<iframe class="embed" src="../embeds/home-emergency-en.html?v=20261007223220" title="home emergency en" style="height:200px" loading="lazy"></iframe>
+<iframe class="embed" src="../embeds/home-emergency-en.html?v=20261007230359" title="home emergency en" style="height:200px" loading="lazy"></iframe>
 <section class="hotlines" aria-labelledby="hl-h"><h2 id="hl-h">Emergency Hotlines</h2><p>Tap a number to call.</p><div class="hlg"><a class="hl hl-u" href="tel:991"><span class="hle" aria-hidden="true">🚑</span><span class="hlt"><b>Ambulance (EMAS)</b></span><span class="hln">991</span></a><a class="hl hl-u" href="tel:995"><span class="hle" aria-hidden="true">🚒</span><span class="hlt"><b>Fire & Rescue</b></span><span class="hln">995</span></a><a class="hl hl-u" href="tel:993"><span class="hle" aria-hidden="true">🚓</span><span class="hlt"><b>Police</b></span><span class="hln">993</span></a><a class="hl hl-u" href="tel:998"><span class="hle" aria-hidden="true">🛟</span><span class="hlt"><b>Search & Rescue</b></span><span class="hln">998</span></a><a class="hl" href="tel:123"><span class="hle" aria-hidden="true">☎️</span><span class="hlt"><b>Talian Darussalam</b><small>Government helpline</small></span><span class="hln">123</span></a><a class="hl" href="tel:145"><span class="hle" aria-hidden="true">💚</span><span class="hlt"><b>Talian Harapan</b><small>Emotional support</small></span><span class="hln">145</span></a><a class="hl" href="tel:148"><span class="hle" aria-hidden="true">🩺</span><span class="hlt"><b>Talian Nasihat Kesihatan</b><small>Health advice line</small></span><span class="hln">148</span></a><a class="hl" href="https://wa.me/6738333123" target="_blank" rel="noopener"><span class="hle" aria-hidden="true">💬</span><span class="hlt"><b>WhatsApp Livechat</b><small>Chat on WhatsApp</small></span><span class="hln hln-l">8333123</span></a></div></section></div></main>
 <footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><p class="disc"><strong>Disclaimer:</strong> InfoSihat provides general health information for education only. It is not medical advice and does not replace an examination, diagnosis or treatment by a qualified doctor or health professional. Always ask your own doctor about any health concern, and never ignore or delay medical advice because of something you read here. Our content is reviewed regularly, but it may not cover every situation or the very latest guidance. InfoSihat and its contributors are not responsible for any loss or harm arising from the use of this website, or for the content of external websites we link to. Contributors write in their personal capacity, and the views here do not necessarily represent those of their employers or the Ministry of Health.</p><p class="disc-em">In an emergency, call 991 or go to the nearest Emergency Department.</p><span>© 2026 InfoSihat, Brunei Darussalam</span></div></footer>
 <script>
@@ -906,7 +928,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261007223220';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261007230359';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
