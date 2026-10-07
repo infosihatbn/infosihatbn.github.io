@@ -267,7 +267,7 @@ renderer.setAnimationLoop(()=>{const t=clock.getElapsedTime();
  inner.position.copy(camera.position).multiplyScalar(.2);
  renderer.render(scene,camera);
  if(!labs.hidden){const w=stage.clientWidth,h=stage.clientHeight;LAB.forEach(([k,p],i)=>{v3.copy(p).project(camera);const e=labEls[i];const inside=camera.position.length()<.95;const hidden=v3.z>1||Math.abs(v3.x)>1.05||Math.abs(v3.y)>1.05||(cutOn&&p.x>CUT.constant+.02)||(inside&&!INNER[k])||(!inside&&!cutOn&&!OUTER[k]);e.style.opacity=hidden?0:1;e.style.left=(v3.x*.5+.5)*w+'px';e.style.top=(-v3.y*.5+.5)*h+'px'})}});
-apply('normal');
+{let k0='normal';try{const m=(parent.location.hash||location.hash).match(/c=(\w+)/);if(m&&TXT.c[m[1]])k0=m[1]}catch(e){}apply(k0)}
 </script>
 </body>
 </html>
