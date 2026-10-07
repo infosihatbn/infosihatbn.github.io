@@ -560,6 +560,71 @@ html.tm-lock{overflow:hidden}
 @keyframes tRub{0%,100%{transform:translate(0,0)}50%{transform:translate(-6px,4px)}}
 @media (prefers-reduced-motion:reduce){.tm-d *{animation:none!important}}
 
+.ba-art{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.ba-band{position:absolute;left:0;right:0;bottom:0;width:100%;height:170px}
+.ba-globe{position:absolute;right:-50px;bottom:-100px;width:320px;height:320px;opacity:.9}
+.f-bimj .ba-band{left:36%;width:64%}
+.feed.f-sea .cov{position:relative}
+.ba-cloud{animation:baCloud 26s linear infinite}.ba-cloud.c2{animation-duration:34s;animation-delay:-12s}
+@keyframes baCloud{from{translate:-160px 0}to{translate:900px 0}}
+.ba-sun{animation:baSun 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes baSun{50%{transform:scale(1.15);opacity:.75}}
+.ba-wave{animation:baWave 6s linear infinite}.ba-wave.w2{animation-duration:9s}
+@keyframes baWave{to{translate:-112px 0}}
+.ba-refl{animation:baRefl 3s ease-in-out infinite;transform-box:fill-box;transform-origin:top}
+@keyframes baRefl{50%{transform:scaleX(1.04) skewX(3deg);opacity:.1}}
+.ba-barge{animation:baBob 3.5s ease-in-out infinite}
+@keyframes baBob{50%{translate:0 2px}}
+.ba-car{animation:baCar 7s linear infinite}.ba-car.c2{animation-duration:9s;animation-direction:reverse}
+@keyframes baCar{from{translate:400px 0}to{translate:800px 0}}
+.ba-taxi{animation:baTaxi 14s ease-in-out infinite alternate}
+@keyframes baTaxi{from{translate:300px 0}to{translate:740px 0}}
+.ba-spin{animation:baSpin 18s linear infinite}
+@keyframes baSpin{to{translate:-200px 0}}
+.ba-paper{opacity:0;animation:baPaper 5.4s ease-out infinite}
+@keyframes baPaper{0%{transform:translate(0,0) rotate(0) scale(.3);opacity:0}12%{opacity:1}80%{opacity:.9}100%{transform:translate(var(--tx),var(--ty)) rotate(var(--r)) scale(1);opacity:0}}
+.ba-win{opacity:.55}.ba-win.on{animation:baWin 4.2s steps(1) infinite}
+@keyframes baWin{50%{opacity:.15}}
+.ba-palm{animation:baPalm 4s ease-in-out infinite}.ba-palm.p2{animation-delay:-2s}
+@keyframes baPalm{50%{rotate:3deg}}
+.ba-amb{animation:baAmb 11s linear infinite}
+@keyframes baAmb{from{translate:-80px 0}to{translate:880px 0}}
+.ba-siren{animation:baSiren .5s steps(1) infinite}
+@keyframes baSiren{50%{fill:#E5484D}}
+.tcov{display:grid;justify-items:start}
+.tart{display:block;width:min(240px,100%);height:auto;margin-top:12px}
+.ba-arm{animation:baArm 1.8s ease-in-out infinite}
+@keyframes baArm{50%{rotate:-12deg}}
+.ba-bulb{animation:baBulb 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes baBulb{0%,100%{filter:none}50%{filter:drop-shadow(0 0 8px #fff8)}}
+.ba-rays{animation:baRays 1.8s ease-in-out infinite}
+@keyframes baRays{0%,100%{opacity:.2}50%{opacity:1}}
+.ba-spark{animation:baRays 1.3s ease-in-out infinite}
+.ba-mag{animation:baMag 3.6s ease-in-out infinite}
+@keyframes baMag{0%,100%{translate:0 0}50%{translate:38px 6px}}
+.ba-eye{animation:baBlink 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes baBlink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.ba-abs{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.ba-abs span{position:absolute;border-radius:50%;filter:blur(30px);opacity:.55}
+.ba-abs .b1{width:260px;height:260px;left:-60px;top:-80px;background:#FF9EC7;animation:baBlob 12s ease-in-out infinite}
+.ba-abs .b2{width:300px;height:300px;right:-80px;bottom:-120px;background:#6FE3D3;animation:baBlob 15s ease-in-out infinite reverse}
+.ba-abs .b3{width:200px;height:200px;left:40%;top:30%;background:#FFE08A;opacity:.35;animation:baBlob 18s ease-in-out infinite}
+@keyframes baBlob{33%{translate:60px 30px;scale:1.15}66%{translate:-30px 50px;scale:.9}}
+.ba-abs svg{position:absolute;inset:0;width:100%;height:100%}
+.ba-ring{transform-box:fill-box;transform-origin:center;animation:baRing 3.6s ease-out infinite}.ba-ring.r2{animation-delay:1.2s}.ba-ring.r3{animation-delay:2.4s}
+@keyframes baRing{from{transform:scale(.3);opacity:.6}to{transform:scale(2.4);opacity:0}}
+.ba-float{animation:baFloat 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}.ba-float.f2{animation-delay:-2s}.ba-float.f3{animation-delay:-4s}
+@keyframes baFloat{50%{translate:0 -16px;rotate:25deg}}
+.ba-ph{animation:baBob2 4s ease-in-out infinite}
+@keyframes baBob2{50%{translate:0 -6px}}
+.ba-icon{animation:baIcon 2.4s ease-in-out infinite}
+@keyframes baIcon{0%,40%,100%{scale:1}50%{scale:1.3}60%{scale:1.15}}
+.ba-tap{transform-box:fill-box;transform-origin:center;animation:baTap 2.4s ease-out infinite}
+@keyframes baTap{0%,40%{transform:scale(.4);opacity:0}48%{opacity:1}80%,100%{transform:scale(1.8);opacity:0}}
+.tart.phone{width:min(200px,100%)}
+@media (max-width:860px){.f-bimj .ba-band{left:0;width:100%}.ba-band{height:120px}.ba-globe{width:220px;height:220px;left:auto;right:-60px;top:-70px;bottom:auto;opacity:.5}.tart{width:150px;margin-top:6px}.tcov{grid-template-columns:1fr auto;align-items:center;column-gap:10px;justify-items:stretch}.tcov .eb{justify-self:start}.tcov .eb,.tcov .fh,.tcov .ad,.tcov .ainst{grid-column:1}.tcov .tart{grid-column:2;grid-row:1/4}.tart.phone{display:none}}
+@media (prefers-reduced-motion:reduce){.ba-art *,.ba-abs *,.tart *{animation:none!important}}
+
 .hotlines{display:grid;gap:10px}
 .hotlines h2{margin:0!important}.hotlines>p{margin:0;color:var(--muted)}
 .hlg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
@@ -637,7 +702,7 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 @media (max-width:480px){.bar{column-gap:6px!important}.lang a,.lang span{padding:8px 9px!important;font-size:13px!important}.brand img{width:38px!important;height:38px!important}.brand{gap:6px!important}}
 @media (max-width:380px){.brand>span{font-size:18px!important}.accb,.music-btn{width:32px!important;height:32px!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../../assets/dark.css?v=20261007122040">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261007130335">
 </head>
 <body class="">
 <a class="skip" href="#main">Langkau ke kandungan</a>
@@ -646,7 +711,7 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 <div class="accp" role="group" aria-label="Saiz tulisan dan paparan" hidden><p>Saiz tulisan</p><div class="accr"><button type="button" data-fs="-1" aria-label="Tulisan lebih kecil">A−</button><button type="button" data-fs="0" aria-label="Tulisan biasa">A</button><button type="button" data-fs="1" aria-label="Tulisan lebih besar">A+</button></div>
 <p>Paparan</p><div class="accr"><button type="button" data-th="light">☀️ Cerah</button><button type="button" data-th="dark">🌙 Gelap</button></div>
 <p>Muzik latar</p><div class="acct"><button type="button" data-trk="0"><b>♪ Calm Ambient</b><small>oleh Velariomusic</small></button><button type="button" data-trk="1"><b>♪ Relax</b><small>oleh The Mountain</small></button><button type="button" data-trk="2"><b>♪ Calm</b><small>oleh MarloweMusic</small></button></div></div></div><div class="music"><button type="button" class="music-btn" aria-pressed="false" aria-label="Muzik disenyapkan. Tekan untuk main" data-on="Muzik dimainkan. Tekan untuk senyapkan" data-off="Muzik disenyapkan. Tekan untuk main"><svg class="m-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="m-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button><span class="music-tip" role="note" data-tpl="Muzik: &quot;{t}&quot; oleh {a}. Terima kasih!">Muzik: "Calm Ambient" oleh Velariomusic. Terima kasih!</span></div></div></header>
-<main id="main"><div class="print-head" aria-hidden="true"><img src="../../assets/logo-128.png" alt=""><div><b>Info<i>Sihat</i></b><span>Maklumat Kesihatan dihujung Jari</span></div><em>Risalah maklumat pesakit</em></div><div class="band"><div class="inner"><h1>Glaukoma</h1><p class="byline">Ditulis dan disemak dari segi perubatan oleh Dr Haziq Aziz Shamri, MBChB · Disemak: 6 Oktober 2026 · Dikemas kini: 6 Oktober 2026</p><div class="band-tools"><button type="button" class="print-btn" onclick="window.print()"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/><path d="M17 12h.01"/></svg><span>Cetak untuk pesakit</span></button><div class="ra" data-l="ms-MY" data-t-read="🔊 Bacakan" data-t-pause="⏸ Berhenti sekejap" data-t-resume="▶️ Sambung"><button type="button" class="ra-p">🔊 Bacakan</button><button type="button" class="ra-x" hidden>⏹ Henti</button></div></div></div></div><div class="content has-side"><div class="main-col"><iframe class="embed" src="../../embeds/gl-glance-bm.html?v=20261007122040" title="gl glance bm" style="height:480px" loading="lazy"></iframe>
+<main id="main"><div class="print-head" aria-hidden="true"><img src="../../assets/logo-128.png" alt=""><div><b>Info<i>Sihat</i></b><span>Maklumat Kesihatan dihujung Jari</span></div><em>Risalah maklumat pesakit</em></div><div class="band"><div class="inner"><h1>Glaukoma</h1><p class="byline">Ditulis dan disemak dari segi perubatan oleh Dr Haziq Aziz Shamri, MBChB · Disemak: 6 Oktober 2026 · Dikemas kini: 6 Oktober 2026</p><div class="band-tools"><button type="button" class="print-btn" onclick="window.print()"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/><path d="M17 12h.01"/></svg><span>Cetak untuk pesakit</span></button><div class="ra" data-l="ms-MY" data-t-read="🔊 Bacakan" data-t-pause="⏸ Berhenti sekejap" data-t-resume="▶️ Sambung"><button type="button" class="ra-p">🔊 Bacakan</button><button type="button" class="ra-x" hidden>⏹ Henti</button></div></div></div></div><div class="content has-side"><div class="main-col"><iframe class="embed" src="../../embeds/gl-glance-bm.html?v=20261007130335" title="gl glance bm" style="height:480px" loading="lazy"></iframe>
 
 <div class="fold-bar"><span>Tekan tajuk untuk buka atau tutup.</span><span class="fold-btns"><button type="button" data-fold="open">Buka semua</button><button type="button" data-fold="close">Tutup semua</button></span></div>
 <div class="folds">
@@ -661,27 +726,27 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 <details class="sec" id="tinggi-kah-risiko-ku"><summary><h2>Tinggi kah risiko ku?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Siapa saja boleh kena glaukoma, tapi risiko abiskita <strong>lagi tinggi</strong> mun:</p>
 <ul><li>umur abiskita <strong>lebih 40 tahun</strong></li><li><strong>mak, bapa, atau adik-beradik</strong> abiskita ada glaukoma</li><li><strong>tekanan mata</strong> abiskita tinggi</li><li>abiskita berketurunan <strong>Asia atau Afrika</strong></li><li>mata abiskita <strong>rabun jauh</strong> yang teruk (sudut terbuka) atau <strong>rabun dekat</strong> (sudut tertutup)</li><li>abiskita ada <strong>kencing manis</strong></li><li>abiskita pakai <strong>ubat steroid</strong> lama (ubat titis mata, pil, inhaler atau krim)</li><li>mata abiskita pernah <strong>cedera</strong> atau pernah dioperasi</li></ul>
 <p><strong>Dekat kitani:</strong> dalam satu kajian besar urang Melayu dewasa berumur 40 hingga 80 tahun di Singapura, lebih kurang <strong>3 dalam 100 urang</strong> ada glaukoma, dan <strong>lebih 9 dalam 10</strong> daripada mereka atu <strong>inda tau pun</strong> mereka ada glaukoma.</p>
-<iframe class="embed" src="../../embeds/gl-risk-bm.html?v=20261007122040" title="gl risk bm" style="height:600px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/gl-risk-bm.html?v=20261007130335" title="gl risk bm" style="height:600px" loading="lazy"></iframe>
 </div></details>
 <details class="sec" id="cemana-kan-tau-aku-tedapat-glaukoma-ani"><summary><h2>Cemana kan tau aku tedapat Glaukoma ani?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p><strong>Glaukoma sudut terbuka inda ada tanda awal.</strong> Inda sakit, dan penglihatan tengah masih terang sampai peringkat akhir. Satu-satunya cara untuk tau awal ialah <strong>periksa mata</strong>.</p>
 <p><strong>Serangan glaukoma sudut tertutup atu KECEMASAN.</strong> Pergi ke Unit Kecemasan dengan segera atau telefon <strong>991</strong> mun tiba-tiba abiskita ada:</p>
-<iframe class="embed" src="../../embeds/gl-emergency-bm.html?v=20261007122040" title="gl emergency bm" style="height:330px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/gl-emergency-bm.html?v=20261007130335" title="gl emergency bm" style="height:330px" loading="lazy"></iframe>
 <div class="btns"><a class="btn" href="../../bahasa-melayu/glaukoma-akut/">Baca lagi: Glaukoma Akut</a></div>
 <p><strong>Apa yang dibuat masa periksa glaukoma?</strong> Samua ujian ani inda sakit:</p>
 <ul><li><strong>Ujian tekanan mata</strong> (tonometri)</li><li><strong>Periksa saraf mata</strong> di belakang mata</li><li><strong>Ujian medan penglihatan</strong> (visual field), untuk memeriksa penglihatan tepi; abiskita tekan butang bila nampak cahaya</li><li><strong>Imbasan OCT</strong>, imbasan macam gambar untuk mengukur lapisan saraf</li><li><strong>Gonioskopi</strong>, doktor pakai kanta khas untuk menengok longkang mata</li></ul>
 <p><strong>Apa boleh terjadi tu?</strong></p>
 <p>Glaukoma perlahan-lahan menghilangkan penglihatan tepi dulu. Ramai urang inda perasan sampai banyak penglihatan sudah hilang. Mun inda dirawat, ia boleh menyebabkan:</p>
 <ul><li><strong>Penglihatan terowong</strong> (tunnel vision), macam meninjau dari dalam paip</li><li>Selalu terlanggar barang, <strong>jatuh</strong>, dan kemalangan jalan raya</li><li><strong>Inda selamat memandu</strong></li><li><strong>Buta kekal</strong></li></ul>
-<iframe class="embed" src="../../embeds/vision-sim-bm.html?v=20261007122040" title="vision sim bm" style="height:640px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/vision-sim-bm.html?v=20261007130335" title="vision sim bm" style="height:640px" loading="lazy"></iframe>
 </div></details>
 <details class="sec" id="apa-ubat-nya-tu"><summary><h2>Apa ubat nya tu?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Rawatan bertujuan <strong>menurunkan tekanan mata</strong> supaya saraf mata terlindung. Rawatan inda dapat membalikkan penglihatan yang sudah hilang, tapi ia boleh <strong>menghentikan atau melambatkan</strong> kerosakan. Kajian besar sudah menunjukkan menurunkan tekanan mata melambatkan glaukoma daripada jadi lagi teruk.</p>
 <ol><li><strong>Ubat titis mata:</strong> rawatan paling biasa. Mesti dipakai <strong>tiap-tiap hari, seumur hidup</strong>, walaupun mata rasa okay saja.</li><li><strong>Rawatan laser:</strong><ul><li><em>Selective laser trabeculoplasty (SLT)</em> membantu longkang mata berfungsi lagi baik untuk glaukoma sudut terbuka. Untuk setengah urang, ani boleh jadi rawatan pertama ganti ubat titis.</ul><ul><li><em>Laser iridotomi</em> membuat lubang halus di iris untuk melegakan atau mencegah sudut tertutup.</li></ul></li><li><strong>Operasi:</strong> membuat saluran keluar yang baru (trabekulektomi), atau memasang tiub atau alat saliran yang halus. Untuk setengah urang yang ada sudut tertutup, membuang kanta mata (macam operasi utik (katarak)) boleh membantu membuka longkang mata.</li></ol>
-<iframe class="embed" src="../../embeds/gl-drops-bm.html?v=20261007122040" title="gl drops bm" style="height:560px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/gl-drops-bm.html?v=20261007130335" title="gl drops bm" style="height:560px" loading="lazy"></iframe>
 <p><strong>Puasa bulan Ramadan?</strong> Jangan berhenti pakai ubat titis glaukoma sendiri. Bincang dengan doktor mata abiskita pasal masa terbaik untuk menitis ubat, dan rujuk panduan pihak berkuasa agama mun abiskita kurang pasti.</p>
 </div></details>
 <details class="sec" id="cemana-kitani-kan-jaga-jaga-supaya-inda-tekana"><summary><h2>Cemana kitani kan jaga-jaga supaya inda tekana?</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Inda ada cara pasti untuk mencegah glaukoma, tapi kitani boleh <strong>mencegah buta</strong> pasal glaukoma dengan mengesannya awal:</p>
 <ul><li><strong>Periksa mata</strong> mun abiskita sudah lebih 40 tahun, dan selalu lepas atu ikut nasihat doktor.</li><li>Mun ada keluarga yang ada glaukoma, <strong>suruh adik-beradik dan anak-anak</strong> periksa mata jua.</li><li>Mun abiskita ada glaukoma, <strong>pakai ubat titis tiap-tiap hari</strong> dan jangan ponteng temujanji.</li><li><strong>Jangan pakai ubat titis steroid</strong> mun inda dipreskripsi doktor dan inda diperiksa doktor.</li><li><strong>Lindungi mata</strong> dengan pakai goggle masa bersukan, bertukang atau pakai alat-alat.</li><li>Kekal aktif, dan kawal kencing manis dan darah tinggi.</li></ul>
-<iframe class="embed" src="../../embeds/gl-myths-bm.html?v=20261007122040" title="gl myths bm" style="height:520px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/gl-myths-bm.html?v=20261007130335" title="gl myths bm" style="height:520px" loading="lazy"></iframe>
 <p><strong>Maklumat terkini / Kaji Selidik</strong></p>
 <ul><li><strong>Glaukoma selalunya tesembunyi:</strong> dalam Singapore Malay Eye Study, lebih 90% urang yang ada glaukoma belum pernah didiagnos. [6]</li><li><strong>Seluruh dunia:</strong> bilangan urang yang ada glaukoma dijangka mencapai lebih kurang 112 juta menjelang tahun 2040, dan paling ramai di Asia. [5]</li></ul>
 </div></details>
@@ -805,7 +870,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261007122040';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261007130335';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

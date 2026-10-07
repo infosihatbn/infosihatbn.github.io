@@ -560,6 +560,71 @@ html.tm-lock{overflow:hidden}
 @keyframes tRub{0%,100%{transform:translate(0,0)}50%{transform:translate(-6px,4px)}}
 @media (prefers-reduced-motion:reduce){.tm-d *{animation:none!important}}
 
+.ba-art{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.ba-band{position:absolute;left:0;right:0;bottom:0;width:100%;height:170px}
+.ba-globe{position:absolute;right:-50px;bottom:-100px;width:320px;height:320px;opacity:.9}
+.f-bimj .ba-band{left:36%;width:64%}
+.feed.f-sea .cov{position:relative}
+.ba-cloud{animation:baCloud 26s linear infinite}.ba-cloud.c2{animation-duration:34s;animation-delay:-12s}
+@keyframes baCloud{from{translate:-160px 0}to{translate:900px 0}}
+.ba-sun{animation:baSun 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes baSun{50%{transform:scale(1.15);opacity:.75}}
+.ba-wave{animation:baWave 6s linear infinite}.ba-wave.w2{animation-duration:9s}
+@keyframes baWave{to{translate:-112px 0}}
+.ba-refl{animation:baRefl 3s ease-in-out infinite;transform-box:fill-box;transform-origin:top}
+@keyframes baRefl{50%{transform:scaleX(1.04) skewX(3deg);opacity:.1}}
+.ba-barge{animation:baBob 3.5s ease-in-out infinite}
+@keyframes baBob{50%{translate:0 2px}}
+.ba-car{animation:baCar 7s linear infinite}.ba-car.c2{animation-duration:9s;animation-direction:reverse}
+@keyframes baCar{from{translate:400px 0}to{translate:800px 0}}
+.ba-taxi{animation:baTaxi 14s ease-in-out infinite alternate}
+@keyframes baTaxi{from{translate:300px 0}to{translate:740px 0}}
+.ba-spin{animation:baSpin 18s linear infinite}
+@keyframes baSpin{to{translate:-200px 0}}
+.ba-paper{opacity:0;animation:baPaper 5.4s ease-out infinite}
+@keyframes baPaper{0%{transform:translate(0,0) rotate(0) scale(.3);opacity:0}12%{opacity:1}80%{opacity:.9}100%{transform:translate(var(--tx),var(--ty)) rotate(var(--r)) scale(1);opacity:0}}
+.ba-win{opacity:.55}.ba-win.on{animation:baWin 4.2s steps(1) infinite}
+@keyframes baWin{50%{opacity:.15}}
+.ba-palm{animation:baPalm 4s ease-in-out infinite}.ba-palm.p2{animation-delay:-2s}
+@keyframes baPalm{50%{rotate:3deg}}
+.ba-amb{animation:baAmb 11s linear infinite}
+@keyframes baAmb{from{translate:-80px 0}to{translate:880px 0}}
+.ba-siren{animation:baSiren .5s steps(1) infinite}
+@keyframes baSiren{50%{fill:#E5484D}}
+.tcov{display:grid;justify-items:start}
+.tart{display:block;width:min(240px,100%);height:auto;margin-top:12px}
+.ba-arm{animation:baArm 1.8s ease-in-out infinite}
+@keyframes baArm{50%{rotate:-12deg}}
+.ba-bulb{animation:baBulb 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes baBulb{0%,100%{filter:none}50%{filter:drop-shadow(0 0 8px #fff8)}}
+.ba-rays{animation:baRays 1.8s ease-in-out infinite}
+@keyframes baRays{0%,100%{opacity:.2}50%{opacity:1}}
+.ba-spark{animation:baRays 1.3s ease-in-out infinite}
+.ba-mag{animation:baMag 3.6s ease-in-out infinite}
+@keyframes baMag{0%,100%{translate:0 0}50%{translate:38px 6px}}
+.ba-eye{animation:baBlink 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes baBlink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.ba-abs{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.ba-abs span{position:absolute;border-radius:50%;filter:blur(30px);opacity:.55}
+.ba-abs .b1{width:260px;height:260px;left:-60px;top:-80px;background:#FF9EC7;animation:baBlob 12s ease-in-out infinite}
+.ba-abs .b2{width:300px;height:300px;right:-80px;bottom:-120px;background:#6FE3D3;animation:baBlob 15s ease-in-out infinite reverse}
+.ba-abs .b3{width:200px;height:200px;left:40%;top:30%;background:#FFE08A;opacity:.35;animation:baBlob 18s ease-in-out infinite}
+@keyframes baBlob{33%{translate:60px 30px;scale:1.15}66%{translate:-30px 50px;scale:.9}}
+.ba-abs svg{position:absolute;inset:0;width:100%;height:100%}
+.ba-ring{transform-box:fill-box;transform-origin:center;animation:baRing 3.6s ease-out infinite}.ba-ring.r2{animation-delay:1.2s}.ba-ring.r3{animation-delay:2.4s}
+@keyframes baRing{from{transform:scale(.3);opacity:.6}to{transform:scale(2.4);opacity:0}}
+.ba-float{animation:baFloat 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}.ba-float.f2{animation-delay:-2s}.ba-float.f3{animation-delay:-4s}
+@keyframes baFloat{50%{translate:0 -16px;rotate:25deg}}
+.ba-ph{animation:baBob2 4s ease-in-out infinite}
+@keyframes baBob2{50%{translate:0 -6px}}
+.ba-icon{animation:baIcon 2.4s ease-in-out infinite}
+@keyframes baIcon{0%,40%,100%{scale:1}50%{scale:1.3}60%{scale:1.15}}
+.ba-tap{transform-box:fill-box;transform-origin:center;animation:baTap 2.4s ease-out infinite}
+@keyframes baTap{0%,40%{transform:scale(.4);opacity:0}48%{opacity:1}80%,100%{transform:scale(1.8);opacity:0}}
+.tart.phone{width:min(200px,100%)}
+@media (max-width:860px){.f-bimj .ba-band{left:0;width:100%}.ba-band{height:120px}.ba-globe{width:220px;height:220px;left:auto;right:-60px;top:-70px;bottom:auto;opacity:.5}.tart{width:150px;margin-top:6px}.tcov{grid-template-columns:1fr auto;align-items:center;column-gap:10px;justify-items:stretch}.tcov .eb{justify-self:start}.tcov .eb,.tcov .fh,.tcov .ad,.tcov .ainst{grid-column:1}.tcov .tart{grid-column:2;grid-row:1/4}.tart.phone{display:none}}
+@media (prefers-reduced-motion:reduce){.ba-art *,.ba-abs *,.tart *{animation:none!important}}
+
 .hotlines{display:grid;gap:10px}
 .hotlines h2{margin:0!important}.hotlines>p{margin:0;color:var(--muted)}
 .hlg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
@@ -637,7 +702,7 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 @media (max-width:480px){.bar{column-gap:6px!important}.lang a,.lang span{padding:8px 9px!important;font-size:13px!important}.brand img{width:38px!important;height:38px!important}.brand{gap:6px!important}}
 @media (max-width:380px){.brand>span{font-size:18px!important}.accb,.music-btn{width:32px!important;height:32px!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../../assets/dark.css?v=20261007122040">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261007130335">
 </head>
 <body class="">
 <a class="skip" href="#main">Langkau ke kandungan</a>
@@ -814,7 +879,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261007122040';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261007130335';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
