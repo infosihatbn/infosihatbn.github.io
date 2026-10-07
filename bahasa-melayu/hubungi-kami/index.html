@@ -460,6 +460,25 @@ iframe.embed{display:none!important}
 @media (max-width:420px){.med{grid-template-columns:90px 1fr}.med-pic svg{width:90px}}
 @media print{.med{break-inside:avoid;box-shadow:none}}
 
+.sc{background:#fff;border:1px solid var(--line);border-left:8px solid #1E8E5A;border-radius:22px;padding:22px clamp(16px,3vw,28px);margin:26px 0;box-shadow:0 8px 24px rgba(31,110,147,.08)}
+.sc-hd{display:flex;gap:14px;align-items:flex-start}.sc-ic{font-size:34px;line-height:1}
+.sc h2{margin:0 0 4px!important;font:700 clamp(21px,3vw,26px)/1.2 var(--display)!important;color:var(--ink)!important}
+.sc-hd p{margin:0;color:#4a5a66}
+.sc-q{font:700 18px/1.4 var(--display);color:var(--ink);margin:18px 0 12px}
+.sc-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.sc-yn{display:flex;gap:12px;flex-wrap:wrap}.sc-yn .sc-o{min-width:120px;justify-content:center;font-weight:700}
+.sc-o{display:flex;align-items:center;gap:10px;text-align:left;background:#F2F8FB;border:1.5px solid #CFE3EC;border-radius:14px;padding:12px 14px;font:500 16px/1.3 var(--body);color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+.sc-o:hover,.sc-o:focus-visible{border-color:var(--blue,#1F6E93);background:#E6F2F8}.sc-o span{font-size:22px}
+.sc-r{margin-top:18px;border-radius:16px;padding:16px 18px;border:2px solid}.sc-r b{display:block;font:800 19px/1.3 var(--display)}.sc-r p{margin:8px 0 0}
+.sc-e{background:#FDECEC;border-color:#D64545}.sc-e b{color:#B42318}
+.sc-u{background:#FFF4E5;border-color:#E8912D}.sc-u b{color:#A35200}
+.sc-n{background:#EAF7EF;border-color:#1E8E5A}.sc-n b{color:#16683F}
+.sc-more a{font-weight:600}
+.sc-call{display:inline-block;margin-top:12px;background:#D64545;color:#fff!important;text-decoration:none;font:800 18px/1 var(--display);padding:12px 20px;border-radius:999px}
+.sc-nav{display:flex;gap:10px;margin-top:16px}.sc-nav[hidden]{display:none}
+.sc-nav button{background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 15px/1 var(--body);color:var(--ink);cursor:pointer}
+.sc-disc{margin:18px 0 0;font-size:14px;color:#5b6770;background:#F6F7F8;border-radius:12px;padding:10px 12px}
+
 .hotlines{display:grid;gap:10px}
 .hotlines h2{margin:0!important}.hotlines>p{margin:0;color:var(--muted)}
 .hlg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
@@ -598,7 +617,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261007093405';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261007093850';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
