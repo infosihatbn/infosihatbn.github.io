@@ -21,65 +21,65 @@
    },
    {
     "t": "Air quality stays moderate",
-    "src": "Borneo Bulletin",
+    "src": "Borneo Bulletin Online",
     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1xMUNoM2dPVFVjcnpzamxqVGRMbE9iVFE3MEtMM0F1WWZUajR1Q0RYWkwyR3ZRbkV6ZUdVNWFLQ1BHM1pXV0dIUHZ1dVU2YWtPQ1NHVjZTY3JYTThDa2FOdGRncF9VWEp6?oc=5",
     "d": "2026-10-05"
    },
    {
     "t": "Prioritise health, women told at breast cancer awareness forum",
-    "src": "Borneo Bulletin",
+    "src": "Borneo Bulletin Online",
     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQX0JGdVdCd1huQzFkWEtJVEFnOXVnb0Raekp0OHprSEswWGJSdHJaaEh1NGhZWGhwZmVZdDZOZm4tTEtna3hYWUxDSXdoMzdVNzRjNU1iWUpCTkgwVlpDekd3RXFWNW5TUjNYOWw3dTlfMno4VjBPNXFyd1lIMXJBMElfRHF6eWxuZkxSMmNXM1JxRE5WYzZJ?oc=5",
     "d": "2026-10-04"
    },
    {
     "t": "Temburong sees good air quality, others moderate",
-    "src": "Borneo Bulletin",
+    "src": "Borneo Bulletin Online",
     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNZXpqMVQwdmdQdUkzOGpFRzdnTEhRaWtZQ1pvbTdGaDE2WGwxRmlPcGc4aE9wTG9BUFk3S1VxZTYwOGFvdlVxbUFWZFFnSjZMN0NwdjRZWEZfR19mUzdHM0o1SWtpZ0prRnk1WFo0SXF3VTdaZ0MtMl9iczV2OTF5WlpqUFc?oc=5",
     "d": "2026-10-03"
    }
   ],
-  "updated": "2026-10-06"
+  "updated": "2026-10-07"
  },
  "sea": {
   "items": [
    {
-    "t": "Intravitreal faricimab in patients with nAMD: French data from the Fight Retinal Blindness! Registry",
-    "src": "Acta Ophthalmologica",
+    "t": "Mitomycin C Application during Trabeculectomy-Injection versus Sponge: A Report by the American Academy of Ophthalmology",
+    "src": "Ophthalmology",
+    "d": "2026 Oct 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42841846/"
+   },
+   {
+    "t": "Effect of Visual Crowding on Quality of Life in Glaucoma Patients",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42841590/"
+   },
+   {
+    "t": "Surface-Specific Internal Limiting Membrane Biomechanics in Epiretinal Membrane Severity and Visual Outcomes",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42841589/"
+   },
+   {
+    "t": "Longitudinal Changes in Choroidal Thickness Across the Eye in Young Children With Premyopia",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42841588/"
+   },
+   {
+    "t": "Persistent foetal vasculature: Developmental mechanisms, contemporary management and evolving therapeutics",
+    "src": "Eye",
     "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42837224/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42839091/"
    },
    {
-    "t": "Impact of retinal break location on surgical outcomes in primary uncomplicated rhegmatogenous retinal detachment: Superior versus inferior breaks",
-    "src": "Acta Ophthalmologica",
+    "t": "Identification of a translatable rabbit model for corneal endothelial dysfunction",
+    "src": "Eye",
     "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42837189/"
-   },
-   {
-    "t": "Predictors of visual acuity, intraocular pressure and pain in neovascular glaucoma",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42836502/"
-   },
-   {
-    "t": "Win Ratios in Ophthalmology-a Hierarchical Metric to Evaluate Adverse Outcomes in Comparative Studies",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42835583/"
-   },
-   {
-    "t": "Visual Impairment and Blindness in Indian Myopes Aged 10-40 Years: A Multicenter Hospital-Based Study",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42834931/"
-   },
-   {
-    "t": "Insights into the modulation of age-related macular degeneration: Molecular and systems-level perspectives",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42834336/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42839090/"
    }
   ],
-  "updated": "2026-10-06"
+  "updated": "2026-10-07"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-06"
+  "updated": "2026-10-07"
  },
- "checked": "2026-10-06T22:07+00:00",
+ "checked": "2026-10-07T22:07+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
