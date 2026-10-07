@@ -414,7 +414,7 @@ iframe.embed{display:none!important}
 .cmp.on{background:var(--blue-deep);color:#fff}
 .sim-info{border-left:6px solid var(--teal);background:var(--paper);border-radius:0 18px 18px 0;padding:14px 18px;box-shadow:0 4px 18px rgba(31,110,147,.08)}
 .sim-info h3{margin:0 0 4px!important;font:700 20px/1.2 var(--display)!important;color:var(--blue-deep)}
-.sim-info p{margin:0}.sim-info a{display:inline-block;margin-top:8px;font-weight:700}
+.sim-info p{margin:0}.sim-info a{display:inline-block;margin-top:8px;font-weight:700}.sim-info a[hidden]{display:none}
 .sim-note{margin:0;font-size:14px;color:var(--muted)}
 .sim.full .sim-stage{position:fixed;inset:0;z-index:100;border-radius:0;aspect-ratio:auto;box-shadow:none}
 .sim.full .sim-sev{position:fixed;left:12px;right:12px;bottom:12px;z-index:101;background:rgba(255,255,255,.92);backdrop-filter:blur(6px)}
@@ -719,7 +719,7 @@ html[data-fs="-1"] main{zoom:.9}html[data-fs="1"] main{zoom:1.12}html[data-fs="2
 @media (max-width:480px){.bar{column-gap:6px!important}.lang a,.lang span{padding:8px 9px!important;font-size:13px!important}.brand img{width:38px!important;height:38px!important}.brand{gap:6px!important}}
 @media (max-width:380px){.brand>span{font-size:18px!important}.accb,.music-btn{width:32px!important;height:32px!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../../assets/dark.css?v=20261007133134">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261007133626">
 </head>
 <body class="">
 <a class="skip" href="#main">Langkau ke kandungan</a>
@@ -896,7 +896,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261007133134';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261007133626';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
