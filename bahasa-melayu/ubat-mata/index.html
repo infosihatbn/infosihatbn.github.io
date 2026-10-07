@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ubat Mata · InfoSihat</title>
+<meta name="description" content="Maklumat kesihatan mata yang senang difaham untuk urang Brunei, ditulis oleh doktor.">
+<meta property="og:title" content="Ubat Mata · InfoSihat">
+<meta property="og:description" content="Maklumat kesihatan mata yang senang difaham untuk urang Brunei, ditulis oleh doktor.">
+<link rel="icon" href="../../assets/favicon-32.png">
+<link rel="alternate" hreflang="en" href="../../english/eye-medications/">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#1F6E93">
+<meta name="apple-mobile-web-app-title" content="InfoSihat">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&display=swap">
+<style>
+/* Mock of the Google Site: header banner + top nav, title band, single readable column (Sites 'Simple'-style), brand blue/teal from the logo */
+:root{--ink:#1F2A30;--muted:#4A5A62;--paper:#FFFFFF;--mist:#EEF6F9;--line:#D3E3EA;--blue:#4DA3CA;--blue-deep:#1F6E93;--teal:#4FBAB9;--teal-deep:#1C7675;--sun:#F4C04E;--sun-soft:#FFF4D6;
+--display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.6 var(--body)}
+.note{background:var(--ink);color:#fff;font:500 13px/1.4 var(--display);padding:8px 16px;text-align:center}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 22px/1 var(--display);color:#333}
+.brand img{width:38px;height:38px}.brand i{font-style:normal;color:var(--teal)}
+.nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.nav a{display:block;text-decoration:none;color:var(--ink);font:500 16px/1 var(--display);padding:12px 12px;border-radius:10px}
+.nav a:hover,.nav a.on{background:var(--mist);color:var(--blue-deep)}
+.dd{position:relative}
+.menu{display:none;position:absolute;right:0;top:100%;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:6px;min-width:250px;box-shadow:0 12px 30px rgba(31,42,48,.12)}
+.dd:hover .menu,.dd:focus-within .menu{display:grid}
+.band{background:url(../../assets/header-banner.jpg) center/cover;color:#fff}
+.band .inner{max-width:860px;margin:0 auto;padding:56px 16px 44px}
+.band h1{font:700 clamp(30px,5vw,48px)/1.12 var(--display);margin:0;text-wrap:balance;color:#fff}
+.byline{margin:12px 0 0;opacity:.92;font-size:16px}
+.home .band{display:none}
+.content{max-width:860px;margin:0 auto;padding:28px 16px 64px;display:grid;gap:18px}
+.content>*{margin:0;min-width:0}
+.content h2{font:700 clamp(24px,3.4vw,30px)/1.2 var(--display);margin-top:22px;text-wrap:balance;color:var(--blue-deep)}
+.content h3{font:700 22px/1.25 var(--display);margin:0}
+.content ul,.content ol{padding-left:26px;display:grid;gap:6px}
+.content a{color:var(--blue-deep);overflow-wrap:anywhere}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;text-decoration:none;background:var(--blue-deep);color:#fff!important;font:600 16px/1 var(--display);padding:14px 22px;border-radius:999px}
+.btn.ghost{background:var(--paper);color:var(--blue-deep)!important;border:2px solid var(--blue-deep)}
+.btn:hover{filter:brightness(1.08)}
+iframe.embed{width:100%;border:0;display:block}
+.ph{margin:0;border:2px dashed var(--line);border-radius:18px;padding:18px;background:var(--mist)}
+.ph span{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep)}
+.ph p{margin:8px 0 0;color:var(--muted);font-size:16px}
+blockquote{margin:0;background:var(--sun-soft);border-radius:18px;padding:18px 22px;font:500 19px/1.5 var(--display)}
+.topic{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:22px;align-items:center;border:1px solid var(--line);border-radius:24px;padding:18px}
+.topic img{width:100%;border-radius:16px;aspect-ratio:3/2;object-fit:cover}
+.topic p{margin:6px 0 14px;color:var(--muted)}
+footer{background:var(--ink);color:#E8EEF1}
+footer .in{max-width:860px;margin:0 auto;padding:32px 16px;display:grid;gap:6px;font-size:15px}
+footer b{font-family:var(--display)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+@media (max-width:640px){.topic{grid-template-columns:1fr}.nav{margin-left:0;width:100%}.nav a{padding:10px 10px;font-size:15px}.menu{left:0;right:auto}}
+
+.fold-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;color:var(--muted);font-size:16px;margin-top:8px}
+.fold-btns{display:flex;gap:8px}
+.fold-btns button{font:600 14px/1 var(--display);color:var(--blue-deep);background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer}
+.fold-btns button:hover{border-color:var(--blue-deep)}
+.folds{display:grid;gap:12px}
+.sec{border:1px solid var(--line);border-radius:20px;background:var(--paper);overflow:hidden}
+.sec[open]{border-color:var(--blue);box-shadow:0 6px 22px rgba(31,110,147,.08)}
+.sec summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;justify-content:space-between;padding:18px 22px;min-height:64px}
+.sec summary::-webkit-details-marker{display:none}
+.sec summary:hover{background:var(--mist)}
+.sec summary h2{margin:0!important;font:700 clamp(19px,2.6vw,23px)/1.25 var(--display);color:var(--ink)}
+.sec[open] summary h2{color:var(--blue-deep)}
+.chev{flex:none;width:36px;height:36px;border-radius:50%;background:var(--mist);position:relative;transition:transform .2s}
+.chev::before{content:"";position:absolute;left:50%;top:45%;width:10px;height:10px;border-right:3px solid var(--blue-deep);border-bottom:3px solid var(--blue-deep);transform:translate(-50%,-50%) rotate(45deg)}
+.sec[open] .chev{transform:rotate(180deg)}
+.sec-body{padding:4px 22px 24px;display:grid;gap:16px}
+.sec-body>*{margin:0;min-width:0}
+@media (max-width:640px){.sec summary{padding:16px 16px}.sec-body{padding:4px 16px 20px}}
+.refs{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.refs h2{font:700 18px/1.2 var(--display)!important;color:var(--ink)!important;margin:0 0 10px!important}
+.refs ol{padding-left:22px;display:grid;gap:6px}.refs p{font-size:15px}
+.refs-dd{margin-top:18px}.refs-dd summary h2{font-size:18px!important}.refs-dd .sec-body{font-size:15px;color:var(--muted)}.refs-dd ol{padding-left:22px;display:grid;gap:6px}
+@media print{.fold-bar{display:none}.sec summary .chev{display:none}}
+
+.nav button.ddb{display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--display);padding:12px 12px;border-radius:10px}
+.nav button.ddb:hover,.nav button.ddb.on,.dd.open button.ddb{background:var(--mist);color:var(--blue-deep)}
+.car{width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.dd.open .menu{display:grid}
+.dd.open,.dd:hover,.dd:focus-within{z-index:20}.menu{z-index:20;background:#fff}
+.menu a[aria-current]{background:var(--mist);color:var(--blue-deep)}
+.lang{display:flex;background:var(--mist);border-radius:999px;padding:4px;gap:2px;flex:none}
+.lang a,.lang span{font:700 14px/1 var(--display);padding:9px 14px;border-radius:999px;text-decoration:none;color:var(--blue-deep);letter-spacing:.04em}
+.lang span.on{background:var(--blue-deep);color:#fff}
+.lang a:hover{background:var(--paper)}
+.bar{max-width:1320px}
+.tick{flex:1 1 200px;min-width:0;display:flex;align-items:center;gap:10px;margin:0 6px;height:38px;background:var(--mist);border-radius:999px;padding:0 4px 0 4px;overflow:hidden}
+.tick .tl{flex:none;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#1E8E5A;border-radius:999px;padding:8px 11px;display:flex;align-items:center;gap:6px}
+.tick .tl::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;animation:tickdot 2.2s ease-in-out infinite}
+@keyframes tickdot{0%,100%{opacity:1}50%{opacity:.3}}
+.tick .ti:not([hidden])~.ti:not([hidden])::before{content:"•";margin:0 22px;color:#1E8E5A}
+.tick .rail{flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.tick .mv{display:inline-block;white-space:nowrap;padding-left:100%;animation:tickmv var(--d,30s) linear infinite}
+.tick:hover .mv{animation-play-state:paused}
+.tick .ti{font:600 15px/38px var(--display);color:var(--blue-deep);text-decoration:none}.tick .ti:hover{text-decoration:underline}
+.tick .ti[hidden]{display:none!important}
+@keyframes tickmv{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.tick .mv{animation:none;padding-left:0}.tick .ti{display:block;overflow:hidden;text-overflow:ellipsis}}
+@media (max-width:640px){.tick{order:2;flex-basis:100%;margin:2px 0 0;height:34px}.tick .ti{font-size:14px;line-height:34px}.tick .tl{padding:7px 9px;font-size:10px}}
+@media (min-width:0px){.bar{row-gap:4px}.lang{margin-left:auto}.nav{order:3;width:100%;margin-left:0;justify-content:center;border-top:1px solid var(--line);padding-top:6px}}
+@media (max-width:640px){.bar{gap:8px}.nav{justify-content:flex-start;border-top:0;padding-top:0}.nav button.ddb{padding:10px 10px;font-size:15px}}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{position:relative;display:grid;align-content:start;gap:6px;text-decoration:none;color:var(--ink)!important;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:20px;padding:18px 54px 18px 20px;transition:border-color .15s,box-shadow .15s,transform .15s}
+.card:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(31,110,147,.12);transform:translateY(-1px)}
+.card h3{font:700 20px/1.25 var(--display)!important;color:var(--blue-deep)}
+.card p{margin:0;color:var(--muted);font-size:17px}
+.kick{font:700 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+.go{position:absolute;right:18px;top:50%;width:28px;height:28px;margin-top:-14px;border-radius:50%;background:var(--mist)}
+.go::before{content:"";position:absolute;left:8px;top:9px;width:8px;height:8px;border-top:3px solid var(--blue-deep);border-right:3px solid var(--blue-deep);transform:rotate(45deg)}
+.card.urgent{border-left-color:#B3261E}.card.urgent h3{color:#8C1D18}.card.urgent .kick{color:#B3261E}.card.urgent .go{background:#FCE8E6}.card.urgent .go::before{border-color:#B3261E}
+.glance{background:var(--mist);border-radius:22px;padding:20px 24px;border:1px solid var(--line)}
+.glance h3{font:700 14px/1 var(--display)!important;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-deep);margin:0 0 12px!important}
+.glance ul{margin:0;padding-left:22px;display:grid;gap:8px}
+.alert{display:flex;gap:14px;align-items:flex-start;background:#FCE8E6;border:2px solid #B3261E;border-radius:20px;padding:16px 20px;color:#5C1410}
+.alert p{margin:0;font:500 18px/1.5 var(--body)}
+.alert strong{color:#8C1D18}
+.ai{flex:none;width:32px;height:32px;border-radius:50%;background:#B3261E;color:#fff;font:800 20px/32px var(--display);text-align:center}
+.anat{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:center;background:linear-gradient(180deg,var(--mist),#fff);border:1px solid var(--line);border-radius:24px;padding:18px}
+.anat svg{width:100%;height:auto;display:block}
+.anat svg a:hover circle,.anat svg a:focus circle{fill:var(--teal-deep)}
+.anat ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.anat li a{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);padding:6px 8px;border-radius:12px;font-size:16px;line-height:1.3}
+.anat li a:hover{background:var(--paper)}
+.anat li b{display:block;font:600 16px/1.25 var(--display);color:var(--blue-deep)}
+.anat .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--blue-deep);color:#fff;font:700 14px/28px var(--display);text-align:center}
+.content h2[id]{scroll-margin-top:90px}
+.menu{max-height:min(72vh,560px);overflow:auto}
+.menu a small{display:block;font:700 11px/1.2 var(--display);letter-spacing:.07em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:3px}
+.gallery{display:grid;gap:12px;margin:18px 0 26px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.gallery img{width:100%;height:100%;max-height:420px;object-fit:cover;border-radius:16px;box-shadow:0 6px 18px rgba(31,42,48,.12);display:block}.gallery.g1 img{max-height:none;height:auto}
+.menu.wide .mg{break-inside:avoid;padding:6px 0 8px}
+.menu.wide .mgh{display:block;font:700 12px/1.2 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep);padding:8px 14px 4px;border-top:1px solid var(--line)}
+.menu.wide .mg a{display:block;padding-left:24px;font-size:15px}
+@media (min-width:900px){.menu.wide{left:0;right:auto;width:min(800px,92vw);max-height:min(80vh,680px)}.menu.wide .mgrid{column-count:3;column-gap:6px}.menu.wide .mgh{border-top:0}}
+.menu a.all{font-weight:700;color:var(--blue-deep);border-bottom:1px solid var(--line);border-radius:10px 10px 0 0}
+.dd.urgent .menu a small{color:#B3261E}
+.dd.urgent button.ddb::before{content:"";width:8px;height:8px;border-radius:50%;background:#B3261E;animation:urgentdot 2.2s ease-in-out infinite}
+@keyframes urgentdot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(179,38,30,.55)}50%{opacity:.25;box-shadow:0 0 0 6px rgba(179,38,30,0)}}
+@media (prefers-reduced-motion:reduce){.dd.urgent button.ddb::before{animation:none}}
+@media (max-width:760px){.anat{grid-template-columns:1fr}.card{padding-right:50px}}
+
+.content .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:st}
+.steps li{position:relative;background:var(--mist);border-radius:20px;padding:18px 18px 16px;border-top:6px solid var(--teal)}
+.steps .st{display:inline-block;font:800 20px/1 var(--display);color:var(--blue-deep);margin-bottom:8px}
+.steps p{margin:0;font-size:17px}
+.search{background:linear-gradient(135deg,var(--blue-deep),#2A8BB5 60%,var(--teal));border-radius:26px;padding:24px;color:#fff;display:grid;gap:12px;scroll-margin-top:90px}
+.search label{font:700 clamp(22px,3vw,28px)/1.2 var(--display)}
+.sbox{display:flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:6px 8px 6px 18px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.sbox svg{flex:none;width:22px;height:22px;color:var(--blue-deep)}
+.sbox input{flex:1;min-width:0;border:0;outline:0;font:500 19px/1.4 var(--body);color:var(--ink);padding:10px 0;background:none}
+.sbox input::-webkit-search-cancel-button{cursor:pointer}
+.sbox:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+.chips-q{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:15px}
+.chips-q button{font:600 14px/1 var(--display);color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:8px 12px;cursor:pointer}
+.chips-q button:hover{background:rgba(255,255,255,.3)}
+#sres{display:grid;gap:8px}
+#sres:empty{display:none}
+.sr{display:block;background:#fff;color:var(--ink)!important;text-decoration:none;border-radius:16px;padding:14px 16px}
+.sr:hover,.sr:focus{outline:3px solid var(--sun)}
+.sr b{display:block;font:700 18px/1.3 var(--display);color:var(--blue-deep)}
+.sr small{display:block;font:600 12px/1.3 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:2px 0 4px}
+.sr span{display:block;color:var(--muted);font-size:16px;line-height:1.45}
+.sr mark{background:var(--sun-soft);color:inherit;border-radius:4px;padding:0 2px}
+.snone{background:rgba(255,255,255,.14);border-radius:14px;padding:12px 16px}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.spec{border:1px dashed var(--line);border-radius:20px;padding:16px;background:#FAFCFD;color:var(--muted);display:grid;gap:6px;align-content:start}
+.spec .ico{width:44px;height:44px;border-radius:14px;background:var(--mist);display:grid;place-items:center;font-size:22px}
+.spec h3{font:700 17px/1.25 var(--display)!important;color:var(--ink)}
+.spec .soon{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#EEF0F2;color:#5B6770;border-radius:999px;padding:6px 9px}
+.spec.live{grid-column:1/-1;border:1px solid var(--blue);border-left:8px solid var(--blue-deep);background:#fff;color:var(--ink);display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:20px;box-shadow:0 8px 24px rgba(31,110,147,.08)}
+.spec.live .sl{display:grid;gap:8px;align-content:start}.spec.live .ico{width:64px;height:64px;font-size:32px;background:var(--blue-deep)}
+.spec.live h3{font-size:24px!important;color:var(--blue-deep)}
+.spec.live p{margin:0}
+.spec.live .btns{margin-top:6px}
+.spec .live-tag{justify-self:start;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#DDF3F2;color:var(--teal-deep);border-radius:999px;padding:6px 9px}
+@media (max-width:640px){.spec.live{grid-template-columns:1fr}.search{padding:18px}}
+
+.facts,.quiz{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+@media (max-width:900px){.facts,.quiz{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.facts,.quiz{grid-template-columns:1fr}}
+.daily{margin:0;color:var(--muted);font-size:16px}
+.fc{border-radius:22px;background:var(--paper);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,border-color .2s}
+.fc.open{border-color:var(--teal);box-shadow:0 10px 26px rgba(28,118,117,.14)}
+.fq{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center;padding:18px;background:linear-gradient(135deg,var(--mist),#fff);width:100%}
+.fq:focus-visible{outline:3px solid var(--sun);outline-offset:-3px}
+.fe{grid-row:span 2;font-size:34px;width:56px;height:56px;border-radius:16px;background:#fff;display:grid;place-items:center;box-shadow:0 2px 8px rgba(31,42,48,.08)}
+.fn{font:700 12px/1 var(--display);letter-spacing:.08em;color:var(--teal-deep)}
+.ft{font:700 18px/1.3 var(--display);color:var(--ink)}
+.tap{grid-column:1/-1;justify-self:start;margin-top:8px;font:600 13px/1 var(--display);color:var(--blue-deep);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 11px}
+.fc.open .tap{display:none}
+.fa{padding:4px 18px 18px;font-size:17px}
+.fa p{margin:0 0 8px}.fa small{color:var(--muted)}
+.js-games .fc:not(.open) .fa{display:none}
+.fc.open .fa{animation:pop .25s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.gbar{position:sticky;top:76px;z-index:3;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--blue-deep);color:#fff;border-radius:18px;padding:12px 16px;box-shadow:0 8px 20px rgba(31,110,147,.2)}
+.gbar b{font:800 20px/1 var(--display)}
+.gbar .meter{flex:1 1 140px;height:10px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden}
+.gbar .meter i{display:block;height:100%;width:0;background:var(--sun);border-radius:99px;transition:width .3s}
+.gbar button{font:600 14px/1 var(--display);color:var(--blue-deep);background:#fff;border:0;border-radius:999px;padding:9px 14px;cursor:pointer}
+.mf{border:1px solid var(--line);border-radius:22px;padding:18px;background:var(--paper);display:flex;flex-direction:column;gap:12px}
+.ms{margin:0;font:600 17px/1.4 var(--display);display:flex;gap:12px;align-items:flex-start}
+.mn{flex:none;width:32px;height:32px;border-radius:50%;background:var(--mist);color:var(--blue-deep);font:700 15px/32px var(--display);text-align:center}
+.mb{display:flex;gap:10px;flex-wrap:wrap}
+.mb button{flex:1 1 80px;font:700 16px/1 var(--display);padding:12px 12px;border-radius:999px;cursor:pointer;border:2px solid var(--blue-deep);background:#fff;color:var(--blue-deep)}
+.mb button:hover:not(:disabled){background:var(--mist)}
+.mb button:disabled{cursor:default;opacity:.55}
+.mb button.pick{opacity:1;color:#fff}
+.mf.right .mb button.pick{background:#1E7B4F;border-color:#1E7B4F}
+.mf.wrong .mb button.pick{background:#B3261E;border-color:#B3261E}
+.mf.right{border-color:#1E7B4F;background:#F1FAF5}.mf.wrong{border-color:#B3261E;background:#FDF3F2}
+.mx{font-size:17px}.mx p{margin:0 0 6px}.mx small{color:var(--muted)}
+.js-games .mf:not(.done) .mx{display:none}
+.verdict{font:800 17px var(--display);color:var(--blue-deep)}
+.mres{font-weight:700;font-family:var(--display)}
+.mf .res{font:700 15px var(--display)}
+.mf.right .res{color:#1E7B4F}.mf.wrong .res{color:#B3261E}
+.gdone{background:var(--sun-soft);border-radius:22px;padding:20px;text-align:center;font:700 20px/1.4 var(--display)}
+.gdone button{margin-top:10px;font:700 15px/1 var(--display);color:#fff;background:var(--blue-deep);border:0;border-radius:999px;padding:12px 18px;cursor:pointer}
+@media (max-width:640px){.gbar{position:static}}
+
+.carousel{position:relative;border-radius:28px;overflow:hidden;background:var(--mist)}
+.carousel .slides{display:grid}
+.carousel .slide{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility .6s;padding:34px 32px 64px;min-width:0}
+.carousel .slide.on{opacity:1;visibility:visible}
+.hero2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:center;background:linear-gradient(135deg,var(--mist),#E3F4F3)}
+.hero2 .eb{font:700 13px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin:0}
+.hero2 .chart{display:grid;gap:10px;justify-items:start;margin-top:14px}
+.hero2 .row{display:flex;align-items:baseline;gap:14px;font-family:var(--display);font-weight:800;letter-spacing:.06em;color:var(--ink);line-height:1}
+.hero2 .row small{font:600 12px/1 var(--display);letter-spacing:.08em;color:var(--teal-deep);min-width:42px}
+.hero2 .r1{font-size:clamp(54px,9vw,88px)}.hero2 .r2{font-size:clamp(34px,5.6vw,54px)}.hero2 .r3{font-size:clamp(22px,3.4vw,32px);color:var(--blue-deep)}.hero2 .r4{font-size:clamp(14px,2.1vw,19px);color:var(--muted);letter-spacing:.14em}
+.hero2 .tag{margin-top:18px;display:grid;gap:4px}.hero2 .tag strong{font:700 clamp(20px,2.6vw,26px)/1.25 var(--display)}.hero2 .tag span{color:var(--muted)}
+.hero2 .side{display:grid;gap:16px;justify-items:center;text-align:center}
+.hero2 .word{font:800 clamp(32px,4.6vw,46px)/1 var(--display)}.hero2 .word b{color:#333}.hero2 .word i{font-style:normal;color:var(--teal)}
+.brand img{animation:logopop 7s ease-in-out infinite;transform-origin:50% 60%}
+@keyframes logopop{0%,18%,100%{transform:none}3%{transform:translateY(-9px) rotate(-18deg) scale(1.15)}7%{transform:translateY(0) rotate(360deg) scale(1.2)}11%{transform:rotate(350deg) scale(1.05)}14%{transform:rotate(366deg) scale(1)}17%{transform:rotate(360deg)}}
+.brand .ch{display:inline-block;animation:chhop 7s ease-in-out infinite;animation-delay:calc(.5s + var(--i) * .08s)}
+@keyframes chhop{0%,12%,100%{transform:none}4%{transform:translateY(-10px) scale(1.12)}8%{transform:translateY(2px) scale(.98)}}
+@media (prefers-reduced-motion:reduce){.brand img,.brand .ch{animation:none}}
+footer .disc{margin:4px 0 0;font-size:14px;line-height:1.55;opacity:.85;max-width:110ch}footer .disc strong{opacity:1}
+footer .disc-em{margin:0;font-weight:700;font-size:15px;color:#FFB4AB}
+.hero2 .blink{transform-box:fill-box;transform-origin:center;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,84%,100%{transform:scaleY(1)}90%{transform:scaleY(.06)}}
+@media (prefers-reduced-motion:reduce){.hero2 .blink{animation:none}}
+.hero2 .pill{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 15px/1 var(--display);color:var(--blue-deep)}
+.feed{position:relative;color:#fff;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:26px;align-items:center;isolation:isolate;overflow:hidden}
+.feed::before,.feed::after{content:"";position:absolute;border-radius:50%;z-index:-1;filter:blur(2px)}
+.feed::before{width:340px;height:340px;right:-90px;top:-120px;background:radial-gradient(circle,rgba(255,255,255,.22),rgba(255,255,255,0) 70%)}
+.feed::after{width:260px;height:260px;left:-80px;bottom:-110px;background:radial-gradient(circle,rgba(244,192,78,.35),rgba(244,192,78,0) 70%)}
+.feed.f-news{background:radial-gradient(120% 140% at 0% 0%,#2FA4D6 0%,#1F6E93 45%,#123F57 100%)}
+.feed.f-sea{background:radial-gradient(120% 140% at 0% 0%,#4FD1B5 0%,#1C7675 48%,#0F4342 100%)}
+.feed.f-bimj{background:radial-gradient(120% 140% at 0% 0%,#8C7BF0 0%,#4A47A3 48%,#262566 100%)}
+.feed .cov{display:grid;gap:12px;align-content:center}
+.feed .ico{width:84px;height:84px;border-radius:24px;display:grid;place-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.feed .ico svg{width:46px;height:46px}
+.feed .eb{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.16);border-radius:999px;padding:7px 11px;justify-self:start;margin:0}
+.feed .eb::before{content:"";width:8px;height:8px;border-radius:50%;background:#7CF0B5;box-shadow:0 0 0 3px rgba(124,240,181,.3);animation:livep 1.6s ease-in-out infinite}
+@keyframes livep{50%{box-shadow:0 0 0 6px rgba(124,240,181,0)}}
+.feed h2.fh{margin:0!important;font:800 clamp(24px,3.2vw,34px)/1.12 var(--display)!important;color:#fff!important;text-wrap:balance}
+.feed .fd{margin:0;opacity:.9;font-size:16px}
+.feed .ff{margin:0;font-size:13px;opacity:.85}.feed .ff a{color:#fff!important;font-weight:700}
+.feed ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:fi}
+.feed li a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;color:var(--ink)!important;text-decoration:none;background:rgba(255,255,255,.96);border-radius:18px;padding:13px 16px;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .2s,box-shadow .2s}
+.feed li a:hover,.feed li a:focus-visible{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.feed li .n{font:800 22px/1 var(--display);color:var(--acc);min-width:30px}
+.feed li b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:600 16px/1.35 var(--display)}
+.feed li small{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px;font-size:13px;color:var(--muted)}
+.feed li small em{font-style:normal;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:3px 8px}
+.feed li .fgo{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc);font:700 15px/1 var(--display)}
+.feed.f-news{--acc:#1F6E93;--acc-soft:#E2F1F8}.feed.f-sea{--acc:#1C7675;--acc-soft:#DDF3F1}.feed.f-bimj{--acc:#4A47A3;--acc-soft:#ECEBFB}
+.feed li.wait a{background:rgba(255,255,255,.18);color:#fff!important;box-shadow:none;grid-template-columns:1fr}
+@media (max-width:860px){.feed{grid-template-columns:1fr;gap:16px}.feed .ico{width:60px;height:60px;border-radius:18px}.feed .ico svg{width:34px;height:34px}.feed .cov{grid-template-columns:auto 1fr;column-gap:14px}.feed .cov>:not(.ico){grid-column:1/-1}.feed .cov .ico{grid-row:1/3}.feed .cov .eb{align-self:end}.feed .fd{display:none}}
+@media (max-width:640px){.feed li a{padding:11px 12px;gap:10px}.feed li .fgo{display:none}.feed li .n{font-size:18px;min-width:22px}.feed li b{font-size:15px}}
+@media (prefers-reduced-motion:reduce){.feed .eb::before{animation:none}.feed li a{transition:none}}
+.tipd{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(120% 140% at 0% 0%,#FFE7A3 0%,#F4C04E 40%,#E89A2C 100%);color:#3A2A05;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px 28px;align-items:center}
+.tipd::before{content:"";position:absolute;width:360px;height:360px;right:-100px;bottom:-160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.45),rgba(255,255,255,0) 70%);z-index:-1}
+.tipd .eb{display:inline-flex;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.55);border-radius:999px;padding:7px 11px;margin:0 0 10px;color:#6B4A00}
+.tipd h2.fh{margin:0!important;font:800 clamp(28px,4vw,42px)/1.1 var(--display)!important;color:#3A2A05!important}
+.tpool{list-style:none;margin:0;padding:0}
+.tpool li{display:none;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:#fff;border-radius:24px;padding:22px 24px;box-shadow:0 10px 30px rgba(120,70,0,.22)}
+.tpool li.on{display:grid}
+.tpool .te{font-size:52px;line-height:1;width:84px;height:84px;display:grid;place-items:center;background:var(--sun-soft);border-radius:22px}
+.tpool p{margin:0;font:700 clamp(18px,2.3vw,23px)/1.35 var(--display);color:var(--ink)}
+.tipd .btns{grid-column:2}
+.keyf{background:radial-gradient(120% 140% at 0% 0%,#B9E6E3 0%,#4FBAB9 45%,#1F6E93 100%);color:#fff}.keyf .eb{color:#0F4C5C}.keyf h2.fh{color:#fff!important}
+.keyf .tpool li{box-shadow:0 10px 30px rgba(15,60,80,.3)}.keyf .tpool .te{background:#DDF3F1}
+.appd{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(120% 140% at 100% 0%,#D9D7FB 0%,#8C88E0 45%,#4A47A3 100%);color:#fff;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px 28px;align-items:center}
+.appd .eb{display:inline-flex;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.75);border-radius:999px;padding:7px 11px;margin:0 0 10px;color:#2E2B7A}
+.appd h2.fh{margin:0!important;font:800 clamp(26px,3.6vw,40px)/1.1 var(--display)!important;color:#fff!important}
+.appd .ad{margin:10px 0 0;font-size:17px;color:#F2F1FF}.appd .ainst[hidden]{display:none!important}.appd .ainst{margin-top:14px;background:#fff;color:#2E2B7A!important}
+.asteps{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.aos{background:#fff;color:var(--ink);border-radius:20px;padding:16px 18px;box-shadow:0 10px 30px rgba(30,25,90,.3)}
+.aos h3{margin:0 0 8px!important;font:700 16px/1.2 var(--display)!important;color:#2E2B7A!important}
+.aos ol{margin:0;padding-left:20px}.aos li{margin:4px 0;font-size:15px;line-height:1.4}
+.appd.is-ios .and,.appd.is-and .ios{display:none}.appd.is-ios .asteps,.appd.is-and .asteps{grid-template-columns:1fr}
+@media (max-width:860px){.appd{grid-template-columns:1fr}.asteps{grid-template-columns:1fr}.appd .ad{font-size:15px}}
+.kgo{display:inline-block;margin-top:10px;font:700 15px/1.3 var(--display);color:var(--blue-deep)!important;text-decoration:none;border-bottom:2px solid currentColor}
+.tipd .btn{background:#3A2A05}.tipd .btn.ghost{background:rgba(255,255,255,.7);color:#3A2A05!important;border-color:transparent}
+@media (max-width:860px){.tipd{grid-template-columns:1fr}.tipd .btns{grid-column:1}.tpool li{padding:16px;gap:14px}.tpool .te{width:60px;height:60px;font-size:36px}}
+.carousel .ctl{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;align-items:center;gap:10px;pointer-events:none}
+.carousel .ctl>*{pointer-events:auto}
+.carousel .dots{display:flex;gap:8px;background:rgba(31,42,48,.35);border-radius:999px;padding:8px 10px}
+.carousel .dots button{width:10px;height:10px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.6);cursor:pointer;transition:width .3s}
+.carousel .dots button[aria-current="true"]{width:28px;background:#fff}
+.carousel .cb{width:36px;height:36px;border-radius:50%;border:0;background:rgba(31,42,48,.35);color:#fff;cursor:pointer;display:grid;place-items:center;font:700 16px/1 var(--display)}
+.carousel .cb:hover,.carousel .dots button:hover{background:rgba(31,42,48,.6)}
+.carousel .cbar{position:absolute;left:0;top:0;height:4px;background:var(--sun);width:0}
+.carousel.playing .cbar{animation:carbar 7s linear}
+@keyframes carbar{from{width:0}to{width:100%}}
+@media (max-width:640px){.carousel .slide{padding:24px 18px 64px}.hero2{grid-template-columns:1fr}.hero2 .side{order:-1}.hero2 .side svg{width:150px}}
+@media (prefers-reduced-motion:reduce){.carousel .slide{transition:none}.carousel.playing .cbar{animation:none}}
+
+.music{position:relative;flex:none}
+.music-btn{position:relative;width:42px;height:42px;border-radius:50%;border:0;background:var(--mist);color:var(--blue-deep);display:grid;place-items:center;cursor:pointer}
+.music-btn:hover{background:var(--line)}
+.music-btn:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.music-btn .m-on,.music-btn[aria-pressed="true"] .m-off{display:none}
+.music-btn[aria-pressed="true"] .m-on{display:block}
+.music-btn[aria-pressed="true"]{background:var(--blue-deep);color:#fff}
+.eq{position:absolute;right:-2px;bottom:-2px;display:none;gap:1px;align-items:flex-end;height:12px;padding:2px 3px;background:var(--teal);border-radius:6px}
+.music-btn[aria-pressed="true"] .eq{display:flex}
+.eq i{width:2px;background:#fff;border-radius:1px;animation:eq 1s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:-.4s}.eq i:nth-child(3){animation-delay:-.7s}
+@keyframes eq{0%,100%{height:3px}50%{height:8px}}
+@media (prefers-reduced-motion:reduce){.eq i{animation:none;height:6px}}
+.music-tip{position:absolute;right:0;top:calc(100% + 8px);width:max-content;max-width:240px;background:var(--ink);color:#fff;font:400 13px/1.35 var(--body);padding:7px 10px;border-radius:8px;opacity:0;visibility:hidden;transition:opacity .15s;z-index:30;pointer-events:none}
+.music:hover .music-tip,.music-btn:focus-visible+.music-tip{opacity:1;visibility:visible}
+.credit{font-size:12px;opacity:.7}
+
+.band-tools{margin-top:18px}
+.print-btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--display);color:var(--blue-deep);background:#fff;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.print-btn:hover{background:var(--sun-soft)}
+.print-btn:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.print-head,.print-end,.pclone{display:none}
+@page{size:A4;margin:14mm 15mm 15mm}
+@media print{
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none!important;animation:none!important;transition:none!important}
+html,body{background:#fff!important}
+body{font-size:10.5pt;line-height:1.45;color:#111}
+header.site,footer,.skip,.fold-bar,.band-tools,.btns,.btn,figure.ph,.music,.music-tip,.gbar,iframe[src*="vision-sim"],iframe[src*="myths"]{display:none!important}
+.print-head{display:flex!important;align-items:center;gap:10px;padding-bottom:8pt;border-bottom:2.5pt solid #1F6E93;margin-bottom:10pt}
+.print-head img{width:34px;height:34px}
+.print-head b{display:block;font:800 16pt/1 Lexend,sans-serif;color:#1F6E93}.print-head b i{font-style:normal;color:#4FBAB9}
+.print-head span{font-size:8.5pt;color:#555}
+.print-head em{margin-left:auto;font:600 9pt/1.2 Lexend,sans-serif;font-style:normal;text-transform:uppercase;letter-spacing:.08em;color:#1F6E93;border:1pt solid #1F6E93;border-radius:999px;padding:4pt 9pt}
+.band{background:none!important;color:#111}
+.band .inner{max-width:none;padding:0 0 6pt}
+.band h1{color:#1F6E93!important;font-size:22pt!important;text-wrap:balance}
+.byline{color:#555;font-size:8.5pt;margin-top:3pt;opacity:1}
+.content{max-width:none;padding:0;gap:8pt}
+.content p,.content li{font-size:10.5pt}
+.folds{gap:0}
+.sec{border:0!important;border-radius:0;background:none;overflow:visible}
+.sec summary{display:block;padding:0;min-height:0}
+.sec summary h2{font-size:13.5pt!important;color:#1F6E93!important;border-bottom:.75pt solid #9cc3d6;padding-bottom:2pt;margin-top:10pt!important;break-after:avoid;page-break-after:avoid}
+.sec-body{padding:5pt 0 0;gap:6pt}
+h2,h3{break-after:avoid;page-break-after:avoid}
+p,li{orphans:3;widows:3}
+.glance,.alert,.steps li,table,figure,iframe,.pnotes,.pfoot,.card,.content blockquote{break-inside:avoid;page-break-inside:avoid}
+.glance{padding:8pt 12pt;border-radius:8pt}
+.alert{padding:8pt 12pt;border-radius:8pt;border-width:1.5pt}.alert p{font-size:10.5pt}
+.content .steps{grid-template-columns:repeat(3,1fr);gap:6pt}.steps li{padding:8pt;border-radius:8pt}.steps p{font-size:9.5pt}
+.cards{grid-template-columns:1fr 1fr;gap:6pt}.card{padding:8pt 10pt;border-radius:8pt}
+a{color:inherit!important;text-decoration:none}
+iframe.embed{width:100%!important}
+.refs{font-size:8pt;margin-top:10pt;padding-top:6pt}.refs p,.refs li{font-size:8pt}.refs h2{font-size:10pt!important}
+.refs a{word-break:break-all}
+iframe.embed{display:none!important}
+.pclone{display:block!important;break-inside:avoid;page-break-inside:avoid;margin:2pt 0}
+.print-end{display:block!important;margin-top:12pt;break-inside:avoid;page-break-inside:avoid}
+.pnotes{border:1.25pt solid #1F6E93;border-radius:8pt;padding:8pt 12pt 10pt}
+.pnotes h3{margin:0 0 2pt!important;font:700 11pt/1.2 Lexend,sans-serif!important;color:#1F6E93}
+.pnotes>i{display:block;height:20pt;border-bottom:.75pt dotted #777}
+.pl{display:flex;gap:8pt;align-items:flex-end;margin-top:8pt}.pl span{font-weight:700;font-size:9.5pt;white-space:nowrap}.pl i{flex:1;border-bottom:.75pt dotted #777;height:14pt}
+.pfoot{display:flex;gap:12pt;align-items:center;margin-top:10pt;padding-top:8pt;border-top:.75pt solid #ccc}
+.pqr svg{width:26mm;height:26mm;display:block}
+.pfoot p{margin:0 0 3pt;font-size:8.5pt;color:#333}.pfoot .pem{font-weight:700;color:#8C1D18}.pfoot .pdate{color:#777}
+}
+
+.sim{display:grid;gap:16px}
+.sim-ctl{display:grid;gap:14px}
+.sim-grp{display:grid;gap:8px}
+.sim-lab{font:700 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:600 15px/1 var(--display);color:var(--blue-deep);background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:11px 16px;cursor:pointer;min-height:44px}
+.chips button:hover{border-color:var(--blue)}
+.chips button[aria-checked="true"]{background:var(--blue-deep);border-color:var(--blue-deep);color:#fff}
+.chips .cam-btn{border-color:var(--teal);color:var(--teal-deep)}
+.chips .cam-btn.on{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff}
+.sim-stage{position:relative;border-radius:24px;overflow:hidden;background:#111;aspect-ratio:3/2;box-shadow:0 14px 40px rgba(31,110,147,.18)}
+.sim-stage canvas{display:block;width:100%;height:100%;touch-action:manipulation}
+.sim-badge{position:absolute;left:14px;top:14px;background:rgba(17,24,28,.6);color:#fff;font:600 14px/1 var(--display);padding:8px 12px;border-radius:999px;backdrop-filter:blur(4px)}
+.sim-tools{position:absolute;right:12px;top:12px;display:flex;gap:8px}
+.sim-tools button{width:44px;height:44px;border-radius:50%;border:0;background:rgba(17,24,28,.6);color:#fff;font:700 20px/1 var(--display);cursor:pointer}
+.sim-msg{position:absolute;inset:auto 14px 14px;margin:0;background:rgba(17,24,28,.85);color:#fff;padding:12px 14px;border-radius:14px;font-size:15px}
+.sim-sev{display:grid;gap:8px;background:var(--mist);border-radius:20px;padding:16px 18px}
+.sim-sev label{font:700 17px/1.2 var(--display)}.sim-sev label b{color:var(--blue-deep)}
+.sim-sev input[type=range]{width:100%;height:36px;accent-color:var(--blue-deep);cursor:pointer}
+.sev-scale{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-top:-4px}
+.cmp{justify-self:start;font:600 15px/1.2 var(--display);background:var(--paper);color:var(--blue-deep);border:2px solid var(--blue-deep);border-radius:999px;padding:11px 16px;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none}
+.cmp.on{background:var(--blue-deep);color:#fff}
+.sim-info{border-left:6px solid var(--teal);background:var(--paper);border-radius:0 18px 18px 0;padding:14px 18px;box-shadow:0 4px 18px rgba(31,110,147,.08)}
+.sim-info h3{margin:0 0 4px!important;font:700 20px/1.2 var(--display)!important;color:var(--blue-deep)}
+.sim-info p{margin:0}.sim-info a{display:inline-block;margin-top:8px;font-weight:700}
+.sim-note{margin:0;font-size:14px;color:var(--muted)}
+.sim.full .sim-stage{position:fixed;inset:0;z-index:100;border-radius:0;aspect-ratio:auto;box-shadow:none}
+.sim.full .sim-sev{position:fixed;left:12px;right:12px;bottom:12px;z-index:101;background:rgba(255,255,255,.92);backdrop-filter:blur(6px)}
+@media (min-width:1100px){.sim{grid-template-columns:minmax(0,1fr) 340px;grid-template-rows:auto auto 1fr auto;align-items:start}.sim-ctl,.sim-note{grid-column:1/-1}.sim-stage{grid-row:2/4;grid-column:1;max-height:72vh;aspect-ratio:auto;height:min(72vh,calc((100vw - 480px) * .62))}.sim-sev{grid-row:2;grid-column:2}.sim-info{grid-row:3;grid-column:2}.sim-note{grid-row:4}}
+@media (max-width:640px){.sim-stage{aspect-ratio:4/5;border-radius:18px}.chips button{padding:10px 13px;font-size:14px}}
+@media print{.sim{display:none}}
+
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.cc{position:relative;overflow:hidden;border-radius:24px;padding:24px;color:#fff;display:grid;gap:6px;align-content:start;box-shadow:0 12px 32px rgba(31,110,147,.18)}
+.cc-ig{background:radial-gradient(120% 140% at 0% 100%,#FEDA75 0%,#FA7E1E 25%,#D62976 55%,#962FBF 80%,#4F5BD5 100%)}
+.cc-em{background:radial-gradient(120% 140% at 0% 0%,#4FD1B5 0%,#1F6E93 55%,#123F57 100%)}
+.cc .cci{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:rgba(255,255,255,.2);margin-bottom:6px}
+.cc h3{margin:0!important;font:700 15px/1 var(--display)!important;letter-spacing:.08em;text-transform:uppercase;color:#fff!important;opacity:.9}
+.cc .cch{margin:0;font:800 clamp(22px,2.6vw,28px)/1.2 var(--display);word-break:break-all}
+.cc p{margin:0;opacity:.95}
+.cc .btn{margin-top:10px;justify-self:start;background:#fff;color:var(--ink)!important}
+.cc .btns .btn{margin-top:10px}
+.cc .btn.ghost{background:rgba(255,255,255,.18);color:#fff!important;border-color:rgba(255,255,255,.6);cursor:pointer;font-family:var(--display)}
+.cmap{margin:0;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--paper);box-shadow:0 8px 26px rgba(31,110,147,.1)}
+.cmap iframe{display:block;width:100%;height:360px;border:0}
+.cmap figcaption{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:center;padding:14px 18px;font-size:16px}
+@media (max-width:640px){.cmap iframe{height:280px}}
+@media print{.cmap iframe{display:none}}
+
+.fbox{margin:28px 0;background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 24px;box-shadow:0 8px 24px rgba(31,42,48,.06)}
+.fbox h2{margin-top:0!important}.fb-sub{margin:4px 0 14px;color:var(--muted)}
+.fb{display:grid;gap:14px}.fb-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fb label{display:grid;gap:6px;font:600 15px/1.3 var(--display);color:var(--ink)}
+.fb input,.fb select,.fb textarea{font:400 16px/1.4 var(--body,inherit);padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%;box-sizing:border-box}
+.fb input:focus,.fb select:focus,.fb textarea:focus{outline:3px solid rgba(77,163,202,.35);border-color:var(--blue)}
+.fb textarea{resize:vertical;min-height:120px}.fb .req{color:#B3261E}
+.fb .fb-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fb-note{margin:0;font-size:14px;color:var(--muted)}.fb button{justify-self:start;border:0;cursor:pointer}.fb button:disabled{opacity:.6;cursor:wait}
+.fb-msg{margin:0;padding:12px 14px;border-radius:12px;font-weight:600}.fb-msg.ok{background:#E3F4EA;color:#145C38}.fb-msg.bad{background:#FCE8E6;color:#8C1D18}
+@media (max-width:640px){.fb-row{grid-template-columns:1fr}.fbox{padding:18px 16px}}
+
+.meds{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin:12px 0 18px}
+.med{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 4px 14px rgba(31,42,48,.05)}
+.med-pic svg{width:120px;height:auto;display:block}
+.med h3{margin:2px 0 2px!important;font-size:19px!important}
+.med p{margin:4px 0;font-size:15.5px;line-height:1.45}.med .med-b{color:var(--muted);font-size:14px;margin-top:0}
+.med .med-tip{background:var(--mist);border-radius:10px;padding:7px 10px;font-size:14.5px}
+@media (max-width:420px){.med{grid-template-columns:90px 1fr}.med-pic svg{width:90px}}
+@media print{.med{break-inside:avoid;box-shadow:none}}
+
+.hotlines{display:grid;gap:10px}
+.hotlines h2{margin:0!important}.hotlines>p{margin:0;color:var(--muted)}
+.hlg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.hl{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;text-decoration:none;color:var(--ink)!important;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:12px 14px;min-height:64px;transition:transform .15s,box-shadow .15s,border-color .15s}
+.hl:hover,.hl:focus-visible{transform:translateY(-2px);box-shadow:0 8px 22px rgba(31,110,147,.14);border-color:var(--blue)}
+.hle{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--mist);font-size:22px}
+.hlt{display:grid;gap:2px;min-width:0}.hlt b{font:600 16px/1.25 var(--display)}.hlt small{color:var(--muted);font-size:13px}
+.hln{font:800 20px/1 var(--display);color:var(--blue-deep);background:var(--mist);border-radius:999px;padding:9px 12px}
+.hln-l{font-size:16px}
+.hl-u{border-color:#F2B8B5}.hl-u .hle{background:#FCE8E6}.hl-u .hln{background:#B3261E;color:#fff}
+
+.waves{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.waves .w{position:absolute;left:0;bottom:0;width:200%;height:34vh;min-height:220px;will-change:transform}
+.waves .w1{fill:rgba(77,163,202,.13);animation:wv 38s linear infinite}
+.waves .w2{fill:rgba(79,186,185,.14);animation:wv 27s linear infinite reverse}
+.waves .w3{fill:rgba(244,192,78,.13);animation:wv 20s linear infinite}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5}
+.blob.b1{width:520px;height:520px;left:-180px;top:12vh;background:rgba(77,163,202,.22);animation:bl 26s ease-in-out infinite alternate}
+.blob.b2{width:460px;height:460px;right:-160px;top:38vh;background:rgba(79,186,185,.2);animation:bl 32s ease-in-out infinite alternate-reverse}
+@keyframes wv{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes bl{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,-40px) scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.waves .w,.blob{animation:none}}
+@media print{.waves{display:none}}
+footer{position:relative}
+@media (max-width:640px){header.site{position:relative!important}.gbar{top:8px!important}}
+
+.pside{display:none}
+@media (min-width:1100px){
+ .band .inner{max-width:1240px;padding-left:32px;padding-right:32px}
+ .content{max-width:1240px;padding-left:32px;padding-right:32px}
+ .content>p,.content>ul,.content>ol{max-width:80ch}
+ footer .in{max-width:1240px;padding-left:32px;padding-right:32px}
+ .content.has-side{grid-template-columns:minmax(0,1fr) 300px;column-gap:44px;align-items:start}
+ .content.has-side>.main-col{display:grid;gap:18px;min-width:0}
+ .pside{display:block;position:sticky;top:150px;align-self:start}
+ .pside-in{display:grid;gap:14px;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:22px;padding:18px 18px 20px;box-shadow:0 8px 28px rgba(31,110,147,.08)}
+ .pside-h{margin:0;font:700 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+ .content .toc{list-style:none;margin:0;padding:0!important;display:grid;gap:2px;counter-reset:t}
+ .toc a{display:block;padding:8px 10px;border-radius:10px;text-decoration:none;color:var(--ink)!important;font:500 15px/1.3 var(--display)}
+ .toc a:hover,.toc a.on{background:var(--mist);color:var(--blue-deep)!important}
+ .pside-print{font:600 15px/1 var(--display);color:#fff;background:var(--blue-deep);border:0;border-radius:999px;padding:12px 16px;cursor:pointer}
+ .pside-em{display:grid;gap:2px;background:#FCE8E6;border-radius:14px;padding:12px 14px;color:#5C1410;font-size:14px}.pside-em b{font-family:var(--display);color:#8C1D18}
+ .pside-clinic{font:600 15px/1.3 var(--display)}
+}
+@media (min-width:1400px){.content.has-side{grid-template-columns:minmax(0,1fr) 320px}}
+@media print{.pside{display:none!important}.content.has-side{display:block}}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
+</head>
+<body class="">
+<a class="skip" href="#main">Langkau ke kandungan</a>
+<div class="waves" aria-hidden="true"><svg class="w w1" viewBox="0 0 2880 320" preserveAspectRatio="none"><path d="M0,320 L0,120.0 L30,127.5 L60,134.7 L90,141.4 L120,147.3 L150,152.2 L180,155.9 L210,158.5 L240,159.8 L270,159.8 L300,158.8 L330,156.8 L360,154.0 L390,150.6 L420,146.9 L450,143.0 L480,139.1 L510,135.5 L540,132.1 L570,129.2 L600,126.7 L630,124.6 L660,122.8 L690,121.4 L720,120.0 L750,118.6 L780,117.2 L810,115.4 L840,113.3 L870,110.8 L900,107.9 L930,104.5 L960,100.9 L990,97.0 L1020,93.1 L1050,89.4 L1080,86.0 L1110,83.2 L1140,81.2 L1170,80.2 L1200,80.2 L1230,81.5 L1260,84.1 L1290,87.8 L1320,92.7 L1350,98.6 L1380,105.3 L1410,112.5 L1440,120.0 L1470,127.5 L1500,134.7 L1530,141.4 L1560,147.3 L1590,152.2 L1620,155.9 L1650,158.5 L1680,159.8 L1710,159.8 L1740,158.8 L1770,156.8 L1800,154.0 L1830,150.6 L1860,146.9 L1890,143.0 L1920,139.1 L1950,135.5 L1980,132.1 L2010,129.2 L2040,126.7 L2070,124.6 L2100,122.8 L2130,121.4 L2160,120.0 L2190,118.6 L2220,117.2 L2250,115.4 L2280,113.3 L2310,110.8 L2340,107.9 L2370,104.5 L2400,100.9 L2430,97.0 L2460,93.1 L2490,89.4 L2520,86.0 L2550,83.2 L2580,81.2 L2610,80.2 L2640,80.2 L2670,81.5 L2700,84.1 L2730,87.8 L2760,92.7 L2790,98.6 L2820,105.3 L2850,112.5 L2880,120.0 L2880,320 Z"/></svg><svg class="w w2" viewBox="0 0 2880 320" preserveAspectRatio="none"><path d="M0,320 L0,197.4 L30,196.4 L60,194.6 L90,192.1 L120,189.1 L150,185.8 L180,182.2 L210,178.6 L240,175.2 L270,172.0 L300,169.2 L330,166.7 L360,164.7 L390,163.0 L420,161.6 L450,160.5 L480,159.5 L510,158.6 L540,157.6 L570,156.5 L600,155.1 L630,153.5 L660,151.6 L690,149.5 L720,147.3 L750,144.9 L780,142.6 L810,140.5 L840,138.8 L870,137.5 L900,136.9 L930,137.1 L960,138.1 L990,140.0 L1020,142.8 L1050,146.4 L1080,150.7 L1110,155.7 L1140,161.2 L1170,166.8 L1200,172.6 L1230,178.1 L1260,183.2 L1290,187.8 L1320,191.6 L1350,194.5 L1380,196.4 L1410,197.4 L1440,197.4 L1470,196.4 L1500,194.6 L1530,192.1 L1560,189.1 L1590,185.8 L1620,182.2 L1650,178.6 L1680,175.2 L1710,172.0 L1740,169.2 L1770,166.7 L1800,164.7 L1830,163.0 L1860,161.6 L1890,160.5 L1920,159.5 L1950,158.6 L1980,157.6 L2010,156.5 L2040,155.1 L2070,153.5 L2100,151.6 L2130,149.5 L2160,147.3 L2190,144.9 L2220,142.6 L2250,140.5 L2280,138.8 L2310,137.5 L2340,136.9 L2370,137.1 L2400,138.1 L2430,140.0 L2460,142.8 L2490,146.4 L2520,150.7 L2550,155.7 L2580,161.2 L2610,166.8 L2640,172.6 L2670,178.1 L2700,183.2 L2730,187.8 L2760,191.6 L2790,194.5 L2820,196.4 L2850,197.4 L2880,197.4 L2880,320 Z"/></svg><svg class="w w3" viewBox="0 0 2880 320" preserveAspectRatio="none"><path d="M0,320 L0,218.6 L30,216.0 L60,213.7 L90,211.8 L120,210.3 L150,209.1 L180,208.2 L210,207.5 L240,206.9 L270,206.4 L300,205.9 L330,205.3 L360,204.6 L390,203.7 L420,202.6 L450,201.4 L480,200.1 L510,198.8 L540,197.6 L570,196.6 L600,195.9 L630,195.6 L660,195.8 L690,196.6 L720,198.0 L750,200.0 L780,202.7 L810,205.9 L840,209.5 L870,213.6 L900,217.8 L930,222.1 L960,226.3 L990,230.2 L1020,233.7 L1050,236.6 L1080,238.8 L1110,240.3 L1140,241.0 L1170,240.9 L1200,240.1 L1230,238.6 L1260,236.4 L1290,233.8 L1320,230.9 L1350,227.8 L1380,224.6 L1410,221.5 L1440,218.6 L1470,216.0 L1500,213.7 L1530,211.8 L1560,210.3 L1590,209.1 L1620,208.2 L1650,207.5 L1680,206.9 L1710,206.4 L1740,205.9 L1770,205.3 L1800,204.6 L1830,203.7 L1860,202.6 L1890,201.4 L1920,200.1 L1950,198.8 L1980,197.6 L2010,196.6 L2040,195.9 L2070,195.6 L2100,195.8 L2130,196.6 L2160,198.0 L2190,200.0 L2220,202.7 L2250,205.9 L2280,209.5 L2310,213.6 L2340,217.8 L2370,222.1 L2400,226.3 L2430,230.2 L2460,233.7 L2490,236.6 L2520,238.8 L2550,240.3 L2580,241.0 L2610,240.9 L2640,240.1 L2670,238.6 L2700,236.4 L2730,233.8 L2760,230.9 L2790,227.8 L2820,224.6 L2850,221.5 L2880,218.6 L2880,320 Z"/></svg><span class="blob b1"></span><span class="blob b2"></span></div>
+<header class="site"><div class="bar"><a class="brand" href="../../"><img src="../../assets/logo-128.png" alt=""><span aria-label="InfoSihat"><span class="ch" style="--i:0">I</span><span class="ch" style="--i:1">n</span><span class="ch" style="--i:2">f</span><span class="ch" style="--i:3">o</span><i><span class="ch" style="--i:4">S</span><span class="ch" style="--i:5">i</span><span class="ch" style="--i:6">h</span><span class="ch" style="--i:7">a</span><span class="ch" style="--i:8">t</span></i></span></a><div class="tick" role="note" aria-label="Fakta mata hari ani"><span class="tl">Fakta mata hari ani</span><div class="rail"><div class="mv"><a class="ti" hidden href="../../bahasa-melayu/katarak/">👁️ Utik (katarak) atu punca buta paling utama di dunia, dan operasi utik antara operasi yang paling berjaya dalam perubatan.</a><a class="ti" hidden href="../../bahasa-melayu/glaukoma/">🤫 Glaukoma selalunya inda ada tanda sampai banyak penglihatan tepi sudah hilang. Kerosakan inda boleh dipulihkan, jadi periksa awal atu penting.</a><a class="ti" hidden href="../../bahasa-melayu/mata-kering/">💧 Tuam suam dan cuci kelopak mata perlahan-lahan tiap hari selalunya lebih membantu mata kering daripada titis mata saja.</a><a class="ti" hidden href="../../bahasa-melayu/mata-penat-skrin/">💻 Skrin inda merosakkan mata selama-lamanya, tapi kitani jarang berkelip bila menengok skrin, jadi mata jadi kering dan penat.</a><a class="ti" hidden href="../../bahasa-melayu/konjunktivitis/">🦠 Konjunktivitis pasal virus senang berjangkit melalui tangan dan tuala. Kebanyakannya baik sendiri dalam 1 hingga 2 minggu.</a><a class="ti" hidden href="../../bahasa-melayu/pterigium/">☀️ Kurita (pterigium) dikaitkan dengan bertahun-tahun kena cahaya matahari. Cermin mata hitam dan topi membantu mencegah dan supaya inda tumbuh balik lepas bekikis.</a><a class="ti" hidden href="../../bahasa-melayu/kanta-lekap/">🚿 Jangan biarkan air paip kena kanta lekap. Air paip boleh membawa kuman yang menyebabkan jangkitan mata yang jarang tapi teruk banar.</a><a class="ti" hidden href="../../bahasa-melayu/ulser-kornea/">🚨 Mata merah dan sakit pada urang yang pakai kanta lekap atu kecemasan. Buka kanta dan jumpa doktor mata hari atu jua.</a><a class="ti" hidden href="../../bahasa-melayu/keratokonus/">✋ Selalu menggosok mata dikaitkan dengan keratokonus, iaitu bila kornea jadi nipis dan membonjol macam kon.</a><a class="ti" hidden href="../../bahasa-melayu/retinopati-darah-tinggi/">🩺 Darah tinggi boleh merosakkan saluran darah halus di belakang mata, selalunya tanpa apa-apa tanda.</a><a class="ti" hidden href="../../bahasa-melayu/retinopati-kencing-manis/">🍬 Samua urang yang ada kencing manis patut periksa mata sekurang-kurangnya sekali setahun, walaupun penglihatan nampak baik.</a><a class="ti" hidden href="../../bahasa-melayu/degenerasi-makula/">🚭 Merokok atu faktor risiko degenerasi makula yang paling besar yang abiskita boleh ubah. Berhenti merokok pada umur berapa pun membantu.</a><a class="ti" hidden href="../../bahasa-melayu/kelopak-mata-jatuh/">😴 Kelopak mata yang tiba-tiba jatuh, dengan begimbar atau sakit kepala, perlu rawatan kecemasan.</a><a class="ti" hidden href="../../bahasa-melayu/lumpuh-saraf-mata/">👀 Begimbar yang tiba-tiba, dan hilang bila satu mata ditutup, boleh jadi tanda lumpuh saraf mata.</a><a class="ti" hidden href="../../bahasa-melayu/blefaritis/">🧽 Blefaritis selalunya jangka panjang. Tuam air suam dan bersihkan kelopak mata tiap-tiap hari supaya ia terkawal.</a><a class="ti" hidden href="../../bahasa-melayu/ketumbit/">🔥 Jangan picit pitutan. Tuam air suam beberapa kali sehari membantu kebanyakan pitutan baik sendiri.</a><a class="ti" hidden href="../../bahasa-melayu/ektropion-entropion/">👴 Bila umur meningkat, kelopak mata boleh terlipat ke dalam atau ke luar, sampai mata berair dan pedih. Operasi kecil selalunya boleh membetulkannya.</a><a class="ti" hidden href="../../bahasa-melayu/penyakit-mata-tiroid/">🦋 Merokok membuat penyakit mata tiroid lebih mudah berlaku dan lebih teruk. Berhenti merokok antara perkara terbaik yang abiskita boleh buat.</a><a class="ti" hidden href="../../bahasa-melayu/bells-palsy/">🙂 Dalam Bell&#x27;s palsy, mata mungkin inda dapat tetutup dengan betul. Lindungi dengan ubat titis siang hari dan tampal masa tidur supaya inda rosak.</a><a class="ti" hidden href="../../bahasa-melayu/uveitis-anterior/">🔴 Uveitis boleh nampak macam konjunktivitis, tapi ia membuat mata sakit, silau dan kabur. Perlu jumpa doktor mata dengan cepat.</a><a class="ti" hidden href="../../bahasa-melayu/rabun-jauh/">🌳 Kanak-kanak yang main di luar rumah lebih kurang 2 jam tiap-tiap hari kurang kemungkinan kena rabun jauh.</a><a class="ti" hidden href="../../bahasa-melayu/mata-malas/">🏴‍☠️ Mata malas paling berkesan dirawat sebelum umur 7 hingga 8 tahun. Selalunya inda ada tanda, jadi periksa mata kanak-kanak atu penting.</a><a class="ti" hidden href="../../bahasa-melayu/juling/">👧 Budak inda akan baik sendiri dari juling yang sebenar. Rawatan awal membantu mencegah mata malas.</a><a class="ti" hidden href="../../bahasa-melayu/retinoblastoma/">📸 Anak mata budak yang nampak putih dalam gambar flash boleh jadi tanda retinoblastoma. Bawa anak periksa mata dalam beberapa hari.</a><a class="ti" hidden href="../../bahasa-melayu/retina-tertanggal/">🌑 Tiba-tiba nampak kilat cahaya, banyak &quot;lalat terbang&quot; baru atau macam langsir gelap menutup penglihatan boleh jadi retina tertanggal. Pergi ke Unit Kecemasan hari atu jua.</a><a class="ti" hidden href="../../bahasa-melayu/glaukoma-akut/">🤕 Mata merah dan sakit teruk tiba-tiba, dengan sakit kepala, muntah dan nampak pelangi di keliling lampu, boleh jadi glaukoma akut, iaitu kecemasan.</a><a class="ti" hidden href="../../bahasa-melayu/endoftalmitis/">💉 Mata makin sakit, makin merah dan makin kabur beberapa hari lepas operasi atau suntikan mata perlu diperiksa hari atu jua.</a><a class="ti" hidden href="../../bahasa-melayu/kecederaan-mata/">💧 Bahan kimia masuk mata? Terus bilas dengan air bersih yang mengalir sekurang-kurangnya 15 minit, lepas atu pergi ke Unit Kecemasan.</a></div></div></div><script>{const t=document.querySelector('.tick');if(t){const I=[...t.querySelectorAll('.ti')];const q=new URLSearchParams(location.search).get('day');const day=q!==null?+q:Math.floor((Date.now()+8*3600e3)/864e5);const n=I.length;let L=0;[0,9,18].forEach(o=>{const it=I[(((day*3+o+11)%n)+n)%n];it.hidden=false;it.parentNode.appendChild(it);L+=it.textContent.length});t.querySelector('.mv').style.setProperty('--d',Math.round(12+L*0.16)+'s')}}</script><nav class="nav" aria-label="Menu utama"><a href="../../">Utama</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata Biasa<span class="car" aria-hidden="true"></span></button><div class="menu wide"><a href="../../bahasa-melayu/penyakit-mata/" class="all">Samua penyakit mata</a><div class="mgrid"><div class="mg"><span class="mgh" role="presentation">Utik</span><a href="../../bahasa-melayu/katarak/">Utik (Katarak)</a></div><div class="mg"><span class="mgh" role="presentation">Glaukoma</span><a href="../../bahasa-melayu/glaukoma/">Glaukoma</a></div><div class="mg"><span class="mgh" role="presentation">Kornea</span><a href="../../bahasa-melayu/mata-kering/">Mata Kering</a><a href="../../bahasa-melayu/mata-penat-skrin/">Mata Penat Skrin</a><a href="../../bahasa-melayu/konjunktivitis/">Konjunktivitis</a><a href="../../bahasa-melayu/pterigium/">Kurita (Pterigium)</a><a href="../../bahasa-melayu/kanta-lekap/">Kanta Lekap yang Selamat</a><a href="../../bahasa-melayu/ulser-kornea/">Ulser Kornea</a><a href="../../bahasa-melayu/keratokonus/">Keratokonus</a></div><div class="mg"><span class="mgh" role="presentation">Retina</span><a href="../../bahasa-melayu/retinopati-darah-tinggi/">Retinopati Darah Tinggi</a><a href="../../bahasa-melayu/retinopati-kencing-manis/">Retinopati Kencing Manis</a><a href="../../bahasa-melayu/degenerasi-makula/">Degenerasi Makula (AMD)</a></div><div class="mg"><span class="mgh" role="presentation">Neuro-oftalmologi</span><a href="../../bahasa-melayu/kelopak-mata-jatuh/">Kelopak Mata Jatuh</a><a href="../../bahasa-melayu/bells-palsy/">Bell's Palsy dan Mata</a><a href="../../bahasa-melayu/lumpuh-saraf-mata/">Lumpuh Saraf Mata</a></div><div class="mg"><span class="mgh" role="presentation">Okuloplastik & Orbit</span><a href="../../bahasa-melayu/blefaritis/">Blefaritis</a><a href="../../bahasa-melayu/ketumbit/">Pitutan (Stye dan Chalazion)</a><a href="../../bahasa-melayu/ektropion-entropion/">Ektropion dan Entropion</a><a href="../../bahasa-melayu/penyakit-mata-tiroid/">Penyakit Mata Tiroid</a></div><div class="mg"><span class="mgh" role="presentation">Uveitis</span><a href="../../bahasa-melayu/uveitis-anterior/">Uveitis Anterior</a></div><div class="mg"><span class="mgh" role="presentation">Kanak-kanak</span><a href="../../bahasa-melayu/rabun-jauh/">Rabun Jauh</a><a href="../../bahasa-melayu/mata-malas/">Mata Malas (Ambliopia)</a><a href="../../bahasa-melayu/juling/">Mata Juling</a><a href="../../bahasa-melayu/retinoblastoma/">Retinoblastoma</a></div></div></div></div><div class="dd urgent"><button type="button" class="ddb" aria-expanded="false">Penyakit Mata Akut<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/penyakit-mata-akut/" class="all">Samua penyakit mata akut</a><a href="../../bahasa-melayu/retina-tertanggal/"><small>Retina</small>Retina Tertanggal</a><a href="../../bahasa-melayu/glaukoma-akut/"><small>Tekanan mata</small>Glaukoma Akut</a><a href="../../bahasa-melayu/endoftalmitis/"><small>Jangkitan</small>Endoftalmitis</a><a href="../../bahasa-melayu/kecederaan-mata/"><small>Kecederaan mata</small>Kecederaan Mata</a></div></div><div class="dd"><button type="button" class="ddb" aria-expanded="false">Klinik Mata<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../klinik-mata/">Klinik Mata Komuniti</a><a href="../../bahasa-melayu/pasukan-penjagaan-mata/">Pasukan Penjagaan Mata</a></div></div><div class="dd"><button type="button" class="ddb on" aria-expanded="false">Rawatan<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/ubat-mata/" aria-current="page">Ubat Mata</a><a href="../../bahasa-melayu/prosedur-pembedahan/">Prosedur dan Pembedahan</a></div></div><a href="../../bahasa-melayu/simulasi-mata/">Simulasi Mata</a><div class="dd"><button type="button" class="ddb" aria-expanded="false">Tau Kah Abiskita?<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/petua/">Petua</a><a href="../../bahasa-melayu/mitos-atau-fakta/">Mitos atau Fakta</a></div></div><div class="dd"><button type="button" class="ddb" aria-expanded="false">Pasal Kami<span class="car" aria-hidden="true"></span></button><div class="menu"><a href="../../bahasa-melayu/pasal-kami/">Pasal InfoSihat</a><a href="../../bahasa-melayu/rakan-kerjasama/">Rakan Kerjasama</a><a href="../../bahasa-melayu/saringan-mata/">Program Saringan Mata</a><a href="../../bahasa-melayu/hubungi-kami/">Hubungi Kami</a></div></div></nav><div class="lang" role="group" aria-label="Bahasa"><span class="on" aria-current="true" lang="ms">BM</span><a href="../../english/eye-medications/" lang="en" hreflang="en" title="English">EN</a></div><div class="music"><button type="button" class="music-btn" aria-pressed="false" aria-label="Muzik disenyapkan. Tekan untuk main" data-on="Muzik dimainkan. Tekan untuk senyapkan" data-off="Muzik disenyapkan. Tekan untuk main"><svg class="m-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="m-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button><span class="music-tip" role="note">Muzik: "Calm Ambient" oleh Velariomusic. Terima kasih!</span></div></div></header>
+<main id="main"><div class="band"><div class="inner"><h1>Ubat Mata</h1><p class="byline">Ditulis dan disemak dari segi perubatan oleh Dr Haziq Aziz Shamri, MBChB · Disemak: 7 Oktober 2026 · Dikemas kini: 7 Oktober 2026</p></div></div><div class="content has-side"><div class="main-col"><p>Panduan ringkas ubat titis mata yang biasa, supaya abiskita tau <strong>untuk apa tiap-tiap satu</strong>. Sentiasa pakai ubat <strong>betul-betul macam yang doktor suruh</strong>.</p>
+<aside class="glance"><h3>Bagus kan tau</h3><ul><li><strong>Warna penutup membantu:</strong> penutup ubat titis mata ikut kod warna antarabangsa, contohnya <strong>merah jambu</strong> untuk steroid dan <strong>hijau kebiruan</strong> untuk banyak ubat glaukoma</li><li>Kotak abiskita mungkin <strong>nampak lain</strong> ikut jenama, jadi sentiasa tengok <strong>nama ubat</strong></li><li><strong>Jangan berkongsi</strong> ubat titis mata, dan buang <strong>4 minggu lepas dibuka</strong> kecuali label bilang lain</li><li><strong>Bawa samua ubat titis</strong> abiskita tiap-tiap kali datang klinik</li></ul></aside>
+
+<div class="fold-bar"><span>Tekan tajuk untuk buka atau tutup.</span><span class="fold-btns"><button type="button" data-fold="open">Buka semua</button><button type="button" data-fold="close">Tutup semua</button></span></div>
+<div class="folds">
+<details class="sec" id="cemana-kan-titis-ubat-mata"><summary><h2>Cemana kan titis ubat mata</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ol class="steps"><li><span class="st">1</span><p><strong>Basuh tangan.</strong> Goncang botol mun label bilang "shake well".</p></li><li><span class="st">2</span><p><strong>Dongakkan kepala</strong> dan tarik perlahan kelopak mata bawah sampai jadi poket kecil.</p></li><li><span class="st">3</span><p><strong>Titiskan satu titis</strong> ke dalam poket atu. Jangan biarkan hujung botol kena mata atau bulu mata.</p></li><li><span class="st">4</span><p><strong>Tutup mata</strong> 1 hingga 2 minit dan tekan perlahan penjuru dalam mata, dekat hidung. Ani supaya ubat inda keluar.</p></li><li><span class="st">5</span><p>Pakai lebih dari satu jenis ubat titis? <strong>Tunggu lebih kurang 5 minit</strong> antara tiap-tiap jenis.</p></li></ol>
+</div></details>
+<details class="sec" id="ubat-titis-antibiotik"><summary><h2>Ubat titis antibiotik</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Untuk <strong>merawat atau mencegah jangkitan mata</strong>, contohnya konjunktivitis bakteria, ulser kornea, dan lepas operasi mata. Warna penutup: <strong>coklat cerah</strong>.</p>
+<div class="meds"><article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Chloramphenicol box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#C9A26B" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="11" fill="#1F2A30">Chloramphenicol</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#C9A26B" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#C9A26B" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Chloramphenicol</h3><p class="med-b">Ubat titis dan salap</p><p>Untuk <strong>jangkitan bakteria</strong> macam mata merah yang bertahi mata. Salap selalunya dipakai waktu malam.</p><p class="med-tip">💡 Habiskan ubat macam yang doktor suruh. Jangan simpan ubat lebihan untuk lain kali.</p></div></article>
+<article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Tobramycin box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#C9A26B" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="14" fill="#1F2A30">Tobramycin</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#C9A26B" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#C9A26B" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Tobramycin</h3><p class="med-b">Jenama biasa: Tobrex</p><p>Untuk <strong>jangkitan bakteria</strong>, termasuk lepas operasi mata.</p><p class="med-tip">💡 Rasa pedih sekejap atu biasa.</p></div></article>
+<article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Moxifloxacin box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#C9A26B" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="14" fill="#1F2A30">Moxifloxacin</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#C9A26B" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#C9A26B" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Moxifloxacin</h3><p class="med-b">Jenama biasa: Vigamox</p><p>Antibiotik yang kuat untuk <strong>jangkitan yang lebih teruk</strong> macam ulser kornea, dan untuk mencegah jangkitan lepas operasi.</p><p class="med-tip">💡 Untuk ulser kornea, mungkin perlu dipakai <strong>kerap banar</strong>, sampai tiap-tiap jam pada awalnya. Ikut betul-betul arahan doktor.</p></div></article>
+</div></div></details>
+<details class="sec" id="ubat-titis-steroid"><summary><h2>Ubat titis steroid</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Untuk <strong>mengurangkan radang (bengkak)</strong>, contohnya lepas operasi utik (katarak), atau uveitis. Warna penutup: <strong>merah jambu</strong>.</p>
+<div class="meds"><article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Fluorometholone box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#E98AB4" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="11" fill="#1F2A30">Fluorometholone</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#E98AB4" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#E98AB4" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Fluorometholone</h3><p class="med-b">Jenama biasa: FML</p><p><strong>Steroid yang lebih lembut</strong> untuk radang mata dan setengah alahan.</p><p class="med-tip">💡 <strong>Goncang dulu</strong> sebelum pakai.</p></div></article>
+<article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Dexamethasone box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#E98AB4" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="11" fill="#1F2A30">Dexamethasone</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#E98AB4" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#E98AB4" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Dexamethasone</h3><p class="med-b">Jenama biasa: Maxidex</p><p><strong>Steroid yang kuat</strong>, selalu dipakai lepas operasi mata dan untuk uveitis.</p><p class="med-tip">💡 <strong>Goncang dulu.</strong> Jangan berhenti tiba-tiba kecuali doktor suruh.</p></div></article>
+<article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Dexa + antibiotik box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#E98AB4" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="11" fill="#1F2A30">Dexa + antibiotik</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#E98AB4" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#E98AB4" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Dexa + antibiotik</h3><p class="med-b">Jenama biasa: Maxitrol</p><p><strong>Steroid yang dicampur dengan antibiotik</strong> (neomycin dan polymyxin B), untuk radang bila jangkitan juga perlu dicegah.</p><p class="med-tip">💡 <strong>Goncang dulu.</strong> Pakai selama yang disuruh saja.</p></div></article>
+<article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Prednisolone box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#E98AB4" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="14" fill="#1F2A30">Prednisolone</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#E98AB4" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#E98AB4" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Prednisolone</h3><p class="med-b">Jenama biasa: Pred Forte</p><p><strong>Steroid yang kuat</strong>, selalu dipakai lepas operasi utik dan untuk uveitis.</p><p class="med-tip">💡 <strong>Goncang dulu</strong>, pasal ia cecair yang keruh. Dos selalunya <strong>dikurangkan sikit-sikit</strong>.</p></div></article>
+</div><div class="alert" role="note"><span class="ai" aria-hidden="true">!</span><p><strong>Ubat titis steroid perlu preskripsi doktor.</strong> Mun dipakai lama, atau tanpa doktor mata memeriksa, ia boleh <strong>menaikkan tekanan mata</strong> (glaukoma), menyebabkan <strong>utik</strong>, dan membuat setengah jangkitan, macam herpes atau ulser kulat, <strong>jadi lagi teruk banar</strong>. Jangan pakai ubat steroid lebihan atau pinjam urang.</p></div>
+</div></details>
+<details class="sec" id="ubat-titis-glaukoma"><summary><h2>Ubat titis glaukoma</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><p>Untuk <strong>menurunkan tekanan dalam mata</strong> dan melindungi saraf mata. Selalunya dipakai <strong>tiap-tiap hari, seumur hidup</strong>, walaupun abiskita rasa sihat.</p>
+<div class="meds"><article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Latanoprost box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#2BB3B1" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="14" fill="#1F2A30">Latanoprost</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#2BB3B1" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#2BB3B1" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Latanoprost</h3><p class="med-b">Jenama biasa: Xalatan</p><p>Menurunkan tekanan mata. Dipakai <strong>sekali sehari, waktu malam</strong>.</p><p class="med-tip">💡 Simpan botol yang belum dibuka dalam <strong>peti sejuk</strong>. Lama-kelamaan ia boleh memanjangkan bulu mata dan menggelapkan bahagian mata yang berwarna.</p></div></article>
+<article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Timolol box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#F2C230" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="14" fill="#1F2A30">Timolol</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#F2C230" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#F2C230" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Timolol</h3><p class="med-b">Jenama biasa: Timoptol</p><p>Menurunkan tekanan mata. Selalunya <strong>sekali atau dua kali sehari</strong>.</p><p class="med-tip">💡 Kasi tau doktor mun abiskita ada <strong>lelah (asthma), COPD</strong>, atau <strong>degupan jantung yang perlahan</strong>, pasal timolol mungkin inda sesuai.</p></div></article>
+<article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Brimonidine box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#8E5BC9" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="14" fill="#1F2A30">Brimonidine</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#8E5BC9" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#8E5BC9" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Brimonidine</h3><p class="med-b">Jenama biasa: Alphagan</p><p>Menurunkan tekanan mata. Selalunya <strong>dua kali sehari</strong>.</p><p class="med-tip">💡 Boleh membuat rasa penat, mulut kering atau mata merah dan gatal (alahan). <strong>Inda sesuai untuk bayi dan budak kecil.</strong></p></div></article>
+<article class="med"><div class="med-pic"><svg viewBox="0 0 190 170" role="img" aria-label="Drawing of a Brinzolamide box and bottle"><rect x="10" y="20" width="110" height="140" rx="10" fill="#F4FAFC" stroke="#1F2A30" stroke-width="3"/><rect x="10" y="20" width="110" height="26" rx="10" fill="#F08A24" stroke="#1F2A30" stroke-width="3"/><text x="65" y="84" text-anchor="middle" font-family="Lexend,sans-serif" font-weight="700" font-size="14" fill="#1F2A30">Brinzolamide</text><line x1="26" y1="100" x2="104" y2="100" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><line x1="26" y1="114" x2="88" y2="114" stroke="#B9CDD6" stroke-width="5" stroke-linecap="round"/><circle cx="34" cy="138" r="9" fill="none" stroke="#4DA3CA" stroke-width="3"/><circle cx="34" cy="138" r="3.5" fill="#4DA3CA"/><g transform="translate(118 46)"><rect x="0" y="40" width="50" height="78" rx="12" fill="#fff" stroke="#1F2A30" stroke-width="3"/><rect x="7" y="62" width="36" height="30" rx="4" fill="#F08A24" opacity=".25"/><path d="M14 40 L18 22 H32 L36 40 Z" fill="#fff" stroke="#1F2A30" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="0" width="26" height="24" rx="6" fill="#F08A24" stroke="#1F2A30" stroke-width="3"/></g></svg></div><div class="med-t"><h3>Brinzolamide</h3><p class="med-b">Jenama biasa: Azopt</p><p>Menurunkan tekanan mata. Selalunya <strong>dua kali sehari</strong>.</p><p class="med-tip">💡 <strong>Goncang dulu.</strong> Penglihatan mungkin kabur sekejap, dan setengah urang rasa pahit di mulut.</p></div></article>
+</div><p><strong>Terlupa satu dos?</strong> Pakai bila abiskita ingat, kecuali sudah hampir masa dos seterusnya. Jangan pakai dua kali ganda. Jangan berhenti ubat glaukoma tanpa bincang dengan doktor mata.</p>
+</div></details>
+<details class="sec" id="dapatkan-bantuan"><summary><h2>Dapatkan bantuan</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><ul><li>Mun ubat titis membuat mata <strong>merah banar, gatal, bengkak atau sakit</strong>, berhenti dan hubungi klinik abiskita.</li><li><strong>Inda pasti pasal ubat abiskita?</strong> Tanya ahli farmasi, jururawat mata atau doktor, atau bawa ke <strong>Klinik Mata Komuniti</strong>.</li></ul>
+<div class="btns"><a class="btn" href="../../klinik-mata/">Klinik Mata Komuniti</a></div>
+</div></details>
+</div>
+<section class="refs" id="rujukan"><h2>Rujukan</h2><ol><li>American Academy of Ophthalmology. How to Put In Eye Drops. <a href="https://www.aao.org/eye-health/treatments/how-to-put-in-eye-drops" target="_blank" rel="noopener">https://www.aao.org/eye-health/treatments/how-to-put-in-eye-drops</a></li><li>American Academy of Ophthalmology. Color Codes for Topical Ocular Medications. <a href="https://www.aao.org/education/clinical-statement/color-codes-topical-ocular-medications" target="_blank" rel="noopener">https://www.aao.org/education/clinical-statement/color-codes-topical-ocular-medications</a></li><li>NHS. Chloramphenicol eye drops and eye ointment. <a href="https://www.nhs.uk/medicines/chloramphenicol/" target="_blank" rel="noopener">https://www.nhs.uk/medicines/chloramphenicol/</a></li><li>NHS. Latanoprost. <a href="https://www.nhs.uk/medicines/latanoprost/" target="_blank" rel="noopener">https://www.nhs.uk/medicines/latanoprost/</a></li><li>NHS. Timolol eye drops. <a href="https://www.nhs.uk/medicines/timolol-eye-drops/" target="_blank" rel="noopener">https://www.nhs.uk/medicines/timolol-eye-drops/</a></li><li>Glaucoma UK. Glaucoma medication. <a href="https://glaucoma.uk/" target="_blank" rel="noopener">https://glaucoma.uk/</a></li></ol>
+<p><em>Maklumat di laman ani untuk pendidikan am saja, dan inda menggantikan nasihat doktor atau ahli farmasi abiskita sendiri.</em></p></section></div><aside class="pside" aria-label="Dalam laman ani"><div class="pside-in"><p class="pside-h">Dalam laman ani</p><ol class="toc"><li><a href="#cemana-kan-titis-ubat-mata">Cemana kan titis ubat mata</a></li><li><a href="#ubat-titis-antibiotik">Ubat titis antibiotik</a></li><li><a href="#ubat-titis-steroid">Ubat titis steroid</a></li><li><a href="#ubat-titis-glaukoma">Ubat titis glaukoma</a></li><li><a href="#dapatkan-bantuan">Dapatkan bantuan</a></li><li><a href="#rujukan">Rujukan</a></li></ol><div class="pside-em"><b>Kecemasan?</b><span>Telefon 991 atau pergi ke Jabatan Kecemasan yang paling dekat.</span></div><a class="pside-clinic" href="../../klinik-mata/">Cari Klinik Mata Komuniti →</a></div></aside></div></main>
+<footer><div class="in"><b>InfoSihat · Maklumat Kesihatan dihujung Jari</b><p class="disc"><strong>Penafian:</strong> InfoSihat memberi maklumat kesihatan am untuk pendidikan saja. Ia bukan nasihat perubatan, dan inda menggantikan pemeriksaan, diagnosis atau rawatan oleh doktor atau pengamal kesihatan yang bertauliah. Sentiasa dapatkan nasihat doktor abiskita pasal apa-apa masalah kesihatan, dan jangan abaikan atau lambatkan nasihat doktor kerana sesuatu yang abiskita baca di sini. Kandungan kami disemak selalu, tapi mungkin inda meliputi setiap keadaan atau panduan yang paling terkini. InfoSihat dan penyumbangnya inda bertanggungjawab atas apa-apa kerugian atau kemudaratan akibat penggunaan laman web ani, atau atas kandungan laman web luar yang kami pautkan. Penyumbang menulis atas kapasiti peribadi, dan pandangan di sini inda semestinya mewakili majikan mereka atau Kementerian Kesihatan.</p><p class="disc-em">Kecemasan: telefon 991 atau pergi ke Jabatan Kecemasan yang paling dekat.</p><span>© 2026 InfoSihat, Brunei Darussalam</span></div></footer>
+<script>
+function sizeAll(){document.querySelectorAll('iframe.embed').forEach(size)}
+function size(f){try{const d=f.contentDocument;const w=d.querySelector('.wrap');const h=w?Math.ceil(w.getBoundingClientRect().height):d.body.scrollHeight;if(h)f.style.height=(h+4)+'px'}catch(e){}}
+document.querySelectorAll('iframe.embed').forEach(f=>{const go=()=>{size(f);try{new ResizeObserver(()=>size(f)).observe(f.contentDocument.body);f.contentDocument.fonts.ready.then(()=>size(f))}catch(e){}};
+ if(f.contentDocument&&f.contentDocument.readyState==='complete')go();f.addEventListener('load',go)});
+</script>
+<script>
+document.querySelectorAll('.dd').forEach(d=>{const b=d.querySelector('.ddb');b.addEventListener('click',e=>{e.stopPropagation();const o=!d.classList.contains('open');
+ document.querySelectorAll('.dd.open').forEach(x=>{x.classList.remove('open');x.querySelector('.ddb').setAttribute('aria-expanded','false')});d.classList.toggle('open',o);b.setAttribute('aria-expanded',o)})});
+document.addEventListener('click',()=>document.querySelectorAll('.dd.open').forEach(x=>{x.classList.remove('open');x.querySelector('.ddb').setAttribute('aria-expanded','false')}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.dd.open').forEach(x=>x.classList.remove('open'))});
+</script>
+<script>
+document.querySelectorAll('[data-fold]').forEach(b=>b.addEventListener('click',()=>{const o=b.dataset.fold==='open';document.querySelectorAll('details.sec').forEach(d=>d.open=o);if(o)sizeAll()}));
+document.querySelectorAll('details.sec').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)sizeAll()}));
+function openHash(){const h=decodeURIComponent(location.hash.slice(1));const d=h&&document.getElementById(h);if(d&&d.tagName==='DETAILS'){d.open=true;d.scrollIntoView()}}
+addEventListener('hashchange',openHash);openHash();
+addEventListener('beforeprint',()=>document.querySelectorAll('details.sec').forEach(d=>d.open=true));
+</script>
+
+
+
+
+<script>
+(function(){const L=[...document.querySelectorAll('.toc a')];if(!L.length||!('IntersectionObserver' in window))return;
+L.forEach(a=>a.addEventListener('click',()=>{const d=document.getElementById(a.getAttribute('href').slice(1));if(d&&d.tagName==='DETAILS')d.open=true}));
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){L.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-20% 0px -70% 0px'});
+L.forEach(a=>{const t=document.getElementById(a.getAttribute('href').slice(1));if(t)io.observe(t)})})();
+</script>
+
+
+<script id="music-js">
+(function(){
+const SRC=new URL('../../assets/calm-ambient.mp3',location.href).href,K='is-music',T='is-music-t',VOL=.22;
+let btn=document.querySelector('.music-btn');if(!btn)return;
+let pref='on';try{pref=localStorage.getItem(K)||'on'}catch(e){}
+const a=new Audio();a.src=SRC;a.loop=true;a.preload='none';a.volume=0;
+try{const t=parseFloat(sessionStorage.getItem(T));if(t)a.currentTime=t}catch(e){}
+function ui(){const on=!a.paused;btn.setAttribute('aria-pressed',on);btn.setAttribute('aria-label',on?btn.dataset.on:btn.dataset.off)}
+function fade(to,done){clearInterval(a._f);a._f=setInterval(()=>{if(Math.abs(to-a.volume)<=.02){a.volume=to;clearInterval(a._f);done&&done()}else a.volume=Math.max(0,Math.min(1,a.volume+(to>a.volume?.02:-.02)))},60)}
+function play(){if(!a.paused)return Promise.resolve();a.volume=0;return a.play().then(()=>{fade(VOL);ui()}).catch(()=>{ui()})}
+function stop(){fade(0,()=>{a.pause();ui()});btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label',btn.dataset.off)}
+function save(){try{sessionStorage.setItem(T,a.currentTime||0)}catch(e){}}
+btn.addEventListener('click',e=>{e.stopPropagation();if(a.paused){pref='on';play()}else{pref='off';stop()}try{localStorage.setItem(K,pref)}catch(e){}});
+function first(e){if(btn.contains(e.target))return;off();if(pref==='on')play()}
+function off(){['pointerdown','keydown','touchstart'].forEach(x=>removeEventListener(x,first,true))}
+if(pref==='on'){play().then(()=>{if(!a.paused)off()});['pointerdown','keydown','touchstart'].forEach(x=>addEventListener(x,first,true))}
+addEventListener('pagehide',save);setInterval(()=>{if(!a.paused)save()},2000);
+ui();
+/* Keep the music going between pages: while it plays, internal links swap the page content in place instead of reloading. */
+const html=u=>fetch(u,{credentials:'same-origin'}).then(r=>{if(!r.ok||!(r.headers.get('content-type')||'').includes('text/html'))throw 0;return r.text()});
+function internal(u){return u.origin===location.origin&&!/\.(mp3|pdf|png|jpe?g|svg|json|zip)$/i.test(u.pathname)&&!u.pathname.includes('/embeds/')}
+let busy=false;
+async function go(url,push){
+ if(busy)return;busy=true;
+ try{
+  const t=await html(url),d=new DOMParser().parseFromString(t,'text/html');
+  if(!d.querySelector('main')||!d.querySelector('header.site'))throw 0;
+  save();if(push)history.pushState({soft:1},'',url);
+  document.title=d.title;document.documentElement.lang=d.documentElement.lang;document.body.className=d.body.className;
+  const keep=document.querySelector('.music'),nh=document.importNode(d.querySelector('header.site'),true),nm=nh.querySelector('.music');
+  if(nm&&keep)nm.replaceWith(keep);
+  document.querySelector('header.site').replaceWith(nh);
+  document.querySelector('main').replaceWith(document.importNode(d.querySelector('main'),true));
+  const of=document.querySelector('footer'),nf=d.querySelector('footer');if(of&&nf)of.replaceWith(document.importNode(nf,true));
+  document.querySelectorAll('body>script:not(#music-js)').forEach(x=>x.remove());
+  d.querySelectorAll('body>script:not(#music-js)').forEach(x=>{const n=document.createElement('script');n.textContent='{\n'+x.textContent+'\n}';document.body.appendChild(n)});
+  const h=new URL(url,location.href).hash;const el=h&&document.getElementById(decodeURIComponent(h.slice(1)));
+  if(el)el.scrollIntoView();else scrollTo(0,0);
+  const m=document.querySelector('main');if(m){m.setAttribute('tabindex','-1');m.focus({preventScroll:true})}
+ }catch(e){location.href=url}
+ busy=false}
+document.addEventListener('click',e=>{
+ if(a.paused||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+ const l=e.target.closest&&e.target.closest('a[href]');if(!l||l.target&&l.target!=='_self'||l.hasAttribute('download'))return;
+ const u=new URL(l.href,location.href);if(!internal(u))return;
+ if(u.pathname===location.pathname&&u.search===location.search&&u.hash)return;
+ e.preventDefault();go(u.href,true)});
+history.replaceState(Object.assign({},history.state,{soft:1}),'');
+addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)});
+})();
+</script>
+<script>
+(function(){var B='20261007093405';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
+</script>
+</body>
+</html>
