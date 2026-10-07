@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3D eye model</title>
+<style>
+:root{--ink:#1F2A30;--muted:#4A5A62;--paper:#FFFFFF;--mist:#EEF6F9;--line:#D3E3EA;--blue:#4DA3CA;--blue-deep:#1F6E93;--teal:#4FBAB9;--alert:#B3261E;
+--display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:transparent;color:var(--ink);font:400 17px/1.5 var(--body)}
+.wrap{display:grid;gap:14px}
+.stage{position:relative;height:min(68vh,560px);min-height:380px;border-radius:22px;overflow:hidden;background:radial-gradient(120% 90% at 50% 35%,#24343d 0%,#0d1418 70%);touch-action:none}
+canvas{display:block;width:100%;height:100%}
+.hint{position:absolute;left:12px;bottom:12px;right:12px;display:flex;justify-content:space-between;align-items:flex-end;gap:8px;pointer-events:none}
+.hint span{background:rgba(0,0,0,.45);color:#fff;font:500 13px/1.3 var(--display);padding:7px 11px;border-radius:999px}
+.tools{position:absolute;top:12px;left:12px;right:12px;display:flex;flex-wrap:wrap;gap:6px}
+.tools button{border:0;border-radius:999px;padding:8px 12px;font:600 13px/1 var(--display);background:rgba(255,255,255,.88);color:var(--ink);cursor:pointer}
+.tools button[aria-pressed=true]{background:#4FBAB9;color:#fff}
+.lab{position:absolute;left:0;top:0;transform:translate(-50%,-50%);pointer-events:none;font:600 12px/1 var(--display);color:#fff;background:rgba(15,25,30,.7);border:1px solid rgba(255,255,255,.35);padding:5px 8px;border-radius:999px;white-space:nowrap;transition:opacity .2s}
+.labs[hidden]{display:none}
+.conds{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:thin}
+.conds button{flex:none;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:10px 14px;font:600 15px/1 var(--display);cursor:pointer;white-space:nowrap}
+.conds button[aria-pressed=true]{background:var(--blue-deep);border-color:var(--blue-deep);color:#fff}
+.info{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:18px;padding:16px 18px}
+.info h3{margin:0 0 6px;font:700 20px/1.25 var(--display)}
+.info p{margin:0 0 8px}.info ul{margin:0;padding-left:20px}.info li{margin:3px 0}
+.info a{color:var(--blue-deep);font-weight:700}
+.load{position:absolute;inset:0;display:grid;place-items:center;color:#cfe3ea;font:600 15px var(--display)}
+.err{padding:16px;border-radius:14px;background:#FDECEA;color:#7a1d17}
+@media (max-width:560px){.stage{height:420px}.tools button{padding:7px 10px;font-size:12px}}
+</style>
+<style>@media screen{html[data-theme=dark]{--ink:#E6EEF2;--muted:#A9BAC3;--paper:#16232B;--mist:#1E313B;--line:#2F4651;--blue-deep:#8CCBEA;--teal-deep:#7FD6D4;--sun-soft:#3A3220;--alert-soft:#3B1D1B;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}html[data-theme=dark] .tools button{background:rgba(28,28,28,.88)!important}html[data-theme=dark] .lab{border:1px solid rgba(66,66,66,.35)!important}html[data-theme=dark] .conds button[aria-pressed=true]{background:#1F6E93!important;border-color:#1F6E93!important}html[data-theme=dark] .err{background:#341c19!important;color:#f2bfbc!important}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head>
+<body>
+<div class="wrap">
+ <div class="stage" id="stage"><div class="load" id="load">Loading the 3D eye…</div>
+  <div class="tools"><button type="button" data-v="side" aria-pressed="true">Side (cut open)</button><button type="button" data-v="front" aria-pressed="false">Front</button><button type="button" data-v="fundus" aria-pressed="false">Inside (retina)</button><button type="button" id="cut" aria-pressed="true">Cut open</button><button type="button" id="lbl" aria-pressed="true">Labels</button></div>
+  <div class="labs" id="labs"></div>
+  <div class="hint"><span>Drag to turn · pinch or scroll to zoom</span></div>
+ </div>
+ <div class="conds" role="group" aria-label="Choose an eye condition" id="conds"></div>
+ <div class="info" id="info" aria-live="polite"></div>
+</div>
+<script type="importmap">{"imports":{"three":"../assets/three/three.module.min.js","three/addons/":"../assets/three/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/OrbitControls.js';
+const TXT={"more": "Read about this condition", "nogl": "Sorry, your browser cannot show 3D graphics. Try a newer browser or another device.", "lab": {"cornea": "Cornea", "iris": "Iris", "lens": "Lens", "vitreous": "Vitreous jelly", "retina": "Retina", "macula": "Macula", "disc": "Optic disc", "nerve": "Optic nerve", "sclera": "Sclera (white of the eye)"}, "c": {"normal": {"n": "Healthy eye", "v": "side", "d": "A model of a healthy eye, cut in half so you can see inside. The eye is about 24 mm across, about the size of a large marble.", "s": ["<b>Cornea:</b> the clear front window that focuses light.", "<b>Iris and pupil:</b> the coloured ring and the hole in its centre.", "<b>Lens:</b> sits behind the iris and fine-tunes focus.", "<b>Retina:</b> the light-sensing layer lining the back of the eye. The <b>macula</b> gives sharp central vision; the <b>optic disc</b> is where the nerve leaves for the brain."]}, "dr": {"n": "Diabetic retinopathy", "v": "fundus", "d": "High blood sugar damages the tiny blood vessels of the retina. This is the view a doctor sees when looking inside your eye.", "s": ["<b>Dot and blot haemorrhages:</b> small round dark red spots of bleeding.", "<b>Hard exudates:</b> yellow fatty deposits leaking from damaged vessels, often in rings.", "<b>Cotton wool spots:</b> fluffy white patches where the retina is short of blood.", "Early on there are usually <b>no symptoms</b>, so yearly eye screening matters."]}, "dmo": {"n": "Macular oedema", "v": "mac", "d": "Fluid leaks under and into the macula, so the centre of the retina swells up like a blister. Turn the model to see the raised macula.", "s": ["<b>Swollen macula</b> with fluid underneath (the pale dome).", "<b>Hard exudates</b> in a ring around the swelling.", "Causes <b>blurred or wavy central vision</b>. It is treatable, often with eye injections."]}, "vh": {"n": "Vitreous haemorrhage", "v": "side", "d": "Blood leaks into the clear vitreous jelly that fills the eye, often from fragile new vessels in diabetes or from a retinal tear.", "s": ["<b>Red haze</b> filling the jelly, thicker at the bottom where blood settles.", "Causes <b>sudden dark floaters</b>, a red or dark haze, or sudden vision loss.", "Needs to be seen <b>the same day</b>."]}, "fl": {"n": "Floaters", "v": "side", "d": "Floaters are clumps and strands in the vitreous jelly that cast shadows on the retina. They drift as the eye moves.", "s": ["<b>Strands and dots</b> floating in the jelly.", "A <b>ring</b> in front of the optic disc can appear when the jelly peels away from the retina (posterior vitreous detachment).", "<b>New</b> floaters with flashes or a shadow need checking the same day."]}, "rd": {"n": "Retinal detachment", "v": "side", "d": "The retina peels away from the back wall of the eye, like wallpaper coming off. Turn the model to see the lifted, folded retina.", "s": ["<b>Detached retina</b> (grey, wrinkled area) lifting into the eye.", "A <b>horseshoe tear</b> at its edge where fluid gets underneath.", "Symptoms: flashes, new floaters, a <b>shadow or curtain</b>. This is an <b>emergency</b>."]}, "cu": {"n": "Corneal ulcer", "v": "front", "d": "An infected sore on the cornea, most common in contact lens wearers.", "s": ["<b>White patch</b> on the cornea: the infection (infiltrate).", "<b>Hazy cornea</b> around it and a <b>red eye</b>.", "Painful, light-sensitive and blurry. Needs treatment <b>the same day</b>."]}, "sei": {"n": "Spots after viral conjunctivitis", "v": "front", "d": "After adenovirus conjunctivitis (a viral 'pink eye'), small round spots called subepithelial infiltrates (SEIs) can form in the cornea.", "s": ["<b>Many small, faint white spots</b> in the centre of the cornea.", "Can cause glare and blurred vision for weeks after the red eye settles.", "Usually fade slowly; sometimes steroid drops are needed (only from a doctor)."]}, "endo": {"n": "Endophthalmitis", "v": "front", "d": "A severe infection inside the eye, most often after eye surgery or an injection.", "s": ["<b>Hypopyon:</b> a white layer of pus settled at the bottom of the front of the eye.", "<b>Hazy, cloudy vitreous</b> and a very red eye.", "Pain and worsening vision days after surgery: <b>emergency</b>."]}, "cat": {"n": "Cataract", "v": "side", "d": "The lens inside the eye turns cloudy, usually with age.", "s": ["<b>Yellow-brown nucleus</b> in the centre (nuclear cataract).", "<b>White spokes</b> in the outer lens (cortical cataract).", "Causes cloudy vision and glare. Surgery replaces the lens with a clear one."]}}}, LINKS={"dr": "../english/diabetic-retinopathy/", "dmo": "../english/diabetic-retinopathy/", "fl": "../english/retinal-detachment/", "rd": "../english/retinal-detachment/", "cu": "../english/corneal-ulcer/", "sei": "../english/conjunctivitis/", "endo": "../english/endophthalmitis/", "cat": "../english/cataract/"};
+const stage=document.getElementById('stage'),labs=document.getElementById('labs');
+let renderer;
+try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});}catch(e){document.getElementById('load').innerHTML='<div class="err">'+TXT.nogl+'</div>';throw e}
+document.getElementById('load').remove();
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.localClippingEnabled=true;
+renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+stage.prepend(renderer.domElement);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(40,1,0.02,50);
+const controls=new OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true;controls.minDistance=0.35;controls.maxDistance=7;controls.enablePan=true;
+scene.add(new THREE.HemisphereLight(0xffffff,0x3a2a28,1.1));
+const key=new THREE.DirectionalLight(0xffffff,1.6);key.position.set(3,4,5);scene.add(key);
+const rim=new THREE.DirectionalLight(0xbfe6ff,.7);rim.position.set(-4,-1,-3);scene.add(rim);
+const inner=new THREE.PointLight(0xfff1dd,1.6,3.2,1.2);inner.position.set(0,0,.3);scene.add(inner);
+
+const CUT=new THREE.Plane(new THREE.Vector3(-1,0,0),.3);let cutOn=true;
+const clipMats=[];
+function M(o,clip=true){const m=new THREE.MeshStandardMaterial(o);if(clip){m.clippingPlanes=[CUT];m.clipShadows=true;clipMats.push(m)}return m}
+function P(o,clip=true){const m=new THREE.MeshPhysicalMaterial(o);if(clip){m.clippingPlanes=[CUT];clipMats.push(m)}return m}
+const eye=new THREE.Group();scene.add(eye);
+const rnd=(s=>()=>(s=(s*16807)%2147483647)/2147483647)(7);
+
+// ---------- canvas helpers ----------
+function canvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c}
+function tex(c){const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;return t}
+
+// ---------- sclera with conjunctival vessels ----------
+const LIMB=0.49, THL=Math.asin(LIMB);
+const scC=canvas(2048,1024),scT=tex(scC);
+function drawSclera(red){red=+red||0;const g=scC.getContext('2d');g.fillStyle='#f3efe8';g.fillRect(0,0,2048,1024);
+ const gr=g.createLinearGradient(0,0,0,1024);gr.addColorStop(0,'rgba(240,215,205,.35)');gr.addColorStop(.35,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,2048,1024);
+ if(red){const r=g.createLinearGradient(0,0,0,300);r.addColorStop(0,`rgba(200,40,40,${.3+red*.3})`);r.addColorStop(1,'rgba(200,40,40,0)');g.fillStyle=r;g.fillRect(0,0,2048,300)}
+ const R=(s=>()=>(s=(s*48271)%2147483647)/2147483647)(11);
+ for(let i=0;i<(red?200:120);i++){let x=R()*2048,y=250+R()*90;g.strokeStyle=`rgba(${170+R()*40|0},${30+R()*30|0},${35+R()*20|0},${(red?.5:.3)+R()*.25})`;g.lineWidth=.6+R()*(red?1.8:1.2);g.beginPath();g.moveTo(x,y);
+  for(let k=0;k<7;k++){x+=(R()-.5)*40;y-=12+R()*30;g.lineTo(x,Math.max(y,0))}g.stroke()}
+ scT.needsUpdate=true}
+drawSclera(false);
+function shell(r,t0,t1,mat,seg=128){const g=new THREE.SphereGeometry(r,seg,seg/2,0,Math.PI*2,t0,t1-t0);g.rotateX(Math.PI/2);return new THREE.Mesh(g,mat)}
+const sclera=shell(1,THL,Math.PI,M({map:scT,roughness:.55,side:THREE.DoubleSide}));eye.add(sclera);
+// choroid lining (seen in the cut)
+eye.add(shell(.975,THL+.05,Math.PI,M({color:0x5a1a14,roughness:.9,side:THREE.BackSide})));
+
+// ---------- extraocular muscles ----------
+const musC=canvas(256,512),mg=musC.getContext('2d');mg.fillStyle='#a8392f';mg.fillRect(0,0,256,512);for(let i=0;i<90;i++){mg.strokeStyle=`rgba(${120+rnd()*60|0},20,20,.5)`;mg.lineWidth=1+rnd()*2;const x=rnd()*256;mg.beginPath();mg.moveTo(x,0);mg.lineTo(x+(rnd()-.5)*20,512);mg.stroke()}
+const musT=tex(musC),muscles=new THREE.Group();eye.add(muscles);
+for(let k=0;k<4;k++){const g=new THREE.SphereGeometry(1.018,16,40,k*Math.PI/2-.2,.4,1.0+[0,.08,.04,.1][k],1.6);g.rotateX(Math.PI/2);muscles.add(new THREE.Mesh(g,M({map:musT,roughness:.75,side:THREE.DoubleSide})))}
+
+// ---------- cornea ----------
+const RC=.62, ZC=Math.sqrt(1-LIMB*LIMB)-RC*Math.cos(Math.asin(LIMB/RC));
+const corneaGeo=new THREE.SphereGeometry(RC,96,48,0,Math.PI*2,0,Math.asin(LIMB/RC));corneaGeo.rotateX(Math.PI/2);corneaGeo.translate(0,0,ZC);
+const corneaMat=P({color:0xffffff,transmission:1,thickness:.04,roughness:.03,ior:1.376,transparent:true,opacity:.22,clearcoat:1,clearcoatRoughness:.02,side:THREE.DoubleSide});
+const cornea=new THREE.Mesh(corneaGeo,corneaMat);eye.add(cornea);
+// corneal overlay (ulcer / SEIs): planar projection in x,y
+const coC=canvas(1024,1024),coT=tex(coC);
+const coGeo=new THREE.SphereGeometry(RC+.004,96,48,0,Math.PI*2,0,Math.asin(LIMB/RC));coGeo.rotateX(Math.PI/2);coGeo.translate(0,0,ZC);
+{const p=coGeo.attributes.position,uv=coGeo.attributes.uv;for(let i=0;i<p.count;i++)uv.setXY(i,.5+p.getX(i)/(2*LIMB),.5+p.getY(i)/(2*LIMB))}
+const coOver=new THREE.Mesh(coGeo,M({map:coT,transparent:true,roughness:.4,depthWrite:false}));coOver.renderOrder=3;eye.add(coOver);
+function drawCornea(mode){const g=coC.getContext('2d');g.clearRect(0,0,1024,1024);
+ if(mode==='cu'){const x=600,y=640;let r=g.createRadialGradient(x,y,0,x,y,190);r.addColorStop(0,'rgba(245,245,235,.55)');r.addColorStop(1,'rgba(245,245,235,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,190,0,7);g.fill();
+  r=g.createRadialGradient(x,y,0,x,y,95);r.addColorStop(0,'rgba(255,253,240,1)');r.addColorStop(.75,'rgba(250,246,225,.95)');r.addColorStop(1,'rgba(250,246,225,0)');g.fillStyle=r;g.beginPath();
+  for(let a=0;a<6.3;a+=.2){const rr=88+Math.sin(a*5)*8+rnd()*6;g.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}g.fill()}
+ if(mode==='sei'){for(let i=0;i<34;i++){const a=rnd()*6.28,d=Math.sqrt(rnd())*300,x=512+Math.cos(a)*d,y=512+Math.sin(a)*d,s=9+rnd()*14;const r=g.createRadialGradient(x,y,0,x,y,s);r.addColorStop(0,'rgba(255,255,250,.85)');r.addColorStop(1,'rgba(255,255,250,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,s,0,7);g.fill()}}
+ coT.needsUpdate=true;coOver.visible=!!mode}
+
+// ---------- iris ----------
+const irC=canvas(1024,1024),ig=irC.getContext('2d');
+{ig.translate(512,512);const b=ig.createRadialGradient(0,0,60,0,0,500);b.addColorStop(0,'#2a170e');b.addColorStop(.35,'#5a3520');b.addColorStop(.7,'#4a2a18');b.addColorStop(1,'#20120a');ig.fillStyle=b;ig.beginPath();ig.arc(0,0,512,0,7);ig.fill();
+ for(let i=0;i<900;i++){const a=rnd()*6.283,r0=130+rnd()*60,r1=300+rnd()*200;ig.strokeStyle=`rgba(${120+rnd()*80|0},${70+rnd()*50|0},${30+rnd()*30|0},${.15+rnd()*.3})`;ig.lineWidth=1+rnd()*2.5;ig.beginPath();ig.moveTo(Math.cos(a)*r0,Math.sin(a)*r0);ig.quadraticCurveTo(Math.cos(a+.05)*(r0+r1)/2,Math.sin(a+.05)*(r0+r1)/2,Math.cos(a)*r1,Math.sin(a)*r1);ig.stroke()}
+ ig.strokeStyle='rgba(150,95,50,.6)';ig.lineWidth=10;ig.beginPath();for(let a=0;a<6.3;a+=.05){const r=230+Math.sin(a*14)*14;ig.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ig.closePath();ig.stroke()}
+const irisGeo=new THREE.RingGeometry(.13,LIMB-.01,96,4);{const p=irisGeo.attributes.position,uv=irisGeo.attributes.uv;for(let i=0;i<p.count;i++)uv.setXY(i,.5+p.getX(i)/(2*LIMB),.5+p.getY(i)/(2*LIMB))}
+const iris=new THREE.Mesh(irisGeo,M({map:tex(irC),roughness:.8,side:THREE.DoubleSide}));iris.position.z=Math.sqrt(1-LIMB*LIMB)-.02;eye.add(iris);
+const ciliary=new THREE.Mesh(new THREE.TorusGeometry(LIMB-.02,.05,16,96),M({color:0x2b1610,roughness:.9}));ciliary.position.z=iris.position.z-.06;eye.add(ciliary);
+
+// ---------- lens ----------
+const LZ=iris.position.z-.17;
+const lensMat=P({color:0xfaf7ee,transmission:.95,thickness:.3,roughness:.08,ior:1.42,transparent:true,opacity:.35});
+const lens=new THREE.Mesh(new THREE.SphereGeometry(1,64,32),lensMat);lens.scale.set(.37,.37,.16);lens.position.z=LZ;eye.add(lens);
+const nucleus=new THREE.Mesh(new THREE.SphereGeometry(1,48,24),M({color:0xc8a040,roughness:.6,transparent:true,opacity:0}));nucleus.scale.set(.22,.22,.09);nucleus.position.z=LZ;eye.add(nucleus);
+const cortC=canvas(512,512),cortT=tex(cortC);{const g=cortC.getContext('2d');g.translate(256,256);for(let i=0;i<14;i++){const a=rnd()*6.28;g.fillStyle='rgba(255,255,255,.9)';g.beginPath();g.moveTo(Math.cos(a)*250,Math.sin(a)*250);g.lineTo(Math.cos(a+.12)*250,Math.sin(a+.12)*250);g.lineTo(Math.cos(a+.05)*(110+rnd()*60),Math.sin(a+.05)*(110+rnd()*60));g.fill()}}
+const cortex=new THREE.Mesh(new THREE.SphereGeometry(1.01,64,32),M({map:cortT,transparent:true,opacity:0,roughness:.5,depthWrite:false}));cortex.scale.copy(lens.scale);cortex.position.z=LZ;eye.add(cortex);
+
+// ---------- retina (azimuthal projection around posterior pole) ----------
+const AMAX=1.95, RR=.965;
+const retGeo=new THREE.SphereGeometry(RR,180,90,0,Math.PI*2,Math.PI-AMAX,AMAX);retGeo.rotateX(Math.PI/2);
+const base=retGeo.attributes.position.array.slice();
+{const p=retGeo.attributes.position,uv=retGeo.attributes.uv;for(let i=0;i<p.count;i++){const x=p.getX(i),y=p.getY(i),z=p.getZ(i),al=Math.acos(Math.max(-1,Math.min(1,-z/RR))),h=Math.hypot(x,y)||1;uv.setXY(i,.5+.5*al/AMAX*x/h,.5+.5*al/AMAX*y/h)}}
+const reC=canvas(2048,2048),reT=tex(reC);
+const retina=new THREE.Mesh(retGeo,M({map:reT,roughness:.65,side:THREE.BackSide}));eye.add(retina);
+const DEG=1024/(AMAX*180/Math.PI); // px per degree
+const D=(deg)=>deg*DEG, CX=1024, CY=1024, DISC=[CX-D(15),CY+D(1.5)];
+let vessels=[];
+function genVessels(){const R=(s=>()=>(s=(s*16807)%2147483647)/2147483647)(29);vessels=[];
+ function branch(x,y,ang,len,w,art,depth,curve){const pts=[[x,y]];let a=ang;for(let s=0;s<14;s++){a+=curve+(R()-.5)*.18;x+=Math.cos(a)*len/14;y+=Math.sin(a)*len/14;pts.push([x,y])}vessels.push({pts,w,art});
+  if(depth>0){for(let k=4;k<13;k+=4+((R()*3)|0)){const [bx,by]=pts[k];const side=R()<.5?-1:1;branch(bx,by,a+side*(.45+R()*.4),len*(.4+R()*.15),w*.68,art,depth-1,curve*.3)}}}
+ for(const art of [false,true]){const o=art?.06:0;
+  branch(DISC[0]+3,DISC[1]-D(1.5),-1.38+o,D(50),art?6:8.5,art,2,.07);   // superotemporal arcade, curving round the macula
+  branch(DISC[0]+3,DISC[1]+D(1.5),1.38-o,D(50),art?6:8.5,art,2,-.07);   // inferotemporal arcade
+  branch(DISC[0]-3,DISC[1]-D(1.5),-2.2+o,D(36),art?4.5:6,art,1,-.02);   // nasal
+  branch(DISC[0]-3,DISC[1]+D(1.5),2.2-o,D(36),art?4.5:6,art,1,.02)}
+ for(let i=0;i<8;i++){const a=-.9+i*.26;branch(DISC[0]+D(2.6)*Math.cos(a),DISC[1]+D(2.6)*Math.sin(a),a*.5,D(9),1.5,i%2==0,0,(R()-.5)*.04)}}
+genVessels();
+function drawRetina(f){const g=reC.getContext('2d');g.setTransform(1,0,0,1,0,0);
+ let b=g.createRadialGradient(CX,CY,0,CX,CY,1024);b.addColorStop(0,'#b8452a');b.addColorStop(.35,'#c2532e');b.addColorStop(.75,'#a2381f');b.addColorStop(1,'#6e2414');g.fillStyle=b;g.fillRect(0,0,2048,2048);
+ const R=(s=>()=>(s=(s*16807)%2147483647)/2147483647)(3);
+ for(let i=0;i<5000;i++){const x=R()*2048,y=R()*2048,s=3+R()*9;g.fillStyle=`rgba(${R()<.5?110:205},${R()<.5?30:80},20,${.05+R()*.06})`;g.beginPath();g.ellipse(x,y,s,s*.5,R()*3,0,7);g.fill()}
+ b=g.createRadialGradient(CX,CY,0,CX,CY,D(9));b.addColorStop(0,'rgba(70,15,8,.75)');b.addColorStop(1,'rgba(70,15,8,0)');g.fillStyle=b;g.beginPath();g.arc(CX,CY,D(9),0,7);g.fill();
+ g.fillStyle='rgba(255,230,180,.75)';g.beginPath();g.arc(CX,CY,3,0,7);g.fill();
+ g.strokeStyle='rgba(255,220,190,.18)';g.lineWidth=3;g.beginPath();g.arc(CX,CY,D(2.5),0,7);g.stroke();
+ const [dx,dy]=DISC;b=g.createRadialGradient(dx,dy,0,dx,dy,D(3.2));b.addColorStop(0,'#fff6d8');b.addColorStop(.35,'#f6d39a');b.addColorStop(.8,'#e7a77a');b.addColorStop(1,'rgba(200,100,60,0)');g.fillStyle=b;g.beginPath();g.ellipse(dx,dy,D(2.9),D(3.3),0,0,7);g.fill();
+ g.fillStyle='rgba(255,252,235,.9)';g.beginPath();g.ellipse(dx+3,dy,D(.9),D(1.1),0,0,7);g.fill();
+ g.lineCap='round';g.lineJoin='round';
+ for(const v of vessels){g.strokeStyle=v.art?'#b8302a':'#86201a';g.lineWidth=v.w;g.beginPath();v.pts.forEach(([x,y],i)=>i?g.lineTo(x,y):g.moveTo(x,y));g.stroke();
+  if(v.w>3){g.strokeStyle=v.art?'rgba(255,170,150,.35)':'rgba(200,90,80,.25)';g.lineWidth=v.w*.2;g.stroke()}}
+ if(f.dr||f.dmo){const R2=(s=>()=>(s=(s*16807)%2147483647)/2147483647)(41);
+  for(let i=0;i<(f.dr?75:15);i++){const a=R2()*6.28,d=D(5+R2()*38),x=CX+Math.cos(a)*d,y=CY+Math.sin(a)*d*.8;if(Math.hypot(x-dx,y-dy)<D(4))continue;const blot=R2()<.3,s=blot?4.5+R2()*4.5:2+R2()*2;
+   g.fillStyle=blot?'rgba(110,8,8,.9)':'rgba(140,10,10,.95)';g.beginPath();blot?g.ellipse(x,y,s,s*(.7+R2()*.3),R2()*3,0,7):g.arc(x,y,s,0,7);g.fill()}
+  const ring=(cx,cy,rad,n)=>{for(let i=0;i<n;i++){const a=R2()*6.28,rr=rad*(.8+R2()*.4),x=cx+Math.cos(a)*rr,y=cy+Math.sin(a)*rr,s=2+R2()*4.5;g.fillStyle=`rgba(255,${215+R2()*30|0},${90+R2()*50|0},.95)`;g.beginPath();g.arc(x,y,s,0,7);g.fill()}};
+  if(f.dr){ring(CX+D(7),CY-D(5),D(3.2),45);ring(CX-D(9),CY+D(6),D(2.5),30);
+   for(let i=0;i<3;i++){const x=CX+D(-12+i*11),y=CY+D(i%2?-10:9);for(let j=0;j<5;j++){const xx=x+(R2()-.5)*D(1.2),yy=y+(R2()-.5)*D(.8),rr=D(.6+R2()*.5);const r=g.createRadialGradient(xx,yy,0,xx,yy,rr);r.addColorStop(0,'rgba(250,248,235,.85)');r.addColorStop(1,'rgba(250,248,235,0)');g.fillStyle=r;g.beginPath();g.arc(xx,yy,rr,0,7);g.fill()}}}
+  if(f.dmo){g.save();g.globalCompositeOperation='destination-out';const ho=g.createRadialGradient(CX,CY,0,CX,CY,D(5.5));ho.addColorStop(0,'rgba(0,0,0,.5)');ho.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=ho;g.beginPath();g.arc(CX,CY,D(5.5),0,7);g.fill();g.restore();ring(CX,CY,D(4.5),70);b=g.createRadialGradient(CX,CY,0,CX,CY,D(6));b.addColorStop(0,'rgba(255,235,200,.28)');b.addColorStop(1,'rgba(255,235,200,0)');g.fillStyle=b;g.beginPath();g.arc(CX,CY,D(6),0,7);g.fill()}}
+ if(f.rd){g.save();g.fillStyle='rgba(205,200,195,.42)';g.beginPath();g.moveTo(CX,CY-D(4));for(let a=-2.9;a<=-.25;a+=.05){const r=D(30+Math.sin(a*7)*3);g.lineTo(CX+Math.cos(a)*r*1.0+D(4),CY+Math.sin(a)*r)}g.lineTo(CX+D(70)*Math.cos(-.25),CY+D(70)*Math.sin(-.25));g.arc(CX,CY,D(110),-.25,-2.9,true);g.closePath();g.fill();
+  const tx=CX-D(38),ty=CY-D(62);g.fillStyle='#8b1a10';g.beginPath();g.moveTo(tx-D(5),ty);g.quadraticCurveTo(tx,ty+D(8),tx+D(5),ty);g.quadraticCurveTo(tx,ty+D(3),tx-D(5),ty);g.fill();g.restore()}
+ reT.needsUpdate=true}
+
+// retinal shape: macular swelling, detachment
+const pos=retGeo.attributes.position;
+function shapeRetina(f){const v=new THREE.Vector3();for(let i=0;i<pos.count;i++){v.fromArray(base,i*3);let lift=0;const al=Math.acos(Math.max(-1,Math.min(1,-v.z/RR))),az=Math.atan2(v.y,v.x);
+  if(f.dmo){const d=al/(7*Math.PI/180);if(d<1.8)lift+=.075*Math.exp(-d*d*1.3)*(1-.25*Math.exp(-(d*d)/.02))}
+  if(f.rd){const ux=Math.cos(az)*al,uy=Math.sin(az)*al,cx=-.6,cy=.55;const dd=Math.hypot(ux-cx,uy-cy);if(uy>-.05&&ux<.35){const k=Math.max(0,1-dd/1.05);lift+=.2*Math.pow(k,.7)*(1+.25*Math.sin(az*9+al*14))}}
+  v.multiplyScalar((RR-lift)/RR);pos.setXYZ(i,v.x,v.y,v.z)}pos.needsUpdate=true;retGeo.computeVertexNormals()}
+// fluid under the macula
+const fluid=new THREE.Mesh(new THREE.SphereGeometry(1,48,24),P({color:0xf5dd9a,transmission:.4,transparent:true,opacity:.65,roughness:.15,side:THREE.DoubleSide}));fluid.scale.set(.085,.085,.03);fluid.position.set(0,0,-RR+.012);eye.add(fluid);
+
+// ---------- optic nerve ----------
+const nervePos=new THREE.Vector3(-Math.sin(15*Math.PI/180),-Math.sin(1.5*Math.PI/180),-Math.cos(15*Math.PI/180)).multiplyScalar(.98);
+const nerve=new THREE.Mesh(new THREE.CylinderGeometry(.14,.17,.9,32),M({color:0xe9d6b5,roughness:.6}));nerve.position.copy(nervePos.clone().multiplyScalar(1.5));nerve.lookAt(0,0,0);nerve.rotateX(Math.PI/2);eye.add(nerve);
+
+// ---------- vitreous: haemorrhage, floaters, inflammation ----------
+const vitMat=P({color:0xffffff,transparent:true,opacity:0,roughness:.9,depthWrite:false,side:THREE.BackSide});
+const vit=new THREE.Mesh(new THREE.SphereGeometry(.94,64,32),vitMat);eye.add(vit);
+function sprite(col){const c=canvas(64,64),g=c.getContext('2d'),r=g.createRadialGradient(32,32,0,32,32,32);r.addColorStop(0,col);r.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=r;g.fillRect(0,0,64,64);return tex(c)}
+function cloud(n,col,size,bias){const g=new THREE.BufferGeometry(),a=new Float32Array(n*3);for(let i=0;i<n;i++){let x,y,z;do{x=rnd()*2-1;y=rnd()*2-1;z=rnd()*2-1}while(x*x+y*y+z*z>1);y=y*.85-bias*Math.abs(rnd());a.set([x*.8,Math.max(-.82,y*.8),z*.75-.12],i*3)}g.setAttribute('position',new THREE.BufferAttribute(a,3));
+ const m=new THREE.PointsMaterial({map:sprite(col),size,transparent:true,depthWrite:false,sizeAttenuation:true});m.clippingPlanes=[CUT];clipMats.push(m);const p=new THREE.Points(g,m);p.visible=false;eye.add(p);return p}
+const blood=cloud(900,'rgba(140,12,12,.22)',.42,.5), blood2=cloud(140,'rgba(80,0,0,.6)',.12,.7), pus=cloud(1600,'rgba(240,235,200,.45)',.2,.1);
+const floaters=new THREE.Group();floaters.visible=false;eye.add(floaters);
+{const fm=M({color:0x2b2b2b,transparent:true,opacity:.4,roughness:1,depthWrite:false});
+ for(let i=0;i<9;i++){const pts=[];let p=new THREE.Vector3((rnd()-.5)*.9,(rnd()-.5)*.9,(rnd()-.6)*.8);for(let k=0;k<6;k++){pts.push(p.clone());p.add(new THREE.Vector3((rnd()-.5)*.14,(rnd()-.5)*.14,(rnd()-.5)*.14))}
+  floaters.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),40,.004+rnd()*.005,6),fm))}
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(.07,.008,8,48),fm);ring.position.copy(nervePos).multiplyScalar(.55);ring.lookAt(nervePos);floaters.add(ring)}
+// hypopyon
+const hypo=new THREE.Mesh((()=>{const s=new THREE.Shape(),r=LIMB-.04,y0=-.33;const a0=Math.asin(y0/r);s.absarc(0,0,r,Math.PI-a0,2*Math.PI+a0,false);s.lineTo(r*Math.cos(Math.PI-a0),y0);return new THREE.ExtrudeGeometry(s,{depth:.1,bevelEnabled:false})})(),M({color:0xf1ead0,roughness:.5,transparent:true,opacity:.92}));
+hypo.position.z=iris.position.z+.005;hypo.visible=false;eye.add(hypo);
+
+// ---------- labels ----------
+const LAB=[['cornea',new THREE.Vector3(.2,.25,1.08)],['iris',new THREE.Vector3(-.05,.33,.86)],['lens',new THREE.Vector3(0,-.22,LZ)],['vitreous',new THREE.Vector3(0,.35,-.15)],['retina',new THREE.Vector3(-.2,-.8,-.5)],['macula',new THREE.Vector3(.04,-.08,-.93)],['disc',nervePos.clone().multiplyScalar(.97).add(new THREE.Vector3(0,.08,0))],['nerve',nervePos.clone().multiplyScalar(1.95).add(new THREE.Vector3(0,-.15,0))],['sclera',new THREE.Vector3(-.75,.62,.2)]];
+const labEls=LAB.map(([k])=>{const e=document.createElement('div');e.className='lab';e.textContent=TXT.lab[k];labs.appendChild(e);return e});
+
+// ---------- conditions ----------
+const VIEWS={mac:[[.5,.32,-.3],[0,-.02,-.92]],side:[[2.1,.75,1.85],[-.1,0,-.15]],front:[[.15,.1,2.6],[0,0,.6]],fundus:[[0,0,.05],[0,0,-.95]]};
+let tween=null;
+function view(n){const [p,t]=VIEWS[n];const fit=(n==='side'||n==='front')&&camera.aspect<1.1?Math.min(2,1.1/camera.aspect):1;const T1=new THREE.Vector3(...t),P1=new THREE.Vector3(...p).sub(T1).multiplyScalar(fit).add(T1);tween={p0:camera.position.clone(),t0:controls.target.clone(),p1:P1,t1:T1,s:performance.now()};
+ document.querySelectorAll('[data-v]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===n));curView=n}
+let curView='side';
+const INNER={macula:1,disc:1},OUTER={cornea:1,iris:1,sclera:1};
+function setCut(on){cutOn=on;clipMats.forEach(m=>m.clippingPlanes=on?[CUT]:[]);document.getElementById('cut').setAttribute('aria-pressed',on)}
+function apply(k){const f={dr:k==='dr',dmo:k==='dmo',rd:k==='rd'};
+ retina.material.transparent=!!f.dmo;retina.material.needsUpdate=true;drawRetina(f);shapeRetina(f);fluid.visible=k==='dmo';
+ drawCornea(k==='cu'?'cu':k==='sei'?'sei':'');
+ blood.visible=blood2.visible=k==='vh';floaters.visible=k==='fl';pus.visible=hypo.visible=k==='endo';
+ vitMat.opacity=k==='endo'?.28:k==='vh'?.12:0;vitMat.color.set(k==='vh'?0x7a1010:0xf2ead0);
+ drawSclera(k==='endo'?2:k==='cu'?1:0);
+ const cat=k==='cat';nucleus.material.opacity=cat?.8:0;cortex.material.opacity=cat?.85:0;lensMat.opacity=cat?.75:.35;lensMat.transmission=cat?.3:.95;lensMat.color.set(cat?0xf1e2b8:0xfaf7ee);
+ const c=TXT.c[k];document.getElementById('info').innerHTML=`<h3>${c.n}</h3><p>${c.d}</p><ul>${c.s.map(x=>`<li>${x}</li>`).join('')}</ul>`+(LINKS[k]?`<p style="margin:10px 0 0"><a href="${LINKS[k]}" target="_top">${TXT.more} →</a></p>`:'');
+ document.querySelectorAll('#conds button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k));
+ view(c.v);setCut(c.v==='side'||c.v==='mac')}
+const conds=document.getElementById('conds');
+Object.keys(TXT.c).forEach(k=>{const b=document.createElement('button');b.type='button';b.dataset.k=k;b.textContent=TXT.c[k].n;b.onclick=()=>apply(k);conds.appendChild(b)});
+document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>view(b.dataset.v));
+document.getElementById('cut').onclick=()=>setCut(!cutOn);
+document.getElementById('lbl').onclick=e=>{labs.hidden=!labs.hidden;e.currentTarget.setAttribute('aria-pressed',!labs.hidden)};
+
+// ---------- loop ----------
+camera.position.set(...VIEWS.side[0]);controls.target.set(0,0,0);
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
+new ResizeObserver(resize).observe(stage);resize();
+const v3=new THREE.Vector3(),clock=new THREE.Clock();
+renderer.setAnimationLoop(()=>{const t=clock.getElapsedTime();
+ if(tween){const k=Math.min(1,(performance.now()-tween.s)/900),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;camera.position.lerpVectors(tween.p0,tween.p1,e);controls.target.lerpVectors(tween.t0,tween.t1,e);if(k>=1)tween=null}
+ controls.update();
+ if(floaters.visible){floaters.rotation.y=Math.sin(t*.4)*.12;floaters.position.y=Math.sin(t*.7)*.03}
+ if(blood.visible){blood.rotation.y=t*.03;blood2.rotation.y=-t*.02}
+ if(pus.visible)pus.rotation.y=t*.02;
+ inner.position.copy(camera.position).multiplyScalar(.2);
+ renderer.render(scene,camera);
+ if(!labs.hidden){const w=stage.clientWidth,h=stage.clientHeight;LAB.forEach(([k,p],i)=>{v3.copy(p).project(camera);const e=labEls[i];const inside=camera.position.length()<.95;const hidden=v3.z>1||Math.abs(v3.x)>1.05||Math.abs(v3.y)>1.05||(cutOn&&p.x>.32)||(inside&&!INNER[k])||(!inside&&!cutOn&&!OUTER[k]);e.style.opacity=hidden?0:1;e.style.left=(v3.x*.5+.5)*w+'px';e.style.top=(-v3.y*.5+.5)*h+'px'})}});
+apply('normal');
+</script>
+</body>
+</html>
