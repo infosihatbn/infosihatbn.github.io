@@ -17,37 +17,58 @@ header.site{background:#fff;border-bottom:1px solid var(--line)}.bar{max-width:1
 .aud a.on{background:var(--blue-deep);color:#fff}.aud .s{display:none}
 main{flex:1;display:grid;place-items:center;padding:40px 16px}
 .card{width:100%;max-width:460px;background:#fff;border-radius:28px;padding:30px 28px;box-shadow:0 18px 50px rgba(31,110,147,.16);border-top:8px solid var(--teal)}
-.card.wide{max-width:880px}
-h1{font:800 clamp(28px,4vw,38px)/1.15 var(--display);margin:0 0 6px;color:var(--blue-deep)}.sub{margin:0 0 20px;color:var(--muted)}
+.card.wide{max-width:900px}
+h1{font:800 clamp(26px,4vw,38px)/1.15 var(--display);margin:0 0 6px;color:var(--blue-deep)}.sub{margin:0 0 20px;color:var(--muted)}
 label{display:block;font:700 15px/1.2 var(--display);margin:14px 0 6px}input{width:100%;font:500 18px/1.4 var(--body);padding:12px 14px;border:2px solid var(--line);border-radius:14px;outline:0}
 input:focus{border-color:var(--blue)}button.go{margin-top:20px;width:100%;border:0;border-radius:999px;background:var(--blue-deep);color:#fff;font:700 17px/1 var(--display);padding:15px;cursor:pointer}
-.bad{color:#B3261E;font-weight:700;margin:12px 0 0}.note{font-size:15px;color:var(--muted);margin:18px 0 0}.note a{color:var(--blue-deep)}
-.soon{display:inline-block;font:700 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:#FFF4D6;color:#3A2A05;border-radius:999px;padding:7px 11px;margin-bottom:12px}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:20px 0}.tile{background:var(--mist);border-radius:18px;padding:18px;border-left:6px solid var(--teal)}.tile b{display:block;font:700 17px/1.3 var(--display);color:var(--blue-deep)}.tile span{font-size:15px;color:var(--muted)}
+.bk{border:0;background:none;color:var(--blue-deep);font:700 15px/1 var(--display);padding:6px 0;margin-bottom:10px;cursor:pointer}
+.bad{color:#B3261E;font-weight:700;margin:12px 0 0}.note{font-size:15px;color:var(--muted);margin:20px 0 0}.note a{color:var(--blue-deep)}
+.choose{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.opt{display:grid;gap:6px;text-align:left;border:2px solid var(--line);background:var(--mist);border-radius:22px;padding:22px;cursor:pointer;font:inherit;color:var(--ink);transition:transform .15s,border-color .15s}
+.opt:hover,.opt:focus-visible{transform:translateY(-2px);border-color:var(--blue-deep)}.opt .i{font-size:34px}.opt b{font:800 20px/1.25 var(--display);color:var(--blue-deep)}.opt span{color:var(--muted);font-size:16px}
+.tl{display:grid;gap:12px;margin:8px 0 20px}.tli{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:center;border-radius:20px;padding:16px 18px;border:2px solid}
+.tli .lamp{width:56px;height:56px;border-radius:50%;box-shadow:inset 0 -6px 0 rgba(0,0,0,.15)}.tli b{display:block;font:800 19px/1.25 var(--display)}.tli small{display:block;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}.tli p{margin:4px 0 0;font-size:16px}
+.r{background:#FDECEA;border-color:#E5484D}.r .lamp{background:#E5484D}.r b,.r small{color:#8C1D18}
+.y{background:#FFF6D9;border-color:#F4C04E}.y .lamp{background:#F4C04E}.y b,.y small{color:#6B4E00}
+.g{background:#E6F6EC;border-color:#2BB673}.g .lamp{background:#2BB673}.g b,.g small{color:#11663B}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:8px 0 20px}
+.tile{display:grid;gap:6px;align-content:start;background:var(--mist);border-radius:20px;padding:20px;border-left:6px solid var(--teal);text-decoration:none;color:var(--ink)}
+a.tile:hover{border-left-color:var(--blue-deep);background:#E3F0F6}.tile b{font:700 18px/1.3 var(--display);color:var(--blue-deep)}.tile span{font-size:15px;color:var(--muted)}
+.tile em{justify-self:start;font:700 12px/1 var(--display);font-style:normal;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:7px 11px;background:#fff;color:var(--blue-deep)}
+.tile em.soon{background:#FFF4D6;color:#3A2A05}
 .out{border:2px solid var(--blue-deep);background:#fff;color:var(--blue-deep);border-radius:999px;padding:10px 18px;font:700 15px/1 var(--display);cursor:pointer}
 [hidden]{display:none!important}
-@media (max-width:640px){.bar{padding:8px 12px}.mk-w{font-size:22px}.mk-ic{width:42px;height:34px}.mk-sub{margin-left:50px}.aud .l{display:none}.aud .s{display:inline}.aud a{padding:10px 12px;font-size:14px}.card{padding:24px 18px}}
+@media (max-width:640px){.bar{padding:8px 12px}.mk-w{font-size:22px}.mk-ic{width:42px;height:34px}.mk-sub{margin-left:50px}.aud .l{display:none}.aud .s{display:inline}.aud a{padding:10px 12px;font-size:14px}.card{padding:24px 18px}.choose{grid-template-columns:1fr}.tli{grid-template-columns:44px 1fr;padding:14px}.tli .lamp{width:40px;height:40px}}
 </style></head>
 <body>
 <header class="site"><div class="bar"><a class="brand" href="../../english/" aria-label="MataKitani"><span class="mk-logo"><svg class="mk-ic" viewBox="0 0 100 80" aria-hidden="true"><path fill="#F5A27C" d="M3 47C14 22 42 7 70 11c10 1.4 16 6 18 13-12-5-30-6-46-1C26 28 14 37 3 47z"/><path fill="#6DB36A" d="M3 47c17 7 47 11 67 3 8-3 14-8 20-16-4 22-24 38-46 38C26 72 12 62 3 47z"/><g class="mk-eye"><circle cx="46" cy="43" r="16" fill="#153C31"/><circle cx="51.5" cy="37.5" r="4.8" fill="#fff"/></g><path class="mk-sp" fill="#F5A27C" d="M88 1c1.3 6 3 7.7 9 9-6 1.3-7.7 3-9 9-1.3-6-3-7.7-9-9 6-1.3 7.7-3 9-9z"/></svg><span class="mk-w" aria-hidden="true"><span class="ch" style="--i:0">M</span><span class="ch" style="--i:1">a</span><span class="ch" style="--i:2">t</span><span class="ch" style="--i:3">a</span><span class="ch" style="--i:4">K</span><span class="ch" style="--i:5">i</span><span class="ch" style="--i:6">t</span><span class="ch" style="--i:7">a</span><span class="ch" style="--i:8">n</span><span class="ch" style="--i:9">i</span></span></span><small class="mk-sub">For Doctors</small></a><span class="sp"></span>
 <div class="lng"><a href="../../doktor/" data-hard>BM</a> | <span>EN</span></div>
 <div class="aud" role="group" aria-label="Who is this for?"><a href="../../english/" data-hard><span class="l">For Patients</span><span class="s">Patients</span></a><a href="../../english/doctors/" data-hard class="on" aria-current="page"><span class="l">For Doctors</span><span class="s">Doctors</span></a></div></div></header>
 <main>
-<form class="card" id="dlogin" autocomplete="on" hidden>
-<h1>Doctors' area</h1><p class="sub">Teaching and training resources for eye doctors in Brunei.</p>
-<label for="du">Username</label><input id="du" name="username" autocomplete="username" required autocapitalize="off" spellcheck="false">
-<label for="dp">Password</label><input id="dp" name="password" type="password" autocomplete="current-password" required>
-<button class="go" type="submit">Log in</button><p class="bad" role="alert" hidden>That username or password is not right. Please try again.</p>
-<p class="note">Patient information is on the For Patients side. <a href="../../english/">Go to For Patients →</a></p></form>
-<section class="card wide" id="dhome" hidden><span class="soon">Coming soon</span><h1>Welcome, doctor</h1><p class="sub">The doctors' training area is being built. It will hold teaching resources for ophthalmology training in Brunei.</p>
-<div class="tiles"><div class="tile"><b>Teaching sessions</b><span>Coming soon</span></div><div class="tile"><b>Clinical guides</b><span>Coming soon</span></div><div class="tile"><b>Case library</b><span>Coming soon</span></div></div>
-<button type="button" class="out">Log out</button></section>
+<section class="card wide" id="v-choose" hidden><h1>Doctors' area</h1><p class="sub">Choose the area for your role. Each area has its own login.</p>
+<div class="choose"><button type="button" class="opt" data-go="gp"><span class="i" aria-hidden="true">🚦</span><b>For GP, ED and other physicians</b><span>When and how urgently to refer eye problems.</span></button>
+<button type="button" class="opt" data-go="oph"><span class="i" aria-hidden="true">👁️</span><b>For Ophthalmologists</b><span>Training resources for eye doctors in Brunei.</span></button></div>
+<p class="note">Patient information is on the For Patients side. <a href="../../english/">Go to For Patients →</a></p></section>
+<form class="card login" data-k="gp" hidden autocomplete="on"><button type="button" class="bk">← Back</button><h1>For GP, ED and other physicians</h1><p class="sub">When and how urgently to refer eye problems.</p><label for="u-gp">Username</label><input id="u-gp" name="username" autocomplete="username" required autocapitalize="off" spellcheck="false"><label for="p-gp">Password</label><input id="p-gp" name="password" type="password" autocomplete="current-password" required><button class="go" type="submit">Log in</button><p class="bad" role="alert" hidden>That username or password is not right. Please try again.</p></form><form class="card login" data-k="oph" hidden autocomplete="on"><button type="button" class="bk">← Back</button><h1>For Ophthalmologists</h1><p class="sub">Training resources for eye doctors in Brunei.</p><label for="u-oph">Username</label><input id="u-oph" name="username" autocomplete="username" required autocapitalize="off" spellcheck="false"><label for="p-oph">Password</label><input id="p-oph" name="password" type="password" autocomplete="current-password" required><button class="go" type="submit">Log in</button><p class="bad" role="alert" hidden>That username or password is not right. Please try again.</p></form>
+<section class="card wide" id="v-gp" hidden><button type="button" class="bk">← Back</button><h1>Eye referral traffic light</h1><p class="sub">A quick guide to how urgently to refer. Full guidance is coming soon.</p>
+<div class="tl"><div class="tli r"><span class="lamp" aria-hidden="true"></span><div><small>Red</small><b>Must refer urgently</b><p>Refer to the ophthalmology team urgently.</p></div></div>
+<div class="tli y"><span class="lamp" aria-hidden="true"></span><div><small>Yellow</small><b>Refer the next working day</b><p>Or advise the patient to go to a Community Eye Clinic.</p></div></div>
+<div class="tli g"><span class="lamp" aria-hidden="true"></span><div><small>Green</small><b>Non-urgent</b><p>Send a referral letter to the eye clinic.</p></div></div></div>
+<button type="button" class="out" data-k="gp">Log out</button></section>
+<section class="card wide" id="v-oph" hidden><button type="button" class="bk">← Back</button><h1>Ophthalmology training</h1><p class="sub">Resources for ophthalmology training in Brunei.</p>
+<div class="tiles"><div class="tile"><b>The EyeGuide</b><span>A quick clinical reference for eye doctors.</span><em class="soon">Coming soon</em></div>
+<a class="tile" href="https://phaco-nucleus-trainer-affizan.fiiknights.chatgpt.site/login" target="_blank" rel="noopener"><b>The Phaco Nucleus Trainer</b><span>Practise nucleus management for phacoemulsification.</span><em>Open <span aria-hidden="true">↗</span></em></a>
+<a class="tile" href="https://sites.google.com/view/brunei-ophthalmology-training-/home" target="_blank" rel="noopener"><b>Brunei Ophthalmology Basic Specialist Training</b><span>The training programme's site.</span><em>Open <span aria-hidden="true">↗</span></em></a></div>
+<button type="button" class="out" data-k="oph">Log out</button></section>
 </main>
-<script>(()=>{const H='51a63baa8bdaeb7b14677351a88052c539f041f65ea7e2016f53fffead82600b',K='mk-doc',f=document.getElementById('dlogin'),h=document.getElementById('dhome');
-const show=ok=>{f.hidden=ok;h.hidden=!ok;if(!ok)setTimeout(()=>document.getElementById('du').focus(),50)};
-let ok=false;try{ok=sessionStorage.getItem(K)===H}catch(e){}show(ok);
+<script>(()=>{const H={"oph": "51a63baa8bdaeb7b14677351a88052c539f041f65ea7e2016f53fffead82600b", "gp": "25233ef9c9ecfa2bd6f29a13564c6ca87801c2521fd33c079ead8257ac1a74ca"},K=k=>'mk-doc-'+k,ok=k=>{try{return sessionStorage.getItem(K(k))===H[k]}catch(e){return false}};
+const V=id=>{document.querySelectorAll('main>*').forEach(x=>x.hidden=true);const el=id.startsWith('login-')?document.querySelector('form[data-k="'+id.slice(6)+'"]'):document.getElementById('v-'+id);el.hidden=false;const f=el.querySelector('input');if(f)setTimeout(()=>f.focus(),50);scrollTo(0,0)};
+const route=()=>{const k=(location.hash.match(/^#(gp|oph)$/)||[])[1];if(!k)return V('choose');V(ok(k)?k:'login-'+k)};
+document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{location.hash=b.dataset.go});
+document.querySelectorAll('.bk').forEach(b=>b.onclick=()=>{history.replaceState(null,'',location.pathname);route()});
 const sha=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(b=>b.toString(16).padStart(2,'0')).join('');
-f.addEventListener('submit',async e=>{e.preventDefault();const v=await sha(f.du.value.trim()+':'+f.dp.value);const good=v===H;f.querySelector('.bad').hidden=good;
- if(good){try{sessionStorage.setItem(K,H)}catch(e){}f.dp.value='';show(true)}else{f.dp.select()}});
-h.querySelector('.out').addEventListener('click',()=>{try{sessionStorage.removeItem(K)}catch(e){}show(false)})})()</script>
+document.querySelectorAll('form.login').forEach(f=>f.addEventListener('submit',async e=>{e.preventDefault();const k=f.dataset.k;const u=f.querySelector('input[name=username]'),p=f.querySelector('input[type=password]');
+ const good=(await sha(u.value.trim()+':'+p.value))===H[k];f.querySelector('.bad').hidden=good;if(good){try{sessionStorage.setItem(K(k),H[k])}catch(e){}p.value='';route()}else p.select()}));
+document.querySelectorAll('.out').forEach(b=>b.onclick=()=>{try{sessionStorage.removeItem(K(b.dataset.k))}catch(e){}history.replaceState(null,'',location.pathname);route()});
+addEventListener('hashchange',route);route()})()</script>
 </body></html>
