@@ -660,26 +660,29 @@ html.tm-lock{overflow:hidden}
 .np-info{margin:0;font-size:17px;line-height:1.55}
 @media (max-width:640px){.np{padding:16px 14px}.np button{padding:8px 12px;font-size:14px}.np-dbl{right:8px;top:8px;padding:5px 9px;font-size:12px}}
 
-.kq{position:relative;display:grid;gap:14px;margin:22px 0 6px;padding:20px 22px;border-radius:24px;background:linear-gradient(135deg,#FFF7DD,#EEF4EC);border:1px solid var(--line);overflow:hidden}
-.kq-top{display:flex;gap:14px;align-items:center}.kq-top>div{flex:1;min-width:0}
+.kq{position:relative;display:grid;gap:14px;margin:22px 0 6px;padding:20px 22px;border-radius:24px;background:linear-gradient(135deg,#FFF4EA,#EEF5EF);border:1px solid var(--line);overflow:hidden}
+.kq-top{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}.kq-top>div{flex:1 1 180px;min-width:0}
 .kq-ic{font-size:34px;width:56px;height:56px;display:grid;place-items:center;background:#fff;border-radius:18px;flex:none}
 .kq h2{margin:0!important;font:800 22px/1.2 var(--display)!important}.kq-top p{margin:2px 0 0;color:var(--muted);font-size:15px}
 .kq-sc{flex:none;font:800 16px/1 var(--display);color:var(--blue-deep);background:#fff;border-radius:999px;padding:8px 12px}.kq-sc:empty{display:none}
-.kq-card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 22px rgba(27,43,36,.08);animation:kqIn .45s ease both}
-.kq-card.out{animation:kqOut .35s ease both}
+.kq-card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 22px rgba(27,43,36,.08);animation:kqIn .45s ease both;min-width:0}
+.kq-card.out{animation:kqOut .33s ease both}
 @keyframes kqIn{from{opacity:0;transform:translateY(14px)}}@keyframes kqOut{to{opacity:0;transform:translateY(-10px)}}
 .kq-n{margin:0;font:700 13px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep,#2D6A50)}
-.kq-card h3{margin:8px 0 12px;font:700 19px/1.35 var(--display)}
+.kq-card h3{margin:8px 0 12px;font:700 19px/1.35 var(--display);overflow-wrap:anywhere}
 .kq-opts{display:grid;gap:8px}
-.kq-opts button{text-align:left;border:1.5px solid var(--line);background:#FCFAF5;color:var(--ink);border-radius:14px;padding:12px 14px;font:600 16px/1.35 var(--body);cursor:pointer;transition:border-color .2s,background .2s}
-.kq-opts button:hover:not(:disabled){border-color:var(--blue,#5E9E7E);background:#EEF4EC}
+.kq-opts button{text-align:left;border:1.5px solid var(--line);background:#FAFCFB;color:var(--ink);border-radius:14px;padding:12px 14px;font:600 16px/1.35 var(--body);cursor:pointer;transition:border-color .2s,background .2s;overflow-wrap:anywhere}
+.kq-opts button:hover:not(:disabled){border-color:var(--blue-deep,#1F5A45);background:#EEF5EF}
 .kq-opts button.ok{border-color:#2BB673;background:#E3F6EC}.kq-opts button.no{border-color:#E5484D;background:#FDE7E5}
 .kq-opts button:disabled{cursor:default}
-.kq-fb{margin:10px 0 0;font-weight:700}.kq-fb.ok{color:#11663B}.kq-fb.no{color:#B42318}
+.kq-fb{display:grid;gap:8px;justify-items:start}.kq-fb:empty{display:none}.kq-fb p{margin:10px 0 0}
+.kq-res{font-weight:700}.kq-res.ok{color:#11663B}.kq-res.no{color:#B42318}
+.kq-why{margin-top:2px!important;color:var(--ink);font-size:15.5px;line-height:1.45;background:var(--mist,#E8F0E9);border-radius:12px;padding:10px 12px;overflow-wrap:anywhere}
+.kq-next{margin-top:4px;animation:kqIn .35s ease both}
 .kq-end{text-align:center;display:grid;gap:8px;justify-items:center}.kq-big{margin:0;font:800 46px/1 var(--display);color:var(--blue-deep)}
 .kq-end h3{margin:0}
 .kq-conf{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-@media (max-width:640px){.kq{padding:16px 14px}.kq-ic{width:46px;height:46px;font-size:26px}.kq h2{font-size:19px!important}}
+@media (max-width:640px){.kq{padding:16px 14px}.kq-ic{width:46px;height:46px;font-size:26px}.kq h2{font-size:19px!important}.kq-card{padding:16px 14px}}
 @media print{.kq{display:none}}
 
 .surg{max-width:760px;margin:22px 0 26px;padding:18px 18px 14px;background:#fff;border:1px solid var(--line,#DDE7DD);border-radius:22px;box-shadow:0 10px 30px rgba(23,58,46,.08);box-sizing:border-box}
@@ -932,7 +935,7 @@ footer .disc-em{color:#FFC9B0!important}
 .waves .w3{fill:rgba(214,232,213,.35)!important}.waves .w1{fill:rgba(94,158,126,.08)!important}.waves .w2{fill:rgba(245,162,124,.08)!important}
 @media print{.aud,.leaves{display:none!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../../assets/dark.css?v=20261008093139">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261008101843">
 </head>
 <body class="">
 <a class="skip" href="#main">Langkau ke kandungan</a>
@@ -942,7 +945,7 @@ footer .disc-em{color:#FFC9B0!important}
 <p>Paparan</p><div class="accr"><button type="button" data-th="light">☀️ Cerah</button><button type="button" data-th="dark">🌙 Gelap</button></div>
 <p>Muzik latar</p><div class="acct"><button type="button" data-trk="0"><b>♪ Calm Ambient</b><small>oleh Velariomusic</small></button><button type="button" data-trk="1"><b>♪ Relax</b><small>oleh The Mountain</small></button><button type="button" data-trk="2"><b>♪ Calm</b><small>oleh MarloweMusic</small></button></div></div></div><div class="music"><button type="button" class="music-btn" aria-pressed="false" aria-label="Muzik disenyapkan. Tekan untuk main" data-on="Muzik dimainkan. Tekan untuk senyapkan" data-off="Muzik disenyapkan. Tekan untuk main"><svg class="m-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><svg class="m-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button><span class="music-tip" role="note" data-tpl="Muzik: &quot;{t}&quot; oleh {a}. Terima kasih!">Muzik: "Calm Ambient" oleh Velariomusic. Terima kasih!</span></div><div class="aud" role="group" aria-label="Untuk siapa?"><a href="../../" data-hard class="on" aria-current="page"><span class="l">Untuk Pesakit</span><span class="s">Pesakit</span></a><a href="../../doktor/" data-hard><span class="l">Untuk Doktor</span><span class="s">Doktor</span></a></div></div></header>
 <main id="main"><div class="band"><svg class="leaves" viewBox="0 0 1600 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="1420" cy="250" r="150" fill="#FBD9C6" opacity=".7"/><circle cx="1530" cy="90" r="80" fill="#E3EEE3"/><circle cx="120" cy="230" r="120" fill="#E3EEE3" opacity=".9"/><circle cx="300" cy="300" r="90" fill="#FBE3D5" opacity=".7"/><g fill="#8DBF8B" opacity=".3"><path d="M40 200C30 140 70 90 130 70c-10 60-40 110-90 130z"/><path d="M90 250c10-50 50-80 100-90-15 45-50 75-100 90z"/></g><g fill="#6FA86E" opacity=".45"><path d="M1560 40c10 60-20 110-70 140 0-60 25-110 70-140z"/><path d="M1490 230c-5-45 20-80 65-100 0 45-25 80-65 100z"/></g><g stroke="#F29E78" stroke-width="7" stroke-linecap="round" opacity=".8"><path d="M1290 70l10 18"/><path d="M1318 62l-4 20"/></g></svg><div class="inner"><h1>Simulasi Penyakit 3D</h1><div class="band-tools"><button type="button" class="wa-share"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/><path fill="currentColor" d="M16.6 14.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg><span>Kongsi di WhatsApp</span></button></div></div></div><div class="content"><p>Terokai model mata 3D. Pusingkan, zum, tengok ke dalam, dan lihat macam mana penyakit mata yang biasa mengubah mata.</p>
-<iframe class="embed" src="../../embeds/eye3d-ms.html?v=20261008093139" title="eye3d ms" style="height:980px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/eye3d-ms.html?v=20261008101843" title="eye3d ms" style="height:980px" loading="lazy"></iframe>
 <h2 id="perlu-tahu">Perlu tahu</h2>
 <ul><li>Ani <strong>model ringkas</strong> untuk belajar. Mata dan penyakit sebenar nampak berbeza bagi setiap orang.</li><li>Kalau penglihatan abiskita berubah, periksa mata. Perubahan <strong>tiba-tiba</strong> ialah kecemasan: pergi ke Jabatan Kecemasan atau telefon <strong>991</strong>.</li></ul></div></main>
 <footer><div class="in"><div class="mk-foot"><svg class="mk-ic" viewBox="0 0 100 80" aria-hidden="true"><path fill="#F5A27C" d="M3 47C14 22 42 7 70 11c10 1.4 16 6 18 13-12-5-30-6-46-1C26 28 14 37 3 47z"/><path fill="#6DB36A" d="M3 47c17 7 47 11 67 3 8-3 14-8 20-16-4 22-24 38-46 38C26 72 12 62 3 47z"/><g class="mk-eye"><circle cx="46" cy="43" r="16" fill="#153C31"/><circle cx="51.5" cy="37.5" r="4.8" fill="#fff"/></g><path class="mk-sp" fill="#F5A27C" d="M88 1c1.3 6 3 7.7 9 9-6 1.3-7.7 3-9 9-1.3-6-3-7.7-9-9 6-1.3 7.7-3 9-9z"/></svg><span class="mk-w">MataKitani</span><span class="tag">· Kesihatan mata, senang difaham.</span></div><p class="disc"><strong>Penafian:</strong> MataKitani memberi maklumat kesihatan am untuk pendidikan saja. Ia bukan nasihat perubatan, dan inda menggantikan pemeriksaan, diagnosis atau rawatan oleh doktor atau pengamal kesihatan yang bertauliah. Sentiasa dapatkan nasihat doktor abiskita pasal apa-apa masalah kesihatan, dan jangan abaikan atau lambatkan nasihat doktor kerana sesuatu yang abiskita baca di sini. Kandungan kami disemak selalu, tapi mungkin inda meliputi setiap keadaan atau panduan yang paling terkini. MataKitani dan penyumbangnya inda bertanggungjawab atas apa-apa kerugian atau kemudaratan akibat penggunaan laman web ani, atau atas kandungan laman web luar yang kami pautkan. Penyumbang menulis atas kapasiti peribadi, dan pandangan di sini inda semestinya mewakili majikan mereka atau Kementerian Kesihatan.</p><p class="disc-em">Kecemasan: pergi ke Unit Kecemasan yang paling dekat. Telefon 991 untuk ambulans mun mungkin strok atau urang atu sangat inda sihat.</p><span>© 2026 MataKitani, Brunei Darussalam</span></div></footer>
@@ -1038,7 +1041,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261008093139';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261008101843';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

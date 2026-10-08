@@ -660,26 +660,29 @@ html.tm-lock{overflow:hidden}
 .np-info{margin:0;font-size:17px;line-height:1.55}
 @media (max-width:640px){.np{padding:16px 14px}.np button{padding:8px 12px;font-size:14px}.np-dbl{right:8px;top:8px;padding:5px 9px;font-size:12px}}
 
-.kq{position:relative;display:grid;gap:14px;margin:22px 0 6px;padding:20px 22px;border-radius:24px;background:linear-gradient(135deg,#FFF7DD,#EEF4EC);border:1px solid var(--line);overflow:hidden}
-.kq-top{display:flex;gap:14px;align-items:center}.kq-top>div{flex:1;min-width:0}
+.kq{position:relative;display:grid;gap:14px;margin:22px 0 6px;padding:20px 22px;border-radius:24px;background:linear-gradient(135deg,#FFF4EA,#EEF5EF);border:1px solid var(--line);overflow:hidden}
+.kq-top{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}.kq-top>div{flex:1 1 180px;min-width:0}
 .kq-ic{font-size:34px;width:56px;height:56px;display:grid;place-items:center;background:#fff;border-radius:18px;flex:none}
 .kq h2{margin:0!important;font:800 22px/1.2 var(--display)!important}.kq-top p{margin:2px 0 0;color:var(--muted);font-size:15px}
 .kq-sc{flex:none;font:800 16px/1 var(--display);color:var(--blue-deep);background:#fff;border-radius:999px;padding:8px 12px}.kq-sc:empty{display:none}
-.kq-card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 22px rgba(27,43,36,.08);animation:kqIn .45s ease both}
-.kq-card.out{animation:kqOut .35s ease both}
+.kq-card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 22px rgba(27,43,36,.08);animation:kqIn .45s ease both;min-width:0}
+.kq-card.out{animation:kqOut .33s ease both}
 @keyframes kqIn{from{opacity:0;transform:translateY(14px)}}@keyframes kqOut{to{opacity:0;transform:translateY(-10px)}}
 .kq-n{margin:0;font:700 13px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep,#2D6A50)}
-.kq-card h3{margin:8px 0 12px;font:700 19px/1.35 var(--display)}
+.kq-card h3{margin:8px 0 12px;font:700 19px/1.35 var(--display);overflow-wrap:anywhere}
 .kq-opts{display:grid;gap:8px}
-.kq-opts button{text-align:left;border:1.5px solid var(--line);background:#FCFAF5;color:var(--ink);border-radius:14px;padding:12px 14px;font:600 16px/1.35 var(--body);cursor:pointer;transition:border-color .2s,background .2s}
-.kq-opts button:hover:not(:disabled){border-color:var(--blue,#5E9E7E);background:#EEF4EC}
+.kq-opts button{text-align:left;border:1.5px solid var(--line);background:#FAFCFB;color:var(--ink);border-radius:14px;padding:12px 14px;font:600 16px/1.35 var(--body);cursor:pointer;transition:border-color .2s,background .2s;overflow-wrap:anywhere}
+.kq-opts button:hover:not(:disabled){border-color:var(--blue-deep,#1F5A45);background:#EEF5EF}
 .kq-opts button.ok{border-color:#2BB673;background:#E3F6EC}.kq-opts button.no{border-color:#E5484D;background:#FDE7E5}
 .kq-opts button:disabled{cursor:default}
-.kq-fb{margin:10px 0 0;font-weight:700}.kq-fb.ok{color:#11663B}.kq-fb.no{color:#B42318}
+.kq-fb{display:grid;gap:8px;justify-items:start}.kq-fb:empty{display:none}.kq-fb p{margin:10px 0 0}
+.kq-res{font-weight:700}.kq-res.ok{color:#11663B}.kq-res.no{color:#B42318}
+.kq-why{margin-top:2px!important;color:var(--ink);font-size:15.5px;line-height:1.45;background:var(--mist,#E8F0E9);border-radius:12px;padding:10px 12px;overflow-wrap:anywhere}
+.kq-next{margin-top:4px;animation:kqIn .35s ease both}
 .kq-end{text-align:center;display:grid;gap:8px;justify-items:center}.kq-big{margin:0;font:800 46px/1 var(--display);color:var(--blue-deep)}
 .kq-end h3{margin:0}
 .kq-conf{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-@media (max-width:640px){.kq{padding:16px 14px}.kq-ic{width:46px;height:46px;font-size:26px}.kq h2{font-size:19px!important}}
+@media (max-width:640px){.kq{padding:16px 14px}.kq-ic{width:46px;height:46px;font-size:26px}.kq h2{font-size:19px!important}.kq-card{padding:16px 14px}}
 @media print{.kq{display:none}}
 
 .surg{max-width:760px;margin:22px 0 26px;padding:18px 18px 14px;background:#fff;border:1px solid var(--line,#DDE7DD);border-radius:22px;box-shadow:0 10px 30px rgba(23,58,46,.08);box-sizing:border-box}
@@ -932,7 +935,7 @@ footer .disc-em{color:#FFC9B0!important}
 .waves .w3{fill:rgba(214,232,213,.35)!important}.waves .w1{fill:rgba(94,158,126,.08)!important}.waves .w2{fill:rgba(245,162,124,.08)!important}
 @media print{.aud,.leaves{display:none!important}}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;z-index:9;background:#fff;padding:8px 12px;border-radius:8px}</style>
-<link rel="stylesheet" href="../assets/dark.css?v=20261008093139">
+<link rel="stylesheet" href="../assets/dark.css?v=20261008101843">
 </head>
 <body class="home">
 <a class="skip" href="#main">Skip to content</a>
@@ -962,7 +965,7 @@ const go=k=>{if(D.r[k])return show(head()+D.r[k]);const [q,y,n]=D.nodes[k];show(
 sc.querySelector('.sc-back').onclick=()=>{const h=H.pop();if(h!==undefined)show(h,1)};sc.querySelector('.sc-re').onclick=()=>{H.length=0;show(home,1)};show(home)})})()</script>
 <h2 id="explore-a-topic">Explore a topic</h2>
 <div class="topics"><a class="tp" href="../english/cataract/"><span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#153C31" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3.2" fill="#153C31"/></svg></span><span class="tt">Cataract</span><span class="ta" aria-hidden="true">→</span></a><a class="tp" href="../english/glaucoma/"><span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#153C31" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3.2" fill="#153C31"/></svg></span><span class="tt">Glaucoma</span><span class="ta" aria-hidden="true">→</span></a><a class="tp" href="../english/diabetic-retinopathy/"><span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#153C31" stroke-width="2" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span><span class="tt">Diabetic eye disease</span><span class="ta" aria-hidden="true">→</span></a><a class="tp" href="../english/myopia/"><span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#153C31" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4.5"/><path d="M5 21c.5-4 3.4-6.5 7-6.5s6.5 2.5 7 6.5"/></svg></span><span class="tt">Children's eyes: short-sightedness</span><span class="ta" aria-hidden="true">→</span></a><a class="tp urgent" href="../english/acute-eye-conditions/"><span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#8C1D18" stroke-width="2" stroke-linecap="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17v.5"/></svg></span><span class="tt">Eye emergencies</span><span class="ta" aria-hidden="true">→</span></a><a class="tp" href="../english/eye-conditions/"><span class="ti" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#153C31" stroke-width="2"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg></span><span class="tt">All eye conditions</span><span class="ta" aria-hidden="true">→</span></a></div>
-<iframe class="embed" src="../embeds/home-emergency-en.html?v=20261008093139" title="home emergency en" style="height:200px" loading="lazy"></iframe></div></main>
+<iframe class="embed" src="../embeds/home-emergency-en.html?v=20261008101843" title="home emergency en" style="height:200px" loading="lazy"></iframe></div></main>
 <footer><div class="in"><div class="mk-foot"><svg class="mk-ic" viewBox="0 0 100 80" aria-hidden="true"><path fill="#F5A27C" d="M3 47C14 22 42 7 70 11c10 1.4 16 6 18 13-12-5-30-6-46-1C26 28 14 37 3 47z"/><path fill="#6DB36A" d="M3 47c17 7 47 11 67 3 8-3 14-8 20-16-4 22-24 38-46 38C26 72 12 62 3 47z"/><g class="mk-eye"><circle cx="46" cy="43" r="16" fill="#153C31"/><circle cx="51.5" cy="37.5" r="4.8" fill="#fff"/></g><path class="mk-sp" fill="#F5A27C" d="M88 1c1.3 6 3 7.7 9 9-6 1.3-7.7 3-9 9-1.3-6-3-7.7-9-9 6-1.3 7.7-3 9-9z"/></svg><span class="mk-w">MataKitani</span><span class="tag">· Eye health, made simple.</span></div><p class="disc"><strong>Disclaimer:</strong> MataKitani provides general health information for education only. It is not medical advice and does not replace an examination, diagnosis or treatment by a qualified doctor or health professional. Always ask your own doctor about any health concern, and never ignore or delay medical advice because of something you read here. Our content is reviewed regularly, but it may not cover every situation or the very latest guidance. MataKitani and its contributors are not responsible for any loss or harm arising from the use of this website, or for the content of external websites we link to. Contributors write in their personal capacity, and the views here do not necessarily represent those of their employers or the Ministry of Health.</p><p class="disc-em">In an emergency, go to the nearest Emergency Department. Call 991 for an ambulance if someone may be having a stroke or is seriously unwell.</p><span>© 2026 MataKitani, Brunei Darussalam</span></div></footer>
 <script>
 function sizeAll(){document.querySelectorAll('iframe.embed').forEach(size)}
@@ -1098,7 +1101,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261008093139';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261008101843';try{var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
