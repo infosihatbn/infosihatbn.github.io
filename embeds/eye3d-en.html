@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>3D eye model</title>
 <style>
-:root{--ink:#1F2A30;--muted:#4A5A62;--paper:#FFFFFF;--mist:#EEF6F9;--line:#D3E3EA;--blue:#4DA3CA;--blue-deep:#1F6E93;--teal:#4FBAB9;--alert:#B3261E;
+:root{--ink:#1B2B24;--muted:#55635B;--paper:#FFFFFF;--mist:#EEF4EC;--line:#DDE6DA;--blue:#5E9E7E;--blue-deep:#1F5A45;--teal:#EE9670;--alert:#B3261E;
 --display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
 *{box-sizing:border-box}
 html,body{margin:0;background:transparent;color:var(--ink);font:400 17px/1.5 var(--body)}
@@ -16,7 +16,7 @@ canvas{display:block;width:100%;height:100%}
 .hint span{background:rgba(0,0,0,.45);color:#fff;font:500 13px/1.3 var(--display);padding:7px 11px;border-radius:999px}
 .tools{position:absolute;top:12px;left:12px;right:12px;display:flex;flex-wrap:wrap;gap:6px}
 .tools button{border:0;border-radius:999px;padding:8px 12px;font:600 13px/1 var(--display);background:rgba(255,255,255,.88);color:var(--ink);cursor:pointer}
-.tools button[aria-pressed=true]{background:#4FBAB9;color:#fff}
+.tools button[aria-pressed=true]{background:#EE9670;color:#fff}
 .lab{position:absolute;left:0;top:0;transform:translate(-50%,-50%);pointer-events:none;font:600 12px/1 var(--display);color:#fff;background:rgba(15,25,30,.7);border:1px solid rgba(255,255,255,.35);padding:5px 8px;border-radius:999px;white-space:nowrap;transition:opacity .2s}
 .labs[hidden]{display:none}
 .conds{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:thin}
@@ -30,7 +30,7 @@ canvas{display:block;width:100%;height:100%}
 .err{padding:16px;border-radius:14px;background:#FDECEA;color:#7a1d17}
 @media (max-width:560px){.stage{height:420px}.tools button{padding:7px 10px;font-size:12px}}
 </style>
-<style>@media screen{html[data-theme=dark]{--ink:#E6EEF2;--muted:#A9BAC3;--paper:#16232B;--mist:#1E313B;--line:#2F4651;--blue-deep:#8CCBEA;--teal-deep:#7FD6D4;--sun-soft:#3A3220;--alert-soft:#3B1D1B;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}html[data-theme=dark] .tools button{background:rgba(28,28,28,.88)!important}html[data-theme=dark] .lab{border:1px solid rgba(66,66,66,.35)!important}html[data-theme=dark] .conds button[aria-pressed=true]{background:#1F6E93!important;border-color:#1F6E93!important}html[data-theme=dark] .err{background:#341c19!important;color:#f2bfbc!important}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head>
+<style>@media screen{html[data-theme=dark]{--ink:#E8EFEA;--muted:#AFC0B5;--paper:#17211C;--mist:#1F2E27;--line:#31453A;--blue-deep:#9FD6B8;--teal-deep:#F5B496;--sun-soft:#3A2A20;--alert-soft:#3B1D1B;--cream:#121A16;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}html[data-theme=dark] .tools button{background:rgba(28,28,28,.88)!important}html[data-theme=dark] .lab{border:1px solid rgba(66,66,66,.35)!important}html[data-theme=dark] .conds button[aria-pressed=true]{background:#1F5A45!important;border-color:#1F5A45!important}html[data-theme=dark] .err{background:#341c19!important;color:#f2bfbc!important}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head>
 <body>
 <div class="wrap">
  <div class="stage" id="stage"><div class="load" id="load">Loading the 3D eye…</div>

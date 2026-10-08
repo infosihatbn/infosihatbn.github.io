@@ -1,4 +1,4 @@
-"""Fetch live content for the InfoSihat home-page banner and write data/feeds.json.
+"""Fetch live content for the MataKitani home-page banner and write data/feeds.json.
 
 Runs daily in GitHub Actions (see .github/workflows/update-feeds.yml). Standard library only.
 Each section is replaced only when its source answers with at least one item, so a source
@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "data/feeds.json"
-UA = {"User-Agent": "InfoSihat-feed-bot/1.0 (+https://infosihatbn.github.io)"}
+UA = {"User-Agent": "MataKitani-feed-bot/1.0 (+https://infosihatbn.github.io)"}
 NOW = dt.datetime.now(dt.timezone.utc)
 
 def get(url, timeout=30):
