@@ -38,48 +38,48 @@
     "d": "2026-10-03"
    }
   ],
-  "updated": "2026-10-07"
+  "updated": "2026-10-08"
  },
  "sea": {
   "items": [
    {
-    "t": "Mitomycin C Application during Trabeculectomy-Injection versus Sponge: A Report by the American Academy of Ophthalmology",
-    "src": "Ophthalmology",
-    "d": "2026 Oct 7",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42841846/"
+    "t": "Pseudoprogression After Cemiplimab in Ocular Surface Squamous Neoplasia",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Oct 8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42848413/"
    },
    {
-    "t": "Effect of Visual Crowding on Quality of Life in Glaucoma Patients",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42841590/"
+    "t": "Diabetes Severity in Cornea Donors and 1-Year Outcomes in Recipients in the Diabetes Endothelial Keratoplasty Study: A Secondary Analysis of a Randomized Clinical Trial",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Oct 8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42848388/"
    },
    {
-    "t": "Surface-Specific Internal Limiting Membrane Biomechanics in Epiretinal Membrane Severity and Visual Outcomes",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42841589/"
+    "t": "Port-Associated Candida tropicalis Endogenous Endophthalmitis",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Oct 8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42848387/"
    },
    {
-    "t": "Longitudinal Changes in Choroidal Thickness Across the Eye in Young Children With Premyopia",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42841588/"
+    "t": "Trends in Spending on Corrective Lenses",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Oct 8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42848386/"
    },
    {
-    "t": "Persistent foetal vasculature: Developmental mechanisms, contemporary management and evolving therapeutics",
-    "src": "Eye",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42839091/"
+    "t": "Steroids and Cross-Linking Ulcer Treatment Trial II (SCUT II): Secondary 12-Month Clinical Outcomes",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Oct 8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42848370/"
    },
    {
-    "t": "Identification of a translatable rabbit model for corneal endothelial dysfunction",
-    "src": "Eye",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42839090/"
+    "t": "Elevated Retinal Neovascularization in Diabetic Retinopathy",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Oct 8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42848366/"
    }
   ],
-  "updated": "2026-10-07"
+  "updated": "2026-10-08"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-07"
+  "updated": "2026-10-08"
  },
- "checked": "2026-10-07T22:07+00:00",
+ "checked": "2026-10-08T22:08+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
