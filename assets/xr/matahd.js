@@ -166,7 +166,7 @@ function furUniforms() {
 // eye like the character sheet: white of the eye, big brown iris (moves with the gaze), dark outline, a small shine on the iris.
 // mirror = the texture is seen flipped (right eye), so it is drawn flipped back and both eyes look the same way.
 function drawEye(g, S, gx, gy, mirror) {
-  const X = v => mirror ? S - v : v, cx = S * (.5 + gx * .1), cy = S * (.49 - gy * .08), ri = S * .43;
+  const X = v => mirror ? S - v : v, cx = S * (.5 + gx * .15), cy = S * (.49 - gy * .13), ri = S * .31;
   g.save(); if (mirror) { g.translate(S, 0); g.scale(-1, 1); }
   g.fillStyle = '#2a1810'; g.fillRect(0, 0, S, S);
   g.beginPath(); g.arc(S / 2, S / 2, S * .468, 0, Math.PI * 2); g.closePath(); g.save(); g.clip();
@@ -182,7 +182,7 @@ function drawEye(g, S, gx, gy, mirror) {
   g.restore();
   g.restore();
   // shine: always upper right of the viewer's view, on the iris
-  g.fillStyle = '#fff'; g.beginPath(); g.arc(X(cx + ri * .34), cy - ri * .42, S * .075, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(X(cx + ri * .36), cy - ri * .42, S * .06, 0, Math.PI * 2); g.fill();
   g.globalAlpha = .7; g.beginPath(); g.arc(X(cx - ri * .3), cy + ri * .45, S * .025, 0, Math.PI * 2); g.fill(); g.globalAlpha = 1;
 }
 function eyeTexture(mirror) {
