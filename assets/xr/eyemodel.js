@@ -68,19 +68,27 @@ function cap(R, ang, dir, mat) {
 // Map tangent-plane coords (x, y) around the back pole onto the sphere of radius R
 const onBack = (x, y, R) => new THREE.Vector3(x, y, -1).normalize().multiplyScalar(R);
 
-function ribbon(points, w0, w1, mat) {
-  const pos = [], idx = [], uv = [];
-  for (let i = 0; i < points.length; i++) {
-    const p = points[i], t = points[Math.min(i + 1, points.length - 1)].clone().sub(points[Math.max(i - 1, 0)]).normalize();
-    const n = p.clone().normalize(), s = new THREE.Vector3().crossVectors(n, t).normalize();
-    const w = (w0 + (w1 - w0) * i / (points.length - 1)) / 2;
-    pos.push(...p.clone().addScaledVector(s, w).toArray(), ...p.clone().addScaledVector(s, -w).toArray());
-    uv.push(0, i / (points.length - 1), 1, i / (points.length - 1));
-    if (i) { const a = 2 * i - 2; idx.push(a, a + 1, a + 2, a + 1, a + 3, a + 2); }
+function ribbon(points, w0, w1, mat, th = .07) {
+  // flat strap with thickness (outer and inner faces plus edges), following the globe
+  const pos = [], idx = [], uv = [], N = points.length;
+  for (let i = 0; i < N; i++) {
+    const p = points[i], t = points[Math.min(i + 1, N - 1)].clone().sub(points[Math.max(i - 1, 0)]).normalize();
+    const n = p.clone().normalize(), s = new THREE.Vector3().crossVectors(n, t).normalize(), up = new THREE.Vector3().crossVectors(t, s).normalize();
+    const w = (w0 + (w1 - w0) * i / (N - 1)) / 2, v = i / (N - 1);
+    const o = p.clone().addScaledVector(up, th / 2), q = p.clone().addScaledVector(up, -th / 2);
+    for (const [c, side] of [[o, 1], [o, -1], [q, -1], [q, 1]]) { pos.push(...c.clone().addScaledVector(s, side * w * (c === q ? .92 : 1)).toArray()); uv.push(side > 0 ? 1 : 0, v); }
+    if (i) { const a = 4 * (i - 1), b = 4 * i; for (let k = 0; k < 4; k++) { const k2 = (k + 1) % 4; idx.push(a + k, b + k, a + k2, a + k2, b + k, b + k2); } }
   }
   const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
   g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); g.setIndex(idx); g.computeVertexNormals();
   return new THREE.Mesh(g, mat);
+}
+function muscleTex() {
+  return canvasTex(64, 256, (g, w, h) => {
+    const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#e9e1d2'); gr.addColorStop(.1, '#c7685b'); gr.addColorStop(.2, '#b2453b'); gr.addColorStop(1, '#9c3a32');
+    g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    for (let x = 2; x < w; x += 4) { g.strokeStyle = `rgba(255,190,170,${.12 + Math.random() * .12})`; g.beginPath(); g.moveTo(x, h * .1); g.lineTo(x + (Math.random() - .5) * 3, h); g.stroke(); }
+  });
 }
 
 export function createEye(opts = {}) {
@@ -164,12 +172,12 @@ export function createEye(opts = {}) {
   add('nerve', new THREE.Mesh(new THREE.TubeGeometry(nCurve, 30, .15, 20, true), std({ color: 0xefe2c4, roughness: .6 })));
   // Extraocular muscles: the four rectus muscles (insertion distance from the limbus in brackets)
   const apex = new THREE.Vector3(-.35, 0, -3.1);
-  const mus = std({ color: 0xb4483d, roughness: .65 });
+  const mus = std({ map: muscleTex(), roughness: .65 });
   for (const [alpha, ins] of [[Math.PI, 124], [0, 115], [Math.PI / 2, 113], [-Math.PI / 2, 120]]) { // medial, lateral, superior, inferior
     const pts = [];
     for (let i = 0; i <= 18; i++) { const ph = (ins - (ins - 32) * i / 18) * DEG; pts.push(new THREE.Vector3(Math.sin(ph) * Math.cos(alpha), Math.sin(ph) * Math.sin(alpha), -Math.cos(ph)).multiplyScalar(1.035)); }
     const last = pts[pts.length - 1]; for (let i = 1; i <= 6; i++) pts.push(last.clone().lerp(apex, i / 6));
-    add('muscles', ribbon(pts, .72, .22, mus));
+    add('muscles', ribbon(pts, .62, .2, mus));
   }
   // Anchor points for labels (and the outward normal used to hide labels facing away)
   const A = (k, v, n) => { parts[k].anchor = v; parts[k].normal = n || v.clone().normalize(); };

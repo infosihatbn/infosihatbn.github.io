@@ -30,19 +30,19 @@ export function createMata() {
   const head = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 28), fur); head.scale.set(1.05, .95, .95); head.position.y = .55; body.add(head);
   const torso = new THREE.Mesh(new THREE.SphereGeometry(.62, 28, 20), fur); torso.position.y = -.45; torso.scale.set(1, .95, .9); body.add(torso);
   // cream face patch
-  const face = new THREE.Mesh(new THREE.SphereGeometry(.78, 32, 24), cream); face.scale.set(1, .78, .45); face.position.set(0, .45, .6); body.add(face);
+  const face = new THREE.Mesh(new THREE.SphereGeometry(.78, 32, 24), cream); face.scale.set(1.08, .84, .5); face.position.set(0, .42, .62); body.add(face);
   // eyes
   const eyes = [];
   for (const s of [-1, 1]) {
-    const eg = new THREE.Group(); eg.position.set(s * .32, .5, .93);
+    const eg = new THREE.Group(); eg.position.set(s * .3, .5, 1.0);
     const ball = new THREE.Mesh(new THREE.SphereGeometry(.16, 20, 16), dark); ball.scale.set(1, 1.15, .55); eg.add(ball);
     const hl = new THREE.Mesh(new THREE.SphereGeometry(.045, 10, 8), white); hl.position.set(.05, .07, .07); eg.add(hl);
     const hl2 = new THREE.Mesh(new THREE.SphereGeometry(.022, 8, 6), white); hl2.position.set(-.05, -.06, .08); eg.add(hl2);
     body.add(eg); eyes.push(eg);
-    const cheek = new THREE.Mesh(new THREE.CircleGeometry(.09, 16), pink); cheek.position.set(s * .5, .3, .93); cheek.lookAt(s * 1.2, .3, 3); body.add(cheek);
+    const cheek = new THREE.Mesh(new THREE.CircleGeometry(.09, 16), pink); cheek.position.set(s * .5, .3, .97); cheek.lookAt(s * 1.4, .3, 3); body.add(cheek);
   }
   // smile
-  const mouth = new THREE.Mesh(new THREE.TorusGeometry(.1, .025, 8, 16, Math.PI), dark); mouth.rotation.z = Math.PI; mouth.position.set(0, .3, .97); body.add(mouth);
+  const mouth = new THREE.Mesh(new THREE.TorusGeometry(.1, .025, 8, 16, Math.PI), dark); mouth.rotation.z = Math.PI; mouth.position.set(0, .29, 1.02); body.add(mouth);
   // tufts on top
   for (const [x, z, r, s] of [[-.25, .1, -.4, .3], [0, 0, 0, .36], [.25, .1, .4, .3], [.05, -.25, .1, .26]]) {
     const tuft = new THREE.Mesh(new THREE.ConeGeometry(s * .55, s * 1.3, 14), fur); tuft.position.set(x, 1.45, z); tuft.rotation.z = r; body.add(tuft);
