@@ -8,7 +8,7 @@
 import * as THREE from '/assets/three/three.module.min.js';
 
 // ---------------------------------------------------------------- shape
-const HEAD = { cy: 1.38, rx: .84, ry: .74 }, BODY = { cy: .56, rx: .47, ry: .40 }, DEPTH = .88, CENTER = .95;
+const HEAD = { cy: 1.4, rx: .86, ry: .73 }, BODY = { cy: .6, rx: .62, ry: .46 }, DEPTH = .88, CENTER = .95;
 const smin = (a, b, k) => { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.min(a, b) - h * h * k * .25; };
 const ell = (r, y, s) => (Math.hypot(r / s.rx, (y - s.cy) / s.ry) - 1) * Math.min(s.rx, s.ry);
 const sdf = (r, y) => smin(ell(r, y, HEAD), ell(r, y, BODY), .1);
@@ -37,9 +37,9 @@ function surfNormal(x, y) {
 const BONES = [
   // name, parent, bind position (world)
   ['Root', null, [0, 0, 0]], ['Hips', 'Root', [0, .45, 0]], ['Spine', 'Hips', [0, .74, 0]], ['Head', 'Spine', [0, 1.0, 0]],
-  ['Tuft_C', 'Head', [-.02, 2.04, -.06]], ['Tuft_L', 'Head', [.22, 2.0, -.03]], ['Tuft_R', 'Head', [-.24, 1.99, -.03]],
-  ['Arm_L', 'Spine', [.36, .76, .03]], ['Hand_L', 'Arm_L', [.54, .48, .07]], ['Arm_R', 'Spine', [-.36, .76, .03]], ['Hand_R', 'Arm_R', [-.54, .48, .07]],
-  ['Leg_L', 'Hips', [.2, .32, .02]], ['Leg_R', 'Hips', [-.2, .32, .02]], ['Tail', 'Hips', [0, .5, -.42]],
+  ['Tuft_C', 'Head', [.06, 2.04, -.03]], ['Tuft_L', 'Head', [.3, 1.99, -.01]], ['Tuft_R', 'Head', [-.17, 2.03, -.03]],
+  ['Arm_L', 'Spine', [.45, .8, .03]], ['Hand_L', 'Arm_L', [.6, .5, .07]], ['Arm_R', 'Spine', [-.45, .8, .03]], ['Hand_R', 'Arm_R', [-.6, .5, .07]],
+  ['Leg_L', 'Hips', [.23, .36, .02]], ['Leg_R', 'Hips', [-.23, .36, .02]], ['Tail', 'Hips', [0, .5, -.42]],
 ];
 function makeSkeleton() {
   const by = {}, list = [];
@@ -81,8 +81,8 @@ function fixNormalsScaled(g, s) { const n = g.attributes.normal; for (let i = 0;
 
 // ---------------------------------------------------------------- fur shader
 const FUR_COMMON = /* glsl */`
-float faceE(vec3 p){ return length(vec2(p.x / .6, (p.y - 1.25) / .44)); }
-float faceMask(vec3 p){ return (1. - smoothstep(.97, 1.0, faceE(p))) * smoothstep(.2, .45, p.z); }
+float faceE(vec3 p){ return length(vec2(p.x / .67, (p.y - 1.28) / .45)); }
+float faceMask(vec3 p){ return (1. - smoothstep(.93, 1.03, faceE(p))) * smoothstep(.2, .45, p.z); }
 float hoodMask(vec3 p){ float e = faceE(p); return smoothstep(.97, 1.03, e) * (1. - smoothstep(1.05, 1.45, e)) * smoothstep(.2, .45, p.z); }`;
 const FUR_VS = /* glsl */`
 #include <common>
@@ -120,9 +120,9 @@ void main(){
     vec3 g = vec3(float(x), float(y), float(z)); vec3 r = g + h3(ip + g) - fp; float dd = dot(r, r); if (dd < d) { d = dd; id = h1(ip + g); } }
   d = sqrt(d);
   float lenR = .5 + .5 * id;
-  if (uH > 0. && (uH > lenR || d > .78 * (1. - uH / lenR))) discard;
-  vec3 base = mix(uGreen, uCream, step(.5, face));
-  float bl = (1. - smoothstep(.0, .11, length(vec2(abs(vRest.x) - .44, (vRest.y - 1.15) * 1.25)))) * face;
+  if (uH > 0. && (uH > lenR || d > .8 * (1. - .7 * uH / lenR))) discard;
+  vec3 base = mix(uGreen, uCream, step(fract(id * 13.7) * .7 + .15, face));
+  float bl = (1. - smoothstep(.0, .11, length(vec2(abs(vRest.x) - .5, (vRest.y - 1.12) * 1.25)))) * face;
   base = mix(base, uBlush, bl * .8);
   base *= mix(1., .88, smoothstep(.55, 1., faceE(vRest)) * face);
   base *= mix(.9 + .2 * fract(id * 7.31), .97 + .06 * fract(id * 7.31), face);
@@ -235,18 +235,18 @@ export function createMataHD(opts = {}) {
   const armProf = []; for (let i = 0; i <= 24; i++) { const t = i / 24; const y = -t * .56; const r = t < .82 ? .132 + .03 * t : (.132 + .03 * .82) * Math.sqrt(Math.max(0, 1 - Math.pow((t - .82) / .18, 2))); armProf.push(new THREE.Vector2(Math.max(r, 0), y)); }
   armProf.unshift(new THREE.Vector2(0, .02)); armProf.reverse(); // bottom to top so the normals face outwards
   for (const [s, a, h] of [[1, 'Arm_L', 'Hand_L'], [-1, 'Arm_R', 'Hand_R']]) {
-    const sh = B[a].userData.world, dir = new THREE.Vector3(s * .36, -.62, .07).normalize();
+    const sh = B[a].userData.world, dir = new THREE.Vector3(s * .3, -.62, .08).normalize();
     const g = limb(armProf, 28, dir, sh);
     parts.push(part(g, p => { const t = p.clone().sub(sh).dot(dir) / .56, w = sm(.4, .62, t); return [I[a], 1 - w, I[h], w]; }, .065, 0, [.95, .62]));
   }
   // --- legs (short and round, little feet pointing forward)
-  const legProf = []; for (let i = 0; i <= 18; i++) { const t = i / 18, y = -t * .32; const r = t < .7 ? .15 + .015 * t : .1605 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .7) / .3, 2))); legProf.push(new THREE.Vector2(r, y)); }
+  const legProf = []; for (let i = 0; i <= 18; i++) { const t = i / 18, y = -t * .34; const r = t < .7 ? .17 + .015 * t : .1805 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .7) / .3, 2))); legProf.push(new THREE.Vector2(r, y)); }
   legProf.unshift(new THREE.Vector2(0, .05)); legProf.reverse();
   for (const [s, l] of [[1, 'Leg_L'], [-1, 'Leg_R']]) { const at = B[l].userData.world; const g = limb(legProf, 24, new THREE.Vector3(s * .05, -1, .04), at, 1.15); parts.push(part(g, () => [I[l], 1], .055, 0, [1.05, .5])); }
   // --- three leafy tufts on top
-  const tuftProf = []; for (let i = 0; i <= 16; i++) { const t = i / 16; tuftProf.push(new THREE.Vector2(.18 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .5) / .5, 2))), t * .5)); }
+  const tuftProf = []; for (let i = 0; i <= 16; i++) { const t = i / 16; tuftProf.push(new THREE.Vector2(.2 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .5) / .5, 2))), t * .5)); }
   tuftProf[tuftProf.length - 1].x = 0; tuftProf.unshift(new THREE.Vector2(0, -.02));
-  for (const [n, rz, rx, sc] of [['Tuft_C', -.12, -.28, 1.15], ['Tuft_L', -.75, -.05, .85], ['Tuft_R', .5, -.1, .9]]) {
+  for (const [n, rz, rx, sc] of [['Tuft_C', -.35, -.15, 1.1], ['Tuft_L', -.7, -.05, .7], ['Tuft_R', .1, -.15, .95]]) {
     const at = B[n].userData.world, g = new THREE.LatheGeometry(tuftProf, 20); g.scale(sc, sc, sc * .55); fixNormalsScaled(g, new THREE.Vector3(sc, sc, sc * .55)); g.rotateX(rx); g.rotateZ(rz); g.translate(at.x, at.y - .04, at.z);
     parts.push(part(g, () => [I[n], 1], .05, 0, [.85, .5]));
   }
@@ -269,20 +269,20 @@ export function createMataHD(opts = {}) {
   const darkMat = new THREE.MeshStandardMaterial({ color: 0x24140c, roughness: .5 });
   const eyes = {}, happy = {};
   for (const [s, k] of [[1, 'L'], [-1, 'R']]) {
-    const g = new THREE.SphereGeometry(.148, 36, 24); { const p = g.attributes.position, uv = g.attributes.uv; for (let i = 0; i < p.count; i++) uv.setXY(i, p.getX(i) / .296 + .5, p.getY(i) / .296 + .5); }
-    const eg = new THREE.Group(); eg.name = 'Eye_' + k; onFace(eg, s * .32, 1.27, .012);
+    const g = new THREE.SphereGeometry(.145, 36, 24); { const p = g.attributes.position, uv = g.attributes.uv; for (let i = 0; i < p.count; i++) uv.setXY(i, p.getX(i) / .29 + .5, p.getY(i) / .29 + .5); }
+    const eg = new THREE.Group(); eg.name = 'Eye_' + k; onFace(eg, s * .35, 1.26, .012);
     const ball = new THREE.Mesh(g, eyeMats[k]); ball.scale.set(1, 1.14, .55); ball.name = 'EyeBall_' + k; if (s < 0) ball.scale.x = -1; eg.add(ball);
     // a soft lash line along the upper outer edge
-    const pts = []; for (let i = 0; i <= 16; i++) { const a = Math.PI * (.08 + .84 * i / 16); pts.push(new THREE.Vector3(Math.cos(a) * .147 * s, Math.sin(a) * .167, .014)); }
-    const lash = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.reverse()), 32, .014, 8), darkMat); lash.name = 'Lash_' + k; eg.add(lash);
+    const pts = []; for (let i = 0; i <= 16; i++) { const a = Math.PI * (.08 + .84 * i / 16); pts.push(new THREE.Vector3(Math.cos(a) * .144 * s, Math.sin(a) * .164, .012)); }
+    const lash = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.reverse()), 32, .01, 8), darkMat); lash.name = 'Lash_' + k; eg.add(lash);
     eyes[k] = eg;
     // closed "happy" eye: a soft upside-down U
     const hp = []; for (let i = 0; i <= 16; i++) { const x = -.11 + .22 * i / 16; hp.push(new THREE.Vector3(x, .055 * (1 - Math.pow(x / .11, 2)) - .01, .02)); }
-    const hg = new THREE.Group(); hg.name = 'EyeHappy_' + k; onFace(hg, s * .31, 1.26, .03);
+    const hg = new THREE.Group(); hg.name = 'EyeHappy_' + k; onFace(hg, s * .35, 1.25, .03);
     hg.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(hp), 24, .02, 8), darkMat)); hg.scale.setScalar(.0001); happy[k] = hg;
   }
   // mouth: an open smile by default; morph targets for grin, closed smile, "o" and sad
-  const MY = 1.17, proj = v => { const x = v.x, y = MY + v.y, z = frontZ(x, y) + .03; return [x, y - headW.y, z - headW.z]; };
+  const MY = 1.16, proj = v => { const x = v.x, y = MY + v.y, z = frontZ(x, y) + .03; return [x, y - headW.y, z - headW.z]; };
   const shapes = ['grin', 'closed', 'o', 'sad'], open0 = mouthCurves('open');
   const mouthG = stripGeo(open0.up, open0.lo, proj), tongueG = stripGeo(open0.tu, open0.tl, v => { const r = proj(v); r[2] += .004; return r; });
   mouthG.morphAttributes.position = []; tongueG.morphAttributes.position = [];
@@ -296,7 +296,7 @@ export function createMataHD(opts = {}) {
   const hs = new THREE.Shape(); hs.moveTo(0, -.09); hs.bezierCurveTo(-.15, .0, -.09, .13, 0, .055); hs.bezierCurveTo(.09, .13, .15, 0, 0, -.09);
   const yellow = new THREE.MeshPhysicalMaterial({ color: 0xf6bd3c, roughness: .55, sheen: 1, sheenColor: new THREE.Color(0xffe6a0), sheenRoughness: .6 });
   const heart = new THREE.Mesh(new THREE.ExtrudeGeometry(hs, { depth: .05, bevelEnabled: true, bevelThickness: .025, bevelSize: .025, bevelSegments: 4, curveSegments: 16 }), yellow);
-  heart.name = 'HeadHeart'; heart.geometry.center(); heart.position.set(.46, 2.0, .12).sub(headW); heart.rotation.set(-.2, -.3, -.45); B.Head.add(heart);
+  heart.name = 'HeadHeart'; heart.geometry.center(); heart.position.set(.5, 2.02, .12).sub(headW); heart.rotation.set(-.2, -.3, -.45); B.Head.add(heart);
 
   // --- yellow heart bag on a strap (rigid on the Spine)
   const spineW = B.Spine.userData.world;
@@ -309,10 +309,10 @@ export function createMataHD(opts = {}) {
   const flap = new THREE.Mesh(rbox(.36, .16, .035, .016), felt); flap.position.set(0, .055, .07); flap.rotation.x = -.08; bag.add(flap);
   const bh = new THREE.Mesh(new THREE.ExtrudeGeometry(hs, { depth: .01, bevelEnabled: true, bevelThickness: .008, bevelSize: .008, bevelSegments: 2 }), new THREE.MeshStandardMaterial({ color: 0xfffaf2, roughness: .7 }));
   bh.scale.setScalar(.55); bh.position.set(0, .04, .09); bag.add(bh);
-  const bagPos = new THREE.Vector3(-.28, .44, .42); bag.position.copy(bagPos).sub(spineW); bag.rotation.set(-.12, -.42, .06); B.Spine.add(bag);
+  const bagPos = new THREE.Vector3(-.3, .5, .5); bag.position.copy(bagPos).sub(spineW); bag.rotation.set(-.12, -.42, .06); B.Spine.add(bag);
   // strap: loops over Mata's left shoulder, across the chest to the bag, and round the back
   const onBody = (x, y, z, lift = .055) => { const phi = Math.atan2(x, z / DEPTH), r = radiusAt(y) + lift; return new THREE.Vector3(Math.sin(phi) * r, y, Math.cos(phi) * r * DEPTH); };
-  const sp = [onBody(-.2, .56, .4), onBody(.05, .67, .45), onBody(.24, .78, .38), onBody(.36, .86, .05, .03), onBody(.28, .8, -.3), onBody(.05, .66, -.45), onBody(-.3, .52, -.3), onBody(-.42, .47, .05), onBody(-.38, .48, .3)];
+  const sp = [onBody(-.22, .57, .45), onBody(0, .72, .5), onBody(.17, .88, .42), onBody(.28, .99, .05, .03), onBody(.22, .9, -.3), onBody(.04, .72, -.45), onBody(-.3, .55, -.3), onBody(-.44, .5, .05), onBody(-.4, .51, .3)];
   const strap = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(sp, true), 120, .03, 8, true), felt); strap.name = 'Strap'; strap.scale.set(1, 1, 1);
   strap.geometry.translate(-spineW.x, -spineW.y, -spineW.z); B.Spine.add(strap);
 
