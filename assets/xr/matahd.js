@@ -112,6 +112,20 @@ float h1(vec3 p){ return fract(sin(dot(p, vec3(12.9898, 78.233, 37.719))) * 4375
 vec3 h3(vec3 p){ return fract(sin(vec3(dot(p, vec3(127.1, 311.7, 74.7)), dot(p, vec3(269.5, 183.3, 246.1)), dot(p, vec3(113.5, 271.9, 124.6)))) * 43758.5453); }
 void main(){
   float face = faceMask(vRest) * vBody;
+#ifdef SMOOTH
+  // smooth plush: one soft surface, no strands (light on phones)
+  vec3 base = mix(uGreen, uCream, smoothstep(.3, .7, face));
+  float bl = (1. - smoothstep(.0, .11, length(vec2(abs(vRest.x) - .5, (vRest.y - 1.12) * 1.25)))) * face;
+  base = mix(base, uBlush, bl * .8);
+  base *= mix(1., .9, smoothstep(.55, 1., faceE(vRest)) * face);
+  vec3 N = normalize(vNw), V = normalize(cameraPosition - vPw);
+  float k = max(0., (dot(N, uKeyDir) + .45) / 1.45), fl = max(0., (dot(N, uFillDir) + .5) / 1.5);
+  float fr = pow(1. - max(dot(N, V), 0.), 2.);
+  float rim = fr * (dot(N, uRimDir) * .5 + .5);
+  vec3 hemi = mix(uGround, uSky, N.y * .5 + .5);
+  vec3 col = base * (hemi + uKeyCol * k + uFillCol * fl) * mix(.95, 1., face) + uRimCol * rim * .7 * base + base * fr * .12 * (1. - face);
+  gl_FragColor = vec4(col, 1.);
+#else
   vec3 n0 = normalize(vRestN);
   vec3 lean = h3(floor(vRest * 7.)) - .5; lean -= n0 * dot(lean, n0);
   vec3 p = (vRest - lean * uH * .05 * (1. - face)) * uDens * mix(1., 1.6, face);
@@ -134,6 +148,7 @@ void main(){
   vec3 hemi = mix(uGround, uSky, N.y * .5 + .5);
   vec3 col = base * (hemi + uKeyCol * k + uFillCol * fl) * ao + uRimCol * rim * (.25 + uH) * base * 1.6;
   gl_FragColor = vec4(col, 1.);
+#endif
   #include <colorspace_fragment>
 }`;
 
@@ -222,7 +237,7 @@ function stripGeo(A, B, project) {
 
 // ---------------------------------------------------------------- build
 export function createMataHD(opts = {}) {
-  const shells = opts.shells ?? 24;
+  const shells = opts.shells ?? 0, smooth = !shells; // 0 shells = smooth plush (default: cheap enough for phones)
   const root = new THREE.Group(); root.name = 'Mata';
   const sk = makeSkeleton(), B = sk.by, I = sk.index;
   root.add(B.Root); root.updateMatrixWorld(true);
@@ -257,7 +272,7 @@ export function createMataHD(opts = {}) {
   const skeleton = new THREE.Skeleton(sk.list);
   const furU = furUniforms(), furMats = [], meshes = [];
   for (let i = 0; i <= shells; i++) {
-    const m = new THREE.ShaderMaterial({ uniforms: { ...furU, uH: { value: i / shells } }, vertexShader: FUR_VS, fragmentShader: FUR_FS });
+    const m = new THREE.ShaderMaterial({ uniforms: { ...furU, uH: { value: smooth ? .45 : i / shells } }, vertexShader: FUR_VS, fragmentShader: FUR_FS, defines: smooth ? { SMOOTH: 1 } : {} });
     const mesh = new THREE.SkinnedMesh(geo, m); mesh.name = i ? 'Fur_' + i : 'Body'; mesh.frustumCulled = false; mesh.renderOrder = i;
     root.add(mesh); mesh.bind(skeleton); furMats.push(m); meshes.push(mesh);
   }
@@ -399,7 +414,7 @@ export function createMataHD(opts = {}) {
 
 // Drop-in replacement for the old mata3d.js createMata() used by the XR apps (centred on its middle, about 1.3 units tall).
 export function createMata(opts = {}) {
-  const m = createMataHD({ shells: opts.shells ?? 8 }), root = new THREE.Group(); m.setFur({ density: 120 });
+  const m = createMataHD({ shells: opts.shells ?? 0 }), root = new THREE.Group(); m.setFur({ density: 120 });
   m.object.scale.setScalar(.58); m.object.position.y = -.66; root.add(m.object);
   let mode = 'idle';
   return {
