@@ -33,9 +33,12 @@ void main(){
   vec3 col = mix(vec3(.62,.25,.18), vec3(.86,.42,.28), nz);           // fundus orange-red with a choroidal pattern
   col = mix(vec3(.38,.15,.13), col, smoothstep(-.35,.25,back));       // darker towards the periphery
   float a = acos(clamp(back,-1.,1.));
-  col = mix(col, vec3(.50,.20,.14), smoothstep(.24,.06,a));            // macula
-  col = mix(col, vec3(.33,.11,.08), smoothstep(.05,.0,a));             // fovea
-  col += vec3(.9,.85,.7)*smoothstep(.008,.0,a)*.8;                     // foveal light reflex
+  col = mix(col, vec3(.40,.16,.09), smoothstep(.28,.13,a)*.92);        // macula: a darker, pigmented zone with no large vessels
+  col += vec3(.42,.30,.03)*smoothstep(.2,.04,a)*.7;                   // yellow macular pigment
+  float ring = exp(-pow((a-.27)/.013,2.));                             // ring reflex around the macula (seen in young eyes)
+  col += vec3(.75,.88,1.)*ring*(.42+.14*sin(uT*1.4+atan(d.y,d.x)*6.));
+  col = mix(col, vec3(.22,.07,.05), smoothstep(.065,.0,a));            // fovea: the darkest point
+  col += vec3(1.,.95,.75)*smoothstep(.013,.0,a)*.95;                   // foveal light reflex
   float ad = acos(clamp(dot(d,uDisc),-1.,1.));
   col = mix(col, vec3(.98,.80,.58), smoothstep(.085,.065,ad));         // optic disc
   col = mix(col, vec3(1.,.95,.86), smoothstep(.04,.028,ad));          // cup
