@@ -2,12 +2,6 @@
  "news": {
   "items": [
    {
-    "t": "Air quality moderate across Brunei",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5DVHFoUTd6UE5RSmtHVU5GTVplZWdlTmNhV3huUTdhbmtSR1g2YkNxcFBfWk83bm4yZEJlbGY5X25iaGJYeDRrZm1UUlZ3c0JiRWQ5clN0UGhOMnYtcEFsMmphakp3cGlhQWxHbTAzQzR4bk0?oc=5",
-    "d": "2026-10-06"
-   },
-   {
     "t": "Three districts in Brunei record moderate air quality",
     "src": "The Star",
     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdTJIMUZXWjdSakZvTzMxYXZvS0lkeGEtUmhMam15NXFobk0xdnBSeVVEN1JmRUNPWUlPeXNIdUlUUnJmX3d2dFN3WkRab210RjN0LUlBXzlweXlZWWMxVDNOZmptT2M4RWdTcjUwM0RQOEl0LWtta0lQWVZIRHFOdjdQQUxJQXYtek05bWEwX2s5cF9xQVQzQzVmTkdHY2c5TXJKWnBodC1DTEZrM0xOZng2ZVFQTkE?oc=5",
@@ -36,50 +30,56 @@
     "src": "Borneo Bulletin Online",
     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNZXpqMVQwdmdQdUkzOGpFRzdnTEhRaWtZQ1pvbTdGaDE2WGwxRmlPcGc4aE9wTG9BUFk3S1VxZTYwOGFvdlVxbUFWZFFnSjZMN0NwdjRZWEZfR19mUzdHM0o1SWtpZ0prRnk1WFo0SXF3VTdaZ0MtMl9iczV2OTF5WlpqUFc?oc=5",
     "d": "2026-10-03"
+   },
+   {
+    "t": "Air quality stays good, Brunei-Muara dips moderate",
+    "src": "Borneo Bulletin Online",
+    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOaC02LXdwYTdtM2huNVBrcEsyZjZGNkQ3SGJBS0hER0ZhTHRBQk8wQ3hIcXdsSUsxRmc0RzZJUW12dUNfd0FYNlNudUY4dHdXYlBxYlF0QUlzNHdlYzNyVHBEbEhyWENfNjBBWXBPM2lVbks1ZEZ5Z0loNW90dHJ6REhJcmNzdFE?oc=5",
+    "d": "2026-10-02"
    }
   ],
-  "updated": "2026-10-08"
+  "updated": "2026-10-09"
  },
  "sea": {
   "items": [
    {
-    "t": "Pseudoprogression After Cemiplimab in Ocular Surface Squamous Neoplasia",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Oct 8",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42848413/"
+    "t": "Long-Term Foveal Microvascular Alterations in Children With Hypoxic-Ischemic Encephalopathy: An OCT Angiography Study",
+    "src": "Retina",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42854202/"
    },
    {
-    "t": "Diabetes Severity in Cornea Donors and 1-Year Outcomes in Recipients in the Diabetes Endothelial Keratoplasty Study: A Secondary Analysis of a Randomized Clinical Trial",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Oct 8",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42848388/"
+    "t": "Pooled Data Meta-Analysis of Pneumatic Vitreolysis for Treatment of Vitreomacular Traction Syndrome With, And Without Full Thickness Macular Holes",
+    "src": "Retina",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42854198/"
    },
    {
-    "t": "Port-Associated Candida tropicalis Endogenous Endophthalmitis",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Oct 8",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42848387/"
+    "t": "Incidence of Retinal Artery Occlusion After Carotid Endarterectomy Versus Carotid Artery Stenting",
+    "src": "Retina",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42854197/"
    },
    {
-    "t": "Trends in Spending on Corrective Lenses",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Oct 8",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42848386/"
+    "t": "Probability of myopic macular degeneration in dependence on axial length and age: The two-continent eye study",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42853059/"
    },
    {
-    "t": "Steroids and Cross-Linking Ulcer Treatment Trial II (SCUT II): Secondary 12-Month Clinical Outcomes",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Oct 8",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42848370/"
+    "t": "S-Opsin Contributes to Violet Light-Dependent Refractive Development and Is Associated With Corneal Structural Remodeling in Mice",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42853008/"
    },
    {
-    "t": "Elevated Retinal Neovascularization in Diabetic Retinopathy",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Oct 8",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42848366/"
+    "t": "Spontaneous Achromatopsia-Like Phenotype in Albino Swiss CD-1 Mice: Retinocortical Dysfunction, Neurovascular Remodeling, and Glial Activation",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42853007/"
    }
   ],
-  "updated": "2026-10-08"
+  "updated": "2026-10-09"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-08"
+  "updated": "2026-10-09"
  },
- "checked": "2026-10-08T22:08+00:00",
+ "checked": "2026-10-09T22:08+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
