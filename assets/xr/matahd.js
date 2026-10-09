@@ -166,23 +166,24 @@ function furUniforms() {
 // eye like the character sheet: white of the eye, big brown iris (moves with the gaze), dark outline, a small shine on the iris.
 // mirror = the texture is seen flipped (right eye), so it is drawn flipped back and both eyes look the same way.
 function drawEye(g, S, gx, gy, mirror) {
-  const X = v => mirror ? S - v : v, cx = S * (.5 + gx * .15), cy = S * (.49 - gy * .13), ri = S * .31;
+  // like the sheet: a big tall iris (about 70% of the eye's width, 85% of its height), both eyes always point the same way (straight ahead by default) so Mata never looks cross-eyed
+  const X = v => mirror ? S - v : v, cx = S * (.5 + gx * .1), cy = S * (.515 - gy * .05), ri = S * .37;
   g.save(); if (mirror) { g.translate(S, 0); g.scale(-1, 1); }
   g.fillStyle = '#2a1810'; g.fillRect(0, 0, S, S);
   g.beginPath(); g.arc(S / 2, S / 2, S * .468, 0, Math.PI * 2); g.closePath(); g.save(); g.clip();
   const w = g.createRadialGradient(S * .5, S * .42, S * .1, S * .5, S * .5, S * .5); w.addColorStop(0, '#ffffff'); w.addColorStop(.75, '#f6f3ef'); w.addColorStop(1, '#d9d2cc');
   g.fillStyle = w; g.fillRect(0, 0, S, S);
   const ir = g.createRadialGradient(cx, cy + ri * .25, ri * .1, cx, cy, ri); ir.addColorStop(0, '#5a3220'); ir.addColorStop(.55, '#3b2014'); ir.addColorStop(.86, '#2a160d'); ir.addColorStop(1, '#170c07');
-  g.fillStyle = ir; g.beginPath(); g.ellipse(cx, cy, ri, ri * 1.1, 0, 0, Math.PI * 2); g.fill();
+  g.fillStyle = ir; g.beginPath(); g.ellipse(cx, cy, ri, ri * 1.2, 0, 0, Math.PI * 2); g.fill();
   const lo = g.createLinearGradient(0, cy, 0, cy + ri); lo.addColorStop(0, 'rgba(140,85,50,0)'); lo.addColorStop(1, 'rgba(150,92,55,.55)');
-  g.fillStyle = lo; g.beginPath(); g.ellipse(cx, cy, ri * .92, ri * .97, 0, 0, Math.PI * 2); g.fill();
-  g.fillStyle = '#120905'; g.beginPath(); g.ellipse(cx, cy + ri * .02, ri * .52, ri * .56, 0, 0, Math.PI * 2); g.fill();
+  g.fillStyle = lo; g.beginPath(); g.ellipse(cx, cy, ri * .92, ri * 1.08, 0, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#120905'; g.beginPath(); g.ellipse(cx, cy + ri * .02, ri * .5, ri * .6, 0, 0, Math.PI * 2); g.fill();
   // soft shadow of the upper lid on the eye
   const sh = g.createLinearGradient(0, 0, 0, S * .32); sh.addColorStop(0, 'rgba(60,35,25,.45)'); sh.addColorStop(1, 'rgba(60,35,25,0)'); g.fillStyle = sh; g.fillRect(0, 0, S, S * .32);
   g.restore();
   g.restore();
   // shine: always upper right of the viewer's view, on the iris
-  g.fillStyle = '#fff'; g.beginPath(); g.arc(X(cx + ri * .36), cy - ri * .42, S * .06, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(X(cx + ri * .38), cy - ri * .6, S * .055, 0, Math.PI * 2); g.fill();
   g.globalAlpha = .7; g.beginPath(); g.arc(X(cx - ri * .3), cy + ri * .45, S * .025, 0, Math.PI * 2); g.fill(); g.globalAlpha = 1;
 }
 function eyeTexture(mirror) {
