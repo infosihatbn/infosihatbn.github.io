@@ -163,15 +163,32 @@ function furUniforms() {
 }
 
 // ---------------------------------------------------------------- face textures
-function eyeTexture() {
+// eye like the character sheet: white of the eye, big brown iris (moves with the gaze), dark outline, a small shine on the iris.
+// mirror = the texture is seen flipped (right eye), so it is drawn flipped back and both eyes look the same way.
+function drawEye(g, S, gx, gy, mirror) {
+  const X = v => mirror ? S - v : v, cx = S * (.5 + gx * .1), cy = S * (.49 - gy * .08), ri = S * .43;
+  g.save(); if (mirror) { g.translate(S, 0); g.scale(-1, 1); }
+  g.fillStyle = '#2a1810'; g.fillRect(0, 0, S, S);
+  g.beginPath(); g.arc(S / 2, S / 2, S * .468, 0, Math.PI * 2); g.closePath(); g.save(); g.clip();
+  const w = g.createRadialGradient(S * .5, S * .42, S * .1, S * .5, S * .5, S * .5); w.addColorStop(0, '#ffffff'); w.addColorStop(.75, '#f6f3ef'); w.addColorStop(1, '#d9d2cc');
+  g.fillStyle = w; g.fillRect(0, 0, S, S);
+  const ir = g.createRadialGradient(cx, cy + ri * .25, ri * .1, cx, cy, ri); ir.addColorStop(0, '#5a3220'); ir.addColorStop(.55, '#3b2014'); ir.addColorStop(.86, '#2a160d'); ir.addColorStop(1, '#170c07');
+  g.fillStyle = ir; g.beginPath(); g.ellipse(cx, cy, ri, ri * 1.1, 0, 0, Math.PI * 2); g.fill();
+  const lo = g.createLinearGradient(0, cy, 0, cy + ri); lo.addColorStop(0, 'rgba(140,85,50,0)'); lo.addColorStop(1, 'rgba(150,92,55,.55)');
+  g.fillStyle = lo; g.beginPath(); g.ellipse(cx, cy, ri * .92, ri * .97, 0, 0, Math.PI * 2); g.fill();
+  g.fillStyle = '#120905'; g.beginPath(); g.ellipse(cx, cy + ri * .02, ri * .52, ri * .56, 0, 0, Math.PI * 2); g.fill();
+  // soft shadow of the upper lid on the eye
+  const sh = g.createLinearGradient(0, 0, 0, S * .32); sh.addColorStop(0, 'rgba(60,35,25,.45)'); sh.addColorStop(1, 'rgba(60,35,25,0)'); g.fillStyle = sh; g.fillRect(0, 0, S, S * .32);
+  g.restore();
+  g.restore();
+  // shine: always upper right of the viewer's view, on the iris
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(X(cx + ri * .34), cy - ri * .42, S * .075, 0, Math.PI * 2); g.fill();
+  g.globalAlpha = .7; g.beginPath(); g.arc(X(cx - ri * .3), cy + ri * .45, S * .025, 0, Math.PI * 2); g.fill(); g.globalAlpha = 1;
+}
+function eyeTexture(mirror) {
   const S = 256, c = document.createElement('canvas'); c.width = c.height = S; const g = c.getContext('2d');
-  const gr = g.createRadialGradient(S * .5, S * .56, S * .05, S * .5, S * .5, S * .5);
-  gr.addColorStop(0, '#120a06'); gr.addColorStop(.42, '#2a170d'); gr.addColorStop(.72, '#5b3520'); gr.addColorStop(.9, '#3a2215'); gr.addColorStop(1, '#140b07');
-  g.fillStyle = gr; g.fillRect(0, 0, S, S);
-  const lg = g.createLinearGradient(0, S * .55, 0, S); lg.addColorStop(0, 'rgba(150,95,55,0)'); lg.addColorStop(1, 'rgba(150,95,55,.45)'); g.fillStyle = lg; g.fillRect(0, 0, S, S);
-  g.fillStyle = '#fff'; g.beginPath(); g.ellipse(S * .64, S * .3, S * .15, S * .14, 0, 0, Math.PI * 2); g.fill();
-  g.beginPath(); g.arc(S * .36, S * .7, S * .055, 0, Math.PI * 2); g.fill();
-  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+  drawEye(g, S, 0, 0, mirror);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.userData.look = (gx, gy) => { drawEye(g, S, gx, gy, mirror); t.needsUpdate = true; }; return t;
 }
 
 // ---------------------------------------------------------------- mouth (morphable strip)
@@ -245,16 +262,16 @@ export function createMataHD(opts = {}) {
   // --- face (children of the Head bone, placed on the face surface)
   const headW = B.Head.userData.world;
   const onFace = (obj, x, y, lift) => { const z = frontZ(x, y); obj.position.set(x, y, z + lift).sub(headW); const n = surfNormal(x, y); obj.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), n); B.Head.add(obj); return obj; };
-  const eyeTex = eyeTexture(), eyeMat = new THREE.MeshPhysicalMaterial({ map: eyeTex, roughness: .18, clearcoat: 1, clearcoatRoughness: .04 });
+  const eyeTexs = { L: eyeTexture(false), R: eyeTexture(true) }, eyeMats = {}; for (const k in eyeTexs) eyeMats[k] = new THREE.MeshPhysicalMaterial({ map: eyeTexs[k], roughness: .2, clearcoat: 1, clearcoatRoughness: .05 });
   const darkMat = new THREE.MeshStandardMaterial({ color: 0x24140c, roughness: .5 });
   const eyes = {}, happy = {};
   for (const [s, k] of [[1, 'L'], [-1, 'R']]) {
-    const g = new THREE.SphereGeometry(.134, 36, 24); { const p = g.attributes.position, uv = g.attributes.uv; for (let i = 0; i < p.count; i++) uv.setXY(i, p.getX(i) / .268 + .5, p.getY(i) / .268 + .5); }
-    const eg = new THREE.Group(); eg.name = 'Eye_' + k; onFace(eg, s * .31, 1.27, .012);
-    const ball = new THREE.Mesh(g, eyeMat); ball.scale.set(1, 1.08, .55); ball.name = 'EyeBall_' + k; if (s < 0) ball.scale.x = -1; eg.add(ball);
+    const g = new THREE.SphereGeometry(.148, 36, 24); { const p = g.attributes.position, uv = g.attributes.uv; for (let i = 0; i < p.count; i++) uv.setXY(i, p.getX(i) / .296 + .5, p.getY(i) / .296 + .5); }
+    const eg = new THREE.Group(); eg.name = 'Eye_' + k; onFace(eg, s * .32, 1.27, .012);
+    const ball = new THREE.Mesh(g, eyeMats[k]); ball.scale.set(1, 1.14, .55); ball.name = 'EyeBall_' + k; if (s < 0) ball.scale.x = -1; eg.add(ball);
     // a soft lash line along the upper outer edge
-    const pts = []; for (let i = 0; i <= 16; i++) { const a = Math.PI * (.14 + .72 * i / 16); pts.push(new THREE.Vector3(Math.cos(a) * .135 * s, Math.sin(a) * .146, .012)); }
-    const lash = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.reverse()), 24, .011, 6), darkMat); lash.name = 'Lash_' + k; eg.add(lash);
+    const pts = []; for (let i = 0; i <= 16; i++) { const a = Math.PI * (.08 + .84 * i / 16); pts.push(new THREE.Vector3(Math.cos(a) * .147 * s, Math.sin(a) * .167, .014)); }
+    const lash = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.reverse()), 32, .014, 8), darkMat); lash.name = 'Lash_' + k; eg.add(lash);
     eyes[k] = eg;
     // closed "happy" eye: a soft upside-down U
     const hp = []; for (let i = 0; i <= 16; i++) { const x = -.11 + .22 * i / 16; hp.push(new THREE.Vector3(x, .055 * (1 - Math.pow(x / .11, 2)) - .01, .02)); }
@@ -303,10 +320,10 @@ export function createMataHD(opts = {}) {
     x: 0, y: 0, turn: 0, lean: 0, sway: 0, squash: 1, bob: 0,
     headYaw: 0, headPitch: 0, headRoll: 0,
     armL: 0, armLFwd: 0, handL: 0, armR: 0, armRFwd: 0, handR: 0, legL: 0, legR: 0,
-    blinkL: 0, blinkR: 0, happyL: 0, happyR: 0, eyeSize: 1,
+    blinkL: 0, blinkR: 0, happyL: 0, happyR: 0, eyeSize: 1, lookX: 0, lookY: 0,
     grin: 0, closed: 0, o: 0, sad: 0, tail: 0,
   };
-  const pose = { ...D }, manual = {};
+  const pose = { ...D }, manual = {}, gaze = { x: 0, y: 0 };
   const W = (a, b, k) => a + (b - a) * k;
   const wave3 = (t, f) => Math.sin(t * Math.PI * 2 * f);
   const env = (t, dur, i = .25, o = .3) => Math.min(sm(0, i, t), 1 - sm(dur - o, dur, t));
@@ -319,12 +336,12 @@ export function createMataHD(opts = {}) {
     flap: { dur: 1.1, f: t => ({ handL: .85 + .42 * wave3(t, 2.6) * env(t, 1.1, .12, .2), armL: 1.05, headRoll: -.06 * env(t, 1.1, .2, .3), grin: .5 * env(t, 1.1, .2, .3) }) },
     hello: { dur: 1.2, loop: true, f: t => ({ armL: 1.05, armLFwd: .3, handL: .85 + .4 * wave3(t, 1.6) * Math.min(1, t * 4) }) },
     happy: { dur: 1.3, f: t => { const e = env(t, 1.3, .15, .3), j = t < .7 ? Math.sin(Math.PI * t / .7) : 0; return { y: .2 * j, squash: 1 - .08 * Math.sin(Math.PI * Math.min(1, t / .18)) * (t < .18) + .04 * j, happyL: e, happyR: e, grin: e, armL: 1.25 * e, armR: 1.25 * e, handL: .5 * e, handR: .5 * e, legL: -.2 * j, legR: -.2 * j }; } },
-    curious: { dur: 1.8, f: t => { const e = env(t, 1.8, .3, .4); return { headRoll: .26 * e, headPitch: -.06 * e, eyeSize: 1 + .12 * e, o: e, lean: .05 * e, armR: .3 * e, handR: .5 * e }; } },
+    curious: { dur: 1.8, f: t => { const e = env(t, 1.8, .3, .4); return { headRoll: .26 * e, headPitch: -.06 * e, eyeSize: 1 + .12 * e, lookY: .5 * e, lookX: -.3 * e, o: e, lean: .05 * e, armR: .3 * e, handR: .5 * e }; } },
     wink: { dur: 1.1, f: t => { const e = env(t, 1.1, .15, .3); return { happyR: e, grin: .6 * e, headRoll: -.12 * e, armR: .7 * e }; } },
     cheerful: { dur: 2.4, loop: true, f: t => ({ happyL: 1, happyR: 1, closed: 1, sway: .1 * wave3(t, .42), headRoll: .14 * wave3(t, .42), armL: .4 + .25 * wave3(t, .84), armR: .4 - .25 * wave3(t, .84), bob: .02 * Math.abs(wave3(t, .42)) }) },
     sad: { dur: 2.2, f: t => { const e = env(t, 2.2, .4, .5); return { headPitch: .28 * e, sad: e, armL: -.1 * e, armR: -.1 * e, squash: 1 - .03 * e, lean: .06 * e }; } },
     nod: { dur: 1.2, f: t => ({ headPitch: .18 * Math.max(0, Math.sin(t * Math.PI * 2 / .6)) * env(t, 1.2, .1, .2), grin: .4 * env(t, 1.2) }) },
-    lookAround: { dur: 3.2, f: t => { const e = env(t, 3.2, .4, .5); return { headYaw: .55 * Math.sin(t / 3.2 * Math.PI * 2) * e, headPitch: -.05 * e, eyeSize: 1 + .05 * e }; } },
+    lookAround: { dur: 3.2, f: t => { const e = env(t, 3.2, .4, .5); return { headYaw: .55 * Math.sin(t / 3.2 * Math.PI * 2) * e, headPitch: -.05 * e, eyeSize: 1 + .05 * e, lookX: .8 * Math.sin(t / 3.2 * Math.PI * 2 + .4) * e, lookY: .2 * e }; } },
     walk: { dur: .9, loop: true, f: t => { const c = wave3(t, 1 / .9); return { legL: .55 * c, legR: -.55 * c, armL: .25 - .3 * c, armR: .25 + .3 * c, bob: .03 * Math.abs(c), sway: .05 * c, headRoll: -.03 * c, closed: .3 }; } },
     jump: { dur: 1, f: t => { const j = t < .75 ? Math.sin(Math.PI * t / .75) : 0, pre = 1 - sm(0, .12, t) + sm(.75, .85, t) - sm(.85, 1, t); return { y: .35 * j, squash: 1 - .08 * pre * (t < .12 || t > .75) + .05 * j, armL: 1.3 * j, armR: 1.3 * j, handL: .5 * j, handR: .5 * j, legL: -.3 * j, legR: -.3 * j, happyL: j, happyR: j, grin: j }; } },
   };
@@ -367,9 +384,11 @@ export function createMataHD(opts = {}) {
         const bl = Math.min(1, Math.max(p['blink' + k], p['happy' + k])); eyes[k].scale.set(p.eyeSize, p.eyeSize * (bl > .97 ? 1e-4 : Math.max(.04, 1 - bl)), p.eyeSize); eyes[k].visible = bl < .97;
         const h = p['happy' + k]; happy[k].scale.setScalar(Math.max(.0001, sm(.35, .9, h)));
       }
+      // gaze: the iris moves inside the white of the eye (textures redrawn only when it changes)
+      { const gx = Math.max(-1, Math.min(1, p.lookX)), gy = Math.max(-1, Math.min(1, p.lookY)); if (Math.abs(gx - gaze.x) > .015 || Math.abs(gy - gaze.y) > .015) { gaze.x = gx; gaze.y = gy; eyeTexs.L.userData.look(gx, gy); eyeTexs.R.userData.look(gx, gy); } }
       const mw = [p.grin, p.closed, p.o, p.sad]; for (const m of [mouth, tongue]) mw.forEach((w, i) => m.morphTargetInfluences[i] = Math.min(1, Math.max(0, w)));
     },
-    dispose() { geo.dispose(); furMats.forEach(m => m.dispose()); eyeTex.dispose(); root.traverse(o => { if (o.isMesh && !o.isSkinnedMesh) { o.geometry.dispose(); o.material.dispose(); } }); },
+    dispose() { geo.dispose(); furMats.forEach(m => m.dispose()); eyeTexs.L.dispose(); eyeTexs.R.dispose(); root.traverse(o => { if (o.isMesh && !o.isSkinnedMesh) { o.geometry.dispose(); o.material.dispose(); } }); },
   };
   api.apply(pose);
   return api;
