@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>3D eye model</title>
 <style>
-:root{--ink:#173A2E;--muted:#4F6359;--paper:#FFFFFF;--mist:#E8F0E9;--line:#DDE7DD;--blue-deep:#1F5A45;--teal:#F29E78;
+:root{--ink:#173A2E;--muted:#4F6359;--paper:#FFFFFF;--mist:#E8F0E9;--line:#DDE7DD;--blue-deep:#154A32;--teal:#E8B820;
 --display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:transparent;color:var(--ink);font:400 16px/1.5 var(--body);overflow:hidden}
@@ -14,7 +14,7 @@ html,body{margin:0;height:100%;background:transparent;color:var(--ink);font:400 
 canvas{display:block;width:100%;height:100%;outline:none}
 .hint{position:absolute;left:10px;bottom:10px;pointer-events:none;background:rgba(0,0,0,.45);color:#fff;font:500 12px/1.3 var(--display);padding:6px 10px;border-radius:999px;transition:opacity .6s}
 .lab{position:absolute;left:0;top:0;transform:translate(-50%,-50%);pointer-events:none;font:600 12px/1 var(--display);color:#fff;background:rgba(14,23,20,.72);border:1px solid rgba(255,255,255,.35);padding:5px 8px;border-radius:999px;white-space:nowrap;transition:opacity .2s}
-.lab.pin{background:#F29E78;color:#2a140a;border-color:#fff;font-weight:700}
+.lab.pin{background:#E8B820;color:#2a140a;border-color:#fff;font-weight:700}
 .labs[hidden]{display:none}
 .bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .seg{display:inline-flex;background:var(--mist);border-radius:999px;padding:3px}
@@ -25,12 +25,12 @@ canvas{display:block;width:100%;height:100%;outline:none}
 .ic{font-size:17px!important;padding:0!important;width:38px}
 .tg[aria-pressed=true]::before{content:"✓ "}
 .act{background:var(--teal)!important;color:#2a140a!important}
-.bar button:focus-visible{outline:3px solid #F29E78;outline-offset:2px}
+.bar button:focus-visible{outline:3px solid #E8B820;outline-offset:2px}
 .load{position:absolute;inset:0;display:grid;place-items:center;color:#d9e8df;font:600 15px var(--display)}
 .err{margin:16px;padding:16px;border-radius:14px;background:#FDECEA;color:#7a1d17}
 @media (max-width:560px){.bar button{padding:8px 10px;font-size:12px;min-height:36px}.bar{gap:5px}}
 </style>
-<style>@media screen{html[data-theme=dark]{--ink:#E8EFEA;--muted:#AFC0B5;--paper:#17211C;--mist:#1F2E27;--line:#31453A;--blue-deep:#9FD6B8;--teal-deep:#F5B496;--sun-soft:#3A2A20;--alert-soft:#3B1D1B;--cream:#121A16;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}html[data-theme=dark] .accb,html[data-theme=dark] .music-btn{color:#CFE9DA!important;background:#24332B!important}html[data-theme=dark] .music-btn[aria-pressed="true"]{background:#2E6B53!important;color:#fff!important}html[data-theme=dark] .wa-share{background:#167C40!important}html[data-theme=dark] .band svg.leaves{opacity:.22}html[data-theme=dark] .search{background:linear-gradient(135deg,#1F4A3A,#24533F 60%,#2D4B45)!important}html[data-theme=dark] .dot,html[data-theme=dark] .key .dot{color:#1B120D!important}html[data-theme=dark] h3{--alert:#FF9C8F}html[data-theme=dark] button.act,html[data-theme=dark] body .act{color:#2A140A!important}html[data-theme=dark] .lab{border:1px solid rgba(66,66,66,.35)!important}html[data-theme=dark] .lab.pin{color:#f9ede8!important;border-color:#424242!important}html[data-theme=dark] .seg button[aria-pressed=true]{background:#1F5A45!important}html[data-theme=dark] .tg[aria-pressed=true]{border-color:#1F5A45!important}html[data-theme=dark] .act{color:#f9ede8!important}html[data-theme=dark] .bar button:focus-visible{outline:3px solid #7d5543!important}html[data-theme=dark] .err{background:#341c19!important;color:#f2bfbc!important}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head>
+<style>@media screen{html[data-theme=dark]{--ink:#E8EFEA;--muted:#AFC0B5;--paper:#17211C;--mist:#1F2E27;--line:#31453A;--blue-deep:#9FD6B8;--teal-deep:#F5B496;--sun-soft:#3A2A20;--alert-soft:#3B1D1B;--cream:#121A16;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}html[data-theme=dark] .accb,html[data-theme=dark] .music-btn{color:#CFE9DA!important;background:#24332B!important}html[data-theme=dark] .music-btn[aria-pressed="true"]{background:#2E6B53!important;color:#fff!important}html[data-theme=dark] .wa-share{background:#167C40!important}html[data-theme=dark] .band svg.leaves{opacity:.22}html[data-theme=dark] .search{background:linear-gradient(135deg,#1F4A3A,#24533F 60%,#2D4B45)!important}html[data-theme=dark] body .dot.dot,html[data-theme=dark] body .key .dot.dot{color:#1B120D!important}html[data-theme=dark] h3{--alert:#FF9C8F}html[data-theme=dark] button.act,html[data-theme=dark] body .act{color:#2A140A!important}html[data-theme=dark] .lab{border:1px solid rgba(66,66,66,.35)!important}html[data-theme=dark] .lab.pin{color:#f9ede8!important;border-color:#424242!important}html[data-theme=dark] .seg button[aria-pressed=true]{background:#154A32!important}html[data-theme=dark] .tg[aria-pressed=true]{border-color:#154A32!important}html[data-theme=dark] .act{color:#f9ede8!important}html[data-theme=dark] .err{background:#341c19!important;color:#f2bfbc!important}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head>
 <body>
 <div class="wrap">
  <div class="stage" id="stage"><div class="load" id="load">Memuatkan mata 3D…</div>
@@ -146,7 +146,7 @@ function drawCornea(mode,s){const g=coC.getContext('2d');g.clearRect(0,0,1024,10
 
 // ---------- iris ----------
 const irC=canvas(1024,1024),ig=irC.getContext('2d');
-{ig.translate(512,512);const b=ig.createRadialGradient(0,0,60,0,0,500);b.addColorStop(0,'#2a170e');b.addColorStop(.35,'#5a3520');b.addColorStop(.7,'#4a2a18');b.addColorStop(1,'#20120a');ig.fillStyle=b;ig.beginPath();ig.arc(0,0,512,0,7);ig.fill();
+{ig.translate(512,512);const b=ig.createRadialGradient(0,0,60,0,0,500);b.addColorStop(0,'#2a170e');b.addColorStop(.35,'#5a3520');b.addColorStop(.7,'#3A2E05');b.addColorStop(1,'#20120a');ig.fillStyle=b;ig.beginPath();ig.arc(0,0,512,0,7);ig.fill();
  for(let i=0;i<900;i++){const a=rnd()*6.283,r0=130+rnd()*60,r1=300+rnd()*200;ig.strokeStyle=`rgba(${120+rnd()*80|0},${70+rnd()*50|0},${30+rnd()*30|0},${.15+rnd()*.3})`;ig.lineWidth=1+rnd()*2.5;ig.beginPath();ig.moveTo(Math.cos(a)*r0,Math.sin(a)*r0);ig.quadraticCurveTo(Math.cos(a+.05)*(r0+r1)/2,Math.sin(a+.05)*(r0+r1)/2,Math.cos(a)*r1,Math.sin(a)*r1);ig.stroke()}
  ig.strokeStyle='rgba(150,95,50,.6)';ig.lineWidth=10;ig.beginPath();for(let a=0;a<6.3;a+=.05){const r=230+Math.sin(a*14)*14;ig.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ig.closePath();ig.stroke()}
 const irisGeo=new THREE.RingGeometry(.13,LIMB-.01,96,4);{const p=irisGeo.attributes.position,uv=irisGeo.attributes.uv;for(let i=0;i<p.count;i++)uv.setXY(i,.5+p.getX(i)/(2*LIMB),.5+p.getY(i)/(2*LIMB))}
