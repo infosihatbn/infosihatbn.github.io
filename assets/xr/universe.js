@@ -3,7 +3,8 @@
 // Front of the eye is +Z, nasal side is -X (left eye), matching eyemodel.js.
 import * as THREE from '/assets/three/three.module.min.js';
 import { createMata } from './mata3d.js';
-import { createEye, DISC_DIR } from './eyemodel.js';
+import { DISC_DIR } from './eyemodel.js';
+import { createRealEye } from './realeye.js';
 
 const R = 60, IRIS_Z = 52, PUPIL = 7.5, LENS_Z = 42, LENS_R = 19, LENS_T = 7, CORNEA_C = 30, CORNEA_R = 38; // the front: iris plane, lens, corneal dome
 const BACK = ['vitreous', 'floaters', 'retina', 'vessels', 'macula', 'fovea', 'disc', 'nerve'];
@@ -118,8 +119,9 @@ export function mount(el, D) {
 
   // ======== INTRO SCENE (World 1: Enter the Eye) ========
   const introS = new THREE.Scene(); introS.background = new THREE.Color(0x060a20);
-  introS.add(new THREE.HemisphereLight(0xcfe6ff, 0x1a1030, 1.1)); { const l = new THREE.DirectionalLight(0xffffff, 2); l.position.set(3, 4, 8); introS.add(l); }
-  const bigEye = createEye(); bigEye.group.scale.setScalar(8); bigEye.group.position.set(0, 0, -30); introS.add(bigEye.group);
+  introS.add(new THREE.HemisphereLight(0xdbe8ff, 0x2a1a30, .8));
+  { const l = new THREE.DirectionalLight(0xfff3e6, 2.4); l.position.set(-6, 7, 9); introS.add(l); const r = new THREE.DirectionalLight(0x9fc4ff, 1.6); r.position.set(8, 2, -6); introS.add(r); }
+  const bigEye = createRealEye(renderer); bigEye.group.scale.setScalar(8); bigEye.group.position.set(0, 0, -30); introS.add(bigEye.group);
   { const sg = new THREE.BufferGeometry(), sp = []; for (let i = 0; i < 900; i++) { const v = new THREE.Vector3().randomDirection().multiplyScalar(120 + Math.random() * 80); sp.push(v.x, v.y, v.z); }
     sg.setAttribute('position', new THREE.Float32BufferAttribute(sp, 3)); introS.add(new THREE.Points(sg, new THREE.PointsMaterial({ size: 1.4, map: dot, color: 0xcfe9ff, transparent: true, depthWrite: false }))); }
   const introMata = createMata(); introMata.object.scale.setScalar(1.6); introS.add(introMata.object);
@@ -501,10 +503,15 @@ export function mount(el, D) {
     $('.mu-vig').style.opacity = '0'; nearEl.hidden = true;
   };
   const updateIntro = (dt, t) => {
-    cine.t += dt / (S.reduced ? 3 : 6.5); const k = Math.min(1, cine.t), e = k * k * (3 - 2 * k);
-    // fly from space towards the pupil of the giant eye
-    const z0 = 34, z1 = -30 + 8 * 1.02; camera.position.set(Math.sin(e * 2) * (1 - e) * 6, (1 - e) * 4, z0 + (z1 - z0) * e); camera.lookAt(0, 0, -30);
-    introMata.object.position.set(camera.position.x + 1.8 * (1 - e), camera.position.y - 1.2 * (1 - e), camera.position.z - 7);
+    cine.t += dt / (S.reduced ? 3 : 9); const k = Math.min(1, cine.t), e = k * k * (3 - 2 * k);
+    // swing round the giant eye (muscles, vessels, cornea), then fly in through the pupil
+    const sm = (a, b, x) => { x = Math.min(1, Math.max(0, (x - a) / (b - a))); return x * x * (3 - 2 * x); };
+    const a1 = sm(0, .55, k), a2 = sm(.5, 1, k), ang = 1.1 * (1 - a1) + .04, d = 27 - 5 * a1;
+    tmp.set(Math.sin(ang) * d, 6 * (1 - a1) + 1.5 * a1, -30 + Math.cos(ang) * d);
+    camera.position.copy(tmp).lerp(tmp2.set(0, 0, -30 + 8 * 1.02), a2);
+    camera.lookAt(tmp.set(0, 0, -30).lerp(tmp2.set(0, 0, -40), a2));
+    camera.updateMatrixWorld(); { const m = camera.matrixWorld.elements; // right, up and back axes of the camera
+      introMata.object.position.copy(camera.position).addScaledVector(tmp.set(m[8], m[9], m[10]), -7).addScaledVector(tmp2.set(m[0], m[1], m[2]), 2.6 * (1 - a2)).addScaledVector(tmp.set(m[4], m[5], m[6]), -1.4 * (1 - a2)); }
     introMata.object.lookAt(0, 0, -30); introMata.update(t, dt, { reducedMotion: S.reduced, moving: true });
     bigEye.group.rotation.y = Math.sin(t * .4) * .08 * (1 - e);
     if (k >= 1) toSea();
