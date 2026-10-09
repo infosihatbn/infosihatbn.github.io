@@ -1,4 +1,4 @@
-// Procedural anatomical model of a LEFT human eye for AR EyeXplore and MataUniverse.
+// Procedural anatomical model of a LEFT human eye for EyeXplore AR and MataUniverse.
 // Units: eye radius = 1 (about 12 mm). Front of the eye faces +Z; nasal side is -X
 // (so the optic disc and optic nerve sit on the -X side, kept visible in the cutaway).
 import * as THREE from '/assets/three/three.module.min.js';

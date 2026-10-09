@@ -1,4 +1,4 @@
-// AR EyeXplore: interactive 3D eye (outside, cut in half, inside, light's journey), with real WebXR AR on
+// EyeXplore AR: interactive 3D eye (outside, cut in half, inside, light's journey), with real WebXR AR on
 // supported phones and an honest "camera view" fallback elsewhere. Mounted by tools/xr.py's loader.
 import * as THREE from '/assets/three/three.module.min.js';
 import { OrbitControls } from './OrbitControls.js';
@@ -24,7 +24,6 @@ export function mount(el, D) {
   const intro = el.querySelector('.xi-intro');
   const stage = document.createElement('div'); stage.className = 'xr-stage'; stage.tabIndex = 0; stage.setAttribute('aria-label', U.title);
   stage.innerHTML = `
-   <video class="xr-cam" playsinline muted hidden></video>
    <div class="xr-canvas"></div>
    <div class="xr-labels" aria-hidden="true"></div>
    <div class="xr-top">
@@ -44,7 +43,6 @@ export function mount(el, D) {
      <span class="xr-hint">${U.how}</span>
    </div>
    <div class="xr-drawer" hidden><div class="xr-dh"><b>${U.parts}</b><button type="button" data-act="parts">✕</button></div><div class="xr-plist"></div></div>
-   <div class="xr-camnote" hidden><p></p><button type="button" data-act="camoff">✕ ${U.close}</button></div>
    <div class="xr-modal" hidden><div><p>${U.ar_why}</p><div><button type="button" data-act="arno">${U.close}</button><button type="button" class="pri" data-act="argo">${U.ar}</button></div></div></div>`;
   el.appendChild(stage);
   const arOverlay = document.createElement('div'); arOverlay.className = 'xr-ar-ui'; arOverlay.hidden = true;
@@ -201,7 +199,7 @@ export function mount(el, D) {
     camL.copy(camera.position); eye.group.worldToLocal(camL);
     for (const k of D.order) {
       const part = eye.parts[k], d = lab[k];
-      let show = (showAll || k === selected) && part.anchor && mode !== 'light' && !arActive && !camOn;
+      let show = (showAll || k === selected) && part.anchor && mode !== 'light' && !arActive;
       if (show && mode === 'in' && !['retina', 'macula', 'fovea', 'disc', 'vitreous', 'choroid'].includes(k)) show = k === selected;
       if (show) {
         if (eye.isClipped(part.anchor)) show = false;
@@ -242,13 +240,24 @@ export function mount(el, D) {
   };
 
   // ---------- AR (WebXR) and camera view ----------
-  let arActive = false, arAnchor = null, hitSrc = null, placed = false, reticle = null, camOn = false, stream = null, arScale = .1;
-  const arBtn = el.querySelector('[data-go=ar]'), camBtn = el.querySelector('[data-go=cam]'), note = el.querySelector('[data-arnote]');
+  let arActive = false, arAnchor = null, hitSrc = null, placed = false, reticle = null, arScale = .1;
+  const arBtn = el.querySelector('[data-go=ar]'), note = el.querySelector('[data-arnote]');
+  const roomBtns = [el.querySelector('[data-go=room]'), el.querySelector('[data-go=roomcut]')];
+  const ua = navigator.userAgent, isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1), isAndroid = /Android/i.test(ua);
   (async () => {
     let ok = false; try { ok = !!(navigator.xr && await navigator.xr.isSessionSupported('immersive-ar')); } catch (e) { }
-    if (ok) { arBtn.hidden = false; note.textContent = U.ar_ok; }
-    else { note.textContent = U.ar_no; if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) camBtn.hidden = false; }
+    if (ok) arBtn.hidden = false;
+    if (isIOS || isAndroid) roomBtns.forEach(b => b.hidden = false);
+    note.textContent = isIOS ? U.ar_ios : ok ? U.ar_ok : isAndroid ? U.ar_and : U.ar_desk;
   })();
+  // Native AR viewers (they track the room themselves): AR Quick Look on iPhone/iPad, Scene Viewer on Android.
+  const openRoom = cut => {
+    const f = '/assets/xr/' + (cut ? 'eye-cut' : 'eye') + (isIOS ? '.usdz' : '.glb') + '?v=' + D.build, a = document.createElement('a');
+    if (isIOS) { a.rel = 'ar'; a.href = f + '#allowsContentScaling=1'; a.appendChild(document.createElement('img')); }
+    else a.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(new URL(f, location.href).href) + '&mode=ar_preferred&title=' + encodeURIComponent(U.title)
+      + '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;';
+    document.body.appendChild(a); a.click(); a.remove();
+  };
   const startAR = async () => {
     $('.xr-modal').hidden = true;
     arOverlay.hidden = false;
@@ -263,7 +272,7 @@ export function mount(el, D) {
       const viewer = await session.requestReferenceSpace('viewer'); hitSrc = await session.requestHitTestSource({ space: viewer });
       session.addEventListener('select', onSelect); session.addEventListener('end', endAR);
       arOverlay.querySelector('.xr-arhint').textContent = U.ar_place;
-    } catch (e) { console.warn(e); arActive = false; arOverlay.hidden = true; say(U.cam_fail, 5000); }
+    } catch (e) { console.warn(e); arActive = false; arOverlay.hidden = true; say(U.ar_fail, 5000); }
   };
   const onSelect = e => {
     if (!placed && reticle.visible) { arAnchor.position.setFromMatrixPosition(reticle.matrix); arAnchor.position.y += .12; arAnchor.visible = true; placed = true; reticle.visible = false; arOverlay.querySelector('.xr-arhint').textContent = U.ar_placed; return; }
@@ -287,21 +296,11 @@ export function mount(el, D) {
     arOverlay.querySelectorAll('button').forEach(b => b.addEventListener('beforexrselect', ev => ev.preventDefault()));
     arOverlay.addEventListener('beforexrselect', ev => { if (ev.target.closest('aside')) ev.preventDefault(); });
   }
-  const startCam = async () => {
-    try {
-      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
-      const v = $('.xr-cam'); v.srcObject = stream; v.hidden = false; await v.play().catch(() => { });
-      camOn = true; stage.classList.add('camon'); $('.xr-camnote').hidden = false; $('.xr-camnote p').textContent = U.cam_note;
-      particles.visible = false; setMode('ext', true);
-    } catch (e) { say(U.cam_fail, 6000); }
-  };
-  const stopCam = () => { if (stream) stream.getTracks().forEach(t => t.stop()); stream = null; camOn = false; stage.classList.remove('camon'); $('.xr-cam').hidden = true; $('.xr-camnote').hidden = true; particles.visible = true; };
-
   // ---------- UI events ----------
   const begin = () => { intro.classList.add('gone'); stage.classList.add('live'); stage.focus({ preventScroll: true }); say(U.hello, 4500); };
   el.querySelector('[data-go="3d"]').addEventListener('click', begin);
   arBtn.addEventListener('click', () => { begin(); $('.xr-modal').hidden = false; });
-  camBtn.addEventListener('click', () => { begin(); startCam(); });
+  roomBtns.forEach((b, i) => b.addEventListener('click', () => openRoom(i === 1)));
   const onClick = e => {
     const b = e.target.closest('button'); if (!b) return;
     if (b.dataset.mode) { setMode(b.dataset.mode); return; }
@@ -314,7 +313,6 @@ export function mount(el, D) {
     else if (a === 'full') { full = !full; el.classList.toggle('xr-full', full); document.documentElement.classList.toggle('xr-lock', full); setTimeout(resize, 50); }
     else if (a === 'parts') toggleDrawer();
     else if (a === 'close') select(null);
-    else if (a === 'camoff') stopCam();
     else if (a === 'arno') $('.xr-modal').hidden = true;
     else if (a === 'argo') startAR();
   };
@@ -364,7 +362,7 @@ export function mount(el, D) {
 
   // ---------- teardown when the page changes (soft navigation) ----------
   const watch = setInterval(() => { if (el.isConnected) return;
-    clearInterval(watch); renderer.setAnimationLoop(null); renderer.xr.getSession()?.end(); stopCam(); io.disconnect(); ro.disconnect();
+    clearInterval(watch); renderer.setAnimationLoop(null); renderer.xr.getSession()?.end(); io.disconnect(); ro.disconnect();
     document.removeEventListener('visibilitychange', onVis); document.documentElement.classList.remove('xr-lock'); arOverlay.remove();
     eye.dispose(); renderer.dispose(); renderer.forceContextLoss(); }, 1000);
 }
