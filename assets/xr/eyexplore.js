@@ -3,7 +3,7 @@
 import * as THREE from '/assets/three/three.module.min.js';
 import { OrbitControls } from './OrbitControls.js';
 import { createEye } from './eyemodel.js';
-import { createMata } from './mata3d.js';
+import { createMata } from './matahd.js';
 
 const VIEWS = {
   ext: { pos: [2.6, 1.0, 3.9], tgt: [.45, 0, 0], cut: false },

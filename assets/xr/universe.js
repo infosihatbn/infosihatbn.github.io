@@ -2,7 +2,7 @@
 // World units: the eye's inner radius is 60 (a real eye is about 24 mm across, so this is hugely enlarged).
 // Front of the eye is +Z, nasal side is -X (left eye), matching eyemodel.js.
 import * as THREE from '/assets/three/three.module.min.js';
-import { createMata } from './mata3d.js';
+import { createMata } from './matahd.js';
 import { DISC_DIR } from './eyemodel.js';
 import { createRealEye } from './realeye.js';
 

@@ -52,8 +52,9 @@ function makeSkeleton() {
 // ---------------------------------------------------------------- geometry helpers
 const sm = (a, b, x) => { x = Math.min(1, Math.max(0, (x - a) / (b - a))); return x * x * (3 - 2 * x); };
 // a part = indexed geometry with position/normal/uv + per-vertex skin (up to 2 bones) + fur length + body flag
-function part(geo, weightFn, fur, body = 0) {
+function part(geo, weightFn, fur, body = 0, uvs = [1, 1]) {
   const g = geo.index ? geo : geo.toNonIndexed(); const n = g.attributes.position.count;
+  { const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) * uvs[0], uv.getY(i) * uvs[1]); } // UVs in world units (for exported fur)
   const si = new Uint16Array(n * 4), sw = new Float32Array(n * 4), af = new Float32Array(n * 2), p = new THREE.Vector3();
   for (let i = 0; i < n; i++) { p.fromBufferAttribute(g.attributes.position, i); const w = weightFn(p, i);
     for (let k = 0; k < 4; k++) { si[i * 4 + k] = w[k * 2] || 0; sw[i * 4 + k] = w[k * 2 + 1] || 0; }
@@ -206,28 +207,28 @@ export function createMataHD(opts = {}) {
   // --- body (one lathe: big round head flowing into a small body)
   const body = new THREE.LatheGeometry(PROFILE, 112); body.scale(1, 1, DEPTH); fixNormalsScaled(body, new THREE.Vector3(1, 1, DEPTH));
   const bodyW = p => { const h = sm(.9, 1.1, p.y), s = sm(.4, .62, p.y) * (1 - h); return [I.Head, h, I.Spine, s, I.Hips, 1 - h - s]; };
-  const parts = [part(body, bodyW, .068, 1)];
+  const parts = [part(body, bodyW, .068, 1, [4.4, 3.9])];
   // --- arms (stubby, slightly thicker at the paw)
   const armProf = []; for (let i = 0; i <= 24; i++) { const t = i / 24; const y = -t * .56; const r = t < .82 ? .132 + .03 * t : (.132 + .03 * .82) * Math.sqrt(Math.max(0, 1 - Math.pow((t - .82) / .18, 2))); armProf.push(new THREE.Vector2(Math.max(r, 0), y)); }
   armProf.unshift(new THREE.Vector2(0, .02)); armProf.reverse(); // bottom to top so the normals face outwards
   for (const [s, a, h] of [[1, 'Arm_L', 'Hand_L'], [-1, 'Arm_R', 'Hand_R']]) {
     const sh = B[a].userData.world, dir = new THREE.Vector3(s * .36, -.62, .07).normalize();
     const g = limb(armProf, 28, dir, sh);
-    parts.push(part(g, p => { const t = p.clone().sub(sh).dot(dir) / .56, w = sm(.4, .62, t); return [I[a], 1 - w, I[h], w]; }, .065));
+    parts.push(part(g, p => { const t = p.clone().sub(sh).dot(dir) / .56, w = sm(.4, .62, t); return [I[a], 1 - w, I[h], w]; }, .065, 0, [.95, .62]));
   }
   // --- legs (short and round, little feet pointing forward)
   const legProf = []; for (let i = 0; i <= 18; i++) { const t = i / 18, y = -t * .32; const r = t < .7 ? .15 + .015 * t : .1605 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .7) / .3, 2))); legProf.push(new THREE.Vector2(r, y)); }
   legProf.unshift(new THREE.Vector2(0, .05)); legProf.reverse();
-  for (const [s, l] of [[1, 'Leg_L'], [-1, 'Leg_R']]) { const at = B[l].userData.world; const g = limb(legProf, 24, new THREE.Vector3(s * .05, -1, .04), at, 1.15); parts.push(part(g, () => [I[l], 1], .055)); }
+  for (const [s, l] of [[1, 'Leg_L'], [-1, 'Leg_R']]) { const at = B[l].userData.world; const g = limb(legProf, 24, new THREE.Vector3(s * .05, -1, .04), at, 1.15); parts.push(part(g, () => [I[l], 1], .055, 0, [1.05, .5])); }
   // --- three leafy tufts on top
   const tuftProf = []; for (let i = 0; i <= 16; i++) { const t = i / 16; tuftProf.push(new THREE.Vector2(.15 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .35) / .65, 2))), t * .36)); }
   tuftProf[tuftProf.length - 1].x = 0; tuftProf.unshift(new THREE.Vector2(0, -.02));
   for (const [n, rz, rx, sc] of [['Tuft_C', 0, -.25, 1.1], ['Tuft_L', -.55, -.15, .85], ['Tuft_R', .55, -.15, .85]]) {
     const at = B[n].userData.world, g = new THREE.LatheGeometry(tuftProf, 20); g.scale(sc, sc, sc * .6); fixNormalsScaled(g, new THREE.Vector3(sc, sc, sc * .6)); g.rotateX(rx); g.rotateZ(rz); g.translate(at.x, at.y - .04, at.z);
-    parts.push(part(g, () => [I[n], 1], .05));
+    parts.push(part(g, () => [I[n], 1], .05, 0, [.85, .5]));
   }
   // --- little round tail
-  { const g = new THREE.SphereGeometry(.12, 20, 14); const at = B.Tail.userData.world; g.translate(at.x, at.y, at.z); parts.push(part(g, () => [I.Tail, 1], .08)); }
+  { const g = new THREE.SphereGeometry(.12, 20, 14); const at = B.Tail.userData.world; g.translate(at.x, at.y, at.z); parts.push(part(g, () => [I.Tail, 1], .08, 0, [.75, .38])); }
   const geo = merge(parts); geo.computeBoundingSphere(); geo.boundingSphere.radius += .2;
 
   const skeleton = new THREE.Skeleton(sk.list);
@@ -309,11 +310,11 @@ export function createMataHD(opts = {}) {
   const env = (t, dur, i = .25, o = .3) => Math.min(sm(0, i, t), 1 - sm(dur - o, dur, t));
   const CLIPS = {
     idle: { dur: 4, loop: true, f: t => ({ squash: 1 + .012 * wave3(t, .5), bob: .008 * wave3(t, .5), headRoll: .04 * wave3(t, .25), sway: .02 * wave3(t, .25), armL: .06 * wave3(t + .3, .5), armR: -.06 * wave3(t, .5), tail: .2 * wave3(t, .5) }) },
-    blink: { dur: .22, f: t => ({ blinkL: Math.sin(Math.PI * t / .22), blinkR: Math.sin(Math.PI * t / .22) }) },
+    blink: { dur: .22, hard: true, f: t => ({ blinkL: Math.sin(Math.PI * t / .22), blinkR: Math.sin(Math.PI * t / .22) }) },
     wave: { dur: 1.9, f: t => { const e = env(t, 1.9, .3, .35); return { armL: 1.05 * e, armLFwd: .3 * e, handL: e * (.85 + .4 * wave3(t, 2.2)), headRoll: -.1 * e, grin: .55 * e, sway: -.04 * e }; } },
     // companion: resting with the hand up (base loop), plus a short additive "flap" of the hand
     perch: { dur: 4, loop: true, f: t => ({ ...CLIPS.idle.f(t), armL: 1.05 + .03 * wave3(t, .5), armLFwd: .3, handL: .85 }) },
-    flap: { dur: 1.1, f: t => ({ handL: .42 * wave3(t, 2.6) * env(t, 1.1, .12, .2), headRoll: -.06 * env(t, 1.1, .2, .3), grin: .5 * env(t, 1.1, .2, .3) }) },
+    flap: { dur: 1.1, f: t => ({ handL: .85 + .42 * wave3(t, 2.6) * env(t, 1.1, .12, .2), armL: 1.05, headRoll: -.06 * env(t, 1.1, .2, .3), grin: .5 * env(t, 1.1, .2, .3) }) },
     hello: { dur: 1.2, loop: true, f: t => ({ armL: 1.05, armLFwd: .3, handL: .85 + .4 * wave3(t, 1.6) * Math.min(1, t * 4) }) },
     happy: { dur: 1.3, f: t => { const e = env(t, 1.3, .15, .3), j = t < .7 ? Math.sin(Math.PI * t / .7) : 0; return { y: .2 * j, squash: 1 - .08 * Math.sin(Math.PI * Math.min(1, t / .18)) * (t < .18) + .04 * j, happyL: e, happyR: e, grin: e, armL: 1.25 * e, armR: 1.25 * e, handL: .5 * e, handR: .5 * e, legL: -.2 * j, legR: -.2 * j }; } },
     curious: { dur: 1.8, f: t => { const e = env(t, 1.8, .3, .4); return { headRoll: .26 * e, headPitch: -.06 * e, eyeSize: 1 + .12 * e, o: e, lean: .05 * e, armR: .3 * e, handR: .5 * e }; } },
@@ -342,7 +343,9 @@ export function createMataHD(opts = {}) {
     update(dt) {
       baseT += dt; Object.assign(pose, D, CLIPS[base].f(baseT % CLIPS[base].dur));
       for (let i = layers.length - 1; i >= 0; i--) { const l = layers[i], c = CLIPS[l.name]; l.t += dt; if (!c.loop && l.t >= c.dur) { layers.splice(i, 1); continue; }
-        const v = c.f(c.loop ? l.t % c.dur : l.t); for (const k in v) pose[k] = (k === 'squash' || k === 'eyeSize') ? pose[k] * v[k] / 1 : pose[k] + v[k] - (k in D ? 0 : 0); }
+        // each action eases in and out over the current pose (so nothing snaps)
+        const v = c.f(c.loop ? l.t % c.dur : l.t), w = c.hard ? 1 : c.loop ? Math.min(1, l.t / .2) : Math.max(0, Math.min(1, l.t / .15, (c.dur - l.t) / .2));
+        for (const k in v) pose[k] += (v[k] - pose[k]) * w; }
       for (const k in manual) pose[k] = manual[k];
       api.apply(pose);
     },
@@ -359,7 +362,7 @@ export function createMataHD(opts = {}) {
       // tufts trail a little behind the head's motion
       const tw = p.headRoll + p.sway; b.Tuft_C.rotation.set(-p.headPitch * .4, 0, -tw * .5); b.Tuft_L.rotation.set(0, 0, -tw * .7); b.Tuft_R.rotation.set(0, 0, -tw * .7);
       for (const k of ['L', 'R']) {
-        const bl = Math.min(1, Math.max(p['blink' + k], p['happy' + k])); eyes[k].scale.set(p.eyeSize, p.eyeSize * Math.max(.04, 1 - bl), p.eyeSize); eyes[k].visible = bl < .97;
+        const bl = Math.min(1, Math.max(p['blink' + k], p['happy' + k])); eyes[k].scale.set(p.eyeSize, p.eyeSize * (bl > .97 ? 1e-4 : Math.max(.04, 1 - bl)), p.eyeSize); eyes[k].visible = bl < .97;
         const h = p['happy' + k]; happy[k].scale.setScalar(Math.max(.0001, sm(.35, .9, h)));
       }
       const mw = [p.grin, p.closed, p.o, p.sad]; for (const m of [mouth, tongue]) mw.forEach((w, i) => m.morphTargetInfluences[i] = Math.min(1, Math.max(0, w)));
@@ -368,4 +371,20 @@ export function createMataHD(opts = {}) {
   };
   api.apply(pose);
   return api;
+}
+
+// Drop-in replacement for the old mata3d.js createMata() used by the XR apps (centred on its middle, about 1.3 units tall).
+export function createMata(opts = {}) {
+  const m = createMataHD({ shells: opts.shells ?? 8 }), root = new THREE.Group(); m.setFur({ density: 70 });
+  m.object.scale.setScalar(.58); m.object.position.y = -.66; root.add(m.object);
+  let mode = 'idle';
+  return {
+    object: root, hd: m,
+    happy() { m.play('happy'); },
+    update(t, dt, o = {}) {
+      if (o.reducedMotion) { if (mode !== 'still') { mode = 'still'; m.loop('idle'); m.update(0); } return; }
+      const want = o.moving ? 'walk' : 'idle'; if (want !== mode) { mode = want; m.loop(want); }
+      m.update(dt);
+    },
+  };
 }
