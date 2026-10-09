@@ -74,7 +74,7 @@ export function mount(el, D) {
     <div class="mu-tools">
       <button type="button" class="mu-ic mu-lj" data-act="light" title="${U.light}">✨ <span>${U.light}</span></button>
       <button type="button" class="mu-ic" data-act="settings" title="${U.settings}">⚙️</button>
-      <button type="button" class="mu-ic" data-act="pause" title="${U.pause}">⏸</button>
+      <button type="button" class="mu-ic" data-act="pause" title="${U.pause}" aria-label="${U.pause}">❚❚</button>
       <button type="button" class="mu-ic" data-act="full" title="${U.full}">⛶</button>
     </div>
   </div>
