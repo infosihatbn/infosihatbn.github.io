@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "data/feeds.json"
-UA = {"User-Agent": "MataKitani-feed-bot/1.0 (+https://infosihatbn.github.io)"}
+UA = {"User-Agent": "MataKitani-feed-bot/1.0 (+https://matakitani.com)"}
 NOW = dt.datetime.now(dt.timezone.utc)
 
 def get(url, timeout=30):

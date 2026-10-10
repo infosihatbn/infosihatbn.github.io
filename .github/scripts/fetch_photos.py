@@ -3,7 +3,7 @@ Usage: python3 fetch_photos.py OUTDIR "File:A.jpg" "File:B.jpg" ...
 Only files under CC0, public domain, CC BY or CC BY-SA are saved."""
 import json, os, re, sys, urllib.parse, urllib.request
 
-UA = "MataKitaniBot/1.0 (https://infosihatbn.github.io)"
+UA = "MataKitaniBot/1.0 (https://matakitani.com)"
 OK = re.compile(r"^(cc0|public domain|pd\b|cc[ -]by(-sa)?[ -]\d)", re.I)
 
 def get(url):
