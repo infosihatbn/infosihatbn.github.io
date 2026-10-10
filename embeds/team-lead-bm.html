@@ -1,9 +1,9 @@
 <!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ketua Editor dan Pereka</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&display=swap"><style>
 /* MataKitani embed: brand blue + teal from the logo, Lexend display, Atkinson Hyperlegible body (built for low-vision readers) */
 :root{
-  --ink:#1B2B24; --muted:#55635B; --paper:#FFFFFF; --mist:#EEF4EC; --line:#DDE6DA;
-  --blue:#4A8A5C; --blue-deep:#154A32; --teal:#EAB92A; --teal-deep:#256B43;
-  --sun:#F2C230; --sun-soft:#FFF4CC; --alert:#B3261E; --alert-soft:#FDECEA;
+  --ink:#18222E; --muted:#55635B; --paper:#FFFFFF; --mist:#E7EFF9; --line:#CDDEF3;
+  --blue:#3D6497; --blue-deep:#152C4A; --teal:#EF9AB9; --teal-deep:#204370;
+  --sun:#EF9AB9; --sun-soft:#FCCFDF; --alert:#B3261E; --alert-soft:#FDECEA;
   --display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   color-scheme:light;
@@ -18,7 +18,7 @@ button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:6px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
-.tm{display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:center;background:linear-gradient(135deg,var(--mist),#E5EFE6);border-radius:26px;padding:28px}
+.tm{display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:center;background:linear-gradient(135deg,var(--mist),#DDE8F7);border-radius:26px;padding:28px}
 .av{width:150px;height:150px;flex:none;border-radius:50%;background:var(--blue);display:grid;place-items:center;color:#fff;font:800 50px/1 var(--display);letter-spacing:.02em;border:6px solid var(--paper);overflow:hidden}
 .av img{width:100%;height:100%;object-fit:cover;transform:scale(1.04)}
 .tm h3{font-size:clamp(24px,3.4vw,30px)}
@@ -26,7 +26,7 @@ button{font:inherit;color:inherit}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:15px}
 @media (max-width:560px){.tm{grid-template-columns:1fr;justify-items:center;text-align:center}.chips{justify-content:center}}
-</style><style>@media screen{html[data-theme=dark]{--ink:#E8EFEA;--muted:#AFC0B5;--paper:#17211C;--mist:#1F2E27;--line:#31453A;--blue-deep:#9FD6B8;--teal-deep:#F5B496;--sun-soft:#3A2A20;--alert-soft:#3B1D1B;--cream:#121A16;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}html[data-theme=dark] .accb,html[data-theme=dark] .music-btn{color:#CFE9DA!important;background:#24332B!important}html[data-theme=dark] .music-btn[aria-pressed="true"]{background:#2E6B53!important;color:#fff!important}html[data-theme=dark] .wa-share{background:#167C40!important}html[data-theme=dark] .band svg.leaves{opacity:.22}html[data-theme=dark] .search{background:linear-gradient(135deg,#1F4A3A,#24533F 60%,#2D4B45)!important}html[data-theme=dark] body .dot.dot,html[data-theme=dark] body .key .dot.dot{color:#1B120D!important}html[data-theme=dark] h3{--alert:#FF9C8F}html[data-theme=dark] button.act,html[data-theme=dark] body .act{color:#2A140A!important}html[data-theme=dark] .tm{background:linear-gradient(135deg,var(--mist),#243a26)!important}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head><body><div class="wrap">
+</style><style>@media screen{html[data-theme=dark]{--ink:#E8EFEA;--muted:#AFC0B5;--paper:#17211C;--mist:#1F2E27;--line:#31453A;--blue-deep:#9FD6B8;--teal-deep:#F5B496;--sun-soft:#3A2A20;--alert-soft:#3B1D1B;--cream:#121A16;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}html[data-theme=dark] .accb,html[data-theme=dark] .music-btn{color:#CFE9DA!important;background:#24332B!important}html[data-theme=dark] .music-btn[aria-pressed="true"]{background:#2E6B53!important;color:#fff!important}html[data-theme=dark] .wa-share{background:#167C40!important}html[data-theme=dark] .band svg.leaves{opacity:.22}html[data-theme=dark] .search{background:linear-gradient(135deg,#1F4A3A,#24533F 60%,#2D4B45)!important}html[data-theme=dark] body .dot.dot,html[data-theme=dark] body .key .dot.dot{color:#1B120D!important}html[data-theme=dark] h3{--alert:#FF9C8F}html[data-theme=dark] button.act,html[data-theme=dark] body .act{color:#2A140A!important}html[data-theme=dark] .tm{background:linear-gradient(135deg,var(--mist),#1f2c3f)!important}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head><body><div class="wrap">
 <section class="tm" aria-label="Ketua Editor dan Pereka">
   <!-- To use a photo: replace the initials below with <img src="PHOTO-ADDRESS" alt="Dr Haziq Aziz Shamri"> -->
   <div class="av" aria-hidden="true"><img src="../assets/team/haziq.webp" alt=""></div>

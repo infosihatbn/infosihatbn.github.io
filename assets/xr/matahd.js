@@ -154,7 +154,7 @@ void main(){
 
 // one set of lights for both the fur shader and normal materials
 export const LIGHTS = {
-  sky: 0xfff8ec, skyI: .55, ground: 0x6f8c7c, groundI: .35,
+  sky: 0xfff8ec, skyI: .55, ground: 0x7d8aa3, groundI: .35,
   key: [-.55, .75, .65], keyCol: 0xfff1df, keyI: .95,
   fill: [.8, .1, .55], fillCol: 0xd8ecff, fillI: .35,
   rim: [.4, .5, -.9], rimCol: 0xffffff, rimI: .9,
@@ -171,7 +171,7 @@ function furUniforms() {
   const L = LIGHTS, c = (h, i = 1) => new THREE.Color(h).multiplyScalar(i), v = a => new THREE.Vector3(...a).normalize();
   return {
     uDens: { value: 150 }, uLen: { value: 1 },
-    uGreen: { value: c(0x86b3a3) }, uCream: { value: c(0xf8e4d0) }, uBlush: { value: c(0xf3a7a2) },
+    uGreen: { value: c(0x9fc4e8) }, uCream: { value: c(0xf8e4d0) }, uBlush: { value: c(0xf3a7a2) },
     uKeyDir: { value: v(L.key) }, uKeyCol: { value: c(L.keyCol, L.keyI) }, uFillDir: { value: v(L.fill) }, uFillCol: { value: c(L.fillCol, L.fillI) },
     uRimDir: { value: v(L.rim) }, uRimCol: { value: c(L.rimCol, L.rimI) }, uSky: { value: c(L.sky, L.skyI) }, uGround: { value: c(L.ground, L.groundI) },
   };
@@ -309,7 +309,7 @@ export function createMataHD(opts = {}) {
 
   // small yellow heart on the head
   const hs = new THREE.Shape(); hs.moveTo(0, -.09); hs.bezierCurveTo(-.15, .0, -.09, .13, 0, .055); hs.bezierCurveTo(.09, .13, .15, 0, 0, -.09);
-  const yellow = new THREE.MeshPhysicalMaterial({ color: 0xf6bd3c, roughness: .55, sheen: 1, sheenColor: new THREE.Color(0xffe6a0), sheenRoughness: .6 });
+  const yellow = new THREE.MeshPhysicalMaterial({ color: 0xf39bbb, roughness: .55, sheen: 1, sheenColor: new THREE.Color(0xffe0ec), sheenRoughness: .6 });
   const heart = new THREE.Mesh(new THREE.ExtrudeGeometry(hs, { depth: .05, bevelEnabled: true, bevelThickness: .025, bevelSize: .025, bevelSegments: 4, curveSegments: 16 }), yellow);
   heart.name = 'HeadHeart'; heart.geometry.center(); heart.position.set(.5, 2.02, .12).sub(headW); heart.rotation.set(-.2, -.3, -.45); B.Head.add(heart);
 
@@ -319,7 +319,7 @@ export function createMataHD(opts = {}) {
   const rbox = (w, h, d, r) => { const g = new THREE.BoxGeometry(w, h, d, 10, 10, 10), p = g.attributes.position, v = new THREE.Vector3(), c = new THREE.Vector3(w / 2 - r, h / 2 - r, d / 2 - r);
     for (let i = 0; i < p.count; i++) { v.fromBufferAttribute(p, i); const q = new THREE.Vector3(Math.max(-c.x, Math.min(c.x, v.x)), Math.max(-c.y, Math.min(c.y, v.y)), Math.max(-c.z, Math.min(c.z, v.z))); v.sub(q).normalize().multiplyScalar(r).add(q); p.setXYZ(i, v.x, v.y, v.z); }
     g.computeVertexNormals(); return g; };
-  const felt = new THREE.MeshPhysicalMaterial({ color: 0xf3b941, roughness: .85, sheen: 1, sheenColor: new THREE.Color(0xfff0c0), sheenRoughness: .5 });
+  const felt = new THREE.MeshPhysicalMaterial({ color: 0xf4a3c1, roughness: .85, sheen: 1, sheenColor: new THREE.Color(0xffe4ef), sheenRoughness: .5 });
   bag.add(new THREE.Mesh(rbox(.36, .28, .14, .07), felt));
   const flap = new THREE.Mesh(rbox(.36, .16, .035, .016), felt); flap.position.set(0, .055, .07); flap.rotation.x = -.08; bag.add(flap);
   const bh = new THREE.Mesh(new THREE.ExtrudeGeometry(hs, { depth: .01, bevelEnabled: true, bevelThickness: .008, bevelSize: .008, bevelSegments: 2 }), new THREE.MeshStandardMaterial({ color: 0xfffaf2, roughness: .7 }));

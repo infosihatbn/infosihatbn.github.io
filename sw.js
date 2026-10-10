@@ -1,5 +1,5 @@
 // MataKitani offline support. Pages: network first, saved copy when offline. Files: saved copy, refreshed in the background.
-const V='infosihat-20261010041702',CORE=["./", "./english/", "./eye-clinics/", "./klinik-mata/", "./manifest.webmanifest", "./assets/logo-128.png", "./assets/dark.css?v=20261010041702", "./offline.html"];
+const V='infosihat-20261010110200',CORE=["./", "./english/", "./eye-clinics/", "./klinik-mata/", "./manifest.webmanifest", "./assets/logo-128.png", "./assets/dark.css?v=20261010110200", "./offline.html"];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(CORE.map(u=>c.add(new Request(u,{cache:'reload'})).catch(()=>{})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(n=>n.startsWith('infosihat-')&&n!==V).map(n=>caches.delete(n)))).then(()=>self.clients.claim()))});
 const net=async(req,key)=>{try{const r=await fetch(req);if(r.ok){const c=await caches.open(V);c.put(key||req,r.clone())}return r}catch(err){return null}};

@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>3D eye model</title>
 <style>
-:root{--ink:#173A2E;--muted:#4F6359;--paper:#FFFFFF;--mist:#E8F0E9;--line:#DDE7DD;--blue-deep:#154A32;--teal:#E8B820;
+:root{--ink:#14263D;--muted:#48576A;--paper:#FFFFFF;--mist:#E1EAF7;--line:#D1E0F3;--blue-deep:#152C4A;--teal:#EF9AB9;
 --display:"Lexend",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:transparent;color:var(--ink);font:400 16px/1.5 var(--body);overflow:hidden}
 .wrap{display:flex;flex-direction:column;height:100%;gap:10px}
-.stage{position:relative;flex:1;min-height:240px;border-radius:20px;overflow:hidden;background:radial-gradient(120% 90% at 50% 35%,#2b3d36 0%,#0e1714 72%);touch-action:none}
+.stage{position:relative;flex:1;min-height:240px;border-radius:20px;overflow:hidden;background:radial-gradient(120% 90% at 50% 35%,#273241 0%,#0D1218 72%);touch-action:none}
 canvas{display:block;width:100%;height:100%;outline:none}
 .hint{position:absolute;left:10px;bottom:10px;pointer-events:none;background:rgba(0,0,0,.45);color:#fff;font:500 12px/1.3 var(--display);padding:6px 10px;border-radius:999px;transition:opacity .6s}
-.lab{position:absolute;left:0;top:0;transform:translate(-50%,-50%);pointer-events:none;font:600 12px/1 var(--display);color:#fff;background:rgba(14,23,20,.72);border:1px solid rgba(255,255,255,.35);padding:5px 8px;border-radius:999px;white-space:nowrap;transition:opacity .2s}
-.lab.pin{background:#E8B820;color:#2a140a;border-color:#fff;font-weight:700}
+.lab{position:absolute;left:0;top:0;transform:translate(-50%,-50%);pointer-events:none;font:600 12px/1 var(--display);color:#fff;background:rgba(13,18,24,.72);border:1px solid rgba(255,255,255,.35);padding:5px 8px;border-radius:999px;white-space:nowrap;transition:opacity .2s}
+.lab.pin{background:#EF9AB9;color:#2a140a;border-color:#fff;font-weight:700}
 .labs[hidden]{display:none}
 .bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .seg{display:inline-flex;background:var(--mist);border-radius:999px;padding:3px}
@@ -25,12 +25,12 @@ canvas{display:block;width:100%;height:100%;outline:none}
 .ic{font-size:17px!important;padding:0!important;width:38px}
 .tg[aria-pressed=true]::before{content:"✓ "}
 .act{background:var(--teal)!important;color:#2a140a!important}
-.bar button:focus-visible{outline:3px solid #E8B820;outline-offset:2px}
-.load{position:absolute;inset:0;display:grid;place-items:center;color:#d9e8df;font:600 15px var(--display)}
+.bar button:focus-visible{outline:3px solid #EF9AB9;outline-offset:2px}
+.load{position:absolute;inset:0;display:grid;place-items:center;color:#CEDEF3;font:600 15px var(--display)}
 .err{margin:16px;padding:16px;border-radius:14px;background:#FDECEA;color:#7a1d17}
 @media (max-width:560px){.bar button{padding:8px 10px;font-size:12px;min-height:36px}.bar{gap:5px}}
 </style>
-<style>@media screen{html[data-theme=dark]{--ink:#E8EFEA;--muted:#AFC0B5;--paper:#17211C;--mist:#1F2E27;--line:#31453A;--blue-deep:#9FD6B8;--teal-deep:#F5B496;--sun-soft:#3A2A20;--alert-soft:#3B1D1B;--cream:#121A16;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}html[data-theme=dark] .accb,html[data-theme=dark] .music-btn{color:#CFE9DA!important;background:#24332B!important}html[data-theme=dark] .music-btn[aria-pressed="true"]{background:#2E6B53!important;color:#fff!important}html[data-theme=dark] .wa-share{background:#167C40!important}html[data-theme=dark] .band svg.leaves{opacity:.22}html[data-theme=dark] .search{background:linear-gradient(135deg,#1F4A3A,#24533F 60%,#2D4B45)!important}html[data-theme=dark] body .dot.dot,html[data-theme=dark] body .key .dot.dot{color:#1B120D!important}html[data-theme=dark] h3{--alert:#FF9C8F}html[data-theme=dark] button.act,html[data-theme=dark] body .act{color:#2A140A!important}html[data-theme=dark] .lab{border:1px solid rgba(66,66,66,.35)!important}html[data-theme=dark] .lab.pin{color:#f9ede8!important;border-color:#424242!important}html[data-theme=dark] .seg button[aria-pressed=true]{background:#154A32!important}html[data-theme=dark] .tg[aria-pressed=true]{border-color:#154A32!important}html[data-theme=dark] .act{color:#f9ede8!important}html[data-theme=dark] .err{background:#341c19!important;color:#f2bfbc!important}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head>
+<style>@media screen{html[data-theme=dark]{--ink:#E8EFEA;--muted:#AFC0B5;--paper:#17211C;--mist:#1F2E27;--line:#31453A;--blue-deep:#9FD6B8;--teal-deep:#F5B496;--sun-soft:#3A2A20;--alert-soft:#3B1D1B;--cream:#121A16;color-scheme:dark}html[data-theme=dark] .brand img{border-radius:50%}html[data-theme=dark] .accb,html[data-theme=dark] .music-btn{color:#CFE9DA!important;background:#24332B!important}html[data-theme=dark] .music-btn[aria-pressed="true"]{background:#2E6B53!important;color:#fff!important}html[data-theme=dark] .wa-share{background:#167C40!important}html[data-theme=dark] .band svg.leaves{opacity:.22}html[data-theme=dark] .search{background:linear-gradient(135deg,#1F4A3A,#24533F 60%,#2D4B45)!important}html[data-theme=dark] body .dot.dot,html[data-theme=dark] body .key .dot.dot{color:#1B120D!important}html[data-theme=dark] h3{--alert:#FF9C8F}html[data-theme=dark] button.act,html[data-theme=dark] body .act{color:#2A140A!important}html[data-theme=dark] .lab{border:1px solid rgba(66,66,66,.35)!important}html[data-theme=dark] .lab.pin{color:#f9ede8!important;border-color:#424242!important}html[data-theme=dark] .seg button[aria-pressed=true]{background:#152C4A!important}html[data-theme=dark] .tg[aria-pressed=true]{border-color:#152C4A!important}html[data-theme=dark] .act{color:#f9ede8!important}html[data-theme=dark] .bar button:focus-visible{outline:3px solid #753f52!important}html[data-theme=dark] .err{background:#341c19!important;color:#f2bfbc!important}}</style><script>(()=>{const a=()=>{try{const t=localStorage.getItem('is-theme');document.documentElement.dataset.theme=t||'light'}catch(e){}};a();addEventListener('storage',a);setInterval(a,1500)})()</script></head>
 <body>
 <div class="wrap">
  <div class="stage" id="stage"><div class="load" id="load">Loading the 3D eye…</div>
@@ -84,8 +84,8 @@ function tex(c){const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorS
 // ---------- sclera with conjunctival vessels ----------
 const LIMB=0.49, THL=Math.asin(LIMB);
 const scC=canvas(2048,1024),scT=tex(scC);let scRed=-1;
-function drawSclera(red){red=+red||0;if(red===scRed)return;scRed=red;const g=scC.getContext('2d');g.fillStyle='#f3efe8';g.fillRect(0,0,2048,1024);
- const gr=g.createLinearGradient(0,0,0,1024);gr.addColorStop(0,'rgba(240,215,205,.35)');gr.addColorStop(.35,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,2048,1024);
+function drawSclera(red){red=+red||0;if(red===scRed)return;scRed=red;const g=scC.getContext('2d');g.fillStyle='#F7E4EB';g.fillRect(0,0,2048,1024);
+ const gr=g.createLinearGradient(0,0,0,1024);gr.addColorStop(0,'rgba(240,205,218,.35)');gr.addColorStop(.35,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,2048,1024);
  if(red){const r=g.createLinearGradient(0,0,0,300);r.addColorStop(0,`rgba(200,40,40,${.3+red*.3})`);r.addColorStop(1,'rgba(200,40,40,0)');g.fillStyle=r;g.fillRect(0,0,2048,300)}
  const R=seeded(11);
  for(let i=0;i<(red?200:120);i++){let x=R()*2048,y=250+R()*90;g.strokeStyle=`rgba(${170+R()*40|0},${30+R()*30|0},${35+R()*20|0},${(red?.5:.3)+R()*.25})`;g.lineWidth=.6+R()*(red?1.8:1.2);g.beginPath();g.moveTo(x,y);
@@ -132,11 +132,11 @@ function drawCornea(mode,s){const g=coC.getContext('2d');g.clearRect(0,0,1024,10
   let r=g.createRadialGradient(x,y,R0*.6,x,y,R0*2.3);r.addColorStop(0,'rgba(235,235,225,.6)');r.addColorStop(1,'rgba(235,235,225,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,R0*2.3,0,7);g.fill();
   const RU=seeded(5);
   g.beginPath();for(let a=0;a<6.3;a+=.12){const rr=R0*(.95+Math.sin(a*5)*.06+RU()*.06);g.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}g.closePath();
-  r=g.createRadialGradient(x,y,0,x,y,R0);r.addColorStop(0,'rgba(232,214,150,1)');r.addColorStop(.55,'rgba(246,240,214,1)');r.addColorStop(.86,'rgba(255,253,244,1)');r.addColorStop(1,'rgba(150,140,125,.9)');g.fillStyle=r;g.fill();
-  g.save();g.clip();r=g.createRadialGradient(x+R0*.1,y+R0*.35,R0*.55,x+R0*.1,y+R0*.35,R0*1.25);r.addColorStop(0,'rgba(90,75,50,0)');r.addColorStop(1,'rgba(90,75,50,.6)');g.fillStyle=r;g.fillRect(x-R0,y-R0,R0*2,R0*2);g.restore();
+  r=g.createRadialGradient(x,y,0,x,y,R0);r.addColorStop(0,'rgba(239,154,185,1)');r.addColorStop(.55,'rgba(246,214,226,1)');r.addColorStop(.86,'rgba(254,245,248,1)');r.addColorStop(1,'rgba(150,140,125,.9)');g.fillStyle=r;g.fill();
+  g.save();g.clip();r=g.createRadialGradient(x+R0*.1,y+R0*.35,R0*.55,x+R0*.1,y+R0*.35,R0*1.25);r.addColorStop(0,'rgba(90,50,65,0)');r.addColorStop(1,'rgba(90,50,65,.6)');g.fillStyle=r;g.fillRect(x-R0,y-R0,R0*2,R0*2);g.restore();
   g.strokeStyle='rgba(110,100,90,.75)';g.lineWidth=5;g.stroke();
-  for(let i=0;i<26;i++){const a=RU()*6.28,d=R0*(1+RU()*.5);g.strokeStyle='rgba(250,250,240,.5)';g.lineWidth=2+RU()*3;g.beginPath();g.moveTo(x+Math.cos(a)*R0*.95,y+Math.sin(a)*R0*.95);g.lineTo(x+Math.cos(a+(RU()-.5)*.3)*d,y+Math.sin(a+(RU()-.5)*.3)*d);g.stroke()}}
- if(mode==='sei'){const RS=seeded(17),n=10+Math.round(s*40);for(let i=0;i<n;i++){const a=RS()*6.28,d=Math.sqrt(RS())*300,x=512+Math.cos(a)*d,y=512+Math.sin(a)*d,sz=9+RS()*14;const r=g.createRadialGradient(x,y,0,x,y,sz);r.addColorStop(0,'rgba(255,255,250,.85)');r.addColorStop(1,'rgba(255,255,250,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,sz,0,7);g.fill()}}
+  for(let i=0;i<26;i++){const a=RU()*6.28,d=R0*(1+RU()*.5);g.strokeStyle='rgba(250,239,244,.5)';g.lineWidth=2+RU()*3;g.beginPath();g.moveTo(x+Math.cos(a)*R0*.95,y+Math.sin(a)*R0*.95);g.lineTo(x+Math.cos(a+(RU()-.5)*.3)*d,y+Math.sin(a+(RU()-.5)*.3)*d);g.stroke()}}
+ if(mode==='sei'){const RS=seeded(17),n=10+Math.round(s*40);for(let i=0;i<n;i++){const a=RS()*6.28,d=Math.sqrt(RS())*300,x=512+Math.cos(a)*d,y=512+Math.sin(a)*d,sz=9+RS()*14;const r=g.createRadialGradient(x,y,0,x,y,sz);r.addColorStop(0,'rgba(255,250,252,.85)');r.addColorStop(1,'rgba(255,250,252,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,sz,0,7);g.fill()}}
  // Placido-style light rings reflected off the cornea (how corneal shape is measured)
  if(mode==='ast'){const q=.25+.3*s;for(let i=1;i<=5;i++){const r0=i*52;ring(g,512,512,a=>[r0*(1+q*.5),r0*(1-q*.5)],'rgba(255,255,255,.75)',4)}}
  if(mode==='kc'){const cx=X(KC[0]),cy=Y(KC[1]),q=.25+.45*s;
@@ -146,7 +146,7 @@ function drawCornea(mode,s){const g=coC.getContext('2d');g.clearRect(0,0,1024,10
 
 // ---------- iris ----------
 const irC=canvas(1024,1024),ig=irC.getContext('2d');
-{ig.translate(512,512);const b=ig.createRadialGradient(0,0,60,0,0,500);b.addColorStop(0,'#2a170e');b.addColorStop(.35,'#5a3520');b.addColorStop(.7,'#3A2E05');b.addColorStop(1,'#20120a');ig.fillStyle=b;ig.beginPath();ig.arc(0,0,512,0,7);ig.fill();
+{ig.translate(512,512);const b=ig.createRadialGradient(0,0,60,0,0,500);b.addColorStop(0,'#2a170e');b.addColorStop(.35,'#5a3520');b.addColorStop(.7,'#2F101B');b.addColorStop(1,'#20120a');ig.fillStyle=b;ig.beginPath();ig.arc(0,0,512,0,7);ig.fill();
  for(let i=0;i<900;i++){const a=rnd()*6.283,r0=130+rnd()*60,r1=300+rnd()*200;ig.strokeStyle=`rgba(${120+rnd()*80|0},${70+rnd()*50|0},${30+rnd()*30|0},${.15+rnd()*.3})`;ig.lineWidth=1+rnd()*2.5;ig.beginPath();ig.moveTo(Math.cos(a)*r0,Math.sin(a)*r0);ig.quadraticCurveTo(Math.cos(a+.05)*(r0+r1)/2,Math.sin(a+.05)*(r0+r1)/2,Math.cos(a)*r1,Math.sin(a)*r1);ig.stroke()}
  ig.strokeStyle='rgba(150,95,50,.6)';ig.lineWidth=10;ig.beginPath();for(let a=0;a<6.3;a+=.05){const r=230+Math.sin(a*14)*14;ig.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ig.closePath();ig.stroke()}
 const irisGeo=new THREE.RingGeometry(.13,LIMB-.01,96,4);{const p=irisGeo.attributes.position,uv=irisGeo.attributes.uv;for(let i=0;i<p.count;i++)uv.setXY(i,.5+p.getX(i)/(2*LIMB),.5+p.getY(i)/(2*LIMB))}
@@ -190,16 +190,16 @@ const reBase=canvas(2048,2048);
 function cupOf(f,s){return f.gl?{cd:.42+.5*s,dep:.012+.02*s,dy:.12*s}:{cd:.3,dep:.007,dy:0}}
 function drawRetina(f,s){const g=reC.getContext('2d');g.setTransform(1,0,0,1,0,0);g.globalCompositeOperation='source-over';g.drawImage(reBase,0,0);
  let b=g.createRadialGradient(CX,CY,0,CX,CY,D(9));b.addColorStop(0,'rgba(70,15,8,.75)');b.addColorStop(1,'rgba(70,15,8,0)');g.fillStyle=b;g.beginPath();g.arc(CX,CY,D(9),0,7);g.fill();
- g.fillStyle='rgba(255,230,180,.75)';g.beginPath();g.arc(CX,CY,3,0,7);g.fill();
- g.strokeStyle='rgba(255,220,190,.18)';g.lineWidth=3;g.beginPath();g.arc(CX,CY,D(2.5),0,7);g.stroke();
+ g.fillStyle='rgba(251,184,208,.75)';g.beginPath();g.arc(CX,CY,3,0,7);g.fill();
+ g.strokeStyle='rgba(252,193,215,.18)';g.lineWidth=3;g.beginPath();g.arc(CX,CY,D(2.5),0,7);g.stroke();
  if(f.amd){const RA=seeded(53);
   if(s>.55){const k=(s-.55)/.45,gr=D(1.5+4*k);g.save();g.beginPath();[[0,0,1],[.55,-.3,.7],[-.45,.35,.65],[.2,.6,.55]].forEach(([ox,oy,r])=>{g.moveTo(CX+ox*gr+r*gr,CY+oy*gr);g.arc(CX+ox*gr,CY+oy*gr,r*gr,0,7)});
-   g.fillStyle='#d9a47a';g.fill();g.clip();for(let i=0;i<40;i++){g.strokeStyle=`rgba(${170+RA()*40|0},${70+RA()*30|0},${50+RA()*20|0},.8)`;g.lineWidth=5+RA()*7;g.beginPath();let x=CX+(RA()-.5)*gr*3,y=CY+(RA()-.5)*gr*3;g.moveTo(x,y);for(let j=0;j<5;j++){x+=(RA()-.5)*gr*.8;y+=(RA()-.5)*gr*.8;g.lineTo(x,y)}g.stroke()}
+   g.fillStyle='#EF9AB9';g.fill();g.clip();for(let i=0;i<40;i++){g.strokeStyle=`rgba(${170+RA()*40|0},${70+RA()*30|0},${50+RA()*20|0},.8)`;g.lineWidth=5+RA()*7;g.beginPath();let x=CX+(RA()-.5)*gr*3,y=CY+(RA()-.5)*gr*3;g.moveTo(x,y);for(let j=0;j<5;j++){x+=(RA()-.5)*gr*.8;y+=(RA()-.5)*gr*.8;g.lineTo(x,y)}g.stroke()}
    g.restore();g.strokeStyle='rgba(60,30,18,.55)';g.lineWidth=4;g.stroke()}
-  const nd=14+Math.round(s*90);for(let i=0;i<nd;i++){const a=RA()*6.28,d=D(.3+RA()*(2.2+5*s)),x=CX+Math.cos(a)*d,y=CY+Math.sin(a)*d*.85,rr=D(.12+RA()*(.18+.4*s));const r=g.createRadialGradient(x,y,0,x,y,rr);r.addColorStop(0,'rgba(255,232,140,.95)');r.addColorStop(.6,'rgba(240,205,110,.75)');r.addColorStop(1,'rgba(240,205,110,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,rr,0,7);g.fill()}
+  const nd=14+Math.round(s*90);for(let i=0;i<nd;i++){const a=RA()*6.28,d=D(.3+RA()*(2.2+5*s)),x=CX+Math.cos(a)*d,y=CY+Math.sin(a)*d*.85,rr=D(.12+RA()*(.18+.4*s));const r=g.createRadialGradient(x,y,0,x,y,rr);r.addColorStop(0,'rgba(239,156,186,.95)');r.addColorStop(.6,'rgba(239,154,185,.75)');r.addColorStop(1,'rgba(239,154,185,0)');g.fillStyle=r;g.beginPath();g.arc(x,y,rr,0,7);g.fill()}
   if(s>.3){const np=Math.round((s-.3)*40);for(let i=0;i<np;i++){const a=RA()*6.28,d=D(.5+RA()*4),x=CX+Math.cos(a)*d,y=CY+Math.sin(a)*d;g.fillStyle='rgba(35,20,12,.75)';g.beginPath();g.ellipse(x,y,D(.08+RA()*.2),D(.06+RA()*.14),RA()*3,0,7);g.fill()}}}
- const [dx,dy]=DISC,cu=cupOf(f,s);b=g.createRadialGradient(dx,dy,0,dx,dy,D(3.2));b.addColorStop(0,'#fff6d8');b.addColorStop(.35,f.gl?'#f3dcb0':'#f6d39a');b.addColorStop(.8,f.gl?'#e9b896':'#e7a77a');b.addColorStop(1,'rgba(200,100,60,0)');g.fillStyle=b;g.beginPath();g.ellipse(dx,dy,D(2.9),D(3.3),0,0,7);g.fill();
- if(f.gl&&s>.45){g.fillStyle='rgba(235,205,160,.55)';g.beginPath();g.ellipse(dx+D(2.4),dy,D(1.5),D(2.6),0,-1.6,1.6);g.fill()} // peripapillary atrophy (temporal crescent)
+ const [dx,dy]=DISC,cu=cupOf(f,s);b=g.createRadialGradient(dx,dy,0,dx,dy,D(3.2));b.addColorStop(0,'#FDDAE7');b.addColorStop(.35,f.gl?'#F2B1C9':'#F0A0BD');b.addColorStop(.8,f.gl?'#EF9AB9':'#EF9AB9');b.addColorStop(1,'rgba(200,100,60,0)');g.fillStyle=b;g.beginPath();g.ellipse(dx,dy,D(2.9),D(3.3),0,0,7);g.fill();
+ if(f.gl&&s>.45){g.fillStyle='rgba(239,156,186,.55)';g.beginPath();g.ellipse(dx+D(2.4),dy,D(1.5),D(2.6),0,-1.6,1.6);g.fill()} // peripapillary atrophy (temporal crescent)
  g.lineCap='round';g.lineJoin='round';
  for(const v of vessels){g.strokeStyle=v.art?'#b8302a':'#86201a';g.lineWidth=v.w;g.beginPath();v.pts.forEach(([x,y],i)=>i?g.lineTo(x,y):g.moveTo(x,y));g.stroke();
   if(v.w>3){g.strokeStyle=v.art?'rgba(255,170,150,.35)':'rgba(200,90,80,.25)';g.lineWidth=v.w*.2;g.stroke()}}
@@ -208,9 +208,9 @@ function drawRetina(f,s){const g=reC.getContext('2d');g.setTransform(1,0,0,1,0,0
    g.fillStyle=blot?'rgba(110,8,8,.9)':'rgba(140,10,10,.95)';g.beginPath();blot?g.ellipse(x,y,sz,sz*(.7+R2()*.3),R2()*3,0,7):g.arc(x,y,sz,0,7);g.fill()}
   const ringX=(cx,cy,rad,n)=>{for(let i=0;i<n;i++){const a=R2()*6.28,rr=rad*(.8+R2()*.4),x=cx+Math.cos(a)*rr,y=cy+Math.sin(a)*rr,sz=2+R2()*4.5;g.fillStyle=`rgba(255,${215+R2()*30|0},${90+R2()*50|0},.95)`;g.beginPath();g.arc(x,y,sz,0,7);g.fill()}};
   if(f.dr){if(s>.2)ringX(CX+D(7),CY-D(5),D(3.2),Math.round(15+30*s));if(s>.4)ringX(CX-D(9),CY+D(6),D(2.5),30);
-   if(s>.35)for(let i=0;i<3;i++){const x=CX+D(-12+i*11),y=CY+D(i%2?-10:9);for(let j=0;j<5;j++){const xx=x+(R2()-.5)*D(1.2),yy=y+(R2()-.5)*D(.8),rr=D(.6+R2()*.5);const r=g.createRadialGradient(xx,yy,0,xx,yy,rr);r.addColorStop(0,'rgba(250,248,235,.85)');r.addColorStop(1,'rgba(250,248,235,0)');g.fillStyle=r;g.beginPath();g.arc(xx,yy,rr,0,7);g.fill()}}
+   if(s>.35)for(let i=0;i<3;i++){const x=CX+D(-12+i*11),y=CY+D(i%2?-10:9);for(let j=0;j<5;j++){const xx=x+(R2()-.5)*D(1.2),yy=y+(R2()-.5)*D(.8),rr=D(.6+R2()*.5);const r=g.createRadialGradient(xx,yy,0,xx,yy,rr);r.addColorStop(0,'rgba(250,235,240,.85)');r.addColorStop(1,'rgba(250,235,240,0)');g.fillStyle=r;g.beginPath();g.arc(xx,yy,rr,0,7);g.fill()}}
    if(s>.75){g.strokeStyle='rgba(200,40,40,.85)';g.lineWidth=1.6;const RN=seeded(77);for(let i=0;i<16;i++){g.beginPath();let x=dx+(RN()-.5)*D(3),y=dy+(RN()-.5)*D(3);g.moveTo(x,y);for(let j=0;j<6;j++){x+=(RN()-.5)*D(1.3);y+=(RN()-.5)*D(1.3);g.lineTo(x,y)}g.stroke()}}} // new vessels at the disc (proliferative)
-  if(f.dmo){g.save();g.globalCompositeOperation='destination-out';const ho=g.createRadialGradient(CX,CY,0,CX,CY,D(5.5));ho.addColorStop(0,'rgba(0,0,0,.4)');ho.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=ho;g.beginPath();g.arc(CX,CY,D(5.5),0,7);g.fill();g.restore();ringX(CX,CY,D(4.5),Math.round(30+50*s));b=g.createRadialGradient(CX,CY,0,CX,CY,D(6));b.addColorStop(0,'rgba(255,235,200,.28)');b.addColorStop(1,'rgba(255,235,200,0)');g.fillStyle=b;g.beginPath();g.arc(CX,CY,D(6),0,7);g.fill()}}
+  if(f.dmo){g.save();g.globalCompositeOperation='destination-out';const ho=g.createRadialGradient(CX,CY,0,CX,CY,D(5.5));ho.addColorStop(0,'rgba(0,0,0,.4)');ho.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=ho;g.beginPath();g.arc(CX,CY,D(5.5),0,7);g.fill();g.restore();ringX(CX,CY,D(4.5),Math.round(30+50*s));b=g.createRadialGradient(CX,CY,0,CX,CY,D(6));b.addColorStop(0,'rgba(252,203,221,.28)');b.addColorStop(1,'rgba(252,203,221,0)');g.fillStyle=b;g.beginPath();g.arc(CX,CY,D(6),0,7);g.fill()}}
  if(f.rd){const N=512,id=g.createImageData(N,N),sc=2048/N;
   for(let py=0;py<N;py++)for(let px=0;px<N;px++){const ux=(px*sc-CX)/1024*AMAX,uy=-(py*sc-CY)/1024*AMAX,w=rdW8(ux,uy);if(w<=0)continue;
    const al=Math.hypot(ux,uy),az=Math.atan2(uy,ux),fold=Math.sin(az*6+al*4)+.6*Math.sin(az*13-al*9),k=(px+py*N)*4,sh=1-.25*Math.max(0,fold-.4);
@@ -236,8 +236,8 @@ function shapeCup(f,s){const cu=cupOf(f,s),p=cupGeo.attributes.position,v=new TH
   v.copy(discDir).multiplyScalar(RR).addScaledVector(T1,-x).addScaledVector(T2,y);v.normalize().multiplyScalar(RR+.002+dep);p.setXYZ(i,v.x,v.y,v.z)}
  p.needsUpdate=true;cupGeo.computeVertexNormals();
  // texture: pale cup floor, pink neuroretinal rim at the edge, vessel trunks climbing out of the cup
- const g=cupC.getContext('2d'),S=512/.22,X=x=>256+x*S,Y=y=>256-y*S;g.fillStyle=f.gl?'#f0d8b4':'#f2c79a';g.fillRect(0,0,512,512);
- let r=g.createRadialGradient(X(0),Y(cy0),0,X(0),Y(cy0),ay*S);r.addColorStop(0,'#fffbee');r.addColorStop(.7,'#fbf1d6');r.addColorStop(1,'rgba(245,225,190,.0)');g.fillStyle=r;g.beginPath();g.ellipse(X(0),Y(cy0),ax*S*1.05,ay*S*1.05,0,0,7);g.fill();
+ const g=cupC.getContext('2d'),S=512/.22,X=x=>256+x*S,Y=y=>256-y*S;g.fillStyle=f.gl?'#F2B2C9':'#EF9DBB';g.fillRect(0,0,512,512);
+ let r=g.createRadialGradient(X(0),Y(cy0),0,X(0),Y(cy0),ay*S);r.addColorStop(0,'#FEEFF4');r.addColorStop(.7,'#FBD6E4');r.addColorStop(1,'rgba(245,190,210,.0)');g.fillStyle=r;g.beginPath();g.ellipse(X(0),Y(cy0),ax*S*1.05,ay*S*1.05,0,0,7);g.fill();
  g.fillStyle='rgba(120,90,70,.25)';for(let i=0;i<60;i++){const a=i/60*6.283,rr=.45+.4*((i*37)%11)/11;g.beginPath();g.arc(X(Math.cos(a)*ax*rr),Y(cy0+Math.sin(a)*ay*rr),2.2,0,7);g.fill()} // lamina cribrosa pores
  g.lineCap='round';for(const [sx,col,w] of [[-.006,'#86201a',9],[.006,'#b8302a',7]]){g.strokeStyle=col;g.lineWidth=w;for(const sg of [1,-1]){g.beginPath();g.moveTo(X(sx*.3),Y(cy0));g.bezierCurveTo(X(sx*.4),Y(cy0+sg*ay*.6),X(sx*.2+ (f.gl?-.012:0)),Y(sg*ay*1.05),X(sx-.004),Y(sg*.105));g.stroke()}}
  cupT.needsUpdate=true}
@@ -269,7 +269,7 @@ const vit=new THREE.Mesh(new THREE.SphereGeometry(.94,64,32),vitMat);eye.add(vit
 function sprite(col){const c=canvas(64,64),g=c.getContext('2d'),r=g.createRadialGradient(32,32,0,32,32,32);r.addColorStop(0,col);r.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=r;g.fillRect(0,0,64,64);return tex(c)}
 function cloud(n,col,size,bias){const g=new THREE.BufferGeometry(),a=new Float32Array(n*3);for(let i=0;i<n;i++){let x,y,z;do{x=rnd()*2-1;y=rnd()*2-1;z=rnd()*2-1}while(x*x+y*y+z*z>1);y=y*.85-bias*Math.abs(rnd());a.set([x*.8,Math.max(-.82,y*.8),z*.75-.12],i*3)}g.setAttribute('position',new THREE.BufferAttribute(a,3));
  const m=new THREE.PointsMaterial({map:sprite(col),size,transparent:true,depthWrite:false,sizeAttenuation:true});m.clippingPlanes=[CUT];clipMats.push(m);const p=new THREE.Points(g,m);p.visible=false;eye.add(p);return p}
-const blood=cloud(900,'rgba(140,12,12,.22)',.42,.5), blood2=cloud(140,'rgba(80,0,0,.6)',.12,.7), pus=cloud(1600,'rgba(240,235,200,.45)',.2,.1), pus2=cloud(500,'rgba(230,225,190,.5)',.14,.3);
+const blood=cloud(900,'rgba(140,12,12,.22)',.42,.5), blood2=cloud(140,'rgba(80,0,0,.6)',.12,.7), pus=cloud(1600,'rgba(240,200,215,.45)',.2,.1), pus2=cloud(500,'rgba(242,178,201,.5)',.14,.3);
 const floatA=new THREE.Group(),floatB=new THREE.Group();floatA.visible=floatB.visible=false;eye.add(floatA,floatB);
 const flMat=M({color:0x2b2b2b,transparent:true,opacity:.45,roughness:1,depthWrite:false});
 for(let i=0;i<11;i++){const pts=[];let p=new THREE.Vector3((rnd()-.5)*.9,(rnd()-.5)*.9,(rnd()-.6)*.8);for(let k=0;k<6;k++){pts.push(p.clone());p.add(new THREE.Vector3((rnd()-.5)*.14,(rnd()-.5)*.14,(rnd()-.5)*.14))}
