@@ -2,6 +2,12 @@
  "news": {
   "items": [
    {
+    "t": "Air quality stays moderate nationwide",
+    "src": "Borneo Bulletin Online",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1mNUwtbGJiYjJBMm84SndNQXZMM2ZoMVFDNXVxTXN5d0VZb2d1eTdieV9kdC1STmd5RFFTWGJ5ekVIVDB1SGJvb1lKdms5VjQ4eEZqRTFnZ0JhaGtVb2l1dWZCYldSdldfWHoyWG9taGhzUGc4S2t3?oc=5",
+    "d": "2026-10-09"
+   },
+   {
     "t": "Three districts in Brunei record moderate air quality",
     "src": "The Star",
     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdTJIMUZXWjdSakZvTzMxYXZvS0lkeGEtUmhMam15NXFobk0xdnBSeVVEN1JmRUNPWUlPeXNIdUlUUnJmX3d2dFN3WkRab210RjN0LUlBXzlweXlZWWMxVDNOZmptT2M4RWdTcjUwM0RQOEl0LWtta0lQWVZIRHFOdjdQQUxJQXYtek05bWEwX2s5cF9xQVQzQzVmTkdHY2c5TXJKWnBodC1DTEZrM0xOZng2ZVFQTkE?oc=5",
@@ -30,56 +36,50 @@
     "src": "Borneo Bulletin Online",
     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNZXpqMVQwdmdQdUkzOGpFRzdnTEhRaWtZQ1pvbTdGaDE2WGwxRmlPcGc4aE9wTG9BUFk3S1VxZTYwOGFvdlVxbUFWZFFnSjZMN0NwdjRZWEZfR19mUzdHM0o1SWtpZ0prRnk1WFo0SXF3VTdaZ0MtMl9iczV2OTF5WlpqUFc?oc=5",
     "d": "2026-10-03"
-   },
-   {
-    "t": "Air quality stays good, Brunei-Muara dips moderate",
-    "src": "Borneo Bulletin Online",
-    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOaC02LXdwYTdtM2huNVBrcEsyZjZGNkQ3SGJBS0hER0ZhTHRBQk8wQ3hIcXdsSUsxRmc0RzZJUW12dUNfd0FYNlNudUY4dHdXYlBxYlF0QUlzNHdlYzNyVHBEbEhyWENfNjBBWXBPM2lVbks1ZEZ5Z0loNW90dHJ6REhJcmNzdFE?oc=5",
-    "d": "2026-10-02"
    }
   ],
-  "updated": "2026-10-09"
+  "updated": "2026-10-10"
  },
  "sea": {
   "items": [
    {
-    "t": "Long-Term Foveal Microvascular Alterations in Children With Hypoxic-Ischemic Encephalopathy: An OCT Angiography Study",
-    "src": "Retina",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854202/"
-   },
-   {
-    "t": "Pooled Data Meta-Analysis of Pneumatic Vitreolysis for Treatment of Vitreomacular Traction Syndrome With, And Without Full Thickness Macular Holes",
-    "src": "Retina",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854198/"
-   },
-   {
-    "t": "Incidence of Retinal Artery Occlusion After Carotid Endarterectomy Versus Carotid Artery Stenting",
-    "src": "Retina",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854197/"
-   },
-   {
-    "t": "Probability of myopic macular degeneration in dependence on axial length and age: The two-continent eye study",
+    "t": "Insulin usage and glaucoma treatment associated with the incidence of surgically treated vision-threatening epiretinal membrane: Evidence from an epidemiological study",
     "src": "Acta Ophthalmologica",
     "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42853059/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42855964/"
    },
    {
-    "t": "S-Opsin Contributes to Violet Light-Dependent Refractive Development and Is Associated With Corneal Structural Remodeling in Mice",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42853008/"
+    "t": "Prelaminar hyperreflective lines in non-arteritic anterior ischaemic optic neuropathy",
+    "src": "Eye",
+    "d": "2026 Oct 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42855590/"
    },
    {
-    "t": "Spontaneous Achromatopsia-Like Phenotype in Albino Swiss CD-1 Mice: Retinocortical Dysfunction, Neurovascular Remodeling, and Glial Activation",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42853007/"
+    "t": "Ocular Metastasis: Clinical Course and Survival Analysis of 569 Patients (727 Eyes) Over a 40-Year Interval (1979-2018)",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Oct 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42855109/"
+   },
+   {
+    "t": "Ocular Changes in Human Spaceflight",
+    "src": "Progress in Retinal and Eye Research",
+    "d": "2026 Oct 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42855039/"
+   },
+   {
+    "t": "International consensuses and guidelines on etiology, diagnosis, and treatment of retinal vein occlusion (RVO) by the Academy of Asia-Pacific Professors of Ophthalmology (AAPPO), Asia-Pacific Vitreo-retina Society (APVRS) and Academia Retina Internationalis (ARI)",
+    "src": "Asia-Pacific Journal of Ophthalmology",
+    "d": "2026 Oct 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42854985/"
+   },
+   {
+    "t": "Prevalence of Diabetic Retinopathy and Cardiovascular Risk Factors Among Diverse Hispanic/Latino Adults: HCHS/SOL and SOL Ojos Results",
+    "src": "Ophthalmology",
+    "d": "2026 Oct 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42854854/"
    }
   ],
-  "updated": "2026-10-09"
+  "updated": "2026-10-10"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-09"
+  "updated": "2026-10-10"
  },
- "checked": "2026-10-09T22:08+00:00",
+ "checked": "2026-10-10T22:06+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
