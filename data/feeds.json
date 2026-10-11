@@ -2,46 +2,58 @@
  "news": {
   "items": [
    {
+    "t": "Singapore activates haze medical aid schemes",
+    "src": "The Star",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNMlRhT21iTktEY01halRiWmtUWGp2TWRSbG44a0F1TTA3TDJxNnNvLTZFbDBrdFVJTkJPUkItcFlwdWVVQ2xBWHVsbE9Wams1M3F4UmtJT1ZxbjdXRk9VdU5ZYUVvdDFPLU8yQ3RJQ1FwNXA5SjNucjRLajYwLUJqRURLbElOY2xKM1dVOFlyZXExRWJ3UVpOaXZpbWo1U1N0ZkVETDdsVjZOY1U?oc=5",
+    "d": "2026-10-11"
+   },
+   {
+    "t": "Air quality remains moderate nationwide",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE03ZXQ4MTZ5cVEwMUw2VDhZdVRxMUtSZF9OSndoNEZsX3FXYzFybVR5Q2pRRFh4TjB6U2d5SGRuZWdPU0ZjNHVtZGoxUW1nQlp5ZW5kZnd6d3ZEa0tCTktMOVNzeTFrRkxPcFRyUnlUNDNRVmEzTERSR3dZQWk?oc=5",
+    "d": "2026-10-11"
+   },
+   {
+    "t": "17,000 People Receive Psychiatric Treatment; Health Minister Urges Attention to Mental Health",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE04aEhqQjNrT0s0dzFlSHN6M2k1aUpmN25Xb1ZOMzdBTml4TjJFYW5HY3c2YkZRRzZwTElZQ2JsM1BPRF81OXhRMDRtdUxfNW1jSjJjQWVQNVVuUV9ObllTZnlFc2RYeVNRbnlsQ3Z5WQ?oc=5",
+    "d": "2026-10-11"
+   },
+   {
+    "t": "Mukim Rambai, Tutong, Brunei Air Quality & Pollen",
+    "src": "Weather Underground",
+    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1yZDJVNGtST09SdHA4NlZGMF83UkoyWVp4UnVTSkoxQVB0SkQ4aWpDQmZuR1BpMm9kbV9vNDJmOWhKcnU1N3diUkd4eW51TUdHaTZUQVVySU5ULXd2Tm81bWVEZi12SUhubnIwSFI5SnRQQnRlbkpxejhQMA?oc=5",
+    "d": "2026-10-10"
+   },
+   {
+    "t": "Moderate air quality recorded nationwide",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE44U2tyaUFabC1QSExxTnB4OXRKX1Q4QlBSRG9Yekc3ZHpCalBWZTNub1gtN2IxU3o3dVcxeVV5bkFVVUJvS2YzWDNxal9BWU9waTVNTWg5Y25HRVRjV3VTZkxtN1NxOXFjMDltYWJiTXBuNEYydHZSTUhpX19Odw?oc=5",
+    "d": "2026-10-10"
+   },
+   {
     "t": "Air quality stays moderate nationwide",
-    "src": "Borneo Bulletin Online",
+    "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1mNUwtbGJiYjJBMm84SndNQXZMM2ZoMVFDNXVxTXN5d0VZb2d1eTdieV9kdC1STmd5RFFTWGJ5ekVIVDB1SGJvb1lKdms5VjQ4eEZqRTFnZ0JhaGtVb2l1dWZCYldSdldfWHoyWG9taGhzUGc4S2t3?oc=5",
     "d": "2026-10-09"
-   },
-   {
-    "t": "Three districts in Brunei record moderate air quality",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdTJIMUZXWjdSakZvTzMxYXZvS0lkeGEtUmhMam15NXFobk0xdnBSeVVEN1JmRUNPWUlPeXNIdUlUUnJmX3d2dFN3WkRab210RjN0LUlBXzlweXlZWWMxVDNOZmptT2M4RWdTcjUwM0RQOEl0LWtta0lQWVZIRHFOdjdQQUxJQXYtek05bWEwX2s5cF9xQVQzQzVmTkdHY2c5TXJKWnBodC1DTEZrM0xOZng2ZVFQTkE?oc=5",
-    "d": "2026-10-05"
-   },
-   {
-    "t": "Countries race to provide oral health care for all in 100-Day Sprint across Asia",
-    "src": "World Health Organization (WHO)",
-    "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPTlFvYXV2TFVnLW9TT0pFMG04QTBHQm1SeGlCZk5jNnZuSnJSejlkSkpXOEplaGJZazJlbzdKTTNXRkZsS1Z5WWlGSy1mV2lhZTBySHE0YmRTR3RDLWpLUkxDeWxsZDNoWVZtaU1TUnJ5NEJLTjU0ZGdKa3Q1dUVLNFNVdXl5OUpiRFZHOFhjRVl6c1d2TExxY2loazBOX0NZQlpJUGlYV3IyRktyTXJmS1psakdjTGNLdTJlSGU5MGxyOGNlMEZ1S3Y2NjVhZTZhblE?oc=5",
-    "d": "2026-10-05"
-   },
-   {
-    "t": "Air quality stays moderate",
-    "src": "Borneo Bulletin Online",
-    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1xMUNoM2dPVFVjcnpzamxqVGRMbE9iVFE3MEtMM0F1WWZUajR1Q0RYWkwyR3ZRbkV6ZUdVNWFLQ1BHM1pXV0dIUHZ1dVU2YWtPQ1NHVjZTY3JYTThDa2FOdGRncF9VWEp6?oc=5",
-    "d": "2026-10-05"
-   },
-   {
-    "t": "Prioritise health, women told at breast cancer awareness forum",
-    "src": "Borneo Bulletin Online",
-    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQX0JGdVdCd1huQzFkWEtJVEFnOXVnb0Raekp0OHprSEswWGJSdHJaaEh1NGhZWGhwZmVZdDZOZm4tTEtna3hYWUxDSXdoMzdVNzRjNU1iWUpCTkgwVlpDekd3RXFWNW5TUjNYOWw3dTlfMno4VjBPNXFyd1lIMXJBMElfRHF6eWxuZkxSMmNXM1JxRE5WYzZJ?oc=5",
-    "d": "2026-10-04"
-   },
-   {
-    "t": "Temburong sees good air quality, others moderate",
-    "src": "Borneo Bulletin Online",
-    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNZXpqMVQwdmdQdUkzOGpFRzdnTEhRaWtZQ1pvbTdGaDE2WGwxRmlPcGc4aE9wTG9BUFk3S1VxZTYwOGFvdlVxbUFWZFFnSjZMN0NwdjRZWEZfR19mUzdHM0o1SWtpZ0prRnk1WFo0SXF3VTdaZ0MtMl9iczV2OTF5WlpqUFc?oc=5",
-    "d": "2026-10-03"
    }
   ],
-  "updated": "2026-10-10"
+  "updated": "2026-10-11"
  },
  "sea": {
   "items": [
+   {
+    "t": "Associations between Retinal Nerve Fiber Layer Thickness, Axial Length, and Generation in the 2-Continent Eye Study",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42857614/"
+   },
+   {
+    "t": "Deep Learning-Derived Retinal Vascular Morphology and Incident Treatment for Sight-Threatening Diabetic Retinopathy",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42857094/"
+   },
    {
     "t": "Insulin usage and glaucoma treatment associated with the incidence of surgically treated vision-threatening epiretinal membrane: Evidence from an epidemiological study",
     "src": "Acta Ophthalmologica",
@@ -65,21 +77,9 @@
     "src": "Progress in Retinal and Eye Research",
     "d": "2026 Oct 9",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42855039/"
-   },
-   {
-    "t": "International consensuses and guidelines on etiology, diagnosis, and treatment of retinal vein occlusion (RVO) by the Academy of Asia-Pacific Professors of Ophthalmology (AAPPO), Asia-Pacific Vitreo-retina Society (APVRS) and Academia Retina Internationalis (ARI)",
-    "src": "Asia-Pacific Journal of Ophthalmology",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854985/"
-   },
-   {
-    "t": "Prevalence of Diabetic Retinopathy and Cardiovascular Risk Factors Among Diverse Hispanic/Latino Adults: HCHS/SOL and SOL Ojos Results",
-    "src": "Ophthalmology",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854854/"
    }
   ],
-  "updated": "2026-10-10"
+  "updated": "2026-10-11"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-10"
+  "updated": "2026-10-11"
  },
- "checked": "2026-10-10T22:06+00:00",
+ "checked": "2026-10-11T22:07+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
