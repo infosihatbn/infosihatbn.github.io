@@ -76,12 +76,12 @@ NICE.update({"Ocul Surf": "The Ocular Surface", "J Cataract Refract Surg": "J Ca
              "J Pediatr Ophthalmol Strabismus": "J Pediatr Ophthalmol Strabismus", "Graefes Arch Clin Exp Ophthalmol": "Graefe's Archive"})
 SUB_JQ = "(" + " OR ".join(f'"{j}"[ta]' for j in JOURNALS + SUB_J) + ")"
 SUBS = {
-    "cornea": 'cornea[mh] OR corneal diseases[mh] OR cornea*[tiab] OR keratoconus[tiab] OR keratitis[tiab] OR keratoplast*[tiab] OR "dry eye"[tiab] OR "ocular surface"[tiab] OR "refractive surgery"[tiab]',
-    "glaucoma": 'glaucoma[mh] OR glaucoma*[tiab] OR "intraocular pressure"[tiab] OR trabeculectomy[tiab]',
-    "medret": '("diabetic retinopathy"[tiab] OR "macular degeneration"[tiab] OR "retinal vein occlusion"[tiab] OR "macular edema"[tiab] OR "macular oedema"[tiab] OR "geographic atrophy"[tiab] OR anti-VEGF[tiab] OR "central serous"[tiab] OR "retinal dystroph*"[tiab]) NOT (vitrectomy[tiab] OR "retinal detachment"[tiab])',
-    "vr": 'vitrectomy[tiab] OR "retinal detachment"[tiab] OR "macular hole"[tiab] OR "epiretinal membrane"[tiab] OR "proliferative vitreoretinopathy"[tiab] OR endophthalmitis[tiab] OR vitreoretinal[tiab]',
-    "neuro": 'optic nerve diseases[mh] OR "optic neuritis"[tiab] OR "optic neuropathy"[tiab] OR papilledema[tiab] OR papilloedema[tiab] OR "intracranial hypertension"[tiab] OR "nerve palsy"[tiab] OR nystagmus[tiab] OR neuro-ophthalmolog*[tiab]',
-    "paeds": 'amblyopia[tiab] OR strabismus[tiab] OR "retinopathy of prematurity"[tiab] OR retinoblastoma[tiab] OR "myopia control"[tiab] OR ((child*[tiab] OR paediatric[tiab] OR pediatric[tiab] OR infant*[tiab]) AND (myopia[tiab] OR cataract[tiab] OR esotropia[tiab] OR exotropia[tiab]))',
+    "cornea": 'cornea[majr] OR corneal diseases[majr] OR cornea*[ti] OR keratoconus[ti] OR keratitis[ti] OR keratoplast*[ti] OR "dry eye"[ti] OR "ocular surface"[ti] OR "refractive surgery"[ti]',
+    "glaucoma": 'glaucoma[majr] OR glaucoma*[ti] OR "intraocular pressure"[ti] OR trabeculectomy[ti]',
+    "medret": '("diabetic retinopathy"[ti] OR "macular degeneration"[ti] OR "retinal vein occlusion"[ti] OR "macular edema"[ti] OR "macular oedema"[ti] OR "geographic atrophy"[ti] OR anti-VEGF[ti] OR "central serous"[ti] OR "retinal dystroph*"[ti]) NOT (vitrectomy[ti] OR "retinal detachment"[ti])',
+    "vr": 'vitrectomy[ti] OR "retinal detachment"[ti] OR "macular hole"[ti] OR "epiretinal membrane"[ti] OR "proliferative vitreoretinopathy"[ti] OR endophthalmitis[ti] OR vitreoretinal[ti]',
+    "neuro": 'optic nerve diseases[majr] OR "optic neuritis"[ti] OR "optic neuropathy"[ti] OR papilledema[ti] OR papilloedema[ti] OR "intracranial hypertension"[ti] OR "nerve palsy"[ti] OR nystagmus[ti] OR neuro-ophthalmolog*[ti]',
+    "paeds": 'amblyopia[ti] OR strabismus[ti] OR "retinopathy of prematurity"[ti] OR retinoblastoma[ti] OR "myopia control"[ti] OR ((child*[ti] OR paediatric[ti] OR pediatric[ti] OR infant*[ti]) AND (myopia[ti] OR cataract[ti] OR esotropia[ti] OR exotropia[ti]))',
 }
 def pubmed(term, n=6, days=21):
     q = {"db": "pubmed", "term": term, "retmax": str(n * 2), "retmode": "json", "datetype": "edat", "reldate": str(days), "tool": "matakitani"}
@@ -102,7 +102,7 @@ def subs():
     out = {}
     for k, q in SUBS.items():
         try:
-            out[k] = pubmed(f"{SUB_JQ} AND ({q}) AND {TYPES_Q} AND hasabstract", 6, 45)
+            out[k] = pubmed(f"{SUB_JQ} AND ({q}) AND {TYPES_Q} AND hasabstract", 6, 90)
         except Exception:
             pass
         time.sleep(.6)
