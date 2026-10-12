@@ -145,6 +145,23 @@ input:focus{border-color:var(--blue)}button.go{margin-top:20px;width:100%;border
 .eq-tab{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}.eq-tab th,.eq-tab td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}.eq-tab td:last-child,.eq-tab th:last-child{text-align:right;font-variant-numeric:tabular-nums}
 .eq-empty{padding:30px;text-align:center;color:var(--muted)}
 
+
+.ov{margin:14px 0 0;background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 16px;color:var(--ink)}
+.ov-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 6px}.ov-h b{font:800 16px/1.2 var(--display);color:var(--blue-deep)}.ov-h span{font-size:13.5px;color:var(--muted)}
+.ov svg{display:block;width:100%;height:auto;max-height:340px;background:#F7FBFD;border-radius:12px;touch-action:pan-y}
+.ov svg text{font:600 12px var(--display);fill:#33434B}.ov svg .ax{stroke:#9AB0BB;stroke-width:1;stroke-dasharray:4 4}
+.ov svg .ray{stroke:#E0861A;stroke-width:2;fill:none}.ov svg .ray2{stroke:#1F6E93;stroke-width:2;fill:none}.ov svg .ray3{stroke:#2E9E6A;stroke-width:2;fill:none}.ov svg .vir{stroke-dasharray:5 5;opacity:.75}
+.ov svg .obj{stroke:#1F2A30;stroke-width:3;fill:#1F2A30}.ov svg .img{stroke:#C62828;stroke-width:3;fill:#C62828}.ov svg .img.v{opacity:.55}
+.ov svg .glass{fill:rgba(77,163,202,.18);stroke:#1F6E93;stroke-width:2}.ov svg .eye{fill:#fff;stroke:#33434B;stroke-width:2}
+.ov-c{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:8px 18px;margin:10px 0 0}
+.ov-c label{display:grid;grid-template-columns:1fr auto;gap:2px 8px;font:700 13px/1.2 var(--display);color:var(--ink)}.ov-c label output{font-variant-numeric:tabular-nums;color:var(--blue-deep)}
+.ov-c input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--blue-deep);margin:4px 0 0;padding:0;border:0}
+.ov-c select,.ov-c .tg{grid-column:1/-1;font:600 14px var(--body);padding:6px 8px;border-radius:10px;border:2px solid var(--line);background:#fff;margin-top:4px}
+.ov-r{margin:10px 0 0;padding:10px 12px;background:var(--mist);border-radius:12px;font-size:15px;line-height:1.5}.ov-r b{color:var(--blue-deep)}
+.ov-reset{all:unset;cursor:pointer;font:700 13px/1 var(--display);color:var(--blue-deep);text-decoration:underline;margin-left:auto}
+.ov-lab{display:grid;gap:14px}.ov-pick{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+.ov-pick button{font:700 14px/1 var(--display);padding:10px 14px;border-radius:999px;border:2px solid var(--line);background:#fff;color:var(--blue-deep);cursor:pointer}.ov-pick button[aria-pressed=true]{background:var(--blue-deep);border-color:var(--blue-deep);color:#fff}
+
 .rh{margin:26px 0 2px;font:800 24px/1.2 var(--display);color:var(--blue-deep)}.rfeeds{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px;margin:10px 0 22px}
 .rfeeds{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}@media (max-width:860px){.rfeeds{grid-template-columns:1fr}}.rtabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.rtabs button{font:700 14px/1 var(--display);padding:9px 13px;border-radius:999px;border:2px solid var(--line);background:#fff;color:var(--blue-deep);cursor:pointer}.rtabs button[aria-selected=true]{background:var(--blue-deep);border-color:var(--blue-deep);color:#fff}
 .rf{background:var(--mist);border-radius:20px;padding:18px 20px;border-top:6px solid var(--teal)}.rf h3{margin:0 0 4px;font:800 19px/1.25 var(--display);color:var(--blue-deep)}.rf>p{margin:0 0 10px;font-size:14.5px;color:var(--muted)}
@@ -188,10 +205,10 @@ html{background:#8FCBEA}body{background:transparent!important}header.site,main,f
 <section class="card wide" id="v-eyeq" hidden><button type="button" class="bk" data-to="oph">← Back to Ophthalmologists</button>
 <div class="eq-hero"><span class="eq-logo"><small>The</small> Eye<b>Q</b></span><span class="sub" style="margin:0">Question bank for the FRCOphth exams. Single best answer, with explanations and book page references.</span></div>
 <div class="eq-exams" role="group" aria-label="Exam">
-<button type="button" class="eq-ex" aria-pressed="true" data-x="p1"><b>FRCOphth Part 1</b><span>Basic sciences: anatomy, physiology, pathology, optics and more.</span><em class="eq-count">Loading…</em></button>
-<button type="button" class="eq-ex" disabled><b>Refraction Certificate</b><span>Clinical refraction and optics.</span><em class="soon">Coming soon</em></button>
+<button type="button" class="eq-ex" aria-pressed="true" data-x="p1"><b>FRCOphth Part 1</b><span>Basic sciences: anatomy, physiology, pathology, optics and more.</span><em class="eq-count" data-x="p1">Loading…</em></button>
+<button type="button" class="eq-ex" aria-pressed="false" data-x="rf"><b>Refraction Certificate</b><span>Clinical optics and refraction, with interactive optics simulations.</span><em class="eq-count" data-x="rf">Loading…</em></button>
 <button type="button" class="eq-ex" disabled><b>FRCOphth Part 2</b><span>Clinical ophthalmology written exam.</span><em class="soon">Coming soon</em></button></div>
-<div id="eq-app" data-src="../../assets/eyeq/part1.json"><p class="eq-empty">Loading questions…</p></div>
+<div id="eq-app" data-src="../../assets/eyeq/part1.json" data-rf="../../assets/eyeq/refraction.json"><p class="eq-empty">Loading questions…</p></div>
 <button type="button" class="out" data-k="oph">Sign out</button></section>
 </main>
 <script>(()=>{const H={"oph": "51a63baa8bdaeb7b14677351a88052c539f041f65ea7e2016f53fffead82600b", "gp": "25233ef9c9ecfa2bd6f29a13564c6ca87801c2521fd33c079ead8257ac1a74ca"},K=k=>'mk-doc-'+k,ok=k=>{try{return sessionStorage.getItem(K(k))===H[k]}catch(e){return false}};
@@ -268,14 +285,125 @@ R.addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b||!R.co
  if(b.classList.contains('hb-prev'))return go(ch-1);if(b.classList.contains('hb-next'))return go(ch+1)});
 $('.hb-book').addEventListener('keydown',ev=>{if(R.classList.contains('closed'))return;if(ev.key==='ArrowRight')go(ch+1);if(ev.key==='ArrowLeft')go(ch-1)});
 L.innerHTML=tocL();Rt.innerHTML=tocR();nums(-1);sync()})();</script>
+<script>window.EQViz=(()=>{const NS='http://www.w3.org/2000/svg',W=640,H=300,CY=150;
+const f2=(x,d=2)=>(Math.round(x*10**d)/10**d).toFixed(d),sg=x=>(x>0?'+':x<0?'−':'')+f2(Math.abs(x)),cm=x=>Math.abs(x)>=999?'∞':f2(x,1)+' cm';
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const txt=(p,x,y,s,a={})=>{const t=el('text',Object.assign({x,y},a),p);t.textContent=s;return t};
+const line=(p,x1,y1,x2,y2,c='ray')=>el('line',{x1,y1,x2,y2,class:c},p);
+const arrow=(p,x,y0,y1,c)=>{line(p,x,y0,x,y1,c);const d=y1<y0?1:-1;el('path',{d:`M${x-6},${y1+d*9}L${x},${y1}L${x+6},${y1+d*9}Z`,class:c},p)};
+// extend a ray from (x,y) in direction (dx,dy) to the svg edge
+const ext=(x,y,dx,dy)=>{let t=1e9;if(dx>0)t=Math.min(t,(W-x)/dx);if(dx<0)t=Math.min(t,-x/dx);if(dy>0)t=Math.min(t,(H-y)/dy);if(dy<0)t=Math.min(t,-y/dy);if(!isFinite(t)||t>1e8)t=0;return[x+dx*t,y+dy*t]};
+const defs={
+lens:{title:'Thin lens ray diagram',hint:'Drag the sliders: lens power and object distance.',ctl:[['P','Lens power (D)',-20,20,.25],['u','Object distance (cm)',-200,-5,1]],
+ draw(s,g,R){const P=Math.abs(s.P)<.05?.05:s.P,f=100/P,u=s.u,iv=1/f+1/u,v=Math.abs(iv)<1e-6?1e6:1/iv,m=v/u,x0=W/2;
+  const sc=280/Math.max(Math.abs(u),Math.min(Math.abs(f),300)*1.15,Math.min(Math.abs(v),300)),X=d=>x0+d*sc,h=55;line(g,0,CY,W,CY,'ax');
+  const lh=120;if(P>0)el('path',{d:`M${x0},${CY-lh}Q${x0+18},${CY} ${x0},${CY+lh}Q${x0-18},${CY} ${x0},${CY-lh}Z`,class:'glass'},g);else el('path',{d:`M${x0-12},${CY-lh}L${x0+12},${CY-lh}Q${x0+2},${CY} ${x0+12},${CY+lh}L${x0-12},${CY+lh}Q${x0-2},${CY} ${x0-12},${CY-lh}Z`,class:'glass'},g);
+  [[X(f),'F′'],[X(-f),'F']].forEach(([x,l])=>{if(x>0&&x<W){el('circle',{cx:x,cy:CY,r:3.5,fill:'#1F6E93'},g);txt(g,x-6,CY+18,l)}});
+  const ox=X(u),ix=X(v),iy=CY-h*m;arrow(g,ox,CY,CY-h,'obj');txt(g,ox-14,CY+18,'Object');
+  const rays=[[CY-h,'ray'],[CY,'ray2']];const xF=X(-f);if(Math.abs(xF-ox)>4){const yl=(CY-h)+(CY-(CY-h))*(x0-ox)/(xF-ox);if(Math.abs(yl-CY)<lh)rays.push([yl,'ray3'])}
+  const far=Math.abs(v)>5000;rays.forEach(([yl,c])=>{line(g,ox,CY-h,x0,yl,c);let dx,dy;if(far){dx=x0-ox;dy=h}else if(v>0){dx=ix-x0;dy=iy-yl}else{dx=x0-ix;dy=yl-iy}
+   const[ex,ey]=ext(x0,yl,dx,dy);line(g,x0,yl,ex,ey,c);if(!far&&v<0&&ix>0)line(g,x0,yl,ix,iy,c+' vir')});
+  if(!far&&ix>-50&&ix<W+50&&Math.abs(iy-CY)<CY*1.6){arrow(g,ix,CY,Math.max(4,Math.min(H-4,iy)),'img'+(v<0?' v':''));txt(g,ix-14,iy<CY?CY+18:CY-10,'Image')}
+  R(`f = <b>${cm(f)}</b> · image distance v = <b>${far?'∞ (object at focal point)':cm(v)}</b>${far?'':` · magnification = <b>×${f2(m)}</b> · <b>${v>0?'real, inverted':'virtual, erect'}</b>`}<br><small>Vergence: U = 100/u = ${sg(100/u)} D, V = U + P = ${sg(100/u+P)} D.</small>`)}},
+mirror:{title:'Spherical mirror',hint:'Concave mirrors converge light; convex mirrors diverge it.',ctl:[['f','Focal length (cm)',2,60,1],['u','Object distance (cm)',-150,-3,1],['kind','Mirror',['concave','convex']]],
+ draw(s,g,R){const cv=s.kind!=='convex',f=cv?s.f:-s.f,dO=-s.u,iv=1/f-1/dO,di=Math.abs(iv)<1e-6?1e6:1/iv,m=-di/dO,x0=W-90;
+  const sc=(W-140)/Math.max(dO,Math.min(Math.abs(di),400),Math.abs(f)*2.2),X=d=>x0-d*sc,h=50;line(g,0,CY,W,CY,'ax');
+  el('path',{d:cv?`M${x0-14},${CY-125}Q${x0+14},${CY} ${x0-14},${CY+125}`:`M${x0+14},${CY-125}Q${x0-14},${CY} ${x0+14},${CY+125}`,fill:'none',stroke:'#1F6E93','stroke-width':4},g);
+  [[X(f),'F'],[X(2*f),'C']].forEach(([x,l])=>{if(x>0&&x<W){el('circle',{cx:x,cy:CY,r:3.5,fill:'#1F6E93'},g);txt(g,x-5,CY+18,l)}});
+  const ox=X(dO),ix=X(di),iy=CY-h*m;arrow(g,ox,CY,CY-h,'obj');const far=Math.abs(di)>5000;
+  [[CY-h,'ray'],[CY,'ray2']].forEach(([yl,c])=>{line(g,ox,CY-h,x0,yl,c);let dx,dy;if(yl===CY){dx=-(x0-ox);dy=-(CY-h-CY)}else if(far){dx=-1;dy=0}else if(di>0){dx=ix-x0;dy=iy-yl}else{dx=x0-ix;dy=yl-iy}
+   const[ex,ey]=ext(x0,yl,dx,dy);line(g,x0,yl,ex,ey,c);if(!far&&di<0)line(g,x0,yl,Math.min(ix,W),iy,c+' vir')});
+  if(!far&&ix>-40&&ix<W+40)arrow(g,ix,CY,Math.max(4,Math.min(H-4,iy)),'img'+(di<0?' v':''));
+  R(`${cv?'Concave':'Convex'} mirror, f = <b>${f2(Math.abs(f),1)} cm</b> (r = ${f2(Math.abs(2*f),1)} cm). Image <b>${far?'at infinity':f2(Math.abs(di),1)+' cm '+(di>0?'in front of':'behind')+' the mirror'}</b>${far?'':`, magnification <b>×${f2(m)}</b>, <b>${di>0?'real, inverted':'virtual, erect'}</b>`}.`)}},
+snell:{title:"Snell's law",hint:'n₁ sin i = n₂ sin r. Light going into a less dense medium can be totally internally reflected.',ctl:[['angle','Angle of incidence (°)',0,89,1],['n1','n₁ (first medium)',1,2,.01],['n2','n₂ (second medium)',1,2,.01]],
+ draw(s,g,R){const cx=W/2,a=s.angle*Math.PI/180,L=140;el('rect',{x:0,y:CY,width:W,height:H-CY,fill:`rgba(77,163,202,${.08+.25*(s.n2-1)})`},g);el('rect',{x:0,y:0,width:W,height:CY,fill:`rgba(77,163,202,${.08+.25*(s.n1-1)})`},g);
+  line(g,0,CY,W,CY,'ax');line(g,cx,10,cx,H-10,'ax');txt(g,10,24,'n₁ = '+f2(s.n1));txt(g,10,H-12,'n₂ = '+f2(s.n2));
+  line(g,cx-L*Math.sin(a),CY-L*Math.cos(a),cx,CY,'ray');const sr=s.n1*Math.sin(a)/s.n2,crit=s.n1>s.n2?Math.asin(s.n2/s.n1)*180/Math.PI:null;
+  if(sr<=1){const r=Math.asin(sr);line(g,cx,CY,cx+L*Math.sin(r),CY+L*Math.cos(r),'ray');line(g,cx,CY,cx+L*.45*Math.sin(a),CY-L*.45*Math.cos(a),'ray vir');
+   R(`Angle of refraction = <b>${f2(r*180/Math.PI,1)}°</b>${crit?` · critical angle = <b>${f2(crit,1)}°</b>`:''}. ${s.n2>s.n1?'Entering a denser medium, light bends towards the normal.':s.n2<s.n1?'Entering a less dense medium, light bends away from the normal.':''}`)}
+  else{line(g,cx,CY,cx+L*Math.sin(a),CY-L*Math.cos(a),'ray');R(`<b>Total internal reflection</b>: the angle of incidence exceeds the critical angle (<b>${f2(crit,1)}°</b>). This is why the angle cannot be seen without a gonioscopy lens.`)}}},
+prism:{title:'Prism before the eye',hint:'Light bends towards the base; the eye sees the image shifted towards the apex.',ctl:[['P','Prism power (Δ)',0,30,.5],['base','Base',['up','down','in','out']]],
+ draw(s,g,R){const up=s.base==='up'||s.base==='in',sgn=up?-1:1,px=330,ex=560,dev=Math.atan(s.P/100),yo=CY;
+  el('path',{d:up?`M${px-30},${CY-70}L${px+30},${CY-70}L${px},${CY+80}Z`:`M${px-30},${CY+70}L${px+30},${CY+70}L${px},${CY-80}Z`,class:'glass'},g);
+  txt(g,px-18,up?CY-80:CY+92,'Base '+s.base);el('circle',{cx:ex+30,cy:CY,r:30,class:'eye'},g);el('circle',{cx:ex+4,cy:CY,r:6,fill:'#33434B'},g);
+  const ox=60,tn=Math.tan(dev),sl=up?-tn:tn,yP=CY-sl*(ex-px),yImg=CY+sl*(ox-ex);arrow(g,ox,yP+50,yP,'obj');txt(g,ox-24,yP-10,'Object');
+  line(g,ox,yP,px,yP,'ray');line(g,px,yP,ex,CY,'ray');line(g,px,yP,ox,yImg,'ray vir');arrow(g,ox+26,yImg+50,yImg,'img v');txt(g,ox+34,yImg+(up?40:10),'Image seen');
+  R(`Deviation ≈ <b>${f2(dev*180/Math.PI,1)}°</b>. A ${f2(s.P,1)}Δ prism displaces the image <b>${f2(s.P,1)} cm at 1 m</b>, towards the <b>apex</b> (${{up:'down',down:'up',in:'outwards (temporally)',out:'inwards (nasally)'}[s.base]}).`)}},
+prentice:{title:"Prentice's rule",hint:'Prism (Δ) = lens power (D) × decentration (cm).',ctl:[['F','Lens power (D)',-15,15,.25],['d','Decentration (mm)',0,15,.5],['dir','Optical centre moved',['in','out','up','down']]],
+ draw(s,g,R){const P=Math.abs(s.F)*s.d/10,cx=W/2,off=s.d*8,plus=s.F>=0,base=plus?s.dir:{in:'out',out:'in',up:'down',down:'up'}[s.dir],sx=(s.dir==='in'||s.dir==='up')?-1:1;
+  el('path',{d:plus?`M${cx-150},${CY-24}Q${cx},${CY-24-50} ${cx+150},${CY-24}L${cx+150},${CY+24}Q${cx},${CY+24+50} ${cx-150},${CY+24}Z`:`M${cx-150},${CY-60}Q${cx},${CY-10} ${cx+150},${CY-60}L${cx+150},${CY+60}Q${cx},${CY+10} ${cx-150},${CY+60}Z`,class:'glass',transform:`translate(${sx*off},0)`},g);
+  line(g,cx+sx*off,40,cx+sx*off,H-40,'ray2');txt(g,cx+sx*off-30,34,'Optical centre');line(g,cx,30,cx,H-30,'ray');txt(g,cx-14,H-14,'Pupil');
+  R(`${plus?'Plus':'Minus'} ${sg(s.F)} D lens, optical centre ${f2(s.d,1)} mm ${s.dir} → <b>${f2(P)}Δ base ${base}</b>. ${plus?'A plus lens acts as two prisms base to base, so the base is towards the optical centre.':'A minus lens acts as two prisms apex to apex, so the base is away from the optical centre.'}`)}},
+sturm:{title:"Astigmatism: Sturm's conoid",hint:'Two focal lines, one per principal meridian, with the circle of least confusion between them.',ctl:[['sph','Sphere (D)',-6,6,.25],['cyl','Cylinder (D)',-6,6,.25],['axis','Axis (°)',0,180,5]],
+ draw(s,g,R){const rx=430,k=42,A=s.sph,B=s.sph+s.cyl,xa=rx+A*k,xb=rx+B*k,xm=rx+(A+B)/2*k,cl=x=>Math.max(160,Math.min(W-10,x));
+  el('path',{d:`M60,${CY-70}L60,${CY+70}`,stroke:'#1F6E93','stroke-width':6},g);txt(g,30,CY-80,'Eye optics');txt(g,150,24,'Side view, with each focal line seen face-on below');el('line',{x1:rx,y1:CY-95,x2:rx,y2:CY+95,stroke:'#C62828','stroke-width':3},g);txt(g,rx-20,CY-102,'Retina');
+  line(g,0,CY,W,CY,'ax');[[-70,cl(xa)],[70,cl(xa)],[-50,cl(xb)],[50,cl(xb)]].forEach(([y,x],i)=>line(g,60,CY+y,x,CY,i<2?'ray':'ray2'));
+  const fl=(x,ang,c,l)=>{const t=(ang)*Math.PI/180,L=26;el('line',{x1:x-L*Math.cos(t),y1:CY+L*Math.sin(t),x2:x+L*Math.cos(t),y2:CY-L*Math.sin(t),stroke:c,'stroke-width':4},g);txt(g,x-12,CY+44,l)};
+  [[cl(xa),'#E0861A','A'],[cl(xb),'#1F6E93','B']].forEach(([x,c,l])=>{el('line',{x1:x,y1:CY-30,x2:x,y2:CY+30,stroke:c,'stroke-width':4},g);txt(g,x-4,CY+46,l)});el('circle',{cx:cl(xm),cy:CY,r:9,fill:'none',stroke:'#2E9E6A','stroke-width':3},g);
+  const box=(x,lab,draw)=>{el('rect',{x,y:H-70,width:62,height:62,rx:8,fill:'#fff',stroke:'#D3E3EA'},g);txt(g,x,H-76,lab);draw(x+31,H-39)},ln=(cx,cy,ang,c)=>{const t=ang*Math.PI/180;el('line',{x1:cx-24*Math.cos(t),y1:cy+24*Math.sin(t),x2:cx+24*Math.cos(t),y2:cy-24*Math.sin(t),stroke:c,'stroke-width':4},g)};
+  box(150,'Line A',(x,y)=>ln(x,y,s.axis+90,'#E0861A'));box(230,'Least confusion',(x,y)=>el('circle',{cx:x,cy:y,r:12,fill:'none',stroke:'#2E9E6A','stroke-width':3},g));box(330,'Line B',(x,y)=>ln(x,y,s.axis,'#1F6E93'));
+  const cls=A<0&&B<0?'Compound myopic':A>0&&B>0?'Compound hypermetropic':A===0&&B===0?'No':(A===0||B===0)?(Math.min(A,B)<0?'Simple myopic':'Simple hypermetropic'):'Mixed';
+  const mc=s.cyl>0?{s:s.sph+s.cyl,c:-s.cyl,a:(s.axis+90)%180||180}:{s:s.sph,c:s.cyl,a:s.axis},wtr=mc.c===0?'':(Math.abs(((mc.a%180)+180)%180-90)<=30?'against the rule':(mc.a<=30||mc.a>=150)?'with the rule':'oblique');
+  R(`Meridian ${s.axis}° needs <b>${sg(A)} D</b>, meridian ${(s.axis+90)%180||180}° needs <b>${sg(B)} D</b>. Spherical equivalent <b>${sg((A+B)/2)} D</b> (green circle of least confusion). <b>${cls} astigmatism</b>${wtr?' · '+wtr:''}.<br><small>Minus-cyl form: ${sg(mc.s)} / ${sg(mc.c)} × ${mc.a}. A focal line in front of the retina (left) is myopic, behind it (right) hypermetropic.</small>`)}},
+ametropia:{title:'Ametropia and its correction',hint:'Where parallel light focuses, and the far point.',ctl:[['err','Refractive error (D)',-10,10,.25],['fix','Correcting lens',['off','on']]],
+ draw(s,g,R){const ex=330,er=110,rx=ex+er,on=s.fix==='on',e=s.err;el('circle',{cx:ex+40,cy:CY,r:er,class:'eye'},g);el('path',{d:`M${ex-70},${CY-60}Q${ex-90},${CY} ${ex-70},${CY+60}`,fill:'none',stroke:'#1F6E93','stroke-width':4},g);
+  el('path',{d:`M${rx+40-6},${CY-80}Q${rx+52},${CY} ${rx+40-6},${CY+80}`,fill:'none',stroke:'#C62828','stroke-width':3},g);const fx=on?rx+40:rx+40+e*14,lx=150;
+  if(on&&e!==0)el('path',{d:e>0?`M${lx},${CY-70}Q${lx+14},${CY} ${lx},${CY+70}Q${lx-14},${CY} ${lx},${CY-70}Z`:`M${lx-9},${CY-70}L${lx+9},${CY-70}Q${lx+1},${CY} ${lx+9},${CY+70}L${lx-9},${CY+70}Q${lx-1},${CY} ${lx-9},${CY-70}Z`,class:'glass'},g);
+  const cx0=ex-78,RX=rx+40;[-45,45].forEach(y=>{let yc=y;if(on&&e!==0){yc=y*(1+e*.035);line(g,10,CY+y,lx,CY+y);line(g,lx,CY+y,cx0,CY+yc)}else line(g,10,CY+y,cx0,CY+y);
+   const sl=-yc/(fx-cx0);if(fx<=RX){line(g,cx0,CY+yc,fx,CY);line(g,fx,CY,RX,CY+sl*(RX-fx))}else{line(g,cx0,CY+yc,RX,CY+yc+sl*(RX-cx0));line(g,RX,CY+yc+sl*(RX-cx0),fx,CY,'ray vir')}});
+  el('circle',{cx:Math.min(W-6,fx),cy:CY,r:4,fill:'#C62828'},g);txt(g,10,24,on?'With correcting lens':'Uncorrected, looking at distance');
+  const fp=e===0?'at infinity':e<0?`<b>${f2(100/-e,1)} cm</b> in front of the eye (real)`:`<b>${f2(100/e,1)} cm</b> behind the eye (virtual)`;
+  R(`${e===0?'Emmetropia':e<0?'Myopia':'Hypermetropia'}: distant light focuses <b>${e===0?'on':e<0?'in front of':'behind'}</b> the retina. Far point ${fp}. Correcting lens ≈ <b>${sg(e)} D</b> (its focal point must coincide with the far point; vertex distance matters above ±4 D).`)}},
+retinoscopy:{title:'Retinoscopy reflex',hint:'Add trial lenses until the reflex neutralises, then allow for working distance.',ctl:[['T','Trial lens (D)',-12,12,.25],['err','Patient refraction (D)',-10,10,.25],['wd','Working distance (m)',.5,1,.01]],
+ draw(s,g,R,st){const wdD=1/s.wd,rem=s.err-s.T,net=rem+wdD,mv=Math.abs(net)<.13?'neutral':net>0?'with':'against',cx=W/2;
+  el('circle',{cx,cy:CY,r:110,fill:'#2A1A12'},g);const cp=el('clipPath',{id:'rc'+st.id},g);el('circle',{cx,cy:CY,r:108},cp);const gg=el('g',{'clip-path':`url(#rc${st.id})`},g);
+  const wdt=mv==='neutral'?240:Math.max(18,80/(1+Math.abs(net)*1.5)),br=mv==='neutral'?1:Math.max(.25,1/(1+Math.abs(net)*.6));const band=el('rect',{x:cx-wdt/2,y:CY-120,width:wdt,height:240,fill:`rgba(255,${130+80*br},${60+40*br},${br})`},gg);
+  txt(g,20,24,'Patient pupil (sweep the streak left to right)');const ind=el('rect',{x:20,y:H-30,width:30,height:8,rx:4,fill:'#1F6E93'},g);txt(g,20,H-40,'Retinoscope streak position');
+  st.anim=t=>{const p=Math.sin(t/650),dx=p*130;ind.setAttribute('x',20+(p+1)*120);band.setAttribute('x',cx-wdt/2+(mv==='neutral'?0:mv==='with'?dx:-dx)*Math.min(1,1/(.4+Math.abs(net)*.25)))};
+  R(`Reflex: <b>${mv==='neutral'?'neutral (pupil fills, no movement)':mv+' movement'}</b>. Working distance ${f2(s.wd)} m = <b>${f2(wdD)} D</b>. ${mv==='neutral'?`Neutralised at ${sg(s.T)} D, so refraction = ${sg(s.T)} − ${f2(wdD)} = <b>${sg(s.T-wdD)} D</b>.`:mv==='with'?'Add more plus.':'Add more minus.'}`)}},
+accommodation:{title:'Range of clear vision',hint:'Far point from the refractive error, near point from the amplitude of accommodation.',ctl:[['err','Refractive error (D)',-8,8,.25],['amp','Amplitude of accommodation (D)',0,14,.25]],
+ draw(s,g,R){const fpD=-s.err,npD=s.amp-s.err,xD=d=>40+(10-Math.max(-2,Math.min(10,d)))*(W-80)/12;line(g,30,CY,W-20,CY,'ax');
+  for(let d=-2;d<=10;d++){line(g,xD(d),CY-6,xD(d),CY+6,'ax');txt(g,xD(d)-8,CY+24,String(d))}txt(g,40,CY+48,'Dioptres (100 ÷ distance in cm). Eye on the left; 0 = infinity; minus = virtual point behind the eye');
+  el('circle',{cx:xD(10)+30,cy:CY,r:18,class:'eye'},g);const a=xD(npD),b=xD(fpD);el('rect',{x:Math.min(a,b),y:CY-26,width:Math.abs(a-b),height:16,rx:8,fill:npD>0?'#4FBAB9':'#E5484D'},g);
+  txt(g,b-24,CY-36,'Far point');txt(g,a-26,CY-60,'Near point');const d=x=>x<=0?(x===0?'∞':'virtual, behind the eye'):f2(100/x,1)+' cm';
+  R(`Far point: <b>${d(fpD)}</b>${fpD<0?' (needs accommodation even for distance)':''}. Near point: <b>${npD>0?d(npD):'none (cannot focus at any real distance)'}</b>. Amplitude ${f2(s.amp)} D − error ${sg(s.err)} D.`)}},
+vertex:{title:'Vertex distance',hint:'Moving a lens changes its effective power: plus lenses get stronger when moved away.',ctl:[['F','Lens power (D)',-20,20,.25],['d','Distance moved (mm)',0,20,.5],['move','Moved',['toward','away']]],
+ draw(s,g,R){const d=s.d/1000*(s.move==='toward'?1:-1),Fn=s.F/(1-d*s.F),fp=s.F===0?null:100/s.F,ex=520;el('circle',{cx:ex+40,cy:CY,r:40,class:'eye'},g);
+  const l1=ex-60-(s.move==='toward'?s.d*6:0),l2=ex-60-(s.move==='toward'?0:s.d*6);[l1,l2].forEach((x,i)=>el('rect',{x:x-5,y:CY-60,width:10,height:120,rx:5,class:'glass',opacity:i?1:.45},g));line(g,0,CY,W,CY,'ax');
+  txt(g,l1-14,CY-70,'old');txt(g,l2-12,CY+84,'new');txt(g,40,30,'Lens position (not to scale)');
+  R(`To keep the same focal point, a ${sg(s.F)} D lens moved ${f2(s.d,1)} mm ${s.move} the eye must become <b>${sg(Fn)} D</b> (F′ = F / (1 − dF)). ${Math.abs(s.F)<4?'Under ±4 D the difference is small.':''}`)}},
+telescope:{title:'Telescopes for low vision',hint:'Angular magnification = −Fe / Fo. Tube length = fo + fe.',ctl:[['Fo','Objective (D)',2,40,.5],['Fe','Eyepiece (D)',-80,80,1],['kind','Type',['galilean','astronomical']]],
+ draw(s,g,R){let Fe=s.Fe;if(s.kind==='galilean'&&Fe>0)Fe=-Fe;if(s.kind==='astronomical'&&Fe<0)Fe=-Fe;const M=-Fe/s.Fo,L=100/s.Fo+100/Fe,sc=Math.min(8,380/Math.max(1,Math.abs(L))),x1=120,x2=x1+L*sc;
+  line(g,0,CY,W,CY,'ax');el('rect',{x:x1-6,y:CY-80,width:12,height:160,rx:6,class:'glass'},g);el('rect',{x:x2-5,y:CY-40,width:10,height:80,rx:5,class:'glass'},g);txt(g,x1-30,CY-90,'Objective');txt(g,x2-24,CY-50,'Eyepiece');
+  const a=.06,k=s.kind==='galilean'?1/Math.abs(M):-1/Math.abs(M);[-50,0,50].forEach(y=>{const y2=y*k;line(g,10,CY+y+a*(x1-10),x1,CY+y);line(g,x1,CY+y,x2,CY+y2);const[ex,ey]=ext(x2,CY+y2,1,-a*Math.abs(M)*(s.kind==='galilean'?1:-1));line(g,x2,CY+y2,ex,ey)});
+  R(`Magnification <b>×${f2(Math.abs(M),1)}</b>, image <b>${M>0?'erect':'inverted'}</b>. Tube length = ${f2(100/s.Fo,1)} + (${f2(100/Fe,1)}) = <b>${f2(L,1)} cm</b>. ${s.kind==='galilean'?'Galilean (plus objective, minus eyepiece): short and erect.':'Astronomical (two plus lenses): longer and inverted unless a prism erects it.'}`)}},
+duochrome:{title:'Duochrome test',hint:'Red light focuses slightly behind green. Remaining refractive error decides which looks sharper.',ctl:[['err','Remaining error (D)',-2,2,.25]],
+ draw(s,g,R,st){const r=Math.abs(s.err+.25),gr=Math.abs(s.err-.25),fid='db'+st.id,mk=(id,b)=>{const f=el('filter',{id,x:'-20%',y:'-20%',width:'140%',height:'140%'},g);el('feGaussianBlur',{stdDeviation:Math.min(6,b*5)},f)};mk(fid+'r',r);mk(fid+'g',gr);
+  el('rect',{x:80,y:40,width:230,height:220,fill:'#C62828'},g);el('rect',{x:330,y:40,width:230,height:220,fill:'#2E9E6A'},g);
+  [[195,fid+'r'],[445,fid+'g']].forEach(([x,f])=>{const t=txt(g,x,170,'E 3 8',{'text-anchor':'middle',filter:`url(#${f})`,style:'font:900 54px var(--display);fill:#111'})});
+  const w=Math.abs(r-gr)<.01?'Both equally clear: correction is right.':r<gr?'<b>Red clearer</b>: the eye is under-corrected for myopia (or over-plussed). Add minus.':'<b>Green clearer</b>: over-minused (or under-corrected hypermetrope). Add plus.';
+  R(`${w}<br><small>Remember: "RAM GAP": Red Add Minus, Green Add Plus.</small>`)}}};
+let N=0;
+function mount(host,spec){const d=defs[spec&&spec.type];if(!d)return;const st={id:++N,anim:null},init=Object.assign({},spec),s=Object.assign({},spec);
+ host.innerHTML='';const box=document.createElement('div');box.className='ov';box.innerHTML=`<div class="ov-h"><b>${d.title}</b><span>${d.hint}</span><button type="button" class="ov-reset">Reset</button></div>`;host.appendChild(box);
+ const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':d.title});box.appendChild(svg);const c=document.createElement('div');c.className='ov-c';box.appendChild(c);const r=document.createElement('div');r.className='ov-r';box.appendChild(r);
+ d.ctl.forEach(([k,lab,a,b,step])=>{if(s[k]==null)s[k]=Array.isArray(a)?a[0]:(a+b)/2;const L=document.createElement('label');if(Array.isArray(a)){L.innerHTML=`${lab}<output></output><select>${a.map(o=>`<option${o===s[k]?' selected':''}>${o}</option>`).join('')}</select>`;L.querySelector('select').onchange=e=>{s[k]=e.target.value;go()}}
+  else{L.innerHTML=`${lab}<output>${s[k]}</output><input type="range" min="${a}" max="${b}" step="${step}" value="${s[k]}">`;L.querySelector('input').oninput=e=>{s[k]=+e.target.value;L.querySelector('output').textContent=(+e.target.value).toFixed(step<1?2:0);go()}}c.appendChild(L)});
+ const go=()=>{svg.innerHTML='';st.anim=null;const g=el('g',{},svg);try{d.draw(s,g,h=>r.innerHTML=h,st)}catch(e){r.textContent='Could not draw this diagram.'}};
+ box.querySelector('.ov-reset').onclick=()=>{Object.assign(s,init);c.querySelectorAll('label').forEach((L,i)=>{const k=d.ctl[i][0],inp=L.querySelector('input,select');inp.value=s[k];const o=L.querySelector('output');if(inp.tagName==='INPUT')o.textContent=(+s[k]).toFixed(d.ctl[i][4]<1?2:0)});go()};
+ go();const loop=t=>{if(!box.isConnected)return;if(st.anim&&!matchMedia('(prefers-reduced-motion:reduce)').matches)st.anim(t);requestAnimationFrame(loop)};requestAnimationFrame(loop)}
+const LAB=[['lens',{P:5,u:-40}],['mirror',{kind:'concave',f:15,u:-40}],['snell',{n1:1.5,n2:1,angle:35}],['prism',{P:10,base:'up'}],['prentice',{F:-6,d:5,dir:'in'}],['sturm',{sph:-1,cyl:2,axis:90}],['ametropia',{err:-3,fix:'off'}],['retinoscopy',{err:2,wd:.67,T:0}],['accommodation',{err:0,amp:4}],['vertex',{F:12,d:12,move:'toward'}],['telescope',{kind:'galilean',Fo:10,Fe:-30}],['duochrome',{err:-.5}]];
+function lab(host){host.innerHTML=`<div class="ov-lab"><div><b style="font:800 18px var(--display);color:var(--blue-deep)">Interactive optics lab</b><p class="eq-small" style="margin:4px 0 0">Pick a simulation and move the sliders.</p><div class="ov-pick">${LAB.map(([k],i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${defs[k].title}</button>`).join('')}</div></div><div class="ov-slot"></div></div>`;
+ const slot=host.querySelector('.ov-slot'),pick=i=>{host.querySelectorAll('.ov-pick button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.i===i));mount(slot,Object.assign({type:LAB[i][0]},LAB[i][1]))};host.querySelector('.ov-pick').onclick=e=>{const b=e.target.closest('button');if(b)pick(+b.dataset.i)};pick(0)}
+return{mount,lab,types:Object.keys(defs)}})();</script>
 <script>(()=>{const A=document.getElementById('eq-app');if(!A)return;const KEY='mk-eyeq',esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let DB=null,st={},S={mode:'tutor',n:25,only:'all'},Q=[],i=0,ans=[],flag=[],t0=0,tick=null,done=false,shown=[];
+let DB=null,DBS={},X='p1',st={},S={mode:'tutor',n:25,only:'all'},Q=[],i=0,ans=[],flag=[],t0=0,tick=null,done=false,shown=[];
 const load=()=>{try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){st={}}},save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
 const L='ABCD',shuf=a=>{a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.random()*(k+1)|0;[a[k],a[j]]=[a[j],a[k]]}return a};
 const chapters=()=>{const m=new Map();DB.q.forEach(q=>{if(!m.has(q.chapter))m.set(q.chapter,new Map());const s=m.get(q.chapter);s.set(q.section,(s.get(q.section)||0)+1)});return m};
 const perf=f=>{let n=0,c=0;DB.q.forEach(q=>{if(f(q)&&st[q.id]){n++;if(st[q.id].c)c++}});return[n,c]};
 const ref=q=>`<p class="eq-ref"><b>Reference:</b> ${esc(DB.book)}, ${/[-–]/.test(q.page)?'pp.':'p.'} ${esc(q.page)}${q.section?` (${esc(q.chapter)}: ${esc(q.section)})`:''}.</p>`;
-function setup(){done=true;clearInterval(tick);const m=chapters();let h='<div class="eq-set"><div class="eq-box"><h3>Choose topics</h3><p>Organised by the chapters and sections of Basic Sciences for Ophthalmology. Tick a chapter, or open it to pick sections.</p>';
+function setup(){done=true;clearInterval(tick);const m=chapters();let h='<div class="eq-set"><div class="eq-box"><h3>Choose topics</h3><p>Organised by the chapters and sections of '+(X==='rf'?'High-Yield Elkington (Clinical Optics)':'Basic Sciences for Ophthalmology')+'. Tick a chapter, or open it to pick sections.</p>';
  let ci=0;for(const[ch,secs]of m){const tot=[...secs.values()].reduce((a,b)=>a+b,0),[n,c]=perf(q=>q.chapter===ch);
   h+=`<details class="eq-ch"><summary><input type="checkbox" data-ch="${ci}" checked aria-label="${esc(ch)}"><span><span class="nm">${esc(ch)}</span><span class="eq-bar" title="${n} of ${tot} answered, ${n?Math.round(100*c/n):0}% correct"><i style="width:${Math.round(100*n/tot)}%"></i></span></span><span class="eq-n">${n?Math.round(100*c/n)+'% · ':''}${tot} Qs</span></summary>`;
   for(const[s,k]of secs)h+=`<label class="eq-sec"><input type="checkbox" data-ci="${ci}" data-sec="${esc(s)}" checked><span>${esc(s||'General')}</span><span class="eq-n">${k}</span></label>`;h+='</details>';ci++}
@@ -283,7 +411,7 @@ function setup(){done=true;clearInterval(tick);const m=chapters();let h='<div cl
  h+=`</div><div class="eq-box eq-opts"><h3>Set up your session</h3><div><label class="l">Mode</label><div class="eq-seg" data-k="mode"><button type="button" data-v="tutor">Tutor: answer after each question</button><button type="button" data-v="exam">Exam: timed, answers at the end</button></div></div>
  <div><label class="l">Number of questions</label><div class="eq-seg" data-k="n"><button type="button" data-v="10">10</button><button type="button" data-v="25">25</button><button type="button" data-v="50">50</button><button type="button" data-v="90">90</button><button type="button" data-v="9999">All</button></div></div>
  <div><label class="l">Questions</label><div class="eq-seg" data-k="only"><button type="button" data-v="all">All</button><button type="button" data-v="new">Unanswered</button><button type="button" data-v="wrong">Answered wrongly</button><button type="button" data-v="flag">Flagged</button></div></div>
- <button type="button" class="eq-go">Start</button><p class="eq-small eq-avail"></p>
+ <button type="button" class="eq-go">Start</button>${window.EQViz?'<p class="eq-small"><button type="button" class="eq-link eq-lab">Open the interactive optics lab</button> to play with lenses, prisms, astigmatism and retinoscopy.</p>':''}<p class="eq-small eq-avail"></p>
  <p class="eq-small">${an?`You have answered ${an} of ${DB.q.length} questions (${Math.round(100*ac/an)}% correct). Progress is saved on this device only. <button type="button" class="eq-link eq-reset">Reset progress</button>`:'Progress is saved on this device only.'}</p>
  <p class="eq-small">Exam mode allows 72 seconds per question. Questions are written by MataKitani from the textbook, not taken from past papers.</p></div></div>`;
  A.innerHTML=h;A.querySelectorAll('.eq-seg').forEach(g=>g.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(S[g.dataset.k])===b.dataset.v)));count()}
@@ -296,13 +424,13 @@ function show(){const q=Q[i],a=ans[i],rev=done||(S.mode==='tutor'&&shown[i]);
  let h=`<div class="eq-q"><div class="eq-top"><span class="eq-num">Question ${i+1} of ${Q.length}</span><span class="crumb">${esc(q.chapter)}${q.section?' · '+esc(q.section):''}</span><span class="sp"></span>${S.mode==='exam'&&!done?'<span class="eq-time"></span>':''}</div>
  <div class="eq-prog"><i style="width:${100*(i+1)/Q.length}%"></i></div><p class="eq-stem">${esc(q.stem)}</p>${q.svg?`<figure class="eq-fig">${q.svg}</figure>`:''}<ol class="eq-ans">`;
  q.options.forEach((o,k)=>{let c='';if(rev){if(k===q.answer)c='ok';else if(k===a)c='no'}else if(k===a)c='pick';h+=`<li><button type="button" data-o="${k}" class="${c}"${rev?' disabled':''}><span class="k">${L[k]}</span><span>${esc(o)}</span></button></li>`});
- h+='</ol>';if(rev)h+=`<div class="eq-exp" aria-live="polite"><h4>${a===q.answer?'Correct.':a==null?'Not answered.':'Not quite.'} The answer is ${L[q.answer]}.</h4><p>${esc(q.explanation)}</p>${ref(q)}</div>`;
+ h+='</ol>';if(rev)h+=`<div class="eq-exp" aria-live="polite"><h4>${a===q.answer?'Correct.':a==null?'Not answered.':'Not quite.'} The answer is ${L[q.answer]}.</h4><p>${esc(q.explanation)}</p>${ref(q)}${q.viz&&window.EQViz?'<div class="eq-viz"></div>':''}</div>`;
  h+=`<div class="eq-nav"><button type="button" class="eq-btn eq-prev"${i?'':' disabled'}>← Previous</button><button type="button" class="eq-btn eq-flag" aria-pressed="${flag[i]}">⚑ ${flag[i]?'Flagged':'Flag'}</button><span class="sp"></span>`;
  if(S.mode==='tutor'&&!rev)h+=`<button type="button" class="eq-btn pri eq-check"${a==null?' disabled':''}>Check answer</button>`;
  else h+=i<Q.length-1?'<button type="button" class="eq-btn pri eq-next">Next →</button>':(done?'<button type="button" class="eq-btn pri eq-results">Back to results</button>':'<button type="button" class="eq-btn pri eq-finish">Finish</button>');
  h+='</div><div class="eq-grid" aria-label="Jump to question">'+Q.map((x,k)=>{let c=k===i?'cur ':'';if(flag[k])c+='f ';if(done||(S.mode==='tutor'&&shown[k]))c+=ans[k]===x.answer?'ok':'no';else if(ans[k]!=null)c+='a';return`<button type="button" data-j="${k}" class="${c}">${k+1}</button>`}).join('')+'</div>';
  if(S.mode==='exam'&&!done)h+='<p class="eq-small">Answers and explanations appear when you finish. <button type="button" class="eq-link eq-finish">Finish now</button></p>';
- h+='<p class="eq-small"><button type="button" class="eq-link eq-quit">End session and return to topics</button></p></div>';A.innerHTML=h;if(S.mode==='exam'&&!done&&tick){const e=A.querySelector('.eq-time');if(e)e.textContent='…'}}
+ h+='<p class="eq-small"><button type="button" class="eq-link eq-quit">End session and return to topics</button></p></div>';A.innerHTML=h;{const vz=A.querySelector('.eq-viz');if(vz)EQViz.mount(vz,q.viz)}if(S.mode==='exam'&&!done&&tick){const e=A.querySelector('.eq-time');if(e)e.textContent='…'}}
 const record=k=>{const q=Q[k];if(ans[k]==null)return;st[q.id]={c:ans[k]===q.answer?1:0,f:flag[k]?1:0};save()};
 function finish(){if(done)return;clearInterval(tick);done=true;Q.forEach((q,k)=>record(k));results()}
 function results(){done=true;const c=Q.filter((q,k)=>ans[k]===q.answer).length,by=new Map();Q.forEach((q,k)=>{const r=by.get(q.chapter)||[0,0];r[0]++;if(ans[k]===q.answer)r[1]++;by.set(q.chapter,r)});
@@ -313,7 +441,7 @@ A.addEventListener('change',e=>{const x=e.target;if(x.dataset.ch!=null){A.queryS
  else if(x.dataset.ci!=null){const all=[...A.querySelectorAll(`.eq-sec input[data-ci="${x.dataset.ci}"]`)],m=A.querySelector(`input[data-ch="${x.dataset.ci}"]`);m.checked=all.some(s=>s.checked);m.indeterminate=m.checked&&!all.every(s=>s.checked)}count()});
 A.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.closest('summary')&&e.target.tagName==='INPUT')return;
  const g=b.closest('.eq-seg');if(g){S[g.dataset.k]=isNaN(+b.dataset.v)?b.dataset.v:+b.dataset.v;g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));return count()}
- if(b.classList.contains('eq-go'))return start();if(b.classList.contains('eq-reset')){st={};save();return setup()}
+ if(b.classList.contains('eq-go'))return start();if(b.classList.contains('eq-lab')){A.innerHTML='<p><button type="button" class="eq-link eq-quit">← Back to topics</button></p><div class="eq-labhost"></div>';EQViz.lab(A.querySelector('.eq-labhost'));return}if(b.classList.contains('eq-reset')){st={};save();return setup()}
  if(b.dataset.o!=null&&!b.disabled){ans[i]=+b.dataset.o;return show()}
  if(b.classList.contains('eq-check')){shown[i]=true;record(i);return show()}
  if(b.classList.contains('eq-next')){i++;return show()}if(b.classList.contains('eq-prev')){i--;return show()}if(b.dataset.j!=null){i=+b.dataset.j;return show()}
@@ -325,5 +453,8 @@ A.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;i
 document.addEventListener('keydown',e=>{if(A.closest('[hidden]')||!Q.length||!A.querySelector('.eq-ans')||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;const k='abcd1234'.indexOf(e.key.toLowerCase());
  if(k>=0){const b=A.querySelectorAll('.eq-ans button')[k%4];if(b&&!b.disabled)b.click()}else if(e.key==='Enter'){const b=A.querySelector('.eq-check:not([disabled]),.eq-next,.eq-finish.eq-btn');if(b){e.preventDefault();b.click()}}
  else if(e.key==='ArrowRight'){const b=A.querySelector('.eq-next');if(b)b.click()}else if(e.key==='ArrowLeft'){const b=A.querySelector('.eq-prev:not([disabled])');if(b)b.click()}});
-load();fetch(A.dataset.src,{cache:'no-cache'}).then(r=>r.json()).then(j=>{DB=j;const c=document.querySelector('.eq-count');if(c)c.textContent=j.q.length+' questions';setup()}).catch(()=>{A.innerHTML='<p class="eq-empty">Questions could not be loaded. Check your connection and refresh.</p>'})})();</script>
+const get=x=>DBS[x]?Promise.resolve(DBS[x]):fetch(x==='rf'?A.dataset.rf:A.dataset.src,{cache:'no-cache'}).then(r=>r.json()).then(j=>{DBS[x]=j;const c=document.querySelector('.eq-count[data-x="'+x+'"]');if(c)c.textContent=j.q.length+' questions';return j});
+const pickX=x=>{clearInterval(tick);X=x;Q=[];document.querySelectorAll('.eq-ex[data-x]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.x===x));A.innerHTML='<p class="eq-empty">Loading questions…</p>';get(x).then(j=>{DB=j;setup()}).catch(()=>{A.innerHTML='<p class="eq-empty">Questions could not be loaded. Check your connection and refresh.</p>'})};
+document.querySelectorAll('.eq-ex[data-x]').forEach(b=>b.addEventListener('click',()=>pickX(b.dataset.x)));
+load();get('rf').catch(()=>{});pickX('p1')})();</script>
 </body></html>
