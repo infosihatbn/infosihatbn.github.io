@@ -98,7 +98,7 @@
   ],
   "updated": "2026-10-12"
  },
- "checked": "2026-10-12T09:33+00:00",
+ "checked": "2026-10-12T09:34+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -108,22 +108,16 @@
  "sub": {
   "cornea": [
    {
-    "t": "Visual acuity outcomes and recurrence rates after superficial keratectomy and phototherapeutic keratectomy for Salzmann nodular degeneration: evidence from the SOURCE multicenter registry",
+    "t": "Low-level light therapy for dry eye disease and meibomian gland dysfunction: A systematic review and meta-analysis",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42860563/"
+   },
+   {
+    "t": "Predictors of graft survival after descemet membrane endothelial keratoplasty in eyes with severe corneal edema",
     "src": "Graefe's Archive",
-    "d": "2026 Oct 10",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42859198/"
-   },
-   {
-    "t": "Ocular Changes in Human Spaceflight",
-    "src": "Progress in Retinal and Eye Research",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42855039/"
-   },
-   {
-    "t": "Assessment of the Necessity for High-Level Disinfection (HLD) of Reusable Ophthalmic Devices: A Multisociety Position Paper",
-    "src": "Ophthalmology",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854853/"
+    "d": "2026 Oct 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42860448/"
    },
    {
     "t": "Surgical Management Patterns and Outcomes in Recurrent Corneal Erosion: An IRIS Registry Study",
@@ -142,26 +136,20 @@
     "src": "Graefe's Archive",
     "d": "2026 Oct 9",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42850331/"
+   },
+   {
+    "t": "Predictors of long-term graft survival after descemet membrane endothelial keratoplasty",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42850329/"
    }
   ],
   "glaucoma": [
-   {
-    "t": "Continuous efficacy and safety of fluocinolone acetonide implant: long-term insights in diabetic macular edema patients from a portuguese hospital",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 10",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42859197/"
-   },
    {
     "t": "Differences in intraocular pressure measurements by tonometer type in children with glaucoma and suspected glaucoma",
     "src": "J AAPOS",
     "d": "2026 Oct 10",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42858878/"
-   },
-   {
-    "t": "Associations between Retinal Nerve Fiber Layer Thickness, Axial Length, and Generation in the 2-Continent Eye Study",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42857614/"
    },
    {
     "t": "Insulin usage and glaucoma treatment associated with the incidence of surgically treated vision-threatening epiretinal membrane: Evidence from an epidemiological study",
@@ -170,19 +158,43 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42855964/"
    },
    {
-    "t": "Incidence of Retinal Artery Occlusion After Carotid Endarterectomy Versus Carotid Artery Stenting",
-    "src": "Retina",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854197/"
-   },
-   {
     "t": "Outcome of Secondary Glaucoma in Eyes With Uveal Melanoma A Population-Based Analysis",
     "src": "J Glaucoma",
     "d": "2026 Oct 8",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42852930/"
+   },
+   {
+    "t": "Movement of central retinal vessel trunk and its correlation with lamina cribrosa pores movement after short-term intraocular pressure elevation",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42850328/"
+   },
+   {
+    "t": "Postural Intraocular Pressure Changes and the Trans-Lamina Cribrosa Pressure Difference: A Systematic Review and Meta-Analysis",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Oct 8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42849662/"
+   },
+   {
+    "t": "The impact of iCare HOME tonometry on clinical decision-making in glaucoma management: a retrospective observational study",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42848207/"
    }
   ],
   "medret": [
+   {
+    "t": "Higher plasma vitamin D levels are not causally associated with less age-related macular degeneration",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42861422/"
+   },
+   {
+    "t": "Neurodevelopmental Disorders in Infants Treated with Anti-VEGF Agents versus Laser Photocoagulation or Cryotherapy for Retinopathy of Prematurity",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42861086/"
+   },
    {
     "t": "Continuous efficacy and safety of fluocinolone acetonide implant: long-term insights in diabetic macular edema patients from a portuguese hospital",
     "src": "Graefe's Archive",
@@ -206,18 +218,6 @@
     "src": "Ophthalmology",
     "d": "2026 Oct 9",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42854854/"
-   },
-   {
-    "t": "Incidence of Retinal Artery Occlusion After Carotid Endarterectomy Versus Carotid Artery Stenting",
-    "src": "Retina",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854197/"
-   },
-   {
-    "t": "Genetic characterization of inherited retinal dystrophy in a Northwestern Chinese cohort: A single-center study over a 5-year period in Shaanxi, China",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42853280/"
    }
   ],
   "vr": [
@@ -228,43 +228,37 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42855964/"
    },
    {
-    "t": "Pooled Data Meta-Analysis of Pneumatic Vitreolysis for Treatment of Vitreomacular Traction Syndrome With, And Without Full Thickness Macular Holes",
-    "src": "Retina",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854198/"
-   },
-   {
-    "t": "Prediction of visual acuity by macular distortion measured with optical coherence tomography angiography in epiretinal membranes",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42853279/"
-   },
-   {
-    "t": "Macular sub-ILM hemorrhage as a favorable prognostic factor in ruptured retinal arterial macroaneurysm",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42853278/"
-   },
-   {
-    "t": "Identification of novel lncRNAs potentially associated with diabetic retinopathy based on machine learning prediction",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42853277/"
-   },
-   {
     "t": "Port-Associated Candida tropicalis Endogenous Endophthalmitis",
     "src": "JAMA Ophthalmology",
     "d": "2026 Oct 8",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42848387/"
+   },
+   {
+    "t": "Surface-Specific Internal Limiting Membrane Biomechanics in Epiretinal Membrane Severity and Visual Outcomes",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42841589/"
+   },
+   {
+    "t": "Impact of retinal break location on surgical outcomes in primary uncomplicated rhegmatogenous retinal detachment: Superior versus inferior breaks",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42837189/"
+   },
+   {
+    "t": "Five-year risk of rhegmatogenous retinal detachment following prophylactic laser retinopexy for retinal breaks and lattice degeneration: a real-world analysis",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42834107/"
+   },
+   {
+    "t": "Additive benefit of scleral buckling in primary rhegmatogenous retinal detachment repair with silicone oil",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42834105/"
    }
   ],
   "neuro": [
-   {
-    "t": "Associations between Retinal Nerve Fiber Layer Thickness, Axial Length, and Generation in the 2-Continent Eye Study",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42857614/"
-   },
    {
     "t": "Prelaminar hyperreflective lines in non-arteritic anterior ischaemic optic neuropathy",
     "src": "Eye",
@@ -278,25 +272,43 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42853276/"
    },
    {
-    "t": "Diagnostic Accuracy and Clinical Impact of Ocular Fundus Imaging in the Emergency Department: A Systematic Review and Meta-Analysis",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 8",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42849760/"
+    "t": "Two-Dimensional Eye Movement Characteristics of Infantile Nystagmus in Eccentric Gaze",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42825631/"
    },
    {
-    "t": "Simple Oral Mucosal Epithelial Transplantation for Bilateral Limbal Stem Cell Deficiency in Congenital Aniridia",
-    "src": "Cornea",
-    "d": "2026 Oct 8",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42848688/"
+    "t": "Paracentral acute middle maculopathy in giant cell arteritis versus non-arteritic anterior ischaemic optic neuropathy",
+    "src": "British Journal of Ophthalmology",
+    "d": "2026 Sep 30",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42816146/"
    },
    {
-    "t": "Optical coherence tomography angiography of the macular retina and choroid in glaucoma: a narrative review",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 8",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42848206/"
+    "t": "Optical Coherence Tomography as an Objective Tool for Assessing Ocular Torsion in Fourth Cranial Nerve Palsy",
+    "src": "J Neuro-Ophthalmology",
+    "d": "2026 Sep 29",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42808790/"
+   },
+   {
+    "t": "Optical Coherence Tomography-Based Differentiation of Nonarteritic Anterior Ischemic Optic Neuropathy and Central Retinal Artery Occlusion: Longitudinal Analysis of Inner Retinal Layer Thinning",
+    "src": "J Neuro-Ophthalmology",
+    "d": "2026 Sep 28",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42803401/"
    }
   ],
   "paeds": [
+   {
+    "t": "Neurodevelopmental Disorders in Infants Treated with Anti-VEGF Agents versus Laser Photocoagulation or Cryotherapy for Retinopathy of Prematurity",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42861086/"
+   },
+   {
+    "t": "Cost-Effectiveness of Telemedicine-Based Screening Programs for Retinopathy of Prematurity in Low- and Middle-Income Countries",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42861005/"
+   },
    {
     "t": "Eye-related quality of life among children with deprivation amblyopia after cataract surgery",
     "src": "J AAPOS",
@@ -304,22 +316,10 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42858879/"
    },
    {
-    "t": "Associations between Retinal Nerve Fiber Layer Thickness, Axial Length, and Generation in the 2-Continent Eye Study",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42857614/"
-   },
-   {
     "t": "Assessment of the Spot vision screener performance in detecting amblyopia and strabismus in Nepal: a prospective diagnostic accuracy study",
     "src": "J AAPOS",
     "d": "2026 Oct 9",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42854827/"
-   },
-   {
-    "t": "Longitudinal Changes in Choroidal Thickness Across the Eye in Young Children With Premyopia",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42841588/"
    },
    {
     "t": "Retinoblastoma management: achieving high standards of care",
