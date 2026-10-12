@@ -4,7 +4,7 @@ Runs daily in GitHub Actions (see .github/workflows/update-feeds.yml). Standard 
 Each section is replaced only when its source answers with at least one item, so a source
 that is down keeps yesterday's items instead of emptying the banner.
 """
-import datetime as dt, email.utils, html, json, os, re, sys, urllib.parse, urllib.request
+import datetime as dt, email.utils, html, json, os, re, sys, time, urllib.parse, urllib.request
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 
@@ -68,6 +68,45 @@ def sea():
         if t and not re.match(r"(erratum|correction|reply|re:|comment on|in memoriam)", t, re.I):
             out.append({"t": t, "src": NICE.get(clean(r.get("source", "")), clean(r.get("source", ""))), "d": clean(r.get("pubdate", "")), "url": f"https://pubmed.ncbi.nlm.nih.gov/{i}/"})
     return out[:6]
+
+# 2b. The same journals plus subspecialty journals, sorted by subspecialty (doctors page tabs)
+SUB_J = ["Cornea", "Ocul Surf", "J Cataract Refract Surg", "J Refract Surg", "J Glaucoma", "J Neuroophthalmol",
+         "J AAPOS", "J Pediatr Ophthalmol Strabismus", "Graefes Arch Clin Exp Ophthalmol"]
+NICE.update({"Ocul Surf": "The Ocular Surface", "J Cataract Refract Surg": "J Cataract Refract Surg", "J Neuroophthalmol": "J Neuro-Ophthalmology",
+             "J Pediatr Ophthalmol Strabismus": "J Pediatr Ophthalmol Strabismus", "Graefes Arch Clin Exp Ophthalmol": "Graefe's Archive"})
+SUB_JQ = "(" + " OR ".join(f'"{j}"[ta]' for j in JOURNALS + SUB_J) + ")"
+SUBS = {
+    "cornea": 'cornea[mh] OR corneal diseases[mh] OR cornea*[tiab] OR keratoconus[tiab] OR keratitis[tiab] OR keratoplast*[tiab] OR "dry eye"[tiab] OR "ocular surface"[tiab] OR "refractive surgery"[tiab]',
+    "glaucoma": 'glaucoma[mh] OR glaucoma*[tiab] OR "intraocular pressure"[tiab] OR trabeculectomy[tiab]',
+    "medret": '("diabetic retinopathy"[tiab] OR "macular degeneration"[tiab] OR "retinal vein occlusion"[tiab] OR "macular edema"[tiab] OR "macular oedema"[tiab] OR "geographic atrophy"[tiab] OR anti-VEGF[tiab] OR "central serous"[tiab] OR "retinal dystroph*"[tiab]) NOT (vitrectomy[tiab] OR "retinal detachment"[tiab])',
+    "vr": 'vitrectomy[tiab] OR "retinal detachment"[tiab] OR "macular hole"[tiab] OR "epiretinal membrane"[tiab] OR "proliferative vitreoretinopathy"[tiab] OR endophthalmitis[tiab] OR vitreoretinal[tiab]',
+    "neuro": 'optic nerve diseases[mh] OR "optic neuritis"[tiab] OR "optic neuropathy"[tiab] OR papilledema[tiab] OR papilloedema[tiab] OR "intracranial hypertension"[tiab] OR "nerve palsy"[tiab] OR nystagmus[tiab] OR neuro-ophthalmolog*[tiab]',
+    "paeds": 'amblyopia[tiab] OR strabismus[tiab] OR "retinopathy of prematurity"[tiab] OR retinoblastoma[tiab] OR "myopia control"[tiab] OR ((child*[tiab] OR paediatric[tiab] OR pediatric[tiab] OR infant*[tiab]) AND (myopia[tiab] OR cataract[tiab] OR esotropia[tiab] OR exotropia[tiab]))',
+}
+def pubmed(term, n=6, days=21):
+    q = {"db": "pubmed", "term": term, "retmax": str(n * 2), "retmode": "json", "datetype": "edat", "reldate": str(days), "tool": "matakitani"}
+    ids = json.loads(get(EU + "esearch.fcgi?" + urllib.parse.urlencode(q)))["esearchresult"]["idlist"]
+    if not ids:
+        return []
+    time.sleep(.5)
+    res = json.loads(get(EU + "esummary.fcgi?" + urllib.parse.urlencode({"db": "pubmed", "id": ",".join(ids), "retmode": "json", "tool": "matakitani"})))["result"]
+    out = []
+    for i in ids:
+        r = res.get(i) or {}
+        t = clean(re.sub(r"<[^>]+>", "", r.get("title", ""))).rstrip(".")
+        if t and not re.match(r"(erratum|correction|reply|re:|comment on|in memoriam)", t, re.I):
+            out.append({"t": t, "src": NICE.get(clean(r.get("source", "")), clean(r.get("source", ""))), "d": clean(r.get("pubdate", "")), "url": f"https://pubmed.ncbi.nlm.nih.gov/{i}/"})
+    return out[:n]
+def subs():
+    """Returns {key: items} for each subspecialty; keeps going if one query fails."""
+    out = {}
+    for k, q in SUBS.items():
+        try:
+            out[k] = pubmed(f"{SUB_JQ} AND ({q}) AND {TYPES_Q} AND hasabstract", 6, 45)
+        except Exception:
+            pass
+        time.sleep(.6)
+    return out
 
 # 3. Eye articles in the Brunei International Medical Journal (MOH contents page)
 BIMJ_URL = os.environ.get("BIMJ_URL", "https://moh.gov.bn/draft-bimj-page/")
@@ -133,6 +172,17 @@ def main():
                 data[key] = {"items": items, "updated": NOW.date().isoformat()}
         except Exception as e:
             status[key] = f"failed: {e.__class__.__name__}: {e}"[:200]
+    try:
+        sub = subs()
+        status["sub"] = "ok (" + ", ".join(f"{k} {len(v)}" for k, v in sub.items()) + ")"
+        old = data.get("sub") or {}
+        for k, v in sub.items():
+            if v:
+                old[k] = v
+        old["updated"] = NOW.date().isoformat()
+        data["sub"] = old
+    except Exception as e:
+        status["sub"] = f"failed: {e.__class__.__name__}: {e}"[:200]
     data["checked"] = NOW.isoformat(timespec="minutes")
     data["status"] = status
     os.makedirs(os.path.dirname(OUT) or ".", exist_ok=True)
