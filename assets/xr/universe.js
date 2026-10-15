@@ -7,14 +7,21 @@ import { DISC_DIR } from './eyemodel.js';
 import { createRealEye } from './realeye.js';
 
 const R = 60, IRIS_Z = 52, PUPIL = 7.5, LENS_Z = 42, LENS_R = 19, LENS_T = 7, CORNEA_C = 30, CORNEA_R = 38; // the front: iris plane, lens, corneal dome
-const BACK = ['vitreous', 'floaters', 'retina', 'vessels', 'macula', 'fovea', 'disc', 'nerve'];
+const BACK = ['vitreous', 'floaters', 'retina', 'tear', 'vessels', 'macula', 'fovea', 'disc', 'nerve'];
 const FRONTK = ['lens', 'ciliary', 'iris', 'aqueous', 'cornea', 'angle'];
 const KEYS = BACK.concat(FRONTK);
-const BADGES = [['first', null], ['vit', ['vitreous', 'floaters']], ['ret', ['retina', 'vessels']], ['mac', ['macula', 'fovea']], ['nerve', ['disc', 'nerve']], ['front', FRONTK], ['flow', ['aqueous', 'angle']], ['light', null], ['all', KEYS]];
+const BADGES = [['first', null], ['vit', ['vitreous', 'floaters']], ['ret', ['retina', 'vessels']], ['mac', ['macula', 'fovea']], ['nerve', ['disc', 'nerve']], ['front', FRONTK], ['flow', ['aqueous', 'angle']], ['light', null], ['laser', null], ['all', KEYS]];
 const LS = { get(k) { try { return JSON.parse(localStorage.getItem(k)) } catch (e) { return null } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch (e) { } } };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const onWall = (x, y, r = R) => new THREE.Vector3(x, y, -1).normalize().multiplyScalar(r); // tangent coords around the back pole
-const DX = DISC_DIR.x / -DISC_DIR.z; // disc position in tangent coords (about -0.38)
+const DX = DISC_DIR.x / -DISC_DIR.z;
+const TEAR_DIR = new THREE.Vector3(-.55, .7, -.35).normalize(); // retinal tear: upper outer periphery, where most tears happen
+// line icons (no emoji)
+const ICP = { light: '<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>', gear: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5zM4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>', medal: '<circle cx="12" cy="15" r="5"/><path d="M8.5 10.5 6 3h4l2 5 2-5h4l-2.5 7.5"/>', lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>', warn: '<path d="M12 3 2 21h20z"/><path d="M12 10v5M12 18h.01"/>', drop: '<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/>',
+  phone: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>', laser: '<path d="M3 21 13 11"/><circle cx="16.5" cy="7.5" r="3.5"/><path d="M16.5 1v2M23 7.5h-2M21 3l-1.4 1.4"/>' };
+const ic = n => `<svg class="mu-svg" viewBox="0 0 24 24" aria-hidden="true">${ICP[n]}</svg>`; // disc position in tangent coords (about -0.38)
 
 function softDot() { const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d'); const gr = g.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.35, 'rgba(255,255,255,.5)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); }
 
@@ -63,8 +70,8 @@ export function mount(el, D) {
   const saved = LS.get('mu-settings') || {};
   const S = { sens: saved.sens ?? 1, reduced: saved.reduced ?? matchMedia('(prefers-reduced-motion: reduce)').matches, assisted: saved.assisted ?? true, tilt: false };
   const prog = Object.assign({ found: [], badges: [] }, LS.get('mu-progress') || {});
-  const found = new Set(prog.found.filter(k => KEYS.includes(k))), badges = new Set(prog.badges);
-  const save = () => LS.set('mu-progress', { found: [...found], badges: [...badges] });
+  const found = new Set(prog.found.filter(k => KEYS.includes(k))), badges = new Set(prog.badges); let sealed = !!prog.sealed;
+  const save = () => LS.set('mu-progress', { found: [...found], badges: [...badges], sealed });
   const saveS = () => LS.set('mu-settings', { sens: S.sens, reduced: S.reduced, assisted: S.assisted });
   const intro = el.querySelector('.xi-intro');
 
@@ -76,8 +83,9 @@ export function mount(el, D) {
   <div class="mu-top">
     <button type="button" class="mu-prog" data-act="journal" aria-label="${U.journal}"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" class="t"/><circle cx="18" cy="18" r="15" class="f"/></svg><b></b><span>${U.journal}</span></button>
     <div class="mu-tools">
-      <button type="button" class="mu-ic mu-lj" data-act="light" title="${U.light}">✨ <span>${U.light}</span></button>
-      <button type="button" class="mu-ic" data-act="settings" title="${U.settings}">⚙️</button>
+      <button type="button" class="mu-ic mu-lj" data-act="light" title="${U.light}">${ic('light')} <span>${U.light}</span></button>
+      <button type="button" class="mu-ic mu-rmb" data-act="remote" title="${U.remote}" aria-label="${U.remote}" ${touch ? 'hidden' : ''}>${ic('phone')}</button>
+      <button type="button" class="mu-ic" data-act="settings" title="${U.settings}" aria-label="${U.settings}">${ic('gear')}</button>
       <button type="button" class="mu-ic" data-act="pause" title="${U.pause}" aria-label="${U.pause}">❚❚</button>
       <button type="button" class="mu-ic" data-act="full" title="${U.full}">⛶</button>
     </div>
@@ -85,7 +93,7 @@ export function mount(el, D) {
   <div class="xr-bubble mu-say" role="status" aria-live="polite"></div>
   <div class="mu-toast" aria-live="polite"></div>
   <div class="mu-near" hidden><span></span><button type="button" class="xbtn pri" data-act="inspect">${U.inspect} (E)</button></div>
-  <button type="button" class="mu-guide xbtn" data-act="guide">🧭 ${U.guide}</button>
+  <button type="button" class="mu-guide xbtn" data-act="guide">${ic('compass')} ${U.guide}</button>
   <div class="mu-pad" ${touch ? '' : 'hidden'}><div class="mu-joy"><i></i></div></div>
   <div class="mu-ud" ${touch ? '' : 'hidden'}><button type="button" data-ud="1" aria-label="${U.up}">▲</button><button type="button" data-ud="-1" aria-label="${U.down}">▼</button></div>
   <p class="mu-help">${touch ? U.touch : U.keys}</p>
@@ -93,15 +101,19 @@ export function mount(el, D) {
   <div class="xr-lj mu-ljbar" hidden><p class="xr-ljt"></p><div class="xr-ljb"><button type="button" data-act="ljskip">${U.skip}</button><span class="xr-dots"></span><button type="button" class="pri" data-act="ljnext">›</button></div></div>
   <div class="mu-cine" hidden><button type="button" class="xbtn" data-act="skipintro">${U.skip} ›</button></div>
   <div class="mu-over mu-pause" hidden><div><h3>${U.paused}</h3><p class="mu-matane">${U.matane}</p>
-    <button type="button" class="xbtn pri" data-act="resume">▶ ${U.resume}</button><button type="button" class="xbtn" data-act="journal">📖 ${U.journal}</button><button type="button" class="xbtn" data-act="settings">⚙️ ${U.settings}</button><button type="button" class="xbtn" data-act="restart">↺ ${U.restart}</button>
+    <button type="button" class="xbtn pri" data-act="resume">▶ ${U.resume}</button><button type="button" class="xbtn" data-act="journal">${ic('book')} ${U.journal}</button><button type="button" class="xbtn" data-act="settings">${ic('gear')} ${U.settings}</button><button type="button" class="xbtn" data-act="restart">↺ ${U.restart}</button>
     <p class="mu-links"><a href="${D.hub}">← ${U.hub}</a> · <a href="${D.other}">${U.other}</a></p></div></div>
-  <div class="mu-over mu-journal" hidden><div><button type="button" class="xr-x" data-act="closeover">✕</button><h3>📖 ${U.journal}</h3><div class="mu-jl"></div><h4>🏅 ${U.badges}</h4><div class="mu-bl"></div></div></div>
-  <div class="mu-over mu-settings" hidden><div><button type="button" class="xr-x" data-act="closeover">✕</button><h3>⚙️ ${U.settings}</h3>
+  <div class="mu-over mu-journal" hidden><div><button type="button" class="xr-x" data-act="closeover">✕</button><h3>${ic('book')} ${U.journal}</h3><div class="mu-jl"></div><h4>${ic('medal')} ${U.badges}</h4><div class="mu-bl"></div></div></div>
+  <div class="mu-over mu-settings" hidden><div><button type="button" class="xr-x" data-act="closeover">✕</button><h3>${ic('gear')} ${U.settings}</h3>
     <label>${U.sens} <input type="range" min=".3" max="2" step=".1" data-set="sens"></label>
     <label><input type="checkbox" data-set="reduced"> ${U.reduced}</label>
     <label><input type="checkbox" data-set="assisted"> ${U.assisted}</label>
     <label class="mu-tiltrow" hidden><input type="checkbox" data-set="tilt"> ${U.tilt}</label>
-    <button type="button" class="xbtn" data-act="resetprog">${U.reset}</button></div></div>`;
+    <button type="button" class="xbtn" data-act="remote" ${touch ? 'hidden' : ''}>${ic('phone')} ${U.remote}</button>
+    <button type="button" class="xbtn" data-act="resetprog">${U.reset}</button></div></div>
+  <div class="mu-over mu-remote" hidden><div><button type="button" class="xr-x" data-act="closeover">✕</button><h3>${ic('phone')} ${U.remote}</h3><div class="mu-qr"></div><p class="mu-rst"></p><p class="mu-rurl"></p></div></div>
+  <div class="mu-aim" hidden aria-hidden="true"></div>
+  <div class="mu-lhud" hidden><p><b class="mu-lleft"></b> ${U.laser_left}</p><p class="mu-lkeys">${touch ? '' : U.laser_keys}</p><div class="mu-lbtns"><button type="button" class="xbtn pri" data-act="fire">${ic('laser')} ${U.fire}</button><button type="button" class="xbtn" data-act="laserstop">${U.laser_stop}</button></div></div>`;
   el.appendChild(stage);
   const $ = s => stage.querySelector(s);
   const sayEl = $('.mu-say'), toastEl = $('.mu-toast'), panel = $('.mu-panel'), labelsEl = $('.xr-labels'), nearEl = $('.mu-near');
@@ -269,7 +281,25 @@ export function mount(el, D) {
     for (let i = 0; i < 8; i++) { const b = new THREE.Mesh(new THREE.SphereGeometry(.4 + Math.random() * .7, 10, 8), fm); b.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(4)); floaters.add(b); } }
 
   // Mata (player)
-  const mata = createMata(); mata.object.scale.setScalar(.9); scene.add(mata.object);
+  const mata = createMata(); mata.object.scale.setScalar(.9);
+  // Mata's little spaceship (Haziq, 2026-10-15): chunky and toy-like, flat-shaded to match the origami Mata; the nose points +Z
+  const craft = new THREE.Group(), ship = new THREE.Group(); craft.add(ship); craft.add(mata.object); mata.object.position.set(0, .66, -.05); scene.add(craft);
+  const flat = c => new THREE.MeshStandardMaterial({ color: c, roughness: .55, metalness: .05, flatShading: true });
+  const sRed = flat(0xe8505b), sYel = flat(0xffc93c), sBlu = flat(0x3d8bfd), sWht = flat(0xf3efe6), sDk = flat(0x2a3346);
+  const part = (g, m, x, y, z, rx = 0, ry = 0, rz = 0) => { const o = new THREE.Mesh(g, m); o.position.set(x, y, z); o.rotation.set(rx, ry, rz); ship.add(o); return o; };
+  part(new THREE.CylinderGeometry(.62, .78, 2.1, 8), sWht, 0, 0, 0, Math.PI / 2);              // hull
+  part(new THREE.ConeGeometry(.62, .9, 8), sRed, 0, 0, 1.5, Math.PI / 2);                       // nose
+  part(new THREE.TorusGeometry(.56, .12, 6, 12), sYel, 0, .5, .05, Math.PI / 2);                // cockpit rim
+  part(new THREE.BoxGeometry(2.9, .12, .85), sBlu, 0, -.12, -.25);                              // wings
+  for (const s of [-1, 1]) {
+    part(new THREE.BoxGeometry(.18, .5, .7), sRed, s * 1.45, .08, -.3);                        // wing tips
+    part(new THREE.CylinderGeometry(.24, .3, .9, 8), sYel, s * .78, -.2, -.85, Math.PI / 2);    // engines
+    part(new THREE.CylinderGeometry(.2, .2, .08, 8), sDk, s * .78, -.2, -1.32, Math.PI / 2);
+  }
+  part(new THREE.BoxGeometry(.12, .65, .6), sBlu, 0, .55, -.85);                                 // tail fin
+  part(new THREE.CylinderGeometry(.07, .07, .5, 6), sDk, 0, -.45, 1.15, Math.PI / 2);            // laser cannon
+  const flames = [-1, 1].map(s => { const f = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0x7fe3ff, blending: THREE.AdditiveBlending, depthWrite: false, fog: false })); f.position.set(s * .78, -.2, -1.6); f.scale.setScalar(.8); ship.add(f); return f; });
+  ship.scale.setScalar(.9);
   const lantern = new THREE.PointLight(0xcfe9ff, 40, 30, 1.6); scene.add(lantern);
 
   // ---------------- landmarks ----------------
@@ -289,6 +319,7 @@ export function mount(el, D) {
     aqueous: new THREE.Vector3(-4, -5, 59),
     cornea: new THREE.Vector3(3, 5, 63.5),
     angle: new THREE.Vector3(0, -25.5, 54.4),
+    tear: TEAR_DIR.clone().multiplyScalar(R - 6),
   };
   const markers = {}; const lab = {};
   for (const k of KEYS) {
@@ -298,6 +329,16 @@ export function mount(el, D) {
     g.userData = { k, s, ring }; scene.add(g); markers[k] = g;
     const d = document.createElement('button'); d.type = 'button'; d.className = 'xr-lab mu-lab'; d.dataset.mark = k; d.textContent = M[k].n; d.tabIndex = -1; labelsEl.appendChild(d); lab[k] = d;
   }
+  // retinal tear: a horseshoe-shaped flap pulled up by the vitreous gel, with dark choroid showing through; laser targets ring it
+  const tearG = new THREE.Group(); tearG.position.copy(TEAR_DIR).multiplyScalar(R - .3); tearG.lookAt(0, 0, 0); scene.add(tearG); // +Z faces the centre
+  { const hole = new THREE.Mesh(new THREE.CircleGeometry(1.5, 20), new THREE.MeshStandardMaterial({ color: 0x4a120c, roughness: .95 })); hole.position.z = .05; tearG.add(hole);
+    const edge = new THREE.Mesh(new THREE.TorusGeometry(1.55, .17, 6, 24, Math.PI * 1.6), new THREE.MeshStandardMaterial({ color: 0xf0c9b4, roughness: .7, flatShading: true })); edge.rotation.z = Math.PI * .7; edge.position.z = .12; tearG.add(edge);
+    const flap = new THREE.Mesh(new THREE.CircleGeometry(1.3, 16, 0, Math.PI), new THREE.MeshStandardMaterial({ color: 0xd98a6c, roughness: .8, side: THREE.DoubleSide, flatShading: true })); flap.position.set(0, .35, .6); flap.rotation.x = -.95; tearG.add(flap); }
+  const LT = [], tgtMat = new THREE.MeshBasicMaterial({ color: 0x7dffb0, transparent: true, opacity: .95, fog: false, side: THREE.DoubleSide }), burnMat = new THREE.MeshStandardMaterial({ color: 0xfbf3e2, roughness: .9, emissive: 0x9c8c70 });
+  for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2, r = 2.7 + (i % 2) * .55, g = new THREE.Group(); g.position.set(Math.cos(a) * r, Math.sin(a) * r, .14);
+    const ring = new THREE.Mesh(new THREE.RingGeometry(.24, .36, 18), tgtMat), burn = new THREE.Mesh(new THREE.CircleGeometry(.32, 12), burnMat); g.add(ring); g.add(burn); g.userData = { ring, burn, hit: false }; tearG.add(g); LT.push(g); }
+  const showBurns = () => LT.forEach(g => { g.visible = sealed; g.userData.ring.visible = false; g.userData.burn.visible = sealed; g.userData.hit = sealed; });
+  showBurns();
   const paintMarkers = () => KEYS.forEach(k => { const c = found.has(k) ? 0xffd34d : 0x9fe7ff; markers[k].userData.s.material.color.setHex(c); markers[k].userData.ring.material.color.setHex(c); lab[k].classList.toggle('got', found.has(k)); lab[k].textContent = (found.has(k) ? '✓ ' : '') + M[k].n; });
 
   // burst effect
@@ -318,25 +359,26 @@ export function mount(el, D) {
     $('.mu-prog').title = `${pct}% ${U.progress}`;
     const lj = $('.mu-lj'); const unlocked = n >= 3; lj.classList.toggle('locked', !unlocked); lj.title = unlocked ? U.light : U.lightlock;
     $('.mu-jl').innerHTML = `<p class="mu-pct"><b>${pct}%</b> ${U.progress}</p>` + [[U.back, BACK], [U.front, FRONTK]].map(([h, ks]) => `<h4>${esc(h)}</h4>` + ks.map(k => `<div class="mu-je ${found.has(k) ? 'got' : ''}"><b>${found.has(k) ? '✓' : '?'} ${esc(M[k].n)}</b>${found.has(k) ? `<p>${esc(M[k].t)}</p>` : ''}</div>`).join('')).join('') + `<p class="xp-warn">${esc(U.safety)}</p><p class="xp-warn">${esc(U.aacg)}</p>`;
-    $('.mu-bl').innerHTML = BADGES.map(([b]) => `<span class="mu-badge ${badges.has(b) ? 'got' : ''}">${badges.has(b) ? '🏅' : '🔒'} ${esc(U.badge[b])}</span>`).join('');
+    $('.mu-bl').innerHTML = BADGES.map(([b]) => `<span class="mu-badge ${badges.has(b) ? 'got' : ''}">${badges.has(b) ? ic('medal') : ic('lock')} ${esc(U.badge[b])}</span>`).join('');
     paintMarkers();
   };
-  const award = b => { if (badges.has(b)) return; badges.add(b); save(); toast(`🏅 <b>${esc(U.badge[b])}</b>`, 3200); progress(); };
+  const award = b => { if (badges.has(b)) return; badges.add(b); save(); toast(`${ic('medal')} <b>${esc(U.badge[b])}</b>`, 3200); progress(); };
   const checkBadges = () => { for (const [b, need] of BADGES) if (need && need.every(k => found.has(k))) award(b); };
   const LINES = { vitreous: 1, vessels: 2, macula: 3, disc: 4 };
   const discover = k => {
     const first = !found.has(k);
-    if (first) { found.add(k); save(); doBurst(markers[k].position); mata.happy(); toast(`✨ ${esc(U.discovered)} <b>${esc(M[k].n)}</b>`); if (found.size === 3) setTimeout(() => toast(`✨ ${esc(U.light)} 🔓`, 3000), 2800); }
-    if (k in LINES) say(U.intro_lines[LINES[k]], 4500); else if (k === 'aqueous') say(U.aqline, 5000);
+    if (first) { found.add(k); save(); doBurst(markers[k].position); mata.happy(); toast(`${ic('light')} ${esc(U.discovered)} <b>${esc(M[k].n)}</b>`); if (found.size === 3) setTimeout(() => toast(`${ic('light')} ${esc(U.light)}`, 3000), 2800); }
+    if (k in LINES) say(U.intro_lines[LINES[k]], 4500); else if (k === 'aqueous') say(U.aqline, 5000); else if (k === 'tear') say(U.tear_line, 5000);
     openPanel(k); checkBadges(); progress();
   };
   const openPanel = k => {
     let extra = '';
-    if (k === 'retina') extra = `<div class="mu-cross" aria-label="${esc(U.crossnote)}">${U.cross.map((c, i) => `<div style="--c:${['#d9ecff', '#bcd2ff', '#a7b7f2', '#f2c25a', '#5b3a2e', '#8f2b23'][i]}"><span>${esc(c)}</span></div>`).join('')}<p>⬇ ${esc(U.crossnote)}</p></div>`;
-    if (k === 'floaters') extra = `<p class="xp-warn">⚠️ ${esc(U.safety)}</p>`;
-    if (k === 'vessels') extra = `<button type="button" class="xr-next" data-act="follow">🩸 ${esc(U.follow)}</button>`;
-    if (k === 'aqueous' || k === 'ciliary') extra = `<button type="button" class="xr-next" data-act="ride">💧 ${esc(U.ride)}</button>`;
-    if (k === 'angle') extra = `<p class="xp-warn">⚠️ ${esc(U.aacg)}</p>`;
+    if (k === 'retina') extra = `<div class="mu-cross" aria-label="${esc(U.crossnote)}">${U.cross.map((c, i) => `<div style="--c:${['#d9ecff', '#bcd2ff', '#a7b7f2', '#f2c25a', '#5b3a2e', '#8f2b23'][i]}"><span>${esc(c)}</span></div>`).join('')}<p>↓ ${esc(U.crossnote)}</p></div>`;
+    if (k === 'floaters') extra = `<p class="xp-warn">${ic('warn')} ${esc(U.safety)}</p>`;
+    if (k === 'vessels') extra = `<button type="button" class="xr-next" data-act="follow">${ic('drop')} ${esc(U.follow)}</button>`;
+    if (k === 'aqueous' || k === 'ciliary') extra = `<button type="button" class="xr-next" data-act="ride">${ic('drop')} ${esc(U.ride)}</button>`;
+    if (k === 'tear' && !sealed) extra = `<button type="button" class="xr-next" data-act="laser">${ic('laser')} ${esc(U.laser)}</button>`;
+    if (k === 'angle') extra = `<p class="xp-warn">${ic('warn')} ${esc(U.aacg)}</p>`;
     panel.innerHTML = `<button type="button" class="xr-x" data-act="closepanel" aria-label="${U.close}">✕</button><h3>${esc(M[k].n)}</h3><p>${esc(M[k].t)}</p>${extra}`;
     panel.hidden = false;
   };
@@ -357,8 +399,8 @@ export function mount(el, D) {
   const cv = renderer.domElement;
   let look = null;
   cv.addEventListener('pointerdown', e => { look = { id: e.pointerId, x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY }; cv.setPointerCapture(e.pointerId); });
-  cv.addEventListener('pointermove', e => { if (!look || e.pointerId !== look.id || state !== 'play' || paused) return; const k = .005 * S.sens; yaw -= (e.clientX - look.x) * k; pitch = Math.max(-1.2, Math.min(1.2, pitch - (e.clientY - look.y) * k)); look.x = e.clientX; look.y = e.clientY; });
-  cv.addEventListener('pointerup', e => { if (!look) return; const tap = Math.hypot(e.clientX - look.x0, e.clientY - look.y0) < 6; look = null; if (tap && state === 'play') tapPick(e); });
+  cv.addEventListener('pointermove', e => { if (state === 'laser') { const r = cv.getBoundingClientRect(); aim.x = e.clientX - r.left; aim.y = e.clientY - r.top; return; } if (!look || e.pointerId !== look.id || state !== 'play' || paused) return; const k = .005 * S.sens; yaw -= (e.clientX - look.x) * k; pitch = Math.max(-1.2, Math.min(1.2, pitch - (e.clientY - look.y) * k)); look.x = e.clientX; look.y = e.clientY; });
+  cv.addEventListener('pointerup', e => { if (!look) return; const tap = Math.hypot(e.clientX - look.x0, e.clientY - look.y0) < 6; look = null; if (tap && state === 'play') tapPick(e); else if (tap && state === 'laser') { const r = cv.getBoundingClientRect(); aim.x = e.clientX - r.left; aim.y = e.clientY - r.top; fireLaser(); } });
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
   const tapPick = e => {
     const r = cv.getBoundingClientRect(); ndc.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1); ray.setFromCamera(ndc, camera);
@@ -400,7 +442,8 @@ export function mount(el, D) {
   const kd = e => {
     if (state === 'menu' || e.target.closest('input')) return;
     const k = e.key.toLowerCase();
-    if (k === 'escape') { if (!$('.mu-journal').hidden || !$('.mu-settings').hidden) closeOver(); else if (state === 'play' || state === 'lj') setPause(!paused); e.preventDefault(); return; }
+    if (state === 'laser' && !paused) { if (k === ' ' || k === 'enter' || k === 'e') { fireLaser(); e.preventDefault(); return; } if (k === 'escape') { endLaser(false); e.preventDefault(); return; } }
+    if (k === 'escape') { if (!$('.mu-journal').hidden || !$('.mu-settings').hidden || !$('.mu-remote').hidden) closeOver(); else if (state === 'play' || state === 'lj') setPause(!paused); e.preventDefault(); return; }
     if (k === 'e' && nearK && !paused) { discover(nearK); return; }
     if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', ' ', 'shift', 'control', 'q', 'z'].includes(k)) { keys.add(k); e.preventDefault(); auto = null; follow = null; }
   };
@@ -408,7 +451,7 @@ export function mount(el, D) {
   stage.addEventListener('keydown', kd); stage.addEventListener('keyup', ku); stage.addEventListener('blur', () => keys.clear());
 
   // ---------------- UI ----------------
-  const overs = ['.mu-pause', '.mu-journal', '.mu-settings'];
+  const overs = ['.mu-pause', '.mu-journal', '.mu-settings', '.mu-remote'];
   const closeOver = () => { overs.slice(1).forEach(s => $(s).hidden = true); if (paused) $('.mu-pause').hidden = false; stage.focus({ preventScroll: true }); };
   const setPause = p => { paused = p; $('.mu-pause').hidden = !p; overs.slice(1).forEach(s => $(s).hidden = true); $('[data-act=pause]').textContent = p ? '▶' : '⏸'; keys.clear(); setRun(); if (!p) stage.focus({ preventScroll: true }); };
   const syncSettings = () => { $('[data-set=sens]').value = S.sens; $('[data-set=reduced]').checked = S.reduced; $('[data-set=assisted]').checked = S.assisted; $('[data-set=tilt]').checked = S.tilt; };
@@ -430,7 +473,11 @@ export function mount(el, D) {
     else if (a === 'pause') setPause(!paused);
     else if (a === 'resume') setPause(false);
     else if (a === 'restart') { setPause(false); endLJ(false); startIntro(); }
-    else if (a === 'resetprog') { found.clear(); badges.clear(); save(); progress(); }
+    else if (a === 'resetprog') { found.clear(); badges.clear(); sealed = false; showBurns(); save(); progress(); }
+    else if (a === 'laser') startLaser();
+    else if (a === 'fire') fireLaser();
+    else if (a === 'laserstop') endLaser(false);
+    else if (a === 'remote') startRemote();
     else if (a === 'light') startLJ();
     else if (a === 'ljnext') { if (lj.i < LJP.length - 1) { lj.from = ljLight.position.clone(); lj.i++; lj.t = 0; renderLJ(); } else endLJ(true); }
     else if (a === 'ljskip') endLJ(false);
@@ -439,6 +486,96 @@ export function mount(el, D) {
   });
   // close overlays/pause when clicking the dim background
   stage.querySelectorAll('.mu-over').forEach(o => o.addEventListener('click', e => { if (e.target === o && !o.classList.contains('mu-pause')) stage.querySelector('[data-act=closeover]').click(); }));
+
+  // ---------------- laser minigame: seal the retinal tear with a ring of laser spots (barrage laser, as done in clinic) ----------------
+  const aimEl = $('.mu-aim'), lhud = $('.mu-lhud'), aim = { x: 0, y: 0 }, aimW = new THREE.Vector3(), wallS = new THREE.Sphere(new THREE.Vector3(), R - .3), nose = new THREE.Vector3();
+  const beam = new THREE.Mesh(new THREE.CylinderGeometry(.07, .07, 1, 6, 1, true), new THREE.MeshBasicMaterial({ color: 0x5dff8a, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false, fog: false })); beam.visible = false; scene.add(beam);
+  let laserT = 0;
+  const tearC = v => v.copy(TEAR_DIR).multiplyScalar(R - .3);
+  const leftN = () => LT.filter(g => !g.userData.hit).length;
+  const aimPoint = () => { const r = cv.getBoundingClientRect(); ndc.set(aim.x / r.width * 2 - 1, -aim.y / r.height * 2 + 1); ray.setFromCamera(ndc, camera); if (!ray.ray.intersectSphere(wallS, aimW)) tearC(aimW); return aimW; };
+  const startLaser = () => {
+    if (sealed || state !== 'play') return; closeOver(); panel.hidden = true; state = 'laser'; auto = null; follow = null;
+    LT.forEach(g => { g.visible = true; g.userData.hit = false; g.userData.ring.visible = true; g.userData.burn.visible = false; });
+    stage.classList.add('lasering'); markers.tear.visible = false; aim.x = cv.clientWidth / 2; aim.y = cv.clientHeight / 2; aimEl.hidden = false; lhud.hidden = false; $('.mu-lleft').textContent = leftN(); say(U.laser_how, 6000); stage.focus({ preventScroll: true });
+  };
+  const endLaser = done => {
+    if (state !== 'laser') return; state = 'play'; stage.classList.remove('lasering'); markers.tear.visible = true; aimEl.hidden = true; lhud.hidden = true; beam.visible = false; showBurns();
+    player.copy(craft.position); confine(player, player.clone(), 1.3); vel.set(0, 0, 0); camPos.copy(camera.position);
+    tearC(tmp).sub(player); yaw = Math.atan2(tmp.x, tmp.z); pitch = Math.asin(Math.max(-1, Math.min(1, tmp.y / tmp.length()))) * .5;
+  };
+  const fireLaser = () => {
+    if (state !== 'laser' || paused) return; aimPoint();
+    let best = null, bd = 50; const w = cv.clientWidth, h = cv.clientHeight; // the open target nearest the crosshair gets the spot
+    for (const g of LT) { if (g.userData.hit) continue; g.getWorldPosition(tmp).project(camera); const d = Math.hypot((tmp.x * .5 + .5) * w - aim.x, (-tmp.y * .5 + .5) * h - aim.y); if (d < bd) { bd = d; best = g; } }
+    const to = best ? best.getWorldPosition(new THREE.Vector3()) : aimW.clone();
+    ship.localToWorld(nose.set(0, -.45, 1.45));
+    beam.position.copy(nose).lerp(to, .5); beam.scale.set(1, nose.distanceTo(to), 1); beam.lookAt(to); beam.rotateX(Math.PI / 2); beam.visible = true; laserT = .2;
+    if (!best) return;
+    best.userData.hit = true; best.userData.ring.visible = false; best.userData.burn.visible = true; doBurst(to); if (navigator.vibrate) navigator.vibrate(12);
+    const n = leftN(); $('.mu-lleft').textContent = n;
+    if (!n) { sealed = true; save(); award('laser'); mata.happy(); say(U.laser_done, 5000); setTimeout(() => endLaser(true), 1400); }
+  };
+  const updateLaser = (dt, t) => {
+    const c = tearC(tmp2); camera.position.lerp(tmp.copy(c).addScaledVector(TEAR_DIR, -17), Math.min(1, dt * 2.5)); camera.lookAt(c);
+    const w = cv.clientWidth, h = cv.clientHeight;
+    const ax = GP.x + rem.x + GP.lx + rem.lx + joy.x + (keys.has('d') || keys.has('arrowright') ? 1 : 0) - (keys.has('a') || keys.has('arrowleft') ? 1 : 0);
+    const ay = GP.y + rem.y + GP.ly + rem.ly + joy.y + (keys.has('s') || keys.has('arrowdown') ? 1 : 0) - (keys.has('w') || keys.has('arrowup') ? 1 : 0);
+    aim.x = Math.max(0, Math.min(w, aim.x + ax * 480 * dt)); aim.y = Math.max(0, Math.min(h, aim.y + ay * 480 * dt));
+    aimEl.style.transform = `translate(${aim.x}px,${aim.y}px)`;
+    camera.updateMatrixWorld(); const m = camera.matrixWorld.elements; // the ship hovers lower right of the view, nose on the crosshair
+    craft.position.copy(camera.position).addScaledVector(tmp.set(m[8], m[9], m[10]), -6.5).addScaledVector(tmp.set(m[0], m[1], m[2]), 2.3).addScaledVector(tmp.set(m[4], m[5], m[6]), -1.5);
+    if (!S.reduced) craft.position.y += Math.sin(t * 2) * .04;
+    craft.lookAt(aimPoint()); flames.forEach(f => f.scale.setScalar(.5)); mata.update(t, dt, { reducedMotion: S.reduced, moving: false });
+    if (laserT > 0) { laserT -= dt; beam.material.opacity = Math.max(0, laserT / .2) * .9; if (laserT <= 0) beam.visible = false; }
+    LT.forEach((g, i) => { if (!g.userData.hit) g.userData.ring.scale.setScalar(1 + (S.reduced ? 0 : Math.sin(t * 4 + i) * .12)); });
+    $('.mu-vig').style.opacity = '0'; nearEl.hidden = true;
+  };
+
+  // ---------------- game controller (PS4 DualShock and other standard gamepads) and phone remote ----------------
+  const GP = { x: 0, y: 0, lx: 0, ly: 0, ud: 0 }, rem = { x: 0, y: 0, lx: 0, ly: 0, ud: 0, t: 0 }, gpPrev = {}; let gpOn = false;
+  const dz = v => Math.abs(v) < .16 ? 0 : (v - Math.sign(v) * .16) / .84;
+  const BTN = { 0: 'ok', 1: 'back', 2: 'light', 3: 'guide', 7: 'fire', 8: 'journal', 9: 'pause' }; // Cross, Circle, Square, Triangle, R2, Share, Options
+  const btnAct = n => {
+    if (state === 'menu') { if (n === 'ok' || n === 'pause') el.querySelector('[data-go="play"]').click(); return; }
+    if (n === 'pause') { if (!$('.mu-journal').hidden || !$('.mu-settings').hidden || !$('.mu-remote').hidden) closeOver(); else if (state !== 'intro') setPause(!paused); return; }
+    if (paused) { if (n === 'ok' || n === 'back') { if ($('.mu-pause').hidden) closeOver(); else setPause(false); } return; }
+    if (state === 'intro') { if (n === 'ok') toSea(); return; }
+    if (state === 'laser') { if (n === 'ok' || n === 'fire') fireLaser(); else if (n === 'back') endLaser(false); return; }
+    if (state === 'lj') { if (n === 'ok') $('[data-act=ljnext]').click(); else if (n === 'back') endLJ(false); return; }
+    if (n === 'ok') { if (!panel.hidden) { const b = panel.querySelector('.xr-next'); if (b) b.click(); else panel.hidden = true; } else if (nearK) discover(nearK); }
+    else if (n === 'back') panel.hidden = true;
+    else if (n === 'guide') glideTo(nextTarget());
+    else if (n === 'light') startLJ();
+    else if (n === 'journal') $('[data-act=journal]').click();
+  };
+  const pollGP = () => {
+    if (performance.now() - rem.t > 700) rem.x = rem.y = rem.lx = rem.ly = rem.ud = 0;
+    let p = null; try { for (const g of (navigator.getGamepads ? navigator.getGamepads() : [])) if (g && g.connected) { p = g; break; } } catch (e) { }
+    if (!p) { GP.x = GP.y = GP.lx = GP.ly = GP.ud = 0; return; }
+    if (!gpOn) { gpOn = true; toast(esc(U.pad_on), 6000); }
+    const a = p.axes, b = p.buttons, v = i => (b[i] ? b[i].value : 0);
+    GP.x = dz(a[0] || 0); GP.y = dz(a[1] || 0); GP.lx = dz(a[2] || 0); GP.ly = dz(a[3] || 0);
+    GP.ud = (v(5) > .5 || v(12) > .5 ? 1 : 0) - (v(4) > .5 || v(13) > .5 ? 1 : 0); // R1 or d-pad up: up; L1 or d-pad down: down
+    for (const i in BTN) { const on = v(+i) > .5; if (on && !gpPrev[i]) btnAct(BTN[i]); gpPrev[i] = on; }
+  };
+  const gpI = setInterval(() => { if (!running) pollGP(); }, 120); // keeps Options working while paused
+  let peer = null;
+  const loadJS = src => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+  const startRemote = async () => {
+    overs.forEach(s => $(s).hidden = true); $('.mu-remote').hidden = false; if (!paused) { paused = true; setRun(); }
+    if (peer && !peer.destroyed && !peer.disconnected) return; const st = $('.mu-rst'); st.textContent = U.rm_wait;
+    try { if (!window.Peer) await loadJS('/assets/xr/peerjs.min.js'); if (!window.qrcode) await loadJS('/assets/xr/qrcode.js'); } catch (e) { st.textContent = U.rm_err; return; }
+    if (peer) try { peer.destroy(); } catch (e) { }
+    peer = new window.Peer('matakitani-' + Math.random().toString(36).slice(2, 9));
+    peer.on('open', pid => { const url = location.origin + location.pathname + '?pad=' + encodeURIComponent(pid); const q = window.qrcode(0, 'M'); q.addData(url); q.make(); $('.mu-qr').innerHTML = q.createSvgTag(6, 2); $('.mu-rurl').textContent = url; st.textContent = U.rm_scan; });
+    peer.on('connection', c => {
+      c.on('open', () => { st.textContent = U.rm_ok; toast(esc(U.rm_ok)); setTimeout(() => { if (!$('.mu-remote').hidden) { $('.mu-remote').hidden = true; if (state === 'menu') el.querySelector('[data-go="play"]').click(); setPause(false); } }, 1200); });
+      c.on('data', d => { if (!d || typeof d !== 'object') return; if (typeof d.b === 'string') { btnAct(d.b); return; } const n = x => Math.max(-1, Math.min(1, +x || 0)); rem.x = n(d.x); rem.y = n(d.y); rem.lx = n(d.lx); rem.ly = n(d.ly); rem.ud = n(d.ud); rem.t = performance.now(); });
+      c.on('close', () => toast(esc(U.rm_off)));
+    });
+    peer.on('error', () => { st.textContent = U.rm_err; });
+  };
 
   // ---------------- intro flow ----------------
   let cine = null;
@@ -458,14 +595,15 @@ export function mount(el, D) {
   const tmp = new THREE.Vector3(), tmp2 = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
   const updatePlay = (dt, t) => {
     const speed = 11, f = fwd(), right = new THREE.Vector3(Math.cos(yaw), 0, -Math.sin(yaw));
-    let ix = joy.x, iy = -joy.y;
+    let ix = joy.x + GP.x + rem.x, iy = -(joy.y + GP.y + rem.y);
     if (keys.has('w') || keys.has('arrowup')) iy += 1; if (keys.has('s') || keys.has('arrowdown')) iy -= 1;
     if (keys.has('d')) ix += 1; if (keys.has('a')) ix -= 1;
     const turn = (keys.has('arrowleft') ? 1 : 0) - (keys.has('arrowright') ? 1 : 0);
-    let lift = ud + (keys.has(' ') ? 1 : 0) - (keys.has('shift') || keys.has('control') || keys.has('q') || keys.has('z') ? 1 : 0);
+    let lift = ud + GP.ud + rem.ud + (keys.has(' ') ? 1 : 0) - (keys.has('shift') || keys.has('control') || keys.has('q') || keys.has('z') ? 1 : 0);
     if (Math.abs(ix) + Math.abs(iy) + Math.abs(lift) > .05) { auto = null; follow = null; }
     yaw += turn * 1.6 * dt * S.sens;
-    if (S.assisted) { yaw -= ix * 1.3 * dt * S.sens; ix = 0; if (!look) pitch *= Math.pow(.6, dt); } // assisted: stick turns, view levels out
+    const slx = GP.lx + rem.lx, sly = GP.ly + rem.ly; if (slx || sly) { yaw -= slx * 2.2 * dt * S.sens; pitch = Math.max(-1.2, Math.min(1.2, pitch - sly * 1.6 * dt * S.sens)); } // right stick looks
+    if (S.assisted) { yaw -= ix * 1.3 * dt * S.sens; ix = 0; if (!look && !sly) pitch *= Math.pow(.6, dt); } // assisted: stick turns, view levels out
     const want = new THREE.Vector3().addScaledVector(f, iy).addScaledVector(right, ix).addScaledVector(up, lift);
     if (auto) { const tg = auto.path.length ? auto.path[0] : auto.to; tmp.copy(tg).sub(player); const d = tmp.length();
       if (auto.path.length && d < 2.5) auto.path.shift(); else if (!auto.path.length && d < 7) { const k = auto.k; auto = null; discover(k); } else { want.copy(tmp.normalize()); const ty = Math.atan2(tmp.x, tmp.z), tp = Math.asin(Math.max(-1, Math.min(1, tmp.y))); yaw += Math.atan2(Math.sin(ty - yaw), Math.cos(ty - yaw)) * Math.min(1, dt * 2); pitch += (tp - pitch) * Math.min(1, dt * 2); } }
@@ -483,8 +621,9 @@ export function mount(el, D) {
     const mac = player.distanceTo(LM.fovea); $('.mu-vig').style.opacity = String(Math.max(0, Math.min(1, (16 - mac) / 8)));
     // Mata faces where it is going
     const look2 = vel.lengthSq() > .5 ? vel.clone().normalize() : f;
-    mata.object.position.copy(player); mata.object.lookAt(tmp2.copy(player).add(look2));
-    mata.update(t, dt, { reducedMotion: S.reduced, moving: vel.lengthSq() > 2 });
+    craft.position.copy(player); if (!S.reduced) craft.position.y += Math.sin(t * 2.2) * .06; craft.lookAt(tmp2.copy(player).add(look2));
+    flames.forEach(f => f.scale.setScalar(.55 + Math.min(1, vel.length() / 11) * .75 + (S.reduced ? 0 : Math.random() * .12)));
+    mata.update(t, dt, { reducedMotion: S.reduced, moving: false });
     // third-person camera
     const back = f.clone().multiplyScalar(-5.2).add(new THREE.Vector3(0, 1.6, 0));
     const smooth = S.reduced ? 2 : 4;
@@ -496,7 +635,7 @@ export function mount(el, D) {
     const e = lj.t < .5 ? 2 * lj.t * lj.t : 1 - Math.pow(-2 * lj.t + 2, 2) / 2;
     if (lj.i === 6) { const c = fibreCurves[3]; ljLight.position.copy(lj.from).lerp(to, e); } else ljLight.position.copy(lj.from).lerp(to, e);
     signals.forEach(s => s.visible = lj.i === 6);
-    mata.object.position.copy(ljLight.position).add(new THREE.Vector3(2.5, 1.2, 1.5)); mata.object.lookAt(ljLight.position); mata.update(t, dt, { reducedMotion: S.reduced });
+    craft.position.copy(ljLight.position).add(new THREE.Vector3(2.5, 1.2, 1.5)); craft.lookAt(ljLight.position); mata.update(t, dt, { reducedMotion: S.reduced });
     const dir = (lj.i < 6 ? new THREE.Vector3(0, 0, -1) : DISC_DIR.clone()).normalize();
     camPos.lerp(tmp.copy(ljLight.position).addScaledVector(dir, -9).add(new THREE.Vector3(3, 2.5, 0)), Math.min(1, dt * 2.5)); camera.position.copy(camPos);
     camLook.lerp(tmp.copy(ljLight.position).addScaledVector(dir, 6), Math.min(1, dt * 3)); camera.lookAt(camLook);
@@ -532,7 +671,7 @@ export function mount(el, D) {
   const ro = new ResizeObserver(resize); ro.observe(stage);
   const clock = new THREE.Clock(); let t = 0, visible = true, running = false;
   const loop = () => {
-    const dt = Math.min(clock.getDelta(), .05); t += dt * (S.reduced ? .4 : 1);
+    const dt = Math.min(clock.getDelta(), .05); t += dt * (S.reduced ? .4 : 1); pollGP();
     partU.uT.value = t; beamU.uT.value = t; wallU.uT.value = t;
     if (!S.reduced) { fib.rotation.y = t * .01; floaters.rotation.y = t * .05; floaters.rotation.x = Math.sin(t * .1) * .3; }
     KEYS.forEach((k, i) => { const g = markers[k]; g.userData.ring.lookAt(camera.position); const s = 1 + Math.sin(t * 2 + i) * (S.reduced ? 0 : .15); g.userData.ring.scale.setScalar(s); g.position.y = LM[k].y + (S.reduced ? 0 : Math.sin(t * .8 + i) * .5); });
@@ -540,9 +679,9 @@ export function mount(el, D) {
     signals.forEach(s => { if (!s.visible) return; s.position.copy(s.userData.c.getPointAt((t * .12 + s.userData.o) % 1)); });
     if (burstT > 0) { burstT -= dt; const a = burst.geometry.attributes.position.array; for (let i = 0; i < 60; i++) { a[i * 3] += burstV[i].x * dt; a[i * 3 + 1] += burstV[i].y * dt; a[i * 3 + 2] += burstV[i].z * dt; } burst.geometry.attributes.position.needsUpdate = true; burst.material.opacity = Math.max(0, burstT); if (burstT <= 0) burst.visible = false; }
     if (state === 'intro') { updateIntro(dt, t); renderer.render(introS, camera); updateLabels(); return; }
-    if (state === 'play') updatePlay(dt, t); else if (state === 'lj') updateLJ(dt, t);
-    else { camera.position.set(Math.sin(t * .1) * 8, 3, 26); camera.lookAt(0, 0, -20); mata.object.position.set(0, 0, 16); mata.update(t, dt, { reducedMotion: S.reduced }); }
-    lantern.position.copy(state === 'lj' ? ljLight.position : player).add(new THREE.Vector3(0, 2, 2));
+    if (state === 'play') updatePlay(dt, t); else if (state === 'lj') updateLJ(dt, t); else if (state === 'laser') updateLaser(dt, t);
+    else { camera.position.set(Math.sin(t * .1) * 8, 3, 26); camera.lookAt(0, 0, -20); craft.position.set(0, 0, 16); mata.update(t, dt, { reducedMotion: S.reduced }); }
+    lantern.position.copy(state === 'lj' ? ljLight.position : state === 'laser' ? craft.position : player).add(new THREE.Vector3(0, 2, 2));
     renderer.render(scene, camera); updateLabels();
   };
   const setRun = () => { const on = visible && !document.hidden && !paused; if (on !== running) { running = on; clock.getDelta(); renderer.setAnimationLoop(on ? loop : null); } };
@@ -550,9 +689,9 @@ export function mount(el, D) {
   const onVis = () => { if (document.hidden && (state === 'play' || state === 'lj') && !paused) setPause(true); setRun(); }; document.addEventListener('visibilitychange', onVis);
   resize(); progress(); syncSettings(); setRun(); el.classList.add('ready');
   el.querySelector('.xr-load').hidden = true;
-  el.__dbg = { get state() { return state }, player, camera, discover, startLJ, toSea, glideTo, setView(y, p) { yaw = y; pitch = p; } };
+  el.__dbg = { get state() { return state }, player, camera, discover, startLJ, toSea, glideTo, startLaser, fireLaser, btnAct, aim, LT, setView(y, p) { yaw = y; pitch = p; } };
 
   const watch = setInterval(() => { if (el.isConnected) return;
-    clearInterval(watch); renderer.setAnimationLoop(null); io.disconnect(); ro.disconnect(); document.removeEventListener('visibilitychange', onVis); removeEventListener('deviceorientation', onTilt);
+    clearInterval(watch); clearInterval(gpI); if (peer) try { peer.destroy(); } catch (e) { } renderer.setAnimationLoop(null); io.disconnect(); ro.disconnect(); document.removeEventListener('visibilitychange', onVis); removeEventListener('deviceorientation', onTilt);
     document.documentElement.classList.remove('xr-lock'); bigEye.dispose(); scene.traverse(o => { if (o.geometry) o.geometry.dispose(); }); renderer.dispose(); renderer.forceContextLoss(); }, 1000);
 }
