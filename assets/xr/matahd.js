@@ -12,11 +12,11 @@ const HEAD = { cy: 1.4, rx: .86, ry: .73 }, BODY = { cy: .6, rx: .62, ry: .46 },
 const smin = (a, b, k) => { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.min(a, b) - h * h * k * .25; };
 const ell = (r, y, s) => (Math.hypot(r / s.rx, (y - s.cy) / s.ry) - 1) * Math.min(s.rx, s.ry);
 const sdf = (r, y) => smin(ell(r, y, HEAD), ell(r, y, BODY), .1);
-function profile(n = 96) {
+function profile(n = 96, f = sdf) {
   const pts = [];
   for (let i = 0; i <= n; i++) {
     const th = i / n * Math.PI, dx = Math.sin(th), dy = -Math.cos(th);
-    let lo = 0, hi = 2; for (let k = 0; k < 40; k++) { const m = (lo + hi) / 2; sdf(dx * m, CENTER + dy * m) < 0 ? lo = m : hi = m; }
+    let lo = 0, hi = 2; for (let k = 0; k < 40; k++) { const m = (lo + hi) / 2; f(dx * m, CENTER + dy * m) < 0 ? lo = m : hi = m; }
     pts.push(new THREE.Vector2(i === 0 || i === n ? 0 : dx * lo, CENTER + dy * lo));
   }
   return pts;
@@ -253,19 +253,20 @@ function stripGeo(A, B, project) {
 // ---------------------------------------------------------------- build
 export function createMataHD(opts = {}) {
   const shells = opts.shells ?? 0, smooth = !shells; // 0 shells = smooth plush (default: cheap enough for phones)
+  const hd = !!opts.headOnly; // head only, no body/arms/legs/bag (Haziq, 2026-10-15: EyeCompanion)
   const ori = (opts.origami ?? true) && smooth, Q = (hi, lo) => ori ? lo : hi; // origami: folded-paper Mata, few flat facets (Haziq, 2026-10-15)
   const root = new THREE.Group(); root.name = 'Mata';
   const sk = makeSkeleton(), B = sk.by, I = sk.index;
   root.add(B.Root); root.updateMatrixWorld(true);
 
   // --- body (one lathe: big round head flowing into a small body)
-  const body = new THREE.LatheGeometry(ori ? profile(22) : PROFILE, Q(112, 16)); body.scale(1, 1, DEPTH); fixNormalsScaled(body, new THREE.Vector3(1, 1, DEPTH));
+  const body = new THREE.LatheGeometry(hd ? profile(ori ? 20 : 96, (r, y) => ell(r, y, HEAD)) : ori ? profile(22) : PROFILE, Q(112, 16)); body.scale(1, 1, DEPTH); fixNormalsScaled(body, new THREE.Vector3(1, 1, DEPTH));
   const bodyW = p => { const h = sm(.8, 1.0, p.y), s = sm(.36, .58, p.y) * (1 - h); return [I.Head, h, I.Spine, s, I.Hips, 1 - h - s]; };
-  const parts = [part(body, bodyW, .075, 1, [4.4, 3.9])];
+  const parts = [part(body, hd ? () => [I.Head, 1] : bodyW, .075, 1, [4.4, 3.9])];
   // --- arms (stubby, slightly thicker at the paw)
   const armProf = []; for (let i = 0; i <= 24; i++) { const t = i / 24; const y = -t * .56; const r = t < .82 ? .132 + .03 * t : (.132 + .03 * .82) * Math.sqrt(Math.max(0, 1 - Math.pow((t - .82) / .18, 2))); armProf.push(new THREE.Vector2(Math.max(r, 0), y)); }
   armProf.unshift(new THREE.Vector2(0, .02)); armProf.reverse(); // bottom to top so the normals face outwards
-  for (const [s, a, h] of [[1, 'Arm_L', 'Hand_L'], [-1, 'Arm_R', 'Hand_R']]) {
+  if (!hd) for (const [s, a, h] of [[1, 'Arm_L', 'Hand_L'], [-1, 'Arm_R', 'Hand_R']]) {
     const sh = B[a].userData.world, dir = new THREE.Vector3(s * .3, -.62, .08).normalize();
     const g = limb(Q(armProf, armProf.filter((_, i) => i % 4 === 0 || i === armProf.length - 1)), Q(28, 7), dir, sh);
     parts.push(part(g, p => { const t = p.clone().sub(sh).dot(dir) / .56, w = sm(.4, .62, t); return [I[a], 1 - w, I[h], w]; }, .065, 0, [.95, .62]));
@@ -273,7 +274,7 @@ export function createMataHD(opts = {}) {
   // --- legs (short and round, little feet pointing forward)
   const legProf = []; for (let i = 0; i <= 18; i++) { const t = i / 18, y = -t * .34; const r = t < .7 ? .17 + .015 * t : .1805 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .7) / .3, 2))); legProf.push(new THREE.Vector2(r, y)); }
   legProf.unshift(new THREE.Vector2(0, .05)); legProf.reverse();
-  for (const [s, l] of [[1, 'Leg_L'], [-1, 'Leg_R']]) { const at = B[l].userData.world; const g = limb(Q(legProf, legProf.filter((_, i) => i % 3 === 0 || i === legProf.length - 1)), Q(24, 7), new THREE.Vector3(s * .05, -1, .04), at, 1.15); parts.push(part(g, () => [I[l], 1], .055, 0, [1.05, .5])); }
+  if (!hd) for (const [s, l] of [[1, 'Leg_L'], [-1, 'Leg_R']]) { const at = B[l].userData.world; const g = limb(Q(legProf, legProf.filter((_, i) => i % 3 === 0 || i === legProf.length - 1)), Q(24, 7), new THREE.Vector3(s * .05, -1, .04), at, 1.15); parts.push(part(g, () => [I[l], 1], .055, 0, [1.05, .5])); }
   // --- three leafy tufts on top
   const tuftProf = []; for (let i = 0; i <= 16; i++) { const t = i / 16; tuftProf.push(new THREE.Vector2(.2 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .5) / .5, 2))), t * .5)); }
   tuftProf[tuftProf.length - 1].x = 0; tuftProf.unshift(new THREE.Vector2(0, -.02));
@@ -282,7 +283,7 @@ export function createMataHD(opts = {}) {
     parts.push(part(g, () => [I[n], 1], .05, 0, [.85, .5]));
   }
   // --- little round tail
-  { const g = new THREE.SphereGeometry(.12, Q(20, 7), Q(14, 5)); const at = B.Tail.userData.world; g.translate(at.x, at.y, at.z); parts.push(part(g, () => [I.Tail, 1], .08, 0, [.75, .38])); }
+  if (!hd) { const g = new THREE.SphereGeometry(.12, Q(20, 7), Q(14, 5)); const at = B.Tail.userData.world; g.translate(at.x, at.y, at.z); parts.push(part(g, () => [I.Tail, 1], .08, 0, [.75, .38])); }
   const geo = merge(parts); geo.computeBoundingSphere(); geo.boundingSphere.radius += .2;
 
   const skeleton = new THREE.Skeleton(sk.list);
@@ -340,12 +341,12 @@ export function createMataHD(opts = {}) {
   const flap = new THREE.Mesh(rbox(.36, .16, .035, .016), felt); flap.position.set(0, .055, .07); flap.rotation.x = -.08; bag.add(flap);
   const bh = new THREE.Mesh(new THREE.ExtrudeGeometry(hs, { depth: .01, bevelEnabled: true, bevelThickness: .008, bevelSize: .008, bevelSegments: 2 }), new THREE.MeshStandardMaterial({ color: 0xfffaf2, roughness: .7 }));
   bh.scale.setScalar(.55); bh.position.set(0, .04, .09); bag.add(bh);
-  const bagPos = new THREE.Vector3(-.3, .5, .5); bag.position.copy(bagPos).sub(spineW); bag.rotation.set(-.12, -.42, .06); B.Spine.add(bag);
+  const bagPos = new THREE.Vector3(-.3, .5, .5); bag.position.copy(bagPos).sub(spineW); bag.rotation.set(-.12, -.42, .06); if (!hd) B.Spine.add(bag);
   // strap: loops over Mata's left shoulder, across the chest to the bag, and round the back
   const onBody = (x, y, z, lift = .055) => { const phi = Math.atan2(x, z / DEPTH), r = radiusAt(y) + lift; return new THREE.Vector3(Math.sin(phi) * r, y, Math.cos(phi) * r * DEPTH); };
   const sp = [onBody(-.22, .57, .45), onBody(0, .72, .5), onBody(.17, .88, .42), onBody(.28, .99, .05, .03), onBody(.22, .9, -.3), onBody(.04, .72, -.45), onBody(-.3, .55, -.3), onBody(-.44, .5, .05), onBody(-.4, .51, .3)];
   const strap = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(sp, true), 120, .03, 8, true), felt); strap.name = 'Strap'; strap.scale.set(1, 1, 1);
-  strap.geometry.translate(-spineW.x, -spineW.y, -spineW.z); B.Spine.add(strap);
+  strap.geometry.translate(-spineW.x, -spineW.y, -spineW.z); if (!hd) B.Spine.add(strap);
 
   root.updateMatrixWorld(true);
 
