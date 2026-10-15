@@ -27,8 +27,8 @@ if(m&&window.crypto&&crypto.subtle){crypto.subtle.digest("SHA-256",new TextEncod
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
 <script>(()=>{try{const d=document.documentElement,f=localStorage.getItem('is-fs'),t=localStorage.getItem('is-theme');if(f)d.dataset.fs=f;if(t)d.dataset.theme=t}catch(e){}})()</script>
 <link rel="stylesheet" href="/assets/css/bf790a8a2385.css">
-<link rel="stylesheet" href="../../assets/dark.css?v=20261015230327">
-<link rel="stylesheet" id="ori" href="/assets/css/73d6d944fca6.css">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261015232534">
+<link rel="stylesheet" id="ori" href="/assets/css/092389fcdd67.css">
 </head>
 <body class="">
 <a class="skip" href="#main">Skip to content</a>
@@ -110,7 +110,7 @@ const fit=()=>{const m=document.querySelector('header.site .menu.wide');if(!m)re
  const nv=m.closest('.nav')||document.querySelector('header.site .nav'),n=nv.getBoundingClientRect(),op=m.offsetParent||m.parentNode,r=op.getBoundingClientRect();m.style.right='auto';m.style.left=(n.left-r.left)+'px';m.style.width=n.width+'px'};
 addEventListener('resize',fit);document.addEventListener('pointerover',ev=>{if(ev.target.closest&&ev.target.closest('header.site .dd'))fit()});document.addEventListener('focusin',fit);document.addEventListener('click',fit,true);fit()})()</script><script>(()=>{const go=()=>{if(location.hash!=='#checker')return;let n=0;const t=setInterval(()=>{const s=document.getElementById('checker');if(s||++n>20){clearInterval(t);if(s)s.scrollIntoView({behavior:'smooth',block:'start'})}},150)};
 go();if(!window.__mkChk){window.__mkChk=1;addEventListener('hashchange',go)}})()</script><script>(()=>{if(!document.getElementById('mk-hbar')){const d=document.createElement('div');d.id='mk-hbar';d.setAttribute('aria-hidden','true');document.body.appendChild(d)}
-if(window.__mkScr)return;window.__mkScr=1;const H=document.documentElement;let t=0;const f=()=>{t=0;H.classList.toggle('mk-scr',scrollY>12)};addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(f)},{passive:true});f()})()</script><script>(()=>{const d=document.documentElement,R=matchMedia('(prefers-reduced-motion: reduce)').matches,main=document.querySelector('main');if(!main)return;
+if(window.__mkScr)return;window.__mkScr=1;const H=document.documentElement;let t=0;const f=()=>{t=0;H.classList.toggle('mk-scr',scrollY>12)};addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(f)},{passive:true});f()})()</script><script>(()=>{if(window.__mkMove)return;window.__mkMove=1;const H=document.documentElement;let t=0;addEventListener('scroll',()=>{H.classList.add('mk-moving');clearTimeout(t);t=setTimeout(()=>H.classList.remove('mk-moving'),900)},{passive:true})})()</script><script>(()=>{const d=document.documentElement,R=matchMedia('(prefers-reduced-motion: reduce)').matches,main=document.querySelector('main');if(!main)return;
 const head=document.querySelector('header.site');
 const hn=head&&head.querySelector('.nav');if(hn&&!hn.querySelector('.mo-glint')){const g=document.createElement('span');g.className='mo-glint';g.setAttribute('aria-hidden','true');hn.prepend(g)}
 if(!window.__mo){window.__mo=1;let q=0;
@@ -359,7 +359,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261015230327';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261015232534';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
