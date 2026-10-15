@@ -112,7 +112,22 @@ float h1(vec3 p){ return fract(sin(dot(p, vec3(12.9898, 78.233, 37.719))) * 4375
 vec3 h3(vec3 p){ return fract(sin(vec3(dot(p, vec3(127.1, 311.7, 74.7)), dot(p, vec3(269.5, 183.3, 246.1)), dot(p, vec3(113.5, 271.9, 124.6)))) * 43758.5453); }
 void main(){
   float face = faceMask(vRest) * vBody;
-#ifdef SMOOTH
+#ifdef ORIGAMI
+  // folded paper (Haziq, 2026-10-15): every facet is a flat sheet; the face and blush are crisp paper cut-outs laid on top
+  vec3 N = normalize(cross(dFdx(vPw), dFdy(vPw))), V = normalize(cameraPosition - vPw);
+  if (dot(N, V) < 0.) N = -N;
+  float fc = step(.5, face);
+  vec3 base = mix(uGreen, uCream, fc);
+  float bl = step(length(vec2(abs(vRest.x) - .5, (vRest.y - 1.12) * 1.25)), .085) * fc;
+  base = mix(base, uBlush, bl * .85);
+  base *= .955 + .07 * h1(floor(N * 11.));
+  base *= .975 + .035 * h1(floor(vRest * vec3(160., 22., 160.)));
+  float k = max(0., (dot(N, uKeyDir) + .3) / 1.3), fl = max(0., (dot(N, uFillDir) + .5) / 1.5);
+  vec3 hemi = mix(uGround, uSky, N.y * .5 + .5);
+  float edge = pow(1. - max(dot(N, V), 0.), 3.);
+  vec3 col = base * (hemi + uKeyCol * k + uFillCol * fl) + uRimCol * edge * .35 * base;
+  gl_FragColor = vec4(col, 1.);
+#elif defined(SMOOTH)
   // smooth plush: one soft surface, no strands (light on phones)
   vec3 base = mix(uGreen, uCream, smoothstep(.3, .7, face));
   float bl = (1. - smoothstep(.0, .11, length(vec2(abs(vRest.x) - .5, (vRest.y - 1.12) * 1.25)))) * face;
@@ -238,12 +253,13 @@ function stripGeo(A, B, project) {
 // ---------------------------------------------------------------- build
 export function createMataHD(opts = {}) {
   const shells = opts.shells ?? 0, smooth = !shells; // 0 shells = smooth plush (default: cheap enough for phones)
+  const ori = (opts.origami ?? true) && smooth, Q = (hi, lo) => ori ? lo : hi; // origami: folded-paper Mata, few flat facets (Haziq, 2026-10-15)
   const root = new THREE.Group(); root.name = 'Mata';
   const sk = makeSkeleton(), B = sk.by, I = sk.index;
   root.add(B.Root); root.updateMatrixWorld(true);
 
   // --- body (one lathe: big round head flowing into a small body)
-  const body = new THREE.LatheGeometry(PROFILE, 112); body.scale(1, 1, DEPTH); fixNormalsScaled(body, new THREE.Vector3(1, 1, DEPTH));
+  const body = new THREE.LatheGeometry(ori ? profile(22) : PROFILE, Q(112, 16)); body.scale(1, 1, DEPTH); fixNormalsScaled(body, new THREE.Vector3(1, 1, DEPTH));
   const bodyW = p => { const h = sm(.8, 1.0, p.y), s = sm(.36, .58, p.y) * (1 - h); return [I.Head, h, I.Spine, s, I.Hips, 1 - h - s]; };
   const parts = [part(body, bodyW, .075, 1, [4.4, 3.9])];
   // --- arms (stubby, slightly thicker at the paw)
@@ -251,28 +267,28 @@ export function createMataHD(opts = {}) {
   armProf.unshift(new THREE.Vector2(0, .02)); armProf.reverse(); // bottom to top so the normals face outwards
   for (const [s, a, h] of [[1, 'Arm_L', 'Hand_L'], [-1, 'Arm_R', 'Hand_R']]) {
     const sh = B[a].userData.world, dir = new THREE.Vector3(s * .3, -.62, .08).normalize();
-    const g = limb(armProf, 28, dir, sh);
+    const g = limb(Q(armProf, armProf.filter((_, i) => i % 4 === 0 || i === armProf.length - 1)), Q(28, 7), dir, sh);
     parts.push(part(g, p => { const t = p.clone().sub(sh).dot(dir) / .56, w = sm(.4, .62, t); return [I[a], 1 - w, I[h], w]; }, .065, 0, [.95, .62]));
   }
   // --- legs (short and round, little feet pointing forward)
   const legProf = []; for (let i = 0; i <= 18; i++) { const t = i / 18, y = -t * .34; const r = t < .7 ? .17 + .015 * t : .1805 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .7) / .3, 2))); legProf.push(new THREE.Vector2(r, y)); }
   legProf.unshift(new THREE.Vector2(0, .05)); legProf.reverse();
-  for (const [s, l] of [[1, 'Leg_L'], [-1, 'Leg_R']]) { const at = B[l].userData.world; const g = limb(legProf, 24, new THREE.Vector3(s * .05, -1, .04), at, 1.15); parts.push(part(g, () => [I[l], 1], .055, 0, [1.05, .5])); }
+  for (const [s, l] of [[1, 'Leg_L'], [-1, 'Leg_R']]) { const at = B[l].userData.world; const g = limb(Q(legProf, legProf.filter((_, i) => i % 3 === 0 || i === legProf.length - 1)), Q(24, 7), new THREE.Vector3(s * .05, -1, .04), at, 1.15); parts.push(part(g, () => [I[l], 1], .055, 0, [1.05, .5])); }
   // --- three leafy tufts on top
   const tuftProf = []; for (let i = 0; i <= 16; i++) { const t = i / 16; tuftProf.push(new THREE.Vector2(.2 * Math.sqrt(Math.max(0, 1 - Math.pow((t - .5) / .5, 2))), t * .5)); }
   tuftProf[tuftProf.length - 1].x = 0; tuftProf.unshift(new THREE.Vector2(0, -.02));
   for (const [n, rz, rx, sc] of [['Tuft_C', -.35, -.15, 1.1], ['Tuft_L', -.7, -.05, .7], ['Tuft_R', .1, -.15, .95]]) {
-    const at = B[n].userData.world, g = new THREE.LatheGeometry(tuftProf, 20); g.scale(sc, sc, sc * .55); fixNormalsScaled(g, new THREE.Vector3(sc, sc, sc * .55)); g.rotateX(rx); g.rotateZ(rz); g.translate(at.x, at.y - .04, at.z);
+    const at = B[n].userData.world, g = new THREE.LatheGeometry(Q(tuftProf, tuftProf.filter((_, i) => i % 3 === 0 || i === tuftProf.length - 1)), Q(20, 5)); g.scale(sc, sc, sc * .55); fixNormalsScaled(g, new THREE.Vector3(sc, sc, sc * .55)); g.rotateX(rx); g.rotateZ(rz); g.translate(at.x, at.y - .04, at.z);
     parts.push(part(g, () => [I[n], 1], .05, 0, [.85, .5]));
   }
   // --- little round tail
-  { const g = new THREE.SphereGeometry(.12, 20, 14); const at = B.Tail.userData.world; g.translate(at.x, at.y, at.z); parts.push(part(g, () => [I.Tail, 1], .08, 0, [.75, .38])); }
+  { const g = new THREE.SphereGeometry(.12, Q(20, 7), Q(14, 5)); const at = B.Tail.userData.world; g.translate(at.x, at.y, at.z); parts.push(part(g, () => [I.Tail, 1], .08, 0, [.75, .38])); }
   const geo = merge(parts); geo.computeBoundingSphere(); geo.boundingSphere.radius += .2;
 
   const skeleton = new THREE.Skeleton(sk.list);
   const furU = furUniforms(), furMats = [], meshes = [];
   for (let i = 0; i <= shells; i++) {
-    const m = new THREE.ShaderMaterial({ uniforms: { ...furU, uH: { value: smooth ? .45 : i / shells } }, vertexShader: FUR_VS, fragmentShader: FUR_FS, defines: smooth ? { SMOOTH: 1 } : {} });
+    const m = new THREE.ShaderMaterial({ uniforms: { ...furU, uH: { value: smooth ? .45 : i / shells } }, vertexShader: FUR_VS, fragmentShader: FUR_FS, defines: ori ? { SMOOTH: 1, ORIGAMI: 1 } : smooth ? { SMOOTH: 1 } : {} });
     const mesh = new THREE.SkinnedMesh(geo, m); mesh.name = i ? 'Fur_' + i : 'Body'; mesh.frustumCulled = false; mesh.renderOrder = i;
     root.add(mesh); mesh.bind(skeleton); furMats.push(m); meshes.push(mesh);
   }
@@ -309,7 +325,7 @@ export function createMataHD(opts = {}) {
 
   // small yellow heart on the head
   const hs = new THREE.Shape(); hs.moveTo(0, -.09); hs.bezierCurveTo(-.15, .0, -.09, .13, 0, .055); hs.bezierCurveTo(.09, .13, .15, 0, 0, -.09);
-  const yellow = new THREE.MeshPhysicalMaterial({ color: 0xf39bbb, roughness: .55, sheen: 1, sheenColor: new THREE.Color(0xffe0ec), sheenRoughness: .6 });
+  const yellow = new THREE.MeshPhysicalMaterial({ color: 0xf39bbb, flatShading: ori, roughness: .55, sheen: 1, sheenColor: new THREE.Color(0xffe0ec), sheenRoughness: .6 });
   const heart = new THREE.Mesh(new THREE.ExtrudeGeometry(hs, { depth: .05, bevelEnabled: true, bevelThickness: .025, bevelSize: .025, bevelSegments: 4, curveSegments: 16 }), yellow);
   heart.name = 'HeadHeart'; heart.geometry.center(); heart.position.set(.5, 2.02, .12).sub(headW); heart.rotation.set(-.2, -.3, -.45); B.Head.add(heart);
 
@@ -319,7 +335,7 @@ export function createMataHD(opts = {}) {
   const rbox = (w, h, d, r) => { const g = new THREE.BoxGeometry(w, h, d, 10, 10, 10), p = g.attributes.position, v = new THREE.Vector3(), c = new THREE.Vector3(w / 2 - r, h / 2 - r, d / 2 - r);
     for (let i = 0; i < p.count; i++) { v.fromBufferAttribute(p, i); const q = new THREE.Vector3(Math.max(-c.x, Math.min(c.x, v.x)), Math.max(-c.y, Math.min(c.y, v.y)), Math.max(-c.z, Math.min(c.z, v.z))); v.sub(q).normalize().multiplyScalar(r).add(q); p.setXYZ(i, v.x, v.y, v.z); }
     g.computeVertexNormals(); return g; };
-  const felt = new THREE.MeshPhysicalMaterial({ color: 0xf4a3c1, roughness: .85, sheen: 1, sheenColor: new THREE.Color(0xffe4ef), sheenRoughness: .5 });
+  const felt = new THREE.MeshPhysicalMaterial({ color: 0xf4a3c1, flatShading: ori, roughness: .85, sheen: 1, sheenColor: new THREE.Color(0xffe4ef), sheenRoughness: .5 });
   bag.add(new THREE.Mesh(rbox(.36, .28, .14, .07), felt));
   const flap = new THREE.Mesh(rbox(.36, .16, .035, .016), felt); flap.position.set(0, .055, .07); flap.rotation.x = -.08; bag.add(flap);
   const bh = new THREE.Mesh(new THREE.ExtrudeGeometry(hs, { depth: .01, bevelEnabled: true, bevelThickness: .008, bevelSize: .008, bevelSegments: 2 }), new THREE.MeshStandardMaterial({ color: 0xfffaf2, roughness: .7 }));
