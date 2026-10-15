@@ -310,13 +310,18 @@ export function mount(el, D) {
     if (a === 'reset') { setMode(mode); }
     else if (a === 'labels') { showAll = !showAll; b.setAttribute('aria-pressed', showAll); }
     else if (a === 'calm') { calm = !calm; b.setAttribute('aria-pressed', calm); b.firstChild.textContent = calm ? '▶' : '⏸'; }
-    else if (a === 'full') { full = !full; el.classList.toggle('xr-full', full); document.documentElement.classList.toggle('xr-lock', full); setTimeout(resize, 50); }
+    else if (a === 'full') { full = !full; goFull(full); el.classList.toggle('xr-full', full); document.documentElement.classList.toggle('xr-lock', full); setTimeout(resize, 50); }
     else if (a === 'parts') toggleDrawer();
     else if (a === 'close') select(null);
     else if (a === 'arno') $('.xr-modal').hidden = true;
     else if (a === 'argo') startAR();
   };
   const toggleDrawer = (on) => { const d = $('.xr-drawer'); const open = on ?? d.hidden; d.hidden = !open; $('.xr-prog').setAttribute('aria-expanded', open); };
+  const goFull = on => { try { const d = document, fe = d.fullscreenElement || d.webkitFullscreenElement;
+    if (on && !fe) { const r = el.requestFullscreen || el.webkitRequestFullscreen; if (r) { const pr = r.call(el); if (pr && pr.catch) pr.catch(() => { }); } }
+    else if (!on && fe) { const x = d.exitFullscreen || d.webkitExitFullscreen; if (x) { const pr = x.call(d); if (pr && pr.catch) pr.catch(() => { }); } } } catch (e) { } };
+  const onFs = () => { if (!(document.fullscreenElement || document.webkitFullscreenElement) && full) { full = false; el.classList.remove('xr-full'); document.documentElement.classList.remove('xr-lock'); setTimeout(resize, 60); } };
+  document.addEventListener('fullscreenchange', onFs); document.addEventListener('webkitfullscreenchange', onFs);
   stage.addEventListener('click', onClick);
   arOverlay.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
     if (b.dataset.act === 'arexit') renderer.xr.getSession()?.end();

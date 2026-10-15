@@ -459,6 +459,11 @@ export function mount(el, D) {
     if (s === 'tilt' && S.tilt) { tilt0 = null; const DOE = window.DeviceOrientationEvent; if (DOE && DOE.requestPermission) DOE.requestPermission().then(r => { if (r !== 'granted') { S.tilt = false; syncSettings(); } }).catch(() => { S.tilt = false; syncSettings(); }); addEventListener('deviceorientation', onTilt); }
     if (s === 'tilt' && !S.tilt) { removeEventListener('deviceorientation', onTilt); joy = { x: 0, y: 0 }; }
     saveS(); });
+  const goFull = on => { try { const d = document, fe = d.fullscreenElement || d.webkitFullscreenElement;
+    if (on && !fe) { const r = el.requestFullscreen || el.webkitRequestFullscreen; if (r) { const pr = r.call(el); if (pr && pr.catch) pr.catch(() => { }); } }
+    else if (!on && fe) { const x = d.exitFullscreen || d.webkitExitFullscreen; if (x) { const pr = x.call(d); if (pr && pr.catch) pr.catch(() => { }); } } } catch (e) { } };
+  const onFs = () => { if (!(document.fullscreenElement || document.webkitFullscreenElement) && full) { full = false; el.classList.remove('xr-full'); document.documentElement.classList.remove('xr-lock'); setTimeout(resize, 60); } };
+  document.addEventListener('fullscreenchange', onFs); document.addEventListener('webkitfullscreenchange', onFs);
   stage.addEventListener('click', e => {
     const lb = e.target.closest('[data-mark]'); if (lb) { const k = lb.dataset.mark; if (markers[k].position.distanceTo(player) < 16) discover(k); else glideTo(k); return; }
     const b = e.target.closest('button'); if (!b || !b.dataset.act) return; const a = b.dataset.act;
@@ -482,7 +487,7 @@ export function mount(el, D) {
     else if (a === 'ljnext') { if (lj.i < LJP.length - 1) { lj.from = ljLight.position.clone(); lj.i++; lj.t = 0; renderLJ(); } else endLJ(true); }
     else if (a === 'ljskip') endLJ(false);
     else if (a === 'skipintro') toSea();
-    else if (a === 'full') { full = !full; el.classList.toggle('xr-full', full); document.documentElement.classList.toggle('xr-lock', full); b.title = full ? U.exitfull : U.full; setTimeout(resize, 60); }
+    else if (a === 'full') { full = !full; goFull(full); el.classList.toggle('xr-full', full); document.documentElement.classList.toggle('xr-lock', full); b.title = full ? U.exitfull : U.full; setTimeout(resize, 60); }
   });
   // close overlays/pause when clicking the dim background
   stage.querySelectorAll('.mu-over').forEach(o => o.addEventListener('click', e => { if (e.target === o && !o.classList.contains('mu-pause')) stage.querySelector('[data-act=closeover]').click(); }));
