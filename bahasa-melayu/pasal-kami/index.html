@@ -27,8 +27,8 @@ if(m&&window.crypto&&crypto.subtle){crypto.subtle.digest("SHA-256",new TextEncod
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
 <script>(()=>{try{const d=document.documentElement,f=localStorage.getItem('is-fs'),t=localStorage.getItem('is-theme');if(f)d.dataset.fs=f;if(t)d.dataset.theme=t}catch(e){}})()</script>
 <link rel="stylesheet" href="/assets/css/bf790a8a2385.css">
-<link rel="stylesheet" href="../../assets/dark.css?v=20261015222957">
-<link rel="stylesheet" id="ori" href="/assets/css/a597afd2a9c5.css">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261015224808">
+<link rel="stylesheet" id="ori" href="/assets/css/0bbae2e82fd4.css">
 </head>
 <body class="">
 <a class="skip" href="#main">Langkau ke kandungan</a>
@@ -52,9 +52,9 @@ if(m&&window.crypto&&crypto.subtle){crypto.subtle.digest("SHA-256",new TextEncod
 <p>Satu kajian tempatan di Hospital RIPAS mendapati <strong>69.5%</strong> pesakit kencing manis inda cukup pengetahuan pasal penyakit mereka. MataKitani kan membantu merapatkan jurang ani, bermula dengan mata.</p>
 </div></details>
 <details class="sec" id="rakan-kerjasama"><summary><h2>Rakan Kerjasama</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><h3 class="sub-h">Ketua dan Penyelia Inisiatif</h3>
-<iframe class="embed" src="../../embeds/team-supervisor-bm.html?v=20261015222957" title="Ketua dan Penyelia Inisiatif" style="height:260px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/team-supervisor-bm.html?v=20261015224808" title="Ketua dan Penyelia Inisiatif" style="height:260px" loading="lazy"></iframe>
 <h3 class="sub-h">Ketua Editor dan Pereka</h3>
-<iframe class="embed" src="../../embeds/team-lead-bm.html?v=20261015222957" title="Ketua Editor dan Pereka" style="height:260px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/team-lead-bm.html?v=20261015224808" title="Ketua Editor dan Pereka" style="height:260px" loading="lazy"></iframe>
 <h3 class="sub-h">Ketua Penyemak</h3>
 <ul class="people c2"><li class="pp"><span class="pp-i" aria-hidden="true">HH</span><b>Dr Helena Hurairah</b><small>Pakar Perunding Oftalmologi</small></li><li class="pp"><img src="../../assets/team/affizan.webp" alt="" loading="lazy" width="160" height="160"><b>Dr Noor Affizan Rahman</b><small>Pakar Perunding Oftalmologi</small></li></ul>
 <h3 class="sub-h">Pengarang Bersama</h3>
@@ -295,12 +295,15 @@ let btn=document.querySelector('.music-btn');if(!btn)return;
 let pref='on';try{pref=localStorage.getItem(K)||'on'}catch(e){}
 const a=new Audio();a.src=SRC;a.loop=true;a.preload='none';a.volume=0;
 try{const t=parseFloat(sessionStorage.getItem(T));if(t)a.currentTime=t}catch(e){}
-function ui(){const on=!a.paused;btn.setAttribute('aria-pressed',on);btn.setAttribute('aria-label',on?btn.dataset.on:btn.dataset.off)}
-function fade(to,done){clearInterval(a._f);a._f=setInterval(()=>{if(Math.abs(to-a.volume)<=.02){a.volume=to;clearInterval(a._f);done&&done()}else a.volume=Math.max(0,Math.min(1,a.volume+(to>a.volume?.02:-.02)))},60)}
-function play(){if(!a.paused)return Promise.resolve();a.volume=0;return a.play().then(()=>{fade(VOL);ui()}).catch(()=>{ui()})}
-function stop(){fade(0,()=>{a.pause();ui()});btn.setAttribute('aria-pressed','false');btn.setAttribute('aria-label',btn.dataset.off)}
+let want=false;
+/* iPhone ignores audio volume, so a fade there never ends: only fade where volume can be set. */
+const VOK=(()=>{try{const t=new Audio();t.volume=.5;return Math.abs(t.volume-.5)<.01}catch(e){return false}})();
+function ui(){btn.setAttribute('aria-pressed',want);btn.setAttribute('aria-label',want?btn.dataset.on:btn.dataset.off)}
+function fade(to,done){clearInterval(a._f);if(!VOK){done&&done();return}let n=0;a._f=setInterval(()=>{if(++n>30||Math.abs(to-a.volume)<=.03){a.volume=to;clearInterval(a._f);done&&done()}else a.volume=Math.max(0,Math.min(1,a.volume+(to>a.volume?.03:-.03)))},40)}
+function play(){want=true;ui();if(!a.paused){fade(VOL);return Promise.resolve()}if(VOK)a.volume=0;return a.play().then(()=>{if(!want){a.pause();return}fade(VOL)}).catch(()=>{if(a.paused){want=false;ui()}})}
+function stop(){want=false;ui();fade(0,()=>{if(!want)a.pause()})}
 function save(){try{sessionStorage.setItem(T,a.currentTime||0)}catch(e){}}
-btn.addEventListener('click',e=>{e.stopPropagation();if(a.paused){pref='on';play()}else{pref='off';stop()}try{localStorage.setItem(K,pref)}catch(e){}});
+btn.addEventListener('click',e=>{e.stopPropagation();if(want){pref='off';stop()}else{pref='on';play()}try{localStorage.setItem(K,pref)}catch(e){}});
 function first(e){if(btn.contains(e.target))return;off();if(pref==='on')play()}
 function off(){['pointerdown','keydown','touchstart'].forEach(x=>removeEventListener(x,first,true))}
 if(pref==='on'){play().then(()=>{if(!a.paused)off()});['pointerdown','keydown','touchstart'].forEach(x=>addEventListener(x,first,true))}
@@ -351,7 +354,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261015222957';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261015224808';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
