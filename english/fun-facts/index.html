@@ -6,7 +6,7 @@ var m=q.match(/[?&]unlock=([^&]+)/);if(ok&&!m)return;window.stop();
 var R=document.documentElement;R.innerHTML='<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>MataKitani: coming soon</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f6f8fc;color:#24324a;font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;text-align:center;padding:24px;box-sizing:border-box}h1{font-size:2rem;margin:.2em 0;color:#2f5f9e}b{color:#d9668f}p{max-width:30em;margin:.4em auto;color:#55627a}@media(prefers-color-scheme:dark){body{background:#141a26;color:#e6ebf5}h1{color:#9fc4e8}p{color:#aab4c8}}</style></head><body><main><h1>Mata<b>Kitani</b></h1><p><strong>Coming soon</strong></p><p>Our eye-health site is being updated. Please check back shortly.</p><p>Laman kesihatan mata kami sedang dikemas kini. Sila kembali tidak lama lagi.</p></main></body>';
 if(m&&window.crypto&&crypto.subtle){crypto.subtle.digest("SHA-256",new TextEncoder().encode(decodeURIComponent(m[1]))).then(function(b){var h=Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("");if(h===H){try{localStorage.setItem(K,H)}catch(e){}location.replace(location.pathname+location.hash)}})}})()</script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Did You Know? · MataKitani</title>
 <meta name="description" content="Four things about your eyes that you may not know, with a new set every day. Tap a card to reveal the answer. How many did you already know?">
 <meta property="og:title" content="Did You Know? · MataKitani">
@@ -20,15 +20,15 @@ if(m&&window.crypto&&crypto.subtle){crypto.subtle.digest("SHA-256",new TextEncod
 <script data-goatcounter="https://matakitani.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <link rel="manifest" href="../../manifest.webmanifest">
-<meta name="theme-color" content="#152C4A">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eef3fb"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#05080f">
 <meta name="apple-mobile-web-app-title" content="MataKitani">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
 <script>(()=>{try{const d=document.documentElement,f=localStorage.getItem('is-fs'),t=localStorage.getItem('is-theme');if(f)d.dataset.fs=f;if(t)d.dataset.theme=t}catch(e){}})()</script>
-<link rel="stylesheet" href="/assets/css/bf790a8a2385.css">
-<link rel="stylesheet" href="../../assets/dark.css?v=20261016002425">
-<link rel="stylesheet" id="ori" href="/assets/css/c619207f7e7b.css">
+<link rel="stylesheet" href="/assets/css/59827ea353ab.css">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261016004129">
+<link rel="stylesheet" id="ori" href="/assets/css/0f3939bfdf4d.css">
 </head>
 <body class="">
 <a class="skip" href="#main">Skip to content</a>
@@ -90,7 +90,7 @@ let sd=11;const r=()=>(sd=sd*16807%2147483647)/2147483647;const N=innerWidth<700
 const S=[...Array(N)].map(()=>{const n=r()<.5?3:4,p=[];for(let i=0;i<n;i++){const a=i/n*6.283+r()*.9,d=.55+r()*.45;p.push([Math.cos(a)*d,Math.sin(a)*d])}return{x:r(),y:r(),z:.25+r()*.85,a:r()*6.3,va:(r()-.5)*.25,vx:(r()-.5)*.006,vy:-(.003+r()*.008),p,f:r()}});
 const D=[...Array(innerWidth<700?50:110)].map(()=>({x:r(),y:r(),z:r(),ph:r()*6.3}));
 let mx=0,my=0,tx=0,ty=0,cx=-9e3,cy=-9e3;addEventListener('pointermove',e=>{tx=e.clientX/innerWidth*2-1;ty=e.clientY/innerHeight*2-1;cx=e.clientX;cy=e.clientY},{passive:true});document.addEventListener('pointerleave',()=>{cx=cy=-9e3});
-let last=performance.now(),f0=0;function draw(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(document.hidden||(f0&&document.documentElement.classList.contains('mk-still'))){requestAnimationFrame(draw);return}f0=1;
+let last=performance.now(),f0=0;function draw(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(document.hidden||(f0&&document.documentElement.classList.contains('mk-still'))||(f0&&document.documentElement.classList.contains('mk-scrolling'))){requestAnimationFrame(draw);return}f0=1;
  const dk=document.documentElement.dataset.theme==='dark';mx+=(tx-mx)*.04;my+=(ty-my)*.04;x.setTransform(dp,0,0,dp,0,0);x.clearRect(0,0,W,H);
  for(const d of D){if(!R){d.y-=dt*.004*(.3+d.z);if(d.y<-.02)d.y=1.02}const tw=.5+.5*Math.sin(now/1000*(.6+d.z)+d.ph),px=d.x*W+mx*8*d.z,py=d.y*H+my*8*d.z;
   x.fillStyle=dk?'rgba(220,232,255,'+(.15+.45*tw*d.z)+')':'rgba(255,255,255,'+(.35+.55*tw)+')';x.fillRect(px,py,d.z>.8?1.6:1,d.z>.8?1.6:1)}
@@ -110,7 +110,7 @@ const fit=()=>{const m=document.querySelector('header.site .menu.wide');if(!m)re
  const nv=m.closest('.nav')||document.querySelector('header.site .nav'),n=nv.getBoundingClientRect(),op=m.offsetParent||m.parentNode,r=op.getBoundingClientRect();m.style.right='auto';m.style.left=(n.left-r.left)+'px';m.style.width=n.width+'px'};
 addEventListener('resize',fit);document.addEventListener('pointerover',ev=>{if(ev.target.closest&&ev.target.closest('header.site .dd'))fit()});document.addEventListener('focusin',fit);document.addEventListener('click',fit,true);fit()})()</script><script>(()=>{const go=()=>{if(location.hash!=='#checker')return;let n=0;const t=setInterval(()=>{const s=document.getElementById('checker');if(s||++n>20){clearInterval(t);if(s)s.scrollIntoView({behavior:'smooth',block:'start'})}},150)};
 go();if(!window.__mkChk){window.__mkChk=1;addEventListener('hashchange',go)}})()</script><script>(()=>{if(!document.getElementById('mk-hbar')){const d=document.createElement('div');d.id='mk-hbar';d.setAttribute('aria-hidden','true');document.body.appendChild(d)}
-if(window.__mkScr)return;window.__mkScr=1;const H=document.documentElement;let t=0;const f=()=>{t=0;H.classList.toggle('mk-scr',scrollY>12)};addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(f)},{passive:true});f()})()</script><script>(()=>{const d=document.documentElement,R=matchMedia('(prefers-reduced-motion: reduce)').matches,main=document.querySelector('main');if(!main)return;
+if(window.__mkScr)return;window.__mkScr=1;const H=document.documentElement;let t=0;const f=()=>{t=0;H.classList.toggle('mk-scr',scrollY>12)};addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(f)},{passive:true});f()})()</script><script>(()=>{if(window.__mkSkyHold)return;window.__mkSkyHold=1;const H=document.documentElement;let t=0;addEventListener('scroll',()=>{H.classList.add('mk-scrolling');clearTimeout(t);t=setTimeout(()=>H.classList.remove('mk-scrolling'),180)},{passive:true})})()</script><script>(()=>{const set=()=>{const t=document.documentElement.dataset.theme;if(!t)return;document.querySelectorAll('meta[name=theme-color]').forEach(m=>m.content=t==='dark'?'#05080f':'#eef3fb')};set();if(!window.__mkTc){window.__mkTc=1;new MutationObserver(set).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})}})()</script><script>(()=>{const d=document.documentElement,R=matchMedia('(prefers-reduced-motion: reduce)').matches,main=document.querySelector('main');if(!main)return;
 const head=document.querySelector('header.site');
 const hn=head&&head.querySelector('.nav');if(hn&&!hn.querySelector('.mo-glint')){const g=document.createElement('span');g.className='mo-glint';g.setAttribute('aria-hidden','true');hn.prepend(g)}
 if(!window.__mo){window.__mo=1;let q=0;
@@ -359,7 +359,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261016002425';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261016004129';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
