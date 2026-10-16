@@ -1,4 +1,6 @@
 // Cloth effect from Canvas UI by David Haz (github.com/DavidHDev/canvas-ui, commit a04a99b), MIT + Commons Clause licence.
+// MataKitani patch (2026-10-16): the fabric is see-through wherever the banner is see-through (gaps between slides, rounded corners),
+// instead of filling them with a backing colour (Haziq saw black behind the banners).
 // Bundled for MataKitani (Haziq, 2026-10-16), used on the home banner behind ?cloth=1.
 var qe=new WeakMap;function Ye(E,d){let r=window.visualViewport?.scale||1,h=Math.min(window.devicePixelRatio||1,2)*r,M=Math.max(E.clientWidth,1),l=Math.max(E.clientHeight,1),w=8192;if(d){let e=qe.get(d);e===void 0&&(e=Math.min(w,d.getParameter(d.MAX_TEXTURE_SIZE),d.getParameter(d.MAX_RENDERBUFFER_SIZE)),qe.set(d,e)),w=e}return Math.min(h,w/Math.max(M,l),Math.sqrt(16777216/(M*l)))}function $e(E){let d=window.visualViewport,r=0,h=!1,M=()=>{r||h||(r=requestAnimationFrame(()=>{r=0,E()}))},l=new ResizeObserver(M);return window.addEventListener("resize",M,{passive:!0}),d?.addEventListener("resize",M,{passive:!0}),{observe(w,e){l.observe(w,e)},unobserve(w){l.unobserve(w)},disconnect(){h=!0,l.disconnect(),cancelAnimationFrame(r),window.removeEventListener("resize",M),d?.removeEventListener("resize",M)}}}function je(E,d){"content"in E?(E.setAttribute("content","drawable"),d.setAttribute("drawable","")):E.setAttribute("layoutsubtree","")}function Qe(E,d,r){let h=d.drawElementImage(r,0,0),M=E;h&&typeof M.updateElementGeometry=="function"&&M.updateElementGeometry(r,{canvasTransform:h})}function Ze(E){let d=E.getBoundingClientRect(),r=()=>{d=E.getBoundingClientRect()},h=new ResizeObserver(r);return h.observe(E),window.addEventListener("resize",r,{passive:!0}),window.addEventListener("scroll",r,{capture:!0,passive:!0}),{get current(){return d},destroy(){h.disconnect(),window.removeEventListener("resize",r),window.removeEventListener("scroll",r,!0)}}}var ct={pin:"top",wind:3,speed:.5,amplitude:30,drape:40,brush:2.05,brushSize:150,damping:1,light:.5,sheen:.1,shadow:.25,cornerRadius:20,backing:"auto",perspective:1200},lt=`#version 300 es
 precision highp float;
@@ -53,7 +55,7 @@ ${Je}
 void main () {
   vec2 uv = clamp(vUv, vec2(0.001), vec2(uMaxX - 0.001, 0.999));
   vec4 tex = texture(uContent, uv);
-  vec3 fabric = mix(uBacking, tex.rgb, tex.a);
+  vec3 fabric = tex.a > 0.004 ? tex.rgb : uBacking;
 
   vec3 n = normalize(vNormal);
   vec3 lightDir = normalize(vec3(-0.3, 0.42, 0.86));
@@ -82,7 +84,7 @@ void main () {
   lit += vec3(uDark * uLight * 0.08 * (1.0 - hemT));
 
   float alpha = clamp(0.5 - d, 0.0, 1.0);
-  outColor = vec4(clamp(lit, 0.0, 1.0), 1.0) * alpha;
+  outColor = vec4(clamp(lit, 0.0, 1.0), 1.0) * alpha * tex.a;
 }`,mt=`#version 300 es
 precision highp float;
 layout(location = 0) in vec2 aGrid;
