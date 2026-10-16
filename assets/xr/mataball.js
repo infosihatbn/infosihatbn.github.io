@@ -58,7 +58,7 @@ function createMataBallModel(spec = {}, options = {}) {
   root.add(body);
   const nodes = { body };
   const ball = new Sheet(rnd, 0.018);
-  const PAL = [C(spec.blue ?? 6123475), C(7110365), C(8492006), C(5202376)];
+  const PAL = [C(spec.blue ?? 7709402), C(8761315), C(10207211), C(6723279)];
   const g = new THREE.SphereGeometry(1, 28, 20).toNonIndexed(), P = g.attributes.position;
   const hb = (n) => {
     const t = Math.sin(n * 91.7 + 13.1) * 43758.5453;
@@ -79,7 +79,7 @@ function createMataBallModel(spec = {}, options = {}) {
   const ballM = ball.mesh(paper, "ball");
   body.add(ballM);
   nodes.ball = ballM;
-  const WHITE = C(15987182), BLACK = C(1118742), LID = C(7570912), LID_EDGE = C(5596876);
+  const WHITE = C(15987182), BLACK = C(1118742), LID = C(9221350), LID_EDGE = C(7183315);
   const oval = (rx, ry, n, ox = 0, oy = 0) => Array.from({ length: n }, (_, i) => {
     const a = i / n * Math.PI * 2;
     return [ox + rx * Math.cos(a), oy + ry * Math.sin(a)];
@@ -209,11 +209,11 @@ function createMataBallModel(spec = {}, options = {}) {
         s.tri(bend(ox, oy, z + 4e-3), bend(pts[i][0], pts[i][1], z), bend(pts[j][0], pts[j][1], z), col);
       }
     };
-    almond(0.32, 0.17, 0.012, C(13160435));
-    almond(0.27, 0.135, 0.018, C(4871878));
-    almond(0.2, 0.1, 0.024, C(3095196));
-    almond(0.1, 0.05, 0.03, C(9346284), 0.012, 6e-3);
-    almond(0.04, 0.025, 0.034, C(3819184), 0.015, 8e-3);
+    almond(0.32, 0.17, 0.012, C(14608888));
+    almond(0.27, 0.135, 0.018, C(6394573));
+    almond(0.2, 0.1, 0.024, C(3567540));
+    almond(0.1, 0.05, 0.03, C(11061744), 0.012, 6e-3);
+    almond(0.04, 0.025, 0.034, C(4619970), 0.015, 8e-3);
     const m = s.mesh(onTop(1), "swirl");
     fr.add(m);
     nodes.swirl = m;
@@ -225,7 +225,7 @@ function createMataBallModel(spec = {}, options = {}) {
   nodes.ahoge = ahoge;
   {
     const curve = new THREE.CatmullRomCurve3([[0, -0.02, 0], [0.02, 0.14, 0], [0.1, 0.3, 0.02], [0.25, 0.39, 0.04], [0.4, 0.34, 0.06], [0.5, 0.19, 0.08], [0.53, 0.05, 0.09]].map((v) => new THREE.Vector3(...v)));
-    const N = 18, s = new Sheet(rnd, 0.08), A = C(6649816), B = C(5399496);
+    const N = 18, s = new Sheet(rnd, 0.08), A = C(8235486), B = C(6920143);
     const ring = (i) => {
       const t = i / N, p = curve.getPointAt(t), T = curve.getTangentAt(t), side = new THREE.Vector3().crossVectors(T, new THREE.Vector3(0, 0, 1)).normalize();
       const w = 0.2 * Math.sin(Math.PI * (t * 0.8 + 0.15)) + 0.015, th = 0.03 * Math.sin(Math.PI * (t * 0.8 + 0.15)) + 8e-3;

@@ -27,7 +27,7 @@ if(m&&window.crypto&&crypto.subtle){crypto.subtle.digest("SHA-256",new TextEncod
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
 <script>(()=>{try{const d=document.documentElement,f=localStorage.getItem('is-fs'),t=localStorage.getItem('is-theme');if(f)d.dataset.fs=f;if(t)d.dataset.theme=t}catch(e){}})()</script>
 <link rel="stylesheet" href="/assets/css/59827ea353ab.css">
-<link rel="stylesheet" href="../../assets/dark.css?v=20261016030334">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261016032115">
 <link rel="stylesheet" id="ori" href="/assets/css/fd80ab26a463.css">
 </head>
 <body class="">
@@ -52,9 +52,9 @@ if(m&&window.crypto&&crypto.subtle){crypto.subtle.digest("SHA-256",new TextEncod
 <p>Satu kajian tempatan di Hospital RIPAS mendapati <strong>69.5%</strong> pesakit kencing manis inda cukup pengetahuan pasal penyakit mereka. MataKitani kan membantu merapatkan jurang ani, bermula dengan mata.</p>
 </div></details>
 <details class="sec" id="rakan-kerjasama"><summary><h2>Rakan Kerjasama</h2><span class="chev" aria-hidden="true"></span></summary><div class="sec-body"><h3 class="sub-h">Ketua dan Penyelia Inisiatif</h3>
-<iframe class="embed" src="../../embeds/team-supervisor-bm.html?v=20261016030334" title="Ketua dan Penyelia Inisiatif" style="height:260px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/team-supervisor-bm.html?v=20261016032115" title="Ketua dan Penyelia Inisiatif" style="height:260px" loading="lazy"></iframe>
 <h3 class="sub-h">Ketua Editor dan Pereka</h3>
-<iframe class="embed" src="../../embeds/team-lead-bm.html?v=20261016030334" title="Ketua Editor dan Pereka" style="height:260px" loading="lazy"></iframe>
+<iframe class="embed" src="../../embeds/team-lead-bm.html?v=20261016032115" title="Ketua Editor dan Pereka" style="height:260px" loading="lazy"></iframe>
 <h3 class="sub-h">Ketua Penyemak</h3>
 <ul class="people c2"><li class="pp"><span class="pp-i" aria-hidden="true">HH</span><b>Dr Helena Hurairah</b><small>Pakar Perunding Oftalmologi</small></li><li class="pp"><img src="../../assets/team/affizan.webp" alt="" loading="lazy" width="160" height="160"><b>Dr Noor Affizan Rahman</b><small>Pakar Perunding Oftalmologi</small></li></ul>
 <h3 class="sub-h">Pengarang Bersama</h3>
@@ -188,7 +188,7 @@ let M3=null;const m3=n=>{try{M3&&M3.play(n)}catch(e){}};
 const start3d=async()=>{try{if(!window.WebGLRenderingContext)return;
  // skip on software-only graphics (too slow); the 3D still image stays instead
  const force=LS('mk-3d')==='force';if(!force){const tc=document.createElement('canvas').getContext('webgl2',{failIfMajorPerformanceCaveat:true})||document.createElement('canvas').getContext('webgl',{failIfMajorPerformanceCaveat:true});if(!tc)return;const lx=tc.getExtension('WEBGL_lose_context');lx&&lx.loseContext()}
- const [THREE,H]=await Promise.all([import('/assets/three/three.module.min.js'),import('/assets/xr/matahd.js?v=ball2')]);
+ const [THREE,H]=await Promise.all([import('/assets/three/three.module.min.js'),import('/assets/xr/matahd.js?v=ball3')]);
  const cv=document.createElement('canvas');cv.className='mk-3d';cv.setAttribute('aria-hidden','true');fab.appendChild(cv);
  const r=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true,powerPreference:'low-power'});r.outputColorSpace=THREE.SRGBColorSpace;r.setClearColor(0,0);
  const sc=new THREE.Scene();H.addMataLights(sc);const cam=new THREE.PerspectiveCamera(24,1,.1,40);
@@ -354,7 +354,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261016030334';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261016032115';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>

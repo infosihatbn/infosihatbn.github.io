@@ -209,34 +209,17 @@ export function mount(el, D) {
   const nucleus = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 16), new THREE.MeshStandardMaterial({ color: 0xf3d58a, transparent: true, opacity: .22, depthWrite: false }));
   nucleus.scale.set(11, 11, 4); nucleus.position.z = LENS_Z; front.add(nucleus);
   // ciliary processes (a ring of folds behind the iris) and the zonules that hang the lens from them
-  const NCP = 72, cpZ = 46, cpR = Math.sqrt(R * R - cpZ * cpZ) - 2.2;
+  let zonM; const NCP = 72, cpZ = 46, cpR = Math.sqrt(R * R - cpZ * cpZ) - 2.2;
   { const cp = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 10, 8), new THREE.MeshStandardMaterial({ color: 0x8a3d2c, roughness: .8 }), NCP), o3 = new THREE.Object3D(), zp = [];
     for (let i = 0; i < NCP; i++) { const a = i / NCP * Math.PI * 2, c = Math.cos(a), sn = Math.sin(a);
       o3.position.set(c * cpR, sn * cpR, cpZ); o3.rotation.set(0, 0, a); o3.scale.set(2.4, .9, 3.6); o3.updateMatrix(); cp.setMatrixAt(i, o3.matrix);
       for (const dz of [-2.5, 2.5]) zp.push(c * (LENS_R - .3), sn * (LENS_R - .3), LENS_Z + dz * .4, c * (cpR - 2), sn * (cpR - 2), cpZ + dz); }
     front.add(cp); const zg = new THREE.BufferGeometry(); zg.setAttribute('position', new THREE.Float32BufferAttribute(zp, 3));
-    front.add(new THREE.LineSegments(zg, new THREE.LineBasicMaterial({ color: 0xf2e6c8, transparent: true, opacity: .55 }))); }
-  // zonule bundles (Haziq, 2026-10-16): thick sheets of fibres from the lens edge to the ciliary body. They drift slowly
-  // round the eye and tighten and slacken, so now and then one sits across your way into the front of the eye.
-  const ZB = [], ZN = 5, ZF = 12, zA = new THREE.Vector2(LENS_R - .3, LENS_Z), zB = new THREE.Vector2(cpR - 2, cpZ);
-  { const zm = new THREE.MeshStandardMaterial({ color: 0xf4ead2, roughness: .6, emissive: 0x2a2416 });
-    for (let b = 0; b < ZN; b++) { const fib = [];
-      for (let i = 0; i < ZF; i++) { const f = i / (ZF - 1) * 2 - 1, dz = (i % 3 - 1) * .9;
-        const c = new THREE.QuadraticBezierCurve3(new THREE.Vector3(zA.x, 0, zA.y + dz * .5), new THREE.Vector3((zA.x + zB.x) / 2, 0, (zA.y + zB.y) / 2 + dz - .6), new THREE.Vector3(zB.x, 0, zB.y + dz));
-        const m = new THREE.Mesh(new THREE.TubeGeometry(c, 10, .13, 5, false), zm); front.add(m); fib.push({ m, f }); }
-      ZB.push({ fib, a0: b / ZN * Math.PI * 2, ph: b * 1.7, a: 0, w: .2 }); } }
-  const updZon = (t, still) => ZB.forEach(z => { z.a = z.a0 + (still ? 0 : t * .07); z.w = .13 + .11 * (.5 + .5 * Math.sin(t * .35 + z.ph)); z.fib.forEach(({ m, f }) => { m.rotation.z = z.a + f * z.w; }); });
-  updZon(0, true);
-  // a point that drifts into a bundle is nudged sideways out of it (m = clearance)
-  const zonBlock = (p, m) => {
-    const rr = Math.hypot(p.x, p.y); if (rr < LENS_R - 1 || rr > cpR) return false;
-    const AB = zB.clone().sub(zA), q = new THREE.Vector2(rr, p.z).sub(zA), s = Math.max(0, Math.min(1, q.dot(AB) / AB.lengthSq()));
-    if (q.clone().addScaledVector(AB, -s).length() > 1.4 + m) return false;
-    const ph = Math.atan2(p.y, p.x);
-    for (const z of ZB) { const d = Math.atan2(Math.sin(ph - z.a), Math.cos(ph - z.a)), half = z.w + m / rr;
-      if (Math.abs(d) < half) { const na = z.a + Math.sign(d || 1) * half; p.x = Math.cos(na) * rr; p.y = Math.sin(na) * rr; return true; } }
-    return false;
-  };
+    zonM = new THREE.LineBasicMaterial({ color: 0xf2e6c8, transparent: true, opacity: .55, depthWrite: false }); front.add(new THREE.LineSegments(zg, zonM)); }
+  // the zonules never get in the way (Haziq, 2026-10-16): you fly straight through them, and they fade to a faint haze
+  // when the camera or Mata is among them, so they never hide the way into the front of the eye
+  const zonFade = (p, c) => { const near = q => { const rr = Math.hypot(q.x, q.y); return rr > LENS_R - 4 && rr < cpR + 2 && q.z > LENS_Z - 6 && q.z < cpZ + 6; };
+    zonM.opacity += ((near(p) || near(c) ? .08 : .55) - zonM.opacity) * .12; };
   // iris: textured front (fibres, collarette, crypts), dark pigmented back, pupil ruff
   const irisTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 512; const g = c.getContext('2d'), m = 256;
     const gr = g.createRadialGradient(m, m, 30, m, m, 256); gr.addColorStop(0, '#2a160c'); gr.addColorStop(.25, '#6b4021'); gr.addColorStop(.55, '#8a5a2e'); gr.addColorStop(.9, '#5a3519'); gr.addColorStop(1, '#3a2010'); g.fillStyle = gr; g.fillRect(0, 0, 512, 512);
@@ -648,7 +631,6 @@ export function mount(el, D) {
 
   // ---------------- update ----------------
   const tmp = new THREE.Vector3(), tmp2 = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
-  let zonHit = false;
   const updatePlay = (dt, t) => {
     const speed = 11, f = fwd(), right = new THREE.Vector3(Math.cos(yaw), 0, -Math.sin(yaw));
     let ix = joy.x + GP.x + rem.x, iy = -(joy.y + GP.y + rem.y);
@@ -669,8 +651,8 @@ export function mount(el, D) {
     prevP.copy(player); player.addScaledVector(vel, dt); moved += vel.length() * dt; if (moved > 6) award('first');
     // keep inside the eye: soft wall at the retina, front limit behind the lens
     if (confine(player, prevP, 1.3)) vel.multiplyScalar(.6);
-    if (!auto && !follow && zonBlock(player, 1.3)) { vel.multiplyScalar(.4); if (!zonHit) { zonHit = true; if (navigator.vibrate) navigator.vibrate(10); } } else zonHit = false;
     updFloaters(dt, player, vel);
+    zonFade(player, camera.position);
     // nearby landmark
     let best = null, bd = 16; for (const k of KEYS) { const d = markers[k].position.distanceTo(player); if (d < bd) { bd = d; best = k; } }
     nearK = best; nearEl.hidden = !best; if (best) nearEl.querySelector('span').textContent = `${U.near}: ${M[best].n}`;
@@ -732,7 +714,7 @@ export function mount(el, D) {
     const dt = Math.min(clock.getDelta(), .05); t += dt * (S.reduced ? .4 : 1); pollGP();
     partU.uT.value = t; beamU.uT.value = t; wallU.uT.value = t;
     if (!S.reduced) { fib.rotation.y = t * .01; floaters.rotation.y = t * .05; floaters.rotation.x = Math.sin(t * .1) * .3; }
-    updZon(t, S.reduced); if (tearG.userData.glow) tearG.userData.glow.material.opacity = sealed ? .12 : .38 + (S.reduced ? 0 : .2 * Math.sin(t * 2.4));
+    if (tearG.userData.glow) tearG.userData.glow.material.opacity = sealed ? .12 : .38 + (S.reduced ? 0 : .2 * Math.sin(t * 2.4));
     KEYS.forEach((k, i) => { const g = markers[k]; g.userData.ring.lookAt(camera.position); const s = 1 + Math.sin(t * 2 + i) * (S.reduced ? 0 : .15); g.userData.ring.scale.setScalar(s); g.position.y = LM[k].y + (S.reduced ? 0 : Math.sin(t * .8 + i) * .5); });
     updAq(S.reduced ? t * .5 : t);
     signals.forEach(s => { if (!s.visible) return; s.position.copy(s.userData.c.getPointAt((t * .12 + s.userData.o) % 1)); });
