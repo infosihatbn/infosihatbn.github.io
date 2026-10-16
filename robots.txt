@@ -1,2 +1,7 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /doktor/
+Disallow: /english/doctors/
+Disallow: /embeds/
+
+Sitemap: https://matakitani.com/sitemap.xml
