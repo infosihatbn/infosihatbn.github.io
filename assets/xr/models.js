@@ -49,10 +49,35 @@ function addBlink(m) {
     if (next <= 0) { m.hd.play('blink'); next = 2.6 + Math.random() * 2.4 + (Math.random() < .2 ? -2.2 : 0); } };
 }
 
+// Intro dive (Haziq, 2026-10-16): Mata and the ship must go exactly through the pupil, never through the iris,
+// cornea edge or lens. Near the eye the flight is pulled onto the eye's axis, the craft shrinks to well inside the
+// pupil (radius .148 of the globe), stops at the pupil plane and dwindles into it.
+function flyThroughPupil(m, eye) {
+  if (!eye) return;
+  const upd = m.update.bind(m), s0 = m.object.scale.x, c = new THREE.Vector3(), tmp = new THREE.Vector3();
+  const sat = x => Math.min(1, Math.max(0, x));
+  m.update = (t, dt, o = {}) => {
+    upd(t, dt, o);
+    const E = eye.group; E.getWorldPosition(c); const k = E.scale.x;           // eye centre and globe radius in the scene
+    const ax = tmp.set(0, 0, 1).applyQuaternion(E.getWorldQuaternion(new THREE.Quaternion()));
+    const p = m.object.position, rel = p.clone().sub(c), along = rel.dot(ax);  // distance in front of the eye centre
+    const pupilZ = .776 * k, onAxis = sat((2.6 * k - along) / (1.4 * k));      // fully on the axis from 1.2 globe radii out
+    const lat = rel.clone().addScaledVector(ax, -along).multiplyScalar(1 - onAxis);
+    const a2 = Math.max(along, pupilZ + .05 * k);                                // never deeper than the pupil
+    p.copy(c).addScaledVector(ax, a2).add(lat);
+    // span of the craft is about 2.9 local units: shrink to 70% of the pupil width, then into the pupil
+    const fit = Math.min(s0, (.148 * k * 2 * .7) / 2.9), into = sat((along - (pupilZ - .9 * k)) / (.9 * k));
+    m.object.scale.setScalar((s0 + (fit - s0) * onAxis) * (along < pupilZ + .05 * k ? into : 1) + 1e-4);
+    m.object.lookAt(c);
+  };
+}
+
 // matas: Mata objects ({object, update, happy, hd}); eyes: {group}; ships: Object3D holders;
 // riders: Mata objects that get their own ship underneath (the intro dive).
-export async function applyNewModels({ matas = [], eyes = [], ships = [], riders = [], build = '' }) {
+export async function applyNewModels({ matas = [], eyes = [], ships = [], riders = [], insides = [], build = '' }) {
   const v = build || Date.now();
+  let inside = null;
+  if (insides.length) try { const { foldInside } = await import('./origami-inside.js?v=' + v); inside = insides.map(x => foldInside(x)); } catch (e) { console.warn('[models] inside', e); }
   const [mk, ek, sk] = await Promise.all([factory('mata', v), factory('eye', v), factory('ship', v)]);
   matas.forEach(addBlink);
   if (mk) matas.forEach(m => {
@@ -67,7 +92,7 @@ export async function applyNewModels({ matas = [], eyes = [], ships = [], riders
   if (sk) {
     ships.forEach(h => swapIn(h, sk({}, {}), false));
     // in the craft Mata (scale .9) sits at y .66 over the ship (scale .9): same placement under a lone Mata
-    riders.forEach(m => { const g = sk({}, {}); g.name = 'img2threejs-ship'; g.position.set(0, -.66 / .9, .05 / .9); m.object.add(g); m.object.scale.multiplyScalar(.62); });
+    riders.forEach(m => { const g = sk({}, {}); g.name = 'img2threejs-ship'; g.position.set(0, -.66 / .9, .05 / .9); m.object.add(g); m.object.scale.multiplyScalar(.62); flyThroughPupil(m, eyes[0]); });
   }
-  return { mata: !!mk, eye: !!ek, ship: !!sk, blink: matas.length };
+  return { mata: !!mk, eye: !!ek, ship: !!sk, blink: matas.length, inside };
 }

@@ -53,7 +53,7 @@ class Sheet {
 }
 function createOrigamiEyeModel(spec = {}, options = {}) {
   const rnd = makeRng(spec.seed ?? 20261016);
-  const cut = spec.cutaway !== false;
+  const cut = spec.cutaway === true;
   const root = new THREE.Group();
   root.name = "OrigamiEye";
   const nodes = {};

@@ -302,7 +302,7 @@ export function mount(el, D) {
   const flames = [-1, 1].map(s => { const f = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0x7fe3ff, blending: THREE.AdditiveBlending, depthWrite: false, fog: false })); f.position.set(s * .78, -.2, -1.6); f.scale.setScalar(.8); ship.add(f); return f; });
   ship.scale.setScalar(.9);
   // img2threejs models (paper eyeball, paper ship, Mata blink): only with ?models=new while Haziq reviews them
-  if (wantNewModels()) applyNewModels({ matas: [introMata, mata], eyes: [bigEye], ships: [ship], riders: [introMata], build: D.build }).then(r => console.info('[models] new', r));
+  if (wantNewModels()) applyNewModels({ matas: [introMata, mata], eyes: [bigEye], ships: [ship], riders: [introMata], insides: [{ scene, wall, keep: [craft] }], build: D.build }).then(r => console.info('[models] new', r));
   const lantern = new THREE.PointLight(0xcfe9ff, 40, 30, 1.6); scene.add(lantern);
 
   // ---------------- landmarks ----------------
