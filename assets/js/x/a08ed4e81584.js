@@ -11,7 +11,7 @@ let M3=null;const m3=n=>{try{M3&&M3.play(n)}catch(e){}};
 const start3d=async()=>{try{if(!window.WebGLRenderingContext)return;
  // skip on software-only graphics (too slow); the 3D still image stays instead
  const force=LS('mk-3d')==='force';if(!force){const tc=document.createElement('canvas').getContext('webgl2',{failIfMajorPerformanceCaveat:true})||document.createElement('canvas').getContext('webgl',{failIfMajorPerformanceCaveat:true});if(!tc)return;const lx=tc.getExtension('WEBGL_lose_context');lx&&lx.loseContext()}
- const [THREE,H]=await Promise.all([import('/assets/three/three.module.min.js'),import('/assets/xr/matahd.js?v=ball3')]);
+ const [THREE,H]=await Promise.all([import('/assets/three/three.module.min.js'),import('/assets/xr/matahd.js?v=ball4')]);
  const cv=document.createElement('canvas');cv.className='mk-3d';cv.setAttribute('aria-hidden','true');fab.appendChild(cv);
  const r=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true,powerPreference:'low-power'});r.outputColorSpace=THREE.SRGBColorSpace;r.setClearColor(0,0);
  const sc=new THREE.Scene();H.addMataLights(sc);const cam=new THREE.PerspectiveCamera(24,1,.1,40);
@@ -20,7 +20,7 @@ const start3d=async()=>{try{if(!window.WebGLRenderingContext)return;
  const Y=.5;cam.position.set(Math.sin(Y)*5.6,1.65,Math.cos(Y)*5.6);cam.lookAt(0,1.6,0);
  const rm=matchMedia('(prefers-reduced-motion: reduce)');
  const draw=()=>{r.render(sc,cam);if(!fab.classList.contains('d3'))fab.classList.add('d3')};
- const size=()=>{const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;r.setPixelRatio(2);r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();if(rm.matches)draw()};
+ const size=()=>{const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;r.setPixelRatio(Math.min(2,Math.max(1.5,devicePixelRatio)));r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();if(rm.matches)draw()};
  new ResizeObserver(size).observe(cv);size();
  let last=performance.now(),tm=0,hy=0,hp=0,tx=0,ty=0,fl=0;
  addEventListener('pointermove',e=>{const b=cv.getBoundingClientRect();tx=Math.max(-.75,Math.min(.3,(e.clientX-(b.left+b.width/2))/innerWidth*1.4));ty=Math.max(-.25,Math.min(.2,(e.clientY-(b.top+b.height*.3))/innerHeight*.6))},{passive:true});
@@ -101,7 +101,8 @@ const up=e=>{if(!drag)return;const d=drag;drag=null;root.classList.remove('mk-dr
  vx=vy=0;if(Math.hypot(px,py)<50){px=py=0;put()}save()};
 fab.addEventListener('pointerup',up);fab.addEventListener('pointercancel',e=>{if(drag)drag.h=[drag.h[drag.h.length-1]];up(e)});fab.addEventListener('dragstart',e=>e.preventDefault());
 addEventListener('resize',()=>put(),{passive:true});
-fab.onclick=e=>{if(eat){eat=0;e.preventDefault();return}toggle();m3(panel&&!panel.hidden?'happy':'nod')};addEventListener('keydown',e=>{if(e.key==='Escape'&&panel&&!panel.hidden)toggle(false)});
+let tapN=0;const TAPS=['happy','spin','wink','giggle'];/* tap: Mata takes turns between 4 little animations (Haziq 2026-10-16) */
+fab.onclick=e=>{if(eat){eat=0;e.preventDefault();return}toggle();m3(TAPS[tapN++%TAPS.length])};addEventListener('keydown',e=>{if(e.key==='Escape'&&panel&&!panel.hidden)toggle(false)});
 let peek=null;const peekOff=()=>{if(peek){peek.remove();peek=null}};
 const showPeek=(txt,brk)=>{peekOff();peek=document.createElement('div');peek.className='mk-peek';peek.setAttribute('role','status');peek.innerHTML=esc(txt)+'<button type="button" aria-label="'+esc(T().close)+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>';
  fab.classList.remove('hi');void fab.offsetWidth;fab.classList.add('hi');m3('jump');root.appendChild(peek);place();peek.onclick=e=>{if(e.target.closest('button')){peekOff();return}toggle(true);if(brk)say(esc(T().break_now))}};

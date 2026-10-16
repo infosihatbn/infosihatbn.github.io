@@ -129,21 +129,21 @@ function createMataBallModel(spec = {}, options = {}) {
     const lid = new THREE.Mesh(lg, onTop(4));
     lid.name = "lid";
     fr.add(lid);
-    const W = 0.29, TOP = 0.34;
+    const W = 0.274, TOP = 0.34;
     const setLid = (v) => {
       lid.visible = v > 0.02;
       if (!lid.visible) return;
-      const yb = TOP - 0.7 * Math.min(1, v);
       let o = 0;
       const put = (v3) => {
         lidPos[o++] = v3.x;
         lidPos[o++] = v3.y;
         lidPos[o++] = v3.z;
       };
-      const yAt = (x) => yb - 0.03 * Math.cos(x / W * 1.4) * Math.min(1, v * 3);
+      const k = Math.min(1, v), top = (x) => 0.334 * Math.sqrt(Math.max(0, 1 - x / W * (x / W))) + 4e-3;
+      const yAt = (x) => top(x) - 2 * top(x) * k;
       for (let i = 0; i < NC; i++) for (let r = 0; r < NR; r++) {
         const x0 = -W + 2 * W * i / NC, x1 = -W + 2 * W * (i + 1) / NC;
-        const Y = (x, f) => TOP + (yAt(x) - TOP) * f;
+        const Y = (x, f) => top(x) + (yAt(x) - top(x)) * f;
         const a = bend(x0, Y(x0, r / NR), 0.07), b = bend(x1, Y(x1, r / NR), 0.07), c = bend(x1, Y(x1, (r + 1) / NR), 0.072), d = bend(x0, Y(x0, (r + 1) / NR), 0.072);
         put(a);
         put(d);
@@ -154,7 +154,7 @@ function createMataBallModel(spec = {}, options = {}) {
       }
       for (let i = 0; i < NC; i++) {
         const x0 = -W + 2 * W * i / NC, x1 = -W + 2 * W * (i + 1) / NC;
-        const a = bend(x0, yAt(x0) + 0.035, 0.076), b = bend(x1, yAt(x1) + 0.035, 0.076), c = bend(x1, yAt(x1), 0.076), d = bend(x0, yAt(x0), 0.076);
+        const a = bend(x0, Math.min(top(x0), yAt(x0) + 0.035), 0.076), b = bend(x1, Math.min(top(x1), yAt(x1) + 0.035), 0.076), c = bend(x1, yAt(x1), 0.076), d = bend(x0, yAt(x0), 0.076);
         put(a);
         put(d);
         put(c);
@@ -251,11 +251,15 @@ function createMataBallModel(spec = {}, options = {}) {
 }
 const wave3 = (t, f) => Math.sin(t * Math.PI * 2 * f);
 const env = (t, d, a, b) => Math.max(0, Math.min(1, t / a, (d - t) / b));
-const D = { bob: 0, hop: 0, squash: 1, headYaw: 0, headPitch: 0, headRoll: 0, lidL: 0, lidR: 0, lookX: 0, lookY: 0, ahoge: 0 };
+const D = { bob: 0, hop: 0, squash: 1, headYaw: 0, headPitch: 0, headRoll: 0, lidL: 0, lidR: 0, lookX: 0, lookY: 0, ahoge: 0, spin: 0 };
 const CLIPS = {
   idle: { dur: 4, loop: true, f: (t) => ({ bob: 0.02 * wave3(t, 0.5), squash: 1 + 0.01 * wave3(t, 0.5), headRoll: 0.035 * wave3(t, 0.25), ahoge: 0.09 * wave3(t, 0.5) }) },
   walk: { dur: 0.9, loop: true, f: (t) => ({ bob: 0.05 * Math.abs(wave3(t, 1 / 1.8)), headRoll: 0.07 * wave3(t, 1 / 0.9), ahoge: 0.18 * wave3(t, 1 / 0.9) }) },
-  blink: { dur: 0.22, hard: true, f: (t) => ({ lidL: Math.sin(Math.PI * t / 0.22), lidR: Math.sin(Math.PI * t / 0.22) }) },
+  // quick close, softer open, like a real blink
+  blink: { dur: 0.3, hard: true, f: (t) => {
+    const c = t < 0.09 ? 0.5 - 0.5 * Math.cos(Math.PI * t / 0.09) : t < 0.13 ? 1 : 1 - Math.pow(Math.min(1, (t - 0.13) / 0.17), 0.8);
+    return { lidL: c, lidR: c };
+  } },
   wink: { dur: 1.1, f: (t) => ({ lidR: 1, headRoll: -0.12, lidL: -0.25 * env(t, 1.1, 0.15, 0.3) }) },
   happy: { dur: 1.3, f: (t) => {
     const e = env(t, 1.3, 0.15, 0.3);
@@ -280,6 +284,15 @@ const CLIPS = {
   lookAround: { dur: 3.2, f: (t) => {
     const e = env(t, 3.2, 0.4, 0.5);
     return { headYaw: 0.45 * Math.sin(t * 2) * e, lookX: 0.8 * Math.sin(t * 2) * e };
+  } },
+  // tap animations (Haziq 2026-10-16): the companion takes turns between happy, spin, wink and giggle
+  spin: { dur: 1, f: (t) => {
+    const u = Math.min(1, t / 0.85);
+    return { spin: Math.PI * 2 * (u * u * (3 - 2 * u)), hop: 0.14 * Math.sin(Math.PI * u), ahoge: 0.4 * Math.sin(t * 12) * (1 - u), lidL: -0.3, lidR: -0.3 };
+  } },
+  giggle: { dur: 1.2, f: (t) => {
+    const e = env(t, 1.2, 0.1, 0.3);
+    return { squash: 1 + 0.07 * Math.sin(t * 22) * e, headRoll: 0.06 * Math.sin(t * 11) * e, lidL: 0.6 * e, lidR: 0.6 * e, ahoge: 0.35 * Math.sin(t * 16) * e, bob: 0.03 * Math.abs(Math.sin(t * 11)) * e };
   } },
   jump: { dur: 1, f: (t) => ({ hop: t < 0.75 ? 0.4 * Math.sin(Math.PI * t / 0.75) : 0, squash: t < 0.1 ? 0.9 : 1 }) }
 };
@@ -340,7 +353,7 @@ function createMataBallRig(spec = {}) {
     },
     apply(p) {
       body.position.y = p.bob + p.hop;
-      body.rotation.set(p.headPitch, p.headYaw, p.headRoll, "YXZ");
+      body.rotation.set(p.headPitch, p.headYaw + (p.spin || 0), p.headRoll, "YXZ");
       body.scale.set(1 / Math.sqrt(p.squash), p.squash, 1 / Math.sqrt(p.squash));
       ahoge.rotation.set(0, 0, -0.3 - p.ahoge);
       eyes.forEach((e, i) => {

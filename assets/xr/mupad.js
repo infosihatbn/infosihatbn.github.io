@@ -30,6 +30,7 @@ export function mount(el, D) {
     pad.addEventListener('pointerup', end); pad.addEventListener('pointercancel', end);
   });
   w.querySelectorAll('[data-b]').forEach(b => b.addEventListener('pointerdown', e => { e.preventDefault(); send({ b: b.dataset.b }); if (navigator.vibrate) navigator.vibrate(10); b.classList.add('on'); setTimeout(() => b.classList.remove('on'), 150); }));
+  { const fb = w.querySelector('[data-b=fire]'); if (fb) { fb.addEventListener('pointerdown', () => { S.f = 1; dirty = true; }); ['pointerup', 'pointerleave', 'pointercancel'].forEach(t => fb.addEventListener(t, () => { S.f = 0; dirty = true; })); } } // held fire keeps the laser going
   w.querySelectorAll('[data-ud]').forEach(b => { const v = +b.dataset.ud; b.addEventListener('pointerdown', e => { e.preventDefault(); S.ud = v; dirty = true; }); ['pointerup', 'pointerleave', 'pointercancel'].forEach(t => b.addEventListener(t, () => { S.ud = 0; dirty = true; })); });
   // stick values: on change, and every 250 ms so the game knows we are still here
   const tick = setInterval(() => { const now = performance.now(); if (dirty || now - last > 250) { send(S); dirty = false; last = now; } }, 50);

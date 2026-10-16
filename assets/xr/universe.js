@@ -21,7 +21,7 @@ const TEAR_DIR = new THREE.Vector3(-.55, .7, -.35).normalize(); // retinal tear:
 const ICP = { light: '<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>', gear: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/>',
   book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5zM4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>', medal: '<circle cx="12" cy="15" r="5"/><path d="M8.5 10.5 6 3h4l2 5 2-5h4l-2.5 7.5"/>', lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>', warn: '<path d="M12 3 2 21h20z"/><path d="M12 10v5M12 18h.01"/>', drop: '<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/>',
-  phone: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>', laser: '<path d="M3 21 13 11"/><circle cx="16.5" cy="7.5" r="3.5"/><path d="M16.5 1v2M23 7.5h-2M21 3l-1.4 1.4"/>' };
+  note: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>', boost: '<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/>', phone: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>', laser: '<path d="M3 21 13 11"/><circle cx="16.5" cy="7.5" r="3.5"/><path d="M16.5 1v2M23 7.5h-2M21 3l-1.4 1.4"/>' };
 const ic = n => `<svg class="mu-svg" viewBox="0 0 24 24" aria-hidden="true">${ICP[n]}</svg>`; // disc position in tangent coords (about -0.38)
 
 function softDot() { const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d'); const gr = g.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.35, 'rgba(255,255,255,.5)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); }
@@ -69,15 +69,15 @@ export function mount(el, D) {
   const U = D.ui, M = D.marks;
   const touch = matchMedia('(pointer:coarse)').matches;
   const saved = LS.get('mu-settings') || {};
-  const S = { sens: saved.sens ?? 1, reduced: saved.reduced ?? matchMedia('(prefers-reduced-motion: reduce)').matches, assisted: saved.assisted ?? true, tilt: false };
+  const S = { sens: saved.sens ?? 1, reduced: saved.reduced ?? matchMedia('(prefers-reduced-motion: reduce)').matches, assisted: saved.assisted ?? true, aimAssist: saved.aimAssist ?? true, tilt: false };
   const prog = Object.assign({ found: [], badges: [] }, LS.get('mu-progress') || {});
   const found = new Set(prog.found.filter(k => KEYS.includes(k))), badges = new Set(prog.badges); let sealed = !!prog.sealed;
   const save = () => LS.set('mu-progress', { found: [...found], badges: [...badges], sealed });
-  const saveS = () => LS.set('mu-settings', { sens: S.sens, reduced: S.reduced, assisted: S.assisted });
+  const saveS = () => LS.set('mu-settings', { sens: S.sens, reduced: S.reduced, assisted: S.assisted, aimAssist: S.aimAssist });
   const intro = el.querySelector('.xi-intro');
 
   // ---------------- DOM ----------------
-  const stage = document.createElement('div'); stage.className = 'xr-stage mu'; stage.tabIndex = 0; stage.setAttribute('aria-label', U.title);
+  const stage = document.createElement('div'); stage.className = 'xr-stage mu' + (touch ? ' touch' : ''); stage.tabIndex = 0; stage.setAttribute('aria-label', U.title);
   stage.innerHTML = `
   <div class="xr-canvas"></div><div class="mu-vig" aria-hidden="true"></div><div class="mu-flash" aria-hidden="true"></div>
   <div class="xr-labels" aria-hidden="true"></div>
@@ -86,6 +86,7 @@ export function mount(el, D) {
     <div class="mu-tools">
       <button type="button" class="mu-ic mu-lj" data-act="light" title="${U.light}">${ic('light')} <span>${U.light}</span></button>
       <button type="button" class="mu-ic mu-rmb" data-act="remote" title="${U.remote}" aria-label="${U.remote}" ${touch ? 'hidden' : ''}>${ic('phone')}</button>
+      <button type="button" class="mu-ic mu-mus" data-act="music" title="${U.music}" aria-label="${U.music}" aria-pressed="true">${ic('note')}</button>
       <button type="button" class="mu-ic" data-act="settings" title="${U.settings}" aria-label="${U.settings}">${ic('gear')}</button>
       <button type="button" class="mu-ic" data-act="pause" title="${U.pause}" aria-label="${U.pause}">❚❚</button>
       <button type="button" class="mu-ic" data-act="full" title="${U.full}">⛶</button>
@@ -97,6 +98,7 @@ export function mount(el, D) {
   <button type="button" class="mu-guide xbtn" data-act="guide">${ic('compass')} ${U.guide}</button>
   <div class="mu-pad" ${touch ? '' : 'hidden'}><div class="mu-joy"><i></i></div></div>
   <div class="mu-ud" ${touch ? '' : 'hidden'}><button type="button" data-ud="1" aria-label="${U.up}">▲</button><button type="button" data-ud="-1" aria-label="${U.down}">▼</button></div>
+  <button type="button" class="mu-boost" aria-label="${U.boost}">${ic('boost')}<span>${U.boost}</span></button>
   <p class="mu-help">${touch ? U.touch : U.keys}</p>
   <aside class="xr-info mu-panel" hidden aria-live="polite"></aside>
   <div class="xr-lj mu-ljbar" hidden><p class="xr-ljt"></p><div class="xr-ljb"><button type="button" data-act="ljskip">${U.skip}</button><span class="xr-dots"></span><button type="button" class="pri" data-act="ljnext">›</button></div></div>
@@ -109,9 +111,10 @@ export function mount(el, D) {
     <label>${U.sens} <input type="range" min=".3" max="2" step=".1" data-set="sens"></label>
     <label><input type="checkbox" data-set="reduced"> ${U.reduced}</label>
     <label><input type="checkbox" data-set="assisted"> ${U.assisted}</label>
+    <label><input type="checkbox" data-set="aimAssist"> ${U.aim_assist}</label>
     <label class="mu-tiltrow" hidden><input type="checkbox" data-set="tilt"> ${U.tilt}</label>
     <button type="button" class="xbtn" data-act="remote" ${touch ? 'hidden' : ''}>${ic('phone')} ${U.remote}</button>
-    <button type="button" class="xbtn" data-act="resetprog">${U.reset}</button></div></div>
+    <button type="button" class="xbtn" data-act="resetprog">${U.reset}</button><p class="mu-credit">${U.music_credit}</p></div></div>
   <div class="mu-over mu-remote" hidden><div><button type="button" class="xr-x" data-act="closeover">✕</button><h3>${ic('phone')} ${U.remote}</h3><div class="mu-qr"></div><p class="mu-rst"></p><p class="mu-rurl"></p></div></div>
   <div class="mu-aim" hidden aria-hidden="true"></div>
   <div class="mu-lhud" hidden><p><b class="mu-lleft"></b> ${U.laser_left}</p><p class="mu-lkeys">${touch ? '' : U.laser_keys}</p><div class="mu-lbtns"><button type="button" class="xbtn pri" data-act="fire">${ic('laser')} ${U.fire}</button><button type="button" class="xbtn" data-act="laserstop">${U.laser_stop}</button></div></div>`;
@@ -432,7 +435,7 @@ export function mount(el, D) {
   const cv = renderer.domElement;
   let look = null;
   cv.addEventListener('pointerdown', e => { look = { id: e.pointerId, x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY }; cv.setPointerCapture(e.pointerId); });
-  cv.addEventListener('pointermove', e => { if (state === 'laser') { const r = cv.getBoundingClientRect(); aim.x = e.clientX - r.left; aim.y = e.clientY - r.top; return; } if (!look || e.pointerId !== look.id || state !== 'play' || paused) return; const k = .005 * S.sens; yaw -= (e.clientX - look.x) * k; pitch = Math.max(-1.2, Math.min(1.2, pitch - (e.clientY - look.y) * k)); look.x = e.clientX; look.y = e.clientY; });
+  cv.addEventListener('pointermove', e => { if (state === 'laser') { const r = cv.getBoundingClientRect(); aim.x = e.clientX - r.left; aim.y = e.clientY - r.top; ptrT = performance.now(); aimHold = false; return; } if (!look || e.pointerId !== look.id || state !== 'play' || paused) return; const k = .005 * S.sens; yaw -= (e.clientX - look.x) * k; pitch = Math.max(-1.2, Math.min(1.2, pitch - (e.clientY - look.y) * k)); look.x = e.clientX; look.y = e.clientY; });
   cv.addEventListener('pointerup', e => { if (!look) return; const tap = Math.hypot(e.clientX - look.x0, e.clientY - look.y0) < 6; look = null; if (tap && state === 'play') tapPick(e); else if (tap && state === 'laser') { const r = cv.getBoundingClientRect(); aim.x = e.clientX - r.left; aim.y = e.clientY - r.top; fireLaser(); } });
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
   const tapPick = e => {
@@ -462,6 +465,11 @@ export function mount(el, D) {
   const nextTarget = () => { let best = null, bd = 1e9; for (const k of KEYS) { if (found.has(k)) continue; const d = markers[k].position.distanceTo(player); if (d < bd) { bd = d; best = k; } } return best || KEYS[0]; };
   // joystick
   const pad = $('.mu-pad'), knob = $('.mu-joy i'); let jid = null;
+  // speed boost: hold the button, B, or L2/L3 on a controller
+  const boostEl = $('.mu-boost'); let boostBtn = false, boostK = 0, baseFov = camera.fov;
+  boostEl.addEventListener('pointerdown', e => { boostBtn = true; boostEl.setPointerCapture(e.pointerId); e.preventDefault(); });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(t => boostEl.addEventListener(t, () => { boostBtn = false; }));
+  boostEl.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { boostBtn = true; e.preventDefault(); } }); boostEl.addEventListener('keyup', () => { boostBtn = false; }); boostEl.addEventListener('blur', () => { boostBtn = false; });
   pad.addEventListener('pointerdown', e => { jid = e.pointerId; pad.setPointerCapture(jid); joyMove(e); e.preventDefault(); });
   pad.addEventListener('pointermove', e => { if (e.pointerId === jid) joyMove(e); });
   const joyEnd = e => { if (e.pointerId !== jid) return; jid = null; joy = { x: 0, y: 0 }; knob.style.transform = ''; };
@@ -475,19 +483,22 @@ export function mount(el, D) {
   const kd = e => {
     if (state === 'menu' || e.target.closest('input')) return;
     const k = e.key.toLowerCase();
-    if (state === 'laser' && !paused) { if (k === ' ' || k === 'enter' || k === 'e') { fireLaser(); e.preventDefault(); return; } if (k === 'escape') { endLaser(false); e.preventDefault(); return; } }
+    if (state === 'laser' && !paused) { if (k === ' ' || k === 'enter' || k === 'e') { if (!e.repeat) fireLaser(); keys.add('fire'); e.preventDefault(); return; } if (k === 'escape') { endLaser(false); e.preventDefault(); return; } }
     if (k === 'escape') { if (!$('.mu-journal').hidden || !$('.mu-settings').hidden || !$('.mu-remote').hidden) closeOver(); else if (state === 'play' || state === 'lj') setPause(!paused); e.preventDefault(); return; }
     if (k === 'e' && nearK && !paused) { discover(nearK); return; }
-    if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', ' ', 'shift', 'control', 'q', 'z'].includes(k)) { keys.add(k); e.preventDefault(); auto = null; follow = null; }
+    if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', ' ', 'shift', 'control', 'q', 'z', 'b'].includes(k)) { keys.add(k); e.preventDefault(); auto = null; follow = null; }
   };
-  const ku = e => keys.delete(e.key.toLowerCase());
-  stage.addEventListener('keydown', kd); stage.addEventListener('keyup', ku); stage.addEventListener('blur', () => keys.clear());
+  const ku = e => { const k = e.key.toLowerCase(); keys.delete(k); if (k === ' ' || k === 'enter' || k === 'e') keys.delete('fire'); };
+  stage.addEventListener('keydown', kd); stage.addEventListener('keyup', ku);
+  // during the laser game keys work even when the page, not the game, has focus (no click needed)
+  document.addEventListener('keydown', e => { if (state === 'laser' && el.isConnected && !stage.contains(e.target) && !e.target.closest('input,textarea,select')) kd(e); });
+  document.addEventListener('keyup', e => { if (state === 'laser' && !stage.contains(e.target)) ku(e); }); stage.addEventListener('blur', () => keys.clear());
 
   // ---------------- UI ----------------
   const overs = ['.mu-pause', '.mu-journal', '.mu-settings', '.mu-remote'];
   const closeOver = () => { overs.slice(1).forEach(s => $(s).hidden = true); if (paused) $('.mu-pause').hidden = false; stage.focus({ preventScroll: true }); };
   const setPause = p => { paused = p; $('.mu-pause').hidden = !p; overs.slice(1).forEach(s => $(s).hidden = true); $('[data-act=pause]').textContent = p ? '▶' : '⏸'; keys.clear(); setRun(); if (!p) stage.focus({ preventScroll: true }); };
-  const syncSettings = () => { $('[data-set=sens]').value = S.sens; $('[data-set=reduced]').checked = S.reduced; $('[data-set=assisted]').checked = S.assisted; $('[data-set=tilt]').checked = S.tilt; };
+  const syncSettings = () => { $('[data-set=sens]').value = S.sens; $('[data-set=reduced]').checked = S.reduced; $('[data-set=assisted]').checked = S.assisted; $('[data-set=aimAssist]').checked = S.aimAssist; $('[data-set=tilt]').checked = S.tilt; };
   stage.addEventListener('input', e => { const s = e.target.dataset.set; if (!s) return; S[s] = e.target.type === 'checkbox' ? e.target.checked : +e.target.value;
     if (s === 'tilt' && S.tilt) { tilt0 = null; const DOE = window.DeviceOrientationEvent; if (DOE && DOE.requestPermission) DOE.requestPermission().then(r => { if (r !== 'granted') { S.tilt = false; syncSettings(); } }).catch(() => { S.tilt = false; syncSettings(); }); addEventListener('deviceorientation', onTilt); }
     if (s === 'tilt' && !S.tilt) { removeEventListener('deviceorientation', onTilt); joy = { x: 0, y: 0 }; }
@@ -512,6 +523,7 @@ export function mount(el, D) {
     else if (a === 'resume') setPause(false);
     else if (a === 'restart') { setPause(false); endLJ(false); startIntro(); }
     else if (a === 'resetprog') { found.clear(); badges.clear(); sealed = false; showBurns(); save(); progress(); }
+    else if (a === 'music') { bgmOn = !bgmOn; LS.set('mu-bgm', bgmOn); if (bgmOn && bgmLive) bgm.play().catch(() => { }); else bgm.pause(); bgmUi(); }
     else if (a === 'laser') startLaser();
     else if (a === 'fire') fireLaser();
     else if (a === 'laserstop') endLaser(false);
@@ -528,12 +540,20 @@ export function mount(el, D) {
   // ---------------- laser minigame: seal the retinal tear with a ring of laser spots (barrage laser, as done in clinic) ----------------
   const aimEl = $('.mu-aim'), lhud = $('.mu-lhud'), aim = { x: 0, y: 0 }, aimW = new THREE.Vector3(), wallS = new THREE.Sphere(new THREE.Vector3(), R - .3), nose = new THREE.Vector3();
   const beam = new THREE.Mesh(new THREE.CylinderGeometry(.07, .07, 1, 6, 1, true), new THREE.MeshBasicMaterial({ color: 0x5dff8a, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false, fog: false })); beam.visible = false; scene.add(beam);
-  let laserT = 0;
+  let laserT = 0, ptrT = 0, aimHold = false;
+  // laser sound (Haziq 2026-10-16): a small pool so quick shots overlap
+  const zap = Array.from({ length: 4 }, () => { const a = new Audio('/assets/mu-laser.mp3'); a.preload = 'auto'; a.volume = .55; return a; }); let zapI = 0;
+  const zapPlay = () => { const a = zap[zapI++ % zap.length]; try { a.currentTime = 0; a.play().catch(() => { }); } catch (e) { } };
+  // aim assist (Haziq 2026-10-16): the crosshair is drawn onto the nearest open ring and locks on; a shot counts within a wider circle
+  const openNear = (max) => { let best = null, bd = max; const w = cv.clientWidth, h = cv.clientHeight;
+    for (const g of LT) { if (g.userData.hit) continue; g.getWorldPosition(tmp3).project(camera); const x = (tmp3.x * .5 + .5) * w, y = (-tmp3.y * .5 + .5) * h, d = Math.hypot(x - aim.x, y - aim.y); if (d < bd) { bd = d; best = { g, x, y, d }; } } return best; };
+  const tmp3 = new THREE.Vector3();
   const tearC = v => v.copy(TEAR_DIR).multiplyScalar(R - .9);
   const leftN = () => LT.filter(g => !g.userData.hit).length;
   const aimPoint = () => { const r = cv.getBoundingClientRect(); ndc.set(aim.x / r.width * 2 - 1, -aim.y / r.height * 2 + 1); ray.setFromCamera(ndc, camera); if (!ray.ray.intersectSphere(wallS, aimW)) tearC(aimW); return aimW; };
   const startLaser = () => {
     if (sealed || state !== 'play') return; closeOver(); panel.hidden = true; state = 'laser'; auto = null; follow = null;
+    boostK = 0; if (camera.fov !== baseFov) { camera.fov = baseFov; camera.updateProjectionMatrix(); }
     LT.forEach(g => { g.visible = true; g.userData.hit = false; g.userData.ring.visible = true; g.userData.burn.visible = false; });
     stage.classList.add('lasering'); markers.tear.visible = false; aim.x = cv.clientWidth / 2; aim.y = cv.clientHeight / 2; aimEl.hidden = false; lhud.hidden = false; $('.mu-lleft').textContent = leftN(); say(U.laser_how, 6000); stage.focus({ preventScroll: true });
   };
@@ -544,22 +564,28 @@ export function mount(el, D) {
   };
   const fireLaser = () => {
     if (state !== 'laser' || paused) return; aimPoint();
-    let best = null, bd = 50; const w = cv.clientWidth, h = cv.clientHeight; // the open target nearest the crosshair gets the spot
+    let best = null, bd = S.aimAssist ? 60 : 50; aimHold = true; const w = cv.clientWidth, h = cv.clientHeight; // the open target nearest the crosshair gets the spot
     for (const g of LT) { if (g.userData.hit) continue; g.getWorldPosition(tmp).project(camera); const d = Math.hypot((tmp.x * .5 + .5) * w - aim.x, (-tmp.y * .5 + .5) * h - aim.y); if (d < bd) { bd = d; best = g; } }
     const to = best ? best.getWorldPosition(new THREE.Vector3()) : aimW.clone();
     ship.localToWorld(nose.set(0, -.45, 1.45));
-    beam.position.copy(nose).lerp(to, .5); beam.scale.set(1, nose.distanceTo(to), 1); beam.lookAt(to); beam.rotateX(Math.PI / 2); beam.visible = true; laserT = .2;
+    beam.position.copy(nose).lerp(to, .5); beam.scale.set(1, nose.distanceTo(to), 1); beam.lookAt(to); beam.rotateX(Math.PI / 2); beam.visible = true; laserT = .2; zapPlay();
     if (!best) return;
     best.userData.hit = true; best.userData.ring.visible = false; best.userData.burn.visible = true; doBurst(to); if (navigator.vibrate) navigator.vibrate(12);
     const n = leftN(); $('.mu-lleft').textContent = n;
     if (!n) { sealed = true; save(); award('laser'); mata.happy(); say(U.laser_done, 5000); setTimeout(() => endLaser(true), 1400); }
   };
+  let autoT = 0;
   const updateLaser = (dt, t) => {
+    const held = keys.has('fire') || gpFire || rem.fire; autoT = held ? autoT + dt : 0; if (autoT > .3) { autoT = .08; fireLaser(); }
     const c = tearC(tmp2); camera.position.lerp(tmp.copy(c).addScaledVector(TEAR_DIR, -22), Math.min(1, dt * 2.5)); camera.lookAt(c);
     const w = cv.clientWidth, h = cv.clientHeight;
     const ax = GP.x + rem.x + GP.lx + rem.lx + joy.x + (keys.has('d') || keys.has('arrowright') ? 1 : 0) - (keys.has('a') || keys.has('arrowleft') ? 1 : 0);
     const ay = GP.y + rem.y + GP.ly + rem.ly + joy.y + (keys.has('s') || keys.has('arrowdown') ? 1 : 0) - (keys.has('w') || keys.has('arrowup') ? 1 : 0);
     aim.x = Math.max(0, Math.min(w, aim.x + ax * 480 * dt)); aim.y = Math.max(0, Math.min(h, aim.y + ay * 480 * dt));
+    if (Math.abs(ax) + Math.abs(ay) > .1) aimHold = false;
+    if (S.aimAssist) { camera.updateMatrixWorld(); const n = openNear(aimHold ? 26 : 75), idle = Math.abs(ax) + Math.abs(ay) < .1 && performance.now() - ptrT > 220;
+      if (n && idle && !aimHold) { const k = Math.min(1, dt * 7); aim.x += (n.x - aim.x) * k; aim.y += (n.y - aim.y) * k; }
+      aimEl.classList.toggle('lock', !!(n && n.d < 26)); } else aimEl.classList.remove('lock');
     aimEl.style.transform = `translate(${aim.x}px,${aim.y}px)`;
     camera.updateMatrixWorld(); const m = camera.matrixWorld.elements; // the ship hovers lower right of the view, nose on the crosshair
     craft.position.copy(camera.position).addScaledVector(tmp.set(m[8], m[9], m[10]), -6.5).addScaledVector(tmp.set(m[0], m[1], m[2]), 2.3).addScaledVector(tmp.set(m[4], m[5], m[6]), -1.5);
@@ -573,7 +599,7 @@ export function mount(el, D) {
   // ---------------- game controller (PS4 DualShock and other standard gamepads) and phone remote ----------------
   const GP = { x: 0, y: 0, lx: 0, ly: 0, ud: 0 }, rem = { x: 0, y: 0, lx: 0, ly: 0, ud: 0, t: 0 }, gpPrev = {}; let gpOn = false;
   const dz = v => Math.abs(v) < .16 ? 0 : (v - Math.sign(v) * .16) / .84;
-  const BTN = { 0: 'ok', 1: 'back', 2: 'light', 3: 'guide', 7: 'fire', 8: 'journal', 9: 'pause' }; // Cross, Circle, Square, Triangle, R2, Share, Options
+  const BTN = { 0: 'ok', 1: 'back', 2: 'light', 3: 'guide', 7: 'fire', 8: 'journal', 9: 'pause' }; let gpBoost = false, gpFire = false; // Cross, Circle, Square, Triangle, R2, Share, Options
   const btnAct = n => {
     if (state === 'menu') { if (n === 'ok' || n === 'pause') el.querySelector('[data-go="play"]').click(); return; }
     if (n === 'pause') { if (!$('.mu-journal').hidden || !$('.mu-settings').hidden || !$('.mu-remote').hidden) closeOver(); else if (state !== 'intro') setPause(!paused); return; }
@@ -581,19 +607,22 @@ export function mount(el, D) {
     if (state === 'intro') { if (n === 'ok') toSea(); return; }
     if (state === 'laser') { if (n === 'ok' || n === 'fire') fireLaser(); else if (n === 'back') endLaser(false); return; }
     if (state === 'lj') { if (n === 'ok') $('[data-act=ljnext]').click(); else if (n === 'back') endLJ(false); return; }
-    if (n === 'ok') { if (!panel.hidden) { const b = panel.querySelector('.xr-next'); if (b) b.click(); else panel.hidden = true; } else if (nearK) discover(nearK); }
+    // phone remote or controller can start the laser game: Fire (R2) near the tear, or OK on the tear card (Haziq 2026-10-16)
+    if (n === 'fire') { const lb = !panel.hidden && panel.querySelector('[data-act=laser]'); if (lb || (nearK === 'tear' && !sealed)) startLaser(); return; }
+    if (n === 'ok') { if (!panel.hidden) { const b = panel.querySelector('[data-act=laser]') || panel.querySelector('.xr-next'); if (b) b.click(); else panel.hidden = true; } else if (nearK) discover(nearK); }
     else if (n === 'back') panel.hidden = true;
     else if (n === 'guide') glideTo(nextTarget());
     else if (n === 'light') startLJ();
     else if (n === 'journal') $('[data-act=journal]').click();
   };
   const pollGP = () => {
-    if (performance.now() - rem.t > 700) rem.x = rem.y = rem.lx = rem.ly = rem.ud = 0;
+    if (performance.now() - rem.t > 700) { rem.x = rem.y = rem.lx = rem.ly = rem.ud = 0; rem.fire = false; }
     let p = null; try { for (const g of (navigator.getGamepads ? navigator.getGamepads() : [])) if (g && g.connected) { p = g; break; } } catch (e) { }
-    if (!p) { GP.x = GP.y = GP.lx = GP.ly = GP.ud = 0; return; }
+    if (!p) { GP.x = GP.y = GP.lx = GP.ly = GP.ud = 0; gpBoost = false; return; }
     if (!gpOn) { gpOn = true; toast(esc(U.pad_on), 6000); }
     const a = p.axes, b = p.buttons, v = i => (b[i] ? b[i].value : 0);
     GP.x = dz(a[0] || 0); GP.y = dz(a[1] || 0); GP.lx = dz(a[2] || 0); GP.ly = dz(a[3] || 0);
+    gpFire = state === 'laser' && (v(7) > .5 || v(0) > .5); gpBoost = v(6) > .5 || v(10) > .5; // L2 or L3 held: speed boost
     GP.ud = (v(5) > .5 || v(12) > .5 ? 1 : 0) - (v(4) > .5 || v(13) > .5 ? 1 : 0); // R1 or d-pad up: up; L1 or d-pad down: down
     for (const i in BTN) { const on = v(+i) > .5; if (on && !gpPrev[i]) btnAct(BTN[i]); gpPrev[i] = on; }
   };
@@ -609,7 +638,7 @@ export function mount(el, D) {
     peer.on('open', pid => { const url = location.origin + location.pathname + '?pad=' + encodeURIComponent(pid); const q = window.qrcode(0, 'M'); q.addData(url); q.make(); $('.mu-qr').innerHTML = q.createSvgTag(6, 2); $('.mu-rurl').textContent = url; st.textContent = U.rm_scan; });
     peer.on('connection', c => {
       c.on('open', () => { st.textContent = U.rm_ok; toast(esc(U.rm_ok)); setTimeout(() => { if (!$('.mu-remote').hidden) { $('.mu-remote').hidden = true; if (state === 'menu') el.querySelector('[data-go="play"]').click(); setPause(false); } }, 1200); });
-      c.on('data', d => { if (!d || typeof d !== 'object') return; if (typeof d.b === 'string') { btnAct(d.b); return; } const n = x => Math.max(-1, Math.min(1, +x || 0)); rem.x = n(d.x); rem.y = n(d.y); rem.lx = n(d.lx); rem.ly = n(d.ly); rem.ud = n(d.ud); rem.t = performance.now(); });
+      c.on('data', d => { if (!d || typeof d !== 'object') return; if (typeof d.b === 'string') { btnAct(d.b); return; } const n = x => Math.max(-1, Math.min(1, +x || 0)); rem.x = n(d.x); rem.y = n(d.y); rem.lx = n(d.lx); rem.ly = n(d.ly); rem.ud = n(d.ud); rem.fire = !!d.f; rem.t = performance.now(); });
       c.on('close', () => toast(esc(U.rm_off)));
     });
     peer.on('error', () => { st.textContent = U.rm_err; });
@@ -627,12 +656,24 @@ export function mount(el, D) {
     player.set(0, 0, 22); yaw = Math.PI; pitch = 0; vel.set(0, 0, 0); camPos.set(0, 2.5, 28); signals.forEach(s => s.visible = found.has('nerve'));
     setTimeout(() => say(U.intro_lines[0], 4000), 500); stage.focus({ preventScroll: true });
   };
-  el.querySelector('[data-go="play"]').addEventListener('click', () => { intro.classList.add('gone'); stage.classList.add('live'); startIntro(); setRun(); });
+  // game music (Haziq 2026-10-16): Space Galaxy Universe by NastelBom; while the game runs it replaces the site music, which comes back after
+  const bgm = new Audio('/assets/mu-space.mp3'); bgm.loop = true; bgm.preload = 'none'; bgm.volume = .4;
+  let bgmOn = LS.get('mu-bgm') ?? true, bgmLive = false;
+  const site = on => { try { const m = window.__isMusic; if (m && m.duck) m.duck(on); } catch (e) { } };
+  const bgmUi = () => { const b = $('.mu-mus'); b.setAttribute('aria-pressed', bgmOn); b.classList.toggle('off', !bgmOn); };
+  const bgmStart = () => { bgmLive = true; site(true); if (bgmOn) bgm.play().catch(() => { }); bgmUi(); };
+  const bgmEnd = () => { if (!bgmLive) return; bgmLive = false; bgm.pause(); site(false); };
+  const bgmTick = setInterval(() => { if (!el.isConnected) { bgmEnd(); clearInterval(bgmTick); } }, 800);
+  addEventListener('pagehide', bgmEnd);
+  el.querySelector('[data-go="play"]').addEventListener('click', () => { intro.classList.add('gone'); stage.classList.add('live'); startIntro(); setRun(); bgmStart(); });
 
   // ---------------- update ----------------
   const tmp = new THREE.Vector3(), tmp2 = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
   const updatePlay = (dt, t) => {
-    const speed = 11, f = fwd(), right = new THREE.Vector3(Math.cos(yaw), 0, -Math.sin(yaw));
+    const boosting = (boostBtn || gpBoost || keys.has('b')) && !auto && !follow; boostK += ((boosting ? 1 : 0) - boostK) * Math.min(1, dt * 4);
+    boostEl.classList.toggle('on', boosting);
+    if (!S.reduced) { const fv = baseFov + boostK * 9; if (Math.abs(camera.fov - fv) > .05) { camera.fov = fv; camera.updateProjectionMatrix(); } }
+    const speed = 11 * (1 + boostK * 1.4), f = fwd(), right = new THREE.Vector3(Math.cos(yaw), 0, -Math.sin(yaw));
     let ix = joy.x + GP.x + rem.x, iy = -(joy.y + GP.y + rem.y);
     if (keys.has('w') || keys.has('arrowup')) iy += 1; if (keys.has('s') || keys.has('arrowdown')) iy -= 1;
     if (keys.has('d')) ix += 1; if (keys.has('a')) ix -= 1;
@@ -662,7 +703,7 @@ export function mount(el, D) {
     // Mata faces where it is going
     const look2 = vel.lengthSq() > .5 ? vel.clone().normalize() : f;
     craft.position.copy(player); if (!S.reduced) craft.position.y += Math.sin(t * 2.2) * .06; craft.lookAt(tmp2.copy(player).add(look2));
-    flames.forEach(f => f.scale.setScalar(.55 + Math.min(1, vel.length() / 11) * .75 + (S.reduced ? 0 : Math.random() * .12)));
+    flames.forEach(f => { f.scale.setScalar(.55 + Math.min(1, vel.length() / 11) * .75 + boostK * .9 + (S.reduced ? 0 : Math.random() * (.12 + boostK * .3))); f.material.color.setHex(boostK > .5 ? 0xffc46b : 0x7fe3ff); });
     mata.update(t, dt, { reducedMotion: S.reduced, moving: false });
     // third-person camera
     const back = f.clone().multiplyScalar(-5.2).add(new THREE.Vector3(0, 1.6, 0));
@@ -730,7 +771,7 @@ export function mount(el, D) {
   const onVis = () => { if (document.hidden && (state === 'play' || state === 'lj') && !paused) setPause(true); setRun(); }; document.addEventListener('visibilitychange', onVis);
   resize(); progress(); syncSettings(); setRun(); el.classList.add('ready');
   el.querySelector('.xr-load').hidden = true;
-  el.__dbg = { get state() { return state }, player, camera, discover, startLJ, toSea, glideTo, startLaser, fireLaser, btnAct, aim, LT, setView(y, p) { yaw = y; pitch = p; } };
+  el.__dbg = { get state() { return state }, bgm, zap, player, camera, discover, startLJ, toSea, glideTo, startLaser, fireLaser, btnAct, aim, LT, setView(y, p) { yaw = y; pitch = p; } };
 
   const watch = setInterval(() => { if (el.isConnected) return;
     clearInterval(watch); clearInterval(gpI); if (peer) try { peer.destroy(); } catch (e) { } renderer.setAnimationLoop(null); io.disconnect(); ro.disconnect(); document.removeEventListener('visibilitychange', onVis); removeEventListener('deviceorientation', onTilt);
