@@ -27,7 +27,7 @@ if(m&&window.crypto&&crypto.subtle){crypto.subtle.digest("SHA-256",new TextEncod
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
 <script>(()=>{try{const d=document.documentElement,f=localStorage.getItem('is-fs'),t=localStorage.getItem('is-theme');if(f)d.dataset.fs=f;if(t)d.dataset.theme=t}catch(e){}})()</script>
 <link rel="stylesheet" href="/assets/css/59827ea353ab.css">
-<link rel="stylesheet" href="../../assets/dark.css?v=20261016041407">
+<link rel="stylesheet" href="../../assets/dark.css?v=20261016042413">
 <link rel="stylesheet" id="ori" href="/assets/css/910744291c6f.css">
 </head>
 <body class="">
@@ -276,25 +276,7 @@ const nav=document.querySelector('header.site .nav');if(!nav||nav.querySelector(
 const items=[...nav.children].filter(e=>e!==lens);const cur=items.find(e=>e.matches('a.on')||e.querySelector('.ddb.on'));
 const to=e=>{if(!e||getComputedStyle(nav).flexDirection==='column'){lens.style.opacity=0;return}lens.style.opacity=1;lens.style.width=e.offsetWidth+'px';lens.style.transform='translateX('+e.offsetLeft+'px)'};
 items.forEach(e=>{e.addEventListener('mouseenter',()=>to(e));e.addEventListener('focusin',()=>to(e))});nav.addEventListener('mouseleave',()=>to(cur));
-to(cur);setTimeout(()=>to(cur),400);if(document.fonts)document.fonts.ready.then(()=>to(cur));addEventListener('resize',()=>to(cur))})()</script><script>if(!window.__thm){window.__thm=1;document.addEventListener('click',e=>{const b=e.target.closest('header.site .thm');if(!b)return;const d=document.documentElement,t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t;try{localStorage.setItem('is-theme',t)}catch(_){}document.querySelectorAll('.accp [data-th]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.th===t))})}</script><script>(()=>{const sky=document.getElementById('sky');if(!sky||sky.querySelector('canvas'))return;const cv=document.createElement('canvas');sky.appendChild(cv);const x=cv.getContext('2d');
-const R=matchMedia('(prefers-reduced-motion: reduce)').matches;let W=0,H=0,dp=1;function rs(){dp=Math.min(devicePixelRatio||1,1.5);W=innerWidth;H=innerHeight;cv.width=W*dp;cv.height=H*dp}rs();addEventListener('resize',rs);
-let sd=11;const r=()=>(sd=sd*16807%2147483647)/2147483647;const N=innerWidth<700?12:26;
-const S=[...Array(N)].map(()=>{const n=r()<.5?3:4,p=[];for(let i=0;i<n;i++){const a=i/n*6.283+r()*.9,d=.55+r()*.45;p.push([Math.cos(a)*d,Math.sin(a)*d])}return{x:r(),y:r(),z:.25+r()*.85,a:r()*6.3,va:(r()-.5)*.25,vx:(r()-.5)*.006,vy:-(.003+r()*.008),p,f:r()}});
-const D=[...Array(innerWidth<700?50:110)].map(()=>({x:r(),y:r(),z:r(),ph:r()*6.3}));
-let mx=0,my=0,tx=0,ty=0,cx=-9e3,cy=-9e3;addEventListener('pointermove',e=>{tx=e.clientX/innerWidth*2-1;ty=e.clientY/innerHeight*2-1;cx=e.clientX;cy=e.clientY},{passive:true});document.addEventListener('pointerleave',()=>{cx=cy=-9e3});
-let last=performance.now(),f0=0;function draw(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(document.hidden||(f0&&document.documentElement.classList.contains('mk-still'))||(f0&&document.documentElement.classList.contains('mk-scrolling'))){requestAnimationFrame(draw);return}f0=1;
- const dk=document.documentElement.dataset.theme==='dark';mx+=(tx-mx)*.04;my+=(ty-my)*.04;x.setTransform(dp,0,0,dp,0,0);x.clearRect(0,0,W,H);
- for(const d of D){if(!R){d.y-=dt*.004*(.3+d.z);if(d.y<-.02)d.y=1.02}const tw=.5+.5*Math.sin(now/1000*(.6+d.z)+d.ph),px=d.x*W+mx*8*d.z,py=d.y*H+my*8*d.z;
-  x.fillStyle=dk?'rgba(220,232,255,'+(.15+.45*tw*d.z)+')':'rgba(255,255,255,'+(.35+.55*tw)+')';x.fillRect(px,py,d.z>.8?1.6:1,d.z>.8?1.6:1)}
- for(const s of S){if(!R){s.x+=s.vx*dt;s.y+=s.vy*dt*(.4+s.z);s.a+=s.va*dt;if(s.y<-.08){s.y=1.08;s.x=r()}if(s.x<-.08)s.x=1.08;if(s.x>1.08)s.x=-.08}
-  // paper shards drift away from the pointer like a force field (idea from Haziq's Soda reference)
-  const bx=s.x*W+mx*26*s.z,by=s.y*H+my*18*s.z,ex=bx-cx,ey=by-cy,dd=Math.hypot(ex,ey)||1;let gx=0,gy=0,sp=1;if(!R&&dd<260){const f=(260-dd)/260;gx=ex/dd*f*110*(.5+s.z);gy=ey/dd*f*110*(.5+s.z);sp=1+f*6}
-  s.rx=(s.rx||0)+(gx-(s.rx||0))*.08;s.ry=(s.ry||0)+(gy-(s.ry||0))*.08;if(!R)s.a+=s.va*dt*(sp-1)*3;
-  const sz=9+s.z*26,px=bx+s.rx,py=by+s.ry,c=Math.cos(s.a),si=Math.sin(s.a),P=s.p.map(([u,v])=>[px+(u*c-v*si)*sz,py+(u*si+v*c)*sz*(.6+.4*Math.abs(Math.sin(s.a*.7+s.f*6)))]);
-  const al=dk?.1+s.z*.22:.35+s.z*.35;for(let k=0;k<2;k++){x.beginPath();x.moveTo(P[0][0],P[0][1]);const q=k?P.slice(Math.ceil(P.length/2)-1):P.slice(0,Math.ceil(P.length/2)+1);for(const [a,b] of q)x.lineTo(a,b);if(k)x.lineTo(P[0][0],P[0][1]);x.closePath();
-   x.fillStyle=dk?(k?'rgba(150,175,225,'+al+')':'rgba(95,120,175,'+al+')'):(k?'rgba(255,255,255,'+al+')':'rgba(205,222,245,'+al+')');x.fill()}}
- if(!R)requestAnimationFrame(draw)}
-requestAnimationFrame(draw);if(R)new MutationObserver(()=>requestAnimationFrame(draw)).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})})()</script>
+to(cur);setTimeout(()=>to(cur),400);if(document.fonts)document.fonts.ready.then(()=>to(cur));addEventListener('resize',()=>to(cur))})()</script><script>if(!window.__thm){window.__thm=1;document.addEventListener('click',e=>{const b=e.target.closest('header.site .thm');if(!b)return;const d=document.documentElement,t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t;try{localStorage.setItem('is-theme',t)}catch(_){}document.querySelectorAll('.accp [data-th]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.th===t))})}</script><script src="/assets/js/x/75fe3531888b.js"></script>
 <script>if(!window.__cur&&matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){window.__cur=1;const c=document.createElement('div');c.id='mo-cur';c.setAttribute('aria-hidden','true');document.body.appendChild(c);
  let x=-99,y=-99,cx=-99,cy=-99;addEventListener('pointermove',e=>{x=e.clientX;y=e.clientY;c.classList.add('on');c.classList.toggle('big',!!e.target.closest('a,button,summary,[role=button],input,canvas'))},{passive:true});
  document.addEventListener('pointerleave',()=>c.classList.remove('on'));(function f(){cx+=(x-cx)*.2;cy+=(y-cy)*.2;c.style.transform='translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px)';requestAnimationFrame(f)})()}</script><script>(()=>{if(window.__mkWide)return;window.__mkWide=1;
@@ -302,37 +284,7 @@ const fit=()=>{const m=document.querySelector('header.site .menu.wide');if(!m)re
  const nv=m.closest('.nav')||document.querySelector('header.site .nav'),n=nv.getBoundingClientRect(),op=m.offsetParent||m.parentNode,r=op.getBoundingClientRect();m.style.right='auto';m.style.left=(n.left-r.left)+'px';m.style.width=n.width+'px'};
 addEventListener('resize',fit);document.addEventListener('pointerover',ev=>{if(ev.target.closest&&ev.target.closest('header.site .dd'))fit()});document.addEventListener('focusin',fit);document.addEventListener('click',fit,true);fit()})()</script><script>(()=>{const go=()=>{if(location.hash!=='#checker')return;let n=0;const t=setInterval(()=>{const s=document.getElementById('checker');if(s||++n>20){clearInterval(t);if(s)s.scrollIntoView({behavior:'smooth',block:'start'})}},150)};
 go();if(!window.__mkChk){window.__mkChk=1;addEventListener('hashchange',go)}})()</script><script>(()=>{if(!document.getElementById('mk-hbar')){const d=document.createElement('div');d.id='mk-hbar';d.setAttribute('aria-hidden','true');document.body.appendChild(d)}
-if(window.__mkScr)return;window.__mkScr=1;const H=document.documentElement;let t=0;const f=()=>{t=0;H.classList.toggle('mk-scr',scrollY>12)};addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(f)},{passive:true});f()})()</script><script>(()=>{if(window.__mkSkyHold)return;window.__mkSkyHold=1;const H=document.documentElement;let t=0;addEventListener('scroll',()=>{H.classList.add('mk-scrolling');clearTimeout(t);t=setTimeout(()=>H.classList.remove('mk-scrolling'),180)},{passive:true})})()</script><script>(()=>{const set=()=>{const t=document.documentElement.dataset.theme;if(!t)return;document.querySelectorAll('meta[name=theme-color]').forEach(m=>m.content=t==='dark'?'#05080f':'#eef3fb')};set();if(!window.__mkTc){window.__mkTc=1;new MutationObserver(set).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})}})()</script><script>(()=>{const d=document.documentElement,R=matchMedia('(prefers-reduced-motion: reduce)').matches,main=document.querySelector('main');if(!main)return;
-const head=document.querySelector('header.site');
-const hn=head&&head.querySelector('.nav');if(hn&&!hn.querySelector('.mo-glint')){const g=document.createElement('span');g.className='mo-glint';g.setAttribute('aria-hidden','true');hn.prepend(g)}
-if(!window.__mo){window.__mo=1;let q=0;
- addEventListener('pointermove',e=>{if(q)return;q=requestAnimationFrame(()=>{q=0;const h=document.querySelector('header.site .nav');if(!h)return;const r=h.getBoundingClientRect();if(e.clientY<r.bottom+40){h.style.setProperty('--mx',(e.clientX-r.left)+'px');h.style.setProperty('--my',(e.clientY-r.top)+'px')}})},{passive:true});
- const pb=document.createElement('div');pb.id='mo-prog';pb.setAttribute('aria-hidden','true');document.body.appendChild(pb);
- const sc=()=>{const y=scrollY,m=document.documentElement.scrollHeight-innerHeight;document.body.classList.toggle('mo-sc',y>24);const p=document.getElementById('mo-prog')||document.body.appendChild(pb);
-  p.style.display=document.querySelector('.band:not([hidden])')&&m>innerHeight*.6?'':'none';p.style.transform='scaleX('+(m>0?Math.min(1,y/m):0)+')'};
- addEventListener('scroll',()=>requestAnimationFrame(sc),{passive:true});addEventListener('resize',sc);window.__moSc=sc;
- // fold-outs open and close with a soft unfold instead of a jump
- document.addEventListener('click',e=>{const s=e.target.closest('details.sec>summary');if(!s||R||e.target.closest('a'))return;const dt=s.parentElement,b=dt.querySelector(':scope>.sec-body');if(!b||!b.animate)return;
-  e.preventDefault();if(dt._a)dt._a.cancel();
-  if(!dt.open){dt.open=true;const h=b.scrollHeight;dt._a=b.animate([{height:'0px',opacity:0,transform:'translateY(-6px)'},{height:h+'px',opacity:1,transform:'none'}],{duration:Math.min(700,260+h*.35),easing:'cubic-bezier(.2,.7,.2,1)'});dt._a.onfinish=()=>{dt._a=null}}
-  else{const h=b.offsetHeight;b.style.overflow='hidden';dt._a=b.animate([{height:h+'px',opacity:1},{height:'0px',opacity:0}],{duration:Math.min(480,200+h*.2),easing:'cubic-bezier(.4,0,.2,1)'});dt._a.onfinish=()=>{dt.open=false;b.style.overflow='';dt._a=null}}},true);
- // cards lean towards the pointer a little, like a sheet of card being picked up
- if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!R){document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.card,.tp');document.querySelectorAll('.mo-t').forEach(x=>{if(x!==c){x.classList.remove('mo-t');x.style.transform=''}});
-  if(!c||c.closest('.rv:not(.in)'))return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.classList.add('mo-t');c.style.transform='perspective(900px) rotateX('+(-y*4).toFixed(2)+'deg) rotateY('+(x*5).toFixed(2)+'deg) translateY(-3px)'},{passive:true})}
- addEventListener('beforeprint',()=>document.querySelectorAll('.rv').forEach(x=>x.classList.add('in')));
-}
-window.__moSc&&window.__moSc();
-if(R)return;d.classList.add('mo');
-// headline: words rise out of a fold one after another
-document.querySelectorAll('.band h1').forEach(h=>{if(h.dataset.mo)return;h.dataset.mo=1;let i=0;
- const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(t));return}
-  const w=document.createElement('span');w.className='w';const s=document.createElement('span');s.textContent=t;s.style.setProperty('--i',i++);w.appendChild(s);f.appendChild(w)});c.replaceWith(f)}else if(c.nodeType===1)walk(c)})};walk(h)});
-// everything else drifts up as it comes into view, a few at a time
-const T=[...main.querySelectorAll('.band .byline,.band .band-tools,.content>*:not(.has-side),.main-col>*,.content>aside,.cards>*,.meds>*,.tps>*,.grid>*,.mgrid>*')].filter(e=>!e.closest('.ori')&&!e.classList.contains('rv')&&e.offsetParent!==null);
-const io=new IntersectionObserver(es=>{let k=0;es.forEach(en=>{if(!en.isIntersecting)return;const el=en.target;el.style.setProperty('--dl',(k++*70)+'ms');el.classList.add('in');io.unobserve(el);
- setTimeout(()=>{el.classList.remove('rv','in');el.style.removeProperty('--dl');el.style.removeProperty('--rr')},1400+k*70)})},{rootMargin:'0px 0px -6% 0px',threshold:.06});
-T.forEach((e,n)=>{e.classList.add('rv');if(e.matches('.cards>*,.tps>*,.grid>*'))e.style.setProperty('--rr',(n%2?.35:-.35)+'deg');io.observe(e)});
-})()</script>
+if(window.__mkScr)return;window.__mkScr=1;const H=document.documentElement;let t=0;const f=()=>{t=0;H.classList.toggle('mk-scr',scrollY>12)};addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(f)},{passive:true});f()})()</script><script>(()=>{if(window.__mkSkyHold)return;window.__mkSkyHold=1;const H=document.documentElement;let t=0;addEventListener('scroll',()=>{H.classList.add('mk-scrolling');clearTimeout(t);t=setTimeout(()=>H.classList.remove('mk-scrolling'),180)},{passive:true})})()</script><script>(()=>{const set=()=>{const t=document.documentElement.dataset.theme;if(!t)return;document.querySelectorAll('meta[name=theme-color]').forEach(m=>m.content=t==='dark'?'#05080f':'#eef3fb')};set();if(!window.__mkTc){window.__mkTc=1;new MutationObserver(set).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})}})()</script><script src="/assets/js/x/50e7f7a5d53d.js"></script>
 
 <script>
 document.querySelectorAll('iframe.embed[loading="lazy"]').forEach(f=>{if(!/vision-sim|myths/.test(f.src))f.loading='eager'});
@@ -352,186 +304,10 @@ L.forEach(a=>{const t=document.getElementById(a.getAttribute('href').slice(1));i
 
 
 
-<script>(()=>{if(window.__mata)return;window.__mata=1;
-const D={"T": {"en": {"title":"Mata: your EyeCompanion","sub":"Hi, I'm Mata! Your EyeCompanion.","open":"Open Mata, your EyeCompanion","close":"Close","hello":"Hi, I'm Mata! Ask me anything about eyes, or try one of these:","peek":"Hi! I'm Mata. Need a hand?","sugg": [["Did you know about The EyeLab?","In EyeSimulate, part of The EyeLab, you can see how eye diseases change what people see, with a 3D eye model beside it.","sim"], ["Want to know more about cataracts?","A cataract is when the lens inside the eye turns cloudy, usually with age. A short operation can usually fix it.","cat"], ["Is an eye clinic open today?","Community Eye Clinics are walk-in, with no referral letter needed. See which one is open today.","clinic"], ["Not sure how urgent your eye problem is?","Try the symptom checker: a few quick questions tell you how soon to get help.","checker"], ["Fancy a quick Myths or Facts quiz?","Test what you know about eyes. Some answers might surprise you!","myth"], ["Not sure what your eye drops are for?","Our Eye Medications page explains common eye drops and how to put them in.","meds"], ["Want a reminder to rest your eyes?", null,"break"], ["Have diabetes? See how it affects the eyes","Diabetes can damage the back of the eye with no early symptoms, so a yearly eye check is important.","dr"], ["What is glaucoma?","Glaucoma damages the optic nerve, often slowly and without pain. Regular checks help protect sight.","gl"], ["Is your child becoming short-sighted?","Learn about short-sightedness in children and how outdoor play helps.","my"], ["Want an eye tip?", null,"tip"], ["Curious what happens in cataract surgery?","Watch the step-by-step animation on our Procedures and Surgeries page.","proc"]],"chips": [["tip","Eye tip"], ["break","Screen break reminder"], ["tour","What can I do here?"], ["clinic","Find an eye clinic"], ["urgent","Urgent eye problem"]],"ask":"Ask me anything about eyes…","send":"Ask","disc":"Mata gives general information, not medical advice.","tips": ["Try the 20-20-20 rule: every 20 minutes, look at something about 6 metres (20 feet) away for 20 seconds.","Looking at screens makes us blink less. Remember to blink fully, especially when your eyes feel dry.","Keep your phone or screen at about arm's length, a little below eye level.","Children who play outdoors for about 2 hours a day are less likely to become short-sighted.","Wear sunglasses that block UV rays when you are out in the sun.","Try not to rub your eyes. If something gets in, rinse with clean water instead.","Have diabetes? Get your eyes checked at least once a year, even if your vision seems fine.","Never sleep, swim or shower in contact lenses unless your eye doctor says it is safe.","Using two kinds of eye drops? Wait about 5 minutes between them so the first one is not washed out."],"more_tip":"Another tip","tip_lead":"Here's a tip:","break_on":"Done! While MataKitani is open, I'll remind you every 20 minutes to rest your eyes: look at something about 6 metres away for 20 seconds.","break_off":"Okay, I've turned off the screen-break reminder.","break_btn_on":"Turn on reminder","break_btn_off":"Turn off reminder","break_ask":"Shall I remind you every 20 minutes to rest your eyes while MataKitani is open?","break_now":"Time for an eye break! Look at something about 6 metres (20 feet) away for 20 seconds, and blink a few times.","tour_lead":"Here's what you can do on MataKitani:","tour": [["Symptom checker","Answer a few quick questions to see how soon to get help.","/english/#checker"], ["Eye Conditions","Simple guides to common eye problems.","/english/eye-conditions/"], ["Urgent Conditions","Eye problems that need help straight away.","/english/acute-eye-conditions/"], ["EyeSimulate","See how eye diseases change vision, in 2D and 3D.","/english/vision-simulator/"], ["Eye Clinics","Which Community Eye Clinic is open today.","/eye-clinics/"], ["Eye Medications","What your eye drops are for and how to use them.","/english/eye-medications/"], ["Procedures and Surgeries","What happens in common eye operations.","/english/procedures-and-surgeries/"], ["Myths or Facts","Test yourself with a quick quiz.","/english/fun-facts/#myths-or-facts"], ["Read aloud and print","Every condition page can read itself aloud or print as a leaflet.", null], ["Aa Text size and dark mode","Use the Aa button at the top of any page.", null]],"clinic":"Community Eye Clinics are walk-in: no referral letter needed, and you can go to any of them. Come in good time before closing. After hours, Fridays and Sundays, go to the Emergency Department for urgent eye problems.","urgent":"That could be urgent. Please go to the nearest Emergency Department now, especially for sudden loss of vision, new flashes with a curtain or shadow, a painful red eye with blurred vision, an eye injury, or a chemical splash (rinse with clean water for at least 15 minutes first). For any other medical emergency, call 991 or go to the Emergency Department.","found":"Here's what I found on MataKitani:","none":"Sorry, I couldn't find that. Try different words, or have a look at these:","open_link":"Open","see":"See","L": {"cond": ["Eye Conditions","/english/eye-conditions/"],"acute": ["Urgent Conditions","/english/acute-eye-conditions/"],"clinic": ["Community Eye Clinics","/eye-clinics/"],"team": ["Your EyeCare Team","/eye-clinics/"],"sim": ["EyeSimulate","/english/vision-simulator/"],"meds": ["Eye Medications","/english/eye-medications/"],"proc": ["Procedures and Surgeries","/english/procedures-and-surgeries/"],"myth": ["Myths or Facts","/english/fun-facts/#myths-or-facts"],"contact": ["Contact Us","/english/contact-us/"],"checker": ["Symptom checker","/english/#checker"],"des": ["Digital Eye Strain","/english/digital-eye-strain/"],"dry": ["Dry Eye","/english/dry-eye/"],"cat": ["Cataract","/english/cataract/"],"gl": ["Glaucoma","/english/glaucoma/"],"dr": ["Diabetic eye disease","/english/diabetic-retinopathy/"],"my": ["Short-sightedness in children","/english/myopia/"]}},"ms": {"title":"Mata: your EyeCompanion","sub":"Hai, aku Mata! EyeCompanion abiskita.","open":"Buka Mata, EyeCompanion abiskita","close":"Tutup","hello":"Hai, aku Mata! Tanya aku apa-apa pasal mata, atau cuba salah satu ani:","peek":"Hai! Aku Mata. Perlu bantuan?","sugg": [["Abiskita tau kah pasal The EyeLab?","Di EyeSimulate, sebahagian dari The EyeLab, abiskita boleh tengok cemana penyakit mata mengubah penglihatan, dengan model mata 3D di sebelahnya.","sim"], ["Mau tau lagi pasal utik (katarak)?","Utik atu bila kanta dalam mata jadi keruh, selalunya pasal umur. Biasanya boleh dirawat dengan operasi yang singkat.","cat"], ["Klinik mata mana buka hari ani?","Klinik Mata Komuniti adalah walk-in, inda perlu surat rujukan. Tengok klinik mana yang buka hari ani.","clinic"], ["Inda pasti seberapa segera masalah mata abiskita?","Cuba Semak Simptom: beberapa soalan pantas untuk tau seberapa segera perlu dapatkan bantuan.","checker"], ["Mau cuba kuiz Mitos atau Fakta?","Uji apa yang abiskita tau pasal mata. Ada jawapan yang mungkin mengejutkan!","myth"], ["Inda pasti untuk apa ubat titis mata abiskita?","Halaman Ubat Mata kami menerangkan ubat titis mata biasa dan cemana memakainya.","meds"], ["Mau diingatkan rehatkan mata?", null,"break"], ["Ada kencing manis? Tengok kesannya pada mata","Kencing manis boleh merosakkan belakang mata tanpa tanda awal, jadi periksa mata sekali setahun penting.","dr"], ["Apa kan glaukoma?","Glaukoma merosakkan saraf mata, selalunya perlahan-lahan dan inda sakit. Pemeriksaan berkala membantu menjaga penglihatan.","gl"], ["Anak abiskita jadi rabun jauh kah?","Ketahui pasal rabun jauh kanak-kanak dan cemana main di luar rumah membantu.","my"], ["Mau petua mata?", null,"tip"], ["Mau tau apa berlaku masa operasi utik?","Tengok animasi langkah demi langkah di halaman Prosedur dan Pembedahan kami.","proc"]],"chips": [["tip","Petua mata"], ["break","Peringatan rehat skrin"], ["tour","Apa ada di sini?"], ["clinic","Cari klinik mata"], ["urgent","Masalah mata segera"]],"ask":"Tanya aku pasal mata…","send":"Tanya","disc":"Mata memberi maklumat am saja, bukan nasihat perubatan.","tips": ["Cuba peraturan 20-20-20: tiap 20 minit, tengok benda yang jauh kira-kira 6 meter (20 kaki) selama 20 saat.","Masa tengok skrin, kitani kurang berkelip. Ingat berkelip penuh, terutama bila mata rasa kering.","Pegang telefon atau skrin kira-kira sepanjang lengan, rendah sikit dari paras mata.","Kanak-kanak yang main di luar rumah kira-kira 2 jam sehari kurang kemungkinan jadi rabun jauh.","Pakai cermin mata hitam yang menghalang sinar UV bila di bawah matahari.","Jangan gosok mata. Mun ada benda masuk, bilas dengan air bersih.","Ada kencing manis? Periksa mata sekurang-kurangnya sekali setahun, walaupun penglihatan rasa ok.","Jangan tidur, berenang atau mandi pakai kanta lekap kecuali doktor mata cakap selamat.","Pakai dua jenis ubat titis mata? Tunggu kira-kira 5 minit antara keduanya supaya yang pertama inda tebasuh."],"more_tip":"Petua lain","tip_lead":"Ani petua untuk abiskita:","break_on":"Siap! Selagi MataKitani terbuka, aku akan ingatkan abiskita tiap 20 minit untuk rehatkan mata: tengok benda yang jauh kira-kira 6 meter selama 20 saat.","break_off":"Ok, peringatan rehat skrin sudah dimatikan.","break_btn_on":"Hidupkan peringatan","break_btn_off":"Matikan peringatan","break_ask":"Mau aku ingatkan abiskita tiap 20 minit untuk rehatkan mata selagi MataKitani terbuka?","break_now":"Masa rehatkan mata! Tengok benda yang jauh kira-kira 6 meter (20 kaki) selama 20 saat, dan berkelip beberapa kali.","tour_lead":"Ani apa abiskita boleh buat di MataKitani:","tour": [["Semak Simptom","Jawab beberapa soalan untuk tau seberapa segera perlu dapatkan bantuan.","/#checker"], ["Penyakit Mata","Panduan ringkas pasal masalah mata biasa.","/bahasa-melayu/penyakit-mata/"], ["Penyakit Mata Segera","Masalah mata yang perlu bantuan dengan segera.","/bahasa-melayu/penyakit-mata-akut/"], ["EyeSimulate","Tengok cemana penyakit mata mengubah penglihatan, dalam 2D dan 3D.","/bahasa-melayu/simulasi-mata/"], ["Klinik Mata","Klinik Mata Komuniti mana yang buka hari ani.","/klinik-mata/"], ["Ubat Mata","Untuk apa ubat titis mata abiskita dan cemana pakai.","/bahasa-melayu/ubat-mata/"], ["Prosedur dan Pembedahan","Apa yang berlaku dalam operasi mata biasa.","/bahasa-melayu/prosedur-pembedahan/"], ["Mitos atau Fakta","Uji diri abiskita dengan kuiz pantas.","/bahasa-melayu/petua/#mitos-atau-fakta"], ["Baca kuat dan cetak","Tiap halaman penyakit boleh dibaca kuat atau dicetak jadi risalah.", null], ["Aa Saiz tulisan dan mod gelap","Guna butang Aa di atas mana-mana halaman.", null]],"clinic":"Klinik Mata Komuniti adalah walk-in: inda perlu surat rujukan, dan abiskita boleh pergi ke mana-mana klinik. Datang awal sebelum klinik tutup. Lepas waktu pejabat, hari Jumaat dan Ahad, pergi ke Unit Kecemasan untuk masalah mata segera.","urgent":"Atu mungkin segera. Sila pergi ke Unit Kecemasan yang paling dekat sekarang, terutama mun tiba-tiba inda nampak, ada kilat cahaya baru dengan bayang macam langsir, mata merah sakit dan kabur, kecederaan mata, atau bahan kimia masuk mata (bilas dengan air bersih sekurang-kurangnya 15 minit dulu). Untuk kecemasan perubatan lain, telefon 991 atau pergi ke Unit Kecemasan.","found":"Ani yang aku jumpa di MataKitani:","none":"Maaf, aku inda jumpa. Cuba perkataan lain, atau tengok yang ani:","open_link":"Buka","see":"Tengok","L": {"cond": ["Penyakit Mata","/bahasa-melayu/penyakit-mata/"],"acute": ["Penyakit Mata Segera","/bahasa-melayu/penyakit-mata-akut/"],"clinic": ["Klinik Mata Komuniti","/klinik-mata/"],"team": ["Pasukan Penjagaan Mata","/klinik-mata/"],"sim": ["EyeSimulate","/bahasa-melayu/simulasi-mata/"],"meds": ["Ubat Mata","/bahasa-melayu/ubat-mata/"],"proc": ["Prosedur dan Pembedahan","/bahasa-melayu/prosedur-pembedahan/"],"myth": ["Mitos atau Fakta","/bahasa-melayu/petua/#mitos-atau-fakta"],"contact": ["Hubungi Kami","/bahasa-melayu/hubungi-kami/"],"checker": ["Semak Simptom","/#checker"],"des": ["Mata Penat Skrin","/bahasa-melayu/mata-penat-skrin/"],"dry": ["Mata Kering","/bahasa-melayu/mata-kering/"],"cat": ["Utik (Katarak)","/bahasa-melayu/katarak/"],"gl": ["Glaukoma","/bahasa-melayu/glaukoma/"],"dr": ["Mata kencing manis","/bahasa-melayu/retinopati-kencing-manis/"],"my": ["Rabun jauh kanak-kanak","/bahasa-melayu/rabun-jauh/"]}}},"I": [[["emergency","urgent","sudden","suddenly","can't see","cannot see","cant see","lost vision","vision loss","blind","curtain","shadow","chemical","bleach","acid","injury","injured","trauma","flashes","flash","kecemasan","segera","tiba-tiba","inda nampak","langsir","kimia","cedera","kilat"],"urgent", ["acute","clinic"]], [["screen","computer","phone","laptop","break","20-20-20","strain","tired","skrin","komputer","telefon","penat","rehat"],"break_ask", ["des","dry"]], [["simulator","simulate","vision lab","3d","model","simulasi","makmal"], null, ["sim"]], [["drop","drops","medicine","medication","ointment","ubat","titis"], null, ["meds"]], [["surgery","operation","laser","injection","procedure","pembedahan","operasi","suntikan","prosedur"], null, ["proc"]], [["quiz","myth","fact","mitos","fakta","kuiz"], null, ["myth"]], [["symptom","checker","simptom","semak"], null, ["checker"]], [["contact","email","instagram","hubungi"], null, ["contact"]], [["clinic","clinics","opening","hours","walk-in","walk in","appointment","referral","klinik","waktu","temujanji","rujukan"],"clinic", ["clinic","team"]]]},LS=k=>{try{return localStorage.getItem(k)}catch(e){return null}},SS=(k,v)=>{try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}};
-const lang=()=>/^en/i.test(document.documentElement.lang||'')||/^\/english\//.test(location.pathname)?'en':'ms',T=()=>D.T[lang()];
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const root=document.createElement('div');root.className='mk-comp';document.body.appendChild(root);
-let panel=null,feed=null,tipI=Math.floor(Math.random()*9);
-const fab=document.createElement('button');fab.type='button';fab.className='mk-fab';
-fab.innerHTML='<span class="mk-mata"><img src="/assets/mata/mata3d-head.webp" alt="" draggable="false" width="304" height="364"></span>';root.appendChild(fab);
-const label=()=>{fab.setAttribute('aria-label',T().open);fab.title=T().title};label();
-let M3=null;const m3=n=>{try{M3&&M3.play(n)}catch(e){}};
-const start3d=async()=>{try{if(!window.WebGLRenderingContext)return;
- // skip on software-only graphics (too slow); the 3D still image stays instead
- const force=LS('mk-3d')==='force';if(!force){const tc=document.createElement('canvas').getContext('webgl2',{failIfMajorPerformanceCaveat:true})||document.createElement('canvas').getContext('webgl',{failIfMajorPerformanceCaveat:true});if(!tc)return;const lx=tc.getExtension('WEBGL_lose_context');lx&&lx.loseContext()}
- const [THREE,H]=await Promise.all([import('/assets/three/three.module.min.js'),import('/assets/xr/matahd.js?v=ball3')]);
- const cv=document.createElement('canvas');cv.className='mk-3d';cv.setAttribute('aria-hidden','true');fab.appendChild(cv);
- const r=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true,powerPreference:'low-power'});r.outputColorSpace=THREE.SRGBColorSpace;r.setClearColor(0,0);
- const sc=new THREE.Scene();H.addMataLights(sc);const cam=new THREE.PerspectiveCamera(24,1,.1,40);
- const lite=matchMedia('(pointer:coarse)').matches||(navigator.hardwareConcurrency||4)<=4;
- const m=H.createMataHD({shells:0,headOnly:true});sc.add(m.object);m.loop('perch');m.setFur({density:130});M3=m;
- const Y=.5;cam.position.set(Math.sin(Y)*5.6,1.65,Math.cos(Y)*5.6);cam.lookAt(0,1.6,0);
- const rm=matchMedia('(prefers-reduced-motion: reduce)');
- const draw=()=>{r.render(sc,cam);if(!fab.classList.contains('d3'))fab.classList.add('d3')};
- const size=()=>{const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;r.setPixelRatio(2);r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();if(rm.matches)draw()};
- new ResizeObserver(size).observe(cv);size();
- let last=performance.now(),tm=0,hy=0,hp=0,tx=0,ty=0,fl=0;
- addEventListener('pointermove',e=>{const b=cv.getBoundingClientRect();tx=Math.max(-.75,Math.min(.3,(e.clientX-(b.left+b.width/2))/innerWidth*1.4));ty=Math.max(-.25,Math.min(.2,(e.clientY-(b.top+b.height*.3))/innerHeight*.6))},{passive:true});
- const frame=now=>{requestAnimationFrame(frame);if(document.hidden||rm.matches)return;const dt=Math.min(.1,(now-last)/1000);if(dt<1/32)return;last=now;
-  tm+=dt;if(tm>=3){tm-=3;m.play('blink');fl=1}if(fl&&tm>1.2){fl=0;m.play('flap')}
-  hy+=(tx-hy)*Math.min(1,dt*3);hp+=(ty-hp)*Math.min(1,dt*3);m.set({headYaw:hy,headPitch:hp,lookX:Math.max(-1,Math.min(1,hy*2)),lookY:Math.max(-1,Math.min(1,-hp*3))});m.update(dt);draw()};
- m.update(0);draw();requestAnimationFrame(frame);
- fab.addEventListener('pointerenter',()=>m3('winkL'));
-}catch(e){}};
-const idle=window.requestIdleCallback||(f=>setTimeout(f,1200));
-if(document.readyState==='complete')idle(start3d);else addEventListener('load',()=>idle(start3d),{once:true});
-const say=(html,cls)=>{const m=document.createElement('div');m.className='mk-m '+(cls||'bot');m.innerHTML=html;feed.appendChild(m);feed.scrollTop=feed.scrollHeight;return m};
-const links=ks=>'<ul>'+ks.map(k=>{const l=T().L[k];return l?'<li><a href="'+l[1]+'"><b>'+esc(l[0])+' →</b></a></li>':''}).join('')+'</ul>';
-const on=()=>!!LS('mk-break');
-const breakBtn=()=>'<button type="button" class="mk-b" data-act="'+(on()?'boff':'bon')+'">'+esc(on()?T().break_btn_off:T().break_btn_on)+'</button>';
-const act={
- tip:()=>{const t=T();tipI=(tipI+1)%t.tips.length;say('<b>'+esc(t.tip_lead)+'</b> '+esc(t.tips[tipI])+'<br><button type="button" class="mk-b" data-act="tip">'+esc(t.more_tip)+'</button>')},
- break:()=>say(esc(T().break_ask)+'<br>'+breakBtn()),
- bon:()=>{SS('mk-break',String(Date.now()));say(esc(T().break_on))},
- boff:()=>{SS('mk-break',null);say(esc(T().break_off))},
- tour:()=>{const t=T();say('<b>'+esc(t.tour_lead)+'</b><ul>'+t.tour.map(([h,d,u])=>u?'<li><a href="'+u+'"><b>'+esc(h)+'</b><small>'+esc(d)+'</small></a></li>':'<li><span class="nl"><b>'+esc(h)+'</b><small>'+esc(d)+'</small></span></li>').join('')+'</ul>')},
- clinic:()=>say(esc(T().clinic)+links(['clinic','team'])),
- urgent:()=>say(esc(T().urgent)+links(['acute','clinic']),'bot warn'),
-};
-const hr=()=>Math.floor(Date.now()/36e5);
-const hello=()=>{const t=T(),n=t.sugg.length,st=(hr()*3)%n,pick=[0,1,2].map(i=>(st+i)%n);panel.dataset.h=hr();
- say('<div class="mk-sug">'+pick.map((i,n)=>'<button type="button" data-sug="'+i+'"><i>0'+(n+1)+'</i><span>'+esc(t.sugg[i][0])+'</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>').join('')+'</div>')};
-const sug=i=>{const [q,a,k]=T().sugg[i];say(esc(q),'me');if(!a){act[k]();return}say(esc(a)+links([k]))};
-let IDX=null;const idx=()=>IDX||(IDX=fetch('/search-index.json').then(r=>r.json()).catch(()=>[]));
-const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-const STOP=new Set('the a an and or of to in on is are my i it for with what how why do does can eye eyes mata ani apa cemana kenapa yang dan di ke ada saya aku abiskita itu atu'.split(' '));
-const ask=async q=>{const t=T(),n=' '+norm(q)+' ';say(esc(q),'me');
- for(const [kw,rep,ls] of D.I){if(kw.some(k=>k.length<5?n.includes(' '+k+' '):n.includes(k))){
-  if(rep==='urgent')return act.urgent();if(rep==='clinic')return act.clinic();if(rep==='break_ask'){say(esc(t.break_ask)+'<br>'+breakBtn()+links(ls));return}
-  if(!rep){/* fall through to search, but keep these links handy */var extra=ls;break}}}
- const words=norm(q).split(/[^a-z0-9]+/).filter(w=>w.length>2&&!STOP.has(w));
- const all=await idx(),L=lang(),seen=new Set(),hits=[];
- if(words.length){for(const d of all){if(d.l!==L)continue;const tt=norm(d.t+' '+(d.k||'')),hh=norm(d.h||''),xx=norm(d.x||'');let s=0;
-  for(const w of words){if(tt.includes(w))s+=5;if(hh.includes(w))s+=3;if(xx.includes(w))s+=1}
-  if(s>=Math.max(3,words.length*2))hits.push([s,d])}
-  hits.sort((a,b)=>b[0]-a[0])}
- const top=[];for(const [s,d] of hits){const base=d.u.split('#')[0];if(seen.has(base))continue;seen.add(base);top.push(d);if(top.length>=3)break}
- const ex=(typeof extra!=='undefined'&&extra)?extra:[];
- if(top.length||ex.length){say('<b>'+esc(t.found)+'</b><ul>'+ex.map(k=>{const l=t.L[k];return '<li><a href="'+l[1]+'"><b>'+esc(l[0])+' →</b></a></li>'}).join('')+
-  top.map(d=>'<li><a href="/'+d.u+'"><b>'+esc(d.t)+(d.h?' · '+esc(d.h):'')+'</b><small>'+esc((d.x||'').slice(0,110))+'…</small></a></li>').join('')+'</ul>')}
- else say(esc(t.none)+links(['checker','cond','acute','clinic']))};
-const build=()=>{const t=T();panel=document.createElement('div');panel.className='mk-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label',t.title);
- panel.innerHTML='<div class="mk-hd"><span class="mk-av"><img src="/assets/mata/mata3d-head.webp" alt="" width="304" height="364"></span><div><b>Mata</b><small>'+esc(t.sub)+'</small></div><button type="button" class="mk-x" aria-label="'+esc(t.close)+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
-  '<div class="mk-feed" aria-live="polite"></div>'+
-  '<form class="mk-f"><input type="text" maxlength="200" placeholder="'+esc(t.ask)+'" aria-label="'+esc(t.ask)+'"><button type="submit" aria-label="'+esc(t.send)+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form><p class="mk-disc">'+esc(t.disc)+'</p>';
- root.appendChild(panel);feed=panel.querySelector('.mk-feed');panel.dataset.l=lang();hello();
- panel.querySelector('.mk-x').onclick=()=>toggle(false);
- panel.addEventListener('click',e=>{const sg=e.target.closest('[data-sug]');if(sg)sug(+sg.dataset.sug);const b=e.target.closest('[data-act]');if(b&&act[b.dataset.act])act[b.dataset.act]();if(e.target.closest('a[href^="/"]')&&innerWidth<640)setTimeout(()=>toggle(false),50)});
- panel.querySelector('form').onsubmit=e=>{e.preventDefault();const i=e.target.querySelector('input'),q=i.value.trim();if(q){i.value='';ask(q)}}};
-const toggle=v=>{peekOff();if(v===undefined)v=!(panel&&!panel.hidden);if(v){if(panel&&(panel.dataset.l!==lang()||+panel.dataset.h!==hr())){panel.remove();panel=null}if(!panel)build();panel.hidden=false;label();place();setTimeout(()=>panel.querySelector('input').focus({preventScroll:true}),60)}else if(panel)panel.hidden=true;fab.setAttribute('aria-expanded',v?'true':'false')};
-// drag Mata anywhere on the screen; flick to send Mata floating and bouncing off the edges; tap or grab to stop (Haziq, 2026-10-10)
-let px=0,py=0,vx=0,vy=0,fly=0,drag=null,eat=0;const RM=matchMedia('(prefers-reduced-motion: reduce)');
-const lim=()=>{const w=fab.offsetWidth,h=fab.offsetHeight;return [-(innerWidth-w),-(innerHeight-h-4)]};
-const put=()=>{const [mx,my]=lim();px=Math.min(0,Math.max(mx,px));py=Math.min(0,Math.max(my,py));root.style.transform=px||py?'translate('+px+'px,'+py+'px)':'';root.classList.toggle('mk-free',!!(px||py));place()};
-const save=()=>SS('mk-pos',px||py?JSON.stringify([px/innerWidth,py/innerHeight]):null);
-try{const p=JSON.parse(LS('mk-pos')||'null');if(p){px=p[0]*innerWidth;py=p[1]*innerHeight;requestAnimationFrame(put)}}catch(e){}
-const place=()=>{const r=fab.getBoundingClientRect(),top=r.top<innerHeight*.5,left=r.left+r.width/2<innerWidth*.5,home=!px&&!py;
- for(const el of [panel,peek]){if(!el)continue;const pn=el===panel;el.style.top=el.style.bottom=el.style.left=el.style.right=el.style.maxHeight='';if(home)continue;
-  if(top)el.style.top=(r.height+8)+'px',el.style.bottom='auto';if(left)el.style.left=pn?'0':'110px',el.style.right='auto';
-  if(pn)el.style.maxHeight=Math.max(220,Math.min(470,top?innerHeight-r.bottom-16:r.top-60))+'px'}};
-const step=now=>{if(!fly)return;const dt=Math.min(.05,(now-fly)/1000);fly=now;px+=vx*dt;py+=vy*dt;const [mx,my]=lim();let hit=0;
- if(px>0){px=0;vx=-vx*.82;hit=1}else if(px<mx){px=mx;vx=-vx*.82;hit=1}if(py>0){py=0;vy=-vy*.82;hit=1}else if(py<my){py=my;vy=-vy*.82;hit=1}
- const k=Math.exp(-dt*.45);vx*=k;vy*=k;if(hit)m3('happy');put();if(Math.hypot(vx,vy)<18){fly=0;save();m3('nod');return}requestAnimationFrame(step)};
-const halt=()=>{if(fly){fly=0;vx=vy=0;save();return 1}return 0};
-fab.addEventListener('pointerdown',e=>{if(e.button)return;const was=halt();drag={x:e.clientX,y:e.clientY,ox:px,oy:py,on:0,was,h:[[e.timeStamp,e.clientX,e.clientY]]};try{fab.setPointerCapture(e.pointerId)}catch(_){}});
-fab.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(!drag.on&&Math.hypot(dx,dy)<7)return;
- if(!drag.on){drag.on=1;root.classList.add('mk-drag');peekOff();if(panel&&!panel.hidden)toggle(false);m3('flap')}
- px=drag.ox+dx;py=drag.oy+dy;put();drag.h.push([e.timeStamp,e.clientX,e.clientY]);if(drag.h.length>6)drag.h.shift()});
-const up=e=>{if(!drag)return;const d=drag;drag=null;root.classList.remove('mk-drag');if(!d.on){if(d.was)eat=1;return}eat=1;
- const a=d.h[0],b=d.h[d.h.length-1],t=Math.max(16,b[0]-a[0])/1000;vx=(b[1]-a[1])/t;vy=(b[2]-a[2])/t;const sp=Math.hypot(vx,vy);
- if(sp>1800){vx*=1800/sp;vy*=1800/sp}
- if(sp>350&&!RM.matches&&performance.now()-b[0]<120){fly=performance.now();requestAnimationFrame(step);return}
- vx=vy=0;if(Math.hypot(px,py)<50){px=py=0;put()}save()};
-fab.addEventListener('pointerup',up);fab.addEventListener('pointercancel',e=>{if(drag)drag.h=[drag.h[drag.h.length-1]];up(e)});fab.addEventListener('dragstart',e=>e.preventDefault());
-addEventListener('resize',()=>put(),{passive:true});
-fab.onclick=e=>{if(eat){eat=0;e.preventDefault();return}toggle();m3(panel&&!panel.hidden?'happy':'nod')};addEventListener('keydown',e=>{if(e.key==='Escape'&&panel&&!panel.hidden)toggle(false)});
-let peek=null;const peekOff=()=>{if(peek){peek.remove();peek=null}};
-const showPeek=(txt,brk)=>{peekOff();peek=document.createElement('div');peek.className='mk-peek';peek.setAttribute('role','status');peek.innerHTML=esc(txt)+'<button type="button" aria-label="'+esc(T().close)+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>';
- fab.classList.remove('hi');void fab.offsetWidth;fab.classList.add('hi');m3('jump');root.appendChild(peek);place();peek.onclick=e=>{if(e.target.closest('button')){peekOff();return}toggle(true);if(brk)say(esc(T().break_now))}};
-try{if(!sessionStorage.getItem('mk-peek')){sessionStorage.setItem('mk-peek','1');setTimeout(()=>{if(!panel||panel.hidden){showPeek(T().peek);setTimeout(peekOff,7000)}},6000)}}catch(e){}
-setInterval(()=>{const s=+LS('mk-break');if(!s)return;if(Date.now()-s>=20*60e3){SS('mk-break',String(Date.now()));if(!document.hidden){if(panel&&!panel.hidden)say(esc(T().break_now));else showPeek(T().break_now,1)}}},30000);
-addEventListener('popstate',label);
-})();</script>
-<script id="music-js">
-(function(){
-const TR=[["calm-ambient.mp3", "Calm Ambient", "Velariomusic"], ["relax.mp3", "Relax", "The Mountain"], ["calm.mp3", "Calm", "MarloweMusic"]],K='is-music',T='is-music-t',VOL=.22;let ti=0;try{ti=+(localStorage.getItem('is-track')||0);if(!TR[ti])ti=0}catch(e){}
-const url=i=>new URL('../../assets/'+TR[i][0],location.href).href,SRC=url(ti);
-const tip=()=>{const m=document.querySelector('.music-tip');if(m&&m.dataset.tpl)m.textContent=m.dataset.tpl.replace('{t}',TR[ti][1]).replace('{a}',TR[ti][2])};
-let btn=document.querySelector('.music-btn');if(!btn)return;
-let pref='on';try{pref=localStorage.getItem(K)||'on'}catch(e){}
-const a=new Audio();a.src=SRC;a.loop=true;a.preload='none';a.volume=0;
-try{const t=parseFloat(sessionStorage.getItem(T));if(t)a.currentTime=t}catch(e){}
-let want=false;
-/* iPhone ignores audio volume, so a fade there never ends: only fade where volume can be set. */
-const VOK=(()=>{try{const t=new Audio();t.volume=.5;return Math.abs(t.volume-.5)<.01}catch(e){return false}})();
-function ui(){btn.setAttribute('aria-pressed',want);btn.setAttribute('aria-label',want?btn.dataset.on:btn.dataset.off)}
-function fade(to,done){clearInterval(a._f);if(!VOK){done&&done();return}let n=0;a._f=setInterval(()=>{if(++n>30||Math.abs(to-a.volume)<=.03){a.volume=to;clearInterval(a._f);done&&done()}else a.volume=Math.max(0,Math.min(1,a.volume+(to>a.volume?.03:-.03)))},40)}
-function play(){want=true;ui();if(!a.paused){fade(VOL);return Promise.resolve()}if(VOK)a.volume=0;return a.play().then(()=>{if(!want){a.pause();return}fade(VOL)}).catch(()=>{if(a.paused){want=false;ui()}})}
-function stop(){want=false;ui();fade(0,()=>{if(!want)a.pause()})}
-function save(){try{sessionStorage.setItem(T,a.currentTime||0)}catch(e){}}
-btn.addEventListener('click',e=>{e.stopPropagation();if(want){pref='off';stop()}else{pref='on';play()}try{localStorage.setItem(K,pref)}catch(e){}});
-function first(e){if(btn.contains(e.target))return;off();if(pref==='on')play()}
-function off(){['pointerdown','keydown','touchstart'].forEach(x=>removeEventListener(x,first,true))}
-if(pref==='on'){play().then(()=>{if(!a.paused)off()});['pointerdown','keydown','touchstart'].forEach(x=>addEventListener(x,first,true))}
-addEventListener('pagehide',save);
-/* Some phones pause audio while the tab is in the background: carry on when the visitor comes back. */
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&pref==='on'&&a.paused&&a.currentTime>0)play()});setInterval(()=>{if(!a.paused)save()},2000);
-tip();
-window.__isMusic={playing:()=>!a.paused,get:()=>ti,set:i=>{if(!TR[i])return;ti=i;try{localStorage.setItem('is-track',i);sessionStorage.setItem(T,0)}catch(e){}tip();a.pause();a.src=url(i);a.currentTime=0;pref='on';try{localStorage.setItem(K,'on')}catch(e){}play()}};
-ui();
-/* Keep the music going between pages: while it plays, internal links swap the page content in place instead of reloading. */
-const html=u=>fetch(u,{credentials:'same-origin',cache:'no-cache'}).then(r=>{if(!r.ok||!(r.headers.get('content-type')||'').includes('text/html'))throw 0;return r.text()});
-function internal(u){return u.origin===location.origin&&!/\.(mp3|pdf|png|jpe?g|svg|json|zip)$/i.test(u.pathname)&&!u.pathname.includes('/embeds/')}
-let busy=false;
-async function go(url,push){
- if(busy)return;busy=true;
- try{
-  const t=await html(url),d=new DOMParser().parseFromString(t,'text/html');
-  if(!d.querySelector('main')||!d.querySelector('header.site'))throw 0;
-  save();if(push)history.pushState({soft:1},'',url);
-  const os=[...document.head.querySelectorAll('style,link[rel=stylesheet]')],ns=[...d.head.querySelectorAll('style,link[rel=stylesheet]')];
-  if(os.map(x=>x.outerHTML).join('')!==ns.map(x=>x.outerHTML).join('')){ns.forEach(x=>document.head.appendChild(document.importNode(x,true)));os.forEach(x=>x.remove())}
-  {const ob=[...document.body.querySelectorAll(':scope>style')],nb=[...d.body.querySelectorAll(':scope>style')];if(ob.map(x=>x.textContent).join('')!==nb.map(x=>x.textContent).join('')){const ref=ob[0]||document.body.firstChild;nb.forEach(x=>document.body.insertBefore(document.importNode(x,true),ref));ob.forEach(x=>x.remove())}}
-  document.title=d.title;document.documentElement.lang=d.documentElement.lang;document.body.className=d.body.className;
-  try{window.goatcounter&&goatcounter.count&&goatcounter.count({path:location.pathname,title:d.title})}catch(e){}
-  const swap=()=>{
-  const keep=document.querySelector('.music'),nh=document.importNode(d.querySelector('header.site'),true),nm=nh.querySelector('.music');
-  if(nm&&keep)nm.replaceWith(keep);
-  document.querySelector('header.site').replaceWith(nh);
-  document.querySelector('main').replaceWith(document.importNode(d.querySelector('main'),true));
-  const of=document.querySelector('footer'),nf=d.querySelector('footer');if(of&&nf)of.replaceWith(document.importNode(nf,true));};
-  if(document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches){try{await document.startViewTransition(swap).updateCallbackDone}catch(e){swap()}}else swap();
-  document.querySelectorAll('body>script:not(#music-js)').forEach(x=>x.remove());
-  document.querySelectorAll('main script').forEach(x=>{const t=(x.type||'').toLowerCase();if(t&&t!=='text/javascript'&&t!=='module')return;const n=document.createElement('script');if(t)n.type=t;if(x.src)n.src=x.src;else n.textContent=t==='module'?x.textContent:'{\n'+x.textContent+'\n}';x.replaceWith(n)});
-  d.querySelectorAll('body>script:not(#music-js)').forEach(x=>{const n=document.createElement('script');n.textContent='{\n'+x.textContent+'\n}';document.body.appendChild(n)});
-  const h=new URL(url,location.href).hash;const el=h&&document.getElementById(decodeURIComponent(h.slice(1)));
-  if(el)el.scrollIntoView();else scrollTo(0,0);
-  const m=document.querySelector('main');if(m){m.setAttribute('tabindex','-1');m.focus({preventScroll:true})}
- }catch(e){location.href=url}
- busy=false}
-document.addEventListener('click',e=>{
- if(a.paused||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
- const l=e.target.closest&&e.target.closest('a[href]');if(!l||l.target&&l.target!=='_self'||l.hasAttribute('download')||l.hasAttribute('data-hard'))return;
- const u=new URL(l.href,location.href);if(!internal(u))return;
- if(u.pathname===location.pathname&&u.search===location.search&&u.hash)return;
- e.preventDefault();go(u.href,true)});
-history.replaceState(Object.assign({},history.state,{soft:1}),'');
-addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)});
-})();
-</script>
+<script src="/assets/js/x/1ffbc00c8a5e.js"></script>
+<script id="music-js" src="/assets/js/x/dae0be1dbfb9.js"></script>
 <script>
-(function(){var B='20261016041407';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261016042413';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('../../version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
