@@ -4,6 +4,8 @@ import * as THREE from '/assets/three/three.module.min.js';
 import { OrbitControls } from './OrbitControls.js';
 import { createEye } from './eyemodel.js';
 import { createMata } from './matahd.js';
+import { wantNewModels } from './models.js';
+import { createOrigamiEyeModel } from './models/eye.js';
 
 const VIEWS = {
   ext: { pos: [2.6, 1.0, 3.9], tgt: [.45, 0, 0], cut: false },
@@ -66,7 +68,7 @@ export function mount(el, D) {
   const rim = new THREE.PointLight(0x7fdcff, 6, 12); rim.position.set(-2.5, 1.5, -3); scene.add(rim);
   const inner = new THREE.PointLight(0xffe2c8, 0, 3); inner.position.set(0, .2, .3); scene.add(inner);
   const world = new THREE.Group(); scene.add(world);
-  const eye = createEye(); world.add(eye.group);
+  const eye = createEye(wantNewModels() ? { paper: createOrigamiEyeModel } : {}); world.add(eye.group); // paper eye by default, ?models=old for the old one
   const mata = createMata(); mata.object.position.set(2.05, .25, .2); mata.object.scale.setScalar(.62); scene.add(mata.object);
   // floating particles
   const pg = new THREE.BufferGeometry(); const pp = new Float32Array(260 * 3);

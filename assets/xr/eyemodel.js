@@ -190,6 +190,24 @@ export function createEye(opts = {}) {
   A('disc', DISC_DIR.clone().multiplyScalar(.93), new THREE.Vector3(1, 0, .4)); A('nerve', new THREE.Vector3(-.7, 0, -1.9), new THREE.Vector3(0, 1, 0));
   A('muscles', new THREE.Vector3(0, 1.04, -.2));
 
+  // paper (origami) eye from models/eye.js (Haziq, 2026-10-16): its pieces take over the matching parts; clear fluids,
+  // conjunctiva and the pupil stay from this model, so labels, picking, cutaway and highlights work as before
+  if (opts.paper) {
+    const pg = opts.paper({}, {}); pg.name = 'paper-eye'; group.add(pg);
+    const MAP = { sclera: 'sclera', limbus: 'sclera', 'section-faces': 'sclera', 'outer-vessels': 'sclera', 'extraocular-muscles': 'muscles', trochlea: 'muscles',
+      cornea: 'cornea', iris: 'iris', lens: 'lens', zonules: 'ciliary', 'ciliary-body': 'ciliary', retina: 'retina', 'retinal-vessels': 'retina', 'disc-macula': 'disc', 'optic-nerve': 'nerve' };
+    const swap = new Set(Object.values(MAP).concat(['choroid', 'macula', 'fovea']));
+    for (const k of swap) if (parts[k]) { parts[k].meshes.forEach(m => { m.visible = false; m.parent && m.parent.remove(m); }); parts[k].meshes = []; }
+    pg.updateMatrixWorld(true);
+    pg.children.slice().forEach(o => { const k = MAP[o.name] || 'sclera'; o.traverse(m => { if (m.isMesh || m.isLine || m.isLineSegments) {
+      (parts[k] = parts[k] || { meshes: [], anchor: null }).meshes.push(m); m.userData.part = k;
+      const ms = Array.isArray(m.material) ? m.material : [m.material];
+      ms.forEach(mt => { if (!mats.includes(mt)) { mt.userData.base = { e: (mt.emissive ? mt.emissive.clone() : null), o: mt.opacity }; mats.push(mt); } }); } }); });
+    // the paper retina sits a little further in (r .85): shrink the vitreous to fit and pull the back labels in
+    parts.vitreous && parts.vitreous.meshes.forEach(m => m.scale.setScalar(.9));
+    for (const k of ['retina', 'choroid', 'macula', 'fovea', 'disc']) parts[k] && parts[k].anchor && parts[k].anchor.multiplyScalar(.92);
+  }
+
   let cut = false;
   const api = {
     group, parts, vessels, nerveCurve: nCurve,
