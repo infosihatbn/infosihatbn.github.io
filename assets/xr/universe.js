@@ -5,6 +5,7 @@ import * as THREE from '/assets/three/three.module.min.js';
 import { createMata } from './matahd.js';
 import { DISC_DIR } from './eyemodel.js';
 import { createRealEye } from './realeye.js';
+import { wantNewModels, applyNewModels } from './models.js';
 
 const R = 60, IRIS_Z = 52, PUPIL = 7.5, LENS_Z = 42, LENS_R = 19, LENS_T = 7, CORNEA_C = 30, CORNEA_R = 38; // the front: iris plane, lens, corneal dome
 const BACK = ['vitreous', 'floaters', 'retina', 'tear', 'vessels', 'macula', 'fovea', 'disc', 'nerve'];
@@ -282,6 +283,7 @@ export function mount(el, D) {
 
   // Mata (player)
   const mata = createMata(); mata.object.scale.setScalar(.9);
+  if (wantNewModels()) applyNewModels({ matas: [introMata, mata], eyes: [bigEye] }).then(r => console.info('[models] new', r));
   // Mata's little spaceship (Haziq, 2026-10-15): chunky and toy-like, flat-shaded to match the origami Mata; the nose points +Z
   const craft = new THREE.Group(), ship = new THREE.Group(); craft.add(ship); craft.add(mata.object); mata.object.position.set(0, .66, -.05); scene.add(craft);
   const flat = c => new THREE.MeshStandardMaterial({ color: c, roughness: .55, metalness: .05, flatShading: true });
