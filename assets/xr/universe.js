@@ -283,7 +283,6 @@ export function mount(el, D) {
 
   // Mata (player)
   const mata = createMata(); mata.object.scale.setScalar(.9);
-  if (wantNewModels()) applyNewModels({ matas: [introMata, mata], eyes: [bigEye] }).then(r => console.info('[models] new', r));
   // Mata's little spaceship (Haziq, 2026-10-15): chunky and toy-like, flat-shaded to match the origami Mata; the nose points +Z
   const craft = new THREE.Group(), ship = new THREE.Group(); craft.add(ship); craft.add(mata.object); mata.object.position.set(0, .66, -.05); scene.add(craft);
   const flat = c => new THREE.MeshStandardMaterial({ color: c, roughness: .55, metalness: .05, flatShading: true });
@@ -302,6 +301,8 @@ export function mount(el, D) {
   part(new THREE.CylinderGeometry(.07, .07, .5, 6), sDk, 0, -.45, 1.15, Math.PI / 2);            // laser cannon
   const flames = [-1, 1].map(s => { const f = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0x7fe3ff, blending: THREE.AdditiveBlending, depthWrite: false, fog: false })); f.position.set(s * .78, -.2, -1.6); f.scale.setScalar(.8); ship.add(f); return f; });
   ship.scale.setScalar(.9);
+  // img2threejs models (paper eyeball, paper ship, Mata blink): only with ?models=new while Haziq reviews them
+  if (wantNewModels()) applyNewModels({ matas: [introMata, mata], eyes: [bigEye], ships: [ship], riders: [introMata], build: D.build }).then(r => console.info('[models] new', r));
   const lantern = new THREE.PointLight(0xcfe9ff, 40, 30, 1.6); scene.add(lantern);
 
   // ---------------- landmarks ----------------
