@@ -55,7 +55,7 @@ function paperize(mat) {
 
 // fewer facets: rebuild the geometry from its parameters when that reproduces it exactly
 function fewerFacets(g) {
-  const p = g.parameters; if (!p) return null;
+  const p = g.parameters; if (!p || g.userData.keep) return null;   // keep: shaped after it was made (tapered vessels)
   const T = g.type, d = n => Math.max(4, Math.round(n / 3));
   try {
     let n = null;

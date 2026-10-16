@@ -86,24 +86,34 @@ function createMataBallModel(spec = {}, options = {}) {
   });
   const eyes = [];
   for (const side of [-1, 1]) {
-    const fr = frameAt(new THREE.Vector3(side * 0.4, 0.02, 0.92), 1);
+    const fr = frameAt(new THREE.Vector3(side * 0.38, 0.04, 0.92), 1);
     fr.name = "eye-" + (side < 0 ? "L" : "R");
     body.add(fr);
-    const w = new Sheet(rnd, 0.06), n = 14;
-    const out = oval(0.27, 0.25, n), inn = oval(0.2, 0.185, n, 0, -0.015);
+    const w = new Sheet(rnd, 0.08), n = 16;
+    const out = oval(0.25, 0.31, n), mid = oval(0.225, 0.283, n, 0, -6e-3), inn = oval(0.18, 0.228, n, 0, -0.014);
     for (let i = 0; i < n; i++) {
       const j = (i + 1) % n;
-      w.tri(bend(out[i][0], out[i][1], 0.015), bend(out[j][0], out[j][1], 0.015), bend(inn[j][0], inn[j][1], 0.02), WHITE);
-      w.tri(bend(out[i][0], out[i][1], 0.015), bend(inn[j][0], inn[j][1], 0.02), bend(inn[i][0], inn[i][1], 0.02), WHITE);
+      w.tri(bend(out[i][0], out[i][1], 0.012), bend(out[j][0], out[j][1], 0.012), bend(mid[j][0], mid[j][1], 0.03), WHITE);
+      w.tri(bend(out[i][0], out[i][1], 0.012), bend(mid[j][0], mid[j][1], 0.03), bend(mid[i][0], mid[i][1], 0.03), WHITE);
+      w.tri(bend(mid[i][0], mid[i][1], 0.03), bend(mid[j][0], mid[j][1], 0.03), bend(inn[j][0], inn[j][1], 0.024), WHITE);
+      w.tri(bend(mid[i][0], mid[i][1], 0.03), bend(inn[j][0], inn[j][1], 0.024), bend(inn[i][0], inn[i][1], 0.024), WHITE);
     }
     fr.add(w.mesh(onTop(1), "eye-white"));
-    const p = new Sheet(rnd, 0.25), pn = 10, pr = oval(0.205, 0.19, pn, 0, -0.015);
+    const p = new Sheet(rnd, 0.3), pn = 12, pr = oval(0.183, 0.232, pn, 0, -0.014);
     for (let i = 0; i < pn; i++) {
       const j = (i + 1) % pn;
-      p.tri(bend(0, -0.02, 0.042), bend(pr[i][0], pr[i][1], 0.026), bend(pr[j][0], pr[j][1], 0.026), BLACK);
+      p.tri(bend(-0.01, -0.02, 0.046), bend(pr[i][0], pr[i][1], 0.027), bend(pr[j][0], pr[j][1], 0.027), BLACK);
     }
     const pupil = p.mesh(onTop(2), "pupil");
     fr.add(pupil);
+    {
+      const h = new Sheet(rnd, 0.1), hn = 7, hc = [0.058, 0.078], hr = oval(0.05, 0.054, hn, hc[0], hc[1]);
+      for (let i = 0; i < hn; i++) {
+        const j = (i + 1) % hn;
+        h.tri(bend(hc[0], hc[1], 0.06), bend(hr[i][0], hr[i][1], 0.052), bend(hr[j][0], hr[j][1], 0.052), WHITE);
+      }
+      pupil.add(h.mesh(onTop(3), "glint"));
+    }
     const NC = 8, NR = 6, lidPos = new Float32Array((NC * NR + NC) * 6 * 3), lidCol = [];
     for (let i = 0; i < NC * NR; i++) {
       const c = LID.clone().multiplyScalar(0.96 + 0.08 * rnd());
@@ -116,23 +126,25 @@ function createMataBallModel(spec = {}, options = {}) {
     const lg = new THREE.BufferGeometry();
     lg.setAttribute("position", new THREE.BufferAttribute(lidPos, 3));
     lg.setAttribute("color", new THREE.Float32BufferAttribute(lidCol, 3));
-    const lid = new THREE.Mesh(lg, onTop(3));
+    const lid = new THREE.Mesh(lg, onTop(4));
     lid.name = "lid";
     fr.add(lid);
-    const W = 0.33, TOP = 0.31;
+    const W = 0.29, TOP = 0.34;
     const setLid = (v) => {
-      const yb = v >= 0 ? 0.06 - 0.35 * v : 0.06 + 0.15 * -v;
+      lid.visible = v > 0.02;
+      if (!lid.visible) return;
+      const yb = TOP - 0.7 * Math.min(1, v);
       let o = 0;
       const put = (v3) => {
         lidPos[o++] = v3.x;
         lidPos[o++] = v3.y;
         lidPos[o++] = v3.z;
       };
-      const yAt = (x) => Math.min(TOP - 0.02, yb - 0.07 * (side * x / W) * (v >= 0.9 ? 0 : 1));
+      const yAt = (x) => yb - 0.03 * Math.cos(x / W * 1.4) * Math.min(1, v * 3);
       for (let i = 0; i < NC; i++) for (let r = 0; r < NR; r++) {
         const x0 = -W + 2 * W * i / NC, x1 = -W + 2 * W * (i + 1) / NC;
         const Y = (x, f) => TOP + (yAt(x) - TOP) * f;
-        const a = bend(x0, Y(x0, r / NR), 0.056), b = bend(x1, Y(x1, r / NR), 0.056), c = bend(x1, Y(x1, (r + 1) / NR), 0.058), d = bend(x0, Y(x0, (r + 1) / NR), 0.058);
+        const a = bend(x0, Y(x0, r / NR), 0.07), b = bend(x1, Y(x1, r / NR), 0.07), c = bend(x1, Y(x1, (r + 1) / NR), 0.072), d = bend(x0, Y(x0, (r + 1) / NR), 0.072);
         put(a);
         put(d);
         put(c);
@@ -142,7 +154,7 @@ function createMataBallModel(spec = {}, options = {}) {
       }
       for (let i = 0; i < NC; i++) {
         const x0 = -W + 2 * W * i / NC, x1 = -W + 2 * W * (i + 1) / NC;
-        const a = bend(x0, yAt(x0) + 0.035, 0.062), b = bend(x1, yAt(x1) + 0.035, 0.062), c = bend(x1, yAt(x1), 0.062), d = bend(x0, yAt(x0), 0.062);
+        const a = bend(x0, yAt(x0) + 0.035, 0.076), b = bend(x1, yAt(x1) + 0.035, 0.076), c = bend(x1, yAt(x1), 0.076), d = bend(x0, yAt(x0), 0.076);
         put(a);
         put(d);
         put(c);
@@ -281,7 +293,7 @@ function createMataBallRig(spec = {}) {
   const eyes = rt.eyes;
   const pose = { ...D }, manual = {};
   const layers = [];
-  let base = "idle", baseT = 0, lastL = 0, lastR = 0;
+  let base = "idle", baseT = 0, lastL = 9, lastR = 9;
   const api = {
     object: root,
     clips: CLIPS,

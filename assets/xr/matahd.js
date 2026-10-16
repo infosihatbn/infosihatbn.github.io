@@ -6,7 +6,7 @@
 //   const m = createMataHD({ shells: 24 });  scene.add(m.object);  addMataLights(scene);
 //   m.play('wave');  m.set({ headYaw: .3 });  in your loop: m.update(dt)
 import * as THREE from '/assets/three/three.module.min.js';
-import { createMataBallRig } from './mataball.js';
+import { createMataBallRig } from './mataball.js?v=2';
 
 // ---------------------------------------------------------------- shape
 const HEAD = { cy: 1.4, rx: .86, ry: .73 }, BODY = { cy: .6, rx: .62, ry: .46 }, DEPTH = .88, CENTER = .95;

@@ -1,5 +1,5 @@
 // MataUniverse model slot for img2threejs output.
-// Off by default. Turn on with ?models=new (remembered) and off with ?models=old.
+// On by default since 2026-10-16 (paper eyeball, paper ship, origami inside). ?models=old brings back the old ones (remembered), ?models=new undoes that.
 // Factories live in ./models/<slot>.js (built from website/models-src/*.ts by tools/img2three_port.py):
 //   eye.js  - the big intro eyeball, in globe units (radius 1, +Z = cornea), used as is
 //   ship.js - Mata's ship, same units as the old ship (nose +Z, seat at 0,.66,-.05 in the craft), used as is
@@ -10,8 +10,8 @@ export function wantNewModels() {
   try {
     const q = new URLSearchParams(location.search).get('models');
     if (q === 'new' || q === 'old') localStorage.setItem('mu-models', q);
-    return (q || localStorage.getItem('mu-models')) === 'new';
-  } catch (e) { return false; }
+    return (q || localStorage.getItem('mu-models')) !== 'old';
+  } catch (e) { return true; }
 }
 
 async function factory(name, v) {
