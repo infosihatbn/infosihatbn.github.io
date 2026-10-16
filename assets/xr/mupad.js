@@ -3,6 +3,12 @@
 export function mount(el, D) {
   const U = D.ui, id = new URLSearchParams(location.search).get('pad') || '';
   const intro = el.querySelector('.xi-intro'); if (intro) intro.remove(); el.querySelector('.xr-load').hidden = true; el.classList.add('ready', 'mp-on');
+  // never zoom on the controller (Haziq 2026-10-16): lock the viewport, stop pinch and double-tap zoom (iPhone ignores user-scalable, so gestures are blocked too)
+  { const vm = document.querySelector('meta[name=viewport]'); if (vm) vm.content = 'width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover';
+    const st = document.createElement('style'); st.textContent = 'html,body{touch-action:none!important;overscroll-behavior:none;-webkit-text-size-adjust:100%}main{zoom:1!important}.mp,.mp *{touch-action:none!important;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}'; document.head.appendChild(st);
+    const no = e => e.preventDefault(); ['gesturestart', 'gesturechange', 'gestureend', 'dblclick'].forEach(t => document.addEventListener(t, no, { passive: false }));
+    document.addEventListener('touchmove', e => { if (e.touches.length > 1 || (e.scale && e.scale !== 1)) e.preventDefault(); }, { passive: false });
+    let lastT = 0; document.addEventListener('touchend', e => { const n = Date.now(); if (n - lastT < 350) e.preventDefault(); lastT = n; }, { passive: false }); }
   const w = document.createElement('div'); w.className = 'mp';
   w.innerHTML = `<p class="mp-st" role="status">${U.pad_conn}</p>
   <div class="mp-row">
