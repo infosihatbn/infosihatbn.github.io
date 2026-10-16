@@ -27,8 +27,8 @@ if(m&&window.crypto&&crypto.subtle){crypto.subtle.digest("SHA-256",new TextEncod
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
 <script>(()=>{try{const d=document.documentElement,f=localStorage.getItem('is-fs'),t=localStorage.getItem('is-theme');if(f)d.dataset.fs=f;if(t)d.dataset.theme=t}catch(e){}})()</script>
 <link rel="stylesheet" href="/assets/css/59827ea353ab.css">
-<link rel="stylesheet" href="assets/dark.css?v=20261016040257">
-<link rel="stylesheet" id="ori" href="/assets/css/fd80ab26a463.css">
+<link rel="stylesheet" href="assets/dark.css?v=20261016041407">
+<link rel="stylesheet" id="ori" href="/assets/css/910744291c6f.css">
 </head>
 <body class="home">
 <a class="skip" href="#main">Langkau ke kandungan</a>
@@ -288,7 +288,7 @@ renderer.setAnimationLoop(()=>{if(!stage.isConnected){renderer.setAnimationLoop(
 // labels ride round the ring of light (Haziq, 2026-10-15); they pause while a pointer is on one so it is easy to tap
 // closed eye: the ring labels take turns showing every condition on the site; open eye: back to the four parts
 const RC=(()=>{try{return JSON.parse(stage.querySelector("#ring-c").textContent)}catch(e){return []}})(),orig=tags.map(t=>[t.getAttribute("href"),t.querySelector("b").textContent,t.querySelector("small").textContent]);
-const setTag=(tg,d)=>{tg.setAttribute("href",d[0]);tg.querySelector("b").textContent=d[1];tg.querySelector("small").textContent=d[2]};
+const setTag=(tg,d)=>{tg.setAttribute("href",d[0]);tg.querySelector("b").textContent=d[1];tg.querySelector("small").textContent=d[2];tg.setAttribute("aria-label",d[1]+", "+d[2])};
 let rcN=RC.length?Math.floor(Math.random()*RC.length):0;const rcCur=tags.map(()=>RC.length?RC[rcN++%RC.length]:null);let rcSlot=0;
 function ringMode(on){const r=on&&RC.length>0;stage.classList.toggle("rot",r);tags.forEach((t,i)=>{t.classList.remove("sw");setTag(t,r?rcCur[i]:orig[i])})}
 ringMode(true);
@@ -301,7 +301,7 @@ function ringTags(){const r=renderer.domElement.getBoundingClientRect(),sr=stage
   const behind=_rp.z<-.05,v=_rp.clone().project(cam),w=tg.offsetWidth,h=tg.offsetHeight;
   let x=r.left-sr.left+(v.x+1)/2*r.width-w/2,y=r.top-sr.top+(1-v.y)/2*r.height-h/2;x=Math.max(pad,Math.min(W-pad-w,x));let lo=pad,hi=W-pad-w;OB.forEach(o=>{if(y+h<o.t-16||y>o.b+16)return;if(o.l+o.r<W)lo=Math.max(lo,o.r+10);else hi=Math.min(hi,o.l-10-w)});x=lo<=hi?Math.max(lo,Math.min(hi,x)):(lo+hi)/2;
   tg.style.left=x.toFixed(1)+"px";tg.style.top=y.toFixed(1)+"px";tg.style.right=tg.style.bottom="auto";
-  const d=Math.max(0,Math.min(1,(-_rp.z+.05)/.6));tg.style.opacity=(1-.55*d).toFixed(2);tg.style.transform="scale("+(1-.12*d).toFixed(3)+")";tg.style.zIndex=behind?1:3})}
+  const d=Math.max(0,Math.min(1,(-_rp.z+.05)/.6));tg.style.opacity=(1-.38*d).toFixed(2);tg.style.transform="scale("+(1-.12*d).toFixed(3)+")";tg.style.zIndex=behind?1:3})}
 // labels: a mirrored pair each side of the eye, same distance from it and the same heights (Haziq, 2026-10-15)
 function placeTags(){const r=renderer.domElement.getBoundingClientRect(),sr=stage.getBoundingClientRect();if(!r.width)return;
  const c=holder.position.clone().project(cam),e=new THREE.Vector3(1.04,holder.position.y,0).project(cam),cx=r.left-sr.left+(c.x+1)/2*r.width,cy=r.top-sr.top+(1-c.y)/2*r.height,R=Math.abs(e.x-c.x)/2*r.width;
@@ -610,7 +610,7 @@ addEventListener('popstate',e=>{if(e.state&&e.state.soft)go(location.href,false)
 })();
 </script>
 <script>
-(function(){var B='20261016040257';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
+(function(){var B='20261016041407';try{if(window.__isMusic&&window.__isMusic.playing())return;/* never reload while music plays: soft navigation already fetches fresh pages */var u=new URL(location.href);if(u.searchParams.get('v')===B){u.searchParams.delete('v');history.replaceState(null,'',u.pathname+u.search+u.hash)}
 fetch('./version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.build&&j.build!==B&&u.searchParams.get('v')!==j.build){u.searchParams.set('v',j.build);location.replace(u.href)}}).catch(function(){})}catch(e){}})();
 </script>
 </body>
