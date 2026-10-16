@@ -6,6 +6,7 @@
 //   const m = createMataHD({ shells: 24 });  scene.add(m.object);  addMataLights(scene);
 //   m.play('wave');  m.set({ headYaw: .3 });  in your loop: m.update(dt)
 import * as THREE from '/assets/three/three.module.min.js';
+import { createMataBallRig } from './mataball.js';
 
 // ---------------------------------------------------------------- shape
 const HEAD = { cy: 1.4, rx: .86, ry: .73 }, BODY = { cy: .6, rx: .62, ry: .46 }, DEPTH = .88, CENTER = .95;
@@ -251,7 +252,8 @@ function stripGeo(A, B, project) {
 }
 
 // ---------------------------------------------------------------- build
-export function createMataHD(opts = {}) {
+// the old plush Mata (kept for reference; not used since 2026-10-16)
+export function createMataHDPlush(opts = {}) {
   const shells = opts.shells ?? 0, smooth = !shells; // 0 shells = smooth plush (default: cheap enough for phones)
   const hd = !!opts.headOnly; // head only, no body/arms/legs/bag (Haziq, 2026-10-15: EyeCompanion)
   const ori = (opts.origami ?? true) && smooth, Q = (hi, lo) => ori ? lo : hi; // origami: folded-paper Mata, few flat facets (Haziq, 2026-10-15)
@@ -430,12 +432,35 @@ export function createMataHD(opts = {}) {
 }
 
 // Drop-in replacement for the old mata3d.js createMata() used by the XR apps (centred on its middle, about 1.3 units tall).
-export function createMata(opts = {}) {
-  const m = createMataHD({ shells: opts.shells ?? 0 }), root = new THREE.Group(); m.setFur({ density: 120 });
+export function createMataPlush(opts = {}) {
+  const m = createMataHDPlush({ shells: opts.shells ?? 0 }), root = new THREE.Group(); m.setFur({ density: 120 });
   m.object.scale.setScalar(.58); m.object.position.y = -.66; root.add(m.object);
   let mode = 'idle';
   return {
     object: root, hd: m,
+    happy() { m.play('happy'); },
+    update(t, dt, o = {}) {
+      if (o.reducedMotion) { if (mode !== 'still') { mode = 'still'; m.loop('idle'); m.update(0); } return; }
+      const want = o.moving ? 'walk' : 'idle'; if (want !== mode) { mode = want; m.loop(want); }
+      m.update(dt);
+    },
+  };
+}
+
+// ===== Mata is now the origami paper ball (Haziq, 2026-10-16, "Option 3"; model in mataball.js, source models-src/mataball.ts) =====
+// Same API as before, so the EyeCompanion, MataUniverse, EyeXplore and the intros need no changes.
+// createMataHD: framed like the old rig (head centre at y 1.6), createMata: about 1.3 tall, centred on the origin.
+function wrapRig(scale, y) {
+  const rig = createMataBallRig(), root = new THREE.Group(); root.name = 'Mata';
+  rig.object.scale.setScalar(scale); rig.object.position.y = y; root.add(rig.object);
+  return { ...rig, object: root, ball: rig.object, update: dt => rig.update(dt) };
+}
+export function createMataHD(opts = {}) { return wrapRig(.7, 1.6); }
+export function createMata(opts = {}) {
+  const m = wrapRig(.5, -.06);
+  let mode = 'idle';
+  return {
+    object: m.object, hd: m,
     happy() { m.play('happy'); },
     update(t, dt, o = {}) {
       if (o.reducedMotion) { if (mode !== 'still') { mode = 'still'; m.loop('idle'); m.update(0); } return; }

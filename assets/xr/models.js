@@ -91,8 +91,8 @@ export async function applyNewModels({ matas = [], eyes = [], ships = [], riders
   if (ek) eyes.forEach(e => swapIn(e.group, ek({}, {}), false));
   if (sk) {
     ships.forEach(h => swapIn(h, sk({}, {}), false));
-    // in the craft Mata (scale .9) sits at y .66 over the ship (scale .9): same placement under a lone Mata
-    riders.forEach(m => { const g = sk({}, {}); g.name = 'img2threejs-ship'; g.position.set(0, -.66 / .9, .05 / .9); m.object.add(g); m.object.scale.multiplyScalar(.62); flyThroughPupil(m, eyes[0]); });
+    // in the craft Mata (scale .9) sits at y .98 over the ship (scale .9): same placement under a lone Mata
+    riders.forEach(m => { const g = sk({}, {}); g.name = 'img2threejs-ship'; g.position.set(0, -.98 / .9, .05 / .9); m.object.add(g); m.object.scale.multiplyScalar(.62); flyThroughPupil(m, eyes[0]); });
   }
   return { mata: !!mk, eye: !!ek, ship: !!sk, blink: matas.length, inside };
 }

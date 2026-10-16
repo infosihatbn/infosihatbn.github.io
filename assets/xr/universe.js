@@ -284,7 +284,7 @@ export function mount(el, D) {
   // Mata (player)
   const mata = createMata(); mata.object.scale.setScalar(.9);
   // Mata's little spaceship (Haziq, 2026-10-15): chunky and toy-like, flat-shaded to match the origami Mata; the nose points +Z
-  const craft = new THREE.Group(), ship = new THREE.Group(); craft.add(ship); craft.add(mata.object); mata.object.position.set(0, .66, -.05); scene.add(craft);
+  const craft = new THREE.Group(), ship = new THREE.Group(); craft.add(ship); craft.add(mata.object); mata.object.position.set(0, .98, -.05); scene.add(craft);
   const flat = c => new THREE.MeshStandardMaterial({ color: c, roughness: .55, metalness: .05, flatShading: true });
   const sRed = flat(0xe8505b), sYel = flat(0xffc93c), sBlu = flat(0x3d8bfd), sWht = flat(0xf3efe6), sDk = flat(0x2a3346);
   const part = (g, m, x, y, z, rx = 0, ry = 0, rz = 0) => { const o = new THREE.Mesh(g, m); o.position.set(x, y, z); o.rotation.set(rx, ry, rz); ship.add(o); return o; };
