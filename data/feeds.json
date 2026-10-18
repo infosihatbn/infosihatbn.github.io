@@ -2,6 +2,12 @@
  "news": {
   "items": [
    {
+    "t": "Air quality remains good nationwide",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBtaF9qUjZWVmdJN0kzTUlkZ2d5SmtncWlWdmRwSWhlSi1rTUJRV3N4NlZSM1lmU2VkUlFERFpGcGVEUGJMN0pXY05qRXhSNy1EaTd3Zm5DVUd2ZlNwNk5LamhBWkgzM0hBSXVVSmxkX1Z2bjlV?oc=5",
+    "d": "2026-10-18"
+   },
+   {
     "t": "Brunei records good air quality across all four districts",
     "src": "The Star",
     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQc3hydUNjQzFheWgyV0Y0blg5U0p4blVvOFdCM2NlXzVRU3FFWFk5LTVJM2hwbGNrM0liZE80NmNScU1lQ3lwOHRLOEJZb3pWTWlYYW1hdFFVUy1lbEJ5NUtLVERYOXloSUhNVjZuWW5iSHhpY2tqWXV4Mk5lc3paNXg2VzExYmFNaWxoa25jOTRTczc0UTE4UHQzZmI3S3RMWl9YQkVBT0hTWTQ4QjRzamxCQ2xCVzNxUjYwbQ?oc=5",
@@ -30,56 +36,50 @@
     "src": "The Star",
     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOWkxJNjEzek5PaFYyUUlLRDJmSU1CV3NBYlFIcjJ6MDJyVmJ5cm5QN1NST2dYRG4xS2t5S0JsbG5aTkwtRkVHNVM4ZWxVVGh0MjBBZTNkZHFVVXVLZzhSWTFOaU5Gcjk1OUNsVFVaR2VjbWEzaEJFTWVpeXdCblJPTklNdUxCN1VPRkg4TVZiRmNEX1lDUEs4VVNZaE1OTEhtSk9leVkxY2NhMTNLYnpWZi1fQjlFdlh5WmV4UXBWdDM?oc=5",
     "d": "2026-10-16"
-   },
-   {
-    "t": "Brunei-Muara, Tutong record moderate air quality",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOb1hmY1dHZEVWSWs4YjRpTWRIRG5tWmZDYllzaXlqdVZsWFdEUTU5M2JRNElIZU8wTUxlSWtIcklxenNSdlpfRGlhemhRNG5veTlrcG1NX2RFT3NxQW14OERGX3g2QzNCRC1IbDBXdHJkQllJY2xRdTNGeDgwU1Z4TllFeWw?oc=5",
-    "d": "2026-10-16"
    }
   ],
-  "updated": "2026-10-17"
+  "updated": "2026-10-18"
  },
  "sea": {
   "items": [
+   {
+    "t": "GeoMx Digital Spatial Profiler Enables Layer-Specific Spatial Transcriptomic Profiling of the Human Retina: A Proof-of-Concept Study from Post-Coronovirus Disease 2019 Donor Tissue",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42892996/"
+   },
+   {
+    "t": "Multimodal Imaging of Fundus Abnormalities in Stickler Syndrome: Characterization of 15 Distinct Features Using Ultra-Widefield Swept-Source OCT Angiography",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42892956/"
+   },
+   {
+    "t": "Age-Related Hypofluorescent Indocyanine Green Angiography Spots: Prevalence, Characteristics, and Associated Features in Age-Related Macular Degeneration",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42891122/"
+   },
+   {
+    "t": "Retinal Arterial Wall Reflectivity and Incident Cardiovascular Disease",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42889806/"
+   },
+   {
+    "t": "Epidemiology of visual impairment and rehabilitation measures in adults-Data from the Swedish Quality Registry for Rehabilitation in Visual Impairment",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42888956/"
+   },
    {
     "t": "Artificial intelligence (AI) and the choroidal challenge: A comprehensive review of AI applications in choroidal imaging",
     "src": "Survey of Ophthalmology",
     "d": "2026 Oct 16",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42887655/"
-   },
-   {
-    "t": "Individual-Eye Pharmacokinetics of Intravitreal Ranibizumab: Linking Ocular Geometry to Drug Retention Using MRI and Modeling",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42885992/"
-   },
-   {
-    "t": "Immune Landscape and Intercellular Crosstalk in the Cornea of an Autoimmune-Mediated Dry Eye Disease",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42885991/"
-   },
-   {
-    "t": "A Review of PRDM13 Transcriptional Regulation in Vertebrate Retinal Development and Disease",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42885990/"
-   },
-   {
-    "t": "Outcomes of therapeutic penetrating keratoplasty and deep anterior lamellar keratoplasty in acanthamoeba keratitis: A systematic review and meta-analysis",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 16",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42885655/"
-   },
-   {
-    "t": "Personalised ILM peeling for Myopic traction maculopathy",
-    "src": "Eye",
-    "d": "2026 Oct 15",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42881214/"
    }
   ],
-  "updated": "2026-10-17"
+  "updated": "2026-10-18"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-17"
+  "updated": "2026-10-18"
  },
- "checked": "2026-10-17T22:12+00:00",
+ "checked": "2026-10-18T22:12+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -146,6 +146,18 @@
   ],
   "glaucoma": [
    {
+    "t": "36-month multi-centre outcomes of XEN45 gel stent implantation in Asian versus non-Asian eyes with primary open angle glaucoma",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42891852/"
+   },
+   {
+    "t": "Stage-dependent differences in recalculated mean deviation between 24plus(1-2) and 24plus(1) test locations in glaucoma",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42891849/"
+   },
+   {
     "t": "Evaluating Long-Term Effectiveness and Safety of Glaucoma Surgical Innovations: A Systematic Review",
     "src": "J Glaucoma",
     "d": "2026 Oct 16",
@@ -168,21 +180,15 @@
     "src": "Graefe's Archive",
     "d": "2026 Oct 15",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42878788/"
-   },
-   {
-    "t": "Trends in glaucoma diagnosis and medical management in Germany: A nationwide claims data analysis over 10 years",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 15",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42878038/"
-   },
-   {
-    "t": "Learning How to Implement Glaucoma Coaching in Academic Medical Centers from a Successful Clinical Trial using Implementation Science",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Oct 13",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42869144/"
    }
   ],
   "medret": [
+   {
+    "t": "Age-Related Hypofluorescent Indocyanine Green Angiography Spots: Prevalence, Characteristics, and Associated Features in Age-Related Macular Degeneration",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42891122/"
+   },
    {
     "t": "Variables Associated With Faricimab Treatment Durability in Neovascular Age-Related Macular Degeneration: A Post Hoc Analysis of the TENAYA and LUCERNE Trials",
     "src": "JAMA Ophthalmology",
@@ -212,12 +218,6 @@
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42866670/"
-   },
-   {
-    "t": "Serum Ang-1, sFLT-1, and sST2 Profiles Distinguish Anti-VEGF Responders in Diabetic Macular Edema",
-    "src": "Retina",
-    "d": "2026 Oct 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42862251/"
    }
   ],
   "vr": [
@@ -260,6 +260,12 @@
   ],
   "neuro": [
    {
+    "t": "Combined use of orbital soft tissue volume and retinal microvessel density for diagnosing dysthyroid optic neuropathy",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42891851/"
+   },
+   {
     "t": "Prelaminar hyperreflective lines in non-arteritic anterior ischaemic optic neuropathy",
     "src": "Eye",
     "d": "2026 Oct 9",
@@ -288,15 +294,15 @@
     "src": "British Journal of Ophthalmology",
     "d": "2026 Sep 30",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42816146/"
-   },
-   {
-    "t": "Optical Coherence Tomography as an Objective Tool for Assessing Ocular Torsion in Fourth Cranial Nerve Palsy",
-    "src": "J Neuro-Ophthalmology",
-    "d": "2026 Sep 29",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42808790/"
    }
   ],
   "paeds": [
+   {
+    "t": "Combination therapy for myopia control using defocus incorporated multiple segments spectacles in children refractory to higher-dose atropine",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42891853/"
+   },
    {
     "t": "Cross-Sectional Profiling of Aqueous Humor VEGF-A Reflects the Tumor and Ocular Microenvironment in Retinoblastoma",
     "src": "IOVS",
@@ -326,14 +332,8 @@
     "src": "J AAPOS",
     "d": "2026 Oct 9",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42854827/"
-   },
-   {
-    "t": "Retinoblastoma management: achieving high standards of care",
-    "src": "Eye",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42839089/"
    }
   ],
-  "updated": "2026-10-17"
+  "updated": "2026-10-18"
  }
 }
