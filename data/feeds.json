@@ -2,10 +2,10 @@
  "news": {
   "items": [
    {
-    "t": "Air quality remains good nationwide",
+    "t": "Air quality remains good across Brunei after rainfall",
     "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBtaF9qUjZWVmdJN0kzTUlkZ2d5SmtncWlWdmRwSWhlSi1rTUJRV3N4NlZSM1lmU2VkUlFERFpGcGVEUGJMN0pXY05qRXhSNy1EaTd3Zm5DVUd2ZlNwNk5LamhBWkgzM0hBSXVVSmxkX1Z2bjlV?oc=5",
-    "d": "2026-10-18"
+    "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOc1JXSHRYUW1CeUg2aEJJWU5QSEpubDZDVkxtQWtYVlIyZXJqUEtxTG9OSDNCZ0M1c3ZvUVc1eUZ1UHVZYndBbkhmUTctSkIzd3VXNHBiMno0aTBwTTA4YndsaW02MXNtd2REeXBkNjF2cjdvOHZKYWY4ZERfTy11OUR4cTdwU3hvWGNZUA?oc=5",
+    "d": "2026-10-19"
    },
    {
     "t": "Brunei records good air quality across all four districts",
@@ -38,10 +38,28 @@
     "d": "2026-10-16"
    }
   ],
-  "updated": "2026-10-18"
+  "updated": "2026-10-19"
  },
  "sea": {
   "items": [
+   {
+    "t": "Evaluator-Masked Assessment of 4 Consumer-Facing Large Language Models on Expert Anterior Segment Ophthalmology Questions",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42894879/"
+   },
+   {
+    "t": "The German National Cohort: Ophthalmic Assessment, Baseline Profile, and Potential for Artificial Intelligence-Based Eye Research",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42894708/"
+   },
+   {
+    "t": "Repeatability of interpolated corneal tomography maps in healthy and keratoconus corneas before and after crosslinking",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42894321/"
+   },
    {
     "t": "GeoMx Digital Spatial Profiler Enables Layer-Specific Spatial Transcriptomic Profiling of the Human Retina: A Proof-of-Concept Study from Post-Coronovirus Disease 2019 Donor Tissue",
     "src": "Ophthalmology Science",
@@ -59,27 +77,9 @@
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42891122/"
-   },
-   {
-    "t": "Retinal Arterial Wall Reflectivity and Incident Cardiovascular Disease",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42889806/"
-   },
-   {
-    "t": "Epidemiology of visual impairment and rehabilitation measures in adults-Data from the Swedish Quality Registry for Rehabilitation in Visual Impairment",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42888956/"
-   },
-   {
-    "t": "Artificial intelligence (AI) and the choroidal challenge: A comprehensive review of AI applications in choroidal imaging",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 16",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42887655/"
    }
   ],
-  "updated": "2026-10-18"
+  "updated": "2026-10-19"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-18"
+  "updated": "2026-10-19"
  },
- "checked": "2026-10-18T22:12+00:00",
+ "checked": "2026-10-19T22:19+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -107,6 +107,12 @@
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Repeatability of interpolated corneal tomography maps in healthy and keratoconus corneas before and after crosslinking",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42894321/"
+   },
    {
     "t": "Infectious Keratitis and Endophthalmitis Following Boston Type I Keratoprosthesis: Incidence, Risk Factors, and Long-Term Outcomes",
     "src": "The Ocular Surface",
@@ -136,12 +142,6 @@
     "src": "The Ocular Surface",
     "d": "2026 Oct 15",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42880493/"
-   },
-   {
-    "t": "Corneal Endothelial Outcomes in Diabetic Patients Following Repeated Anterior Chamber Paracentesis",
-    "src": "Cornea",
-    "d": "2026 Oct 15",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42880237/"
    }
   ],
   "glaucoma": [
@@ -334,6 +334,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42854827/"
    }
   ],
-  "updated": "2026-10-18"
+  "updated": "2026-10-19"
  }
 }
