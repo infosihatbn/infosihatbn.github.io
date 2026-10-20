@@ -2,6 +2,12 @@
  "news": {
   "items": [
    {
+    "t": "Rainfall keeps haze levels good across Brunei",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQQXhrUm9yazNkbl9pQWdpM0dtbUYyb1ZoOGtXdDRnWDYxd1pCM2Zjb19BMUYyakVRM1R2V3V5ekNqWmVIcnJXN3kwcnFUSFBsNWhhQkk1S1ZtbXJFNEVPZlNNNEFkWmVXNW9hQXRuNDJYYXpuV0VuZldtQ3JWUW13aFp3?oc=5",
+    "d": "2026-10-20"
+   },
+   {
     "t": "Air quality remains good across Brunei after rainfall",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOc1JXSHRYUW1CeUg2aEJJWU5QSEpubDZDVkxtQWtYVlIyZXJqUEtxTG9OSDNCZ0M1c3ZvUVc1eUZ1UHVZYndBbkhmUTctSkIzd3VXNHBiMno0aTBwTTA4YndsaW02MXNtd2REeXBkNjF2cjdvOHZKYWY4ZERfTy11OUR4cTdwU3hvWGNZUA?oc=5",
@@ -30,18 +36,18 @@
     "src": "联合日报",
     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1ORGNpcVF4QjFtYmF5ZndKMkMtMTBjTGhZZkRnVWViTWhUaEt3djU2NTYwVFZYcHhha2Z2TEdEb0tMUFk0OHJZMUF4eU1mTXJ6dUJ0QVU0R0VLdmZyOHF4WVJ4VVFRMWRsRkpGZnlTRQ?oc=5",
     "d": "2026-10-17"
-   },
-   {
-    "t": "Brunei issues over US$14,000 fines for health product offences",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOWkxJNjEzek5PaFYyUUlLRDJmSU1CV3NBYlFIcjJ6MDJyVmJ5cm5QN1NST2dYRG4xS2t5S0JsbG5aTkwtRkVHNVM4ZWxVVGh0MjBBZTNkZHFVVXVLZzhSWTFOaU5Gcjk1OUNsVFVaR2VjbWEzaEJFTWVpeXdCblJPTklNdUxCN1VPRkg4TVZiRmNEX1lDUEs4VVNZaE1OTEhtSk9leVkxY2NhMTNLYnpWZi1fQjlFdlh5WmV4UXBWdDM?oc=5",
-    "d": "2026-10-16"
    }
   ],
-  "updated": "2026-10-19"
+  "updated": "2026-10-20"
  },
  "sea": {
   "items": [
+   {
+    "t": "Risk Factors for Retinal Pigment Epithelium Tears in Patients with Neovascular Age-Related Macular Degeneration: A Systematic Review and Meta-Analysis",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Oct 19",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42896642/"
+   },
    {
     "t": "Evaluator-Masked Assessment of 4 Consumer-Facing Large Language Models on Expert Anterior Segment Ophthalmology Questions",
     "src": "Ophthalmology Science",
@@ -71,15 +77,9 @@
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42892956/"
-   },
-   {
-    "t": "Age-Related Hypofluorescent Indocyanine Green Angiography Spots: Prevalence, Characteristics, and Associated Features in Age-Related Macular Degeneration",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42891122/"
    }
   ],
-  "updated": "2026-10-19"
+  "updated": "2026-10-20"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-19"
+  "updated": "2026-10-20"
  },
- "checked": "2026-10-19T22:19+00:00",
+ "checked": "2026-10-20T22:19+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -184,6 +184,12 @@
   ],
   "medret": [
    {
+    "t": "Risk Factors for Retinal Pigment Epithelium Tears in Patients with Neovascular Age-Related Macular Degeneration: A Systematic Review and Meta-Analysis",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Oct 19",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42896642/"
+   },
+   {
     "t": "Age-Related Hypofluorescent Indocyanine Green Angiography Spots: Prevalence, Characteristics, and Associated Features in Age-Related Macular Degeneration",
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
@@ -212,12 +218,6 @@
     "src": "Graefe's Archive",
     "d": "2026 Oct 13",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42867512/"
-   },
-   {
-    "t": "Spatial Choroidal Analysis under Mid-Phase Hyperfluorescent Plaques Demonstrates Unique Signatures in Central Serous Chorioretinopathy: Macula Society International Central Serous Chorioretinopathy Research Network Report Number 20",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42866670/"
    }
   ],
   "vr": [
@@ -334,6 +334,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42854827/"
    }
   ],
-  "updated": "2026-10-19"
+  "updated": "2026-10-20"
  }
 }
