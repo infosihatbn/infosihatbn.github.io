@@ -2,9 +2,21 @@
  "news": {
   "items": [
    {
+    "t": "Brunei’s air quality remains good after rainfall",
+    "src": "The Star",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPdEhVQ2tMdU5oM21oOGU5TUJ6VjQ0emhJaEtnTFJnSl9XWjdqb1p1YnYwY0lvS1NZNVVoekVyM0w1a3hRQW9qZDhweTBqREVHN2w1RE1mREZLNTNuelByMEsxM0hDa3d2WXg5ZDJ1RHFYVkhxSTU2R0dHZ3dRSlVMNUdjNmhJOWltX1hGUDFQMEY3S1BWN0c4cmYzekd3djhRb003ZEJ5bjBybWpoUHVv?oc=5",
+    "d": "2026-10-21"
+   },
+   {
+    "t": "'Healing PH's heroes:' VMMC builds new facility for more precise cancer treatment of veterans",
+    "src": "Manila Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQQ1RTd25UcUcwajI1RnAxal9fMUh2cm5jVE5JNU1Mb2NzS0FXTjZ0dmIwa3djVzFhMHdsWmd2SFFjY1dYRjVsQ1Z0TkFCR245bC1MMjVaNERBVmZOX2dKbmw1VUtFby1iYTR4S25KY1FtV0dka0tvNzU3MG9rc2lwWjJpWEFnR3dhRmVMaGRUb1B1RzA5a1ZQR01abnI1Z24yMm5RdUlFd0Q4ZDN4SnRNcHB3eWp6cjVWVUE?oc=5",
+    "d": "2026-10-21"
+   },
+   {
     "t": "Rainfall keeps haze levels good across Brunei",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQQXhrUm9yazNkbl9pQWdpM0dtbUYyb1ZoOGtXdDRnWDYxd1pCM2Zjb19BMUYyakVRM1R2V3V5ekNqWmVIcnJXN3kwcnFUSFBsNWhhQkk1S1ZtbXJFNEVPZlNNNEFkWmVXNW9hQXRuNDJYYXpuV0VuZldtQ3JWUW13aFp3?oc=5",
+    "src": "The Star",
+    "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNVkhjT21IeWdsVGgyYzJibjBacElPMFRSVTVCdElRNUJCNVhPaHhGbjBMT1RYa3lxaWdXaWlXMzN1eVRzdmFjV0hUZEFxRmFCbEpEeEI3M0dkQ3ZQTV95X2pzajhGNTZyV2FjcnZaRmw4anliUDFERlRBdHNiSXhqMGYtY0I1dVhJX045T3NSdzY4QVMxd3g4Qm5sc1NHbTQ5eHRUc3hIXzRxc0Ro?oc=5",
     "d": "2026-10-20"
    },
    {
@@ -24,24 +36,18 @@
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNa1E5WWc4Rm8wa0RsbHJidEdQUVBHTG5SUHNuZE5mSTZZUHc1a3MyeFA3NzBoRV9teFgzMHdhQmlmVWxOMndzNFN4OEhUa2VtQUlSVlBieC1ZXzB1X2xFSTBYdWE3OFl4bVJCQ3pORVc4WlFWRTVVV3Y5RUhabjJTRDNaVFJ3WjI3Tzdr?oc=5",
     "d": "2026-10-17"
-   },
-   {
-    "t": "Air quality good across Brunei",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9IQjduNFM4MzA1Q3d2cWZEZEI1d3Z3WTFOc3Ewd19qaEtZUWN0WVNydjlUdXZqSW5Rbzhib2pKT2Y2WVNpbWFCSk1vV2YzWFM2X1JWZnJtWXBMblhNWU14bFo4RHJ3YkM4LWY0NjR3?oc=5",
-    "d": "2026-10-17"
-   },
-   {
-    "t": "Cardiovascular Disease Deaths Climb in Brunei; Ministry of Health Steps Up Preventive Care",
-    "src": "联合日报",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1ORGNpcVF4QjFtYmF5ZndKMkMtMTBjTGhZZkRnVWViTWhUaEt3djU2NTYwVFZYcHhha2Z2TEdEb0tMUFk0OHJZMUF4eU1mTXJ6dUJ0QVU0R0VLdmZyOHF4WVJ4VVFRMWRsRkpGZnlTRQ?oc=5",
-    "d": "2026-10-17"
    }
   ],
-  "updated": "2026-10-20"
+  "updated": "2026-10-21"
  },
  "sea": {
   "items": [
+   {
+    "t": "Mastering the Eye: Clinical Paradigm Shifts from Optical Restoration to Genomic Correction",
+    "src": "Progress in Retinal and Eye Research",
+    "d": "2026 Oct 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42901316/"
+   },
    {
     "t": "Risk Factors for Retinal Pigment Epithelium Tears in Patients with Neovascular Age-Related Macular Degeneration: A Systematic Review and Meta-Analysis",
     "src": "American Journal of Ophthalmology",
@@ -71,15 +77,9 @@
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42892996/"
-   },
-   {
-    "t": "Multimodal Imaging of Fundus Abnormalities in Stickler Syndrome: Characterization of 15 Distinct Features Using Ultra-Widefield Swept-Source OCT Angiography",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42892956/"
    }
   ],
-  "updated": "2026-10-20"
+  "updated": "2026-10-21"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-20"
+  "updated": "2026-10-21"
  },
- "checked": "2026-10-20T22:19+00:00",
+ "checked": "2026-10-21T22:19+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -334,6 +334,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42854827/"
    }
   ],
-  "updated": "2026-10-20"
+  "updated": "2026-10-21"
  }
 }
