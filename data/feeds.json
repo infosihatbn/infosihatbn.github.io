@@ -2,6 +2,18 @@
  "news": {
   "items": [
    {
+    "t": "Air quality across Brunei within moderate range",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQbEF4bU52VWJCU21XYWoyMWZhOWJMM0duYkhjYlltMWtNTlo3SzVxSERTNUxZTHlSbUVHOW9OVlI5R2xKYlcta0xZbE9wdW1FTzlhaWl4eUVkYnFyMmdOSkVYUERITld5NWM5N3h0YnRRZDVJc2JmYkJwYno0dXAxUW9KWEs?oc=5",
+    "d": "2026-10-23"
+   },
+   {
+    "t": "A look back at South-east Asia’s strongest fire and haze episodes",
+    "src": "The Straits Times",
+    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQZkVaQ3FCcjdiU1RwdGtFdkJZX1lqYUZteWJsaUdJNV8zeUNOYU03Ukl0TDBjVFhqM3BnOGJhTlJCYkFRRTJWWnBrc1p0UlV3aFN4ZXJNWFBFay0zcUVsTDI0Z2pfRDhkTTdCZWRoR1JhT3FJbVhTR3pZZVRLaUVjaFZ4MFYtdkNrS0tJUVRBMEdyU0F4cDYzTFlRaVlwcHRfalloQ3lDQnZxemFqVjgtV1VrSDRzQl9jcDVz?oc=5",
+    "d": "2026-10-22"
+   },
+   {
     "t": "SEA: ADB cites public insurance pools as viable vehicles for cervical cancer elimination",
     "src": "Asia Insurance Review",
     "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxQOC1ORGl5M3pUTDNBNDQteWxFNHJQRXhXSllHeUxiYWVRT3B5Sng3OElJTThtaFpIVGo2UUpMRHJBdmlLZlJIeWV5S3UzLVJhVTRpZVhhNVNXZVJPUnZhVmdBUVdJMEhIZE81U0x1Y0JveDZzVlE4TzB3NGhKbEQ0a2d1cDgzME5rMW5Nd0tzV3NKN1NYS2xtTk5BeEE4ajNDcGpYX0REWmZtRl9MbGpONkJkNG92V2FwMTF5R1RFejVmQmZVNXE0ZHBQNXpjY2REcko4SWE5Wm81ZjVjbVFTYWhJd0t5WHJ3Zkp1U0M0TjdLMzFwaUlzQndLR0ZXMmhDSXZB?oc=5",
@@ -24,62 +36,50 @@
     "src": "헤럴드경제",
     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5qV3g1U1BOdEVNLXp4ZGh3MGltVEpKZTY4NmpoR3NyT0xtLWU2ZDBBc09pRzNIMm9tYUhMUXRWTWpVa0VsNVpueHZKdzRWMEhGWEp0OG9B?oc=5",
     "d": "2026-10-21"
-   },
-   {
-    "t": "'Healing PH's heroes:' VMMC builds new facility for more precise cancer treatment of veterans",
-    "src": "Manila Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQQ1RTd25UcUcwajI1RnAxal9fMUh2cm5jVE5JNU1Mb2NzS0FXTjZ0dmIwa3djVzFhMHdsWmd2SFFjY1dYRjVsQ1Z0TkFCR245bC1MMjVaNERBVmZOX2dKbmw1VUtFby1iYTR4S25KY1FtV0dka0tvNzU3MG9rc2lwWjJpWEFnR3dhRmVMaGRUb1B1RzA5a1ZQR01abnI1Z24yMm5RdUlFd0Q4ZDN4SnRNcHB3eWp6cjVWVUE?oc=5",
-    "d": "2026-10-21"
-   },
-   {
-    "t": "Hospital Authority appreciates generous donation from Sino Group and Ng Teng Fong Charitable Foundation",
-    "src": "巴士的報",
-    "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPTDlzblF4aU1HVXd3RlNCRC11ei1uUnE2SjNYYmFMdUJsWWxwZHNWUjJYdE1qeDRveGFTMzMtLVl0WE5KdHdGS2o2ZXQ5V0QwZmlsWllvV3lRYS1KMWljSjZZcDdXZWlULVNkRFJNS0l2d2c4Vkd0cUFUc3VFRFFLWWFrUHljSHNqa0lhS3FTTHNxNEV2aFVuVXRpWWZ2dmdxazRnelJfUXdsZnBHWkdGUWl5TUFONnhqYmY2cEVDUkJDTnNibDM2a1dxVUoxMlA5NHZld0tkSDN4cDdXb0J0SkN3RzFwNmh2YV9z?oc=5",
-    "d": "2026-10-20"
    }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
  },
  "sea": {
   "items": [
    {
-    "t": "Detecting Intraocular Pressure Harmonic Frequencies in Glaucoma and the Sampling Targets Needed to Identify Them With Self-Tonometry",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904889/"
+    "t": "Social Determinants of Health, Vision, and Treatment in Exudative Age-Related Macular Degeneration",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42908726/"
    },
    {
-    "t": "USP10 Silencing Prevents Scarring and Inflammation in a Modified Rabbit Model of Glaucoma Filtration Surgery",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904888/"
+    "t": "Hydrus microstent combined with cataract surgery or used alone: cost-utility analysis for UK",
+    "src": "Eye",
+    "d": "2026 Oct 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42907572/"
    },
    {
-    "t": "Domestic Water Mineral Composition and Incident Glaucoma Risk: A Prospective Cohort Study From the UK Biobank",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904887/"
+    "t": "Artificial intelligence in diabetic retinopathy: From deep learning to foundation models, clinical translation, and real-world deployment",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Oct 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42906863/"
    },
    {
-    "t": "Associations of Axial Length With Photoreceptor Mosaic and Retinal Nerve Fiber Bundle Microstructure Assessed by AO-SLO in Children",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904886/"
+    "t": "Peripheral exudative hemorrhagic chorioretinopathy: A comprehensive review of clinical features, differential diagnosis, pathogenesis-related disease spectra, and management",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Oct 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42906862/"
    },
    {
-    "t": "Temporally Resolved Characterization of 254-nm UV Radiation-Induced Photokeratitis in a Rabbit Model",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904885/"
+    "t": "Subretinal fibrosis in neovascular age-related macular degeneration: From clinical features to fibrotic mechanisms and therapeutic opportunities",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Oct 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42906861/"
    },
    {
-    "t": "Contributions of Polar and Nonpolar Lipids to the Evaporation Resistance of the Tear Film Lipid Layer",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904884/"
+    "t": "Systematic Review of Clinical Utility of Multimodal Imaging in Infectious Posterior Uveitis. Multimodal imaging in Uveitis (MUV) Taskforce Report 12",
+    "src": "Ophthalmology Retina",
+    "d": "2026 Oct 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42906791/"
    }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
  },
- "checked": "2026-10-22T22:20+00:00",
+ "checked": "2026-10-23T22:20+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -107,6 +107,18 @@
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Three-year cohort study on the predictive role of axial length-to-corneal radius ratio in the incidence and progression of myopia among Chinese schoolchildren",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42905166/"
+   },
+   {
+    "t": "Temporally Resolved Characterization of 254-nm UV Radiation-Induced Photokeratitis in a Rabbit Model",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42904885/"
+   },
    {
     "t": "Repeatability of interpolated corneal tomography maps in healthy and keratoconus corneas before and after crosslinking",
     "src": "Acta Ophthalmologica",
@@ -130,18 +142,6 @@
     "src": "Acta Ophthalmologica",
     "d": "2026 Oct 16",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42885655/"
-   },
-   {
-    "t": "A Single-Cell Atlas of Diabetes-Associated Remodeling in the Human Corneal Limbus",
-    "src": "The Ocular Surface",
-    "d": "2026 Oct 15",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42880494/"
-   },
-   {
-    "t": "The mtROS-Stat1 Axis Defines an Acinar Dysfunctional State Linking Metabolic Stress to Immune Activation in Cigarette Smoking-Associated Dry Eye Disease",
-    "src": "The Ocular Surface",
-    "d": "2026 Oct 15",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42880493/"
    }
   ],
   "glaucoma": [
@@ -184,6 +184,24 @@
   ],
   "medret": [
    {
+    "t": "Social Determinants of Health, Vision, and Treatment in Exudative Age-Related Macular Degeneration",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42908726/"
+   },
+   {
+    "t": "Artificial intelligence in diabetic retinopathy: From deep learning to foundation models, clinical translation, and real-world deployment",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Oct 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42906863/"
+   },
+   {
+    "t": "Subretinal fibrosis in neovascular age-related macular degeneration: From clinical features to fibrotic mechanisms and therapeutic opportunities",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Oct 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42906861/"
+   },
+   {
     "t": "Risk Factors for Retinal Pigment Epithelium Tears in Patients with Neovascular Age-Related Macular Degeneration: A Systematic Review and Meta-Analysis",
     "src": "American Journal of Ophthalmology",
     "d": "2026 Oct 19",
@@ -200,24 +218,6 @@
     "src": "JAMA Ophthalmology",
     "d": "2026 Oct 15",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42879146/"
-   },
-   {
-    "t": "Alpha-Asarone Ameliorates Dry Age-Related Macular Degeneration by Modulating the P2X7/NLRP3 Inflammasome Axis",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42878578/"
-   },
-   {
-    "t": "Neuroprotective and Anti-Inflammatory Effects of SOCS1 Mimetic Peptides in Mouse Diabetic Retinopathy",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42872951/"
-   },
-   {
-    "t": "Switching to faricimab in anti-VEGF-refractory retinal vein occlusion: nine-month prospective real-world outcomes under a modified treat-and-extend regimen",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 13",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42867512/"
    }
   ],
   "vr": [
@@ -254,7 +254,7 @@
    {
     "t": "Pharmacological strategies for the prevention and treatment of proliferative vitreoretinopathy: A comprehensive review",
     "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 13",
+    "d": "2026 Oct 14",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42869267/"
    }
   ],
@@ -270,6 +270,12 @@
     "src": "Eye",
     "d": "2026 Oct 9",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42855590/"
+   },
+   {
+    "t": "Intracranial hypertension in a child with vitamin D deficiency",
+    "src": "J AAPOS",
+    "d": "2026 Oct 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42854826/"
    },
    {
     "t": "Optic disc drusen prevalence and visual outcome in a cohort of patients with non-arteritic anterior ischemic optic neuropathy",
@@ -288,12 +294,6 @@
     "src": "IOVS",
     "d": "2026 Oct 1",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42825631/"
-   },
-   {
-    "t": "Paracentral acute middle maculopathy in giant cell arteritis versus non-arteritic anterior ischaemic optic neuropathy",
-    "src": "British Journal of Ophthalmology",
-    "d": "2026 Sep 30",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42816146/"
    }
   ],
   "paeds": [
@@ -334,6 +334,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42854827/"
    }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
  }
 }
