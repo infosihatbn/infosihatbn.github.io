@@ -2,6 +2,12 @@
  "news": {
   "items": [
    {
+    "t": "Air quality moderate across districts",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBqS25qNEdJU2pCcmRPSjZOZmlRNXhDbHhDS3J0QWd6QUNPYUswc1A0LWRObTA4QUtYQjFYcGJqUXZyZk1jd2xTSzBDWURzUFpNVWZUYVUwbENGZmhxWk4wNlBMS0xaQkQyX2tUNHpma2xHcmxKbmg4?oc=5",
+    "d": "2026-10-24"
+   },
+   {
     "t": "Air quality across Brunei within moderate range",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQbEF4bU52VWJCU21XYWoyMWZhOWJMM0duYkhjYlltMWtNTlo3SzVxSERTNUxZTHlSbUVHOW9OVlI5R2xKYlcta0xZbE9wdW1FTzlhaWl4eUVkYnFyMmdOSkVYUERITld5NWM5N3h0YnRRZDVJc2JmYkJwYno0dXAxUW9KWEs?oc=5",
@@ -30,56 +36,50 @@
     "src": "The Star",
     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPdEhVQ2tMdU5oM21oOGU5TUJ6VjQ0emhJaEtnTFJnSl9XWjdqb1p1YnYwY0lvS1NZNVVoekVyM0w1a3hRQW9qZDhweTBqREVHN2w1RE1mREZLNTNuelByMEsxM0hDa3d2WXg5ZDJ1RHFYVkhxSTU2R0dHZ3dRSlVMNUdjNmhJOWltX1hGUDFQMEY3S1BWN0c4cmYzekd3djhRb003ZEJ5bjBybWpoUHVv?oc=5",
     "d": "2026-10-21"
-   },
-   {
-    "t": "'AI can solve healthcare's hardest problems — but the world must act together'",
-    "src": "헤럴드경제",
-    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5qV3g1U1BOdEVNLXp4ZGh3MGltVEpKZTY4NmpoR3NyT0xtLWU2ZDBBc09pRzNIMm9tYUhMUXRWTWpVa0VsNVpueHZKdzRWMEhGWEp0OG9B?oc=5",
-    "d": "2026-10-21"
    }
   ],
-  "updated": "2026-10-23"
+  "updated": "2026-10-24"
  },
  "sea": {
   "items": [
    {
-    "t": "Social Determinants of Health, Vision, and Treatment in Exudative Age-Related Macular Degeneration",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42908726/"
+    "t": "Therapeutic efficacy and systemic pharmacokinetics of a dual-drug hydrogel contact lens for sustained glaucoma therapy",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42920388/"
    },
    {
-    "t": "Hydrus microstent combined with cataract surgery or used alone: cost-utility analysis for UK",
-    "src": "Eye",
-    "d": "2026 Oct 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42907572/"
+    "t": "Effect of 0.01%, 0.02% and 0.04% Atropine eyedrops vs Placebo on myopia incidence in pre-myopic children: A randomized clinical trial",
+    "src": "Asia-Pacific Journal of Ophthalmology",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42918548/"
    },
    {
-    "t": "Artificial intelligence in diabetic retinopathy: From deep learning to foundation models, clinical translation, and real-world deployment",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42906863/"
+    "t": "Morgagnian Cataract: Clinical Features, Surgical Management, and Outcomes",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42918530/"
    },
    {
-    "t": "Peripheral exudative hemorrhagic chorioretinopathy: A comprehensive review of clinical features, differential diagnosis, pathogenesis-related disease spectra, and management",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42906862/"
-   },
-   {
-    "t": "Subretinal fibrosis in neovascular age-related macular degeneration: From clinical features to fibrotic mechanisms and therapeutic opportunities",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42906861/"
-   },
-   {
-    "t": "Systematic Review of Clinical Utility of Multimodal Imaging in Infectious Posterior Uveitis. Multimodal imaging in Uveitis (MUV) Taskforce Report 12",
+    "t": "Longitudinal analysis of structural biomarkers for disease progression in intermediate age-related macular degeneration: a MACUSTAR study report",
     "src": "Ophthalmology Retina",
-    "d": "2026 Oct 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42906791/"
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42918418/"
+   },
+   {
+    "t": "Efficacy of Oral Belzutifan for Retinal Capillary Hemangioblastomas in von Hippel-Lindau Disease",
+    "src": "Ophthalmology Retina",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42918417/"
+   },
+   {
+    "t": "Intraocular Pressure Following Phacoemulsification with Anterior Vitrectomy in the IRIS® Registry (Intelligent Research in Sight)",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42918330/"
    }
   ],
-  "updated": "2026-10-23"
+  "updated": "2026-10-24"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-23"
+  "updated": "2026-10-24"
  },
- "checked": "2026-10-23T22:20+00:00",
+ "checked": "2026-10-24T22:15+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -107,6 +107,24 @@
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Contact Lens-Assisted Femtosecond Laser Harvesting of Donor Bowman Layer Grafts: A Pilot In Vitro Study With Preliminary Clinical Application in Advanced Keratoconus",
+    "src": "Cornea",
+    "d": "2026 Oct 19",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42910415/"
+   },
+   {
+    "t": "Supervised Reduction Protocol for Management of Herpetic Stromal Keratitis",
+    "src": "Cornea",
+    "d": "2026 Oct 22",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42910411/"
+   },
+   {
+    "t": "A Standardized Protocol for Murine Endothelial Keratoplasty: From Donor Preparation to Outcome Assessment",
+    "src": "Cornea",
+    "d": "2026 Oct 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42910410/"
+   },
    {
     "t": "Three-year cohort study on the predictive role of axial length-to-corneal radius ratio in the incidence and progression of myopia among Chinese schoolchildren",
     "src": "Graefe's Archive",
@@ -124,105 +142,105 @@
     "src": "Acta Ophthalmologica",
     "d": "2026 Oct 18",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42894321/"
-   },
-   {
-    "t": "Infectious Keratitis and Endophthalmitis Following Boston Type I Keratoprosthesis: Incidence, Risk Factors, and Long-Term Outcomes",
-    "src": "The Ocular Surface",
-    "d": "2026 Oct 16",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42887719/"
-   },
-   {
-    "t": "Immune Landscape and Intercellular Crosstalk in the Cornea of an Autoimmune-Mediated Dry Eye Disease",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42885991/"
-   },
-   {
-    "t": "Outcomes of therapeutic penetrating keratoplasty and deep anterior lamellar keratoplasty in acanthamoeba keratitis: A systematic review and meta-analysis",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 16",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42885655/"
    }
   ],
   "glaucoma": [
    {
-    "t": "Detecting Intraocular Pressure Harmonic Frequencies in Glaucoma and the Sampling Targets Needed to Identify Them With Self-Tonometry",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904889/"
+    "t": "Therapeutic efficacy and systemic pharmacokinetics of a dual-drug hydrogel contact lens for sustained glaucoma therapy",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Oct 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42920388/"
    },
    {
-    "t": "USP10 Silencing Prevents Scarring and Inflammation in a Modified Rabbit Model of Glaucoma Filtration Surgery",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904888/"
+    "t": "Intraocular Pressure Following Phacoemulsification with Anterior Vitrectomy in the IRIS® Registry (Intelligent Research in Sight)",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42918330/"
    },
    {
-    "t": "Domestic Water Mineral Composition and Incident Glaucoma Risk: A Prospective Cohort Study From the UK Biobank",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904887/"
+    "t": "Association Between Systemic TNF-α Inhibitor Use and Risk of Primary Open-Angle Glaucoma",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Oct 22",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42913929/"
    },
    {
-    "t": "36-month multi-centre outcomes of XEN45 gel stent implantation in Asian versus non-Asian eyes with primary open angle glaucoma",
+    "t": "Incidence and Risk Factors of Recurrent Visual Field Progression in Glaucoma",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Oct 22",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42911573/"
+   },
+   {
+    "t": "Predictive baseline thresholds for successful dual blade goniotomy combined with phacoemulsification in glaucoma patients",
     "src": "Graefe's Archive",
-    "d": "2026 Oct 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42891852/"
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42909589/"
    },
    {
-    "t": "Stage-dependent differences in recalculated mean deviation between 24plus(1-2) and 24plus(1) test locations in glaucoma",
+    "t": "Psychological distress associated with glaucoma: potential predictors and contributing factors",
     "src": "Graefe's Archive",
-    "d": "2026 Oct 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42891849/"
-   },
-   {
-    "t": "Evaluating Long-Term Effectiveness and Safety of Glaucoma Surgical Innovations: A Systematic Review",
-    "src": "J Glaucoma",
-    "d": "2026 Oct 16",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42886586/"
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42909588/"
    }
   ],
   "medret": [
+   {
+    "t": "Longitudinal analysis of structural biomarkers for disease progression in intermediate age-related macular degeneration: a MACUSTAR study report",
+    "src": "Ophthalmology Retina",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42918418/"
+   },
+   {
+    "t": "The role and mechanism of the miR-137 regulatory axis in diabetic retinopathy",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 22",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42911229/"
+   },
+   {
+    "t": "Quantitative Fundus Autofluorescence in Geographic Atrophy Secondary to AMD: Comparison With Stargardt Disease, PRPH2-Associated Retinal Dystrophies, and Healthy Controls",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42910810/"
+   },
+   {
+    "t": "Adjunctive topical bromfenac and the 3-year bevacizumab injection burden in macular edema secondary to branch retinal vein occlusion",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42909592/"
+   },
+   {
+    "t": "Integrated multimodal assessment of retinal oxygenation, hemodynamics, and neurovisual function in retinal vein occlusion",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42909591/"
+   },
    {
     "t": "Social Determinants of Health, Vision, and Treatment in Exudative Age-Related Macular Degeneration",
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42908726/"
-   },
-   {
-    "t": "Artificial intelligence in diabetic retinopathy: From deep learning to foundation models, clinical translation, and real-world deployment",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42906863/"
-   },
-   {
-    "t": "Subretinal fibrosis in neovascular age-related macular degeneration: From clinical features to fibrotic mechanisms and therapeutic opportunities",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42906861/"
-   },
-   {
-    "t": "Risk Factors for Retinal Pigment Epithelium Tears in Patients with Neovascular Age-Related Macular Degeneration: A Systematic Review and Meta-Analysis",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Oct 19",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42896642/"
-   },
-   {
-    "t": "Age-Related Hypofluorescent Indocyanine Green Angiography Spots: Prevalence, Characteristics, and Associated Features in Age-Related Macular Degeneration",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42891122/"
-   },
-   {
-    "t": "Variables Associated With Faricimab Treatment Durability in Neovascular Age-Related Macular Degeneration: A Post Hoc Analysis of the TENAYA and LUCERNE Trials",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Oct 15",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42879146/"
    }
   ],
   "vr": [
    {
-    "t": "Infectious Keratitis and Endophthalmitis Following Boston Type I Keratoprosthesis: Incidence, Risk Factors, and Long-Term Outcomes",
+    "t": "Intraocular Pressure Following Phacoemulsification with Anterior Vitrectomy in the IRIS® Registry (Intelligent Research in Sight)",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42918330/"
+   },
+   {
+    "t": "Silicone oil vs. gas tamponade in giant retinal tear associated rhegmatogenous retinal detachment: a systematic review and meta-analysis",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 22",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42911228/"
+   },
+   {
+    "t": "Macrophage-Associated Profibrotic Programs in Diabetic Epiretinal Membrane and Their Modulation by Faricimab",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42910809/"
+   },
+   {
+    "t": "Infectious keratitis and endophthalmitis following Boston Type I keratoprosthesis: Incidence, risk factors, and long-term outcomes",
     "src": "The Ocular Surface",
     "d": "2026 Oct 16",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42887719/"
@@ -238,24 +256,6 @@
     "src": "Ophthalmology Retina",
     "d": "2026 Oct 14",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42874918/"
-   },
-   {
-    "t": "Aspergillus Endophthalmitis: Clinical Features, Treatment Modalities, and Visual Outcomes",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42872945/"
-   },
-   {
-    "t": "Clinical outcomes of epiretinal membrane surgery in patients with good baseline visual acuity",
-    "src": "Retina",
-    "d": "2026 Oct 14",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42870525/"
-   },
-   {
-    "t": "Pharmacological strategies for the prevention and treatment of proliferative vitreoretinopathy: A comprehensive review",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 14",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42869267/"
    }
   ],
   "neuro": [
@@ -298,6 +298,12 @@
   ],
   "paeds": [
    {
+    "t": "Effect of 0.01%, 0.02% and 0.04% Atropine eyedrops vs Placebo on myopia incidence in pre-myopic children: A randomized clinical trial",
+    "src": "Asia-Pacific Journal of Ophthalmology",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42918548/"
+   },
+   {
     "t": "Combination therapy for myopia control using defocus incorporated multiple segments spectacles in children refractory to higher-dose atropine",
     "src": "Graefe's Archive",
     "d": "2026 Oct 17",
@@ -326,14 +332,8 @@
     "src": "J AAPOS",
     "d": "2026 Oct 10",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42858879/"
-   },
-   {
-    "t": "Assessment of the Spot vision screener performance in detecting amblyopia and strabismus in Nepal: a prospective diagnostic accuracy study",
-    "src": "J AAPOS",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42854827/"
    }
   ],
-  "updated": "2026-10-23"
+  "updated": "2026-10-24"
  }
 }
