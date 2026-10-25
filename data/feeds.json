@@ -2,6 +2,18 @@
  "news": {
   "items": [
    {
+    "t": "Air quality moderate across all districts",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFAxaGhDNmlRYlNvM3phdFFQVnREenVfM0ZYSzRyM3NLTmdTVTNMM1Ryb0YzVHBKeWttOXVjaFlmOW9jVUdOWTJPQllOUFJXTTVXcUpMR1FJYkN6ZzNxTUMwV2M5NDJVYUZnZ0xvSEpzZWdlT1hJVi1OSVQ1d3Q?oc=5",
+    "d": "2026-10-25"
+   },
+   {
+    "t": "Moderate air quality persists across all districts",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNR2hXMFM0czdfM2Y1d1A0LWxqa01oUzIzXzl1TVBwc29FdXBxSnZPMlV6b3pxZ1F3SzF6QWRHYzhjYkdENWw5eUFoVmEtbVQ5T0dFdmdqRC1iMFZYa2pLT2JVTW9lUGxQNzZ3LW9jT1RSNjFDbm95YkIyLU1HN0kzdzVzbnBBWWli?oc=5",
+    "d": "2026-10-24"
+   },
+   {
     "t": "Air quality moderate across districts",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBqS25qNEdJU2pCcmRPSjZOZmlRNXhDbHhDS3J0QWd6QUNPYUswc1A0LWRObTA4QUtYQjFYcGJqUXZyZk1jd2xTSzBDWURzUFpNVWZUYVUwbENGZmhxWk4wNlBMS0xaQkQyX2tUNHpma2xHcmxKbmg4?oc=5",
@@ -24,62 +36,50 @@
     "src": "Asia Insurance Review",
     "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxQOC1ORGl5M3pUTDNBNDQteWxFNHJQRXhXSllHeUxiYWVRT3B5Sng3OElJTThtaFpIVGo2UUpMRHJBdmlLZlJIeWV5S3UzLVJhVTRpZVhhNVNXZVJPUnZhVmdBUVdJMEhIZE81U0x1Y0JveDZzVlE4TzB3NGhKbEQ0a2d1cDgzME5rMW5Nd0tzV3NKN1NYS2xtTk5BeEE4ajNDcGpYX0REWmZtRl9MbGpONkJkNG92V2FwMTF5R1RFejVmQmZVNXE0ZHBQNXpjY2REcko4SWE5Wm81ZjVjbVFTYWhJd0t5WHJ3Zkp1U0M0TjdLMzFwaUlzQndLR0ZXMmhDSXZB?oc=5",
     "d": "2026-10-22"
-   },
-   {
-    "t": "Indonesia, Brunei strengthen cooperation in health, energy and security",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxORXVJOXRBU254YlFYWEF2UXZqT3ppaFJEdEN1MkEyM0tEZlJZRDNKeXlaMEFaNUFqaG1HTnVPMjBEUEU2bnJPaF9vZWt3TERWZVRmWUVSS1M5U3BaUlgtMUNBd0Y4cVBIdURfSE5rV1BqOC1mY0Y5UG5BbXp5Y2N1VlI4M2N3WTNrb0NRdG10dl9vQXFRTG5rRS15LTVRSDFTZEE?oc=5",
-    "d": "2026-10-22"
-   },
-   {
-    "t": "Brunei’s air quality remains good after rainfall",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPdEhVQ2tMdU5oM21oOGU5TUJ6VjQ0emhJaEtnTFJnSl9XWjdqb1p1YnYwY0lvS1NZNVVoekVyM0w1a3hRQW9qZDhweTBqREVHN2w1RE1mREZLNTNuelByMEsxM0hDa3d2WXg5ZDJ1RHFYVkhxSTU2R0dHZ3dRSlVMNUdjNmhJOWltX1hGUDFQMEY3S1BWN0c4cmYzekd3djhRb003ZEJ5bjBybWpoUHVv?oc=5",
-    "d": "2026-10-21"
    }
   ],
-  "updated": "2026-10-24"
+  "updated": "2026-10-25"
  },
  "sea": {
   "items": [
    {
-    "t": "Therapeutic efficacy and systemic pharmacokinetics of a dual-drug hydrogel contact lens for sustained glaucoma therapy",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 24",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42920388/"
+    "t": "Lexical Diffusion: Linguistic Characteristics of Ophthalmology Science Articles with Disclosed Artificial Intelligence-Assisted Writing",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42927167/"
    },
    {
-    "t": "Effect of 0.01%, 0.02% and 0.04% Atropine eyedrops vs Placebo on myopia incidence in pre-myopic children: A randomized clinical trial",
-    "src": "Asia-Pacific Journal of Ophthalmology",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42918548/"
+    "t": "GLLaucoMed: A Secure Large Language Model-Powered Agentic Workflow for Automated Medication Extraction from Free-Text Glaucoma Clinical Notes",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42927148/"
    },
    {
-    "t": "Morgagnian Cataract: Clinical Features, Surgical Management, and Outcomes",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42918530/"
+    "t": "Predictive Performance of Polygenic Risk Scores for Primary Open-Angle Glaucoma: A Systematic Review and Meta-Analysis",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42926799/"
    },
    {
-    "t": "Longitudinal analysis of structural biomarkers for disease progression in intermediate age-related macular degeneration: a MACUSTAR study report",
-    "src": "Ophthalmology Retina",
+    "t": "Comparative Analysis of Rhegmatogenous Retinal Detachment Repair with or without Associated Macular Hole",
+    "src": "Retina",
     "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42918418/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42925163/"
    },
    {
-    "t": "Efficacy of Oral Belzutifan for Retinal Capillary Hemangioblastomas in von Hippel-Lindau Disease",
-    "src": "Ophthalmology Retina",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42918417/"
+    "t": "Integrative Genomic Analyses Prioritize CETP-Related Lipid Traits in Age-Related Macular Degeneration",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42924995/"
    },
    {
-    "t": "Intraocular Pressure Following Phacoemulsification with Anterior Vitrectomy in the IRIS® Registry (Intelligent Research in Sight)",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42918330/"
+    "t": "Longitudinal Data on Chinese Children Suggest That Cutoff Values for Defining Premyopia Should Be Age- and Location-Specific",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42924994/"
    }
   ],
-  "updated": "2026-10-24"
+  "updated": "2026-10-25"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-24"
+  "updated": "2026-10-25"
  },
- "checked": "2026-10-24T22:15+00:00",
+ "checked": "2026-10-25T22:13+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -107,6 +107,30 @@
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Quantitation of Stromal Distortion Across the Full Depth of Keratoconic Corneas",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42924991/"
+   },
+   {
+    "t": "Effect of Dry Eye and Ocular Surface Treatment on Agreement and Repeatability of Corneal Astigmatism Measurements Among Three Devices",
+    "src": "J Cataract Refract Surg",
+    "d": "2026 Oct 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42922396/"
+   },
+   {
+    "t": "Long-Term Visual, Refractive, and Patient-Reported Satisfaction of the Tel-Aviv Protocol (ePRK-CXL) for Progressive Keratoconus",
+    "src": "J Cataract Refract Surg",
+    "d": "2026 Oct 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42922395/"
+   },
+   {
+    "t": "Corneal Aberrations and Layer-Specific Changes in Fuchs' Dystrophy: A Scheimpflug and AS-OCT-Based Analysis",
+    "src": "J Cataract Refract Surg",
+    "d": "2026 Oct 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42922393/"
+   },
    {
     "t": "Contact Lens-Assisted Femtosecond Laser Harvesting of Donor Bowman Layer Grafts: A Pilot In Vitro Study With Preliminary Clinical Application in Advanced Keratoconus",
     "src": "Cornea",
@@ -118,33 +142,21 @@
     "src": "Cornea",
     "d": "2026 Oct 22",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42910411/"
-   },
-   {
-    "t": "A Standardized Protocol for Murine Endothelial Keratoplasty: From Donor Preparation to Outcome Assessment",
-    "src": "Cornea",
-    "d": "2026 Oct 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42910410/"
-   },
-   {
-    "t": "Three-year cohort study on the predictive role of axial length-to-corneal radius ratio in the incidence and progression of myopia among Chinese schoolchildren",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42905166/"
-   },
-   {
-    "t": "Temporally Resolved Characterization of 254-nm UV Radiation-Induced Photokeratitis in a Rabbit Model",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42904885/"
-   },
-   {
-    "t": "Repeatability of interpolated corneal tomography maps in healthy and keratoconus corneas before and after crosslinking",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 18",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42894321/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "GLLaucoMed: A Secure Large Language Model-Powered Agentic Workflow for Automated Medication Extraction from Free-Text Glaucoma Clinical Notes",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42927148/"
+   },
+   {
+    "t": "Predictive Performance of Polygenic Risk Scores for Primary Open-Angle Glaucoma: A Systematic Review and Meta-Analysis",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42926799/"
+   },
    {
     "t": "Therapeutic efficacy and systemic pharmacokinetics of a dual-drug hydrogel contact lens for sustained glaucoma therapy",
     "src": "Acta Ophthalmologica",
@@ -168,21 +180,21 @@
     "src": "JAMA Ophthalmology",
     "d": "2026 Oct 22",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42911573/"
-   },
-   {
-    "t": "Predictive baseline thresholds for successful dual blade goniotomy combined with phacoemulsification in glaucoma patients",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42909589/"
-   },
-   {
-    "t": "Psychological distress associated with glaucoma: potential predictors and contributing factors",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42909588/"
    }
   ],
   "medret": [
+   {
+    "t": "Choroidal structural changes following intravitreal injection of faricimab or aflibercept 8 mg in neovascular age-related macular degeneration",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42925337/"
+   },
+   {
+    "t": "Integrative Genomic Analyses Prioritize CETP-Related Lipid Traits in Age-Related Macular Degeneration",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42924995/"
+   },
    {
     "t": "Longitudinal analysis of structural biomarkers for disease progression in intermediate age-related macular degeneration: a MACUSTAR study report",
     "src": "Ophthalmology Retina",
@@ -206,21 +218,15 @@
     "src": "Graefe's Archive",
     "d": "2026 Oct 23",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42909592/"
-   },
-   {
-    "t": "Integrated multimodal assessment of retinal oxygenation, hemodynamics, and neurovisual function in retinal vein occlusion",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42909591/"
-   },
-   {
-    "t": "Social Determinants of Health, Vision, and Treatment in Exudative Age-Related Macular Degeneration",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42908726/"
    }
   ],
   "vr": [
+   {
+    "t": "Comparative Analysis of Rhegmatogenous Retinal Detachment Repair with or without Associated Macular Hole",
+    "src": "Retina",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42925163/"
+   },
    {
     "t": "Intraocular Pressure Following Phacoemulsification with Anterior Vitrectomy in the IRIS® Registry (Intelligent Research in Sight)",
     "src": "Ophthalmology Glaucoma",
@@ -250,12 +256,6 @@
     "src": "Acta Ophthalmologica",
     "d": "2026 Oct 15",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42878633/"
-   },
-   {
-    "t": "Outcomes of Complex Retinal Detachment Repair with Proliferative Vitreoretinopathy Grade C using the Cincinnati Methotrexate Protocol",
-    "src": "Ophthalmology Retina",
-    "d": "2026 Oct 14",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42874918/"
    }
   ],
   "neuro": [
@@ -298,6 +298,18 @@
   ],
   "paeds": [
    {
+    "t": "The Relationship Between Interocular Lag and Contrast Sensitivity in Amblyopia",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42924993/"
+   },
+   {
+    "t": "Anisometropia, Strabismus, and Amblyopia in Children with Autism Spectrum Disorder, Attention-Deficit/Hyperactivity Disorder, and Their Comorbidity",
+    "src": "Ophthalmology Science",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42921403/"
+   },
+   {
     "t": "Effect of 0.01%, 0.02% and 0.04% Atropine eyedrops vs Placebo on myopia incidence in pre-myopic children: A randomized clinical trial",
     "src": "Asia-Pacific Journal of Ophthalmology",
     "d": "2026 Oct 23",
@@ -320,20 +332,8 @@
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42861086/"
-   },
-   {
-    "t": "Cost-Effectiveness of Telemedicine-Based Screening Programs for Retinopathy of Prematurity in Low- and Middle-Income Countries",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42861005/"
-   },
-   {
-    "t": "Eye-related quality of life among children with deprivation amblyopia after cataract surgery",
-    "src": "J AAPOS",
-    "d": "2026 Oct 10",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42858879/"
    }
   ],
-  "updated": "2026-10-24"
+  "updated": "2026-10-25"
  }
 }
