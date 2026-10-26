@@ -2,21 +2,27 @@
  "news": {
   "items": [
    {
+    "t": "Baiduri Cares for Employee Health, Holds Seminar to Enhance Dementia Awareness",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFA1bGdtN0dyNnNaVDZTRmstRS02ZmNtMkJPTDJoMC1lODFhRmxXQ29OaHBQb3dvRkNsNDQ5OXVsQjA4Z2hZWmJTUWZPZm95V0xJMVdfbFRYN1k4MGFBRFhZbzAzdF9RSXFOcGREQ2E1cw?oc=5",
+    "d": "2026-10-26"
+   },
+   {
     "t": "Air quality moderate across all districts",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFAxaGhDNmlRYlNvM3phdFFQVnREenVfM0ZYSzRyM3NLTmdTVTNMM1Ryb0YzVHBKeWttOXVjaFlmOW9jVUdOWTJPQllOUFJXTTVXcUpMR1FJYkN6ZzNxTUMwV2M5NDJVYUZnZ0xvSEpzZWdlT1hJVi1OSVQ1d3Q?oc=5",
     "d": "2026-10-25"
    },
    {
+    "t": "Air quality moderate in three districts",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1pSElhU0ZRS0RUOURhM0lfNkhhaHFwS0FkTFBzZFZSVm1sOTZMU3FBOFRmQm5PMUN2LU91a3lpV2JUVURRWlZ4WGwwZVlaY01EbTRsQ0FSVmhHX21yck5ITTNVX0lYb01EUkxFN1lfdU44UHBEVG9qR3JR?oc=5",
+    "d": "2026-10-25"
+   },
+   {
     "t": "Moderate air quality persists across all districts",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNR2hXMFM0czdfM2Y1d1A0LWxqa01oUzIzXzl1TVBwc29FdXBxSnZPMlV6b3pxZ1F3SzF6QWRHYzhjYkdENWw5eUFoVmEtbVQ5T0dFdmdqRC1iMFZYa2pLT2JVTW9lUGxQNzZ3LW9jT1RSNjFDbm95YkIyLU1HN0kzdzVzbnBBWWli?oc=5",
-    "d": "2026-10-24"
-   },
-   {
-    "t": "Air quality moderate across districts",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBqS25qNEdJU2pCcmRPSjZOZmlRNXhDbHhDS3J0QWd6QUNPYUswc1A0LWRObTA4QUtYQjFYcGJqUXZyZk1jd2xTSzBDWURzUFpNVWZUYVUwbENGZmhxWk4wNlBMS0xaQkQyX2tUNHpma2xHcmxKbmg4?oc=5",
     "d": "2026-10-24"
    },
    {
@@ -30,56 +36,50 @@
     "src": "The Straits Times",
     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQZkVaQ3FCcjdiU1RwdGtFdkJZX1lqYUZteWJsaUdJNV8zeUNOYU03Ukl0TDBjVFhqM3BnOGJhTlJCYkFRRTJWWnBrc1p0UlV3aFN4ZXJNWFBFay0zcUVsTDI0Z2pfRDhkTTdCZWRoR1JhT3FJbVhTR3pZZVRLaUVjaFZ4MFYtdkNrS0tJUVRBMEdyU0F4cDYzTFlRaVlwcHRfalloQ3lDQnZxemFqVjgtV1VrSDRzQl9jcDVz?oc=5",
     "d": "2026-10-22"
-   },
-   {
-    "t": "SEA: ADB cites public insurance pools as viable vehicles for cervical cancer elimination",
-    "src": "Asia Insurance Review",
-    "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxQOC1ORGl5M3pUTDNBNDQteWxFNHJQRXhXSllHeUxiYWVRT3B5Sng3OElJTThtaFpIVGo2UUpMRHJBdmlLZlJIeWV5S3UzLVJhVTRpZVhhNVNXZVJPUnZhVmdBUVdJMEhIZE81U0x1Y0JveDZzVlE4TzB3NGhKbEQ0a2d1cDgzME5rMW5Nd0tzV3NKN1NYS2xtTk5BeEE4ajNDcGpYX0REWmZtRl9MbGpONkJkNG92V2FwMTF5R1RFejVmQmZVNXE0ZHBQNXpjY2REcko4SWE5Wm81ZjVjbVFTYWhJd0t5WHJ3Zkp1U0M0TjdLMzFwaUlzQndLR0ZXMmhDSXZB?oc=5",
-    "d": "2026-10-22"
    }
   ],
-  "updated": "2026-10-25"
+  "updated": "2026-10-26"
  },
  "sea": {
   "items": [
+   {
+    "t": "Retinal Microvascular and Neuronal Alterations in Type 2 Diabetes: Insights From a Population-Based Screening Program (START2)",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929690/"
+   },
+   {
+    "t": "AI-Based OCT Assessment of Anatomic Response During the Loading Phase of Anti-VEGF Therapy in Neovascular Age-Related Macular Degeneration",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929689/"
+   },
+   {
+    "t": "CLEC4E-Mediated Macrophage Activation Contributes to Host Defense in Acanthamoeba Keratitis",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929688/"
+   },
+   {
+    "t": "Association Between Cilio-Lenticular Distance and Anterior Chamber Depth in Primary Angle-Closure Glaucoma",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929687/"
+   },
+   {
+    "t": "Shared Genetic Architecture Between Myopia and Primary Open-Angle Glaucoma: A Multidimensional Genome-Wide Analysis",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929686/"
+   },
    {
     "t": "Lexical Diffusion: Linguistic Characteristics of Ophthalmology Science Articles with Disclosed Artificial Intelligence-Assisted Writing",
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42927167/"
-   },
-   {
-    "t": "GLLaucoMed: A Secure Large Language Model-Powered Agentic Workflow for Automated Medication Extraction from Free-Text Glaucoma Clinical Notes",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42927148/"
-   },
-   {
-    "t": "Predictive Performance of Polygenic Risk Scores for Primary Open-Angle Glaucoma: A Systematic Review and Meta-Analysis",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42926799/"
-   },
-   {
-    "t": "Comparative Analysis of Rhegmatogenous Retinal Detachment Repair with or without Associated Macular Hole",
-    "src": "Retina",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42925163/"
-   },
-   {
-    "t": "Integrative Genomic Analyses Prioritize CETP-Related Lipid Traits in Age-Related Macular Degeneration",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42924995/"
-   },
-   {
-    "t": "Longitudinal Data on Chinese Children Suggest That Cutoff Values for Defining Premyopia Should Be Age- and Location-Specific",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42924994/"
    }
   ],
-  "updated": "2026-10-25"
+  "updated": "2026-10-26"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-25"
+  "updated": "2026-10-26"
  },
- "checked": "2026-10-25T22:13+00:00",
+ "checked": "2026-10-26T22:23+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -107,6 +107,18 @@
  },
  "sub": {
   "cornea": [
+   {
+    "t": "CLEC4E-Mediated Macrophage Activation Contributes to Host Defense in Acanthamoeba Keratitis",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929688/"
+   },
+   {
+    "t": "OpenEvidence versus Six Leading Large Language Models in Refractive Surgery: Does Curated Medical Evidence Confer an Advantage?",
+    "src": "J Cataract Refract Surg",
+    "d": "2026 Oct 26",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929207/"
+   },
    {
     "t": "Quantitation of Stromal Distortion Across the Full Depth of Keratoconic Corneas",
     "src": "IOVS",
@@ -130,21 +142,21 @@
     "src": "J Cataract Refract Surg",
     "d": "2026 Oct 20",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42922393/"
-   },
-   {
-    "t": "Contact Lens-Assisted Femtosecond Laser Harvesting of Donor Bowman Layer Grafts: A Pilot In Vitro Study With Preliminary Clinical Application in Advanced Keratoconus",
-    "src": "Cornea",
-    "d": "2026 Oct 19",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42910415/"
-   },
-   {
-    "t": "Supervised Reduction Protocol for Management of Herpetic Stromal Keratitis",
-    "src": "Cornea",
-    "d": "2026 Oct 22",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42910411/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Association Between Cilio-Lenticular Distance and Anterior Chamber Depth in Primary Angle-Closure Glaucoma",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929687/"
+   },
+   {
+    "t": "Shared Genetic Architecture Between Myopia and Primary Open-Angle Glaucoma: A Multidimensional Genome-Wide Analysis",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929686/"
+   },
    {
     "t": "GLLaucoMed: A Secure Large Language Model-Powered Agentic Workflow for Automated Medication Extraction from Free-Text Glaucoma Clinical Notes",
     "src": "Ophthalmology Science",
@@ -168,21 +180,21 @@
     "src": "Ophthalmology Glaucoma",
     "d": "2026 Oct 23",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42918330/"
-   },
-   {
-    "t": "Association Between Systemic TNF-α Inhibitor Use and Risk of Primary Open-Angle Glaucoma",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Oct 22",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42913929/"
-   },
-   {
-    "t": "Incidence and Risk Factors of Recurrent Visual Field Progression in Glaucoma",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Oct 22",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42911573/"
    }
   ],
   "medret": [
+   {
+    "t": "AI-Based OCT Assessment of Anatomic Response During the Loading Phase of Anti-VEGF Therapy in Neovascular Age-Related Macular Degeneration",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42929689/"
+   },
+   {
+    "t": "Outcomes of subthreshold diode micropulse laser and anti-VEGF vs anti-VEGF monotherapy for diabetic macular edema: a meta-analysis",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 26",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42928376/"
+   },
    {
     "t": "Choroidal structural changes following intravitreal injection of faricimab or aflibercept 8 mg in neovascular age-related macular degeneration",
     "src": "Graefe's Archive",
@@ -206,18 +218,6 @@
     "src": "Graefe's Archive",
     "d": "2026 Oct 22",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42911229/"
-   },
-   {
-    "t": "Quantitative Fundus Autofluorescence in Geographic Atrophy Secondary to AMD: Comparison With Stargardt Disease, PRPH2-Associated Retinal Dystrophies, and Healthy Controls",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42910810/"
-   },
-   {
-    "t": "Adjunctive topical bromfenac and the 3-year bevacizumab injection burden in macular edema secondary to branch retinal vein occlusion",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42909592/"
    }
   ],
   "vr": [
@@ -334,6 +334,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42861086/"
    }
   ],
-  "updated": "2026-10-25"
+  "updated": "2026-10-26"
  }
 }
