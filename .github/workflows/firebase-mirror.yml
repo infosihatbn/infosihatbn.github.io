@@ -1,0 +1,39 @@
+name: Mirror to Firebase Hosting
+
+# Copies the site, unchanged, to Firebase Hosting (matakitani.web.app) for
+# networks that block matakitani.com and github.io. Canonical tags still
+# point at https://matakitani.com/, so search engines keep the main site.
+on:
+  push:
+    branches: [main]
+  # Bot commits pushed with GITHUB_TOKEN do not start push workflows,
+  # so redeploy after the daily feed update too.
+  workflow_run:
+    workflows: ["Update live feeds"]
+    types: [completed]
+  workflow_dispatch:
+
+concurrency:
+  group: firebase-mirror
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+    steps:
+      - name: Waiting for the Firebase key
+        if: env.SA == ''
+        run: echo "Add the FIREBASE_SERVICE_ACCOUNT secret to turn on the mirror."
+      - uses: actions/checkout@v4
+        if: env.SA != ''
+        with:
+          ref: main
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        if: env.SA != ''
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ vars.FIREBASE_PROJECT_ID || 'matakitani' }}
+          channelId: live

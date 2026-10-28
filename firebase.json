@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "CNAME",
+      "README.md",
+      ".nojekyll",
+      ".gitignore",
+      "**/.*",
+      "**/__pycache__/**",
+      "**/node_modules/**"
+    ],
+    "trailingSlash": true,
+    "headers": [
+      { "source": "**", "headers": [{ "key": "Cache-Control", "value": "max-age=600" }] },
+      { "source": "/sw.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+    ]
+  }
+}
