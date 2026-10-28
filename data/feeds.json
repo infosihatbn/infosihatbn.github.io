@@ -2,16 +2,22 @@
  "news": {
   "items": [
    {
-    "t": "Royal promotes breast cancer awareness in Brunei",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNR00ta3I5YjZSZzhPV284MVo1SFBWUjFnTG9KUnZwcU5DVXNMclNjdi1HbHdXNnJDdlNteG1kQW94bFIyQmQyeTlwbjN0S2E3ZEpKVVJOR2lveE9EcGRlMV9nREkwT2E3WC1UQVh5aFVxY2VVckcyaEFFNVpWVDYtTkNYNG1CY0pvWHRZMUNOektCWjJWdDE5Z3pMT3FRUUZXQXo0ZDB4bGFRRENRbk02YQ?oc=5",
+    "t": "Good Air Quality in Brunei's Three Districts, Moderate in Tutong",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9zcC1MMWItLU95YkpMblB1dHNmenFDbzFiSDlyMmxNM242Q080UUszdno3UEVLV3dVaEhDNjhibjVXSE00MEQ0VHRYSjBsZUhJZEs1enpYVnAxZzAzT0g2T3VYRFRUM3MtR2pjbGJFaw?oc=5",
+    "d": "2026-10-28"
+   },
+   {
+    "t": "Royal promotes breast cancer awareness in Brunei - Royal | Brunei News",
+    "src": "Head Topics",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOXzNiRzZ5X0NTd3g2REotMm9rXzBpcDVWTF9sRlBaeWF2SEV3cTJWT0tVX0p0c19wNXJNWVYwSFJYM3N0VWNBaXdVQzVfbEFWMk5ZS3NmME83VkN0ZTdIenU0YUhhSVBFQkt4NnlKdTllb3FvWnRILTkxRXVTOVV3Q2NyQ3N2SFBudnMyZGJDbS1VQQ?oc=5",
     "d": "2026-10-27"
    },
    {
-    "t": "Vietnam proposes 85% graphic health warnings on cigarette packs",
-    "src": "Báo VietNamNet",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQQ01CZ3FsWDJXMnUxUEVMTnFpWHBrUmVEb3RyUDFnQlJRVW9TVnJQdWNyczVWVDBKTUpnbjU4OTNBTXdkVExNaGc5UlFmNFpGSlpUNndfckZMLTByRzZuTUhXUVVNMFZQbFRYQUhoeDFETEZIV3FGMEh2UXJxUkN4dG9DOGVfcV9CcmJZNE03ci1ONml3VlpJOUhDSEhjTlI4Q2c?oc=5",
-    "d": "2026-10-27"
+    "t": "Are 'man boobs' linked to a risk of cancer?",
+    "src": "The Star",
+    "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNU2lXbmhMWlBNS0t6SHJGdVQ1cWg1Q2RwZDNhMHlaSTBTNVVjVU5zTkpkWW9WaGNtVHc2WEN0RVJHbmV2MEJwbkNTVVlGb29OUExCbklPaHJpWGhHQkRXS0txU0t5RlQxWmFoZEZIZGxPUzBJaG9ZZ2xtdV84YkpGMzktdUl0UUthWTdLQkxSS2t6eTRFRUZ0R1hXN3M4bEgtTXhLMWg0WmJUVnc1bi05S0xzWTdMQ3NYenR6c01pR3ZpYV85ZE9F?oc=5",
+    "d": "2026-10-25"
    },
    {
     "t": "Air quality moderate across all districts",
@@ -30,56 +36,50 @@
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNR2hXMFM0czdfM2Y1d1A0LWxqa01oUzIzXzl1TVBwc29FdXBxSnZPMlV6b3pxZ1F3SzF6QWRHYzhjYkdENWw5eUFoVmEtbVQ5T0dFdmdqRC1iMFZYa2pLT2JVTW9lUGxQNzZ3LW9jT1RSNjFDbm95YkIyLU1HN0kzdzVzbnBBWWli?oc=5",
     "d": "2026-10-24"
-   },
-   {
-    "t": "Air quality across Brunei within moderate range",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQbEF4bU52VWJCU21XYWoyMWZhOWJMM0duYkhjYlltMWtNTlo3SzVxSERTNUxZTHlSbUVHOW9OVlI5R2xKYlcta0xZbE9wdW1FTzlhaWl4eUVkYnFyMmdOSkVYUERITld5NWM5N3h0YnRRZDVJc2JmYkJwYno0dXAxUW9KWEs?oc=5",
-    "d": "2026-10-23"
    }
   ],
-  "updated": "2026-10-27"
+  "updated": "2026-10-28"
  },
  "sea": {
   "items": [
    {
-    "t": "Retina Insurance Reimbursements of Pediatric Retina Patients in a Hospital versus Outpatient Surgical Setting",
-    "src": "Retina",
-    "d": "2026 Oct 27",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42944618/"
-   },
-   {
-    "t": "Clinical assessment and relationship of retinal fluorophores and microvascular modifications in early diabetic retinal disease in type 1 diabetes",
-    "src": "Retina",
-    "d": "2026 Oct 27",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42944608/"
-   },
-   {
-    "t": "Regional and Temporal Changes in Choroidal Vascularity after Panretinal Photocoagulation in Diabetic Retinopathy: A Widefield SS-OCTA Study",
-    "src": "Retina",
-    "d": "2026 Oct 27",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42944598/"
-   },
-   {
-    "t": "Is retinal vein occlusion an underrecognized paraneoplastic sentinel of lymphoma? A systematic review and meta-analysis of ocular-haematological interactions",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 27",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42944583/"
-   },
-   {
-    "t": "OCTA macular parameters to predict Peripheral Retinopathy Severity in Sickle Cell Disease",
-    "src": "Retina",
-    "d": "2026 Oct 27",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42937630/"
-   },
-   {
-    "t": "Seeing the Bias: Hemifield‑Dependent Remapping of Sensory, Sighting, and Acuity Eye Dominance",
+    "t": "Temporal Deletion of AP-2β in Postnatal Mice Demonstrates Distinct Roles in Anterior Angle Development and Intraocular Pressure Homeostasis",
     "src": "IOVS",
     "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42937440/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42949071/"
+   },
+   {
+    "t": "Single-Cell Transcriptomic Analysis Reveals Age-Associated Cellular and Transcriptional Changes in Murine Lacrimal Glands",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42949068/"
+   },
+   {
+    "t": "High-Resolution En Face OCT of the RPE in Geographic Atrophy Captures Patterns Resembling Fundus Autofluorescence",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42949067/"
+   },
+   {
+    "t": "Acute Loss of TrkB Signaling Impairs the Survival of Mature Retinal Ganglion Cells and Retinal Function",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42949066/"
+   },
+   {
+    "t": "Fundus torsion in strabismus: measurement, clinical interpretation, and emerging imaging approaches",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Oct 27",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42946092/"
+   },
+   {
+    "t": "Autologous Anterior Lens Capsule as an Intrascleral Spacer in Deep Sclerectomy: A Randomized Clinical Trial",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Oct 27",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42946033/"
    }
   ],
-  "updated": "2026-10-27"
+  "updated": "2026-10-28"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-10-27"
+  "updated": "2026-10-28"
  },
- "checked": "2026-10-27T22:26+00:00",
+ "checked": "2026-10-28T22:28+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -108,43 +108,55 @@
  "sub": {
   "cornea": [
    {
-    "t": "Validation of the University of California, Irvine Corneal Cystine Crystal Score (UCI CCCS): Correlations with Clinical, Imaging, and Symptom Outcomes in Cystinosis",
-    "src": "American Journal of Ophthalmology",
+    "t": "Redistribution of Corneal Endothelial Cells After Descemet Stripping Only Combined With Cataract Surgery for Fuchs Endothelial Corneal Dystrophy",
+    "src": "Cornea",
     "d": "2026 Oct 26",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42933522/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42950068/"
    },
    {
-    "t": "CLEC4E-Mediated Macrophage Activation Contributes to Host Defense in Acanthamoeba Keratitis",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42929688/"
+    "t": "Extensively Drug-Resistant Pseudomonas aeruginosa Keratitis After Photorefractive Keratectomy Because of Contaminated Eye Drops: Experience With Colistin-Based Therapy",
+    "src": "Cornea",
+    "d": "2026 Oct 27",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42950065/"
    },
    {
-    "t": "OpenEvidence versus Six Leading Large Language Models in Refractive Surgery: Does Curated Medical Evidence Confer an Advantage?",
-    "src": "J Cataract Refract Surg",
-    "d": "2026 Oct 26",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42929207/"
+    "t": "Lyophilized Multilayer Amniotic Membrane Transplantation for Corneal Perforation: Globe-Salvage Outcomes and Morphology-Matched Surgical Configurations",
+    "src": "Cornea",
+    "d": "2026 Oct 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42950012/"
    },
    {
-    "t": "Quantitation of Stromal Distortion Across the Full Depth of Keratoconic Corneas",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42924991/"
+    "t": "False-Positive Acanthamoeba Keratitis From Multiplex Polymerase Chain Reaction Diagnostics, a Case Series",
+    "src": "Cornea",
+    "d": "2026 Aug 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42949848/"
    },
    {
-    "t": "Effect of Dry Eye and Ocular Surface Treatment on Agreement and Repeatability of Corneal Astigmatism Measurements Among Three Devices",
-    "src": "J Cataract Refract Surg",
-    "d": "2026 Oct 20",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42922396/"
+    "t": "From Transnational Corneal Donations to Expanding Surgical Infrastructure: The Impact of the Zafar & Mir Foundation in Pakistan and Afghanistan",
+    "src": "Cornea",
+    "d": "2026 Aug 4",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42949846/"
    },
    {
-    "t": "Long-Term Visual, Refractive, and Patient-Reported Satisfaction of the Tel-Aviv Protocol (ePRK-CXL) for Progressive Keratoconus",
-    "src": "J Cataract Refract Surg",
-    "d": "2026 Oct 20",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42922395/"
+    "t": "Severe Palytoxin Keratitis Rehabilitated With Descemet Membrane Anterior Keratoplasty and Mini-Keratolimbal Allograft After Gundersen Flap for Globe Salvage",
+    "src": "Cornea",
+    "d": "2026 Aug 4",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42949845/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Temporal Deletion of AP-2β in Postnatal Mice Demonstrates Distinct Roles in Anterior Angle Development and Intraocular Pressure Homeostasis",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42949071/"
+   },
+   {
+    "t": "Lens particle-induced pediatric glaucoma following congenital cataract surgery: a case report",
+    "src": "J AAPOS",
+    "d": "2026 Oct 27",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42946153/"
+   },
    {
     "t": "Twelve-month outcomes of a tube-in-tube PreserFlo MicroShunt-Baerveldt glaucoma implant connection as a salvage procedure in refractory glaucoma: a pilot series",
     "src": "Graefe's Archive",
@@ -168,21 +180,21 @@
     "src": "IOVS",
     "d": "2026 Oct 1",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42929686/"
-   },
-   {
-    "t": "GLLaucoMed: A Secure Large Language Model-Powered Agentic Workflow for Automated Medication Extraction from Free-Text Glaucoma Clinical Notes",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42927148/"
-   },
-   {
-    "t": "Predictive Performance of Polygenic Risk Scores for Primary Open-Angle Glaucoma: A Systematic Review and Meta-Analysis",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42926799/"
    }
   ],
   "medret": [
+   {
+    "t": "High-Resolution En Face OCT of the RPE in Geographic Atrophy Captures Patterns Resembling Fundus Autofluorescence",
+    "src": "IOVS",
+    "d": "2026 Oct 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42949067/"
+   },
+   {
+    "t": "Time Course of Resolution of Diabetic Macular Edema by Sustained Suppression of VEGF-A with the Port Delivery Platform with Ranibizumab",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Oct 27",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42946032/"
+   },
    {
     "t": "Regional and Temporal Changes in Choroidal Vascularity after Panretinal Photocoagulation in Diabetic Retinopathy: A Widefield SS-OCTA Study",
     "src": "Retina",
@@ -206,21 +218,15 @@
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42935864/"
-   },
-   {
-    "t": "AI-Based OCT Assessment of Anatomic Response During the Loading Phase of Anti-VEGF Therapy in Neovascular Age-Related Macular Degeneration",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42929689/"
-   },
-   {
-    "t": "Outcomes of subthreshold diode micropulse laser and anti-VEGF vs anti-VEGF monotherapy for diabetic macular edema: a meta-analysis",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 26",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42928376/"
    }
   ],
   "vr": [
+   {
+    "t": "Evidence of an aging-like foveal profile in healthy fellow eyes of patients with idiopathic macular hole",
+    "src": "Graefe's Archive",
+    "d": "2026 Oct 28",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42946898/"
+   },
    {
     "t": "Comparative Analysis of Rhegmatogenous Retinal Detachment Repair with or without Associated Macular Hole",
     "src": "Retina",
@@ -250,12 +256,6 @@
     "src": "The Ocular Surface",
     "d": "2026 Oct 16",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42887719/"
-   },
-   {
-    "t": "Nearly doubled incidence of surgically treated primary rhegmatogenous retinal detachment in Southern Sweden, 2011-2025",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 15",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42878633/"
    }
   ],
   "neuro": [
@@ -298,6 +298,24 @@
   ],
   "paeds": [
    {
+    "t": "Days of unblended oxygen as a predictor of severe retinopathy of prematurity in Uganda",
+    "src": "J AAPOS",
+    "d": "2026 Oct 27",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42946154/"
+   },
+   {
+    "t": "Lens particle-induced pediatric glaucoma following congenital cataract surgery: a case report",
+    "src": "J AAPOS",
+    "d": "2026 Oct 27",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42946153/"
+   },
+   {
+    "t": "Fundus torsion in strabismus: measurement, clinical interpretation, and emerging imaging approaches",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Oct 27",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42946092/"
+   },
+   {
     "t": "The Relationship Between Interocular Lag and Contrast Sensitivity in Amblyopia",
     "src": "IOVS",
     "d": "2026 Oct 1",
@@ -314,26 +332,8 @@
     "src": "Asia-Pacific Journal of Ophthalmology",
     "d": "2026 Oct 23",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42918548/"
-   },
-   {
-    "t": "Combination therapy for myopia control using defocus incorporated multiple segments spectacles in children refractory to higher-dose atropine",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42891853/"
-   },
-   {
-    "t": "Cross-Sectional Profiling of Aqueous Humor VEGF-A Reflects the Tumor and Ocular Microenvironment in Retinoblastoma",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42872949/"
-   },
-   {
-    "t": "Neurodevelopmental Disorders in Infants Treated with Anti-VEGF Agents versus Laser Photocoagulation or Cryotherapy for Retinopathy of Prematurity",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42861086/"
    }
   ],
-  "updated": "2026-10-27"
+  "updated": "2026-10-28"
  }
 }
