@@ -20,12 +20,6 @@
     "d": "2026-10-30"
    },
    {
-    "t": "Air quality shifts between good and moderate",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPOWw0WHIydXdxV0VNM0RfX0FVSDVaNXRpcU04dG5HZTNEam1tYmlzYllROWFFOS1kQkVEOVRURzB2cnJGdURJazUtNGNaUUhWcEZMLTBFWmpLdXJfVUdZNlFESnJIY2Y4VENtd3pWai1ucmoxN0NZQWhueFl6aHdNRw?oc=5",
-    "d": "2026-10-29"
-   },
-   {
     "t": "Good Air Quality in Brunei's Three Districts, Moderate in Tutong",
     "src": "联合日报",
     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9zcC1MMWItLU95YkpMblB1dHNmenFDbzFiSDlyMmxNM242Q080UUszdno3UEVLV3dVaEhDNjhibjVXSE00MEQ0VHRYSjBsZUhJZEs1enpYVnAxZzAzT0g2T3VYRFRUM3MtR2pjbGJFaw?oc=5",
@@ -36,50 +30,56 @@
     "src": "Head Topics",
     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOXzNiRzZ5X0NTd3g2REotMm9rXzBpcDVWTF9sRlBaeWF2SEV3cTJWT0tVX0p0c19wNXJNWVYwSFJYM3N0VWNBaXdVQzVfbEFWMk5ZS3NmME83VkN0ZTdIenU0YUhhSVBFQkt4NnlKdTllb3FvWnRILTkxRXVTOVV3Q2NyQ3N2SFBudnMyZGJDbS1VQQ?oc=5",
     "d": "2026-10-27"
+   },
+   {
+    "t": "Royal promotes breast cancer awareness in Brunei - Royal | Brunei Berita",
+    "src": "Head Topics",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQLUNFYUpta3E0Nk85bTNfSDItbVA1QzdRWUIzcm56bEVDTV9HYVBpOExXUENYZ1hnYnZQc3NXaHoybm1rWU9IMTdJLUpDXzZES0V3c3hNdHMzYlQzM1hEMFdpZ0I2VUg1eUZBYndUdmJPdko1X3oxWVkxd21hMW9WeldFa0w3amM4UVBMcVpuVlBDdw?oc=5",
+    "d": "2026-10-27"
    }
   ],
-  "updated": "2026-11-01"
+  "updated": "2026-11-02"
  },
  "sea": {
   "items": [
    {
-    "t": "High-Resolution OCT of Basal Laminar Deposit Phenotypes and Retinal Pigment Epithelium Morphologic Changes in Age-Related Macular Degeneration",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42964701/"
-   },
-   {
-    "t": "Retinal capillary density in relation to diabetes duration and levels of glycaemia in young patients with type 1 diabetes",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Oct 31",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42963974/"
-   },
-   {
-    "t": "Pediatric Endothelial Keratoplasty: A Modified Delphi Consensus by the EKLG Study Group on Indications, Surgical Techniques, and Postoperative Care",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Oct 30",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42962988/"
-   },
-   {
-    "t": "Corneal versus refractive surgically induced astigmatism: vector analysis of their dissociation and implications for toric IOL planning",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Oct 30",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42962987/"
-   },
-   {
-    "t": "Risk-Stratified Outcomes of Prophylactic Laser Versus Observation for Pediatric Peripheral Retinal Lesions",
-    "src": "Ophthalmology Retina",
-    "d": "2026 Oct 30",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42962856/"
-   },
-   {
-    "t": "Maternal Vertical Transmission Provides a Mitochondrial Basis for ROP Susceptibility",
+    "t": "Adherens Junctions and Spectrin-Associated Proteins Function Interdependently to Stabilize Fiber Cell Membranes and Preserve Lens Transparency",
     "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42961307/"
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42969569/"
+   },
+   {
+    "t": "Flicker-Evoked Changes in Red Blood Cell Flow and Distribution in Human Retinal Capillaries",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42969568/"
+   },
+   {
+    "t": "Geographic Atrophy in Age-Related Macular Degeneration Is Associated With Distinct T-Cell Differentiation Profile",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42969567/"
+   },
+   {
+    "t": "Proteomics Identifies TRAP5 as a Candidate Marker of Residual Inflammation After Optimal Pulse Technology in Experimental Meibomian Gland Dysfunction",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42969566/"
+   },
+   {
+    "t": "Genotype-Phenotype Correlation in a Cohort of Israeli Patients With OCA1 Albinism",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42969565/"
+   },
+   {
+    "t": "Structural retinal changes and visual field loss across timing of damage in children with cerebral visual impairment",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42968667/"
    }
   ],
-  "updated": "2026-11-01"
+  "updated": "2026-11-02"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-01"
+  "updated": "2026-11-02"
  },
- "checked": "2026-11-01T22:24+00:00",
+ "checked": "2026-11-02T22:29+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -146,6 +146,12 @@
   ],
   "glaucoma": [
    {
+    "t": "Outcomes of the Paul Glaucoma Implant for Refractory Glaucoma in an Indonesian Population",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42969576/"
+   },
+   {
     "t": "Pupilloplasty for glaucoma in CNA2-related cornea plana",
     "src": "J AAPOS",
     "d": "2026 Oct 30",
@@ -174,15 +180,15 @@
     "src": "J Glaucoma",
     "d": "2026 Oct 28",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42956176/"
-   },
-   {
-    "t": "Visual Field and RNFL OCT Testing Among Rural and Urban Residents With Glaucoma",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Oct 29",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42955013/"
    }
   ],
   "medret": [
+   {
+    "t": "Geographic Atrophy in Age-Related Macular Degeneration Is Associated With Distinct T-Cell Differentiation Profile",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42969567/"
+   },
    {
     "t": "High-Resolution OCT of Basal Laminar Deposit Phenotypes and Retinal Pigment Epithelium Morphologic Changes in Age-Related Macular Degeneration",
     "src": "Ophthalmology Science",
@@ -212,12 +218,6 @@
     "src": "American Journal of Ophthalmology",
     "d": "2026 Oct 27",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946032/"
-   },
-   {
-    "t": "Regional and Temporal Changes in Choroidal Vascularity after Panretinal Photocoagulation in Diabetic Retinopathy: A Widefield SS-OCTA Study",
-    "src": "Retina",
-    "d": "2026 Oct 27",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42944598/"
    }
   ],
   "vr": [
@@ -260,6 +260,12 @@
   ],
   "neuro": [
    {
+    "t": "Optic Disc Features in Nonarteritic Anterior Ischemic Optic Neuropathy: Spatial Organization and Structure-Function Associations",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42967534/"
+   },
+   {
     "t": "Diagnostic Accuracy of Paracentral Acute Middle Maculopathy for Arteritic Anterior Ischemic Optic Neuropathy",
     "src": "American Journal of Ophthalmology",
     "d": "2026 Oct 29",
@@ -288,12 +294,6 @@
     "src": "J AAPOS",
     "d": "2026 Oct 9",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42854826/"
-   },
-   {
-    "t": "Optic disc drusen prevalence and visual outcome in a cohort of patients with non-arteritic anterior ischemic optic neuropathy",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42853276/"
    }
   ],
   "paeds": [
@@ -334,6 +334,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946092/"
    }
   ],
-  "updated": "2026-11-01"
+  "updated": "2026-11-02"
  }
 }
