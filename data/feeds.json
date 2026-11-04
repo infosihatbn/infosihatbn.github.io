@@ -2,6 +2,12 @@
  "news": {
   "items": [
    {
+    "t": "NUHS, SINGTEL AND ERICSSON EXPAND PARTNERSHIP TO ADVANCE NEXT-GENERATION CONNECTED HEALTHCARE",
+    "src": "Taiwan News",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBoVDFWTzQxMU9VXzNPNDIwaG1iUnV0V3pmUE9UdXpaeEItNi13VzEybVRzSjJmRUQ4eGtYb01vMlQ3U1pZQTFQQVZDakhsN3ppckJUelVrU0o?oc=5",
+    "d": "2026-11-04"
+   },
+   {
     "t": "Brunei-Muara records good air quality as all districts remain below 50 PSI",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQOWVUSkVTWEpQOFRuRHpKNHIwazBRcjZmNlNkTFFuTHlwMzVaZWx0d2dRczFNSzJsYUVYaFJseUJzdVItWUxZTFBPTnlFTXJGWmI0am5zVFZwcDZtUTRZdFBDbDg2Rlpsdm1LUHhxcTRvWl9fUmRDdGRiWkZfcVF0VlliRDVaRGJCeEZIUXhhUTU2U2pWd2pwcUR6V3k4WEFoSmplVjBTc0U?oc=5",
@@ -14,28 +20,34 @@
     "d": "2026-10-30"
    },
    {
-    "t": "Royal promotes breast cancer awareness in Brunei",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNR00ta3I5YjZSZzhPV284MVo1SFBWUjFnTG9KUnZwcU5DVXNMclNjdi1HbHdXNnJDdlNteG1kQW94bFIyQmQyeTlwbjN0S2E3ZEpKVVJOR2lveE9EcGRlMV9nREkwT2E3WC1UQVh5aFVxY2VVckcyaEFFNVpWVDYtTkNYNG1CY0pvWHRZMUNOektCWjJWdDE5Z3pMT3FRUUZXQXo0ZDB4bGFRRENRbk02YQ?oc=5",
-    "d": "2026-10-27"
-   },
-   {
     "t": "Indonesia, Brunei strengthen cooperation in health, energy and security",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxORXVJOXRBU254YlFYWEF2UXZqT3ppaFJEdEN1MkEyM0tEZlJZRDNKeXlaMEFaNUFqaG1HTnVPMjBEUEU2bnJPaF9vZWt3TERWZVRmWUVSS1M5U3BaUlgtMUNBd0Y4cVBIdURfSE5rV1BqOC1mY0Y5UG5BbXp5Y2N1VlI4M2N3WTNrb0NRdG10dl9vQXFRTG5rRS15LTVRSDFTZEE?oc=5",
     "d": "2026-10-22"
-   },
-   {
-    "t": "Brunei’s air quality remains good after rainfall",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPdEhVQ2tMdU5oM21oOGU5TUJ6VjQ0emhJaEtnTFJnSl9XWjdqb1p1YnYwY0lvS1NZNVVoekVyM0w1a3hRQW9qZDhweTBqREVHN2w1RE1mREZLNTNuelByMEsxM0hDa3d2WXg5ZDJ1RHFYVkhxSTU2R0dHZ3dRSlVMNUdjNmhJOWltX1hGUDFQMEY3S1BWN0c4cmYzekd3djhRb003ZEJ5bjBybWpoUHVv?oc=5",
-    "d": "2026-10-21"
    }
   ],
-  "updated": "2026-11-03"
+  "updated": "2026-11-04"
  },
  "sea": {
   "items": [
+   {
+    "t": "Association Between Retinal Layer Thickness and Hearing Performance in the UK Biobank: A Cross-Sectional Study",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980360/"
+   },
+   {
+    "t": "Metabolomic Signatures of Healthy Dietary Patterns Associated With Lower Risk of Age-Related Macular Degeneration",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980359/"
+   },
+   {
+    "t": "Mesopic Luminance Inflates Crowding in a Pattern Consistent With Rod-to-Cone Ratio Across the Visual Field",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980358/"
+   },
    {
     "t": "Reading disability in glaucoma: A neglected dimension of visual disability",
     "src": "Acta Ophthalmologica",
@@ -53,27 +65,9 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42975103/"
-   },
-   {
-    "t": "Axon Content of the Circumpapillary Nerve Fiber Layer in Experimental Glaucoma",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42975102/"
-   },
-   {
-    "t": "Visual Perceptual Learning Based on Adaptive Contrast Detection Training Enhances Vision and Contrast Sensitivity in Diabetic Retinopathy",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42975101/"
-   },
-   {
-    "t": "The Royal College of Ophthalmologists' National Ophthalmology Database: report 15, severe vision loss following cataract surgery",
-    "src": "Eye",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42972053/"
    }
   ],
-  "updated": "2026-11-03"
+  "updated": "2026-11-04"
  },
  "bimj": {
   "items": [
@@ -90,17 +84,35 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-03"
+  "updated": "2026-11-04"
  },
- "checked": "2026-11-03T22:29+00:00",
+ "checked": "2026-11-04T22:38+00:00",
  "status": {
-  "news": "ok (5)",
+  "news": "ok (4)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Incomplete Corneal Epithelialization at the One-Week Visit After PRK: Incidence and the Dominance of Examination Timing",
+    "src": "J Cataract Refract Surg",
+    "d": "2026 Nov 4",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980607/"
+   },
+   {
+    "t": "Clinical Features and Outcomes of Glaucoma Surgery-Associated Bullous Keratopathy: A Subanalysis of the Japanese National Survey on Corneal Transplantation",
+    "src": "Cornea",
+    "d": "2026 Nov 3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42979732/"
+   },
+   {
+    "t": "Diagnostic Yield and Longitudinal Performance of a Dedicated Keratoconus Screening Program for Children With Down Syndrome",
+    "src": "Cornea",
+    "d": "2026 Nov 3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42979721/"
+   },
    {
     "t": "Descemet membrane endothelial keratoplasty for bullous keratopathy in eyes with prior laser peripheral iridotomy",
     "src": "Graefe's Archive",
@@ -118,65 +130,53 @@
     "src": "Cornea",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42970465/"
-   },
-   {
-    "t": "Pediatric Endothelial Keratoplasty: A Modified Delphi Consensus by the EKLG Study Group on Indications, Surgical Techniques, and Postoperative Care",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Oct 30",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42962988/"
-   },
-   {
-    "t": "Corneal versus refractive surgically induced astigmatism: vector analysis of their dissociation and implications for toric IOL planning",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Oct 30",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42962987/"
-   },
-   {
-    "t": "Pupilloplasty for glaucoma in CNA2-related cornea plana",
-    "src": "J AAPOS",
-    "d": "2026 Oct 30",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42962746/"
    }
   ],
   "glaucoma": [
    {
-    "t": "Reading disability in glaucoma: A neglected dimension of visual disability",
-    "src": "Acta Ophthalmologica",
+    "t": "Surgical Outcomes and Predictors of Success Following Gonioscopy-Assisted Transluminal Trabeculotomy for Primary Congenital and Juvenile Open-Angle Glaucoma",
+    "src": "J Glaucoma",
     "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42975183/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980177/"
    },
    {
-    "t": "Axon Content of the Circumpapillary Nerve Fiber Layer in Experimental Glaucoma",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42975102/"
-   },
-   {
-    "t": "External validation of a deep-learning algorithm for perimetric glaucoma detection on color fundus photographs in the Rotterdam Study",
-    "src": "Ophthalmology",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42971439/"
-   },
-   {
-    "t": "Defining the optimal duration of remote home tonometry for accurate characterization of intraocular pressure fluctuation",
-    "src": "Ophthalmology",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42971438/"
-   },
-   {
-    "t": "Cerebrovascular Function in Glaucoma: A Systematic Review and Meta-analysis",
+    "t": "Selective Laser Trabeculoplasty versus Latanoprost: A Randomized OCT Angiography Study of Retinal Microvascular Changes in Glaucoma and Ocular Hypertension",
     "src": "J Glaucoma",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42970467/"
+    "d": "2026 Nov 3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980164/"
    },
    {
-    "t": "Comparative Accuracy and Safety of Large Language Models in Glaucoma Knowledge Assessment",
+    "t": "The Association Between Marijuana Use and Primary Open-Angle Glaucoma Using the All of Us Research Program: A Case-Control Study",
     "src": "J Glaucoma",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42970466/"
+    "d": "2026 Nov 3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980159/"
+   },
+   {
+    "t": "Secondary Glaucoma Incidence Following Ischemic Retinal Disease and Anti-Vascular Endothelial Growth Factor Utilization",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980157/"
+   },
+   {
+    "t": "Macular Structural Progression Before and After Trabeculectomy in Glaucoma",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980156/"
+   },
+   {
+    "t": "Outcomes of Primary Trabeculectomy in Secondary Glaucoma with Cytomegalovirus Anterior Uveitis",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980151/"
    }
   ],
   "medret": [
+   {
+    "t": "Metabolomic Signatures of Healthy Dietary Patterns Associated With Lower Risk of Age-Related Macular Degeneration",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42980359/"
+   },
    {
     "t": "Visual Perceptual Learning Based on Adaptive Contrast Detection Training Enhances Vision and Contrast Sensitivity in Diabetic Retinopathy",
     "src": "IOVS",
@@ -206,12 +206,6 @@
     "src": "Retina",
     "d": "2026 Oct 29",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42954920/"
-   },
-   {
-    "t": "High-Resolution En Face OCT of the RPE in Geographic Atrophy Captures Patterns Resembling Fundus Autofluorescence",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42949067/"
    }
   ],
   "vr": [
@@ -254,6 +248,12 @@
   ],
   "neuro": [
    {
+    "t": "Prevalence and OCT Characteristics of Glaucoma-Like Optic Neuropathy in a Real-World Population",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42976315/"
+   },
+   {
     "t": "Axon Content of the Circumpapillary Nerve Fiber Layer in Experimental Glaucoma",
     "src": "IOVS",
     "d": "2026 Nov 2",
@@ -282,15 +282,15 @@
     "src": "Graefe's Archive",
     "d": "2026 Oct 17",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42891851/"
-   },
-   {
-    "t": "Prelaminar hyperreflective lines in non-arteritic anterior ischaemic optic neuropathy",
-    "src": "Eye",
-    "d": "2026 Oct 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42855590/"
    }
   ],
   "paeds": [
+   {
+    "t": "Keratometric variability after infant cataract surgery: 10-year outcomes from the Infant Aphakia Treatment Study",
+    "src": "J AAPOS",
+    "d": "2026 Nov 3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42977246/"
+   },
    {
     "t": "Twelve-Month Efficacy and Visual Tolerability of MyoPi Spectacle Lenses in Childhood Myopia: A Randomized Clinical Trial",
     "src": "Ophthalmology Science",
@@ -320,14 +320,8 @@
     "src": "J AAPOS",
     "d": "2026 Oct 27",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946153/"
-   },
-   {
-    "t": "Fundus torsion in strabismus: Measurement, clinical interpretation, and emerging imaging approaches",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Oct 27",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42946092/"
    }
   ],
-  "updated": "2026-11-03"
+  "updated": "2026-11-04"
  }
 }
