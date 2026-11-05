@@ -12,62 +12,50 @@
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQOWVUSkVTWEpQOFRuRHpKNHIwazBRcjZmNlNkTFFuTHlwMzVaZWx0d2dRczFNSzJsYUVYaFJseUJzdVItWUxZTFBPTnlFTXJGWmI0am5zVFZwcDZtUTRZdFBDbDg2Rlpsdm1LUHhxcTRvWl9fUmRDdGRiWkZfcVF0VlliRDVaRGJCeEZIUXhhUTU2U2pWd2pwcUR6V3k4WEFoSmplVjBTc0U?oc=5",
     "d": "2026-11-03"
-   },
-   {
-    "t": "Good air quality across all districts in Brunei",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPcW9zX3pXMkpSaHdDbnV2U1NZRmNQSG9oeFQwM1NZUVdmWG03WjlLSW45TXZub2dabV9yLW5WVUVFZ1JWamw4eXhMSzZHTVh6bjB0ZExaUlR5cEdjMXBMOU1IU0RtVUN5cjdyTm4yMGlSNUtENWdiWEF1NTIzUDJXcEZIaVQ0N3lPWk1vVTRYNzU1QjdvNUdkdElCQ240V3BoMklUc2lvbmFKZ2hwQ3Jz?oc=5",
-    "d": "2026-10-30"
-   },
-   {
-    "t": "Indonesia, Brunei strengthen cooperation in health, energy and security",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxORXVJOXRBU254YlFYWEF2UXZqT3ppaFJEdEN1MkEyM0tEZlJZRDNKeXlaMEFaNUFqaG1HTnVPMjBEUEU2bnJPaF9vZWt3TERWZVRmWUVSS1M5U3BaUlgtMUNBd0Y4cVBIdURfSE5rV1BqOC1mY0Y5UG5BbXp5Y2N1VlI4M2N3WTNrb0NRdG10dl9vQXFRTG5rRS15LTVRSDFTZEE?oc=5",
-    "d": "2026-10-22"
    }
   ],
-  "updated": "2026-11-04"
+  "updated": "2026-11-05"
  },
  "sea": {
   "items": [
    {
-    "t": "Association Between Retinal Layer Thickness and Hearing Performance in the UK Biobank: A Cross-Sectional Study",
+    "t": "Contrast Sensitivity Functions in ON and OFF Visual Pathways in Myopia",
     "src": "IOVS",
     "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980360/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42986172/"
    },
    {
-    "t": "Metabolomic Signatures of Healthy Dietary Patterns Associated With Lower Risk of Age-Related Macular Degeneration",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980359/"
-   },
-   {
-    "t": "Mesopic Luminance Inflates Crowding in a Pattern Consistent With Rod-to-Cone Ratio Across the Visual Field",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980358/"
-   },
-   {
-    "t": "Reading disability in glaucoma: A neglected dimension of visual disability",
+    "t": "Psychosocial predictors of treatment adherence and quality of life among patients with uveitis in a tertiary care hospital, Riyadh, Saudi Arabia",
     "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42975183/"
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42986013/"
    },
    {
-    "t": "Ultrasound-Enhanced Retinal Delivery of Engineered Viral Vectors",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42975104/"
+    "t": "Occurrence, progression and risk factors of macular atrophy in neovascular age-related macular degeneration according to neovascularization subtypes",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42986005/"
    },
    {
-    "t": "Liraglutide and Semaglutide Induce Nitric Oxide-Dependent Contraction of Larger and Relaxation of Smaller Porcine Retinal Resistance Vessels Ex Vivo",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42975103/"
+    "t": "Alternate eye patching improves long-term alignment stability after surgery for intermittent exotropia: a randomised controlled trial",
+    "src": "Eye",
+    "d": "2026 Nov 4",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42982887/"
+   },
+   {
+    "t": "Short-term Risk of Inflammatory Eye Reactions Following Bisphosphonate Use: A nationwide case-case-time-control study",
+    "src": "Ophthalmology",
+    "d": "2026 Nov 4",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42982279/"
+   },
+   {
+    "t": "Automated perimetry in pediatric neuro-ophthalmic conditions: virtual reality-based vs. standard tabletop platforms",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 4",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42982158/"
    }
   ],
-  "updated": "2026-11-04"
+  "updated": "2026-11-05"
  },
  "bimj": {
   "items": [
@@ -84,11 +72,11 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-04"
+  "updated": "2026-11-05"
  },
- "checked": "2026-11-04T22:38+00:00",
+ "checked": "2026-11-05T22:38+00:00",
  "status": {
-  "news": "ok (4)",
+  "news": "ok (2)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
@@ -172,6 +160,12 @@
   ],
   "medret": [
    {
+    "t": "Occurrence, progression and risk factors of macular atrophy in neovascular age-related macular degeneration according to neovascularization subtypes",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42986005/"
+   },
+   {
     "t": "Metabolomic Signatures of Healthy Dietary Patterns Associated With Lower Risk of Age-Related Macular Degeneration",
     "src": "IOVS",
     "d": "2026 Nov 2",
@@ -200,12 +194,6 @@
     "src": "Retina",
     "d": "2026 Oct 30",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42961146/"
-   },
-   {
-    "t": "Longitudinal Changes in Scleral Thickness after Half-dose Photodynamic Therapy in Central Serous Chorioretinopathy",
-    "src": "Retina",
-    "d": "2026 Oct 29",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42954920/"
    }
   ],
   "vr": [
@@ -322,6 +310,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946153/"
    }
   ],
-  "updated": "2026-11-04"
+  "updated": "2026-11-05"
  }
 }
