@@ -3,59 +3,59 @@
   "items": [
    {
     "t": "NUHS, SINGTEL AND ERICSSON EXPAND PARTNERSHIP TO ADVANCE NEXT-GENERATION CONNECTED HEALTHCARE",
-    "src": "Taiwan News",
-    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBoVDFWTzQxMU9VXzNPNDIwaG1iUnV0V3pmUE9UdXpaeEItNi13VzEybVRzSjJmRUQ4eGtYb01vMlQ3U1pZQTFQQVZDakhsN3ppckJUelVrU0o?oc=5",
+    "src": "The Malaysian Reserve",
+    "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPVFpULW5XaTZ4TnNvcGFZSTluYmVOZFpRQWR3ZTg3YzdWS3F4OVhUNXJ3RWV6M3V1YjJPUTBxVjVDX19jUVBud3UzS1lNbDVjUi1hWFZ4WkxGSC1UejIyaDhtNnN6N19GaWEtNnhjN2NuRDNmejVkeFVuWGVMdVNUUlZIYWVzWmRlNnFWdFV3ekRCSkFZVmxNeGkyRUJDV2d1VzRHNmtFblRWQ282X1lmM1N5WHcwLWVPa1NyM2RPcFRCbkozV2thWlNLOFJVa1p3U3c?oc=5",
     "d": "2026-11-04"
    },
    {
-    "t": "Brunei-Muara records good air quality as all districts remain below 50 PSI",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQOWVUSkVTWEpQOFRuRHpKNHIwazBRcjZmNlNkTFFuTHlwMzVaZWx0d2dRczFNSzJsYUVYaFJseUJzdVItWUxZTFBPTnlFTXJGWmI0am5zVFZwcDZtUTRZdFBDbDg2Rlpsdm1LUHhxcTRvWl9fUmRDdGRiWkZfcVF0VlliRDVaRGJCeEZIUXhhUTU2U2pWd2pwcUR6V3k4WEFoSmplVjBTc0U?oc=5",
-    "d": "2026-11-03"
+    "t": "Good air quality across all districts in Brunei",
+    "src": "The Star",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPcW9zX3pXMkpSaHdDbnV2U1NZRmNQSG9oeFQwM1NZUVdmWG03WjlLSW45TXZub2dabV9yLW5WVUVFZ1JWamw4eXhMSzZHTVh6bjB0ZExaUlR5cEdjMXBMOU1IU0RtVUN5cjdyTm4yMGlSNUtENWdiWEF1NTIzUDJXcEZIaVQ0N3lPWk1vVTRYNzU1QjdvNUdkdElCQ240V3BoMklUc2lvbmFKZ2hwQ3Jz?oc=5",
+    "d": "2026-10-30"
    }
   ],
-  "updated": "2026-11-05"
+  "updated": "2026-11-07"
  },
  "sea": {
   "items": [
    {
-    "t": "Contrast Sensitivity Functions in ON and OFF Visual Pathways in Myopia",
+    "t": "COMPARISON OF TRACTION FORCES IN EX VIVO VITRECTOMY USING 25+®G 20K CPM DUAL-BLADE AND 25+®G 10K CPM SINGLE-BLADE VITRECTOMY PROBES",
+    "src": "Retina",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42993209/"
+   },
+   {
+    "t": "Post-Pars Plana Vitrectomy Endophthalmitis in Patients with and without Systemic Immunosuppression",
+    "src": "Retina",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42993189/"
+   },
+   {
+    "t": "Subconjunctival Injection of Anti-Secretogranin III Mitigates Corneal Damage in Alkali Burn Injury Model",
     "src": "IOVS",
     "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42986172/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42992962/"
    },
    {
-    "t": "Psychosocial predictors of treatment adherence and quality of life among patients with uveitis in a tertiary care hospital, Riyadh, Saudi Arabia",
+    "t": "Data-Efficient Transformer Model for Retinal Artery-Vein Segmentation in Landmark-Deficient OCT Angiography",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42990860/"
+   },
+   {
+    "t": "Comparative diagnostic performance of digital and conventional tests for congenital red-green colour vision deficiency",
     "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42990001/"
+   },
+   {
+    "t": "Incidence and Predictors of IOP-Lowering Treatment Following Detection of Referable Glaucoma in a Teleretinal Screening Program",
+    "src": "Ophthalmology Glaucoma",
     "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42986013/"
-   },
-   {
-    "t": "Occurrence, progression and risk factors of macular atrophy in neovascular age-related macular degeneration according to neovascularization subtypes",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42986005/"
-   },
-   {
-    "t": "Alternate eye patching improves long-term alignment stability after surgery for intermittent exotropia: a randomised controlled trial",
-    "src": "Eye",
-    "d": "2026 Nov 4",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42982887/"
-   },
-   {
-    "t": "Short-term Risk of Inflammatory Eye Reactions Following Bisphosphonate Use: A nationwide case-case-time-control study",
-    "src": "Ophthalmology",
-    "d": "2026 Nov 4",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42982279/"
-   },
-   {
-    "t": "Automated perimetry in pediatric neuro-ophthalmic conditions: virtual reality-based vs. standard tabletop platforms",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 4",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42982158/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42988359/"
    }
   ],
-  "updated": "2026-11-05"
+  "updated": "2026-11-07"
  },
  "bimj": {
   "items": [
@@ -72,9 +72,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-05"
+  "updated": "2026-11-07"
  },
- "checked": "2026-11-05T22:38+00:00",
+ "checked": "2026-11-07T01:32+00:00",
  "status": {
   "news": "ok (2)",
   "sea": "ok (6)",
@@ -84,43 +84,61 @@
  "sub": {
   "cornea": [
    {
-    "t": "Incomplete Corneal Epithelialization at the One-Week Visit After PRK: Incidence and the Dominance of Examination Timing",
-    "src": "J Cataract Refract Surg",
-    "d": "2026 Nov 4",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980607/"
-   },
-   {
-    "t": "Clinical Features and Outcomes of Glaucoma Surgery-Associated Bullous Keratopathy: A Subanalysis of the Japanese National Survey on Corneal Transplantation",
-    "src": "Cornea",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42979732/"
-   },
-   {
-    "t": "Diagnostic Yield and Longitudinal Performance of a Dedicated Keratoconus Screening Program for Children With Down Syndrome",
-    "src": "Cornea",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42979721/"
-   },
-   {
-    "t": "Descemet membrane endothelial keratoplasty for bullous keratopathy in eyes with prior laser peripheral iridotomy",
-    "src": "Graefe's Archive",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42972125/"
-   },
-   {
-    "t": "Changing Patterns of Dry Eye Disease Management in Korea: A Nationwide 10-Year Analysis",
-    "src": "American Journal of Ophthalmology",
+    "t": "Subconjunctival Injection of Anti-Secretogranin III Mitigates Corneal Damage in Alkali Burn Injury Model",
+    "src": "IOVS",
     "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42971497/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42992962/"
    },
    {
-    "t": "Bacterial Keratitis Caused by Methicillin-Resistant Coagulase-Negative Staphylococci After Cultured Human Corneal Endothelial Cell Injection: A Case Report and Review of Preoperative Conjunctival Sac Culture Findings",
-    "src": "Cornea",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42970465/"
+    "t": "Prospective Propensity Score-Matched Analysis of Corneal Haze and Outcomes After Combined Versus Sequential Customized Transepithelial PRK With Accelerated CXL",
+    "src": "J Refract Surg",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42992815/"
+   },
+   {
+    "t": "Late Traumatic Avulsion of a Femtosecond LASIK Flap Following a Direct Corneal Injury: A Case Report",
+    "src": "J Refract Surg",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42992814/"
+   },
+   {
+    "t": "Efficacy of Total Keratometric Power and Total Corneal Power on the Accuracy of 8 Modern Intraocular Lens Formulas in Highly Myopic Eyes",
+    "src": "J Refract Surg",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42992812/"
+   },
+   {
+    "t": "Comparative Optical Performance of Two Enhanced Monofocal IOLs Across Pupil Sizes and Lens Powers",
+    "src": "J Refract Surg",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42992811/"
+   },
+   {
+    "t": "Optical and Transition Zone Volume Components in Hyperopic Corneal Ablation and Hyperopic KLEx Designs",
+    "src": "J Refract Surg",
+    "d": "2026 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42992805/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Incidence and Predictors of IOP-Lowering Treatment Following Detection of Referable Glaucoma in a Teleretinal Screening Program",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42988359/"
+   },
+   {
+    "t": "Three-Year Outcomes of Trabeculotomy vs Combined Trabeculotomy-Trabeculectomy for Primary Congenital Glaucoma",
+    "src": "Ophthalmology",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42988223/"
+   },
+   {
+    "t": "Baseline Macular OCT Thickness of Ocular Hypertensive Patients Improves Prediction of Glaucoma",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42987995/"
+   },
    {
     "t": "Surgical Outcomes and Predictors of Success Following Gonioscopy-Assisted Transluminal Trabeculotomy for Primary Congenital and Juvenile Open-Angle Glaucoma",
     "src": "J Glaucoma",
@@ -138,27 +156,27 @@
     "src": "J Glaucoma",
     "d": "2026 Nov 3",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42980159/"
-   },
-   {
-    "t": "Secondary Glaucoma Incidence Following Ischemic Retinal Disease and Anti-Vascular Endothelial Growth Factor Utilization",
-    "src": "J Glaucoma",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980157/"
-   },
-   {
-    "t": "Macular Structural Progression Before and After Trabeculectomy in Glaucoma",
-    "src": "J Glaucoma",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980156/"
-   },
-   {
-    "t": "Outcomes of Primary Trabeculectomy in Secondary Glaucoma with Cytomegalovirus Anterior Uveitis",
-    "src": "J Glaucoma",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980151/"
    }
   ],
   "medret": [
+   {
+    "t": "Fluid fluctuation and visual outcomes in neovascular age-related macular degeneration: A systematic review and meta-analysis",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42988275/"
+   },
+   {
+    "t": "Combined Versus Monotherapy Anti-Complement and Anti-Vascular Endothelial Growth Factor Intravitreal Injections for Age-Related Macular Degeneration: Safety Outcomes in the Real World",
+    "src": "Ophthalmology Retina",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42988264/"
+   },
+   {
+    "t": "Genome-Wide Association Study Meta-Analysis of Central Serous Chorioretinopathy",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42986610/"
+   },
    {
     "t": "Occurrence, progression and risk factors of macular atrophy in neovascular age-related macular degeneration according to neovascularization subtypes",
     "src": "Acta Ophthalmologica",
@@ -176,27 +194,33 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42975101/"
-   },
-   {
-    "t": "Geographic Atrophy in Age-Related Macular Degeneration Is Associated With Distinct T-Cell Differentiation Profile",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42969567/"
-   },
-   {
-    "t": "High-Resolution OCT of Basal Laminar Deposit Phenotypes and Retinal Pigment Epithelium Morphologic Changes in Age-Related Macular Degeneration",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42964701/"
-   },
-   {
-    "t": "Submacular Hemorrhage Requiring Procedural Intervention During Anti-VEGF Therapy for Neovascular Age-Related Macular Degeneration in Japan: The JTY Three-Center Real-World Incidence Study",
-    "src": "Retina",
-    "d": "2026 Oct 30",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42961146/"
    }
   ],
   "vr": [
+   {
+    "t": "COMPARISON OF TRACTION FORCES IN EX VIVO VITRECTOMY USING 25+®G 20K CPM DUAL-BLADE AND 25+®G 10K CPM SINGLE-BLADE VITRECTOMY PROBES",
+    "src": "Retina",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42993209/"
+   },
+   {
+    "t": "Post-Pars Plana Vitrectomy Endophthalmitis in Patients with and without Systemic Immunosuppression",
+    "src": "Retina",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42993189/"
+   },
+   {
+    "t": "Epiretinal membrane and cystoid macular oedema after vitrectomy for giant retinal tear-related retinal detachment: the Manchester GRT Study",
+    "src": "Graefe's Archive",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42988981/"
+   },
+   {
+    "t": "Endophthalmitis risk after intravitreal anti-vascular endothelial growth factor injection using prefilled versus vial-drawn syringes: An agent-specific systematic review and meta-analysis",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42988272/"
+   },
    {
     "t": "Lichen Simplex Chronicus is Associated with an Increased Risk of Rhegmatogenous Retinal Detachment and Retinal Tears: A Propensity Score-Matched Cohort Study",
     "src": "Retina",
@@ -208,30 +232,6 @@
     "src": "Graefe's Archive",
     "d": "2026 Oct 28",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946898/"
-   },
-   {
-    "t": "Comparative Analysis of Rhegmatogenous Retinal Detachment Repair with or without Associated Macular Hole",
-    "src": "Retina",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42925163/"
-   },
-   {
-    "t": "Intraocular Pressure Following Phacoemulsification with Anterior Vitrectomy in the IRIS® Registry (Intelligent Research in Sight)",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Oct 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42918330/"
-   },
-   {
-    "t": "Silicone oil vs. gas tamponade in giant retinal tear associated rhegmatogenous retinal detachment: a systematic review and meta-analysis",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 22",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42911228/"
-   },
-   {
-    "t": "Macrophage-Associated Profibrotic Programs in Diabetic Epiretinal Membrane and Their Modulation by Faricimab",
-    "src": "IOVS",
-    "d": "2026 Oct 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42910809/"
    }
   ],
   "neuro": [
@@ -274,6 +274,12 @@
   ],
   "paeds": [
    {
+    "t": "Potential Disparities in Access to Adult Strabismus Care",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42986613/"
+   },
+   {
     "t": "Keratometric variability after infant cataract surgery: 10-year outcomes from the Infant Aphakia Treatment Study",
     "src": "J AAPOS",
     "d": "2026 Nov 3",
@@ -302,14 +308,8 @@
     "src": "J AAPOS",
     "d": "2026 Oct 27",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946154/"
-   },
-   {
-    "t": "Lens particle-induced pediatric glaucoma following congenital cataract surgery: a case report",
-    "src": "J AAPOS",
-    "d": "2026 Oct 27",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42946153/"
    }
   ],
-  "updated": "2026-11-05"
+  "updated": "2026-11-07"
  }
 }
