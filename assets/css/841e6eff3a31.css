@@ -630,9 +630,20 @@ html.mk-still .ori :is(.ticker .mv,.tv-art,.tv-mv){animation-play-state:paused!i
  :root[data-theme=dark] .ori :is(.pc,.ph-tops){background:rgba(30,38,52,.85)}
  :root[data-theme=dark] .ori :is(.pc-t b,.ph-home h2,.ph-tops a){color:rgb(236,242,248)}
  :root[data-theme=dark] .ori .pc-t small{color:rgb(176,188,204)}
+ .ori .ph-help{margin:8px 0 28px}
+ .ori .hbs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+ .ori .hb{display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-height:118px;padding:16px;border-radius:18px;background:rgba(255,255,255,.88);text-decoration:none;box-shadow:0 8px 24px -18px rgba(20,63,46,.5)}
+ .ori .hb:last-child{grid-column:1/-1;flex-direction:row;align-items:center;min-height:0}
+ .ori .hb .pc-i{width:52px;height:52px}.ori .hb .pc-i svg{width:26px;height:26px}
+ .ori .hb b{font:700 17.5px/1.25 var(--body,Inter,sans-serif);color:rgb(20,63,46)}
+ .ori .hb.alt .pc-i{background:rgb(222,236,214);color:rgb(36,110,68)}
+ .ori .hb:active{transform:scale(.98)}
+ .ori .ph-help .ph-art{margin:20px -20px 0}
+ :root[data-theme=dark] .ori .hb{background:rgba(30,38,52,.85)}
+ :root[data-theme=dark] .ori .hb b{color:rgb(236,242,248)}
  :root[data-theme=dark] .ori :is(.pc-t em){color:rgb(159,196,232)}
  :root[data-theme=dark] .ori .ph-cta{background:rgb(159,196,232);color:rgb(20,36,61)!important;box-shadow:0 10px 22px -14px rgba(0,0,0,.7)}
- :root[data-theme=dark] .ori :is(.pc-i,.pc.alt .pc-i,.pl-i){background:rgba(159,196,232,.18);color:rgb(159,196,232)}
+ :root[data-theme=dark] .ori :is(.pc-i,.pc.alt .pc-i,.pl-i,.hb.alt .pc-i){background:rgba(159,196,232,.18);color:rgb(159,196,232)}
  :root[data-theme=dark] .ori .pc::after,:root[data-theme=dark] .ori .pc.alt::after{background:rgba(159,196,232,.12);opacity:1}
  :root[data-theme=dark] .ori .ph-tops li+li{border-top-color:rgba(159,196,232,.16)}
  :root[data-theme=dark] .ori .ph-art [fill="rgb(248,220,200)"]{fill:rgb(36,58,92)}
