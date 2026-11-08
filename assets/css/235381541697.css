@@ -464,7 +464,11 @@ html[data-theme=dark] .ori .cst{color:#cbd5e1;background:rgba(148,163,184,.16)}h
 .ori .tvs.warm:hover .tv-btn,.ori .tvs.warm:focus-visible .tv-btn{background:var(--ink)}
 @media (max-width:900px){.ori .tvs.warm .tv-art{width:58%;right:21%;top:21%}
  .ori .tvs.warm::after{background:linear-gradient(0deg,rgba(255,250,244,.9) 0%,rgba(255,250,244,.7) 42%,transparent 60%)}}
-/*/np*//*np*/
+/*/np*//*np*/.ori .tvs.warm .tv-ph{position:absolute;z-index:-2;right:0;top:0;bottom:0;width:58%;overflow:hidden;pointer-events:none;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 26%);mask-image:linear-gradient(90deg,transparent 0%,#000 26%)}
+.ori .tvs.warm .tv-ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.ori .tvs.warm:nth-child(4) .tv-ph img{object-position:50% 30%}
+@media (max-width:900px){.ori .tvs.warm .tv-ph{left:0;width:auto;bottom:38%;-webkit-mask-image:linear-gradient(0deg,transparent 0%,#000 30%);mask-image:linear-gradient(0deg,transparent 0%,#000 30%)}}/*/np*//*np*/
 .ori .sc-tiles .sc-hd{display:none!important}
 :root:root .ori .sct-deck{padding:6px 2px 20px!important;margin:0!important;gap:14px!important;scroll-snap-type:x mandatory;-webkit-mask-image:none;mask-image:none}
 .ori .sct{scroll-snap-align:start;border:0;cursor:pointer;text-align:left;font-family:inherit}
@@ -639,6 +643,15 @@ html.mk-still .ori :is(.ticker .mv,.tv-art,.tv-mv){animation-play-state:paused!i
  .ori .hb.alt .pc-i{background:rgb(222,236,214);color:rgb(36,110,68)}
  .ori .hb:active{transform:scale(.98)}
  .ori .ph-help .ph-art{margin:20px -20px 0}
+ :root:root .ori .hb{padding:0;gap:0;overflow:hidden;min-height:0;justify-content:flex-start}
+ :root:root .ori .hb img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;height:auto}
+ :root:root .ori .hb b{padding:12px 14px 14px}
+ :root:root .ori .hb:last-child{flex-direction:column;align-items:stretch}
+ :root:root .ori .hb:last-child img{aspect-ratio:2/1}
+ :root:root .ori .hb:nth-child(1) img{object-position:62% 50%}
+ :root:root .ori .hb:nth-child(2) img{object-position:72% 50%}
+ :root:root .ori .hb:nth-child(3) img{object-position:40% 50%}
+ :root:root .ori .hb:nth-child(4) img{object-position:50% 30%}
  :root[data-theme=dark] .ori .hb{background:rgba(30,38,52,.85)}
  :root[data-theme=dark] .ori .hb b{color:rgb(236,242,248)}
  :root[data-theme=dark] .ori :is(.pc-t em){color:rgb(159,196,232)}
