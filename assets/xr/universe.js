@@ -7,6 +7,7 @@ import { DISC_DIR } from './eyemodel.js';
 import { createRealEye } from './realeye.js';
 import { wantNewModels, applyNewModels } from './models.js';
 import { wantHQ, setupHQ, upgradeScene } from './hq.js';
+import { bruneiDome } from './brunei.js';
 
 const R = 60, IRIS_Z = 52, PUPIL = 10, LENS_Z = 40, LENS_R = 19, LENS_T = 7, CORNEA_C = 30, CORNEA_R = 38; // the front: iris plane, lens, corneal dome
 const BACK = ['vitreous', 'floaters', 'retina', 'tear', 'vessels', 'macula', 'fovea', 'disc', 'nerve'];
@@ -18,6 +19,8 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 const onWall = (x, y, r = R) => new THREE.Vector3(x, y, -1).normalize().multiplyScalar(r); // tangent coords around the back pole
 const DX = DISC_DIR.x / -DISC_DIR.z;
 const TEAR_DIR = new THREE.Vector3(-.55, .7, -.35).normalize(); // retinal tear: upper outer periphery, where most tears happen
+// two more tears to find and laser (Haziq, 2026-11-08): lower outer and upper inner periphery
+const TEAR_DIRS = [TEAR_DIR, new THREE.Vector3(-.62, -.62, -.28).normalize(), new THREE.Vector3(.68, .55, -.3).normalize()];
 // line icons (no emoji)
 const ICP = { light: '<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>', gear: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/>',
   book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5zM4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>', medal: '<circle cx="12" cy="15" r="5"/><path d="M8.5 10.5 6 3h4l2 5 2-5h4l-2.5 7.5"/>', lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
@@ -82,8 +85,8 @@ export function mount(el, D) {
   const saved = LS.get('mu-settings') || {};
   const S = { sens: saved.sens ?? 1, reduced: saved.reduced ?? matchMedia('(prefers-reduced-motion: reduce)').matches, assisted: saved.assisted ?? true, aimAssist: saved.aimAssist ?? true, tilt: false };
   const prog = Object.assign({ found: [], badges: [] }, LS.get('mu-progress') || {});
-  const found = new Set(prog.found.filter(k => KEYS.includes(k))), badges = new Set(prog.badges); let sealed = !!prog.sealed;
-  const save = () => LS.set('mu-progress', { found: [...found], badges: [...badges], sealed });
+  const found = new Set(prog.found.filter(k => KEYS.includes(k))), badges = new Set(prog.badges); const SEALED = TEAR_DIRS.map((_, i) => Array.isArray(prog.sealed) ? !!prog.sealed[i] : i === 0 && !!prog.sealed); const allSealed = () => SEALED.every(Boolean);
+  const save = () => LS.set('mu-progress', { found: [...found], badges: [...badges], sealed: SEALED });
   const saveS = () => LS.set('mu-settings', { sens: S.sens, reduced: S.reduced, assisted: S.assisted, aimAssist: S.aimAssist });
   const intro = el.querySelector('.xi-intro');
 
@@ -253,7 +256,7 @@ export function mount(el, D) {
     for (let col = -1; col <= 10; col++) for (let row = -1; row <= 9; row++) { const cx = col * sz * 1.5, cy = row * hh + (col & 1) * hh / 2; g.beginPath(); for (let k = 0; k <= 6; k++) g.lineTo(cx + sz * Math.cos(k * Math.PI / 3), cy + sz * Math.sin(k * Math.PI / 3)); g.stroke(); }
     const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(22, 5); return t; })();
   const corneaG = new THREE.SphereGeometry(CORNEA_R, 72, 24, 0, Math.PI * 2, 0, Math.acos((IRIS_Z - CORNEA_C) / CORNEA_R)).rotateX(Math.PI / 2).translate(0, 0, CORNEA_C);
-  front.add(new THREE.Mesh(corneaG, new THREE.MeshStandardMaterial({ color: 0xcfeaff, map: hexTex, transparent: true, opacity: .5, roughness: .15, side: THREE.DoubleSide, depthWrite: false, emissive: 0x0b1a2a })));
+  front.add(new THREE.Mesh(corneaG, new THREE.MeshStandardMaterial({ color: 0xe4f3ff, map: hexTex, transparent: true, opacity: .2, roughness: .1, side: THREE.DoubleSide, depthWrite: false, emissive: 0x050c14, fog: false })));
   // the white sclera just beyond the edge of the cornea (limbus)
   front.add(new THREE.Mesh(new THREE.LatheGeometry([new THREE.Vector2(29.6, 51.6), new THREE.Vector2(32.4, 52.4), new THREE.Vector2(33.4, 54.5), new THREE.Vector2(32.6, 57)], 96).rotateX(Math.PI / 2),
     new THREE.MeshStandardMaterial({ color: 0xe6d6cc, roughness: .8, side: THREE.DoubleSide })));
@@ -277,10 +280,8 @@ export function mount(el, D) {
     const b = scPts.geometry.attributes.position.array; for (let i = 0; i < NSC; i++) { const an = i / NSC * Math.PI * 2 + t * .05; b[i * 3] = Math.cos(an) * (ANG_R + 1.6); b[i * 3 + 1] = Math.sin(an) * (ANG_R + 1.6); b[i * 3 + 2] = ANG_Z + .9; } scPts.geometry.attributes.position.needsUpdate = true; };
   const rideC = new THREE.CatmullRomCurve3([[0, 33, 45.5], [0, 22, 49.2], [0, 11, 50.4], [0, 3, 51], [0, 0, 54], [0, 6, 62], [0, -8, 63], [0, -19, 59], [0, -26.5, 54.6]].map(v => new THREE.Vector3(...v)));
   // the world outside, seen through the cornea (and as light through the pupil)
-  scene.add(new THREE.Mesh(new THREE.SphereGeometry(190, 32, 16), new THREE.ShaderMaterial({ side: THREE.BackSide, fog: false, depthWrite: false,
-    vertexShader: 'varying vec3 vD; void main(){ vD = normalize(position); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.); }',
-    fragmentShader: 'varying vec3 vD; void main(){ float y = vD.y; vec3 c = mix(vec3(1.,.9,.76), vec3(.55,.78,1.), smoothstep(0.,.6,y)); c = mix(c, vec3(.42,.5,.62), smoothstep(0.,-.5,y)); gl_FragColor = vec4(c,1.);\n#include <colorspace_fragment>\n}' })));
-  { const o = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0xfff1cf, transparent: true, opacity: .55, depthWrite: false, fog: false })); o.position.set(0, 0, 125); o.scale.setScalar(110); scene.add(o); }
+  scene.add(bruneiDome(190, touch ? 2048 : 4096));   // Brunei outside (Haziq, 2026-11-08): mosque on a lagoon, Kampong Ayer, palms
+  { const o = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0xfff1cf, transparent: true, opacity: .55, depthWrite: false, fog: false })); o.position.set(-.63, .48, .61).multiplyScalar(150); o.scale.setScalar(40); scene.add(o); }
   const beamU = { uT: { value: 0 }, uCol: { value: new THREE.Color(0xfff2c6) } };
   const beams = new THREE.Group(); scene.add(beams);
   for (const [tx, ty, w] of [[0, 0, 1], [9, 6, .6], [-8, -7, .6]]) {
@@ -380,20 +381,24 @@ export function mount(el, D) {
     const d = document.createElement('button'); d.type = 'button'; d.className = 'xr-lab mu-lab'; d.dataset.mark = k; d.textContent = M[k].n; d.tabIndex = -1; labelsEl.appendChild(d); lab[k] = d;
   }
   // retinal tear: a horseshoe-shaped flap pulled up by the vitreous gel, with dark choroid showing through; laser targets ring it
-  const tearG = new THREE.Group(); tearG.position.copy(TEAR_DIR).multiplyScalar(R - .9); tearG.lookAt(0, 0, 0); scene.add(tearG); // +Z faces the centre
   // (Haziq, 2026-10-16: made bigger and easier to see) a pale ring of lifted retina around it, a glowing rim, and a vitreous strand tugging the flap
   // flat pieces are bent to the curve of the wall, and the group sits a little off the wall so the paper folds never cover it
   const cupG = g => { const P = g.attributes.position; for (let i = 0; i < P.count; i++) P.setZ(i, P.getZ(i) + (P.getX(i) ** 2 + P.getY(i) ** 2) / (2 * R)); g.computeVertexNormals(); return g; };
+  const tgtMat = new THREE.MeshBasicMaterial({ color: 0x7dffb0, transparent: true, opacity: .95, fog: false, side: THREE.DoubleSide }), burnMat = new THREE.MeshStandardMaterial({ color: 0xfbf3e2, roughness: .9, emissive: 0x9c8c70 });
+  const mkTear = (dir, sz) => { const tearG = new THREE.Group(); tearG.position.copy(dir).multiplyScalar(R - .9); tearG.lookAt(0, 0, 0); tearG.scale.setScalar(sz); scene.add(tearG); // +Z faces the centre
   { const lift = new THREE.Mesh(cupG(new THREE.CircleGeometry(4.4, 28, 0, Math.PI * 2)), new THREE.MeshStandardMaterial({ color: 0xc9a59a, roughness: .9, transparent: true, opacity: .75, depthWrite: false })); lift.position.z = .03; tearG.add(lift);
     const hole = new THREE.Mesh(cupG(new THREE.CircleGeometry(3, 24)), new THREE.MeshStandardMaterial({ color: 0x3a0a07, roughness: .95, emissive: 0x2a0402 })); hole.position.z = .06; tearG.add(hole);
     const edge = new THREE.Mesh(new THREE.TorusGeometry(3.1, .32, 6, 30, Math.PI * 1.6), new THREE.MeshStandardMaterial({ color: 0xffe0cf, roughness: .6, flatShading: true, emissive: 0x5a2416 })); edge.rotation.z = Math.PI * .7; edge.position.z = .16; tearG.add(edge);
     const flap = new THREE.Mesh(new THREE.CircleGeometry(2.6, 18, 0, Math.PI), new THREE.MeshStandardMaterial({ color: 0xe39a7c, roughness: .8, side: THREE.DoubleSide, flatShading: true, emissive: 0x3a1408 })); flap.position.set(0, .7, 1.2); flap.rotation.x = -.95; tearG.add(flap);
     const strand = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(0, 2.4, 2.6), new THREE.Vector3(.6, 3.4, 5), new THREE.Vector3(-.4, 4.2, 8.5)]), 12, .14, 5), new THREE.MeshStandardMaterial({ color: 0xc8d2ec, transparent: true, opacity: .55, roughness: 1, depthWrite: false })); tearG.add(strand);
     const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0xff6a4a, transparent: true, opacity: .5, blending: THREE.AdditiveBlending, depthWrite: false, fog: false })); glow.scale.setScalar(13); glow.position.z = .5; tearG.add(glow); tearG.userData.glow = glow; }
-  const LT = [], tgtMat = new THREE.MeshBasicMaterial({ color: 0x7dffb0, transparent: true, opacity: .95, fog: false, side: THREE.DoubleSide }), burnMat = new THREE.MeshStandardMaterial({ color: 0xfbf3e2, roughness: .9, emissive: 0x9c8c70 });
+    const LT = [];
   for (let i = 0; i < 20; i++) { const a = i / 20 * Math.PI * 2, r = 5 + (i % 2) * .75, g = new THREE.Group(); g.position.set(Math.cos(a) * r, Math.sin(a) * r, .2 + r * r / (2 * R));
     const ring = new THREE.Mesh(new THREE.RingGeometry(.3, .45, 18), tgtMat), burn = new THREE.Mesh(new THREE.CircleGeometry(.4, 12), burnMat); g.add(ring); g.add(burn); g.userData = { ring, burn, hit: false }; tearG.add(g); LT.push(g); }
-  const showBurns = () => LT.forEach(g => { g.visible = sealed; g.userData.ring.visible = false; g.userData.burn.visible = sealed; g.userData.hit = sealed; });
+    return { dir, g: tearG, LT, glow: tearG.userData.glow }; };
+  const TEARS = TEAR_DIRS.map((d, i) => mkTear(d, [1, .8, .7][i])), tearG = TEARS[0].g;
+  let TI = 0, LT = TEARS[0].LT, TD = TEAR_DIR; // the tear being lasered
+  const showBurns = () => TEARS.forEach((T, i) => T.LT.forEach(g => { g.visible = SEALED[i]; g.userData.ring.visible = false; g.userData.burn.visible = SEALED[i]; g.userData.hit = SEALED[i]; }));
   showBurns();
   const paintMarkers = () => KEYS.forEach(k => { const c = found.has(k) ? 0xffd34d : 0x9fe7ff; markers[k].userData.s.material.color.setHex(c); markers[k].userData.ring.material.color.setHex(c); lab[k].classList.toggle('got', found.has(k)); lab[k].textContent = (found.has(k) ? '✓ ' : '') + M[k].n; });
 
@@ -433,7 +438,7 @@ export function mount(el, D) {
     if (k === 'floaters') extra = `<p class="xp-warn">${ic('warn')} ${esc(U.safety)}</p>`;
     if (k === 'vessels') extra = `<button type="button" class="xr-next" data-act="follow">${ic('drop')} ${esc(U.follow)}</button>`;
     if (k === 'aqueous' || k === 'ciliary') extra = `<button type="button" class="xr-next" data-act="ride">${ic('drop')} ${esc(U.ride)}</button>`;
-    if (k === 'tear' && !sealed) extra = `<button type="button" class="xr-next" data-act="laser">${ic('laser')} ${esc(U.laser)}</button>`;
+    if (k === 'tear' && !allSealed()) extra = `<button type="button" class="xr-next" data-act="laser">${ic('laser')} ${esc(U.laser)}</button>`;
     if (k === 'angle') extra = `<p class="xp-warn">${ic('warn')} ${esc(U.aacg)}</p>`;
     panel.innerHTML = `<button type="button" class="xr-x" data-act="closepanel" aria-label="${U.close}">✕</button><h3>${esc(M[k].n)}</h3><p>${esc(M[k].t)}</p>${extra}`;
     panel.hidden = false;
@@ -543,7 +548,7 @@ export function mount(el, D) {
     else if (a === 'pause') setPause(!paused);
     else if (a === 'resume') setPause(false);
     else if (a === 'restart') { setPause(false); endLJ(false); startIntro(); }
-    else if (a === 'resetprog') { found.clear(); badges.clear(); sealed = false; showBurns(); save(); progress(); }
+    else if (a === 'resetprog') { found.clear(); badges.clear(); SEALED.fill(false); showBurns(); save(); progress(); }
     else if (a === 'music') { bgmOn = !bgmOn; LS.set('mu-bgm', bgmOn); if (bgmOn && bgmLive) bgm.play().catch(() => { }); else bgm.pause(); bgmUi(); }
     else if (a === 'laser') startLaser();
     else if (a === 'fire') fireLaser();
@@ -569,11 +574,13 @@ export function mount(el, D) {
   const openNear = (max) => { let best = null, bd = max; const w = cv.clientWidth, h = cv.clientHeight;
     for (const g of LT) { if (g.userData.hit) continue; g.getWorldPosition(tmp3).project(camera); const x = (tmp3.x * .5 + .5) * w, y = (-tmp3.y * .5 + .5) * h, d = Math.hypot(x - aim.x, y - aim.y); if (d < bd) { bd = d; best = { g, x, y, d }; } } return best; };
   const tmp3 = new THREE.Vector3();
-  const tearC = v => v.copy(TEAR_DIR).multiplyScalar(R - .9);
+  const tearC = v => v.copy(TD).multiplyScalar(R - .9);
   const leftN = () => LT.filter(g => !g.userData.hit).length;
   const aimPoint = () => { const r = cv.getBoundingClientRect(); ndc.set(aim.x / r.width * 2 - 1, -aim.y / r.height * 2 + 1); ray.setFromCamera(ndc, camera); if (!ray.ray.intersectSphere(wallS, aimW)) tearC(aimW); return aimW; };
   const startLaser = () => {
-    if (sealed || state !== 'play') return; closeOver(); panel.hidden = true; state = 'laser'; auto = null; follow = null;
+    if (allSealed() || state !== 'play') return;
+    { let bd = Infinity; TEARS.forEach((T, i) => { if (SEALED[i]) return; const d = tmp.copy(T.dir).multiplyScalar(R - 6).distanceTo(player); if (d < bd) { bd = d; TI = i; } }); LT = TEARS[TI].LT; TD = TEARS[TI].dir; } // the nearest open tear
+    closeOver(); panel.hidden = true; state = 'laser'; auto = null; follow = null;
     boostK = 0; if (camera.fov !== baseFov) { camera.fov = baseFov; camera.updateProjectionMatrix(); }
     LT.forEach(g => { g.visible = true; g.userData.hit = false; g.userData.ring.visible = true; g.userData.burn.visible = false; });
     stage.classList.add('lasering'); markers.tear.visible = false; aim.x = cv.clientWidth / 2; aim.y = cv.clientHeight / 2; aimEl.hidden = false; lhud.hidden = false; $('.mu-lleft').textContent = leftN(); say(U.laser_how, 6000); stage.focus({ preventScroll: true });
@@ -593,12 +600,12 @@ export function mount(el, D) {
     if (!best) return;
     best.userData.hit = true; best.userData.ring.visible = false; best.userData.burn.visible = true; doBurst(to); if (navigator.vibrate) navigator.vibrate(12);
     const n = leftN(); $('.mu-lleft').textContent = n;
-    if (!n) { sealed = true; save(); award('laser'); mata.happy(); say(U.laser_done, 5000); setTimeout(() => endLaser(true), 1400); }
+    if (!n) { SEALED[TI] = true; save(); award('laser'); mata.happy(); const m = SEALED.filter(x => !x).length; say(m ? U.tear_more.replace('{n}', m) : U.laser_done, 5000); setTimeout(() => endLaser(true), 1400); }
   };
   let autoT = 0;
   const updateLaser = (dt, t) => {
     const held = keys.has('fire') || gpFire || rem.fire; autoT = held ? autoT + dt : 0; if (autoT > .3) { autoT = .08; fireLaser(); }
-    const c = tearC(tmp2); camera.position.lerp(tmp.copy(c).addScaledVector(TEAR_DIR, -22), Math.min(1, dt * 2.5)); camera.lookAt(c);
+    const c = tearC(tmp2); camera.position.lerp(tmp.copy(c).addScaledVector(TD, -22), Math.min(1, dt * 2.5)); camera.lookAt(c);
     const w = cv.clientWidth, h = cv.clientHeight;
     const ax = GP.x + rem.x + GP.lx + rem.lx + joy.x + (keys.has('d') || keys.has('arrowright') ? 1 : 0) - (keys.has('a') || keys.has('arrowleft') ? 1 : 0);
     const ay = GP.y + rem.y + GP.ly + rem.ly + joy.y + (keys.has('s') || keys.has('arrowdown') ? 1 : 0) - (keys.has('w') || keys.has('arrowup') ? 1 : 0);
@@ -629,7 +636,7 @@ export function mount(el, D) {
     if (state === 'laser') { if (n === 'ok' || n === 'fire') fireLaser(); else if (n === 'back') endLaser(false); return; }
     if (state === 'lj') { if (n === 'ok') $('[data-act=ljnext]').click(); else if (n === 'back') endLJ(false); return; }
     // phone remote or controller can start the laser game: Fire (R2) near the tear, or OK on the tear card (Haziq 2026-10-16)
-    if (n === 'fire') { const lb = !panel.hidden && panel.querySelector('[data-act=laser]'); if (lb || (nearK === 'tear' && !sealed)) startLaser(); return; }
+    if (n === 'fire') { const lb = !panel.hidden && panel.querySelector('[data-act=laser]'); if (lb || (nearK === 'tear' && !allSealed())) startLaser(); return; }
     if (n === 'ok') { if (!panel.hidden) { const b = panel.querySelector('[data-act=laser]') || panel.querySelector('.xr-next'); if (b) b.click(); else panel.hidden = true; } else if (nearK) discover(nearK); }
     else if (n === 'back') panel.hidden = true;
     else if (n === 'guide') glideTo(nextTarget());
@@ -717,6 +724,7 @@ export function mount(el, D) {
     zonFade(player, camera.position);
     // nearby landmark
     let best = null, bd = 16; for (const k of KEYS) { const d = markers[k].position.distanceTo(player); if (d < bd) { bd = d; best = k; } }
+    for (let i = 1; i < TEARS.length; i++) { if (SEALED[i]) continue; const d = tmp.copy(TEARS[i].dir).multiplyScalar(R - 6).distanceTo(player); if (d < bd) { bd = d; best = 'tear'; } }
     nearK = best; nearEl.hidden = !best; if (best) nearEl.querySelector('span').textContent = `${U.near}: ${M[best].n}`;
     if (best && bd < 4 && !found.has(best)) discover(best);
     // macula close-up vignette (sharp centre, softer edges)
@@ -776,7 +784,7 @@ export function mount(el, D) {
     const dt = Math.min(clock.getDelta(), .05); t += dt * (S.reduced ? .4 : 1); pollGP();
     partU.uT.value = t; beamU.uT.value = t; wallU.uT.value = t;
     if (!S.reduced) { fib.rotation.y = t * .01; floaters.rotation.y = t * .05; floaters.rotation.x = Math.sin(t * .1) * .3; }
-    if (tearG.userData.glow) tearG.userData.glow.material.opacity = sealed ? .12 : .38 + (S.reduced ? 0 : .2 * Math.sin(t * 2.4));
+    TEARS.forEach((T, i) => { T.glow.material.opacity = SEALED[i] ? .12 : .38 + (S.reduced ? 0 : .2 * Math.sin(t * 2.4 + i)); });
     KEYS.forEach((k, i) => { const g = markers[k]; g.userData.ring.lookAt(camera.position); const s = 1 + Math.sin(t * 2 + i) * (S.reduced ? 0 : .15); g.userData.ring.scale.setScalar(s); g.position.y = LM[k].y + (S.reduced ? 0 : Math.sin(t * .8 + i) * .5); });
     updAq(S.reduced ? t * .5 : t);
     signals.forEach(s => { if (!s.visible) return; s.position.copy(s.userData.c.getPointAt((t * .12 + s.userData.o) % 1)); });
