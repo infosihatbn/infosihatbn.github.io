@@ -2,10 +2,10 @@
  "news": {
   "items": [
    {
-    "t": "NUHS, SINGTEL AND ERICSSON EXPAND PARTNERSHIP TO ADVANCE NEXT-GENERATION CONNECTED HEALTHCARE",
-    "src": "The Malaysian Reserve",
-    "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPVFpULW5XaTZ4TnNvcGFZSTluYmVOZFpRQWR3ZTg3YzdWS3F4OVhUNXJ3RWV6M3V1YjJPUTBxVjVDX19jUVBud3UzS1lNbDVjUi1hWFZ4WkxGSC1UejIyaDhtNnN6N19GaWEtNnhjN2NuRDNmejVkeFVuWGVMdVNUUlZIYWVzWmRlNnFWdFV3ekRCSkFZVmxNeGkyRUJDV2d1VzRHNmtFblRWQ282X1lmM1N5WHcwLWVPa1NyM2RPcFRCbkozV2thWlNLOFJVa1p3U3c?oc=5",
-    "d": "2026-11-04"
+    "t": "Review Examines Mental Health and Safety Behaviour in Brunei’s Oil and Gas Industry",
+    "src": "Bioengineer.org",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQdjJNeThvWC1aN21hMlJGNERsRzFGOFBwSkttZkJfbU9feVJORkprelEtTmkzS1U4QmU0SGxSUjlYS2h1bWlaaDdGZWk3eHpITldFWjBQN0ZKWUdJZU9yb2tPQjE2Q25EcjJGTV85UkFFeF8weFkzcENyclFCMVZoOVR3TFlHMmVCdzBJYVlpbUtvaExlZ1hNQUNiYnEtbmhzUy11OFRkeEZRQVk?oc=5",
+    "d": "2026-11-07"
    },
    {
     "t": "Good air quality across all districts in Brunei",
@@ -14,10 +14,28 @@
     "d": "2026-10-30"
    }
   ],
-  "updated": "2026-11-07"
+  "updated": "2026-11-08"
  },
  "sea": {
   "items": [
+   {
+    "t": "A Teleglaucoma Screening System for Individuals at Risk of Open-Angle Glaucoma: Long-Term Clinical Outcomes and Comparative Cost Analysis",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42994799/"
+   },
+   {
+    "t": "Eyelid injury and associations with visual outcomes and globe removal after open globe injury: A systematic review and meta-analysis",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42994594/"
+   },
+   {
+    "t": "Preserved Choroidal Thickness and Vascularity Index in Obstructive Sleep Apnea: Report No. 2 from the ORNET Study",
+    "src": "Ophthalmology Retina",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42994565/"
+   },
    {
     "t": "COMPARISON OF TRACTION FORCES IN EX VIVO VITRECTOMY USING 25+®G 20K CPM DUAL-BLADE AND 25+®G 10K CPM SINGLE-BLADE VITRECTOMY PROBES",
     "src": "Retina",
@@ -35,27 +53,9 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42992962/"
-   },
-   {
-    "t": "Data-Efficient Transformer Model for Retinal Artery-Vein Segmentation in Landmark-Deficient OCT Angiography",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42990860/"
-   },
-   {
-    "t": "Comparative diagnostic performance of digital and conventional tests for congenital red-green colour vision deficiency",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42990001/"
-   },
-   {
-    "t": "Incidence and Predictors of IOP-Lowering Treatment Following Detection of Referable Glaucoma in a Teleretinal Screening Program",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42988359/"
    }
   ],
-  "updated": "2026-11-07"
+  "updated": "2026-11-08"
  },
  "bimj": {
   "items": [
@@ -72,9 +72,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-07"
+  "updated": "2026-11-08"
  },
- "checked": "2026-11-07T01:32+00:00",
+ "checked": "2026-11-08T01:00+00:00",
  "status": {
   "news": "ok (2)",
   "sea": "ok (6)",
@@ -122,6 +122,12 @@
   ],
   "glaucoma": [
    {
+    "t": "A Teleglaucoma Screening System for Individuals at Risk of Open-Angle Glaucoma: Long-Term Clinical Outcomes and Comparative Cost Analysis",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Nov 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42994799/"
+   },
+   {
     "t": "Incidence and Predictors of IOP-Lowering Treatment Following Detection of Referable Glaucoma in a Teleretinal Screening Program",
     "src": "Ophthalmology Glaucoma",
     "d": "2026 Nov 5",
@@ -150,12 +156,6 @@
     "src": "J Glaucoma",
     "d": "2026 Nov 3",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42980164/"
-   },
-   {
-    "t": "The Association Between Marijuana Use and Primary Open-Angle Glaucoma Using the All of Us Research Program: A Case-Control Study",
-    "src": "J Glaucoma",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980159/"
    }
   ],
   "medret": [
@@ -310,6 +310,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946154/"
    }
   ],
-  "updated": "2026-11-07"
+  "updated": "2026-11-08"
  }
 }
