@@ -5,7 +5,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const root=document.createElement('div');root.className='mk-comp';document.body.appendChild(root);
 let panel=null,feed=null,tipI=Math.floor(Math.random()*9);
 const fab=document.createElement('button');fab.type='button';fab.className='mk-fab';
-function MHS(){return document.documentElement.getAttribute('data-theme')==='dark'?'/assets/mata/mata3d-head.webp':'/assets/mata/mata3d-head-peach.webp'}try{new MutationObserver(function(){document.querySelectorAll('img[src*="/assets/mata/mata3d-head"]').forEach(function(m){m.src=MHS()})}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})}catch(e){}
+function MHS(){return document.documentElement.getAttribute('data-theme')==='dark'?'/assets/mata/mata3d-head.webp':'/assets/mata/mata3d-head-pink.webp'}try{new MutationObserver(function(){document.querySelectorAll('img[src*="/assets/mata/mata3d-head"]').forEach(function(m){m.src=MHS()})}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})}catch(e){}
 fab.innerHTML='<span class="mk-mata"><img src="'+MHS()+'" alt="" draggable="false" width="304" height="364"></span><span class="mk-q" aria-hidden="true">?</span>';root.appendChild(fab);
 const label=()=>{fab.setAttribute('aria-label',T().open);fab.title=T().title};label();
 let M3=null;const m3=n=>{try{M3&&M3.play(n)}catch(e){}};
@@ -20,7 +20,7 @@ const start3d=async()=>{try{if(!window.WebGLRenderingContext)return;
  const m=H.createMataHD({shells:0,headOnly:true});sc.add(m.object);m.loop('perch');m.setFur({density:130});M3=m;
  // light mode: Mata's blue paper turns pastel sage (Haziq 2026-11-08); dark mode keeps the blue
  const mkO=[];m.object.traverse(o=>{const a=o.geometry&&o.geometry.attributes&&o.geometry.attributes.color;if(a)mkO.push([a,a.array.slice()])});
- const mkTint=()=>{const lt=document.documentElement.dataset.theme!=='dark',c=new THREE.Color(),h={};for(const [a,src] of mkO){for(let i=0;i<src.length;i+=3){c.setRGB(src[i],src[i+1],src[i+2]);if(lt){c.getHSL(h);if(h.h>.5&&h.h<.75&&h.s>.12)c.setHSL(.055,Math.min(.72,h.s*.9+.18),Math.min(.84,h.l*1.1+.1))}a.array[i]=c.r;a.array[i+1]=c.g;a.array[i+2]=c.b}a.needsUpdate=true}};
+ const mkTint=()=>{const lt=document.documentElement.dataset.theme!=='dark',c=new THREE.Color(),h={};for(const [a,src] of mkO){for(let i=0;i<src.length;i+=3){c.setRGB(src[i],src[i+1],src[i+2]);if(lt){c.getHSL(h);if(h.h>.5&&h.h<.75&&h.s>.12)c.setHSL(.939,Math.min(.55,h.s*.8+.12),Math.min(.86,h.l*1.1+.12))}a.array[i]=c.r;a.array[i+1]=c.g;a.array[i+2]=c.b}a.needsUpdate=true}};
  mkTint();new MutationObserver(()=>{mkTint();try{r.render(sc,cam)}catch(e){}}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
  const Y=.5;cam.position.set(Math.sin(Y)*5.6,1.65,Math.cos(Y)*5.6);cam.lookAt(0,1.6,0);
  const rm=matchMedia('(prefers-reduced-motion: reduce)');

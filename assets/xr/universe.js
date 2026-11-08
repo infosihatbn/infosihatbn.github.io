@@ -6,6 +6,7 @@ import { createMata } from './matahd.js';
 import { DISC_DIR } from './eyemodel.js';
 import { createRealEye } from './realeye.js';
 import { wantNewModels, applyNewModels } from './models.js';
+import { wantHQ, setupHQ, upgradeScene } from './hq.js';
 
 const R = 60, IRIS_Z = 52, PUPIL = 10, LENS_Z = 40, LENS_R = 19, LENS_T = 7, CORNEA_C = 30, CORNEA_R = 38; // the front: iris plane, lens, corneal dome
 const BACK = ['vitreous', 'floaters', 'retina', 'tear', 'vessels', 'macula', 'fovea', 'disc', 'nerve'];
@@ -53,6 +54,16 @@ void main(){
   col = mix(col, vec3(1.,.95,.86), smoothstep(.04,.028,ad));          // cup
   float fz = d.z;
   col = mix(col, vec3(.24,.11,.12), smoothstep(.5,.68,fz));           // pars plana and ciliary body: dark and pigmented
+  #ifdef HQ
+  float f1 = n3(d*64.)*.5 + n3(d*128.)*.3 + n3(d*260.)*.2;             // fine RPE mottling
+  col *= .9 + .2*f1;
+  float ch = abs(sin((atan(d.y,d.x)*18. + n3(d*9.)*7.)));            // choroidal vessels showing through, strongest in the periphery
+  col = mix(col, col*vec3(1.12,.82,.74), smoothstep(.75,1.,ch)*smoothstep(.2,-.3,back)*.55);
+  vec3 tD = normalize(d-uDisc); float nf = abs(sin(dot(tD,vec3(1.,1.,1.))*90. + n3(d*40.)*4.));  // nerve fibre layer sheen around the disc
+  col += vec3(.55,.62,.7)*smoothstep(.9,1.,nf)*smoothstep(.45,.09,ad)*.18;
+  vec3 V = normalize(cameraPosition-vW), Nn = -d; vec3 Lh = normalize(V+normalize(uPlayer-vW));
+  col += vec3(.9,.95,1.)*pow(max(dot(Nn,Lh),0.),60.)*.35;            // wet, glossy retinal surface
+  #endif
   float lp = length(vW-uPlayer); col *= .55 + .9/(1.+lp*lp/500.);      // Mata's glow lights up nearby retina
   float dist = length(vW-cameraPosition); float f = 1.-exp(-pow(dist*uDen,2.));
   gl_FragColor = vec4(mix(col, uFog, f*.82), 1.);
@@ -112,6 +123,7 @@ export function mount(el, D) {
     <label><input type="checkbox" data-set="reduced"> ${U.reduced}</label>
     <label><input type="checkbox" data-set="assisted"> ${U.assisted}</label>
     <label><input type="checkbox" data-set="aimAssist"> ${U.aim_assist}</label>
+    <label><input type="checkbox" data-hq> ${U.hq || 'High quality graphics'}</label>
     <label class="mu-tiltrow" hidden><input type="checkbox" data-set="tilt"> ${U.tilt}</label>
     <button type="button" class="xbtn" data-act="remote" ${touch ? 'hidden' : ''}>${ic('phone')} ${U.remote}</button>
     <button type="button" class="xbtn" data-act="resetprog">${U.reset}</button><p class="mu-credit">${U.music_credit}</p></div></div>
@@ -130,6 +142,7 @@ export function mount(el, D) {
   try { renderer = new THREE.WebGLRenderer({ antialias: !touch, powerPreference: 'high-performance' }); } catch (e) { const l = el.querySelector('.xr-load'); l.hidden = false; l.textContent = U.nogl; stage.remove(); return; }
   renderer.setPixelRatio(Math.min(devicePixelRatio, touch ? 1.5 : 1.75)); renderer.outputColorSpace = THREE.SRGBColorSpace;
   $('.xr-canvas').appendChild(renderer.domElement);
+  const HQ = wantHQ(renderer); let hq = null;
   const camera = new THREE.PerspectiveCamera(62, 1, .1, 400);
   const dot = softDot();
 
@@ -148,18 +161,18 @@ export function mount(el, D) {
   const sun = new THREE.DirectionalLight(0xfff1dc, 1.2); sun.position.set(0, 0, 1); scene.add(sun);
   const player = new THREE.Vector3(0, 0, 22);
   const wallU = { uDisc: { value: DISC_DIR.clone() }, uFog: { value: FOG.clone() }, uDen: { value: .0105 }, uPlayer: { value: player }, uT: { value: 0 } };
-  const wall = new THREE.Mesh(new THREE.SphereGeometry(R, 96, 64, 0, Math.PI * 2, Math.acos(IRIS_Z / R), Math.PI - Math.acos(IRIS_Z / R)).rotateX(Math.PI / 2), new THREE.ShaderMaterial({ uniforms: wallU, vertexShader: wallVS, fragmentShader: wallFS, side: THREE.BackSide }));
+  const wall = new THREE.Mesh(new THREE.SphereGeometry(R, HQ ? 192 : 96, HQ ? 128 : 64, 0, Math.PI * 2, Math.acos(IRIS_Z / R), Math.PI - Math.acos(IRIS_Z / R)).rotateX(Math.PI / 2), new THREE.ShaderMaterial({ uniforms: wallU, vertexShader: wallVS, fragmentShader: wallFS, side: THREE.BackSide, defines: HQ ? { HQ: '' } : {} }));
   scene.add(wall);
   // retinal vessels: arcades from the disc, curving around the macula, with smaller branches
   const vessels = new THREE.Group(); scene.add(vessels);
-  const vmat = [new THREE.MeshStandardMaterial({ color: 0xd3483a, roughness: .45, emissive: 0x3a0a06 }), new THREE.MeshStandardMaterial({ color: 0x7c1d18, roughness: .45, emissive: 0x200303 })];
+  const vmat = [new THREE.MeshStandardMaterial({ color: 0xd3483a, roughness: HQ ? .28 : .45, emissive: 0x3a0a06 }), new THREE.MeshStandardMaterial({ color: 0x7c1d18, roughness: HQ ? .28 : .45, emissive: 0x200303 })];
   const vesselCurves = [];
   let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
   // vessels narrow gradually to a fine tip (Haziq, 2026-10-16: no blunt ends); r1 = width left at the far end
   const addVessel = (pts2, rad, kind, keep, r1 = .06) => {
     const pts = pts2.map(([x, y]) => onWall(x, y, R - .35 - kind * .12));
     const c = new THREE.CatmullRomCurve3(pts); if (keep) vesselCurves.push(c);
-    const TS = Math.max(16, pts.length * 8), RS = 6, g = new THREE.TubeGeometry(c, TS, rad, RS, false), P = g.attributes.position, ctr = new THREE.Vector3(), v = new THREE.Vector3();
+    const TS = Math.max(16, pts.length * 8) * (HQ ? 2 : 1), RS = HQ ? 16 : 6, g = new THREE.TubeGeometry(c, TS, rad, RS, false), P = g.attributes.position, ctr = new THREE.Vector3(), v = new THREE.Vector3();
     for (let i = 0; i <= TS; i++) { const u = i / TS, k = 1 + (r1 - 1) * u * u * (3 - 2 * u); c.getPointAt(u, ctr);
       for (let j = 0; j <= RS; j++) { const n = i * (RS + 1) + j; v.fromBufferAttribute(P, n).sub(ctr).multiplyScalar(k).add(ctr); P.setXYZ(n, v.x, v.y, v.z); } }
     g.computeVertexNormals(); g.userData.keep = true;
@@ -312,8 +325,8 @@ export function mount(el, D) {
   const mata = createMata(); mata.object.scale.setScalar(.9);
   // Mata's little spaceship (Haziq, 2026-10-15): chunky and toy-like, flat-shaded to match the origami Mata; the nose points +Z
   const craft = new THREE.Group(), ship = new THREE.Group(); craft.add(ship); craft.add(mata.object); mata.object.position.set(0, .98, -.05); scene.add(craft);
-  const flat = c => new THREE.MeshStandardMaterial({ color: c, roughness: .55, metalness: .05, flatShading: true });
-  const sRed = flat(0xe8505b), sYel = flat(0xffc93c), sBlu = flat(0x3d8bfd), sWht = flat(0xf3efe6), sDk = flat(0x2a3346);
+  const flat = c => HQ ? new THREE.MeshPhysicalMaterial({ color: c, roughness: .32, metalness: .1, clearcoat: 1, clearcoatRoughness: .12 }) : new THREE.MeshStandardMaterial({ color: c, roughness: .55, metalness: .05, flatShading: true });
+  const sRed = flat(0xe8505b), sYel = flat(0xffc93c), sBlu = flat(0x3d8bfd), sWht = flat(0xf3efe6), sDk = HQ ? new THREE.MeshStandardMaterial({ color: 0x3a4458, roughness: .25, metalness: .95 }) : flat(0x2a3346);
   const part = (g, m, x, y, z, rx = 0, ry = 0, rz = 0) => { const o = new THREE.Mesh(g, m); o.position.set(x, y, z); o.rotation.set(rx, ry, rz); ship.add(o); return o; };
   part(new THREE.CylinderGeometry(.62, .78, 2.1, 8), sWht, 0, 0, 0, Math.PI / 2);              // hull
   part(new THREE.ConeGeometry(.62, .9, 8), sRed, 0, 0, 1.5, Math.PI / 2);                       // nose
@@ -329,8 +342,15 @@ export function mount(el, D) {
   const flames = [-1, 1].map(s => { const f = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0x7fe3ff, blending: THREE.AdditiveBlending, depthWrite: false, fog: false })); f.position.set(s * .78, -.2, -1.6); f.scale.setScalar(.8); ship.add(f); return f; });
   ship.scale.setScalar(.9);
   // img2threejs models (paper eyeball, paper ship, origami inside, Mata blink): on by default, ?models=old for the old ones
-  if (wantNewModels()) applyNewModels({ matas: [introMata, mata], eyes: [bigEye], ships: [ship], riders: [introMata], insides: [{ scene, wall, keep: [craft] }], build: D.build }).then(r => console.info('[models] new', r));
-  const lantern = new THREE.PointLight(0xcfe9ff, 40, 30, 1.6); scene.add(lantern);
+  // high quality mode keeps the realistic eye, ship and retina (smooth, glossy, more segments) and only swaps in the origami Mata
+  if (wantNewModels()) applyNewModels(HQ ? { matas: [introMata, mata], eyes: [], ships: [], riders: [], insides: [], build: D.build } : { matas: [introMata, mata], eyes: [bigEye], ships: [ship], riders: [introMata], insides: [{ scene, wall, keep: [craft] }], build: D.build }).then(r => console.info('[models] new', r));
+  if (HQ) {
+    mata.object.userData.noHQ = introMata.object.userData.noHQ = true;
+    for (const s of [-1, 1]) { const g = new THREE.Mesh(new THREE.CircleGeometry(.17, 32), new THREE.MeshBasicMaterial({ color: 0x9feaff, fog: false })); g.position.set(s * .78, -.2, -1.37); g.rotation.y = Math.PI; ship.add(g); }   // glowing engine nozzles (bloom picks them up)
+    { const c = ship.clone(); c.scale.setScalar(1); c.position.set(0, -.98 / .9, .05 / .9); introMata.object.add(c); introMata.object.scale.multiplyScalar(.62); }   // the intro Mata rides the glossy ship too
+    setupHQ(renderer, camera, D.build).then(h => { hq = h; resize(); console.info('[hq] on', upgradeScene(introS, { env: h.env, envI: .9 }), upgradeScene(scene, { env: h.env, envI: .35 })); }).catch(e => console.warn('[hq] off', e));
+  }
+  const lantern = new THREE.PointLight(0xcfe9ff, HQ ? 16 : 40, 30, 1.6); scene.add(lantern);
 
   // ---------------- landmarks ----------------
   const supArc = vesselCurves[0];
@@ -498,7 +518,8 @@ export function mount(el, D) {
   const overs = ['.mu-pause', '.mu-journal', '.mu-settings', '.mu-remote'];
   const closeOver = () => { overs.slice(1).forEach(s => $(s).hidden = true); if (paused) $('.mu-pause').hidden = false; stage.focus({ preventScroll: true }); };
   const setPause = p => { paused = p; $('.mu-pause').hidden = !p; overs.slice(1).forEach(s => $(s).hidden = true); $('[data-act=pause]').textContent = p ? '▶' : '⏸'; keys.clear(); setRun(); if (!p) stage.focus({ preventScroll: true }); };
-  const syncSettings = () => { $('[data-set=sens]').value = S.sens; $('[data-set=reduced]').checked = S.reduced; $('[data-set=assisted]').checked = S.assisted; $('[data-set=aimAssist]').checked = S.aimAssist; $('[data-set=tilt]').checked = S.tilt; };
+  const syncSettings = () => { $('[data-set=sens]').value = S.sens; $('[data-set=reduced]').checked = S.reduced; $('[data-set=assisted]').checked = S.assisted; $('[data-set=aimAssist]').checked = S.aimAssist; $('[data-set=tilt]').checked = S.tilt; $('[data-hq]').checked = HQ; };
+  stage.addEventListener('change', e => { if (!e.target.hasAttribute('data-hq')) return; try { localStorage.setItem('mu-hq', e.target.checked ? '1' : '0'); } catch (x) { } const u = new URL(location.href); u.searchParams.delete('hq'); location.replace(u); });
   stage.addEventListener('input', e => { const s = e.target.dataset.set; if (!s) return; S[s] = e.target.type === 'checkbox' ? e.target.checked : +e.target.value;
     if (s === 'tilt' && S.tilt) { tilt0 = null; const DOE = window.DeviceOrientationEvent; if (DOE && DOE.requestPermission) DOE.requestPermission().then(r => { if (r !== 'granted') { S.tilt = false; syncSettings(); } }).catch(() => { S.tilt = false; syncSettings(); }); addEventListener('deviceorientation', onTilt); }
     if (s === 'tilt' && !S.tilt) { removeEventListener('deviceorientation', onTilt); joy = { x: 0, y: 0 }; }
@@ -748,7 +769,7 @@ export function mount(el, D) {
   };
 
   // ---------------- loop ----------------
-  const resize = () => { const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); cv.style.width = w + 'px'; cv.style.height = h + 'px'; camera.aspect = w / h; camera.updateProjectionMatrix(); };
+  const resize = () => { const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); cv.style.width = w + 'px'; cv.style.height = h + 'px'; camera.aspect = w / h; camera.updateProjectionMatrix(); if (hq) hq.setSize(w, h); };
   const ro = new ResizeObserver(resize); ro.observe(stage);
   const clock = new THREE.Clock(); let t = 0, visible = true, running = false;
   const loop = () => {
@@ -760,11 +781,11 @@ export function mount(el, D) {
     updAq(S.reduced ? t * .5 : t);
     signals.forEach(s => { if (!s.visible) return; s.position.copy(s.userData.c.getPointAt((t * .12 + s.userData.o) % 1)); });
     if (burstT > 0) { burstT -= dt; const a = burst.geometry.attributes.position.array; for (let i = 0; i < 60; i++) { a[i * 3] += burstV[i].x * dt; a[i * 3 + 1] += burstV[i].y * dt; a[i * 3 + 2] += burstV[i].z * dt; } burst.geometry.attributes.position.needsUpdate = true; burst.material.opacity = Math.max(0, burstT); if (burstT <= 0) burst.visible = false; }
-    if (state === 'intro') { updateIntro(dt, t); renderer.render(introS, camera); updateLabels(); return; }
+    if (state === 'intro') { updateIntro(dt, t); hq ? hq.render(introS, dt) : renderer.render(introS, camera); updateLabels(); return; }
     if (state === 'play') updatePlay(dt, t); else if (state === 'lj') updateLJ(dt, t); else if (state === 'laser') updateLaser(dt, t);
     else { camera.position.set(Math.sin(t * .1) * 8, 3, 26); camera.lookAt(0, 0, -20); craft.position.set(0, 0, 16); mata.update(t, dt, { reducedMotion: S.reduced }); }
     lantern.position.copy(state === 'lj' ? ljLight.position : state === 'laser' ? craft.position : player).add(new THREE.Vector3(0, 2, 2));
-    renderer.render(scene, camera); updateLabels();
+    hq ? hq.render(scene, dt) : renderer.render(scene, camera); updateLabels();
   };
   const setRun = () => { const on = visible && !document.hidden && !paused; if (on !== running) { running = on; clock.getDelta(); renderer.setAnimationLoop(on ? loop : null); } };
   const io = new IntersectionObserver(es => { visible = es[0].isIntersecting; setRun(); }); io.observe(stage);
