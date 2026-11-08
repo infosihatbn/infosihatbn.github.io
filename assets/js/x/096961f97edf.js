@@ -1,10 +1,10 @@
 
 (function(){
-const TR=[["calm-ambient.mp3", "Calm Ambient", "Velariomusic"], ["calm.mp3", "Calm", "MarloweMusic"]],K='is-music',T='is-music-t',VOL=.22;let ti=0;try{ti=+(localStorage.getItem('is-track')||0);if(!TR[ti])ti=0}catch(e){}
-const url=i=>new URL('../../assets/'+TR[i][0],location.href).href,SRC=url(ti);
+const TR=[["calm-ambient.mp3", "Calm Ambient", "Velariomusic"]],K='is-music',T='is-music-t',VOL=.22;let ti=0;try{ti=+(localStorage.getItem('is-track')||0);if(!TR[ti])ti=0}catch(e){}
+const url=i=>new URL('../assets/'+TR[i][0],location.href).href,SRC=url(ti);
 const tip=()=>{const m=document.querySelector('.music-tip');if(m&&m.dataset.tpl)m.textContent=m.dataset.tpl.replace('{t}',TR[ti][1]).replace('{a}',TR[ti][2])};
 let btn=document.querySelector('.music-btn');if(!btn)return;
-let pref='on';try{pref=localStorage.getItem(K)||'on'}catch(e){}
+let pref='off';try{pref=localStorage.getItem(K)||'off'}catch(e){}
 const a=new Audio();a.src=SRC;a.loop=true;a.preload='none';a.volume=0;
 try{const t=parseFloat(sessionStorage.getItem(T));if(t)a.currentTime=t}catch(e){}
 let want=false,duck=false;

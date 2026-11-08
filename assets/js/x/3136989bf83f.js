@@ -5,7 +5,8 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const root=document.createElement('div');root.className='mk-comp';document.body.appendChild(root);
 let panel=null,feed=null,tipI=Math.floor(Math.random()*9);
 const fab=document.createElement('button');fab.type='button';fab.className='mk-fab';
-fab.innerHTML='<span class="mk-mata"><img src="/assets/mata/mata3d-head.webp" alt="" draggable="false" width="304" height="364"></span><span class="mk-q" aria-hidden="true">?</span>';root.appendChild(fab);
+function MHS(){return document.documentElement.getAttribute('data-theme')==='dark'?'/assets/mata/mata3d-head.webp':'/assets/mata/mata3d-head-sage.webp'}try{new MutationObserver(function(){document.querySelectorAll('img[src*="/assets/mata/mata3d-head"]').forEach(function(m){m.src=MHS()})}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']})}catch(e){}
+fab.innerHTML='<span class="mk-mata"><img src="'+MHS()+'" alt="" draggable="false" width="304" height="364"></span><span class="mk-q" aria-hidden="true">?</span>';root.appendChild(fab);
 const label=()=>{fab.setAttribute('aria-label',T().open);fab.title=T().title};label();
 let M3=null;const m3=n=>{try{M3&&M3.play(n)}catch(e){}};
 const start3d=async()=>{try{if(!window.WebGLRenderingContext)return;
@@ -17,6 +18,10 @@ const start3d=async()=>{try{if(!window.WebGLRenderingContext)return;
  const sc=new THREE.Scene();H.addMataLights(sc);const cam=new THREE.PerspectiveCamera(24,1,.1,40);
  const lite=matchMedia('(pointer:coarse)').matches||(navigator.hardwareConcurrency||4)<=4;
  const m=H.createMataHD({shells:0,headOnly:true});sc.add(m.object);m.loop('perch');m.setFur({density:130});M3=m;
+ // light mode: Mata's blue paper turns pastel sage (Haziq 2026-11-08); dark mode keeps the blue
+ const mkO=[];m.object.traverse(o=>{const a=o.geometry&&o.geometry.attributes&&o.geometry.attributes.color;if(a)mkO.push([a,a.array.slice()])});
+ const mkTint=()=>{const lt=document.documentElement.dataset.theme!=='dark',c=new THREE.Color(),h={};for(const [a,src] of mkO){for(let i=0;i<src.length;i+=3){c.setRGB(src[i],src[i+1],src[i+2]);if(lt){c.getHSL(h);if(h.h>.5&&h.h<.75&&h.s>.12)c.setHSL(.33,Math.min(.38,h.s*.7),Math.min(.8,h.l*1.08+.04))}a.array[i]=c.r;a.array[i+1]=c.g;a.array[i+2]=c.b}a.needsUpdate=true}};
+ mkTint();new MutationObserver(()=>{mkTint();try{r.render(sc,cam)}catch(e){}}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
  const Y=.5;cam.position.set(Math.sin(Y)*5.6,1.65,Math.cos(Y)*5.6);cam.lookAt(0,1.6,0);
  const rm=matchMedia('(prefers-reduced-motion: reduce)');
  const draw=()=>{r.render(sc,cam);if(!fab.classList.contains('d3'))fab.classList.add('d3')};
@@ -68,7 +73,7 @@ const ask=async q=>{const t=T(),n=' '+norm(q)+' ';say(esc(q),'me');
   top.map(d=>'<li><a href="/'+d.u+'"><b>'+esc(d.t)+(d.h?' · '+esc(d.h):'')+'</b><small>'+esc((d.x||'').slice(0,110))+'…</small></a></li>').join('')+'</ul>')}
  else say(esc(t.none)+links(['checker','cond','acute','clinic']))};
 const build=()=>{const t=T();panel=document.createElement('div');panel.className='mk-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label',t.title);
- panel.innerHTML='<div class="mk-hd"><span class="mk-av"><img src="/assets/mata/mata3d-head.webp" alt="" width="304" height="364"></span><div><b>Mata</b><small>'+esc(t.sub)+'</small></div><button type="button" class="mk-x" aria-label="'+esc(t.close)+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
+ panel.innerHTML='<div class="mk-hd"><span class="mk-av"><img src="'+MHS()+'" alt="" width="304" height="364"></span><div><b>Mata</b><small>'+esc(t.sub)+'</small></div><button type="button" class="mk-x" aria-label="'+esc(t.close)+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
   '<div class="mk-feed" aria-live="polite"></div>'+
   '<form class="mk-f"><input type="text" maxlength="200" placeholder="'+esc(t.ask)+'" aria-label="'+esc(t.ask)+'"><button type="submit" aria-label="'+esc(t.send)+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form><p class="mk-disc">'+esc(t.disc)+'</p>';
  root.appendChild(panel);feed=panel.querySelector('.mk-feed');panel.dataset.l=lang();hello();
