@@ -12,7 +12,7 @@ let M3=null;const m3=n=>{try{M3&&M3.play(n)}catch(e){}};
 const start3d=async()=>{try{if(!window.WebGLRenderingContext)return;
  // skip on software-only graphics (too slow); the 3D still image stays instead
  const force=LS('mk-3d')==='force';if(!force){const tc=document.createElement('canvas').getContext('webgl2',{failIfMajorPerformanceCaveat:true})||document.createElement('canvas').getContext('webgl',{failIfMajorPerformanceCaveat:true});if(!tc)return;const lx=tc.getExtension('WEBGL_lose_context');lx&&lx.loseContext()}
- const [THREE,H]=await Promise.all([import('/assets/three/three.module.min.js'),import('/assets/xr/matahd.js?v=ball4')]);
+ const [THREE,H]=await Promise.all([import('/assets/three/three.module.min.js'),import('/assets/xr/matahd.js?v=ball5')]);
  const cv=document.createElement('canvas');cv.className='mk-3d';cv.setAttribute('aria-hidden','true');fab.appendChild(cv);
  const r=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true,powerPreference:'low-power'});r.outputColorSpace=THREE.SRGBColorSpace;r.setClearColor(0,0);
  const sc=new THREE.Scene();H.addMataLights(sc);const cam=new THREE.PerspectiveCamera(24,1,.1,40);
@@ -20,7 +20,7 @@ const start3d=async()=>{try{if(!window.WebGLRenderingContext)return;
  const m=H.createMataHD({shells:0,headOnly:true});sc.add(m.object);m.loop('perch');m.setFur({density:130});M3=m;
  // light mode: Mata's blue paper turns pastel sage (Haziq 2026-11-08); dark mode keeps the blue
  const mkO=[];m.object.traverse(o=>{const a=o.geometry&&o.geometry.attributes&&o.geometry.attributes.color;if(a)mkO.push([a,a.array.slice()])});
- const mkTint=()=>{const lt=document.documentElement.dataset.theme!=='dark',c=new THREE.Color(),h={};for(const [a,src] of mkO){for(let i=0;i<src.length;i+=3){c.setRGB(src[i],src[i+1],src[i+2]);if(lt){c.getHSL(h);if(h.h>.5&&h.h<.75&&h.s>.12)c.setHSL(.939,Math.min(.55,h.s*.8+.12),Math.min(.86,h.l*1.1+.12))}a.array[i]=c.r;a.array[i+1]=c.g;a.array[i+2]=c.b}a.needsUpdate=true}};
+ const mkTint=()=>{const lt=document.documentElement.dataset.theme!=='dark',c=new THREE.Color(),h={};for(const [a,src] of mkO){for(let i=0;i<src.length;i+=3){c.setRGB(src[i],src[i+1],src[i+2]);if(lt){c.getHSL(h);if(h.h>.5&&h.h<.75&&h.s>.12&&h.l>.16)c.setHSL(.939,Math.min(.55,h.s*.8+.12),Math.min(.86,h.l*1.1+.12))}a.array[i]=c.r;a.array[i+1]=c.g;a.array[i+2]=c.b}a.needsUpdate=true}};
  mkTint();new MutationObserver(()=>{mkTint();try{r.render(sc,cam)}catch(e){}}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
  const Y=.5;cam.position.set(Math.sin(Y)*5.6,1.65,Math.cos(Y)*5.6);cam.lookAt(0,1.6,0);
  const rm=matchMedia('(prefers-reduced-motion: reduce)');

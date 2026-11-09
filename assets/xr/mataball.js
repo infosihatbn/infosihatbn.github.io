@@ -28,6 +28,7 @@ class Sheet {
     g.setAttribute("color", new THREE.Float32BufferAttribute(this.col, 3));
     g.computeVertexNormals();
     g.computeBoundingSphere();
+    paperBary(g);
     const m = new THREE.Mesh(g, mat);
     m.name = name;
     return m;
@@ -40,12 +41,41 @@ function frameAt(dir, r) {
   o.lookAt(d.clone().multiplyScalar(r + 1));
   return o;
 }
+// Paper finish (Haziq 2026-11-09, same as the home eye): faint shadow along every fold, paper fibre relief, soft sheen, rim light.
+function paperBary(g) {
+  const n = g.attributes.position.count, b = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) b[i * 3 + i % 3] = 1;
+  g.setAttribute("bary", new THREE.BufferAttribute(b, 3));
+}
+let GRAIN = null;
+function paperGrain() {
+  if (GRAIN || typeof document === "undefined") return GRAIN;
+  const c = document.createElement("canvas"); c.width = c.height = 256; const x = c.getContext("2d");
+  x.fillStyle = "#fff"; x.fillRect(0, 0, 256, 256);
+  let s = 5; const r = () => (s = s * 16807 % 2147483647) / 2147483647;
+  for (let i = 0; i < 4000; i++) { const v = 238 + r() * 17 | 0; x.fillStyle = `rgb(${v},${v},${v})`; x.fillRect(r() * 256, r() * 256, 1 + r() * 2, 1); }
+  x.globalAlpha = .05; x.strokeStyle = "#000"; for (let i = 0; i < 90; i++) { x.beginPath(); const a = r() * 256, b = r() * 256; x.moveTo(a, b); x.lineTo(a + r() * 30 - 15, b + r() * 30 - 15); x.stroke(); }
+  GRAIN = new THREE.CanvasTexture(c); GRAIN.wrapS = GRAIN.wrapT = THREE.RepeatWrapping; return GRAIN;
+}
+export const PAPER_RIM = { value: new THREE.Color("#ffffff") }, PAPER_RIM_K = { value: .32 };
+function paperFinish(m) {
+  m.onBeforeCompile = (sh) => {
+    sh.uniforms.uRim = PAPER_RIM; sh.uniforms.uRimK = PAPER_RIM_K;
+    sh.vertexShader = sh.vertexShader.replace("#include <common>", "#include <common>\nattribute vec3 bary;varying vec3 vBary;").replace("#include <begin_vertex>", "#include <begin_vertex>\nvBary=bary;");
+    sh.fragmentShader = sh.fragmentShader.replace("#include <common>", "#include <common>\nuniform vec3 uRim;uniform float uRimK;varying vec3 vBary;").replace("#include <dithering_fragment>",
+      "float eb=min(min(vBary.x,vBary.y),vBary.z);float crease=1.-smoothstep(0.,.05,eb);gl_FragColor.rgb*=1.-crease*.09;" +
+      "float fr=pow(1.-abs(dot(normalize(normal),normalize(vViewPosition))),2.6);gl_FragColor.rgb+=uRim*fr*uRimK;\n#include <dithering_fragment>");
+  };
+  m.customProgramCacheKey = () => "mk-paper";
+  return m;
+}
 const bend = (x, y, z, R = 1) => new THREE.Vector3(x, y, z - (x * x + y * y) / (2 * R));
 function createMataBallModel(spec = {}, options = {}) {
   const rnd = makeRng(spec.seed ?? 31);
-  const paper = new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: true, roughness: 0.9, metalness: 0, side: THREE.DoubleSide });
+  const grain = paperGrain();
+  const paper = paperFinish(new THREE.MeshPhysicalMaterial({ vertexColors: true, flatShading: true, roughness: 0.9, metalness: 0, side: THREE.DoubleSide, bumpMap: grain, bumpScale: 1.1, sheen: .2, sheenRoughness: .85, sheenColor: new THREE.Color("#ffffff"), specularIntensity: .25 }));
   const onTop = (n) => {
-    const m = paper.clone();
+    const m = paperFinish(paper.clone());
     m.polygonOffset = true;
     m.polygonOffsetFactor = -n;
     m.polygonOffsetUnits = -4 * n;
@@ -126,6 +156,7 @@ function createMataBallModel(spec = {}, options = {}) {
     const lg = new THREE.BufferGeometry();
     lg.setAttribute("position", new THREE.BufferAttribute(lidPos, 3));
     lg.setAttribute("color", new THREE.Float32BufferAttribute(lidCol, 3));
+    if (!lg.index) paperBary(lg); else lg.setAttribute('bary', new THREE.BufferAttribute(new Float32Array(lg.attributes.position.count * 3).fill(1), 3));
     const lid = new THREE.Mesh(lg, onTop(4));
     lid.name = "lid";
     fr.add(lid);
