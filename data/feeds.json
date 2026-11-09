@@ -19,43 +19,43 @@
  "sea": {
   "items": [
    {
-    "t": "A Teleglaucoma Screening System for Individuals at Risk of Open-Angle Glaucoma: Long-Term Clinical Outcomes and Comparative Cost Analysis",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42994799/"
-   },
-   {
-    "t": "Eyelid injury and associations with visual outcomes and globe removal after open globe injury: A systematic review and meta-analysis",
+    "t": "Pegcetacoplan for geographic atrophy: Bridging the \"clinical relevance gap\" through precision medicine",
     "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42994594/"
+    "d": "2026 Nov 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42998772/"
    },
    {
-    "t": "Preserved Choroidal Thickness and Vascularity Index in Obstructive Sleep Apnea: Report No. 2 from the ORNET Study",
-    "src": "Ophthalmology Retina",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42994565/"
+    "t": "Statin Use and Age-related Macular Degeneration: A Systematic Review and Meta-Analysis of Disease Outcomes",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42998694/"
    },
    {
-    "t": "COMPARISON OF TRACTION FORCES IN EX VIVO VITRECTOMY USING 25+®G 20K CPM DUAL-BLADE AND 25+®G 10K CPM SINGLE-BLADE VITRECTOMY PROBES",
-    "src": "Retina",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42993209/"
+    "t": "Fixed Dose Inferior Oblique Recession Has Self-Adjusting Effect",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42998693/"
    },
    {
-    "t": "Post-Pars Plana Vitrectomy Endophthalmitis in Patients with and without Systemic Immunosuppression",
-    "src": "Retina",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42993189/"
+    "t": "Open-Source Multimodal Imaging and Clinical Data Set for Uveal Melanoma",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42997692/"
    },
    {
-    "t": "Subconjunctival Injection of Anti-Secretogranin III Mitigates Corneal Damage in Alkali Burn Injury Model",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42992962/"
+    "t": "Automated Volumetric Segmentation of Microaneurysms on OCT Using Artificial Intelligence",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42997593/"
+   },
+   {
+    "t": "Intravitreal Diclofenac and Other Nonsteroidal Anti-Inflammatory Drugs for the Treatment of Macular Edema: A Systematic Review and Exploratory Meta-Analysis",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42997509/"
    }
   ],
-  "updated": "2026-11-08"
+  "updated": "2026-11-09"
  },
  "bimj": {
   "items": [
@@ -72,17 +72,23 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-08"
+  "updated": "2026-11-09"
  },
- "checked": "2026-11-08T01:00+00:00",
+ "checked": "2026-11-09T01:22+00:00",
  "status": {
-  "news": "ok (2)",
+  "news": "ok (0)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Autologous stromal transplantation with stromal restoration for corneal dermoids",
+    "src": "Graefe's Archive",
+    "d": "2026 Nov 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42998151/"
+   },
    {
     "t": "Subconjunctival Injection of Anti-Secretogranin III Mitigates Corneal Damage in Alkali Burn Injury Model",
     "src": "IOVS",
@@ -112,15 +118,15 @@
     "src": "J Refract Surg",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42992811/"
-   },
-   {
-    "t": "Optical and Transition Zone Volume Components in Hyperopic Corneal Ablation and Hyperopic KLEx Designs",
-    "src": "J Refract Surg",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42992805/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Predicting Future Visual Field Status from Baseline OCT Scan in Early to Moderate Glaucoma Using Deep Learning",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42997014/"
+   },
    {
     "t": "A Teleglaucoma Screening System for Individuals at Risk of Open-Angle Glaucoma: Long-Term Clinical Outcomes and Comparative Cost Analysis",
     "src": "Ophthalmology Glaucoma",
@@ -150,15 +156,33 @@
     "src": "J Glaucoma",
     "d": "2026 Nov 3",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42980177/"
-   },
-   {
-    "t": "Selective Laser Trabeculoplasty versus Latanoprost: A Randomized OCT Angiography Study of Retinal Microvascular Changes in Glaucoma and Ocular Hypertension",
-    "src": "J Glaucoma",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980164/"
    }
   ],
   "medret": [
+   {
+    "t": "Pegcetacoplan for geographic atrophy: Bridging the \"clinical relevance gap\" through precision medicine",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Nov 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42998772/"
+   },
+   {
+    "t": "Statin Use and Age-related Macular Degeneration: A Systematic Review and Meta-Analysis of Disease Outcomes",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42998694/"
+   },
+   {
+    "t": "Intravitreal Diclofenac and Other Nonsteroidal Anti-Inflammatory Drugs for the Treatment of Macular Edema: A Systematic Review and Exploratory Meta-Analysis",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42997509/"
+   },
+   {
+    "t": "Early macular dryness after four loading injections of faricimab was associated with reduced two-year treatment burden in treatment-naïve neovascular age-related macular degeneration",
+    "src": "Graefe's Archive",
+    "d": "2026 Nov 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42995256/"
+   },
    {
     "t": "Fluid fluctuation and visual outcomes in neovascular age-related macular degeneration: A systematic review and meta-analysis",
     "src": "Survey of Ophthalmology",
@@ -170,30 +194,6 @@
     "src": "Ophthalmology Retina",
     "d": "2026 Nov 5",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42988264/"
-   },
-   {
-    "t": "Genome-Wide Association Study Meta-Analysis of Central Serous Chorioretinopathy",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42986610/"
-   },
-   {
-    "t": "Occurrence, progression and risk factors of macular atrophy in neovascular age-related macular degeneration according to neovascularization subtypes",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42986005/"
-   },
-   {
-    "t": "Metabolomic Signatures of Healthy Dietary Patterns Associated With Lower Risk of Age-Related Macular Degeneration",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980359/"
-   },
-   {
-    "t": "Visual Perceptual Learning Based on Adaptive Contrast Detection Training Enhances Vision and Contrast Sensitivity in Diabetic Retinopathy",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42975101/"
    }
   ],
   "vr": [
@@ -310,6 +310,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946154/"
    }
   ],
-  "updated": "2026-11-08"
+  "updated": "2026-11-09"
  }
 }
