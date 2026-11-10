@@ -325,16 +325,16 @@ export function mount(el, D) {
       }` });
   const withW = (g, fn) => { const p = g.attributes.position, w = new Float32Array(p.count); for (let i = 0; i < p.count; i++) w[i] = fn(i, p.getX(i), p.getY(i), p.getZ(i)); g.setAttribute('aW', new THREE.BufferAttribute(w, 1)); return g; };
   const lumpy = (g, k) => { const p = g.attributes.position, v = new THREE.Vector3(); for (let i = 0; i < p.count; i++) { v.fromBufferAttribute(p, i); const n = 1 + k * (Math.sin(v.x * 3.1) * Math.sin(v.y * 2.7 + 1) * Math.sin(v.z * 3.7 + 2)); v.multiplyScalar(n); p.setXYZ(i, v.x, v.y, v.z); } g.computeVertexNormals(); return g; };
-  const FL_AT = [[15, 9, -6, 1], [-20, -8, 6, 0], [-6, 18, -24, 0], [22, -14, 14, 0], [-24, 10, -32, 2], [6, -22, -20, 0], [26, 16, 20, 0]];
+  const FL_AT = [[15, 9, -6, 1], [-20, -8, 6, 0], [-6, 18, -28, 0]]; // 3 areas (Haziq, 2026-11-10: 7 dropped the frame rate)
   const FLG = FL_AT.map(([x, y, z, kind], ci) => { const G = new THREE.Group(); G.position.set(x, y, z); G.userData.home = G.position.clone(); G.userData.o = ci * 1.7; scene.add(G);
-    const nS = touch ? 5 : 8;
+    const nS = touch ? 4 : 6;
     for (let i = 0; i < nS; i++) { const pts = []; let p = new THREE.Vector3().randomDirection().multiplyScalar(3 + Math.random() * 2); for (let k = 0; k < 7; k++) { pts.push(p.clone()); p.add(new THREE.Vector3().randomDirection().multiplyScalar(1.4 + Math.random())); }
       const curve = new THREE.CatmullRomCurve3(pts), r0 = .12 + Math.random() * .18;
-      const strand = new THREE.Mesh(withW(new THREE.TubeGeometry(curve, 64, r0, 8), i2 => Math.sin(Math.PI * (Math.floor(i2 / 9) / 64))), fm); G.add(strand);
-      for (let f = 0; f < 2; f++) { const off = new THREE.Vector3().randomDirection().multiplyScalar(r0 * 2.2);  // fine fibres running alongside
-        const fib2 = new THREE.Mesh(withW(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map((q, k) => q.clone().add(off.clone().multiplyScalar(1 + Math.sin(k * 1.3 + f) * .8)))), 64, r0 * .3, 5), i2 => Math.sin(Math.PI * (Math.floor(i2 / 6) / 64)) * 1.3), fm); G.add(fib2); } }
-    for (let i = 0; i < (touch ? 6 : 10); i++) { const b = new THREE.Mesh(withW(lumpy(new THREE.IcosahedronGeometry(.35 + Math.random() * .75, 3), .25), () => .35), fm); b.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(2 + Math.random() * 3)); G.add(b); }
-    for (let i = 0; i < 2; i++) { const g = new THREE.PlaneGeometry(3.2 + Math.random() * 2, 2.2 + Math.random(), 18, 12), p = g.attributes.position;   // crumpled veils
+      const strand = new THREE.Mesh(withW(new THREE.TubeGeometry(curve, 40, r0, 7), i2 => Math.sin(Math.PI * (Math.floor(i2 / 8) / 40))), fm); G.add(strand);
+      for (let f = 0; f < 1; f++) { const off = new THREE.Vector3().randomDirection().multiplyScalar(r0 * 2.2);  // fine fibres running alongside
+        const fib2 = new THREE.Mesh(withW(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map((q, k) => q.clone().add(off.clone().multiplyScalar(1 + Math.sin(k * 1.3 + f) * .8)))), 40, r0 * .3, 4), i2 => Math.sin(Math.PI * (Math.floor(i2 / 5) / 40)) * 1.3), fm); G.add(fib2); } }
+    for (let i = 0; i < (touch ? 5 : 8); i++) { const b = new THREE.Mesh(withW(lumpy(new THREE.IcosahedronGeometry(.35 + Math.random() * .75, 2), .25), () => .35), fm); b.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(2 + Math.random() * 3)); G.add(b); }
+    for (let i = 0; i < 1; i++) { const g = new THREE.PlaneGeometry(3.2 + Math.random() * 2, 2.2 + Math.random(), 14, 9), p = g.attributes.position;   // crumpled veils
       for (let k = 0; k < p.count; k++) p.setZ(k, Math.sin(p.getX(k) * 2.1 + i) * .35 + Math.cos(p.getY(k) * 2.7) * .3);
       g.computeVertexNormals(); const v = new THREE.Mesh(withW(g, (k, X, Y) => .6 + .5 * Math.abs(X) / 2), fm); v.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(3)); v.rotation.set(Math.random() * 3, Math.random() * 3, 0); G.add(v); }
     if (kind) { const g = new THREE.TorusGeometry(2.3, .26, 14, 96), p = g.attributes.position; for (let k = 0; k < p.count; k++) { const a = Math.atan2(p.getY(k), p.getX(k)); p.setZ(k, p.getZ(k) + Math.sin(a * 3) * .4); p.setX(k, p.getX(k) * (1 + .12 * Math.sin(a * 2))); }
@@ -878,7 +878,7 @@ export function mount(el, D) {
   const loop = () => {
     const dt = Math.min(clock.getDelta(), .05); t += dt * (S.reduced ? .4 : 1); pollGP();
     partU.uT.value = t; beamU.uT.value = t; wallU.uT.value = t;
-    flU.uT.value = t; outside.update(t, dt);
+    flU.uT.value = t; outside.group.visible = camera.position.z > 22; if (outside.group.visible) outside.update(t, dt); // the outside only shows near the front of the eye
     if (!S.reduced) { fib.rotation.y = t * .01; FLG.forEach((G, i) => { const o = G.userData.o; G.rotation.y = t * .05 * (i % 2 ? -1 : 1) + o; G.rotation.x = Math.sin(t * .1 + o) * .3; G.position.copy(G.userData.home); G.position.x += Math.sin(t * .13 + o) * 1.2; G.position.y += Math.sin(t * .09 + o * 2) * 1.5; G.position.z += Math.cos(t * .11 + o) * 1.2; }); }
     TEARS.forEach((T, i) => { T.glow.material.opacity = SEALED[i] ? .12 : .38 + (S.reduced ? 0 : .2 * Math.sin(t * 2.4 + i)); });
     KEYS.forEach((k, i) => { const g = markers[k]; g.userData.ring.lookAt(camera.position); const s = 1 + Math.sin(t * 2 + i) * (S.reduced ? 0 : .15); g.userData.ring.scale.setScalar(s); g.position.y = LM[k].y + (S.reduced ? 0 : Math.sin(t * .8 + i) * .5); });

@@ -28,6 +28,7 @@ const LIT_FS = `uniform vec3 uSun, uSunC, uSky, uGnd, uHaze; uniform float uWY, 
 varying vec3 vC, vN, vW; varying float vMe;
 void main(){
   if (uRefl > .5 && vW.y > uWY + .05) discard;
+  if (length(vW) < 61.5 || length(vW - vec3(0., 0., 30.)) < 39.5) discard;
   vec3 n = normalize(vN); if (!gl_FrontFacing) n = -n;
   vec3 v = normalize(cameraPosition - vW);
   float dif = max(dot(n, uSun), 0.);
@@ -195,7 +196,7 @@ export function bruneiWorld({ px = 4096, touch = false, hq = false } = {}) {
   const refl = new THREE.Mesh(KR.build(), matR); refl.frustumCulled = false; refl.renderOrder = -5; world.add(refl);
 
   // ---------- the water: rolling waves, fresnel sky reflection, sun glitter, foam near the stilts ----------
-  const wgeo = new THREE.PlaneGeometry(720, 330, touch ? 90 : 180, touch ? 44 : 90).rotateX(-Math.PI / 2).translate(0, WY, 205);
+  const wgeo = new THREE.PlaneGeometry(720, 300, touch ? 60 : 110, touch ? 26 : 48).rotateX(-Math.PI / 2).translate(0, WY, 220);
   const WU = { uT: { value: 0 }, uSun: U.uSun, uSunC: U.uSunC, uHaze: U.uHaze, uFog: U.uFog };
   const water = new THREE.Mesh(wgeo, new THREE.ShaderMaterial({ uniforms: WU, transparent: true, depthWrite: true,
     vertexShader: `uniform float uT; varying vec3 vW;
@@ -205,6 +206,7 @@ export function bruneiWorld({ px = 4096, touch = false, hq = false } = {}) {
       float h(vec2 p){ return sin(dot(p, vec2(.12,.05)) + uT*1.1)*.35 + sin(dot(p, vec2(-.07,.13)) + uT*.8)*.28 + sin(dot(p, vec2(.31,-.22)) + uT*2.1)*.08
         + sin(dot(p, vec2(1.3,.7)) + uT*3.3)*.025 + sin(dot(p, vec2(-.9,1.6)) + uT*2.7)*.02 + sin(dot(p, vec2(2.7,-1.9)) + uT*4.6)*.008; }
       void main(){
+        if (length(vW) < 61.5 || length(vW - vec3(0., 0., 30.)) < 39.5) discard;   // never inside the eye or under the cornea (Haziq, 2026-11-10)
         vec2 p = vW.xz; float e = .15; vec3 n = normalize(vec3(h(p - vec2(e,0.)) - h(p + vec2(e,0.)), 2.*e, h(p - vec2(0.,e)) - h(p + vec2(0.,e))));
         vec3 v = normalize(cameraPosition - vW); float d = length(cameraPosition - vW);
         n = normalize(mix(n, vec3(0.,1.,0.), smoothstep(80., 300., d)));
