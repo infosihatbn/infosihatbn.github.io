@@ -2,10 +2,10 @@
  "news": {
   "items": [
    {
-    "t": "Review Examines Mental Health and Safety Behaviour in Brunei’s Oil and Gas Industry",
-    "src": "Bioengineer.org",
-    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQdjJNeThvWC1aN21hMlJGNERsRzFGOFBwSkttZkJfbU9feVJORkprelEtTmkzS1U4QmU0SGxSUjlYS2h1bWlaaDdGZWk3eHpITldFWjBQN0ZKWUdJZU9yb2tPQjE2Q25EcjJGTV85UkFFeF8weFkzcENyclFCMVZoOVR3TFlHMmVCdzBJYVlpbUtvaExlZ1hNQUNiYnEtbmhzUy11OFRkeEZRQVk?oc=5",
-    "d": "2026-11-07"
+    "t": "Haze: a burning issue for ASEAN",
+    "src": "Leiden Law Blog",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5KMFhfNHI1TzlZVmNXdFZrc05GV3V1c0lFZTVWU1VRR2hnUzVaY1VzclRlNjZ4UEl6clVjc05UaU1maHJoSTN4a2tHZHd1U1hRdjVvYTZFbE5icTFHUXpoa2xYcmZGUWxjZlRHbzlIVVNRQUN1eTVz?oc=5",
+    "d": "2026-11-09"
    },
    {
     "t": "Good air quality across all districts in Brunei",
@@ -14,10 +14,16 @@
     "d": "2026-10-30"
    }
   ],
-  "updated": "2026-11-08"
+  "updated": "2026-11-10"
  },
  "sea": {
   "items": [
+   {
+    "t": "Association of Fenofibrate Add-on Therapy with Postoperative Diabetic Retinal Outcomes After Cataract Surgery in Patients with Type 2 Diabetes Mellitus",
+    "src": "Retina",
+    "d": "2026 Nov 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43002646/"
+   },
    {
     "t": "Pegcetacoplan for geographic atrophy: Bridging the \"clinical relevance gap\" through precision medicine",
     "src": "Survey of Ophthalmology",
@@ -47,15 +53,9 @@
     "src": "Ophthalmology Science",
     "d": "2026 Dec",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42997593/"
-   },
-   {
-    "t": "Intravitreal Diclofenac and Other Nonsteroidal Anti-Inflammatory Drugs for the Treatment of Macular Edema: A Systematic Review and Exploratory Meta-Analysis",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42997509/"
    }
   ],
-  "updated": "2026-11-09"
+  "updated": "2026-11-10"
  },
  "bimj": {
   "items": [
@@ -72,11 +72,11 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-09"
+  "updated": "2026-11-10"
  },
- "checked": "2026-11-09T01:22+00:00",
+ "checked": "2026-11-10T03:56+00:00",
  "status": {
-  "news": "ok (0)",
+  "news": "ok (2)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
@@ -198,6 +198,12 @@
   ],
   "vr": [
    {
+    "t": "Long-term biocompatibility and efficacy of DNA supramolecular hydrogels as vitreous substitutes in a rabbit model of retinal detachment",
+    "src": "Graefe's Archive",
+    "d": "2026 Nov 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43000571/"
+   },
+   {
     "t": "COMPARISON OF TRACTION FORCES IN EX VIVO VITRECTOMY USING 25+®G 20K CPM DUAL-BLADE AND 25+®G 10K CPM SINGLE-BLADE VITRECTOMY PROBES",
     "src": "Retina",
     "d": "2026 Nov 6",
@@ -226,12 +232,6 @@
     "src": "Retina",
     "d": "2026 Oct 30",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42961139/"
-   },
-   {
-    "t": "Evidence of an aging-like foveal profile in healthy fellow eyes of patients with idiopathic macular hole",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 28",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42946898/"
    }
   ],
   "neuro": [
@@ -310,6 +310,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946154/"
    }
   ],
-  "updated": "2026-11-09"
+  "updated": "2026-11-10"
  }
 }
