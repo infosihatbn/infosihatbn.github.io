@@ -3,7 +3,7 @@
 // lagoon (inspired by Brunei, not an exact building), Kampong Ayer stilt houses with boardwalks, a water taxi, palms and green hills.
 import * as THREE from '/assets/three/three.module.min.js';
 
-export function paintBrunei(PX = 4096) {
+export function paintBrunei(PX = 4096, skyOnly = false) {
   const c = document.createElement('canvas'); c.width = PX; c.height = PX / 2;
   const W = 4096, H = 2048, g = c.getContext('2d'), HZ = H / 2, cx = W / 2; g.scale(PX / W, PX / W); // drawn in 4096-wide units, so a 60 degree view is about 680 units // horizon in the middle row, straight ahead in the middle column
   let s = 11; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
@@ -24,6 +24,7 @@ export function paintBrunei(PX = 4096) {
   // water
   g.fillStyle = lin(HZ, H, [[0, '#b9d6dc'], [.12, '#7fb3c2'], [.5, '#4f8ea3'], [1, '#2c5f73']]); g.fillRect(0, HZ, W, H - HZ);
 
+  if (skyOnly) { const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; return t; } // the 3D world (brunei3d.js) supplies the rest
   // the mosque on its lagoon: white body, golden onion dome, slim minaret, small domes, arches
   const M = (x0, sc, refl) => {
     g.save(); g.translate(x0, HZ + 6); if (refl) { g.scale(1, -.75); g.globalAlpha = .35; }
@@ -77,12 +78,12 @@ export function paintBrunei(PX = 4096) {
 }
 
 // the sky dome that shows the painting (direction -> panorama; straight ahead, +Z, is the middle of the picture)
-export function bruneiDome(radius = 190, px = 4096) {
-  const map = paintBrunei(px);
+export function bruneiDome(radius = 190, px = 4096, o = {}) {
+  const map = paintBrunei(px, !!o.sky), off = o.sky ? '.521' : '.55';
   return new THREE.Mesh(new THREE.SphereGeometry(radius, 48, 24), new THREE.ShaderMaterial({ side: THREE.BackSide, fog: false, depthWrite: false, uniforms: { uMap: { value: map } },
     vertexShader: 'varying vec3 vD; void main(){ vD = normalize(position); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.); }',
     fragmentShader: `uniform sampler2D uMap; varying vec3 vD;
-      void main(){ vec3 d = normalize(vD); float u = atan(-d.x, d.z) / 6.2831853 + .5; float v = asin(clamp(d.y,-1.,1.)) / 3.1415927 + .55;   // horizon a little below eye level, so looking out you see the mosque and the village
+      void main(){ vec3 d = normalize(vD); float u = atan(-d.x, d.z) / 6.2831853 + .5; float v = asin(clamp(d.y,-1.,1.)) / 3.1415927 + ${off};   // horizon a little below eye level, so looking out you see the mosque and the village
         gl_FragColor = vec4(texture2D(uMap, vec2(u, v)).rgb, 1.);
         #include <colorspace_fragment>
       }` }));

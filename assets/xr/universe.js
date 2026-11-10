@@ -7,7 +7,7 @@ import { DISC_DIR } from './eyemodel.js';
 import { createRealEye } from './realeye.js';
 import { wantNewModels, applyNewModels } from './models.js';
 import { wantHQ, setupHQ, upgradeScene } from './hq.js';
-import { bruneiDome } from './brunei.js';
+import { bruneiWorld } from './brunei3d.js';
 
 const R = 60, IRIS_Z = 52, PUPIL = 10, LENS_Z = 40, LENS_R = 19, LENS_T = 7, CORNEA_C = 30, CORNEA_R = 38; // the front: iris plane, lens, corneal dome
 const BACK = ['vitreous', 'floaters', 'retina', 'tear', 'vessels', 'macula', 'fovea', 'disc', 'nerve'];
@@ -113,6 +113,8 @@ export function mount(el, D) {
   <div class="mu-pad" ${touch ? '' : 'hidden'}><div class="mu-joy"><i></i></div></div>
   <div class="mu-ud" ${touch ? '' : 'hidden'}><button type="button" data-ud="1" aria-label="${U.up}">▲</button><button type="button" data-ud="-1" aria-label="${U.down}">▼</button></div>
   <button type="button" class="mu-boost" aria-label="${U.boost}">${ic('boost')}<span>${U.boost}</span></button>
+  <button type="button" class="mu-fire" aria-label="${U.shoot}">${ic('laser')}<span>${U.shoot}</span></button>
+  <div class="mu-en" aria-hidden="true"><div class="mu-eb b"><i>${ic('boost')}</i><b>${U.boost}</b><span class="bar"><span class="mu-fl"></span></span><small></small></div><div class="mu-eb l"><i>${ic('laser')}</i><b>${U.shoot}</b><span class="cells">${'<em><s></s></em>'.repeat(5)}</span><small></small></div></div>
   <p class="mu-help">${touch ? U.touch : U.keys}</p>
   <aside class="xr-info mu-panel" hidden aria-live="polite"></aside>
   <div class="xr-lj mu-ljbar" hidden><p class="xr-ljt"></p><div class="xr-ljb"><button type="button" data-act="ljskip">${U.skip}</button><span class="xr-dots"></span><button type="button" class="pri" data-act="ljnext">›</button></div></div>
@@ -280,7 +282,7 @@ export function mount(el, D) {
     const b = scPts.geometry.attributes.position.array; for (let i = 0; i < NSC; i++) { const an = i / NSC * Math.PI * 2 + t * .05; b[i * 3] = Math.cos(an) * (ANG_R + 1.6); b[i * 3 + 1] = Math.sin(an) * (ANG_R + 1.6); b[i * 3 + 2] = ANG_Z + .9; } scPts.geometry.attributes.position.needsUpdate = true; };
   const rideC = new THREE.CatmullRomCurve3([[0, 33, 45.5], [0, 22, 49.2], [0, 11, 50.4], [0, 3, 51], [0, 0, 54], [0, 6, 62], [0, -8, 63], [0, -19, 59], [0, -26.5, 54.6]].map(v => new THREE.Vector3(...v)));
   // the world outside, seen through the cornea (and as light through the pupil)
-  scene.add(bruneiDome(190, touch ? 2048 : 4096));   // Brunei outside (Haziq, 2026-11-08): mosque on a lagoon, Kampong Ayer, palms
+  const outside = bruneiWorld({ px: touch ? 2048 : 4096, touch, hq: HQ }); scene.add(outside.group); // Brunei outside in 3D (Haziq, 2026-11-08 and 2026-11-10): lagoon, mosque, Kampong Ayer, boats, birds
   { const o = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0xfff1cf, transparent: true, opacity: .55, depthWrite: false, fog: false })); o.position.set(-.63, .48, .61).multiplyScalar(150); o.scale.setScalar(40); scene.add(o); }
   const beamU = { uT: { value: 0 }, uCol: { value: new THREE.Color(0xfff2c6) } };
   const beams = new THREE.Group(); scene.add(beams);
@@ -300,21 +302,58 @@ export function mount(el, D) {
   const fib = new THREE.Group(); scene.add(fib);
   for (let i = 0; i < 34; i++) { const a = new THREE.Vector3().randomDirection().multiplyScalar(45), b = a.clone().negate().add(new THREE.Vector3().randomDirection().multiplyScalar(20)); const m = a.clone().lerp(b, .5).add(new THREE.Vector3().randomDirection().multiplyScalar(10));
     fib.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(new THREE.QuadraticBezierCurve3(a, m, b).getPoints(30)), new THREE.LineBasicMaterial({ color: 0xd9e2ff, transparent: true, opacity: .07 }))); }
-  // floaters: semi-transparent clumps and strands
-  const floaters = new THREE.Group(); floaters.position.set(15, 9, -6); scene.add(floaters);
-  { const fm = new THREE.MeshStandardMaterial({ color: 0x8a90a8, transparent: true, opacity: .45, roughness: 1, depthWrite: false });
-    for (let i = 0; i < 6; i++) { const pts = []; let p = new THREE.Vector3().randomDirection().multiplyScalar(4); for (let k = 0; k < 6; k++) { pts.push(p.clone()); p.add(new THREE.Vector3().randomDirection().multiplyScalar(1.6)); }
-      floaters.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 30, .18 + Math.random() * .2, 6), fm)); }
-    for (let i = 0; i < 8; i++) { const b = new THREE.Mesh(new THREE.SphereGeometry(.4 + Math.random() * .7, 10, 8), fm); b.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(4)); floaters.add(b); } }
-  // fly into the floaters and they scatter like strands in gel, then slowly settle back where they were (Haziq, 2026-10-16)
-  const FL = floaters.children.map(o => { o.geometry.computeBoundingSphere(); return { o, home: o.position.clone(), c: o.geometry.boundingSphere.center.clone(), off: new THREE.Vector3(), v: new THREE.Vector3(), spin: new THREE.Vector3() }; });
+  // floaters (Haziq, 2026-11-10: more areas, more detail): several clusters around the vitreous. Each holds cobweb strands made of
+  // fibre bundles, lumpy clumps, crumpled veils of condensed gel and (in one) a Weiss ring. They glow faintly at their edges like
+  // translucent jelly, ripple and sway in the gel, and scatter when you fly (or shoot) through them, then settle back.
+  const flU = THREE.UniformsUtils.merge([THREE.UniformsLib.fog, { uT: { value: 0 }, uC: { value: new THREE.Color(0xd2d8f0) } }]);
+  const fm = new THREE.ShaderMaterial({ uniforms: flU, fog: true, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    vertexShader: `uniform float uT; attribute float aW; varying vec3 vN, vV; varying float vS;
+      #include <fog_pars_vertex>
+      void main(){ vec3 p = position;
+        p += normal * sin(uT * 1.6 + position.x * 1.7 + position.y * 1.3) * .05;
+        p += vec3(sin(uT * .7 + position.y * .9), cos(uT * .6 + position.z * .8), sin(uT * .5 + position.x * .7)) * .32 * aW;
+        vec4 mvPosition = modelViewMatrix * vec4(p, 1.); vN = normalize(normalMatrix * normal); vV = normalize(-mvPosition.xyz); vS = sin(dot(position, vec3(3.1, 2.3, 1.7)));
+        gl_Position = projectionMatrix * mvPosition;
+        #include <fog_vertex>
+      }`,
+    fragmentShader: `uniform vec3 uC; uniform float uT; varying vec3 vN, vV; varying float vS;
+      #include <fog_pars_fragment>
+      void main(){ float f = 1. - abs(dot(normalize(vN), normalize(vV))); float rim = pow(f, 2.);
+        vec3 c = mix(uC * .5, uC * 1.3, rim) + vec3(.35, .22, .55) * pow(f, 6.) * .7 + vec3(.2, .45, .5) * pow(f, 9.) * (.5 + .5 * sin(uT + vS * 3.));
+        gl_FragColor = vec4(c, .08 + rim * .6);
+        #include <fog_fragment>
+      }` });
+  const withW = (g, fn) => { const p = g.attributes.position, w = new Float32Array(p.count); for (let i = 0; i < p.count; i++) w[i] = fn(i, p.getX(i), p.getY(i), p.getZ(i)); g.setAttribute('aW', new THREE.BufferAttribute(w, 1)); return g; };
+  const lumpy = (g, k) => { const p = g.attributes.position, v = new THREE.Vector3(); for (let i = 0; i < p.count; i++) { v.fromBufferAttribute(p, i); const n = 1 + k * (Math.sin(v.x * 3.1) * Math.sin(v.y * 2.7 + 1) * Math.sin(v.z * 3.7 + 2)); v.multiplyScalar(n); p.setXYZ(i, v.x, v.y, v.z); } g.computeVertexNormals(); return g; };
+  const FL_AT = [[15, 9, -6, 1], [-20, -8, 6, 0], [-6, 18, -24, 0], [22, -14, 14, 0], [-24, 10, -32, 2], [6, -22, -20, 0], [26, 16, 20, 0]];
+  const FLG = FL_AT.map(([x, y, z, kind], ci) => { const G = new THREE.Group(); G.position.set(x, y, z); G.userData.home = G.position.clone(); G.userData.o = ci * 1.7; scene.add(G);
+    const nS = touch ? 5 : 8;
+    for (let i = 0; i < nS; i++) { const pts = []; let p = new THREE.Vector3().randomDirection().multiplyScalar(3 + Math.random() * 2); for (let k = 0; k < 7; k++) { pts.push(p.clone()); p.add(new THREE.Vector3().randomDirection().multiplyScalar(1.4 + Math.random())); }
+      const curve = new THREE.CatmullRomCurve3(pts), r0 = .12 + Math.random() * .18;
+      const strand = new THREE.Mesh(withW(new THREE.TubeGeometry(curve, 64, r0, 8), i2 => Math.sin(Math.PI * (Math.floor(i2 / 9) / 64))), fm); G.add(strand);
+      for (let f = 0; f < 2; f++) { const off = new THREE.Vector3().randomDirection().multiplyScalar(r0 * 2.2);  // fine fibres running alongside
+        const fib2 = new THREE.Mesh(withW(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map((q, k) => q.clone().add(off.clone().multiplyScalar(1 + Math.sin(k * 1.3 + f) * .8)))), 64, r0 * .3, 5), i2 => Math.sin(Math.PI * (Math.floor(i2 / 6) / 64)) * 1.3), fm); G.add(fib2); } }
+    for (let i = 0; i < (touch ? 6 : 10); i++) { const b = new THREE.Mesh(withW(lumpy(new THREE.IcosahedronGeometry(.35 + Math.random() * .75, 3), .25), () => .35), fm); b.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(2 + Math.random() * 3)); G.add(b); }
+    for (let i = 0; i < 2; i++) { const g = new THREE.PlaneGeometry(3.2 + Math.random() * 2, 2.2 + Math.random(), 18, 12), p = g.attributes.position;   // crumpled veils
+      for (let k = 0; k < p.count; k++) p.setZ(k, Math.sin(p.getX(k) * 2.1 + i) * .35 + Math.cos(p.getY(k) * 2.7) * .3);
+      g.computeVertexNormals(); const v = new THREE.Mesh(withW(g, (k, X, Y) => .6 + .5 * Math.abs(X) / 2), fm); v.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(3)); v.rotation.set(Math.random() * 3, Math.random() * 3, 0); G.add(v); }
+    if (kind) { const g = new THREE.TorusGeometry(2.3, .26, 14, 96), p = g.attributes.position; for (let k = 0; k < p.count; k++) { const a = Math.atan2(p.getY(k), p.getX(k)); p.setZ(k, p.getZ(k) + Math.sin(a * 3) * .4); p.setX(k, p.getX(k) * (1 + .12 * Math.sin(a * 2))); }
+      g.computeVertexNormals(); const ring = new THREE.Mesh(withW(g, () => .5), fm); ring.rotation.x = 1.1; G.add(ring); }
+    const nd = 70, dg = new THREE.BufferGeometry(), dp = new Float32Array(nd * 3); for (let i = 0; i < nd; i++) { const v = new THREE.Vector3().randomDirection().multiplyScalar(Math.cbrt(Math.random()) * 6); dp.set([v.x, v.y, v.z], i * 3); }
+    dg.setAttribute('position', new THREE.BufferAttribute(dp, 3)); G.add(new THREE.Points(dg, new THREE.PointsMaterial({ size: .22, map: dot, color: 0xe6ecff, transparent: true, opacity: .55, depthWrite: false })));
+    return G; });
+  const floaters = FLG[0];
+  // fly (or shoot) into the floaters and they scatter like strands in gel, then slowly settle back where they were (Haziq, 2026-10-16)
+  const FL = []; FLG.forEach(G => G.children.forEach(o => { if (!o.isMesh) return; o.geometry.computeBoundingSphere(); FL.push({ G, o, home: o.position.clone(), c: o.geometry.boundingSphere.center.clone(), off: new THREE.Vector3(), v: new THREE.Vector3(), spin: new THREE.Vector3() }); }));
   const flP = new THREE.Vector3(), flD = new THREE.Vector3();
+  const pushFloaters = (pos, sp, rad, dt) => { let hit = false;
+    for (const G of FLG) { if (G.position.distanceTo(pos) > 14 + rad) continue; G.updateMatrixWorld(); flP.copy(pos); G.worldToLocal(flP);
+      for (const f of FL) { if (f.G !== G) continue; flD.copy(f.c).add(f.home).add(f.off).sub(flP); const d = flD.length();
+        if (d < rad) { hit = true; f.v.addScaledVector(flD.normalize(), (rad - d) * (2 + sp * .8) * dt * 6); f.spin.set(Math.random() - .5, Math.random() - .5, Math.random() - .5).multiplyScalar(sp * .25); } } }
+    return hit; };
   const updFloaters = (dt, pos, vel) => {
-    floaters.updateMatrixWorld(); flP.copy(pos); floaters.worldToLocal(flP);
-    const sp = vel.length();
+    const sp = vel.length(); if (sp > .5) pushFloaters(pos, sp, 3.2, dt);
     for (const f of FL) {
-      flD.copy(f.c).add(f.home).add(f.off).sub(flP); const d = flD.length();
-      if (d < 3.2 && sp > .5) { f.v.addScaledVector(flD.normalize(), (3.2 - d) * (2 + sp * .8) * dt * 6); f.spin.set(Math.random() - .5, Math.random() - .5, Math.random() - .5).multiplyScalar(sp * .25); }
       f.v.addScaledVector(f.off, -2.4 * dt); f.v.multiplyScalar(Math.pow(.25, dt)); f.off.addScaledVector(f.v, dt);
       f.o.position.copy(f.home).add(f.off);
       f.o.rotation.x += f.spin.x * dt; f.o.rotation.y += f.spin.y * dt; f.o.rotation.z += f.spin.z * dt; f.spin.multiplyScalar(Math.pow(.4, dt));
@@ -494,6 +533,59 @@ export function mount(el, D) {
   const boostEl = $('.mu-boost'); let boostBtn = false, boostK = 0, baseFov = camera.fov;
   boostEl.addEventListener('pointerdown', e => { boostBtn = true; boostEl.setPointerCapture(e.pointerId); e.preventDefault(); });
   ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(t => boostEl.addEventListener(t, () => { boostBtn = false; }));
+  // energy (Haziq, 2026-11-10): boost drains a bar and recharges; the free laser has a few shots, then recharges
+  const EN = { boost: 1, lock: false, bIdle: 0, shots: 5, max: 5, sIdle: 0 }, enB = $('.mu-eb.b'), enL = $('.mu-eb.l'), enBf = $('.mu-eb.b .mu-fl'), enC = [...stage.querySelectorAll('.mu-eb.l s')];
+  let enShown = '';
+  const enFlash = e => { e.classList.remove('flash'); void e.offsetWidth; e.classList.add('flash'); };
+  const updEnergy = (dt, boosting) => {
+    if (boosting) { EN.boost = Math.max(0, EN.boost - dt / 3.2); EN.bIdle = 0; if (EN.boost <= 0) { EN.lock = true; enFlash(enB); } }
+    else { EN.bIdle += dt; if (EN.bIdle > .6) EN.boost = Math.min(1, EN.boost + dt / 4.5); if (EN.lock && EN.boost >= .35) EN.lock = false; }
+    EN.sIdle += dt; if (EN.sIdle > .8 && EN.shots < EN.max) EN.shots = Math.min(EN.max, EN.shots + dt / 1.1);
+    enBf.style.transform = `scaleX(${EN.boost.toFixed(3)})`;
+    enC.forEach((c, i) => { c.style.transform = `scaleY(${Math.max(0, Math.min(1, EN.shots - i)).toFixed(2)})`; });
+    const k = (EN.lock ? 'L' : EN.boost < .25 ? 'l' : '') + '|' + (EN.shots < 1 ? 'E' : EN.shots < EN.max ? 'c' : '');
+    if (k !== enShown) { enShown = k; enB.classList.toggle('low', EN.boost < .25 && !EN.lock); enB.classList.toggle('lock', EN.lock); enL.classList.toggle('empty', EN.shots < 1); enL.classList.toggle('chg', EN.shots < EN.max);
+      enB.querySelector('small').textContent = EN.lock ? U.recharging : ''; enL.querySelector('small').textContent = EN.shots < 1 ? U.recharging : ''; }
+  };
+  // free laser (Haziq, 2026-11-10): the ship can shoot anywhere, with sound; bolts fly where you look, bounce sparks off the retina and scatter floaters
+  const boltG = new THREE.CapsuleGeometry(.11, 2.2, 4, 10).rotateX(Math.PI / 2);
+  const bolts = Array.from({ length: 10 }, () => { const m = new THREE.Mesh(boltG, new THREE.MeshBasicMaterial({ color: 0xc8fbff, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+    const g = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0x5fd8ff, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false, fog: false })); g.scale.set(1.6, 1.6, 1); m.add(g);
+    const tail = new THREE.Sprite(g.material); tail.scale.set(1, 1, 1); tail.position.z = -1.4; m.add(tail);
+    m.visible = false; m.userData = { v: new THREE.Vector3(), life: 0, prev: new THREE.Vector3() }; scene.add(m); return m; });
+  const sparks = new THREE.Points(new THREE.BufferGeometry(), new THREE.PointsMaterial({ size: .45, map: dot, color: 0x9ff3ff, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, fog: false }));
+  const NSP = 120; sparks.geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(NSP * 3).fill(9999), 3)); sparks.frustumCulled = false; scene.add(sparks);
+  const spV = Array.from({ length: NSP }, () => new THREE.Vector3()), spL = new Float32Array(NSP); let spI = 0;
+  const sparkAt = (p, n) => { const a = sparks.geometry.attributes.position.array; for (let k = 0; k < 18; k++) { const i = spI++ % NSP; a[i * 3] = p.x; a[i * 3 + 1] = p.y; a[i * 3 + 2] = p.z; spV[i].randomDirection().addScaledVector(n, 1.2).multiplyScalar(5 + Math.random() * 9); spL[i] = .5 + Math.random() * .4; } };
+  const scorch = Array.from({ length: 12 }, () => { const m = new THREE.Sprite(new THREE.SpriteMaterial({ map: dot, color: 0x7fe3ff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, fog: false })); m.scale.set(2.4, 2.4, 1); scene.add(m); return m; }); let scI = 0;
+  let AC = null; const blip = (f0, f1, d, type = 'square', vol = .05) => { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); const o = AC.createOscillator(), g = AC.createGain(), t0 = AC.currentTime; o.type = type; o.frequency.setValueAtTime(f0, t0); o.frequency.exponentialRampToValueAtTime(f1, t0 + d); g.gain.setValueAtTime(vol, t0); g.gain.exponentialRampToValueAtTime(.0001, t0 + d); o.connect(g).connect(AC.destination); o.start(t0); o.stop(t0 + d + .02); } catch (e) { } };
+  let muzzle = 0, kick = 0;
+  const shoot = () => {
+    if (state !== 'play' || paused) return;
+    if (EN.shots < 1) { blip(160, 90, .12); enFlash(enL); return; }
+    const b = bolts.find(m => !m.visible); if (!b) return;
+    EN.shots -= 1; EN.sIdle = 0;
+    ship.updateMatrixWorld(); ship.localToWorld(nose.set(0, -.45, 1.45));
+    camera.getWorldDirection(b.userData.v); const aimAt = tmp.copy(camera.position).addScaledVector(b.userData.v, 40);
+    b.userData.v.copy(aimAt).sub(nose).normalize().multiplyScalar(85);
+    b.position.copy(nose); b.userData.prev.copy(nose); b.lookAt(aimAt); b.userData.life = 1.3; b.visible = true;
+    zapPlay(1.25 + Math.random() * .25); muzzle = .09; kick = 1; if (navigator.vibrate) navigator.vibrate(8);
+  };
+  const bp = new THREE.Vector3();
+  const updBolts = dt => {
+    for (const b of bolts) { if (!b.visible) continue; const u = b.userData; u.prev.copy(b.position); b.position.addScaledVector(u.v, dt); u.life -= dt;
+      bp.copy(b.position); const wall = confine(bp, u.prev, .3);
+      if (pushFloaters(b.position, 6, 2.6, dt * 3)) { /* gel strands flick away */ }
+      if (wall || u.life <= 0) { b.visible = false; if (wall) { const n = tmp2.copy(bp).normalize().negate(); sparkAt(bp, n); const sc = scorch[scI++ % scorch.length]; sc.position.copy(bp).addScaledVector(n, .3); sc.material.opacity = 1; sc.userData.t = 1.4; blip(900 + Math.random() * 300, 140, .09, 'sawtooth', .025); } } }
+    const a = sparks.geometry.attributes.position.array; let live = false;
+    for (let i = 0; i < NSP; i++) { if (spL[i] <= 0) continue; live = true; spL[i] -= dt; spV[i].multiplyScalar(Math.pow(.2, dt)); a[i * 3] += spV[i].x * dt; a[i * 3 + 1] += spV[i].y * dt; a[i * 3 + 2] += spV[i].z * dt; if (spL[i] <= 0) a[i * 3 + 1] = 9999; }
+    if (live) sparks.geometry.attributes.position.needsUpdate = true;
+    for (const sc of scorch) { if (!sc.userData.t) continue; sc.userData.t = Math.max(0, sc.userData.t - dt); sc.material.opacity = sc.userData.t / 1.4; }
+  };
+  const fireEl = $('.mu-fire'); let fireHeld = false, fireT = 0;
+  fireEl.addEventListener('pointerdown', e => { fireHeld = true; fireT = 0; shoot(); fireEl.setPointerCapture(e.pointerId); e.preventDefault(); });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(t => fireEl.addEventListener(t, () => { fireHeld = false; }));
+  fireEl.addEventListener('keydown', e => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { shoot(); e.preventDefault(); } });
   boostEl.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { boostBtn = true; e.preventDefault(); } }); boostEl.addEventListener('keyup', () => { boostBtn = false; }); boostEl.addEventListener('blur', () => { boostBtn = false; });
   pad.addEventListener('pointerdown', e => { jid = e.pointerId; pad.setPointerCapture(jid); joyMove(e); e.preventDefault(); });
   pad.addEventListener('pointermove', e => { if (e.pointerId === jid) joyMove(e); });
@@ -511,6 +603,7 @@ export function mount(el, D) {
     if (state === 'laser' && !paused) { if (k === ' ' || k === 'enter' || k === 'e') { if (!e.repeat) fireLaser(); keys.add('fire'); e.preventDefault(); return; } if (k === 'escape') { endLaser(false); e.preventDefault(); return; } }
     if (k === 'escape') { if (!$('.mu-journal').hidden || !$('.mu-settings').hidden || !$('.mu-remote').hidden) closeOver(); else if (state === 'play' || state === 'lj') setPause(!paused); e.preventDefault(); return; }
     if (k === 'e' && nearK && !paused) { discover(nearK); return; }
+    if (k === 'f' && state === 'play' && !paused) { if (!e.repeat) { shoot(); fireT = 0; } keys.add('f'); e.preventDefault(); return; }
     if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright', ' ', 'shift', 'control', 'q', 'z', 'b'].includes(k)) { keys.add(k); e.preventDefault(); auto = null; follow = null; }
   };
   const ku = e => { const k = e.key.toLowerCase(); keys.delete(k); if (k === ' ' || k === 'enter' || k === 'e') keys.delete('fire'); };
@@ -569,7 +662,7 @@ export function mount(el, D) {
   let laserT = 0, ptrT = 0, aimHold = false;
   // laser sound (Haziq 2026-10-16): a small pool so quick shots overlap
   const zap = Array.from({ length: 4 }, () => { const a = new Audio('/assets/mu-laser.mp3'); a.preload = 'auto'; a.volume = .55; return a; }); let zapI = 0;
-  const zapPlay = () => { const a = zap[zapI++ % zap.length]; try { a.currentTime = 0; a.play().catch(() => { }); } catch (e) { } };
+  const zapPlay = (rate = 1) => { const a = zap[zapI++ % zap.length]; try { a.preservesPitch = false; a.mozPreservesPitch = false; a.webkitPreservesPitch = false; a.playbackRate = rate; a.currentTime = 0; a.play().catch(() => { }); } catch (e) { } };
   // aim assist (Haziq 2026-10-16): the crosshair is drawn onto the nearest open ring and locks on; a shot counts within a wider circle
   const openNear = (max) => { let best = null, bd = max; const w = cv.clientWidth, h = cv.clientHeight;
     for (const g of LT) { if (g.userData.hit) continue; g.getWorldPosition(tmp3).project(camera); const x = (tmp3.x * .5 + .5) * w, y = (-tmp3.y * .5 + .5) * h, d = Math.hypot(x - aim.x, y - aim.y); if (d < bd) { bd = d; best = { g, x, y, d }; } } return best; };
@@ -627,7 +720,7 @@ export function mount(el, D) {
   // ---------------- game controller (PS4 DualShock and other standard gamepads) and phone remote ----------------
   const GP = { x: 0, y: 0, lx: 0, ly: 0, ud: 0 }, rem = { x: 0, y: 0, lx: 0, ly: 0, ud: 0, t: 0 }, gpPrev = {}; let gpOn = false;
   const dz = v => Math.abs(v) < .16 ? 0 : (v - Math.sign(v) * .16) / .84;
-  const BTN = { 0: 'ok', 1: 'back', 2: 'light', 3: 'guide', 7: 'fire', 8: 'journal', 9: 'pause' }; let gpBoost = false, gpFire = false; // Cross, Circle, Square, Triangle, R2, Share, Options
+  const BTN = { 0: 'ok', 1: 'back', 2: 'light', 3: 'guide', 7: 'fire', 8: 'journal', 9: 'pause' }; let gpBoost = false, gpFire = false, gpShoot = false; // Cross, Circle, Square, Triangle, R2, Share, Options
   const btnAct = n => {
     if (state === 'menu') { if (n === 'ok' || n === 'pause') el.querySelector('[data-go="play"]').click(); return; }
     if (n === 'pause') { if (!$('.mu-journal').hidden || !$('.mu-settings').hidden || !$('.mu-remote').hidden) closeOver(); else if (state !== 'intro') setPause(!paused); return; }
@@ -636,7 +729,7 @@ export function mount(el, D) {
     if (state === 'laser') { if (n === 'ok' || n === 'fire') fireLaser(); else if (n === 'back') endLaser(false); return; }
     if (state === 'lj') { if (n === 'ok') $('[data-act=ljnext]').click(); else if (n === 'back') endLJ(false); return; }
     // phone remote or controller can start the laser game: Fire (R2) near the tear, or OK on the tear card (Haziq 2026-10-16)
-    if (n === 'fire') { const lb = !panel.hidden && panel.querySelector('[data-act=laser]'); if (lb || (nearK === 'tear' && !allSealed())) startLaser(); return; }
+    if (n === 'fire') { const lb = !panel.hidden && panel.querySelector('[data-act=laser]'); if (lb || (nearK === 'tear' && !allSealed())) startLaser(); else shoot(); return; }
     if (n === 'ok') { if (!panel.hidden) { const b = panel.querySelector('[data-act=laser]') || panel.querySelector('.xr-next'); if (b) b.click(); else panel.hidden = true; } else if (nearK) discover(nearK); }
     else if (n === 'back') panel.hidden = true;
     else if (n === 'guide') glideTo(nextTarget());
@@ -650,7 +743,7 @@ export function mount(el, D) {
     if (!gpOn) { gpOn = true; toast(esc(U.pad_on), 6000); }
     const a = p.axes, b = p.buttons, v = i => (b[i] ? b[i].value : 0);
     GP.x = dz(a[0] || 0); GP.y = dz(a[1] || 0); GP.lx = dz(a[2] || 0); GP.ly = dz(a[3] || 0);
-    gpFire = state === 'laser' && (v(7) > .5 || v(0) > .5); gpBoost = v(6) > .5 || v(10) > .5; // L2 or L3 held: speed boost
+    gpFire = state === 'laser' && (v(7) > .5 || v(0) > .5); gpShoot = state === 'play' && v(7) > .5; gpBoost = v(6) > .5 || v(10) > .5; // L2 or L3 held: speed boost
     GP.ud = (v(5) > .5 || v(12) > .5 ? 1 : 0) - (v(4) > .5 || v(13) > .5 ? 1 : 0); // R1 or d-pad up: up; L1 or d-pad down: down
     for (const i in BTN) { const on = v(+i) > .5; if (on && !gpPrev[i]) btnAct(BTN[i]); gpPrev[i] = on; }
   };
@@ -698,8 +791,9 @@ export function mount(el, D) {
   // ---------------- update ----------------
   const tmp = new THREE.Vector3(), tmp2 = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
   const updatePlay = (dt, t) => {
-    const boosting = (boostBtn || gpBoost || keys.has('b')) && !auto && !follow; boostK += ((boosting ? 1 : 0) - boostK) * Math.min(1, dt * 4);
-    boostEl.classList.toggle('on', boosting);
+    const boosting = (boostBtn || gpBoost || keys.has('b')) && !auto && !follow && !EN.lock && EN.boost > 0; boostK += ((boosting ? 1 : 0) - boostK) * Math.min(1, dt * 4);
+    boostEl.classList.toggle('on', boosting); updEnergy(dt, boosting);
+    if (fireHeld || keys.has('f') || gpShoot) { fireT += dt; if (fireT > .32) { fireT = 0; shoot(); } } else fireT = 0;
     if (!S.reduced) { const fv = baseFov + boostK * 9; if (Math.abs(camera.fov - fv) > .05) { camera.fov = fv; camera.updateProjectionMatrix(); } }
     const speed = 11 * (1 + boostK * 1.4), f = fwd(), right = new THREE.Vector3(Math.cos(yaw), 0, -Math.sin(yaw));
     let ix = joy.x + GP.x + rem.x, iy = -(joy.y + GP.y + rem.y);
@@ -733,6 +827,7 @@ export function mount(el, D) {
     const look2 = vel.lengthSq() > .5 ? vel.clone().normalize() : f;
     craft.position.copy(player); if (!S.reduced) craft.position.y += Math.sin(t * 2.2) * .06; craft.lookAt(tmp2.copy(player).add(look2));
     flames.forEach(f => { f.scale.setScalar(.55 + Math.min(1, vel.length() / 11) * .75 + boostK * .9 + (S.reduced ? 0 : Math.random() * (.12 + boostK * .3))); f.material.color.setHex(boostK > .5 ? 0xffc46b : 0x7fe3ff); });
+    if (kick > 0) { kick = Math.max(0, kick - dt * 6); ship.position.z = -kick * .25; }
     mata.update(t, dt, { reducedMotion: S.reduced, moving: false });
     // third-person camera
     const back = f.clone().multiplyScalar(-5.2).add(new THREE.Vector3(0, 1.6, 0));
@@ -783,16 +878,18 @@ export function mount(el, D) {
   const loop = () => {
     const dt = Math.min(clock.getDelta(), .05); t += dt * (S.reduced ? .4 : 1); pollGP();
     partU.uT.value = t; beamU.uT.value = t; wallU.uT.value = t;
-    if (!S.reduced) { fib.rotation.y = t * .01; floaters.rotation.y = t * .05; floaters.rotation.x = Math.sin(t * .1) * .3; }
+    flU.uT.value = t; outside.update(t, dt);
+    if (!S.reduced) { fib.rotation.y = t * .01; FLG.forEach((G, i) => { const o = G.userData.o; G.rotation.y = t * .05 * (i % 2 ? -1 : 1) + o; G.rotation.x = Math.sin(t * .1 + o) * .3; G.position.copy(G.userData.home); G.position.x += Math.sin(t * .13 + o) * 1.2; G.position.y += Math.sin(t * .09 + o * 2) * 1.5; G.position.z += Math.cos(t * .11 + o) * 1.2; }); }
     TEARS.forEach((T, i) => { T.glow.material.opacity = SEALED[i] ? .12 : .38 + (S.reduced ? 0 : .2 * Math.sin(t * 2.4 + i)); });
     KEYS.forEach((k, i) => { const g = markers[k]; g.userData.ring.lookAt(camera.position); const s = 1 + Math.sin(t * 2 + i) * (S.reduced ? 0 : .15); g.userData.ring.scale.setScalar(s); g.position.y = LM[k].y + (S.reduced ? 0 : Math.sin(t * .8 + i) * .5); });
     updAq(S.reduced ? t * .5 : t);
     signals.forEach(s => { if (!s.visible) return; s.position.copy(s.userData.c.getPointAt((t * .12 + s.userData.o) % 1)); });
     if (burstT > 0) { burstT -= dt; const a = burst.geometry.attributes.position.array; for (let i = 0; i < 60; i++) { a[i * 3] += burstV[i].x * dt; a[i * 3 + 1] += burstV[i].y * dt; a[i * 3 + 2] += burstV[i].z * dt; } burst.geometry.attributes.position.needsUpdate = true; burst.material.opacity = Math.max(0, burstT); if (burstT <= 0) burst.visible = false; }
     if (state === 'intro') { updateIntro(dt, t); hq ? hq.render(introS, dt) : renderer.render(introS, camera); updateLabels(); return; }
+    updBolts(dt); if (muzzle > 0) muzzle -= dt;
     if (state === 'play') updatePlay(dt, t); else if (state === 'lj') updateLJ(dt, t); else if (state === 'laser') updateLaser(dt, t);
     else { camera.position.set(Math.sin(t * .1) * 8, 3, 26); camera.lookAt(0, 0, -20); craft.position.set(0, 0, 16); mata.update(t, dt, { reducedMotion: S.reduced }); }
-    lantern.position.copy(state === 'lj' ? ljLight.position : state === 'laser' ? craft.position : player).add(new THREE.Vector3(0, 2, 2));
+    lantern.position.copy(state === 'lj' ? ljLight.position : state === 'laser' ? craft.position : player).add(new THREE.Vector3(0, 2, 2)); lantern.color.setHex(muzzle > 0 ? 0x8ff4ff : 0xcfe9ff); lantern.intensity = (HQ ? 16 : 40) * (muzzle > 0 ? 2.2 : 1);
     hq ? hq.render(scene, dt) : renderer.render(scene, camera); updateLabels();
   };
   const setRun = () => { const on = visible && !document.hidden && !paused; if (on !== running) { running = on; clock.getDelta(); renderer.setAnimationLoop(on ? loop : null); } };

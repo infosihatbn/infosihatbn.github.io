@@ -946,6 +946,30 @@ html:has(.mp-on){overflow:hidden}html:has(.mp-on) :is(header.site,.mk-comp,#sky,
 .mu-boost.on{background:rgba(255,170,60,.45);border-color:#FFC46B;color:#fff;box-shadow:0 0 22px rgba(255,170,60,.55)}
 .mu.touch .mu-boost{bottom:206px;right:18px;width:58px;height:58px;padding:0;justify-content:center;border-radius:50%}.mu.touch .mu-boost span{display:none}
 .mu.lasering .mu-boost,.cinema .mu-boost{visibility:hidden}
+/* free laser button and energy bars (Haziq, 2026-11-10: make the bars obvious) */
+.mu-fire{position:absolute;right:18px;bottom:134px;z-index:4;display:flex;align-items:center;gap:8px;min-height:52px;padding:0 18px 0 14px;border-radius:999px;border:2px solid rgba(111,227,255,.7);background:rgba(10,16,48,.6);color:#BFF6FF;font:inherit;font-weight:700;font-size:15px;cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none}
+.mu-fire svg{width:22px;height:22px}.mu-fire:active{background:rgba(111,227,255,.4);color:#fff;box-shadow:0 0 22px rgba(111,227,255,.6)}
+.mu.touch .mu-fire{bottom:278px;right:18px;width:58px;height:58px;padding:0;justify-content:center;border-radius:50%}.mu.touch .mu-fire span{display:none}
+.mu-en{position:absolute;left:50%;bottom:52px;transform:translateX(-50%);z-index:4;display:flex;gap:12px;pointer-events:none}
+.mu-eb{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;column-gap:10px;row-gap:5px;align-items:center;background:rgba(8,12,38,.82);border:2px solid rgba(159,231,255,.35);border-radius:16px;padding:8px 14px 9px 10px;color:#EAF2FF;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.mu-eb i{grid-row:1/3;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;font-style:normal}.mu-eb i svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.mu-eb b{font:800 13.5px/1 var(--display);letter-spacing:.02em}
+.mu-eb{position:relative}.mu-eb small{position:absolute;right:10px;top:-10px;font:800 11px/1 var(--display);color:#fff;background:#E8505B;border-radius:999px;padding:3px 7px}.mu-eb small:empty{display:none}
+.mu-eb .bar{display:block;width:150px;height:14px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.5)}
+.mu-eb .bar{position:relative}.mu-eb .bar .mu-fl{position:absolute;inset:0;border-radius:inherit;transform-origin:left center;background:linear-gradient(90deg,#FF9F43,#FFD34D 70%,#FFF1B0);box-shadow:0 0 12px rgba(255,190,70,.9)}
+.mu-eb.b i{background:rgba(255,170,60,.25);color:#FFD27A;box-shadow:0 0 14px rgba(255,170,60,.45)}.mu-eb.b{border-color:rgba(255,196,107,.55)}
+.mu-eb.l i{background:rgba(111,227,255,.22);color:#9FF3FF;box-shadow:0 0 14px rgba(111,227,255,.45)}.mu-eb.l{border-color:rgba(111,227,255,.55)}
+.mu-eb .cells{display:flex;gap:5px}.mu-eb .cells em{position:relative;width:24px;height:14px;border-radius:4px;background:rgba(255,255,255,.12);overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.5)}
+.mu-eb .cells s{position:absolute;inset:0;transform-origin:bottom center;background:linear-gradient(0deg,#38C6FF,#9FF3FF);box-shadow:0 0 10px rgba(111,227,255,.9)}
+.mu-eb.low .bar .mu-fl,.mu-eb.lock .bar .mu-fl{background:linear-gradient(90deg,#E8505B,#FF8A7A)}
+.mu-eb.lock{border-color:#E8505B}.mu-eb.empty{border-color:#E8505B}.mu-eb.empty .cells em{background:rgba(232,80,91,.25)}
+.mu-eb.flash{animation:mu-enf .5s ease-out 2}
+@keyframes mu-enf{0%{box-shadow:0 0 0 0 rgba(232,80,91,.9)}100%{box-shadow:0 0 0 12px rgba(232,80,91,0)}}
+.mu.lasering .mu-fire,.mu.lasering .mu-en,.cinema .mu-fire,.cinema .mu-en{visibility:hidden}
+.mu .mu-near{bottom:122px}
+@media (max-width:700px){.mu .mu-say{top:150px}.mu-en{left:12px;right:12px;bottom:auto;top:106px;transform:none;gap:6px;justify-content:flex-start}.mu-eb{padding:5px 9px 6px 6px;column-gap:6px;row-gap:3px;border-radius:12px}.mu-eb i{width:28px;height:28px}.mu-eb i svg{width:16px;height:16px}.mu-eb b{font-size:11.5px}.mu-eb .bar{width:74px;height:11px}.mu-eb .cells{gap:3px}.mu-eb .cells em{width:13px;height:11px}.mu-eb small{font-size:9.5px;top:-8px;right:6px}
+ .mu.touch .mu-fire{bottom:326px;width:52px;height:52px}.mu .mu-near{bottom:190px}}
+@media (prefers-reduced-motion:reduce){.mu-eb.flash{animation:none}}
 .mu-aim.lock{border-color:#fff;box-shadow:0 0 20px rgba(125,255,176,.95),inset 0 0 10px rgba(125,255,176,.7);transform-origin:center}
 .mu-aim.lock::before,.mu-aim.lock::after{background:#fff;opacity:.9}
 @media (max-width:700px){.mu.touch .mu-boost{bottom:266px;width:52px;height:52px}}
