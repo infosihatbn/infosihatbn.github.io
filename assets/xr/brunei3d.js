@@ -5,7 +5,7 @@
 // Everything sits outside the eye (the eye's radius is 60, centred on the origin, looking out along +Z), so the eye wall hides it
 // except through the clear cornea. Static parts are merged into one mesh with baked colours; one small shader lights it all.
 import * as THREE from '/assets/three/three.module.min.js';
-import { bruneiDome } from './brunei.js';
+import { bruneiDome } from './brunei.js?v=3';
 
 const WY = -22;                                                         // the water level
 const SUN = new THREE.Vector3(-.63, .48, .61).normalize();              // same sun as the painted sky
@@ -158,7 +158,7 @@ export function bruneiWorld({ px = 4096, touch = false, hq = false } = {}) {
       const P = (an, y) => [Math.sin(an) * -rad, y, Math.cos(an) * rad];
       const p1 = P(a, B - 1), p2 = P(b, B - 1), p3 = P(b, B + ht(b)), p4 = P(a, B + ht(a)); pos.push(...p1, ...p2, ...p3, ...p1, ...p3, ...p4);
       if (n && i % 1 === 0) for (let k = 0; k < 3; k++) { const an = a + (b - a) * rnd(), y = B + ht(an) * (.55 + rnd() * .5), rr = rad - rnd() * 4;
-        K.add(new THREE.IcosahedronGeometry(2.2 + rnd() * 2.2, 1), { p: [Math.sin(an) * -rr, y, Math.cos(an) * rr], sc: [1, .8, 1], col: [0x3f7d4f, 0x4f8a55, 0x5d9a5c, 0x36704a][(rnd() * 4) | 0] }); } }
+        K.add(new THREE.IcosahedronGeometry(2.2 + rnd() * 2.2, 0), { p: [Math.sin(an) * -rr, y, Math.cos(an) * rr], sc: [1, .8, 1], col: [0x3f7d4f, 0x4f8a55, 0x5d9a5c, 0x36704a][(rnd() * 4) | 0] }); } }
     const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.computeVertexNormals();
     K.add(g, { col: 0xffffff, shade: (x, y) => 1 }); // colour set below by height
   }
@@ -233,7 +233,7 @@ export function bruneiWorld({ px = 4096, touch = false, hq = false } = {}) {
     fragmentShader: `uniform float uT; uniform vec3 uSun; varying vec3 vD;
       float hs(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
       float no(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.-2.*f); return mix(mix(hs(i), hs(i+vec2(1,0)), f.x), mix(hs(i+vec2(0,1)), hs(i+vec2(1,1)), f.x), f.y); }
-      float fbm(vec2 p){ float s = 0., a = .5; for (int i = 0; i < 5; i++) { s += a*no(p); p = p*2.03 + 1.7; a *= .5; } return s; }
+      float fbm(vec2 p){ float s = 0., a = .5; for (int i = 0; i < 4; i++) { s += a*no(p); p = p*2.03 + 1.7; a *= .5; } return s; }
       void main(){ vec3 d = normalize(vD); if (d.y < .015) discard;
         vec2 uv = d.xz / (d.y + .18) * 1.6 + vec2(uT*.012, uT*.004);
         float c = fbm(uv), c2 = fbm(uv + uSun.xz*.06);

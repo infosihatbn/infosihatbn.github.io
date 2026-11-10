@@ -7,7 +7,7 @@ import { DISC_DIR } from './eyemodel.js';
 import { createRealEye } from './realeye.js';
 import { wantNewModels, applyNewModels } from './models.js';
 import { wantHQ, setupHQ, upgradeScene } from './hq.js';
-import { bruneiWorld } from './brunei3d.js';
+import { bruneiWorld } from './brunei3d.js?v=3';
 
 const R = 60, IRIS_Z = 52, PUPIL = 10, LENS_Z = 40, LENS_R = 19, LENS_T = 7, CORNEA_C = 30, CORNEA_R = 38; // the front: iris plane, lens, corneal dome
 const BACK = ['vitreous', 'floaters', 'retina', 'tear', 'vessels', 'macula', 'fovea', 'disc', 'nerve'];
@@ -302,45 +302,13 @@ export function mount(el, D) {
   const fib = new THREE.Group(); scene.add(fib);
   for (let i = 0; i < 34; i++) { const a = new THREE.Vector3().randomDirection().multiplyScalar(45), b = a.clone().negate().add(new THREE.Vector3().randomDirection().multiplyScalar(20)); const m = a.clone().lerp(b, .5).add(new THREE.Vector3().randomDirection().multiplyScalar(10));
     fib.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(new THREE.QuadraticBezierCurve3(a, m, b).getPoints(30)), new THREE.LineBasicMaterial({ color: 0xd9e2ff, transparent: true, opacity: .07 }))); }
-  // floaters (Haziq, 2026-11-10: more areas, more detail): several clusters around the vitreous. Each holds cobweb strands made of
-  // fibre bundles, lumpy clumps, crumpled veils of condensed gel and (in one) a Weiss ring. They glow faintly at their edges like
-  // translucent jelly, ripple and sway in the gel, and scatter when you fly (or shoot) through them, then settle back.
-  const flU = THREE.UniformsUtils.merge([THREE.UniformsLib.fog, { uT: { value: 0 }, uC: { value: new THREE.Color(0xd2d8f0) } }]);
-  const fm = new THREE.ShaderMaterial({ uniforms: flU, fog: true, transparent: true, depthWrite: false, side: THREE.DoubleSide,
-    vertexShader: `uniform float uT; attribute float aW; varying vec3 vN, vV; varying float vS;
-      #include <fog_pars_vertex>
-      void main(){ vec3 p = position;
-        p += normal * sin(uT * 1.6 + position.x * 1.7 + position.y * 1.3) * .05;
-        p += vec3(sin(uT * .7 + position.y * .9), cos(uT * .6 + position.z * .8), sin(uT * .5 + position.x * .7)) * .32 * aW;
-        vec4 mvPosition = modelViewMatrix * vec4(p, 1.); vN = normalize(normalMatrix * normal); vV = normalize(-mvPosition.xyz); vS = sin(dot(position, vec3(3.1, 2.3, 1.7)));
-        gl_Position = projectionMatrix * mvPosition;
-        #include <fog_vertex>
-      }`,
-    fragmentShader: `uniform vec3 uC; uniform float uT; varying vec3 vN, vV; varying float vS;
-      #include <fog_pars_fragment>
-      void main(){ float f = 1. - abs(dot(normalize(vN), normalize(vV))); float rim = pow(f, 2.);
-        vec3 c = mix(uC * .5, uC * 1.3, rim) + vec3(.35, .22, .55) * pow(f, 6.) * .7 + vec3(.2, .45, .5) * pow(f, 9.) * (.5 + .5 * sin(uT + vS * 3.));
-        gl_FragColor = vec4(c, .08 + rim * .6);
-        #include <fog_fragment>
-      }` });
-  const withW = (g, fn) => { const p = g.attributes.position, w = new Float32Array(p.count); for (let i = 0; i < p.count; i++) w[i] = fn(i, p.getX(i), p.getY(i), p.getZ(i)); g.setAttribute('aW', new THREE.BufferAttribute(w, 1)); return g; };
-  const lumpy = (g, k) => { const p = g.attributes.position, v = new THREE.Vector3(); for (let i = 0; i < p.count; i++) { v.fromBufferAttribute(p, i); const n = 1 + k * (Math.sin(v.x * 3.1) * Math.sin(v.y * 2.7 + 1) * Math.sin(v.z * 3.7 + 2)); v.multiplyScalar(n); p.setXYZ(i, v.x, v.y, v.z); } g.computeVertexNormals(); return g; };
-  const FL_AT = [[15, 9, -6, 1], [-20, -8, 6, 0], [-6, 18, -28, 0]]; // 3 areas (Haziq, 2026-11-10: 7 dropped the frame rate)
-  const FLG = FL_AT.map(([x, y, z, kind], ci) => { const G = new THREE.Group(); G.position.set(x, y, z); G.userData.home = G.position.clone(); G.userData.o = ci * 1.7; scene.add(G);
-    const nS = touch ? 4 : 6;
-    for (let i = 0; i < nS; i++) { const pts = []; let p = new THREE.Vector3().randomDirection().multiplyScalar(3 + Math.random() * 2); for (let k = 0; k < 7; k++) { pts.push(p.clone()); p.add(new THREE.Vector3().randomDirection().multiplyScalar(1.4 + Math.random())); }
-      const curve = new THREE.CatmullRomCurve3(pts), r0 = .12 + Math.random() * .18;
-      const strand = new THREE.Mesh(withW(new THREE.TubeGeometry(curve, 40, r0, 7), i2 => Math.sin(Math.PI * (Math.floor(i2 / 8) / 40))), fm); G.add(strand);
-      for (let f = 0; f < 1; f++) { const off = new THREE.Vector3().randomDirection().multiplyScalar(r0 * 2.2);  // fine fibres running alongside
-        const fib2 = new THREE.Mesh(withW(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map((q, k) => q.clone().add(off.clone().multiplyScalar(1 + Math.sin(k * 1.3 + f) * .8)))), 40, r0 * .3, 4), i2 => Math.sin(Math.PI * (Math.floor(i2 / 5) / 40)) * 1.3), fm); G.add(fib2); } }
-    for (let i = 0; i < (touch ? 5 : 8); i++) { const b = new THREE.Mesh(withW(lumpy(new THREE.IcosahedronGeometry(.35 + Math.random() * .75, 2), .25), () => .35), fm); b.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(2 + Math.random() * 3)); G.add(b); }
-    for (let i = 0; i < 1; i++) { const g = new THREE.PlaneGeometry(3.2 + Math.random() * 2, 2.2 + Math.random(), 14, 9), p = g.attributes.position;   // crumpled veils
-      for (let k = 0; k < p.count; k++) p.setZ(k, Math.sin(p.getX(k) * 2.1 + i) * .35 + Math.cos(p.getY(k) * 2.7) * .3);
-      g.computeVertexNormals(); const v = new THREE.Mesh(withW(g, (k, X, Y) => .6 + .5 * Math.abs(X) / 2), fm); v.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(3)); v.rotation.set(Math.random() * 3, Math.random() * 3, 0); G.add(v); }
-    if (kind) { const g = new THREE.TorusGeometry(2.3, .26, 14, 96), p = g.attributes.position; for (let k = 0; k < p.count; k++) { const a = Math.atan2(p.getY(k), p.getX(k)); p.setZ(k, p.getZ(k) + Math.sin(a * 3) * .4); p.setX(k, p.getX(k) * (1 + .12 * Math.sin(a * 2))); }
-      g.computeVertexNormals(); const ring = new THREE.Mesh(withW(g, () => .5), fm); ring.rotation.x = 1.1; G.add(ring); }
-    const nd = 70, dg = new THREE.BufferGeometry(), dp = new Float32Array(nd * 3); for (let i = 0; i < nd; i++) { const v = new THREE.Vector3().randomDirection().multiplyScalar(Math.cbrt(Math.random()) * 6); dp.set([v.x, v.y, v.z], i * 3); }
-    dg.setAttribute('position', new THREE.BufferAttribute(dp, 3)); G.add(new THREE.Points(dg, new THREE.PointsMaterial({ size: .22, map: dot, color: 0xe6ecff, transparent: true, opacity: .55, depthWrite: false })));
+  // floaters: semi-transparent clumps and strands (original look, Haziq 2026-11-10), in 3 areas of the vitreous
+  const fm = new THREE.MeshStandardMaterial({ color: 0x8a90a8, transparent: true, opacity: .45, roughness: 1, depthWrite: false });
+  const FL_AT = [[15, 9, -6], [-20, -8, 6], [-6, 18, -28]];
+  const FLG = FL_AT.map(([x, y, z], ci) => { const G = new THREE.Group(); G.position.set(x, y, z); G.userData.home = G.position.clone(); G.userData.o = ci * 1.7; scene.add(G);
+    for (let i = 0; i < 6; i++) { const pts = []; let p = new THREE.Vector3().randomDirection().multiplyScalar(4); for (let k = 0; k < 6; k++) { pts.push(p.clone()); p.add(new THREE.Vector3().randomDirection().multiplyScalar(1.6)); }
+      G.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 30, .18 + Math.random() * .2, 6), fm)); }
+    for (let i = 0; i < 8; i++) { const b = new THREE.Mesh(new THREE.SphereGeometry(.4 + Math.random() * .7, 10, 8), fm); b.position.copy(new THREE.Vector3().randomDirection().multiplyScalar(4)); G.add(b); }
     return G; });
   const floaters = FLG[0];
   // fly (or shoot) into the floaters and they scatter like strands in gel, then slowly settle back where they were (Haziq, 2026-10-16)
@@ -878,7 +846,7 @@ export function mount(el, D) {
   const loop = () => {
     const dt = Math.min(clock.getDelta(), .05); t += dt * (S.reduced ? .4 : 1); pollGP();
     partU.uT.value = t; beamU.uT.value = t; wallU.uT.value = t;
-    flU.uT.value = t; outside.group.visible = camera.position.z > 22; if (outside.group.visible) outside.update(t, dt); // the outside only shows near the front of the eye
+    outside.update(t, dt);
     if (!S.reduced) { fib.rotation.y = t * .01; FLG.forEach((G, i) => { const o = G.userData.o; G.rotation.y = t * .05 * (i % 2 ? -1 : 1) + o; G.rotation.x = Math.sin(t * .1 + o) * .3; G.position.copy(G.userData.home); G.position.x += Math.sin(t * .13 + o) * 1.2; G.position.y += Math.sin(t * .09 + o * 2) * 1.5; G.position.z += Math.cos(t * .11 + o) * 1.2; }); }
     TEARS.forEach((T, i) => { T.glow.material.opacity = SEALED[i] ? .12 : .38 + (S.reduced ? 0 : .2 * Math.sin(t * 2.4 + i)); });
     KEYS.forEach((k, i) => { const g = markers[k]; g.userData.ring.lookAt(camera.position); const s = 1 + Math.sin(t * 2 + i) * (S.reduced ? 0 : .15); g.userData.ring.scale.setScalar(s); g.position.y = LM[k].y + (S.reduced ? 0 : Math.sin(t * .8 + i) * .5); });
