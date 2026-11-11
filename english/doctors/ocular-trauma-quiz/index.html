@@ -206,6 +206,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 @keyframes drift-top{from{transform:scaleY(-1) translateX(-50%)}to{transform:scaleY(-1) translateX(0)}}
 .bub{position:absolute;bottom:-40px;border-radius:50%;border:2px solid var(--teal);opacity:0;animation:rise-bub linear infinite}
 @keyframes rise-bub{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:.35}50%{transform:translateY(-50vh) translateX(18px)}90%{opacity:.25}100%{transform:translateY(-105vh) translateX(-10px);opacity:0}}
+#paint{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+#paint.on{pointer-events:auto}
 #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
 
 @media (max-width:620px){
@@ -235,6 +237,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
   <svg class="wave w3" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 50 Q360 100 720 50 T1440 50 T2160 50 T2880 50 V120 H0Z"/></svg>
 </div>
 <canvas id="confetti" aria-hidden="true"></canvas>
+<canvas id="paint" aria-hidden="true"></canvas>
 <div class="wrap">
   <header class="top">
     <button class="brand" id="home-btn" aria-label="Back to all sections">
@@ -478,7 +481,7 @@ function home(){
     <p>This quiz is for learning and does not replace medical advice. For a serious eye injury, go to the nearest emergency department straight away.</p>
   </div>`;
   app.querySelectorAll("[data-sec]").forEach(b=>b.onclick=()=>start(+b.dataset.sec,1,[]));
-  app.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{ MODE=b.dataset.mode; SECTIONS=MODE==="kids"?SECTIONS_KID:SECTIONS_ADULT; const y=scrollY; home(); window.scrollTo({top:y}); });
+  app.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{ MODE=b.dataset.mode; SECTIONS=MODE==="kids"?SECTIONS_KID:SECTIONS_ADULT; const y=scrollY; RAW.home(); window.scrollTo({top:y}); });
   window.scrollTo({top:0});
 }
 
@@ -706,7 +709,55 @@ function tick(){
   raf=parts.length?requestAnimationFrame(tick):(cx.clearRect(0,0,innerWidth,innerHeight),null);
 }
 
-home();
+/* ---------- Paint-pour transition between screens ---------- */
+// A wave of paint pours down with drips, the screen changes while it is covered,
+// then the paint slides off the bottom. Colours cycle through the rainbow.
+const PAINT=["#e53935","#fb8c00","#fdd835","#43a047","#1e88e5","#3949ab","#8e24aa"];
+const pv=document.getElementById("paint"), px=pv.getContext("2d");
+let paintIdx=0, painting=false;
+const RAW={home,question,results};
+function drips(W,D){
+  const n=Math.max(8,Math.round(W/70)), out=[];
+  for(let i=0;i<n;i++) out.push({c:(i+.2+Math.random()*.6)*W/n, w:W/n*(.28+Math.random()*.3), L:D*(.25+Math.random()*.75)});
+  return out;
+}
+function edge(x,ds,D,ph){
+  let d=D*.12*Math.sin(x/90+ph);
+  for(const k of ds){const u=(x-k.c)/k.w; if(u>-1&&u<1) d=Math.max(d,k.L*Math.sqrt(1-u*u));}
+  return d;
+}
+function swap(fn){
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce){ fn(); return; }
+  if(painting) return;
+  painting=true; pv.classList.add("on");
+  const col=PAINT[paintIdx++%PAINT.length];
+  const W=innerWidth,H=innerHeight,dpr=devicePixelRatio||1;
+  pv.width=W*dpr; pv.height=H*dpr; px.setTransform(dpr,0,0,dpr,0,0);
+  const D=Math.min(160,H*.18), d1=drips(W,D), d2=drips(W,D), ph=Math.random()*6;
+  const DUR=1000, t0=performance.now(); let swapped=false;
+  const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  const shape=(top,bot)=>{px.beginPath();const step=6;
+    px.moveTo(0,top(0));for(let x=0;x<=W+step;x+=step)px.lineTo(x,top(x));
+    for(let x=W+step;x>=-step;x-=step)px.lineTo(x,bot(x));px.closePath();px.fill();};
+  const frame=now=>{
+    const t=Math.min(1,(now-t0)/DUR);
+    px.clearRect(0,0,W,H);
+    let top,bot;
+    if(t<.5){const e=ease(t/.5); top=()=>-10; bot=x=>e*(H+2*D)-D+edge(x,d1,D,ph);}
+    else{const e=ease((t-.5)/.5); bot=()=>H+10; top=x=>e*(H+3*D)-D-edge(x,d2,D,ph+2);}
+    px.fillStyle=col; px.globalAlpha=.35; shape(x=>top(x)-14,x=>bot(x)+14);
+    px.globalAlpha=1; shape(top,bot);
+    if(t>=.5&&!swapped){swapped=true; fn();}
+    if(t<1) requestAnimationFrame(frame); else {px.clearRect(0,0,W,H); pv.classList.remove("on"); painting=false;}
+  };
+  requestAnimationFrame(frame);
+}
+home=function(){ swap(RAW.home); };
+question=function(){ swap(RAW.question); };
+results=function(){ swap(RAW.results); };
+
+RAW.home();
 </script>
 
 </body></html>
