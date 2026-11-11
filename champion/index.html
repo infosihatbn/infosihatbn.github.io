@@ -71,6 +71,9 @@ img{max-width:100%}
 .btn{border:0;border-radius:14px;padding:12px 22px;font-family:var(--f-display);font-weight:700;font-size:1.1rem;background:var(--teal);color:#fff;box-shadow:0 4px 0 var(--teal-ink);cursor:pointer}
 .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--teal-ink)}
 .btn:focus-visible,.edit:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.certimg{display:block;width:100%;max-width:440px;height:auto;margin:0 auto;border-radius:26px;box-shadow:0 2px 0 rgba(18,62,99,.08),0 18px 40px -16px rgba(18,62,99,.35);-webkit-touch-callout:default;user-select:auto}
+.save{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px auto 0}
+.save a{text-decoration:none}
 .edit{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--teal-ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 </style>
 </head><body>
@@ -82,7 +85,7 @@ img{max-width:100%}
   <p>You scored 3 / 3. Enter your name for your certificate.<br>Anda mendapat 3 / 3. Masukkan nama anda untuk sijil.</p>
   <form id="f" style="display:grid;gap:12px;justify-items:center;width:100%">
     <label for="name">Your name<small>Nama anda</small></label>
-    <input id="name" type="text" maxlength="40" autocomplete="name" required>
+    <input id="name" type="text" maxlength="70" autocomplete="name" required>
     <button class="btn" type="submit">Show my certificate · Lihat sijil saya</button>
   </form>
 </section>
@@ -115,7 +118,11 @@ img{max-width:100%}
     <div class="r"><small>Date</small><strong id="date"></strong></div>
   </div>
 </main>
-<p class="hint" id="hint" hidden>Take a screenshot now to keep your certificate. This link stops working after 30 minutes.<br>Ambil tangkapan skrin sekarang untuk menyimpan sijil anda. Pautan ini akan tamat selepas 30 minit.<br><button class="edit" id="edit" type="button">Change name · Tukar nama</button></p>
+<img id="certimg" class="certimg" alt="Your Eye Safety Champion certificate" hidden>
+<div class="save" id="save" hidden>
+  <a class="btn" id="dl" download="eye-safety-champion.png" href="#">Save image · Simpan imej</a>
+</div>
+<p class="hint" id="hint" hidden><b>Press and hold the certificate to save it to your photos.</b> This link stops working after 30 minutes, so save it now.<br><b>Tekan lama pada sijil untuk menyimpannya ke galeri foto anda.</b> Pautan ini akan tamat selepas 30 minit, jadi simpan sekarang.<br><button class="edit" id="edit" type="button">Change name · Tukar nama</button></p>
 
 <script>
 /* Each QR code carries ?c=<minute>.<code>. The code is a keyed hash of the minute, made by the quiz.
@@ -139,13 +146,71 @@ function confetti(){
     p.forEach(q=>{q.life++;q.vy+=.22;q.vx*=.99;q.x+=q.vx;q.y+=q.vy;q.r+=.15;cx.save();cx.translate(q.x,q.y);cx.rotate(q.r);cx.fillStyle=q.c;cx.fillRect(-q.s/2,-q.s/4,q.s,q.s/2);cx.restore()});
     if(p.length) requestAnimationFrame(tick); else cx.clearRect(0,0,innerWidth,innerHeight)})();
 }
+/* ---------- Draw the certificate as a PNG so people can press and hold to save it ---------- */
+const DISP='"Baloo 2","Trebuchet MS",sans-serif', BODY='"Nunito","Segoe UI",sans-serif';
+const INK="#123e63",MUTED="#4b6a82",TEAL="#0d7383",SUN="#ffc531",SUNINK="#5a4100",LINE="#c9e1e8",BG="#eaf6f9";
+function rr(x,c,y,w,h,r){x.beginPath();x.roundRect?x.roundRect(c,y,w,h,r):x.rect(c,y,w,h)}
+function wrap(x,text,maxW){const words=text.split(" "),lines=[];let l="";for(const w of words){const tt=l?l+" "+w:w;if(x.measureText(tt).width>maxW&&l){lines.push(l);l=w}else l=tt}if(l)lines.push(l);return lines}
+function lines(x,text,font,color,cx,y,maxW,lh,align){x.font=font;x.fillStyle=color;x.textAlign=align||"center";const ls=wrap(x,text,maxW);ls.forEach((l,i)=>x.fillText(l,cx,y+i*lh));return y+ls.length*lh}
+async function makeImage(name){
+  await Promise.all([`800 90px ${DISP}`,`700 40px ${DISP}`,`600 30px ${BODY}`,`800 30px ${BODY}`].map(f=>document.fonts.load(f).catch(()=>{})));
+  const logo=new Image(); logo.src=document.querySelector(".logo").src; await logo.decode();
+  // draw once on a tall canvas to measure, then again at the exact height
+  const W=1080, tall=draw(name,logo,W,2600), cv=document.createElement("canvas"); draw(name,logo,W,tall.h,cv);
+  return cv.toDataURL("image/png");
+}
+function draw(name,logo,W,H,cv){
+  cv=cv||document.createElement("canvas"); cv.width=W; cv.height=H; const x=cv.getContext("2d"); x.textBaseline="alphabetic";
+  // rainbow frame and paper
+  const g=x.createLinearGradient(0,0,W,H);["#e53935","#fb8c00","#fdd835","#43a047","#1e88e5","#3949ab","#8e24aa"].forEach((c,i)=>g.addColorStop(i/6,c));
+  x.fillStyle=g; rr(x,0,0,W,H,64); x.fill();
+  x.fillStyle="#fff"; rr(x,22,22,W-44,H-44,46); x.fill();
+  const cx=W/2, M=96, IW=W-2*M; let y=70;
+  // logo
+  x.save(); x.beginPath(); x.arc(cx,y+80,80,0,Math.PI*2); x.clip(); x.drawImage(logo,cx-80,y,160,160); x.restore(); y+=210;
+  x.font=`800 30px ${BODY}`; x.fillStyle=TEAL; x.textAlign="center"; x.letterSpacing="5px"; x.fillText("CERTIFICATE · SIJIL",cx,y); x.letterSpacing="0px"; y+=96;
+  x.font=`800 104px ${DISP}`; x.fillStyle=INK; x.fillText("Eye Safety",cx,y); y+=118;
+  x.font=`800 104px ${DISP}`; const cw=x.measureText("Champion").width;
+  x.save(); x.translate(cx,y-36); x.rotate(-2*Math.PI/180); x.fillStyle=SUN; rr(x,-cw/2-26,-62,cw+52,124,26); x.fill(); x.fillStyle=SUNINK; x.fillText("Champion",0,36); x.restore(); y+=82;
+  x.font=`700 50px ${DISP}`; x.fillStyle=TEAL; x.fillText("Juara Keselamatan Mata",cx,y); y+=92;
+  x.font=`600 32px ${BODY}`; x.fillStyle=MUTED; x.fillText("Awarded to · Dianugerahkan kepada",cx,y); y+=90;
+  // name: shrink to fit, up to two lines
+  let fs=86; x.font=`800 ${fs}px ${DISP}`; let nl=wrap(x,name,IW);
+  while((nl.length>2||nl.some(l=>x.measureText(l).width>IW))&&fs>48){fs-=4;x.font=`800 ${fs}px ${DISP}`;nl=wrap(x,name,IW)}
+  x.fillStyle=INK; nl.forEach((l,i)=>x.fillText(l,cx,y+i*fs*1.05)); y+=(nl.length-1)*fs*1.05+30;
+  x.strokeStyle=LINE; x.lineWidth=4; x.setLineDash([14,10]); x.beginPath(); x.moveTo(M+60,y); x.lineTo(W-M-60,y); x.stroke(); x.setLineDash([]); y+=62;
+  y=lines(x,"for answering every question correctly in the Eye Safety Quiz.",`600 34px ${BODY}`,INK,cx,y,IW,44);
+  y=lines(x,"kerana menjawab semua soalan dengan betul dalam Kuiz Keselamatan Mata.",`600 30px ${BODY}`,MUTED,cx,y+4,IW,40); y+=26;
+  // booth box
+  x.fillStyle=BG; rr(x,M-20,y,IW+40,128,30); x.fill();
+  x.font=`700 44px ${DISP}`; x.fillStyle=INK; x.fillText("Ocular Trauma Educational Booth",cx,y+58);
+  x.font=`600 30px ${BODY}`; x.fillStyle=MUTED; x.fillText("Gerai Pendidikan Kecederaan Mata",cx,y+100); y+=176;
+  // tips
+  const tips=[["#e53935","Wear eye protection for sports, tools and fireworks.","Pakai pelindung mata semasa bersukan, menggunakan alatan dan bunga api."],
+              ["#43a047","Chemical in the eye? Rinse with clean water for 20 minutes.","Bahan kimia masuk ke mata? Bilas dengan air bersih selama 20 minit."],
+              ["#1e88e5","Never rub or press an injured eye. Get help quickly.","Jangan gosok atau tekan mata yang cedera. Dapatkan bantuan dengan segera."]];
+  tips.forEach(([c,en,ms],i)=>{ x.fillStyle=c; x.beginPath(); x.arc(M+22,y-10,22,0,Math.PI*2); x.fill();
+    x.fillStyle="#fff"; x.font=`800 26px ${BODY}`; x.textAlign="center"; x.fillText(String(i+1),M+22,y);
+    let yy=lines(x,en,`700 30px ${BODY}`,INK,M+64,y,IW-64,38,"left");
+    yy=lines(x,ms,`600 26px ${BODY}`,MUTED,M+64,yy,IW-64,34,"left"); y=yy+22; });
+  // footer
+  y+=6; x.strokeStyle=LINE; x.lineWidth=4; x.setLineDash([4,8]); x.beginPath(); x.moveTo(M-20,y); x.lineTo(W-M+20,y); x.stroke(); x.setLineDash([]); y+=50;
+  x.textAlign="left"; x.font=`800 24px ${BODY}`; x.fillStyle=MUTED; x.letterSpacing="3px"; x.fillText("BROUGHT TO YOU BY",M-20,y);
+  x.textAlign="right"; x.fillText("DATE",W-M+20,y); x.letterSpacing="0px"; y+=48;
+  x.font=`700 38px ${DISP}`; x.fillStyle=INK; x.textAlign="left"; x.fillText("Brunei Ophthalmology Society",M-20,y);
+  x.textAlign="right"; x.fillText($("date").textContent,W-M+20,y);
+  return {h:Math.ceil(y+80)};
+}
 if(!ok){ $("expired").hidden=false; }
 else{
   $("date").textContent=new Date(tMin*60000).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
   $("ask").hidden=false; $("name").focus();
   $("f").onsubmit=e=>{ e.preventDefault(); const n=$("name").value.trim().replace(/\s+/g," "); if(!n) return;
-    $("who").textContent=n; $("ask").hidden=true; $("cert").hidden=false; $("hint").hidden=false; window.scrollTo({top:0}); confetti(); };
-  $("edit").onclick=()=>{ $("cert").hidden=true; $("hint").hidden=true; $("ask").hidden=false; $("name").select(); };
+    $("who").textContent=n; $("ask").hidden=true;
+    makeImage(n).then(url=>{ $("certimg").src=url; $("dl").href=url; $("certimg").hidden=false; $("save").hidden=false; })
+      .catch(()=>{ $("cert").hidden=false; }) /* if drawing fails, show the HTML certificate for a screenshot */
+      .finally(()=>{ $("hint").hidden=false; window.scrollTo({top:0}); confetti(); }); };
+  $("edit").onclick=()=>{ ["cert","certimg","save","hint"].forEach(i=>$(i).hidden=true); $("ask").hidden=false; $("name").select(); };
 }
 </script>
 </body></html>
