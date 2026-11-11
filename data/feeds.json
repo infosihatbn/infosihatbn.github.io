@@ -14,48 +14,48 @@
     "d": "2026-10-30"
    }
   ],
-  "updated": "2026-11-10"
+  "updated": "2026-11-11"
  },
  "sea": {
   "items": [
    {
-    "t": "Association of Fenofibrate Add-on Therapy with Postoperative Diabetic Retinal Outcomes After Cataract Surgery in Patients with Type 2 Diabetes Mellitus",
-    "src": "Retina",
-    "d": "2026 Nov 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43002646/"
+    "t": "Volumetric Quantification of Retinal Ischemic Perivascular Lesions (RIPLs) in Coronary Artery Disease",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43006988/"
    },
    {
-    "t": "Pegcetacoplan for geographic atrophy: Bridging the \"clinical relevance gap\" through precision medicine",
+    "t": "Axial Length-Dependent Macular Choroidal Topography in POAG: A Wide-Field Swept-Source Optical Coherence Tomography Study",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43006987/"
+   },
+   {
+    "t": "Human amniotic membrane transplantation for macular hole-associated retinal detachment: A systematic review of outcomes in refractory and complex cases",
     "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 7",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42998772/"
+    "d": "2026 Nov 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43003356/"
    },
    {
-    "t": "Statin Use and Age-related Macular Degeneration: A Systematic Review and Meta-Analysis of Disease Outcomes",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 7",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42998694/"
+    "t": "Late-onset filtering bleb complications: A review",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Nov 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43003355/"
    },
    {
-    "t": "Fixed Dose Inferior Oblique Recession Has Self-Adjusting Effect",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 7",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42998693/"
+    "t": "Intravenous pulse methylprednisolone versus placebo for ethambutol-induced optic neuropathy (EtON): A double-blind randomized placebo-controlled trial",
+    "src": "Ophthalmology",
+    "d": "2026 Nov 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43003350/"
    },
    {
-    "t": "Open-Source Multimodal Imaging and Clinical Data Set for Uveal Melanoma",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42997692/"
-   },
-   {
-    "t": "Automated Volumetric Segmentation of Microaneurysms on OCT Using Artificial Intelligence",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42997593/"
+    "t": "Standardising ocular surface photography for artificial intelligence: current limitations and a proposed roadmap",
+    "src": "Progress in Retinal and Eye Research",
+    "d": "2026 Nov 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43003180/"
    }
   ],
-  "updated": "2026-11-10"
+  "updated": "2026-11-11"
  },
  "bimj": {
   "items": [
@@ -72,9 +72,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-10"
+  "updated": "2026-11-11"
  },
- "checked": "2026-11-10T03:56+00:00",
+ "checked": "2026-11-11T01:40+00:00",
  "status": {
   "news": "ok (2)",
   "sea": "ok (6)",
@@ -83,6 +83,18 @@
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Alignment Between Corneal Biomechanical Anisotropy and Toricity Using Optical Coherence Elastography",
+    "src": "J Cataract Refract Surg",
+    "d": "2026 Nov 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43007294/"
+   },
+   {
+    "t": "Standardising ocular surface photography for artificial intelligence: current limitations and a proposed roadmap",
+    "src": "Progress in Retinal and Eye Research",
+    "d": "2026 Nov 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43003180/"
+   },
    {
     "t": "Autologous stromal transplantation with stromal restoration for corneal dermoids",
     "src": "Graefe's Archive",
@@ -106,21 +118,15 @@
     "src": "J Refract Surg",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42992814/"
-   },
-   {
-    "t": "Efficacy of Total Keratometric Power and Total Corneal Power on the Accuracy of 8 Modern Intraocular Lens Formulas in Highly Myopic Eyes",
-    "src": "J Refract Surg",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42992812/"
-   },
-   {
-    "t": "Comparative Optical Performance of Two Enhanced Monofocal IOLs Across Pupil Sizes and Lens Powers",
-    "src": "J Refract Surg",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42992811/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Axial Length-Dependent Macular Choroidal Topography in POAG: A Wide-Field Swept-Source Optical Coherence Tomography Study",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43006987/"
+   },
    {
     "t": "Predicting Future Visual Field Status from Baseline OCT Scan in Early to Moderate Glaucoma Using Deep Learning",
     "src": "Ophthalmology Science",
@@ -150,12 +156,6 @@
     "src": "American Journal of Ophthalmology",
     "d": "2026 Nov 5",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42987995/"
-   },
-   {
-    "t": "Surgical Outcomes and Predictors of Success Following Gonioscopy-Assisted Transluminal Trabeculotomy for Primary Congenital and Juvenile Open-Angle Glaucoma",
-    "src": "J Glaucoma",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42980177/"
    }
   ],
   "medret": [
@@ -198,6 +198,12 @@
   ],
   "vr": [
    {
+    "t": "Human amniotic membrane transplantation for macular hole-associated retinal detachment: A systematic review of outcomes in refractory and complex cases",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Nov 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43003356/"
+   },
+   {
     "t": "Long-term biocompatibility and efficacy of DNA supramolecular hydrogels as vitreous substitutes in a rabbit model of retinal detachment",
     "src": "Graefe's Archive",
     "d": "2026 Nov 9",
@@ -226,15 +232,15 @@
     "src": "Survey of Ophthalmology",
     "d": "2026 Nov 5",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42988272/"
-   },
-   {
-    "t": "Lichen Simplex Chronicus is Associated with an Increased Risk of Rhegmatogenous Retinal Detachment and Retinal Tears: A Propensity Score-Matched Cohort Study",
-    "src": "Retina",
-    "d": "2026 Oct 30",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42961139/"
    }
   ],
   "neuro": [
+   {
+    "t": "Intravenous pulse methylprednisolone versus placebo for ethambutol-induced optic neuropathy (EtON): A double-blind randomized placebo-controlled trial",
+    "src": "Ophthalmology",
+    "d": "2026 Nov 9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43003350/"
+   },
    {
     "t": "Prevalence and OCT Characteristics of Glaucoma-Like Optic Neuropathy in a Real-World Population",
     "src": "J Glaucoma",
@@ -264,12 +270,6 @@
     "src": "Ophthalmology Science",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42935570/"
-   },
-   {
-    "t": "Combined use of orbital soft tissue volume and retinal microvessel density for diagnosing dysthyroid optic neuropathy",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42891851/"
    }
   ],
   "paeds": [
@@ -310,6 +310,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42946154/"
    }
   ],
-  "updated": "2026-11-10"
+  "updated": "2026-11-11"
  }
 }
