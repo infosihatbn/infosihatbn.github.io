@@ -248,6 +248,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 .playing .qcard .champ h3,.champ h3{font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,3.2vw,1.95rem);line-height:1.1;margin:0}
 .champ h3 .hl{white-space:nowrap;background:var(--sun);color:var(--sun-ink);padding:0 .2em;border-radius:8px;display:inline-block;transform:rotate(-2deg)}
 .champ .booth{font-family:var(--f-display);font-weight:700;font-size:1.05rem;line-height:1.2;margin-top:4px}
+.champ .booth .sys{display:block;font-weight:800;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:#d6463d}
 .champ .meta{color:var(--muted);font-size:.85rem;line-height:1.35}
 .champ .qr{display:grid;justify-items:center;gap:6px;text-align:center}
 .champ .qr svg{width:150px;height:150px;display:block;border-radius:10px;border:2px solid var(--line)}
@@ -604,7 +605,7 @@ const T={
   all3:"All 3 correct!",all3p:"You know how to keep your eyes safe. Share what you learned with family and friends.",
   nearly:"Nearly there!",nearlyP:(r)=>`You got ${r} out of 3. Here’s one bonus question to round off this section.`,tryBonus:"Try the bonus question →",
   fresh0:"Let’s try a fresh set",fresh0p:"No worries, that’s how we learn. Here are 3 new questions on the same topic to try again.",tryNew:"Try a new set →",
-  cert:"Certificate",champ:'Eye Safety <span class="hl">Champion</span>',booth:"Ocular Trauma Educational Booth",scan:"Scan to get your certificate, then save it to your photos!",
+  cert:"Certificate",champ:'Eye Safety <span class="hl">Champion</span>',booth:'<span class="sys">Save Your Sight</span>Eye Health Awareness and First Aid Booth',scan:"Scan to get your certificate, then save it to your photos!",
   all:"All of the above",dateLoc:"en-GB"},
  ms:{brand:"Kuiz Keselamatan Mata",home:"Kembali ke semua bahagian",label:"Kuiz kecederaan mata",h1:'Pastikan mata anda <span class="hl">selamat!</span>',
   intro:"Lima bahagian ringkas tentang kecederaan mata: cara mencegahnya, perkara yang perlu dilakukan, dan bila perlu mendapatkan bantuan. Pilih mana-mana nombor dari 1 hingga 5 untuk bermula.",
@@ -622,7 +623,7 @@ const T={
   all3:"Ketiga-tiga jawapan betul!",all3p:"Anda tahu cara menjaga keselamatan mata. Kongsikan apa yang anda pelajari dengan keluarga dan rakan-rakan.",
   nearly:"Hampir berjaya!",nearlyP:(r)=>`Anda mendapat ${r} daripada 3. Berikut ialah satu soalan bonus untuk melengkapkan bahagian ini.`,tryBonus:"Cuba soalan bonus →",
   fresh0:"Mari cuba set baharu",fresh0p:"Jangan risau, begitulah cara kita belajar. Berikut ialah 3 soalan baharu tentang topik yang sama untuk dicuba semula.",tryNew:"Cuba set baharu →",
-  cert:"Sijil",champ:'Juara <span class="hl">Keselamatan Mata</span>',booth:"Gerai Pendidikan Kecederaan Mata",scan:"Imbas untuk mendapatkan sijil anda, kemudian simpan ke galeri foto anda!",
+  cert:"Sijil",champ:'Juara <span class="hl">Keselamatan Mata</span>',booth:'<span class="sys">Selamatkan Penglihatan Anda</span>Gerai Kesedaran Kesihatan Mata dan Pertolongan Cemas',scan:"Imbas untuk mendapatkan sijil anda, kemudian simpan ke galeri foto anda!",
   all:"Semua jawapan di atas",dateLoc:"ms-MY"}
 };
 const L=()=>T[LANG];
