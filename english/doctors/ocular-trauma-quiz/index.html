@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ocular Trauma Quiz · MataKitani</title><meta name="robots" content="noindex">
+<meta name="description" content="An interactive eye-injury quiz for the public, students and teachers, brought to you by the Brunei Ophthalmology Society.">
+<link rel="icon" href="../../../assets/favicon-32.png"><meta name="theme-color" content="#159fb2">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: friendly classroom quiz. Pale sky ground, navy ink, teal + sunshine yellow from the slide deck; one focused card at a time. */
+:root{
+  --bg:#eaf6f9;
+  --bg2:#d7eef3;
+  --surface:#ffffff;
+  --ink:#123e63;
+  --muted:#4b6a82;
+  --line:#c9e1e8;
+  --teal:#159fb2;
+  --teal-ink:#0d7383;
+  --sun:#ffc531;
+  --sun-ink:#5a4100;
+  --good:#23945c;
+  --good-bg:#e3f6ec;
+  --bad:#d6463d;
+  --bad-bg:#fdeceb;
+  --eye-white:#ffffff;
+  --iris:#2a8fd6;
+  --shadow:0 2px 0 rgba(18,62,99,.08),0 10px 30px -12px rgba(18,62,99,.25);
+  --f-display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px;
+  background-image:radial-gradient(circle at 12% -10%,var(--bg2) 0,transparent 45%),radial-gradient(circle at 100% 30%,var(--bg2) 0,transparent 35%);
+  background-attachment:fixed}
+.wrap{max-width:860px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;margin:0;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;font-family:var(--f-display);font-weight:800;font-size:1.25rem;color:var(--ink)}
+.brand svg{width:38px;height:38px}
+.back{white-space:nowrap;font-weight:800;font-size:.95rem;color:var(--teal-ink);text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.back:hover{text-decoration:underline}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.pill b{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding-block:18px 8px}
+.hero h1{font-size:clamp(2.4rem,7vw,3.8rem);font-weight:800;letter-spacing:-.01em}
+.hero h1 .hl{background:var(--sun);color:var(--sun-ink);padding:0 .25em;border-radius:12px;display:inline-block;transform:rotate(-2deg)}
+.hero p{max-width:34em;color:var(--muted);margin:14px 0 0;font-size:1.05rem}
+.mascot{width:150px;height:150px;flex:none}
+.mascot.bob{animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px) rotate(3deg)}}
+
+.byline{display:inline-flex;align-items:center;gap:14px;margin-top:18px;background:var(--surface);border-radius:999px;padding:8px 22px 8px 8px;box-shadow:var(--shadow)}
+.byline img{width:68px;height:68px;border-radius:50%;flex:none}
+.byline span{display:block;font-size:.78rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);line-height:1.3}
+.byline strong{display:block;font-family:var(--f-display);font-size:1.15rem;line-height:1.15;color:var(--ink)}
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0 30px}
+.how div{background:var(--surface);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow);min-width:0}
+.how strong{display:block;font-family:var(--f-display);font-size:1.1rem;line-height:1.2}
+.how span{color:var(--muted);font-size:.92rem}
+.how i{font-style:normal;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:.9rem;margin-bottom:6px}
+
+.label{text-transform:uppercase;letter-spacing:.09em;font-weight:800;font-size:.78rem;color:var(--teal-ink)}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.sec-head h2{font-size:1.7rem}
+
+/* diamond: 3 columns, half-height rows so tiles interlock 1 / 2-3 / 4 / 5-6 / 7 */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,120px));grid-auto-rows:68px;gap:10px 14px;justify-content:center}
+.grid .card{grid-row:span 2;align-content:center}
+.grid .card:nth-child(1){grid-column:2;grid-row:1/span 2}
+.grid .card:nth-child(2){grid-column:1;grid-row:2/span 2}
+.grid .card:nth-child(3){grid-column:3;grid-row:2/span 2}
+.grid .card:nth-child(4){grid-column:2;grid-row:3/span 2}
+.grid .card:nth-child(5){grid-column:1;grid-row:4/span 2}
+.grid .card:nth-child(6){grid-column:3;grid-row:4/span 2}
+.grid .card:nth-child(7){grid-column:2;grid-row:5/span 2}
+.card .nick{font-family:var(--f-display);font-weight:700;font-size:1rem;line-height:1.15;text-align:center;color:var(--ink);margin-top:10px;text-wrap:balance}
+.qtop .nick{font-family:var(--f-body);font-size:.8rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-ink);display:block;line-height:1.2}
+.card{background:color-mix(in srgb,var(--c,var(--teal)) 13%,var(--surface));border:2px solid color-mix(in srgb,var(--c,var(--teal)) 35%,transparent);border-radius:var(--r);padding:18px 10px 16px;box-shadow:var(--shadow);display:grid;justify-items:center;align-content:start;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-3px);border-color:var(--c,var(--teal))}
+.card .num,.card:hover .num{width:64px;height:64px;font-size:2.2rem;border-radius:18px;background:var(--c);color:var(--c-ink,#fff);box-shadow:0 4px 0 color-mix(in srgb,var(--c) 70%,#000)}
+.qtop .num{background:var(--c,var(--teal))!important;color:var(--c-ink,#fff)!important}
+.num{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:1.6rem;background:var(--bg2);color:var(--teal-ink)}
+.card:hover .num{background:var(--teal);color:#fff}
+
+.foot{margin-top:32px;font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;align-items:center}
+.foot p{margin:0;max-width:52em}
+.link{background:none;border:0;padding:0;color:var(--teal-ink);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* quiz */
+.qtop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:6px 0 14px}
+.qtop .title{display:flex;align-items:center;gap:12px;min-width:0}
+.qtop .num{width:42px;height:42px;font-size:1.35rem;background:var(--teal);color:#fff}
+.qtop h2{font-size:1.5rem}
+.dots{display:flex;gap:6px;align-items:center}
+.dot{min-width:30px;height:30px;padding:0 8px;border-radius:999px;display:grid;place-items:center;font-weight:800;font-size:.8rem;background:var(--surface);border:2px solid var(--line);color:var(--muted)}
+.dot.now{border-color:var(--teal);color:var(--teal-ink)}
+.dot.ok{background:var(--good);border-color:var(--good);color:#fff}
+.dot.no{background:var(--bad);border-color:var(--bad);color:#fff}
+.dot.bonus{border-style:dashed}
+
+.qcard{background:var(--surface);border-radius:24px;box-shadow:var(--shadow);padding:clamp(18px,4vw,32px);position:relative}
+.qcard .tag{display:inline-block;background:var(--ink);color:var(--surface);font-family:var(--f-display);font-weight:700;padding:3px 14px;border-radius:999px;font-size:.95rem}
+.qcard .tag.bonus{background:var(--sun);color:var(--sun-ink)}
+.qcard .tag.retry{background:var(--teal);color:#fff}
+.qcard h3{font-size:clamp(1.35rem,3.6vw,1.75rem);font-weight:700;margin:12px 0 18px}
+/* answer cards: big coloured game-show tiles, each with its own shape */
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.opt{--oc:var(--teal);--sh:color-mix(in srgb,var(--oc) 65%,#000);position:relative;display:flex;align-items:center;gap:18px;min-height:clamp(120px,24vh,240px);width:100%;text-align:left;background:var(--oc);color:#fff;border:0;border-radius:20px;padding:20px 24px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.3rem,2.6vw,2.1rem);line-height:1.15;box-shadow:0 7px 0 var(--sh);transition:transform .12s,box-shadow .12s,opacity .2s,filter .2s}
+.opt.c0{--oc:#e5484d}.opt.c1{--oc:#1d82d0}.opt.c2{--oc:#7c4dc9}.opt.c3{--oc:#1f9d6b}
+.opt:hover:not(:disabled){transform:translateY(-4px);box-shadow:0 11px 0 var(--sh)}
+.opt:active:not(:disabled){transform:translateY(5px);box-shadow:0 2px 0 var(--sh)}
+.opt:disabled{cursor:default}
+.opt .k{width:clamp(40px,4.5vw,60px);height:clamp(40px,4.5vw,60px);flex:none}
+.opt .k svg{width:100%;height:100%;display:block}
+.opt .t{min-width:0;text-wrap:balance}
+.opt.ok{outline:6px solid var(--good);outline-offset:4px}
+.opt.no{filter:saturate(.35) brightness(.9)}
+.opt.dim{opacity:.35;filter:grayscale(.7)}
+.opt .mark{position:absolute;top:12px;right:12px;background:#fff;border-radius:999px;padding:4px 12px;font-family:var(--f-body);font-weight:800;font-size:.9rem}
+.opt.ok .mark{color:var(--good)}
+.opt.no .mark{color:var(--bad)}
+/* bigger play view */
+.playing .wrap{max-width:1240px}
+.playing .qcard h3{font-size:clamp(1.6rem,4.2vw,3.1rem);line-height:1.15;margin:16px 0 24px}
+.playing .fb p{font-size:clamp(1rem,1.6vw,1.25rem)}
+.timer{display:flex;align-items:center;gap:12px;margin:-8px 0 20px}
+.tbar{flex:1;height:14px;border-radius:999px;background:var(--bg2);overflow:hidden}
+.tbar i{display:block;height:100%;width:100%;border-radius:inherit;background:var(--good);transform-origin:left;transition:background-color .3s}
+.timer.warn .tbar i{background:var(--sun)}
+.timer.hurry .tbar i{background:var(--bad)}
+.tnum{flex:none;min-width:3.2em;text-align:center;font-family:var(--f-display);font-weight:800;font-size:1.3rem;font-variant-numeric:tabular-nums;background:var(--bg);border-radius:999px;padding:2px 10px}
+.qcard.warn{animation:jitter-s 1.4s ease-in-out infinite}
+.qcard.hurry{animation:jitter-l .7s ease-in-out infinite}
+.timer.stop .tbar i{opacity:.45}
+/* short bursts with a rest in between, so the answers stay easy to tap */
+@keyframes jitter-s{0%,40%,100%{transform:none}8%{transform:translateX(-4px) rotate(-.4deg)}16%{transform:translateX(4px) rotate(.4deg)}24%{transform:translateX(-3px)}32%{transform:translateX(2px)}}
+@keyframes jitter-l{0%,60%,100%{transform:none}10%{transform:translateX(-9px) rotate(-1deg)}20%{transform:translateX(9px) rotate(1deg)}30%{transform:translateX(-7px) rotate(-.6deg)}40%{transform:translateX(6px) rotate(.6deg)}50%{transform:translateX(-3px)}}
+@media (max-width:620px){.opts{gap:10px}.opt{flex-direction:column;align-items:flex-start;justify-content:space-between;gap:10px;min-height:max(150px,25vh);padding:16px;font-size:1.2rem;border-radius:16px}.opt .k{width:32px;height:32px}.opt .mark{top:8px;right:8px;font-size:.72rem;padding:2px 8px}}
+
+.shake{animation:shake .45s ease}
+@keyframes shake{20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+.pop{animation:pop .4s ease}
+@keyframes pop{40%{transform:scale(1.03)}}
+
+.fb{margin-top:18px;border-radius:16px;padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;animation:rise .3s ease}
+@keyframes rise{from{transform:translateY(8px);opacity:.3}}
+.fb.ok{background:var(--good-bg)}
+.fb.no{background:var(--bad-bg)}
+.fb svg{width:56px;height:56px;grid-row:span 2}
+.fb strong{font-family:var(--f-display);font-size:1.35rem;line-height:1.2}
+.fb.ok strong{color:var(--good)}
+.fb.no strong{color:var(--bad)}
+.fb p{margin:0;min-width:0}
+.fb .why{font-weight:800}
+.actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{border:0;border-radius:14px;padding:12px 22px;font-family:var(--f-display);font-weight:700;font-size:1.1rem;background:var(--teal);color:#fff;box-shadow:0 4px 0 var(--teal-ink);transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--teal-ink)}
+.btn.sun{background:var(--sun);color:var(--sun-ink);box-shadow:0 4px 0 #d39a00}
+.btn.ghost{background:var(--surface);color:var(--ink);border:2px solid var(--line);box-shadow:none}
+
+/* interstitial / results */
+.panel{text-align:center;display:grid;justify-items:center;gap:10px;padding-block:8px}
+.panel .mascot{width:140px;height:140px}
+.panel h2{font-size:clamp(1.9rem,5vw,2.6rem)}
+.panel p{margin:0;max-width:32em;color:var(--muted)}
+.bigscore{display:grid;justify-items:center;gap:2px;margin-block:4px}
+.bigscore small{font-size:.8rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.bigscore b{font-family:var(--f-display);font-weight:800;font-size:clamp(3rem,9vw,4.6rem);line-height:1;color:var(--teal-ink);font-variant-numeric:tabular-nums}
+.bigscore em{font-style:normal;font-weight:800;font-size:.95rem;color:var(--muted)}
+.btn .count{display:inline-block;min-width:1.6em;margin-left:6px;background:rgba(255,255,255,.25);border-radius:999px;padding:0 8px;font-variant-numeric:tabular-nums}
+.score{font-family:var(--f-display);font-weight:800;font-size:1.2rem;background:var(--bg);border-radius:999px;padding:4px 16px;font-variant-numeric:tabular-nums}
+.panel .actions{justify-content:center}
+.recap{width:100%;text-align:left;display:grid;gap:8px;margin-top:8px}
+.recap div{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:var(--bg);border-radius:12px;padding:10px 12px;font-size:.95rem}
+.recap i{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:.8rem}
+.recap .y{background:var(--good)} .recap .n{background:var(--bad)}
+.recap span{min-width:0}
+
+/* animated background */
+.wrap{position:relative;z-index:1}
+.bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.wave{position:absolute;left:0;bottom:0;width:200%;display:block;animation:drift linear infinite}
+.wave path{fill:var(--teal)}
+.w1{height:150px;opacity:.10;animation-duration:22s}
+.w2{height:115px;opacity:.13;animation-duration:15s;animation-direction:reverse}
+.w3{height:80px;opacity:.16;animation-duration:10s}
+.wtop{top:0;bottom:auto;height:90px;opacity:.07;transform:scaleY(-1);animation:drift-top 26s linear infinite}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes drift-top{from{transform:scaleY(-1) translateX(-50%)}to{transform:scaleY(-1) translateX(0)}}
+.bub{position:absolute;bottom:-40px;border-radius:50%;border:2px solid var(--teal);opacity:0;animation:rise-bub linear infinite}
+@keyframes rise-bub{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:.35}50%{transform:translateY(-50vh) translateX(18px)}90%{opacity:.25}100%{transform:translateY(-105vh) translateX(-10px);opacity:0}}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+@media (max-width:620px){
+  .hero{grid-template-columns:1fr}
+  .hero .mascot{display:none}
+  .how{grid-template-columns:1fr}
+  .how div{display:grid;grid-template-columns:auto 1fr;gap:0 12px;align-items:center}
+  .how i{grid-row:span 2;margin:0}
+  .fb{grid-template-columns:1fr}
+  .fb svg{display:none}
+  .actions .btn{flex:1}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="bgfx" aria-hidden="true">
+  <svg class="wave wtop" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 60 Q360 0 720 60 T1440 60 T2160 60 T2880 60 V120 H0Z"/></svg>
+  <span class="bub" style="left:6%;width:18px;height:18px;animation-duration:19s"></span>
+  <span class="bub" style="left:22%;width:10px;height:10px;animation-duration:14s;animation-delay:-6s"></span>
+  <span class="bub" style="left:41%;width:26px;height:26px;animation-duration:24s;animation-delay:-12s"></span>
+  <span class="bub" style="left:63%;width:12px;height:12px;animation-duration:17s;animation-delay:-3s"></span>
+  <span class="bub" style="left:80%;width:22px;height:22px;animation-duration:21s;animation-delay:-9s"></span>
+  <span class="bub" style="left:93%;width:9px;height:9px;animation-duration:13s;animation-delay:-5s"></span>
+  <svg class="wave w1" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 60 Q360 0 720 60 T1440 60 T2160 60 T2880 60 V120 H0Z"/></svg>
+  <svg class="wave w2" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 70 Q360 20 720 70 T1440 70 T2160 70 T2880 70 V120 H0Z"/></svg>
+  <svg class="wave w3" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 50 Q360 100 720 50 T1440 50 T2160 50 T2880 50 V120 H0Z"/></svg>
+</div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div class="wrap">
+  <header class="top">
+    <button class="brand" id="home-btn" aria-label="Back to all sections">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#eye"/></svg>
+      Eye Safety Quiz
+    </button>
+    <a class="back" href="../">← MataKitani</a>
+      </header>
+  <main id="app" aria-live="polite"></main>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="eye" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="44" fill="var(--eye-white)" stroke="var(--ink)" stroke-width="5"/>
+      <circle cx="58" cy="44" r="22" fill="var(--iris)"/>
+      <circle cx="60" cy="42" r="11" fill="var(--ink)"/>
+      <circle cx="66" cy="36" r="5" fill="#fff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<script>
+/* ---------- Content ---------- */
+const SECTIONS = [
+{ id:"eyes", title:"Know Your Eyes", blurb:"The parts of the eye and how they protect themselves.",
+  sets:[
+  [
+    {q:"Which part of the eye senses light and images?",o:["Cornea","Lens","Retina","Iris"],a:2,
+     e:"The retina is the light-sensitive layer at the back of the eye. It turns light into signals and sends them to the brain through the optic nerve."},
+    {q:"What is the clear, dome-shaped “window” at the front of the eye?",o:["Retina","Cornea","Pupil","Eyelid"],a:1,
+     e:"The cornea is the clear front window of the eye. It lets light in and helps focus it. It is packed with nerve endings, which is why even a tiny scratch hurts a lot."},
+    {q:"Which of these helps protect the eye naturally?",o:["Eyelids and eyelashes","The bony eye socket","Tears","All of the above"],a:3,
+     e:"Eyelids blink to shield the eye, lashes catch dust, tears wash away dirt, and the bony socket absorbs many knocks. They can’t stop fast or sharp objects, which is why protective eyewear matters."}
+  ],[
+    {q:"What is the coloured part of the eye called?",o:["Pupil","Iris","Sclera","Retina"],a:1,
+     e:"The iris is the coloured ring. Its tiny muscles make the pupil bigger or smaller to control how much light gets in."},
+    {q:"Which nerve carries messages from the eye to the brain?",o:["Optic nerve","Facial nerve","Spinal cord","Hearing nerve"],a:0,
+     e:"The optic nerve is the cable between the eye and the brain. If it is damaged, the lost vision usually cannot be recovered."},
+    {q:"What is the tough white outer wall of the eye called?",o:["Cornea","Iris","Sclera","Lens"],a:2,
+     e:"The sclera is the white of the eye. It is strong, but a hard blow or a sharp object can tear it. That is an emergency called an open globe injury."}
+  ]],
+  bonus:[
+    {q:"What does the lens inside the eye do?",o:["Gives the eye its colour","Focuses light onto the retina","Makes tears","Moves the eye around"],a:1,
+     e:"The lens sits behind the iris and fine-tunes focus so a sharp image lands on the retina. A blow to the eye can damage the lens and cause a cataract."},
+    {q:"Why does a small scratch on the cornea hurt so much?",o:["The cornea has lots of nerve endings","The cornea has lots of blood vessels","The cornea is very thick","It doesn’t really hurt"],a:0,
+     e:"The cornea has one of the highest numbers of nerve endings in the body. A small scratch (a corneal abrasion) can feel like something big is stuck in the eye."}
+  ]},
+
+{ id:"sports", title:"Sports & Play", blurb:"Balls, rackets and shuttlecocks move fast.",
+  sets:[
+  [
+    {q:"Which of these can cause an eye injury during sports like tennis or pickleball?",o:["The ball","Another player’s racket","Accidental impact","All of the above"],a:3,
+     e:"Eye injuries can happen from a fast-moving ball, a racket, or bumping into another player during sports."},
+    {q:"What is the best eye protection for racket sports like badminton or squash?",o:["Sunglasses","Regular prescription glasses","Sports goggles with polycarbonate lenses","No protection needed"],a:2,
+     e:"Sports goggles with polycarbonate lenses are built to take a hard hit. Ordinary glasses and sunglasses can shatter and make an injury worse."},
+    {q:"A shuttlecock hits your friend’s eye. Their vision is blurry and you see blood in the front of the eye. What should they do?",o:["Keep playing if it doesn’t hurt much","Stop and see an eye doctor urgently","Rub the eye gently","Use eye drops and wait a week"],a:1,
+     e:"Blood in the front of the eye (a hyphema) and blurry vision after a hit are warning signs. Stop playing, don’t rub, keep the head raised and get the eye checked the same day."}
+  ],[
+    {q:"Are ordinary prescription glasses enough protection during sports?",o:["Yes, they cover the eyes","No, they can break and cut the eye","Only for adults","Only if they are tinted"],a:1,
+     e:"Everyday lenses and frames aren’t made for impact. Wear sports goggles, which can also be made with your prescription."},
+    {q:"Which of these sports can cause eye injuries?",o:["Badminton","Basketball","Football","All of the above"],a:3,
+     e:"Fast shuttlecocks and balls, and fingers and elbows in contact sports, are all common causes of sports eye injuries."},
+    {q:"Why are polycarbonate lenses recommended for sports eyewear?",o:["They are very impact-resistant","They are cheaper","They change colour in sunlight","They help you see further"],a:0,
+     e:"Polycarbonate is a tough, shatter-resistant plastic, much stronger than glass or regular plastic lenses."}
+  ]],
+  bonus:[
+    {q:"After a hit to the eye during a game, everything seems fine. What is the safest choice?",o:["Go straight back to playing","Rest, and see a doctor if vision changes or pain gets worse","Rub the eye to check it","Ignore it completely"],a:1,
+     e:"Some injuries, like a retinal tear, can show up hours or days later. See an eye doctor if you notice blurriness, new floaters, flashes, or pain that won’t settle."},
+    {q:"Who especially needs eye protection in sports?",o:["Children","People with good vision in only one eye","Anyone playing fast ball or racket sports","All of the above"],a:3,
+     e:"Everyone benefits. Children and people who rely on one good eye have the most to lose from an injury."}
+  ]},
+
+{ id:"chemical", title:"Chemical Splashes", blurb:"What to do when cleaners or chemicals get in the eye.",
+  sets:[
+  [
+    {q:"What should you do if a chemical (like a cleaning agent) splashes into your eye?",o:["Rub the eye","Rinse immediately with plenty of clean water","Wait and see if it gets better","Use eye drops at home"],a:1,
+     e:"Rinse straight away, before going to the doctor. For chemical injuries, every second counts."},
+    {q:"How long should you rinse the eye after a chemical splash?",o:["About 10 seconds","About 1 minute","At least 20 minutes","Until the stinging stops"],a:2,
+     e:"Rinse with clean running water for at least 20 minutes, even if it starts to feel better, then get medical help."},
+    {q:"Which household product can cause one of the most serious eye burns?",o:["Drain or oven cleaner","Clean tap water","Baby shampoo","Saline solution"],a:0,
+     e:"Strong alkalis such as drain cleaner, oven cleaner, cement and lime soak deep into the eye and can cause severe damage. Acids like toilet cleaner and battery acid are dangerous too."}
+  ],[
+    {q:"When rinsing a splashed eye, what should you do with the eyelids?",o:["Keep them shut tightly","Hold them open so water reaches the whole eye","Press on them firmly","Cover them with a cloth"],a:1,
+     e:"Gently hold the lids apart and move the eye around so the water washes every part of it."},
+    {q:"Someone wearing contact lenses gets a chemical splash. What comes first?",o:["Go home and remove the lenses there","Start rinsing right away, and take lenses out if they come out easily","Leave the lenses in to protect the eye","Put in a fresh pair of lenses"],a:1,
+     e:"Rinsing must never be delayed. Lenses can trap chemicals, so remove them during rinsing if you can do it easily."},
+    {q:"Should you use vinegar or baking soda to “cancel out” a chemical in the eye?",o:["Yes, it neutralises the chemical","Only for acids","No, use clean water only","Only for children"],a:2,
+     e:"Never add other chemicals. The reaction can make heat and cause more damage. Plenty of clean water is the right first aid."}
+  ]],
+  bonus:[
+    {q:"What should you take with you to the hospital after a chemical splash?",o:["The product bottle or its label","Nothing","Some eye drops","A photo of your eye"],a:0,
+     e:"Knowing exactly what the chemical was helps doctors choose the right treatment."},
+    {q:"Which is a good way to prevent chemical eye injuries at home?",o:["Wear safety goggles with strong cleaners","Store chemicals away from children","Point spray nozzles away from your face","All of the above"],a:3,
+     e:"Simple habits prevent most splashes. Keep chemicals in their original labelled bottles too."}
+  ]},
+
+{ id:"warning", title:"Warning Signs", blurb:"Know when an eye problem needs urgent care.",
+  sets:[
+  [
+    {q:"Which of these is a warning sign that you should seek urgent eye care?",o:["Sudden loss of vision","Flashes of light","A curtain or shadow in your vision","All of the above"],a:3,
+     e:"Sudden vision loss, flashes, or a curtain or shadow across your vision can mean a retinal detachment. These need urgent eye care."},
+    {q:"After a blow to the eye, you notice many new floaters and flashes of light. What could this mean?",o:["Normal tiredness","A torn or detached retina","Dry eyes","You need new glasses"],a:1,
+     e:"New floaters and flashes after an injury can be a sign of a retinal tear. Quick treatment can save sight."},
+    {q:"After being hit near the eye, a person sees double. What should they do?",o:["Sleep it off","Get medical care urgently","Wear sunglasses","Do eye exercises"],a:1,
+     e:"Double vision after an injury can mean a broken bone around the eye (an orbital fracture) trapping an eye muscle. It needs urgent assessment."}
+  ],[
+    {q:"Which of these is usually NOT an emergency?",o:["Tired eyes after reading for a long time","Sudden loss of vision","An odd-shaped pupil after an injury","Severe eye pain after a hit"],a:0,
+     e:"Tired eyes usually get better with rest. The other three need emergency care straight away."},
+    {q:"After an injury, the pupil looks like a teardrop instead of a circle. What might this mean?",o:["Nothing serious","The eyeball may be cut or burst","It’s a normal reaction to light","The person is tired"],a:1,
+     e:"An odd-shaped pupil after an injury can be a sign of an open globe injury. Don’t press on the eye. Cover it with a rigid shield and go to the emergency department."},
+    {q:"You have a serious eye injury late at night. Where should you go?",o:["Wait for the clinic to open","The nearest hospital emergency department","A pharmacy","An optical shop"],a:1,
+     e:"Serious eye injuries can’t wait. Go to the emergency department, or call an ambulance if you can’t get there safely."}
+  ]],
+  bonus:[
+    {q:"A painless bright red patch appears on the white of the eye after a hard cough. Vision is normal. What is it most likely to be?",o:["A broken small blood vessel that usually clears in 1–2 weeks","A detached retina","A deep cut in the eye","An infection that spreads"],a:0,
+     e:"This is a subconjunctival haemorrhage, like a bruise on the eye. It usually fades on its own. See a doctor if it follows an injury, keeps coming back, or comes with pain or vision changes."},
+    {q:"Which symptom after an eye injury means you should see a doctor?",o:["Blurred vision","Pain that won’t go away","Pain when looking at light","All of the above"],a:3,
+     e:"Any change in vision, ongoing pain or light sensitivity after an injury should be checked by a doctor."}
+  ]},
+
+{ id:"foreign", title:"Something in Your Eye", blurb:"Dust, sand, metal and stuck objects.",
+  sets:[
+  [
+    {q:"Dust or sand blows into your eye. What should you do first?",o:["Rub it hard","Blink and rinse with clean water","Scrape it out with a cotton bud","Use tweezers"],a:1,
+     e:"Rubbing can scratch the cornea. Blinking and rinsing with clean water or saline usually washes small specks out."},
+    {q:"Something is stuck in the eye, like a piece of metal or wood. What should you do?",o:["Pull it out quickly","Leave it in, cover the eye with a shield and go to the emergency department","Press a pad firmly on the eye","Wash it with soap"],a:1,
+     e:"Never remove an object stuck in the eye. Protect it with a rigid shield (the bottom of a paper cup works), avoid any pressure, and get emergency help."},
+    {q:"Why shouldn’t you rub your eye when something is in it?",o:["It can scratch the cornea or push the object deeper","It makes the eye drier","It’s just bad manners","It changes your eye colour"],a:0,
+     e:"Rubbing drags the speck across the cornea and can push sharp pieces further in."}
+  ],[
+    {q:"You were grinding metal without goggles and felt something hit your eye. Now it feels fine. What should you do?",o:["Nothing, it’s fine","See a doctor to get it checked","Wait a month","Rub it to check"],a:1,
+     e:"Tiny high-speed metal pieces can enter the eye without much pain, then rust or cause infection. Get checked promptly, and always wear safety goggles when grinding."},
+    {q:"How should you cover an eye that may have a cut or a stuck object?",o:["A tight bandage pressing on the eye","A rigid shield that doesn’t touch the eye","Cotton wool pressed into the eye","Leave it uncovered and rub it"],a:1,
+     e:"Pressure can push the eye’s contents out through a wound. A rigid shield protects the eye without touching it."},
+    {q:"An eyelash is stuck in your eye. What is a safe thing to try?",o:["Blink several times and rinse with clean water","Pick it out with something sharp","Rub hard","Ignore it for a week"],a:0,
+     e:"Blinking and rinsing usually move an eyelash out. If it stays stuck or the eye stays painful, see a doctor."}
+  ]],
+  bonus:[
+    {q:"Which is a common sign of a scratched cornea?",o:["Pain and watering","Feeling like something is in the eye","Sensitivity to light","All of the above"],a:3,
+     e:"A corneal scratch often causes pain, tears, light sensitivity and a gritty feeling. It usually heals well with treatment, so see a doctor."},
+    {q:"After rinsing, a speck is still stuck on the coloured part of the eye. What now?",o:["Wipe it off with a tissue","See a doctor or eye specialist","Use tweezers carefully","Keep rubbing until it comes out"],a:1,
+     e:"A speck that stays on the cornea needs to be removed safely by a professional with the right tools."}
+  ]},
+
+{ id:"home", title:"Home, DIY & Fireworks", blurb:"Cleaning, cooking, power tools and festivities.",
+  sets:[
+  [
+    {q:"Where do almost half of all eye injuries happen?",o:["At home","At school","At the cinema","At the beach"],a:0,
+     e:"Nearly half of eye injuries happen at home, during cleaning, cooking, DIY and gardening."},
+    {q:"What should you wear when using power tools, a grass trimmer or a lawnmower?",o:["Nothing special","Safety glasses or goggles","Sunglasses","A cap"],a:1,
+     e:"Safety glasses with side protection stop flying debris. People nearby should keep well back too."},
+    {q:"About how many eye injuries could be prevented by wearing the right eye protection?",o:["About 10%","About 25%","About 50%","About 90%"],a:3,
+     e:"Experts estimate around 90% of eye injuries could be prevented with proper protective eyewear."}
+  ],[
+    {q:"What is the safest way to enjoy fireworks?",o:["Light them while holding them","Watch a professional display from a safe distance","Let children hold sparklers alone","Look into a firework that didn’t go off"],a:1,
+     e:"Fireworks cause serious eye injuries every year, often to people watching. Never relight a dud, and supervise children closely."},
+    {q:"Someone’s eye is injured by a firework. What should you do?",o:["Rub it","Rinse it with strong pressure","Cover it with a shield without pressing and go to the emergency department","Put ointment on it"],a:2,
+     e:"Don’t rub, press, or try to remove anything. Protect the eye with a shield and get emergency care right away."},
+    {q:"What makes safety glasses different from ordinary glasses?",o:["They are tested to resist impact and often have side shields","They are just thicker","There is no difference","They are always tinted"],a:0,
+     e:"Safety eyewear is tested for impact and usually wraps around or has side shields to block debris from the sides."}
+  ]],
+  bonus:[
+    {q:"Is it safe to shine a laser pointer into someone’s eyes as a joke?",o:["Yes, it’s just light","Only for a second","No, it can permanently damage the retina","Only at night"],a:2,
+     e:"Strong laser pointers can burn the retina in a fraction of a second. Never point one at anyone’s eyes."},
+    {q:"Which cooking habit helps protect your eyes?",o:["Use a splatter screen and keep your face back from hot oil","Lean over the pan to check the food","Add water to hot oil","Cook without looking"],a:0,
+     e:"Hot oil splashes can burn the eye and eyelids. Never add water to hot oil, as it can spit violently."}
+  ]},
+
+{ id:"kids", title:"Kids & School Safety", blurb:"For parents, teachers and students.",
+  sets:[
+  [
+    {q:"Which type of toy is most risky for children’s eyes?",o:["Soft plush toys","Toys that shoot things, like darts, pellets or slingshots","Picture books","Rounded building blocks"],a:1,
+     e:"Projectile toys such as pellet guns, dart guns and slingshots are a major cause of serious eye injuries in children."},
+    {q:"A child is poked in the eye with a pencil and the eye is bleeding. What should you do?",o:["Pull out any piece left in the eye","Wash it with soap","Cover the eye with a shield without pressing and get emergency help","Tell them to rub it"],a:2,
+     e:"Keep the child calm, don’t press on the eye or remove anything, cover it with a rigid shield and go to the emergency department."},
+    {q:"In a school science lab, what should students wear when using chemicals?",o:["Safety goggles","Sunglasses","Nothing if they are careful","A face mask only"],a:0,
+     e:"Lab goggles protect against splashes and flying glass. Teachers should also know where the eyewash station is."}
+  ],[
+    {q:"A child has a black eye after a fall. What helps?",o:["A wrapped cold pack around the eye, without pressing on the eyeball","Raw meat on the eye","Rubbing the bruise","A hot water bottle on the eye"],a:0,
+     e:"A cool compress for 10–15 minutes at a time eases swelling. See a doctor if there is any vision change, double vision, blood in the eye, or severe pain."},
+    {q:"Is putting raw steak on a black eye a good idea?",o:["Yes, it is the best treatment","No, it can carry germs and doesn’t help more than a cold pack","Only if it’s frozen","Only for adults"],a:1,
+     e:"Raw meat can carry bacteria into an injured area. A clean, wrapped cold pack does the job better."},
+    {q:"Which is the safest toy choice for a young child?",o:["A soft foam ball","A slingshot","A laser pointer","A toy with sharp pointed parts"],a:0,
+     e:"Choose age-appropriate toys without sharp points or flying parts, and check toy labels for safety warnings."}
+  ]],
+  bonus:[
+    {q:"A student gets hit in the eye during PE. What is a good first step?",o:["Tell them to carry on","Stop the activity, check their vision with the other eye covered, and get medical help if anything is wrong","Rub the eye for them","Give eye drops and send them back to class"],a:1,
+     e:"Stop, check, and don’t press on the eye. Inform the parents, and get medical help for blurred vision, pain, blood in the eye or double vision."},
+    {q:"A child gets sand in the eye at the playground. What should you do?",o:["Let them rub it out","Rinse the eye with clean water and stop them rubbing","Blow into the eye","Wipe the eye with a tissue corner"],a:1,
+     e:"Rinsing gently washes sand away. Rubbing can scratch the cornea."}
+  ]}
+];
+
+/* ---------- Mascot ---------- */
+function mascot(mood, cls){
+  const mouth = {
+    happy:'<path d="M38 70 Q52 84 66 70" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>',
+    wow:'<ellipse cx="52" cy="74" rx="7" ry="8" fill="var(--ink)"/>',
+    sad:'<path d="M40 78 Q52 68 64 78" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>',
+    think:'<path d="M42 74 L62 72" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>'
+  }[mood||"happy"];
+  const extra = mood==="wow" ? '<g stroke="var(--sun)" stroke-width="5" stroke-linecap="round"><path d="M8 18l8 8"/><path d="M50 2v10"/><path d="M92 18l-8 8"/></g>' :
+                mood==="sad" ? '<path d="M84 52c4 6 6 10 3 13s-8 0-7-5c0-3 2-5 4-8z" fill="var(--iris)"/>' : '';
+  return `<svg class="mascot ${cls||""}" viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="52" cy="52" r="40" fill="var(--eye-white)" stroke="var(--ink)" stroke-width="5"/>
+    <circle cx="52" cy="44" r="19" fill="var(--iris)"/>
+    <circle cx="52" cy="44" r="9" fill="var(--ink)"/>
+    <circle cx="58" cy="38" r="4.5" fill="#fff"/>
+    ${mouth}${extra}</svg>`;
+}
+
+const LOGO="data:image/webp;base64,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";
+const SHAPES=[
+  '<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="#fff"/></svg>',
+  '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L37 35 H3 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>',
+  '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3l5 11 12 1.3-9 8 2.7 11.7L20 29l-10.7 6 2.7-11.7-9-8L15 14z" fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>',
+  '<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="5" width="30" height="30" rx="4" fill="#fff"/></svg>'
+];
+const RAINBOW=["--c:#e53935","--c:#f57c00","--c:#fdd835;--c-ink:#4a3b00","--c:#43a047","--c:#1e88e5","--c:#3949ab","--c:#8e24aa"];
+const NICK=["First Sight","Double Take","Third Eye","Fantastic Four","High Five","Sixth Sense","Lucky Seven"];
+
+/* ---------- Randomising helpers ---------- */
+function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+// Shuffle answer options; keep "All of the above" as the last option.
+// Shuffle all 4 options; "All of the above" stays last.
+function prep(q){
+  const idx=q.o.map((_,k)=>k);
+  const allIdx=q.o.indexOf("All of the above");
+  const order=allIdx>=0?shuffle(idx.filter(k=>k!==allIdx)).concat(allIdx):shuffle(idx);
+  return {q:q.q,e:q.e,o:order.map(k=>q.o[k]),a:order.indexOf(q.a),src:q};
+}
+
+/* ---------- State ---------- */
+const app=document.getElementById("app");
+let S=null; // {sec, attempt, used:[], qs:[], bonusQ, phase:'main'|'bonus', i, results:[], bonusResult}
+
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+/* ---------- Views ---------- */
+function home(){
+  stopTimer(); clearInterval(autoT); autoT=null;
+  S=null; document.body.classList.remove("playing");
+  app.innerHTML=`
+  <section class="hero">
+    <div>
+      <span class="label">Ocular trauma quiz</span>
+      <h1>Keep your eyes <span class="hl">safe!</span></h1>
+      <p>Seven short sections on eye injuries: how they happen, what to do, and how to prevent them. Pick any number from 1 to 7 to start.</p>
+      <div class="byline"><img src="${LOGO}" alt="Brunei Ophthalmology Society logo"><div><span>Brought to you by</span><strong>Brunei Ophthalmology Society</strong></div></div>
+    </div>
+    ${mascot("happy","bob")}
+  </section>
+  <div class="sec-head" style="margin-top:22px"><h2>How to play</h2></div>
+  <div class="how" style="margin-top:0">
+    <div><i>1</i><strong>Work as a team</strong><span>Talk it through together before you pick.</span></div>
+    <div><i>2</i><strong>Pick a number and answer the questions</strong><span>Choose 1 to 7, then answer 3 questions.</span></div>
+    <div><i>3</i><strong>Get it right and win a prize!</strong><span>Every answer comes with an explanation.</span></div>
+  </div>
+  <div class="sec-head" style="justify-content:center"><h2>Pick a number</h2></div>
+  <div class="grid">
+    ${SECTIONS.map((s,i)=>`<button class="card" style="${RAINBOW[i]}" data-sec="${i}" aria-label="${i+1}: ${NICK[i]}"><span class="num">${i+1}</span><span class="nick">${NICK[i]}</span></button>`).join("")}
+  </div>
+  <div class="foot">
+    <p>This quiz is for learning and does not replace medical advice. For a serious eye injury, go to the nearest emergency department straight away.</p>
+  </div>`;
+  app.querySelectorAll("[data-sec]").forEach(b=>b.onclick=()=>start(+b.dataset.sec,1,[]));
+  window.scrollTo({top:0});
+}
+
+function start(sec,attempt,used){
+  const s=SECTIONS[sec];
+  const all=s.sets.flat();
+  let avail=all.filter(q=>!used.includes(q));
+  if(avail.length<3){ avail=all; used=[]; }
+  const picked=shuffle(avail).slice(0,3);
+  S={sec,attempt,used:used.concat(picked),qs:picked.map(prep),
+     bonusQ:prep(s.bonus[Math.floor(Math.random()*s.bonus.length)]),
+     phase:"main",i:0,results:[],bonusResult:null};
+  question();
+}
+
+function curQ(){ return S.phase==="bonus" ? S.bonusQ : S.qs[S.i]; }
+
+function dotsHTML(){
+  let h="";
+  for(let k=0;k<3;k++){
+    const r=S.results[k];
+    const cls=r===true?"ok":r===false?"no":(S.phase==="main"&&k===S.i?"now":"");
+    h+=`<span class="dot ${cls}">${r===true?"✓":r===false?"✗":k+1}</span>`;
+  }
+  if(S.phase==="bonus"){
+    const r=S.bonusResult;
+    h+=`<span class="dot bonus ${r===true?"ok":r===false?"no":"now"}">Bonus</span>`;
+  }
+  return h;
+}
+
+function topHTML(){
+  return `<div class="qtop">
+    <div class="title"><span class="num" style="${RAINBOW[S.sec]}">${S.sec+1}</span><div><span class="nick">Section ${S.sec+1}</span><h2>${NICK[S.sec]}</h2></div></div>
+    <div class="dots" aria-label="Progress">${dotsHTML()}</div>
+  </div>`;
+}
+
+function question(){
+  document.body.classList.add("playing");
+  const q=curQ();
+  const tag = S.phase==="bonus" ? '<span class="tag bonus">Bonus question</span>'
+            : `<span class="tag ${S.attempt>1?"retry":""}">Question ${S.i+1} of 3${S.attempt>1?" · Fresh set":""}</span>`;
+  app.innerHTML=`${topHTML()}
+  <div class="qcard" id="qcard">
+    ${tag}
+    <h3>${esc(q.q)}</h3>
+    <div class="timer" id="timer" role="timer" aria-label="Time left"><div class="tbar"><i id="tfill"></i></div></div>
+    <div class="opts" role="group" aria-label="Answers">
+      ${q.o.map((t,k)=>`<button class="opt c${k}" data-k="${k}" aria-label="${["Circle","Triangle","Star","Square"][k]}: ${esc(t)}"><span class="k">${SHAPES[k]}</span><span class="t">${esc(t)}</span></button>`).join("")}
+    </div>
+    <div id="fb"></div>
+  </div>`;
+  app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>answer(+b.dataset.k));
+  startTimer();
+  window.scrollTo({top:0});
+}
+
+/* ---------- 40-second timer ---------- */
+const LIMIT=40; let tRAF=null;
+function stopTimer(){ if(tRAF){cancelAnimationFrame(tRAF);tRAF=null} const t=document.getElementById("timer"); if(t) t.classList.add("stop"); const c=document.getElementById("qcard"); if(c) c.classList.remove("warn","hurry"); }
+function startTimer(){
+  if(tRAF) cancelAnimationFrame(tRAF);
+  const t0=performance.now(), fill=document.getElementById("tfill"), box=document.getElementById("timer"), card=document.getElementById("qcard");
+  const step=now=>{
+    const left=Math.max(0,LIMIT-(now-t0)/1000);
+    fill.style.transform=`scaleX(${left/LIMIT})`;
+    box.classList.toggle("warn",left<=20&&left>10);
+    box.classList.toggle("hurry",left<=10);
+    card.classList.toggle("warn",left<=20&&left>10);
+    card.classList.toggle("hurry",left<=10);
+    if(left<=0){ tRAF=null; answer(-1); return; }
+    tRAF=requestAnimationFrame(step);
+  };
+  tRAF=requestAnimationFrame(step);
+}
+
+function answer(k){
+  if(!S || app.querySelector(".opt:disabled")) return;
+  stopTimer();
+  const q=curQ(), ok=k===q.a;
+  const opts=[...app.querySelectorAll(".opt")];
+  opts.forEach((b,j)=>{
+    b.disabled=true;
+    if(j===q.a){b.classList.add("ok");b.insertAdjacentHTML("beforeend",'<span class="mark">✓ Correct</span>')}
+    else if(j===k){b.classList.add("no");b.insertAdjacentHTML("beforeend",'<span class="mark">✗ Your pick</span>')}
+    else b.classList.add("dim");
+  });
+  if(S.phase==="bonus") S.bonusResult=ok; else S.results[S.i]=ok;
+  app.querySelector(".dots").innerHTML=dotsHTML();
+  const card=document.getElementById("qcard");
+  if(ok){ card.classList.add("pop"); confetti(opts[k]); }
+  else { card.classList.remove("shake"); void card.offsetWidth; card.classList.add("shake"); }
+
+  const last = S.phase==="bonus" || S.i===2;
+  const praise=["Correct!","Well done!","Spot on!","You got it!"][Math.floor(Math.random()*4)];
+  document.getElementById("fb").innerHTML=`
+    <div class="fb ${ok?"ok":"no"}">
+      ${mascot(ok?"wow":"sad")}
+      <strong>${ok?praise:k<0?"Time’s up!":"Not quite."}</strong>
+      <p>${ok?"":`The answer is <b>${esc(q.o[q.a])}</b>. `}<span class="why">Why?</span> ${esc(q.e)}</p>
+    </div>
+    <div class="actions"><button class="btn" id="next">${last?"See my score":"Next question"} →${last?`<span class="count" id="count">${AUTO}</span>`:""}</button></div>`;
+  const nx=document.getElementById("next"); nx.onclick=next; nx.focus({preventScroll:true});
+  if(last){
+    // Final question: go to the score page automatically after a short pause to read the explanation.
+    let n=AUTO; autoT=setInterval(()=>{ n--; const c=document.getElementById("count"); if(c) c.textContent=n; if(n<=0) next(); },1000);
+  }
+  document.getElementById("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+const AUTO=6; let autoT=null;
+function next(){
+  clearInterval(autoT); autoT=null;
+  if(S.phase==="main" && S.i<2){ S.i++; question(); return; }
+  results();
+}
+
+function recapHTML(){
+  const qs=S.qs.slice(), rs=S.results.slice();
+  if(S.phase==="bonus"){ qs.push(S.bonusQ); rs.push(S.bonusResult); }
+  return `<div class="recap">${qs.map((q,k)=>`<div><i class="${rs[k]?"y":"n"}">${rs[k]?"✓":"✗"}</i><span>${esc(q.q)}<br><b>${esc(q.o[q.a])}</b></span></div>`).join("")}</div>`;
+}
+
+function scoreHTML(right){
+  const b=S.phase==="bonus";
+  return `<div class="bigscore"><small>Your score</small><b>${right} / 3</b>${b?`<em>Bonus question ${S.bonusResult?"✓ correct":"✗ missed"}</em>`:""}</div>`;
+}
+function results(){
+  const right=S.results.filter(Boolean).length;
+  const nextSec=(S.sec+1)%7;
+  const moveOn=`<div class="actions">
+        <button class="btn ghost" data-go="home">All sections</button>
+        <button class="btn" data-go="next">Next: ${NICK[nextSec]} →</button>
+      </div>`;
+  let body;
+
+  if(S.phase==="bonus"){
+    body=`${mascot(S.bonusResult?"wow":"happy")}
+      ${scoreHTML(right)}
+      <h2>${NICK[S.sec]} complete!</h2>
+      <p>${S.bonusResult?"Great finish. You nailed the bonus question.":"Thanks for sticking with it. Have a look at the answers below. They could help someone one day."}</p>
+      ${recapHTML()}${moveOn}`;
+    if(S.bonusResult) setTimeout(()=>bigConfetti(),150);
+  } else if(right===3){
+    body=`${mascot("wow","bob")}
+      ${scoreHTML(right)}
+      <h2>All 3 correct!</h2>
+      <p>You know how to keep your eyes safe. Share what you learned with family and friends.</p>
+      ${recapHTML()}${moveOn}`;
+    setTimeout(()=>bigConfetti(),150);
+  } else if(right>0){
+    body=`${mascot("think")}
+      ${scoreHTML(right)}
+      <h2>Nearly there!</h2>
+      <p>You got ${right} out of 3. Here’s one bonus question to round off this section.</p>
+      <div class="actions"><button class="btn sun" data-go="bonus">Try the bonus question →</button></div>`;
+  } else {
+    body=`${mascot("sad")}
+      ${scoreHTML(right)}
+      <h2>Let’s try a fresh set</h2>
+      <p>No worries, that’s how we learn. Here are 3 new questions on the same topic to try again.</p>
+      ${recapHTML()}
+      <div class="actions">
+        <button class="btn ghost" data-go="home">All sections</button>
+        <button class="btn" data-go="retry">Try a new set →</button>
+      </div>`;
+  }
+  app.innerHTML=`${topHTML()}<div class="qcard panel">${body}</div>`;
+  app.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{
+    const g=b.dataset.go;
+    if(g==="home") home();
+    else if(g==="next") start(nextSec,1,[]);
+    else if(g==="bonus"){ S.phase="bonus"; question(); }
+    else if(g==="retry") start(S.sec,S.attempt+1,S.used);
+  });
+  window.scrollTo({top:0});
+}
+
+/* ---------- Keyboard: A–D or 1–4 to answer, Enter for next ---------- */
+document.addEventListener("keydown",e=>{
+  if(!S||e.metaKey||e.ctrlKey||e.altKey) return;
+  const map={a:0,b:1,c:2,d:3,"1":0,"2":1,"3":2,"4":3};
+  const k=map[e.key.toLowerCase()];
+  const opts=app.querySelectorAll(".opt:not(:disabled)");
+  if(k!==undefined && opts.length===4){ opts[k].click(); }
+});
+document.getElementById("home-btn").onclick=home;
+
+/* ---------- Confetti ---------- */
+const cv=document.getElementById("confetti"), cx=cv.getContext("2d");
+let parts=[], raf=null;
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function colors(){const cs=getComputedStyle(document.documentElement);return ["--sun","--teal","--good","--iris","--bad"].map(v=>cs.getPropertyValue(v).trim()||"#ffc531")}
+function burst(x,y,n,spread,power){
+  if(reduce) return;
+  const c=colors();
+  for(let i=0;i<n;i++){
+    const ang=-Math.PI/2+(Math.random()-.5)*spread, sp=power*(.5+Math.random());
+    parts.push({x,y,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,g:.25+Math.random()*.15,s:5+Math.random()*6,
+      r:Math.random()*6,vr:(Math.random()-.5)*.3,c:c[i%c.length],life:0,shape:Math.random()<.3?"c":"r"});
+  }
+  if(!raf) raf=requestAnimationFrame(tick);
+}
+function confetti(el){
+  const r=el.getBoundingClientRect();
+  burst(r.left+r.width/2,r.top+r.height/2,70,Math.PI*1.1,13);
+}
+function bigConfetti(){
+  const w=innerWidth,h=innerHeight;
+  burst(w*.2,h*.9,90,1.2,20); burst(w*.8,h*.9,90,1.2,20);
+  setTimeout(()=>burst(w*.5,h*.8,80,1.6,18),250);
+}
+function tick(){
+  const dpr=devicePixelRatio||1;
+  if(cv.width!==innerWidth*dpr){cv.width=innerWidth*dpr;cv.height=innerHeight*dpr}
+  cx.setTransform(dpr,0,0,dpr,0,0); cx.clearRect(0,0,innerWidth,innerHeight);
+  parts=parts.filter(p=>p.y<innerHeight+30&&p.life<260);
+  for(const p of parts){
+    p.life++; p.vx*=.985; p.vy=p.vy*.985+p.g; p.x+=p.vx; p.y+=p.vy; p.r+=p.vr;
+    cx.save(); cx.translate(p.x,p.y); cx.rotate(p.r); cx.fillStyle=p.c;
+    if(p.shape==="c"){cx.beginPath();cx.arc(0,0,p.s/2,0,7);cx.fill()} else cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2*Math.abs(Math.cos(p.life*.1+p.r))+1);
+    cx.restore();
+  }
+  raf=parts.length?requestAnimationFrame(tick):(cx.clearRect(0,0,innerWidth,innerHeight),null);
+}
+
+home();
+</script>
+
+</body></html>
