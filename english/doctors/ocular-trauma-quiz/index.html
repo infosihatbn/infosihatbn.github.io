@@ -4,6 +4,7 @@
 <meta name="description" content="An interactive eye-injury quiz for children and adults, brought to you by the Brunei Ophthalmology Society.">
 <link rel="icon" href="../../../assets/favicon-32.png"><meta name="theme-color" content="#159fb2">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<script data-goatcounter="https://matakitani.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head><body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -715,7 +716,19 @@ function home(){
   window.scrollTo({top:0});
 }
 
+/* ---------- Anonymous play counts ----------
+   Sent to MataKitani's GoatCounter (no cookies, no names) only on the website copy, where its script is loaded.
+   Paths: quiz/start/<level>/<lang>/section-N, quiz/q/<level>/<topic>/<n>/right|wrong, quiz/score/<level>/section-N/<x>of3,
+   quiz/bonus/<level>/section-N/right|wrong, quiz/champion/<level>. */
+function track(path,title){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path,title:title||path,event:true}); }catch(e){} }
+const LV=()=>MODE==="kids"?"children":"adults";
+function qInfo(q){ // stable id + English wording for a question, whichever language is showing
+  const sec=SECTIONS[S.sec], all=sec.sets.flat().concat(sec.bonus), i=all.indexOf(q.src);
+  const en=(MODE==="kids"?SECTIONS_KID:SECTIONS_ADULT)[S.sec], enAll=en.sets.flat().concat(en.bonus);
+  return {id:`${LV()}/${en.id.replace(/^k-/,"")}/${i+1}`, text:(enAll[i]||q.src).q};
+}
 function start(sec,attempt,used){
+  if(attempt===1) track(`quiz/start/${MODE==="kids"?"children":"adults"}/${LANG==="ms"?"malay":"english"}/section-${sec+1}`);
   const s=SECTIONS[sec];
   const all=s.sets.flat();
   let avail=all.filter(q=>!used.includes(q));
@@ -801,6 +814,7 @@ function answer(k){
     else b.classList.add("dim");
   });
   if(S.phase==="bonus") S.bonusResult=ok; else S.results[S.i]=ok;
+  { const qi=qInfo(q); track(`quiz/q/${qi.id}/${ok?"right":"wrong"}`, `${ok?"Right":"Wrong"}: ${qi.text}`); }
   app.querySelector(".dots").innerHTML=dotsHTML();
   const card=document.getElementById("qcard");
   if(ok){ card.classList.add("pop"); confetti(opts[k]); }
@@ -855,6 +869,8 @@ function champHTML(){
 }
 function results(){
   const right=S.results.filter(Boolean).length;
+  if(S.phase==="bonus") track(`quiz/bonus/${LV()}/section-${S.sec+1}/${S.bonusResult?"right":"wrong"}`);
+  else { track(`quiz/score/${LV()}/section-${S.sec+1}/${right}of3`); if(right===3) track(`quiz/champion/${LV()}`,"Certificate earned"); }
   const nextSec=(S.sec+1)%SECTIONS.length;
   const moveOn=`<div class="actions">
         <button class="btn ghost" data-go="home">${L().allSections}</button>
