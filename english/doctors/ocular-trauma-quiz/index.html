@@ -281,6 +281,15 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
 .attract .at-dots{display:flex;gap:8px;justify-content:center;margin-top:4px}
 .attract .at-dots i{width:10px;height:10px;border-radius:50%;background:#fff;opacity:.3}
 .attract .at-dots i.on{opacity:1;background:var(--sun)}
+/* background music button */
+.mus{display:inline-grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:var(--surface);box-shadow:var(--shadow);color:var(--teal-ink);padding:0;flex:none}
+.mus svg{width:24px;height:24px}
+.mus .off{display:none}
+.mus[aria-pressed="false"]{color:var(--muted)}
+.mus[aria-pressed="false"] .on{display:none}
+.mus[aria-pressed="false"] .off{display:block}
+.mus.live svg .w{animation:mw 1.2s ease-in-out infinite}
+@keyframes mw{50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
@@ -305,6 +314,11 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset
       <span id="brand-t">Save Your Sight</span>
     </button>
     <div class="tr">
+    <button class="mus" id="mus" type="button" aria-pressed="true" aria-label="Music on or off" title="Music">
+      <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path class="w" d="M16.5 8.5a5 5 0 0 1 0 7"/><path class="w" d="M19.5 5.5a9 9 0 0 1 0 13"/></svg>
+      <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M17 9l5 6M22 9l-5 6"/></svg>
+    </button>
+    <audio id="bgm" loop preload="auto" src="music.mp3"></audio>
     <div class="lang" role="tablist" aria-label="Language">
       <button role="tab" data-lang="en" aria-selected="true" aria-label="English"><span class="lf">English</span><span class="ls">EN</span></button>
       <button role="tab" data-lang="ms" aria-selected="false" aria-label="Bahasa Melayu"><span class="lf">Bahasa Melayu</span><span class="ls">BM</span></button>
@@ -986,6 +1000,20 @@ function hideAttract(){
 function poke(){ clearTimeout(idleT); idleT=setTimeout(showAttract,IDLE_SEC*1000); }
 ["pointerdown","pointermove","keydown","wheel","touchstart"].forEach(ev=>addEventListener(ev,()=>{ if(!att) poke(); },{passive:true}));
 poke();
+
+/* ---------- Background music ----------
+   Loops quietly. Browsers only allow sound after the first tap, so it starts then.
+   The speaker button in the top corner turns it off and on. */
+(function(){
+  const a=document.getElementById("bgm"),b=document.getElementById("mus");
+  let want=true; a.volume=.45;
+  const show=()=>{b.setAttribute("aria-pressed",want);b.classList.toggle("live",want&&!a.paused)};
+  const play=()=>{if(want&&a.paused){const r=a.play();if(r&&r.catch)r.catch(()=>{})}};
+  a.addEventListener("play",show);a.addEventListener("pause",show);
+  b.addEventListener("click",e=>{e.stopPropagation();want=!want;if(want)play();else a.pause();show()});
+  ["pointerdown","keydown","touchstart"].forEach(ev=>addEventListener(ev,play,{capture:true,passive:true}));
+  play(); show();
+})();
 
 /* ---------- Keyboard: A–D or 1–4 to answer, Enter for next ---------- */
 document.addEventListener("keydown",e=>{
