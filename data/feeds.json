@@ -2,60 +2,66 @@
  "news": {
   "items": [
    {
+    "t": "Brunei maintains good air quality",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBLZGhkV3k5S2lSZmJyTjBaOHE4bE1Idy14UEtDRExxd3ExNHh2QklDZDhHTVo5Ri1FNGxtS3hmdW9JT1VJTUdMU1pyVDV2ZmFZRDdlRUZnY0huRGU4RjY2Tl8wNE85R1FJaEdjZEhhblFKZw?oc=5",
+    "d": "2026-11-11"
+   },
+   {
+    "t": "Brunei Launches New Health Initiative: Cross-Sector Collaboration to Fight Obesity",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBhUWJ5Nm4xOFlDbjY3MWNvYy1kTHpLTUVSZzJlMEhlelF1aDJ4MG9Lck14QzZQWVhKeU1lWVZCalhueUV3MjhqS0ZPNHhmUmQzcGxiVktjNk9kVjliWU1VcW9HVzNGS3pXMDdzWFpucw?oc=5",
+    "d": "2026-11-11"
+   },
+   {
     "t": "Haze: a burning issue for ASEAN",
     "src": "Leiden Law Blog",
     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5KMFhfNHI1TzlZVmNXdFZrc05GV3V1c0lFZTVWU1VRR2hnUzVaY1VzclRlNjZ4UEl6clVjc05UaU1maHJoSTN4a2tHZHd1U1hRdjVvYTZFbE5icTFHUXpoa2xYcmZGUWxjZlRHbzlIVVNRQUN1eTVz?oc=5",
     "d": "2026-11-09"
-   },
-   {
-    "t": "Good air quality across all districts in Brunei",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPcW9zX3pXMkpSaHdDbnV2U1NZRmNQSG9oeFQwM1NZUVdmWG03WjlLSW45TXZub2dabV9yLW5WVUVFZ1JWamw4eXhMSzZHTVh6bjB0ZExaUlR5cEdjMXBMOU1IU0RtVUN5cjdyTm4yMGlSNUtENWdiWEF1NTIzUDJXcEZIaVQ0N3lPWk1vVTRYNzU1QjdvNUdkdElCQ240V3BoMklUc2lvbmFKZ2hwQ3Jz?oc=5",
-    "d": "2026-10-30"
    }
   ],
-  "updated": "2026-11-11"
+  "updated": "2026-11-12"
  },
  "sea": {
   "items": [
    {
-    "t": "Volumetric Quantification of Retinal Ischemic Perivascular Lesions (RIPLs) in Coronary Artery Disease",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43006988/"
+    "t": "Impact of posterior vitreous detachment on clinical outcomes in eyes with branch retinal vein occlusion",
+    "src": "Retina",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43012918/"
    },
    {
-    "t": "Axial Length-Dependent Macular Choroidal Topography in POAG: A Wide-Field Swept-Source Optical Coherence Tomography Study",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43006987/"
+    "t": "Incidence and Outcomes of Retinal Detachment After Pars Plana Vitrectomy for Symptomatic Floaters",
+    "src": "Retina",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43012660/"
    },
    {
-    "t": "Human amniotic membrane transplantation for macular hole-associated retinal detachment: A systematic review of outcomes in refractory and complex cases",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43003356/"
+    "t": "Incidence and Management of Ocular Hypertension Following the 0.19 mg Fluocinolone Acetonide Implant for Diabetic Macular Edema",
+    "src": "Retina",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43012659/"
    },
    {
-    "t": "Late-onset filtering bleb complications: A review",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43003355/"
+    "t": "Precursor lesions are associated with distinct growth kinetics after atrophy onset",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 10",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43009086/"
    },
    {
-    "t": "Intravenous pulse methylprednisolone versus placebo for ethambutol-induced optic neuropathy (EtON): A double-blind randomized placebo-controlled trial",
-    "src": "Ophthalmology",
-    "d": "2026 Nov 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43003350/"
+    "t": "High-Dose Intravitreal Topotecan for Refractory or Recurrent Retinoblastoma: Efficacy, Safety and Intraocular Cytokine Profiles",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 10",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43009085/"
    },
    {
-    "t": "Standardising ocular surface photography for artificial intelligence: current limitations and a proposed roadmap",
-    "src": "Progress in Retinal and Eye Research",
-    "d": "2026 Nov 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43003180/"
+    "t": "Reoperations After Lateral Rectus Resection/Plication Versus Medial Rectus Recession for Age-Related Distance Esotropia",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 10",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43009084/"
    }
   ],
-  "updated": "2026-11-11"
+  "updated": "2026-11-12"
  },
  "bimj": {
   "items": [
@@ -72,17 +78,23 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-11"
+  "updated": "2026-11-12"
  },
- "checked": "2026-11-11T01:40+00:00",
+ "checked": "2026-11-12T02:39+00:00",
  "status": {
-  "news": "ok (2)",
+  "news": "ok (3)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Deep Learning Model for Image-Based Classification of Four Keratitis Categories",
+    "src": "Cornea",
+    "d": "2026 Nov 10",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43008396/"
+   },
    {
     "t": "Alignment Between Corneal Biomechanical Anisotropy and Toricity Using Optical Coherence Elastography",
     "src": "J Cataract Refract Surg",
@@ -112,12 +124,6 @@
     "src": "J Refract Surg",
     "d": "2026 Nov",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42992815/"
-   },
-   {
-    "t": "Late Traumatic Avulsion of a Femtosecond LASIK Flap Following a Direct Corneal Injury: A Case Report",
-    "src": "J Refract Surg",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42992814/"
    }
   ],
   "glaucoma": [
@@ -160,6 +166,18 @@
   ],
   "medret": [
    {
+    "t": "Impact of posterior vitreous detachment on clinical outcomes in eyes with branch retinal vein occlusion",
+    "src": "Retina",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43012918/"
+   },
+   {
+    "t": "Incidence and Management of Ocular Hypertension Following the 0.19 mg Fluocinolone Acetonide Implant for Diabetic Macular Edema",
+    "src": "Retina",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43012659/"
+   },
+   {
     "t": "Pegcetacoplan for geographic atrophy: Bridging the \"clinical relevance gap\" through precision medicine",
     "src": "Survey of Ophthalmology",
     "d": "2026 Nov 7",
@@ -182,21 +200,15 @@
     "src": "Graefe's Archive",
     "d": "2026 Nov 7",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42995256/"
-   },
-   {
-    "t": "Fluid fluctuation and visual outcomes in neovascular age-related macular degeneration: A systematic review and meta-analysis",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42988275/"
-   },
-   {
-    "t": "Combined Versus Monotherapy Anti-Complement and Anti-Vascular Endothelial Growth Factor Intravitreal Injections for Age-Related Macular Degeneration: Safety Outcomes in the Real World",
-    "src": "Ophthalmology Retina",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42988264/"
    }
   ],
   "vr": [
+   {
+    "t": "Incidence and Outcomes of Retinal Detachment After Pars Plana Vitrectomy for Symptomatic Floaters",
+    "src": "Retina",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43012660/"
+   },
    {
     "t": "Human amniotic membrane transplantation for macular hole-associated retinal detachment: A systematic review of outcomes in refractory and complex cases",
     "src": "Survey of Ophthalmology",
@@ -226,12 +238,6 @@
     "src": "Graefe's Archive",
     "d": "2026 Nov 6",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42988981/"
-   },
-   {
-    "t": "Endophthalmitis risk after intravitreal anti-vascular endothelial growth factor injection using prefilled versus vial-drawn syringes: An agent-specific systematic review and meta-analysis",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42988272/"
    }
   ],
   "neuro": [
@@ -274,6 +280,12 @@
   ],
   "paeds": [
    {
+    "t": "High-Dose Intravitreal Topotecan for Refractory or Recurrent Retinoblastoma: Efficacy, Safety and Intraocular Cytokine Profiles",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 10",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43009085/"
+   },
+   {
     "t": "Potential Disparities in Access to Adult Strabismus Care",
     "src": "JAMA Ophthalmology",
     "d": "2026 Nov 5",
@@ -302,14 +314,8 @@
     "src": "Graefe's Archive",
     "d": "2026 Oct 29",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42955263/"
-   },
-   {
-    "t": "Days of unblended oxygen as a predictor of severe retinopathy of prematurity in Uganda",
-    "src": "J AAPOS",
-    "d": "2026 Oct 27",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42946154/"
    }
   ],
-  "updated": "2026-11-11"
+  "updated": "2026-11-12"
  }
 }
