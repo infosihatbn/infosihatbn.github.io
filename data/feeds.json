@@ -14,54 +14,54 @@
     "d": "2026-11-11"
    },
    {
-    "t": "Haze: a burning issue for ASEAN",
-    "src": "Leiden Law Blog",
-    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5KMFhfNHI1TzlZVmNXdFZrc05GV3V1c0lFZTVWU1VRR2hnUzVaY1VzclRlNjZ4UEl6clVjc05UaU1maHJoSTN4a2tHZHd1U1hRdjVvYTZFbE5icTFHUXpoa2xYcmZGUWxjZlRHbzlIVVNRQUN1eTVz?oc=5",
-    "d": "2026-11-09"
+    "t": "Indonesia's Fire and Haze Crisis Fuels People Power",
+    "src": "Mirage News",
+    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQS1lHXzZVd091M3VQM2V3RDRKaFpXUXNQbE15ZUI1OGx2a0lVSS1uRUtqSlQ4YjZLWHVHMTV6WmRMa1lJLVFqekhNT2l0aURCbS12bEVpbDU1Q3BmUmFDQWFqR2NxRV9jd1N6a0ZEOWwwVk9ZYUJrN3FMNlZWV2pqSXBEVlFLUzQ?oc=5",
+    "d": "2026-11-10"
    }
   ],
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "sea": {
   "items": [
    {
-    "t": "Impact of posterior vitreous detachment on clinical outcomes in eyes with branch retinal vein occlusion",
-    "src": "Retina",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43012918/"
+    "t": "Bilateral Stellate Multiform Amelanotic Choroidopathy in a Young Female Patient",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43018945/"
    },
    {
-    "t": "Incidence and Outcomes of Retinal Detachment After Pars Plana Vitrectomy for Symptomatic Floaters",
-    "src": "Retina",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43012660/"
+    "t": "Implications of Image-Level Duplication in Public Glaucoma Datasets",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43018943/"
    },
    {
-    "t": "Incidence and Management of Ocular Hypertension Following the 0.19 mg Fluocinolone Acetonide Implant for Diabetic Macular Edema",
-    "src": "Retina",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43012659/"
+    "t": "Effect of phaco-tip orientation during phacoemulsification surgery (TIPS) on endothelial cell loss: Results of a randomized clinical trial",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43018441/"
    },
    {
-    "t": "Precursor lesions are associated with distinct growth kinetics after atrophy onset",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 10",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43009086/"
+    "t": "Ocular Magnification Correction Influences Glaucoma-Related Microvascular Measurements in OCT Angiography",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43018424/"
    },
    {
-    "t": "High-Dose Intravitreal Topotecan for Refractory or Recurrent Retinoblastoma: Efficacy, Safety and Intraocular Cytokine Profiles",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 10",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43009085/"
+    "t": "Tetrahydrobiopterin Supplementation Protects Retinal Ganglion Cells Against NMDA-Induced Excitotoxicity Through nNOS-Coupled Nitric Oxide Signaling",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43018423/"
    },
    {
-    "t": "Reoperations After Lateral Rectus Resection/Plication Versus Medial Rectus Recession for Age-Related Distance Esotropia",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 10",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43009084/"
+    "t": "Natural History of an Unusual Chorioretinal Phenotype Associated With the RHO p.(Met216Lys) Variant",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43018422/"
    }
   ],
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "bimj": {
   "items": [
@@ -78,9 +78,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
- "checked": "2026-11-12T02:39+00:00",
+ "checked": "2026-11-13T02:20+00:00",
  "status": {
   "news": "ok (3)",
   "sea": "ok (6)",
@@ -90,43 +90,61 @@
  "sub": {
   "cornea": [
    {
-    "t": "Deep Learning Model for Image-Based Classification of Four Keratitis Categories",
-    "src": "Cornea",
-    "d": "2026 Nov 10",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43008396/"
-   },
-   {
-    "t": "Alignment Between Corneal Biomechanical Anisotropy and Toricity Using Optical Coherence Elastography",
-    "src": "J Cataract Refract Surg",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43007294/"
-   },
-   {
-    "t": "Standardising ocular surface photography for artificial intelligence: current limitations and a proposed roadmap",
-    "src": "Progress in Retinal and Eye Research",
-    "d": "2026 Nov 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43003180/"
-   },
-   {
-    "t": "Autologous stromal transplantation with stromal restoration for corneal dermoids",
-    "src": "Graefe's Archive",
-    "d": "2026 Nov 7",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42998151/"
-   },
-   {
-    "t": "Subconjunctival Injection of Anti-Secretogranin III Mitigates Corneal Damage in Alkali Burn Injury Model",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42992962/"
-   },
-   {
-    "t": "Prospective Propensity Score-Matched Analysis of Corneal Haze and Outcomes After Combined Versus Sequential Customized Transepithelial PRK With Accelerated CXL",
+    "t": "Clinical Interchangeability of Total Corneal Astigmatism Prediction Methods: An Agreement Analysis",
     "src": "J Refract Surg",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42992815/"
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43017897/"
+   },
+   {
+    "t": "Temporary KLEx Lenticule-Assisted Corneal Cross-linking in Thin-Cornea Keratoconus: A Case Series",
+    "src": "J Refract Surg",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43017896/"
+   },
+   {
+    "t": "Factors Influencing Manifest Refractive Cylinder and Ocular Residual Astigmatism in Keratoconus",
+    "src": "J Refract Surg",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43017894/"
+   },
+   {
+    "t": "Keratoconus - Common, yet uncommon",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43017756/"
+   },
+   {
+    "t": "Impact of Donor Age on Eligibility for Corneal Tissue Donation and Transplantation Suitability: A 2-Year Retrospective Analysis of Donors Aged up to 89 years",
+    "src": "Cornea",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43014705/"
+   },
+   {
+    "t": "Inadvertent Intrastromal Injection of Hyaluronic Acid Cosmetic Filler Into the Cornea",
+    "src": "Cornea",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43014704/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Implications of Image-Level Duplication in Public Glaucoma Datasets",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43018943/"
+   },
+   {
+    "t": "Ocular Magnification Correction Influences Glaucoma-Related Microvascular Measurements in OCT Angiography",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43018424/"
+   },
+   {
+    "t": "Association of Ambient Air Pollution Exposure With Early Failure After Incisional Glaucoma Surgery",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43014449/"
+   },
    {
     "t": "Axial Length-Dependent Macular Choroidal Topography in POAG: A Wide-Field Swept-Source Optical Coherence Tomography Study",
     "src": "IOVS",
@@ -144,24 +162,6 @@
     "src": "Ophthalmology Glaucoma",
     "d": "2026 Nov 6",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42994799/"
-   },
-   {
-    "t": "Incidence and Predictors of IOP-Lowering Treatment Following Detection of Referable Glaucoma in a Teleretinal Screening Program",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42988359/"
-   },
-   {
-    "t": "Three-Year Outcomes of Trabeculotomy vs Combined Trabeculotomy-Trabeculectomy for Primary Congenital Glaucoma",
-    "src": "Ophthalmology",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42988223/"
-   },
-   {
-    "t": "Baseline Macular OCT Thickness of Ocular Hypertensive Patients Improves Prediction of Glaucoma",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42987995/"
    }
   ],
   "medret": [
@@ -316,6 +316,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42955263/"
    }
   ],
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  }
 }
