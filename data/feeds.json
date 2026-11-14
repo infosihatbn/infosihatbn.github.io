@@ -2,6 +2,12 @@
  "news": {
   "items": [
    {
+    "t": "'All clear now' Wet weather helps keep air quality good in Brunei",
+    "src": "The Star",
+    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQcEdnS21DMUF0UHZnTFZmeTBJX2tKUDN4RTRRY1N0QjRNRVJXcV9iYVBmaVRPNHo5Z3VYSFZsYy1GVVRCeFcydzZoY0VxN2dyd1FTd2FMQ0g0Q3pCalI4cy04dXoyc3hLVnNxN1h1cHRLam9RLUtaaXZDS294M0FfaF9YQlhXSHNyczU4UWJseDNxRE92WTM0cVdzMnl6VXVQTmR6aWVrc0NjelgwbXZkaWhqNmdxN1lvX2FlSTFwSnpvMXp1bVJUTlFGSko?oc=5",
+    "d": "2026-11-13"
+   },
+   {
     "t": "Brunei maintains good air quality",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBLZGhkV3k5S2lSZmJyTjBaOHE4bE1Idy14UEtDRExxd3ExNHh2QklDZDhHTVo5Ri1FNGxtS3hmdW9JT1VJTUdMU1pyVDV2ZmFZRDdlRUZnY0huRGU4RjY2Tl8wNE85R1FJaEdjZEhhblFKZw?oc=5",
@@ -12,56 +18,50 @@
     "src": "联合日报",
     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBhUWJ5Nm4xOFlDbjY3MWNvYy1kTHpLTUVSZzJlMEhlelF1aDJ4MG9Lck14QzZQWVhKeU1lWVZCalhueUV3MjhqS0ZPNHhmUmQzcGxiVktjNk9kVjliWU1VcW9HVzNGS3pXMDdzWFpucw?oc=5",
     "d": "2026-11-11"
-   },
-   {
-    "t": "Indonesia's Fire and Haze Crisis Fuels People Power",
-    "src": "Mirage News",
-    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQS1lHXzZVd091M3VQM2V3RDRKaFpXUXNQbE15ZUI1OGx2a0lVSS1uRUtqSlQ4YjZLWHVHMTV6WmRMa1lJLVFqekhNT2l0aURCbS12bEVpbDU1Q3BmUmFDQWFqR2NxRV9jd1N6a0ZEOWwwVk9ZYUJrN3FMNlZWV2pqSXBEVlFLUzQ?oc=5",
-    "d": "2026-11-10"
    }
   ],
-  "updated": "2026-11-13"
+  "updated": "2026-11-14"
  },
  "sea": {
   "items": [
+   {
+    "t": "Registry-based definition of neovascular age-related macular degeneration in Denmark: A nationwide multicentre validation study",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 13",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43023810/"
+   },
+   {
+    "t": "Contrasting OCT Biomarkers, Visual Acuity, and Response to Corticosteroids in Diabetic and Uveitic Macular Edema",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43022604/"
+   },
+   {
+    "t": "Progression to Advanced Age-Related Macular Degeneration in Drusen-Driven and Pachychoroid-Driven Disease: The Korean Age-Related Maculopathy Study",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43022085/"
+   },
+   {
+    "t": "Step change in glaucoma polygenic risk score performance enables clinical utility",
+    "src": "Ophthalmology",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43020385/"
+   },
+   {
+    "t": "The ONSET Study: Optic Neuritis Frequently Represents the Onset of Central Nervous System Inflammatory Disease",
+    "src": "Ophthalmology",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43020384/"
+   },
    {
     "t": "Bilateral Stellate Multiform Amelanotic Choroidopathy in a Young Female Patient",
     "src": "JAMA Ophthalmology",
     "d": "2026 Nov 12",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43018945/"
-   },
-   {
-    "t": "Implications of Image-Level Duplication in Public Glaucoma Datasets",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43018943/"
-   },
-   {
-    "t": "Effect of phaco-tip orientation during phacoemulsification surgery (TIPS) on endothelial cell loss: Results of a randomized clinical trial",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43018441/"
-   },
-   {
-    "t": "Ocular Magnification Correction Influences Glaucoma-Related Microvascular Measurements in OCT Angiography",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43018424/"
-   },
-   {
-    "t": "Tetrahydrobiopterin Supplementation Protects Retinal Ganglion Cells Against NMDA-Induced Excitotoxicity Through nNOS-Coupled Nitric Oxide Signaling",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43018423/"
-   },
-   {
-    "t": "Natural History of an Unusual Chorioretinal Phenotype Associated With the RHO p.(Met216Lys) Variant",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43018422/"
    }
   ],
-  "updated": "2026-11-13"
+  "updated": "2026-11-14"
  },
  "bimj": {
   "items": [
@@ -78,9 +78,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-13"
+  "updated": "2026-11-14"
  },
- "checked": "2026-11-13T02:20+00:00",
+ "checked": "2026-11-14T01:57+00:00",
  "status": {
   "news": "ok (3)",
   "sea": "ok (6)",
@@ -128,6 +128,18 @@
   ],
   "glaucoma": [
    {
+    "t": "12-month visual and safety outcomes of the ELIOS procedure with cataract surgery in primary open-angle glaucoma",
+    "src": "J Cataract Refract Surg",
+    "d": "2026 Nov 13",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43024380/"
+   },
+   {
+    "t": "Step change in glaucoma polygenic risk score performance enables clinical utility",
+    "src": "Ophthalmology",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43020385/"
+   },
+   {
     "t": "Implications of Image-Level Duplication in Public Glaucoma Datasets",
     "src": "JAMA Ophthalmology",
     "d": "2026 Nov 12",
@@ -150,21 +162,27 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43006987/"
-   },
-   {
-    "t": "Predicting Future Visual Field Status from Baseline OCT Scan in Early to Moderate Glaucoma Using Deep Learning",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42997014/"
-   },
-   {
-    "t": "A Teleglaucoma Screening System for Individuals at Risk of Open-Angle Glaucoma: Long-Term Clinical Outcomes and Comparative Cost Analysis",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42994799/"
    }
   ],
   "medret": [
+   {
+    "t": "Registry-based definition of neovascular age-related macular degeneration in Denmark: A nationwide multicentre validation study",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 13",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43023810/"
+   },
+   {
+    "t": "Contrasting OCT Biomarkers, Visual Acuity, and Response to Corticosteroids in Diabetic and Uveitic Macular Edema",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43022604/"
+   },
+   {
+    "t": "Progression to Advanced Age-Related Macular Degeneration in Drusen-Driven and Pachychoroid-Driven Disease: The Korean Age-Related Maculopathy Study",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43022085/"
+   },
    {
     "t": "Impact of posterior vitreous detachment on clinical outcomes in eyes with branch retinal vein occlusion",
     "src": "Retina",
@@ -182,24 +200,6 @@
     "src": "Survey of Ophthalmology",
     "d": "2026 Nov 7",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42998772/"
-   },
-   {
-    "t": "Statin Use and Age-related Macular Degeneration: A Systematic Review and Meta-Analysis of Disease Outcomes",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 7",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42998694/"
-   },
-   {
-    "t": "Intravitreal Diclofenac and Other Nonsteroidal Anti-Inflammatory Drugs for the Treatment of Macular Edema: A Systematic Review and Exploratory Meta-Analysis",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42997509/"
-   },
-   {
-    "t": "Early macular dryness after four loading injections of faricimab was associated with reduced two-year treatment burden in treatment-naïve neovascular age-related macular degeneration",
-    "src": "Graefe's Archive",
-    "d": "2026 Nov 7",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42995256/"
    }
   ],
   "vr": [
@@ -242,6 +242,12 @@
   ],
   "neuro": [
    {
+    "t": "The ONSET Study: Optic Neuritis Frequently Represents the Onset of Central Nervous System Inflammatory Disease",
+    "src": "Ophthalmology",
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43020384/"
+   },
+   {
     "t": "Intravenous pulse methylprednisolone versus placebo for ethambutol-induced optic neuropathy (EtON): A double-blind randomized placebo-controlled trial",
     "src": "Ophthalmology",
     "d": "2026 Nov 9",
@@ -270,12 +276,6 @@
     "src": "American Journal of Ophthalmology",
     "d": "2026 Oct 29",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42957016/"
-   },
-   {
-    "t": "OCT-Derived Radiomic Features for Differentiating Optic Neuritis Etiologies: An Unsupervised and Supervised Machine-Learning Approach",
-    "src": "Ophthalmology Science",
-    "d": "2026 Nov",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42935570/"
    }
   ],
   "paeds": [
@@ -316,6 +316,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42955263/"
    }
   ],
-  "updated": "2026-11-13"
+  "updated": "2026-11-14"
  }
 }
