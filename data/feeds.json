@@ -2,6 +2,12 @@
  "news": {
   "items": [
    {
+    "t": "Brunei Diabetes Rate Rises to 15% - Minister of Health Urges Early Screening and Intervention",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE90QkdLZEhhVFVTX2lCSF9kTkNsY0FKaWlLY2V0eFZ2VW1EOUhRTzNfRURqZVlzYTlUazViaFF3eURoMEIxN3hZeVFIV1BuajhSUlcxUXVoaDZEOWg1bExVVmRRQXVxTWNfRlowY3pjUQ?oc=5",
+    "d": "2026-11-14"
+   },
+   {
     "t": "'All clear now' Wet weather helps keep air quality good in Brunei",
     "src": "The Star",
     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQcEdnS21DMUF0UHZnTFZmeTBJX2tKUDN4RTRRY1N0QjRNRVJXcV9iYVBmaVRPNHo5Z3VYSFZsYy1GVVRCeFcydzZoY0VxN2dyd1FTd2FMQ0g0Q3pCalI4cy04dXoyc3hLVnNxN1h1cHRLam9RLUtaaXZDS294M0FfaF9YQlhXSHNyczU4UWJseDNxRE92WTM0cVdzMnl6VXVQTmR6aWVrc0NjelgwbXZkaWhqNmdxN1lvX2FlSTFwSnpvMXp1bVJUTlFGSko?oc=5",
@@ -12,18 +18,30 @@
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBLZGhkV3k5S2lSZmJyTjBaOHE4bE1Idy14UEtDRExxd3ExNHh2QklDZDhHTVo5Ri1FNGxtS3hmdW9JT1VJTUdMU1pyVDV2ZmFZRDdlRUZnY0huRGU4RjY2Tl8wNE85R1FJaEdjZEhhblFKZw?oc=5",
     "d": "2026-11-11"
-   },
-   {
-    "t": "Brunei Launches New Health Initiative: Cross-Sector Collaboration to Fight Obesity",
-    "src": "联合日报",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBhUWJ5Nm4xOFlDbjY3MWNvYy1kTHpLTUVSZzJlMEhlelF1aDJ4MG9Lck14QzZQWVhKeU1lWVZCalhueUV3MjhqS0ZPNHhmUmQzcGxiVktjNk9kVjliWU1VcW9HVzNGS3pXMDdzWFpucw?oc=5",
-    "d": "2026-11-11"
    }
   ],
-  "updated": "2026-11-14"
+  "updated": "2026-11-15"
  },
  "sea": {
   "items": [
+   {
+    "t": "Beyond the foundation model: A practical framework for adaptation in ophthalmology",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 14",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43031527/"
+   },
+   {
+    "t": "Early intraretinal fluid volume dynamics after switching from aflibercept 2 mg to faricimab in diabetic macular oedema",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 14",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43031481/"
+   },
+   {
+    "t": "The functional significance of human macular pigment: Optical, visual and neural effects",
+    "src": "Progress in Retinal and Eye Research",
+    "d": "2026 Nov 13",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43025584/"
+   },
    {
     "t": "Registry-based definition of neovascular age-related macular degeneration in Denmark: A nationwide multicentre validation study",
     "src": "Acta Ophthalmologica",
@@ -41,27 +59,9 @@
     "src": "Ophthalmology Science",
     "d": "2026 Dec",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43022085/"
-   },
-   {
-    "t": "Step change in glaucoma polygenic risk score performance enables clinical utility",
-    "src": "Ophthalmology",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43020385/"
-   },
-   {
-    "t": "The ONSET Study: Optic Neuritis Frequently Represents the Onset of Central Nervous System Inflammatory Disease",
-    "src": "Ophthalmology",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43020384/"
-   },
-   {
-    "t": "Bilateral Stellate Multiform Amelanotic Choroidopathy in a Young Female Patient",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43018945/"
    }
   ],
-  "updated": "2026-11-14"
+  "updated": "2026-11-15"
  },
  "bimj": {
   "items": [
@@ -78,9 +78,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-14"
+  "updated": "2026-11-15"
  },
- "checked": "2026-11-14T01:57+00:00",
+ "checked": "2026-11-15T01:28+00:00",
  "status": {
   "news": "ok (3)",
   "sea": "ok (6)",
@@ -166,6 +166,12 @@
   ],
   "medret": [
    {
+    "t": "Early intraretinal fluid volume dynamics after switching from aflibercept 2 mg to faricimab in diabetic macular oedema",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 14",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43031481/"
+   },
+   {
     "t": "Registry-based definition of neovascular age-related macular degeneration in Denmark: A nationwide multicentre validation study",
     "src": "Acta Ophthalmologica",
     "d": "2026 Nov 13",
@@ -194,12 +200,6 @@
     "src": "Retina",
     "d": "2026 Nov 11",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43012659/"
-   },
-   {
-    "t": "Pegcetacoplan for geographic atrophy: Bridging the \"clinical relevance gap\" through precision medicine",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 7",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42998772/"
    }
   ],
   "vr": [
@@ -316,6 +316,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42955263/"
    }
   ],
-  "updated": "2026-11-14"
+  "updated": "2026-11-15"
  }
 }
