@@ -2,10 +2,10 @@
  "news": {
   "items": [
    {
-    "t": "Brunei Diabetes Rate Rises to 15% - Minister of Health Urges Early Screening and Intervention",
-    "src": "联合日报",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE90QkdLZEhhVFVTX2lCSF9kTkNsY0FKaWlLY2V0eFZ2VW1EOUhRTzNfRURqZVlzYTlUazViaFF3eURoMEIxN3hZeVFIV1BuajhSUlcxUXVoaDZEOWg1bExVVmRRQXVxTWNfRlowY3pjUQ?oc=5",
-    "d": "2026-11-14"
+    "t": "JNC Signs 2 MoUs With Brunei Health Institutions to Employ Jordanian Nurses",
+    "src": "وكالة الانباء الاردنية",
+    "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQMlJENVBReElIbVlfU0M5NHB2MjRwcDRQRWdRM1lnc3k0bUtkTENpZ0VTVTlpem5CUk9Yem0yWklrTVZ2Z2hZekhSLUFYaTY5VUdEYzQ4ZUQ5ZUtvaWNXaHBQV2YwMVJSU2NCdVZRSUxEWDJySUZXSVZhb1ZYbk5DY01FWTZ6MUUxeHcwbEdVUHhhQm52bHNSMFRBTERuNmJ3SHMxekw4Zw?oc=5",
+    "d": "2026-11-15"
    },
    {
     "t": "'All clear now' Wet weather helps keep air quality good in Brunei",
@@ -20,48 +20,48 @@
     "d": "2026-11-11"
    }
   ],
-  "updated": "2026-11-15"
+  "updated": "2026-11-16"
  },
  "sea": {
   "items": [
+   {
+    "t": "A Novel Nonretinal Fixation System for Epiretinal Prostheses: Preclinical Evaluation of Implant Stability and Long-Term Ocular Safety",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43034847/"
+   },
+   {
+    "t": "Biennial versus Annual Screening: Predicting Yearly Progression of Diabetic Retinopathy in a Large Veteran Population from Tabular Data",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43034723/"
+   },
+   {
+    "t": "Risk factors associated with ocular hypertension after steroid use in children",
+    "src": "Ophthalmology",
+    "d": "2026 Nov 14",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43033929/"
+   },
+   {
+    "t": "Ophthalmic Artificial Intelligence under the European Union Medical Device Regulation and Artificial Intelligence Act: Reclassification, Compliance, and Clinical Implications",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43032750/"
+   },
+   {
+    "t": "Diffusion-Based Model for Multi-Artifact Removal on OCT-Angiography Superficial Capillary Plexus Images",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43032016/"
+   },
    {
     "t": "Beyond the foundation model: A practical framework for adaptation in ophthalmology",
     "src": "Acta Ophthalmologica",
     "d": "2026 Nov 14",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43031527/"
-   },
-   {
-    "t": "Early intraretinal fluid volume dynamics after switching from aflibercept 2 mg to faricimab in diabetic macular oedema",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 14",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43031481/"
-   },
-   {
-    "t": "The functional significance of human macular pigment: Optical, visual and neural effects",
-    "src": "Progress in Retinal and Eye Research",
-    "d": "2026 Nov 13",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43025584/"
-   },
-   {
-    "t": "Registry-based definition of neovascular age-related macular degeneration in Denmark: A nationwide multicentre validation study",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 13",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43023810/"
-   },
-   {
-    "t": "Contrasting OCT Biomarkers, Visual Acuity, and Response to Corticosteroids in Diabetic and Uveitic Macular Edema",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43022604/"
-   },
-   {
-    "t": "Progression to Advanced Age-Related Macular Degeneration in Drusen-Driven and Pachychoroid-Driven Disease: The Korean Age-Related Maculopathy Study",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43022085/"
    }
   ],
-  "updated": "2026-11-15"
+  "updated": "2026-11-16"
  },
  "bimj": {
   "items": [
@@ -78,9 +78,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-15"
+  "updated": "2026-11-16"
  },
- "checked": "2026-11-15T01:28+00:00",
+ "checked": "2026-11-16T01:31+00:00",
  "status": {
   "news": "ok (3)",
   "sea": "ok (6)",
@@ -166,6 +166,12 @@
   ],
   "medret": [
    {
+    "t": "Biennial versus Annual Screening: Predicting Yearly Progression of Diabetic Retinopathy in a Large Veteran Population from Tabular Data",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43034723/"
+   },
+   {
     "t": "Early intraretinal fluid volume dynamics after switching from aflibercept 2 mg to faricimab in diabetic macular oedema",
     "src": "Acta Ophthalmologica",
     "d": "2026 Nov 14",
@@ -194,15 +200,15 @@
     "src": "Retina",
     "d": "2026 Nov 11",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43012918/"
-   },
-   {
-    "t": "Incidence and Management of Ocular Hypertension Following the 0.19 mg Fluocinolone Acetonide Implant for Diabetic Macular Edema",
-    "src": "Retina",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43012659/"
    }
   ],
   "vr": [
+   {
+    "t": "The integral role of artificial intelligence models in retinal detachment diagnostics: a systematic review and meta-analysis",
+    "src": "Graefe's Archive",
+    "d": "2026 Nov 14",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43033233/"
+   },
    {
     "t": "Incidence and Outcomes of Retinal Detachment After Pars Plana Vitrectomy for Symptomatic Floaters",
     "src": "Retina",
@@ -232,12 +238,6 @@
     "src": "Retina",
     "d": "2026 Nov 6",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42993189/"
-   },
-   {
-    "t": "Epiretinal membrane and cystoid macular oedema after vitrectomy for giant retinal tear-related retinal detachment: the Manchester GRT Study",
-    "src": "Graefe's Archive",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42988981/"
    }
   ],
   "neuro": [
@@ -316,6 +316,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42955263/"
    }
   ],
-  "updated": "2026-11-15"
+  "updated": "2026-11-16"
  }
 }
