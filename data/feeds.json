@@ -12,56 +12,50 @@
     "src": "The Star",
     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQcEdnS21DMUF0UHZnTFZmeTBJX2tKUDN4RTRRY1N0QjRNRVJXcV9iYVBmaVRPNHo5Z3VYSFZsYy1GVVRCeFcydzZoY0VxN2dyd1FTd2FMQ0g0Q3pCalI4cy04dXoyc3hLVnNxN1h1cHRLam9RLUtaaXZDS294M0FfaF9YQlhXSHNyczU4UWJseDNxRE92WTM0cVdzMnl6VXVQTmR6aWVrc0NjelgwbXZkaWhqNmdxN1lvX2FlSTFwSnpvMXp1bVJUTlFGSko?oc=5",
     "d": "2026-11-13"
-   },
-   {
-    "t": "Brunei maintains good air quality",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBLZGhkV3k5S2lSZmJyTjBaOHE4bE1Idy14UEtDRExxd3ExNHh2QklDZDhHTVo5Ri1FNGxtS3hmdW9JT1VJTUdMU1pyVDV2ZmFZRDdlRUZnY0huRGU4RjY2Tl8wNE85R1FJaEdjZEhhblFKZw?oc=5",
-    "d": "2026-11-11"
    }
   ],
-  "updated": "2026-11-16"
+  "updated": "2026-11-17"
  },
  "sea": {
   "items": [
    {
-    "t": "A Novel Nonretinal Fixation System for Epiretinal Prostheses: Preclinical Evaluation of Implant Stability and Long-Term Ocular Safety",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43034847/"
+    "t": "Laser-Induced Trabecular Damage Converts Segmentally Uncorrelated to Coupled Aqueous Humor Outflow Pathways in Non-Human Primates",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037405/"
    },
    {
-    "t": "Biennial versus Annual Screening: Predicting Yearly Progression of Diabetic Retinopathy in a Large Veteran Population from Tabular Data",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43034723/"
+    "t": "Pathogenesis of Bacillary Layer Detachment in Rhegmatogenous Retinal Detachment: Insights From Fundus Autofluorescence Imaging",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037404/"
    },
    {
-    "t": "Risk factors associated with ocular hypertension after steroid use in children",
-    "src": "Ophthalmology",
-    "d": "2026 Nov 14",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43033929/"
+    "t": "Macularward Redistribution of Fundus Tessellation During Childhood Axial Elongation: A 5-Year School-Based Cohort Study",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037403/"
    },
    {
-    "t": "Ophthalmic Artificial Intelligence under the European Union Medical Device Regulation and Artificial Intelligence Act: Reclassification, Compliance, and Clinical Implications",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43032750/"
+    "t": "Differentiation of Mouse Neural Crest Cells Into Corneal Endothelial-Like Cells by Inhibiting TGF-β Signaling Pathway",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037402/"
    },
    {
-    "t": "Diffusion-Based Model for Multi-Artifact Removal on OCT-Angiography Superficial Capillary Plexus Images",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43032016/"
+    "t": "Contrast Sensitivity Across the Visual Field in Children With Amblyopia",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037401/"
    },
    {
-    "t": "Beyond the foundation model: A practical framework for adaptation in ophthalmology",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 14",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43031527/"
+    "t": "Impairment of Contrast Sensitivity Function and Stereopsis in Successfully Treated Bilateral Pediatric Cataract Patients",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037400/"
    }
   ],
-  "updated": "2026-11-16"
+  "updated": "2026-11-17"
  },
  "bimj": {
   "items": [
@@ -78,17 +72,23 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-16"
+  "updated": "2026-11-17"
  },
- "checked": "2026-11-16T01:31+00:00",
+ "checked": "2026-11-17T04:17+00:00",
  "status": {
-  "news": "ok (3)",
+  "news": "ok (2)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Differentiation of Mouse Neural Crest Cells Into Corneal Endothelial-Like Cells by Inhibiting TGF-β Signaling Pathway",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037402/"
+   },
    {
     "t": "Clinical Interchangeability of Total Corneal Astigmatism Prediction Methods: An Agreement Analysis",
     "src": "J Refract Surg",
@@ -118,12 +118,6 @@
     "src": "Cornea",
     "d": "2026 Nov 11",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43014705/"
-   },
-   {
-    "t": "Inadvertent Intrastromal Injection of Hyaluronic Acid Cosmetic Filler Into the Cornea",
-    "src": "Cornea",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43014704/"
    }
   ],
   "glaucoma": [
@@ -166,6 +160,12 @@
   ],
   "medret": [
    {
+    "t": "Real-world outcomes following 15 years of anti-vascular endothelial growth factor therapy in neovascular age-related macular degeneration",
+    "src": "Eye",
+    "d": "2026 Nov 15",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43035550/"
+   },
+   {
     "t": "Biennial versus Annual Screening: Predicting Yearly Progression of Diabetic Retinopathy in a Large Veteran Population from Tabular Data",
     "src": "Ophthalmology Science",
     "d": "2026 Dec",
@@ -194,15 +194,15 @@
     "src": "Ophthalmology Science",
     "d": "2026 Dec",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43022085/"
-   },
-   {
-    "t": "Impact of posterior vitreous detachment on clinical outcomes in eyes with branch retinal vein occlusion",
-    "src": "Retina",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43012918/"
    }
   ],
   "vr": [
+   {
+    "t": "Pathogenesis of Bacillary Layer Detachment in Rhegmatogenous Retinal Detachment: Insights From Fundus Autofluorescence Imaging",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037404/"
+   },
    {
     "t": "The integral role of artificial intelligence models in retinal detachment diagnostics: a systematic review and meta-analysis",
     "src": "Graefe's Archive",
@@ -232,12 +232,6 @@
     "src": "Retina",
     "d": "2026 Nov 6",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42993209/"
-   },
-   {
-    "t": "Post-Pars Plana Vitrectomy Endophthalmitis in Patients with and without Systemic Immunosuppression",
-    "src": "Retina",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42993189/"
    }
   ],
   "neuro": [
@@ -280,6 +274,18 @@
   ],
   "paeds": [
    {
+    "t": "Contrast Sensitivity Across the Visual Field in Children With Amblyopia",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037401/"
+   },
+   {
+    "t": "Impairment of Contrast Sensitivity Function and Stereopsis in Successfully Treated Bilateral Pediatric Cataract Patients",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037400/"
+   },
+   {
     "t": "High-Dose Intravitreal Topotecan for Refractory or Recurrent Retinoblastoma: Efficacy, Safety and Intraocular Cytokine Profiles",
     "src": "American Journal of Ophthalmology",
     "d": "2026 Nov 10",
@@ -302,20 +308,8 @@
     "src": "Ophthalmology Science",
     "d": "2026 Dec",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42960268/"
-   },
-   {
-    "t": "High-Resolution Characterization of Cone Photoreceptor Mosaic Alterations in Retinopathy of Prematurity Using Adaptive Optics Scanning Laser Ophthalmoscopy",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42960037/"
-   },
-   {
-    "t": "Impact of oblique muscle surgery on primary position alignment in alphabetic pattern strabismus with a focus on inferior oblique resection technique",
-    "src": "Graefe's Archive",
-    "d": "2026 Oct 29",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42955263/"
    }
   ],
-  "updated": "2026-11-16"
+  "updated": "2026-11-17"
  }
 }
