@@ -2,6 +2,12 @@
  "news": {
   "items": [
    {
+    "t": "Prabowo pushes ASEAN-India cooperation on health, disaster mitigation",
+    "src": "ANTARA News",
+    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPamVVLXJueDdZTkdHUUhrd3gzUjFkRzI0OFBENF8tYmYySnJVLWVxbk1OSTdvWTh5WDF1Q1Qzbl9jTVBFeWNKSlNsVTFOX2kxZkpFTjg2RHE2RTJGYm1wT2p2Y1VYUExGaEg2OTctdGl3SlB0VHk1REJsMnlwcEVkcUhJN2FEczFfN1JmUmlzUDl0Rlk5RW83YkU2ektmQXU1MVpfQzdlc2k2Z9IBrwFBVV95cUxNXzM2ZE91UGdIRHpoTUttRnkzcmh5MkZhcWxublJPdG1fOHpkWFhHS1hKQ2x1cXlNSk1BV19wUEtyUHE2bW5ybjlNZTZzY3plRncxNG5fT3haeVNHWVFkbUI4T2tvNjhMZy1paVV0eU04LVJkOGVXQllmWjZXM2p5bkd1STBDU1lCWTFpQXM5ZGpKNkxFOUREWVY1VFViRGJoNUU5aUNlT2hLblRob21N?oc=5",
+    "d": "2026-11-17"
+   },
+   {
     "t": "JNC Signs 2 MoUs With Brunei Health Institutions to Employ Jordanian Nurses",
     "src": "وكالة الانباء الاردنية",
     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQMlJENVBReElIbVlfU0M5NHB2MjRwcDRQRWdRM1lnc3k0bUtkTENpZ0VTVTlpem5CUk9Yem0yWklrTVZ2Z2hZekhSLUFYaTY5VUdEYzQ4ZUQ5ZUtvaWNXaHBQV2YwMVJSU2NCdVZRSUxEWDJySUZXSVZhb1ZYbk5DY01FWTZ6MUUxeHcwbEdVUHhhQm52bHNSMFRBTERuNmJ3SHMxekw4Zw?oc=5",
@@ -14,48 +20,48 @@
     "d": "2026-11-13"
    }
   ],
-  "updated": "2026-11-17"
+  "updated": "2026-11-18"
  },
  "sea": {
   "items": [
    {
-    "t": "Laser-Induced Trabecular Damage Converts Segmentally Uncorrelated to Coupled Aqueous Humor Outflow Pathways in Non-Human Primates",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43037405/"
+    "t": "Structure-Function Correlates of Radiation Chorioretinopathy: Insights from Microperimetry and Swept-Source OCTA",
+    "src": "Retina",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43043838/"
    },
    {
-    "t": "Pathogenesis of Bacillary Layer Detachment in Rhegmatogenous Retinal Detachment: Insights From Fundus Autofluorescence Imaging",
+    "t": "Functional Characterization of Retinal Degeneration in a Mouse Model of Mucopolysaccharidosis Type IIIC",
     "src": "IOVS",
     "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43037404/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43043344/"
    },
    {
-    "t": "Macularward Redistribution of Fundus Tessellation During Childhood Axial Elongation: A 5-Year School-Based Cohort Study",
+    "t": "Formulation Matters: Nutrient Availability and Label Accuracy of Supplements for Age-Related Macular Degeneration",
     "src": "IOVS",
     "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43037403/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43043343/"
    },
    {
-    "t": "Differentiation of Mouse Neural Crest Cells Into Corneal Endothelial-Like Cells by Inhibiting TGF-β Signaling Pathway",
+    "t": "Tracking Retinal Ganglion Cell Soma Loss in Glaucoma Reveals Progression Over Months and Years",
     "src": "IOVS",
     "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43037402/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43043342/"
    },
    {
-    "t": "Contrast Sensitivity Across the Visual Field in Children With Amblyopia",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43037401/"
+    "t": "Intravitreal dexamethasone implant-based versus ranibizumab-based regimens for stage 3 Coats' disease: Efficacy and complications",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43042711/"
    },
    {
-    "t": "Impairment of Contrast Sensitivity Function and Stereopsis in Successfully Treated Bilateral Pediatric Cataract Patients",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43037400/"
+    "t": "Automated retinal layer thickness segmentation in neovascular age-related macular degeneration: a comparison of two algorithms",
+    "src": "Eye",
+    "d": "2026 Nov 16",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43039982/"
    }
   ],
-  "updated": "2026-11-17"
+  "updated": "2026-11-18"
  },
  "bimj": {
   "items": [
@@ -72,11 +78,11 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-17"
+  "updated": "2026-11-18"
  },
- "checked": "2026-11-17T04:17+00:00",
+ "checked": "2026-11-18T03:16+00:00",
  "status": {
-  "news": "ok (2)",
+  "news": "ok (3)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
@@ -84,43 +90,49 @@
  "sub": {
   "cornea": [
    {
-    "t": "Differentiation of Mouse Neural Crest Cells Into Corneal Endothelial-Like Cells by Inhibiting TGF-β Signaling Pathway",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43037402/"
-   },
-   {
-    "t": "Clinical Interchangeability of Total Corneal Astigmatism Prediction Methods: An Agreement Analysis",
-    "src": "J Refract Surg",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43017897/"
-   },
-   {
-    "t": "Temporary KLEx Lenticule-Assisted Corneal Cross-linking in Thin-Cornea Keratoconus: A Case Series",
-    "src": "J Refract Surg",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43017896/"
-   },
-   {
-    "t": "Factors Influencing Manifest Refractive Cylinder and Ocular Residual Astigmatism in Keratoconus",
-    "src": "J Refract Surg",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43017894/"
-   },
-   {
-    "t": "Keratoconus - Common, yet uncommon",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43017756/"
-   },
-   {
-    "t": "Impact of Donor Age on Eligibility for Corneal Tissue Donation and Transplantation Suitability: A 2-Year Retrospective Analysis of Donors Aged up to 89 years",
+    "t": "Micro-Aberrations Scattering Index (MASI) as a Novel Metric for Subclinical Optical Degradation in Early Fuchs Endothelial Corneal Dystrophy",
     "src": "Cornea",
     "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43014705/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43042478/"
+   },
+   {
+    "t": "Risk Factors for Treatment Failure of Infectious Keratitis: An IRIS Registry Analysis",
+    "src": "Cornea",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43042475/"
+   },
+   {
+    "t": "Trends in Corneal Transplantation at a Large Canadian Tertiary Centre Between 2012 and 2024",
+    "src": "Cornea",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43042469/"
+   },
+   {
+    "t": "Early Diagnosis and Prognosis of Corneal and Ocular Surface Pathologies Using Artificial Intelligence: A State-of-the-art Review",
+    "src": "Cornea",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43042466/"
+   },
+   {
+    "t": "Persistent Ocular Pain and Neuropathic Corneal Pain After Corneal Refractive Surgery: Epidemiology, Evaluation, Counseling, and Management",
+    "src": "Cornea",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43042461/"
+   },
+   {
+    "t": "Better-Seeing Eye Versus Eye Dominance in Determining Quality of Life in Keratoconus",
+    "src": "Cornea",
+    "d": "2026 Nov 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43042459/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Tracking Retinal Ganglion Cell Soma Loss in Glaucoma Reveals Progression Over Months and Years",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43043342/"
+   },
    {
     "t": "12-month visual and safety outcomes of the ELIOS procedure with cataract surgery in primary open-angle glaucoma",
     "src": "J Cataract Refract Surg",
@@ -150,15 +162,27 @@
     "src": "Ophthalmology Glaucoma",
     "d": "2026 Nov 11",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43014449/"
-   },
-   {
-    "t": "Axial Length-Dependent Macular Choroidal Topography in POAG: A Wide-Field Swept-Source Optical Coherence Tomography Study",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43006987/"
    }
   ],
   "medret": [
+   {
+    "t": "Formulation Matters: Nutrient Availability and Label Accuracy of Supplements for Age-Related Macular Degeneration",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43043343/"
+   },
+   {
+    "t": "Automated retinal layer thickness segmentation in neovascular age-related macular degeneration: a comparison of two algorithms",
+    "src": "Eye",
+    "d": "2026 Nov 16",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43039982/"
+   },
+   {
+    "t": "Early Utilization Patterns and Adverse Outcomes of Anti-Complement Therapy in Geographic Atrophy in the Clinical Setting",
+    "src": "Ophthalmology Retina",
+    "d": "2026 Nov 16",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43039191/"
+   },
    {
     "t": "Real-world outcomes following 15 years of anti-vascular endothelial growth factor therapy in neovascular age-related macular degeneration",
     "src": "Eye",
@@ -176,24 +200,6 @@
     "src": "Acta Ophthalmologica",
     "d": "2026 Nov 14",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43031481/"
-   },
-   {
-    "t": "Registry-based definition of neovascular age-related macular degeneration in Denmark: A nationwide multicentre validation study",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 13",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43023810/"
-   },
-   {
-    "t": "Contrasting OCT Biomarkers, Visual Acuity, and Response to Corticosteroids in Diabetic and Uveitic Macular Edema",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43022604/"
-   },
-   {
-    "t": "Progression to Advanced Age-Related Macular Degeneration in Drusen-Driven and Pachychoroid-Driven Disease: The Korean Age-Related Maculopathy Study",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43022085/"
    }
   ],
   "vr": [
@@ -274,6 +280,12 @@
   ],
   "paeds": [
    {
+    "t": "Platelet parameters and treatment-requiring reactivation after intravitreal ranibizumab for retinopathy of prematurity: a retrospective single-center study",
+    "src": "Graefe's Archive",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43043434/"
+   },
+   {
     "t": "Contrast Sensitivity Across the Visual Field in Children With Amblyopia",
     "src": "IOVS",
     "d": "2026 Nov 2",
@@ -302,14 +314,8 @@
     "src": "J AAPOS",
     "d": "2026 Nov 3",
     "url": "https://pubmed.ncbi.nlm.nih.gov/42977246/"
-   },
-   {
-    "t": "Twelve-Month Efficacy and Visual Tolerability of MyoPi Spectacle Lenses in Childhood Myopia: A Randomized Clinical Trial",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42960268/"
    }
   ],
-  "updated": "2026-11-17"
+  "updated": "2026-11-18"
  }
 }
