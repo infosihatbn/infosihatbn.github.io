@@ -8,6 +8,12 @@
     "d": "2026-11-17"
    },
    {
+    "t": "Talented Soma’s new single ‘NPD’ turns the spotlight on mental health",
+    "src": "The Star",
+    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOUTlGSkRTUEpzVjBWWW9tZWxCTGM1dlJHNWN1TE5uLWVFOWZMdTFFREQtbkdJM0xpWEl1akc3c3BLNnI5U3BpSWc1djdxNVlrSXRlTU5DeHY1bVV4clZ1bGZQZWpzNVNCNmlBVFN0eUp3R2tndHVhU0k4RkxHY28wWFRsNzNxSUpFWkJMdUY4TkYtVTIzRVpLaEdrUjY2and2R1dVdlJ0eDI1a2NOWHprc0RiZFFlTGI4cWhyX0VFaUVWbGR2N1p3Sw?oc=5",
+    "d": "2026-11-17"
+   },
+   {
     "t": "JNC Signs 2 MoUs With Brunei Health Institutions to Employ Jordanian Nurses",
     "src": "وكالة الانباء الاردنية",
     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQMlJENVBReElIbVlfU0M5NHB2MjRwcDRQRWdRM1lnc3k0bUtkTENpZ0VTVTlpem5CUk9Yem0yWklrTVZ2Z2hZekhSLUFYaTY5VUdEYzQ4ZUQ5ZUtvaWNXaHBQV2YwMVJSU2NCdVZRSUxEWDJySUZXSVZhb1ZYbk5DY01FWTZ6MUUxeHcwbEdVUHhhQm52bHNSMFRBTERuNmJ3SHMxekw4Zw?oc=5",
@@ -18,50 +24,62 @@
     "src": "The Star",
     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQcEdnS21DMUF0UHZnTFZmeTBJX2tKUDN4RTRRY1N0QjRNRVJXcV9iYVBmaVRPNHo5Z3VYSFZsYy1GVVRCeFcydzZoY0VxN2dyd1FTd2FMQ0g0Q3pCalI4cy04dXoyc3hLVnNxN1h1cHRLam9RLUtaaXZDS294M0FfaF9YQlhXSHNyczU4UWJseDNxRE92WTM0cVdzMnl6VXVQTmR6aWVrc0NjelgwbXZkaWhqNmdxN1lvX2FlSTFwSnpvMXp1bVJUTlFGSko?oc=5",
     "d": "2026-11-13"
+   },
+   {
+    "t": "Brunei Launches Ten-Year Health Plan to Prevent and Control Chronic Diseases and Obesity",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1LcXZEZGZqaTdpdWZ1VGtSdXV4VDhWaUlfNVlYRDEwSDFXZVRGS3ZWZlNzcElXek5oTmRfajllLXdTRDNZbTVObG9YZWc0WDFGZnJMODFJWW9PazdEYWN3Q2hCNk9kOUNHUlY2QlE3OA?oc=5",
+    "d": "2026-11-11"
+   },
+   {
+    "t": "Brunei Launches New Health Initiative: Cross-Sector Collaboration to Fight Obesity",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBhUWJ5Nm4xOFlDbjY3MWNvYy1kTHpLTUVSZzJlMEhlelF1aDJ4MG9Lck14QzZQWVhKeU1lWVZCalhueUV3MjhqS0ZPNHhmUmQzcGxiVktjNk9kVjliWU1VcW9HVzNGS3pXMDdzWFpucw?oc=5",
+    "d": "2026-11-11"
    }
   ],
-  "updated": "2026-11-18"
+  "updated": "2026-11-19"
  },
  "sea": {
   "items": [
+   {
+    "t": "From area under the curve to clinical readiness: A framework for AI-assisted ectasia risk assessment before refractive surgery",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43049258/"
+   },
+   {
+    "t": "OCTA-Derived predictors of reactivation in quiescent type 1 macular neovascularisation: A longitudinal real-world cohort study",
+    "src": "Eye",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43045800/"
+   },
+   {
+    "t": "Geographic and socioeconomic access disparities to ophthalmology clinical trials in Australia and the UK",
+    "src": "Eye",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43045798/"
+   },
+   {
+    "t": "Dietary Lutein, Vegetable and Nut Intake, and Open-Angle Glaucoma: The Maastricht Study",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43045013/"
+   },
+   {
+    "t": "Evaluating the Effectiveness of Telemedicine Questionnaire Visits for Post-Operative Strabismus Patients",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43044711/"
+   },
    {
     "t": "Structure-Function Correlates of Radiation Chorioretinopathy: Insights from Microperimetry and Swept-Source OCTA",
     "src": "Retina",
     "d": "2026 Nov 17",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43043838/"
-   },
-   {
-    "t": "Functional Characterization of Retinal Degeneration in a Mouse Model of Mucopolysaccharidosis Type IIIC",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43043344/"
-   },
-   {
-    "t": "Formulation Matters: Nutrient Availability and Label Accuracy of Supplements for Age-Related Macular Degeneration",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43043343/"
-   },
-   {
-    "t": "Tracking Retinal Ganglion Cell Soma Loss in Glaucoma Reveals Progression Over Months and Years",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43043342/"
-   },
-   {
-    "t": "Intravitreal dexamethasone implant-based versus ranibizumab-based regimens for stage 3 Coats' disease: Efficacy and complications",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43042711/"
-   },
-   {
-    "t": "Automated retinal layer thickness segmentation in neovascular age-related macular degeneration: a comparison of two algorithms",
-    "src": "Eye",
-    "d": "2026 Nov 16",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43039982/"
    }
   ],
-  "updated": "2026-11-18"
+  "updated": "2026-11-19"
  },
  "bimj": {
   "items": [
@@ -78,17 +96,35 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-18"
+  "updated": "2026-11-19"
  },
- "checked": "2026-11-18T03:16+00:00",
+ "checked": "2026-11-19T02:55+00:00",
  "status": {
-  "news": "ok (3)",
+  "news": "ok (6)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
  },
  "sub": {
   "cornea": [
+   {
+    "t": "From area under the curve to clinical readiness: A framework for AI-assisted ectasia risk assessment before refractive surgery",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43049258/"
+   },
+   {
+    "t": "Clinical feasibility of non-contact in vivo conjunctival goblet cell imaging in ocular surface disease: a prospective study",
+    "src": "The Ocular Surface",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43044759/"
+   },
+   {
+    "t": "Umbilical cord and cord blood-derived therapies in the treatment of ocular surface diseases: a scoping review of factors, mechanisms of action, and clinical applicability",
+    "src": "The Ocular Surface",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43044758/"
+   },
    {
     "t": "Micro-Aberrations Scattering Index (MASI) as a Novel Metric for Subclinical Optical Degradation in Early Fuchs Endothelial Corneal Dystrophy",
     "src": "Cornea",
@@ -106,27 +142,21 @@
     "src": "Cornea",
     "d": "2026 Nov 11",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43042469/"
-   },
-   {
-    "t": "Early Diagnosis and Prognosis of Corneal and Ocular Surface Pathologies Using Artificial Intelligence: A State-of-the-art Review",
-    "src": "Cornea",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43042466/"
-   },
-   {
-    "t": "Persistent Ocular Pain and Neuropathic Corneal Pain After Corneal Refractive Surgery: Epidemiology, Evaluation, Counseling, and Management",
-    "src": "Cornea",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43042461/"
-   },
-   {
-    "t": "Better-Seeing Eye Versus Eye Dominance in Determining Quality of Life in Keratoconus",
-    "src": "Cornea",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43042459/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Intraocular Pressure Change After Cataract Surgery in Normal-Tension Glaucoma and Nonglaucomatous Eyes: Predictors of Postoperative Response",
+    "src": "J Cataract Refract Surg",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43050598/"
+   },
+   {
+    "t": "Dietary Lutein, Vegetable and Nut Intake, and Open-Angle Glaucoma: The Maastricht Study",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43045013/"
+   },
    {
     "t": "Tracking Retinal Ganglion Cell Soma Loss in Glaucoma Reveals Progression Over Months and Years",
     "src": "IOVS",
@@ -150,18 +180,6 @@
     "src": "JAMA Ophthalmology",
     "d": "2026 Nov 12",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43018943/"
-   },
-   {
-    "t": "Ocular Magnification Correction Influences Glaucoma-Related Microvascular Measurements in OCT Angiography",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43018424/"
-   },
-   {
-    "t": "Association of Ambient Air Pollution Exposure With Early Failure After Incisional Glaucoma Surgery",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43014449/"
    }
   ],
   "medret": [
@@ -204,6 +222,12 @@
   ],
   "vr": [
    {
+    "t": "Pediatric post-traumatic endophthalmitis: a systematic review and meta-analysis",
+    "src": "Graefe's Archive",
+    "d": "2026 Nov 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43049922/"
+   },
+   {
     "t": "Pathogenesis of Bacillary Layer Detachment in Rhegmatogenous Retinal Detachment: Insights From Fundus Autofluorescence Imaging",
     "src": "IOVS",
     "d": "2026 Nov 2",
@@ -232,12 +256,6 @@
     "src": "Graefe's Archive",
     "d": "2026 Nov 9",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43000571/"
-   },
-   {
-    "t": "COMPARISON OF TRACTION FORCES IN EX VIVO VITRECTOMY USING 25+®G 20K CPM DUAL-BLADE AND 25+®G 10K CPM SINGLE-BLADE VITRECTOMY PROBES",
-    "src": "Retina",
-    "d": "2026 Nov 6",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42993209/"
    }
   ],
   "neuro": [
@@ -280,6 +298,18 @@
   ],
   "paeds": [
    {
+    "t": "Efficacy and safety of current interventions for high myopia control in children: a systematic review and network meta-analysis",
+    "src": "Graefe's Archive",
+    "d": "2026 Nov 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43049921/"
+   },
+   {
+    "t": "Evaluating the Effectiveness of Telemedicine Questionnaire Visits for Post-Operative Strabismus Patients",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43044711/"
+   },
+   {
     "t": "Platelet parameters and treatment-requiring reactivation after intravitreal ranibizumab for retinopathy of prematurity: a retrospective single-center study",
     "src": "Graefe's Archive",
     "d": "2026 Nov 17",
@@ -302,20 +332,8 @@
     "src": "American Journal of Ophthalmology",
     "d": "2026 Nov 10",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43009085/"
-   },
-   {
-    "t": "Potential Disparities in Access to Adult Strabismus Care",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Nov 5",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42986613/"
-   },
-   {
-    "t": "Keratometric variability after infant cataract surgery: 10-year outcomes from the Infant Aphakia Treatment Study",
-    "src": "J AAPOS",
-    "d": "2026 Nov 3",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42977246/"
    }
   ],
-  "updated": "2026-11-18"
+  "updated": "2026-11-19"
  }
 }
