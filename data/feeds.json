@@ -2,15 +2,15 @@
  "news": {
   "items": [
    {
+    "t": "Two Health Supplements Found With Banned Substances – Brunei MOH Bans Import and Sale",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9xRi1VaElET25xMkhQUWhsblJRNlBQUTc1WUlzUkZSY3dTMGl3RWZsSHpWQ1VIUEJ2aDV4WUFpOWQ0ekxDYlZIRzVIbUNlVkNXNVBEUzRGX0ptSHhHdUdDUC1nX1dueGtKd3lTelNxZw?oc=5",
+    "d": "2026-11-19"
+   },
+   {
     "t": "Prabowo pushes ASEAN-India cooperation on health, disaster mitigation",
     "src": "ANTARA News",
     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPamVVLXJueDdZTkdHUUhrd3gzUjFkRzI0OFBENF8tYmYySnJVLWVxbk1OSTdvWTh5WDF1Q1Qzbl9jTVBFeWNKSlNsVTFOX2kxZkpFTjg2RHE2RTJGYm1wT2p2Y1VYUExGaEg2OTctdGl3SlB0VHk1REJsMnlwcEVkcUhJN2FEczFfN1JmUmlzUDl0Rlk5RW83YkU2ektmQXU1MVpfQzdlc2k2Z9IBrwFBVV95cUxNXzM2ZE91UGdIRHpoTUttRnkzcmh5MkZhcWxublJPdG1fOHpkWFhHS1hKQ2x1cXlNSk1BV19wUEtyUHE2bW5ybjlNZTZzY3plRncxNG5fT3haeVNHWVFkbUI4T2tvNjhMZy1paVV0eU04LVJkOGVXQllmWjZXM2p5bkd1STBDU1lCWTFpQXM5ZGpKNkxFOUREWVY1VFViRGJoNUU5aUNlT2hLblRob21N?oc=5",
-    "d": "2026-11-17"
-   },
-   {
-    "t": "Talented Soma’s new single ‘NPD’ turns the spotlight on mental health",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOUTlGSkRTUEpzVjBWWW9tZWxCTGM1dlJHNWN1TE5uLWVFOWZMdTFFREQtbkdJM0xpWEl1akc3c3BLNnI5U3BpSWc1djdxNVlrSXRlTU5DeHY1bVV4clZ1bGZQZWpzNVNCNmlBVFN0eUp3R2tndHVhU0k4RkxHY28wWFRsNzNxSUpFWkJMdUY4TkYtVTIzRVpLaEdrUjY2and2R1dVdlJ0eDI1a2NOWHprc0RiZFFlTGI4cWhyX0VFaUVWbGR2N1p3Sw?oc=5",
     "d": "2026-11-17"
    },
    {
@@ -38,48 +38,48 @@
     "d": "2026-11-11"
    }
   ],
-  "updated": "2026-11-19"
+  "updated": "2026-11-20"
  },
  "sea": {
   "items": [
    {
-    "t": "From area under the curve to clinical readiness: A framework for AI-assisted ectasia risk assessment before refractive surgery",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 18",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43049258/"
+    "t": "A Macular Mass",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 19",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43056126/"
    },
    {
-    "t": "OCTA-Derived predictors of reactivation in quiescent type 1 macular neovascularisation: A longitudinal real-world cohort study",
-    "src": "Eye",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43045800/"
+    "t": "Impression Cytologic Evaluation of Microsporidial Keratoconjunctivitis",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 19",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43056122/"
    },
    {
-    "t": "Geographic and socioeconomic access disparities to ophthalmology clinical trials in Australia and the UK",
-    "src": "Eye",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43045798/"
+    "t": "Low-Concentration Atropine Eye Drops in Children With Myopia and Intermittent Exotropia: The AMIXT2 Randomized Clinical Trial",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 19",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43056108/"
    },
    {
-    "t": "Dietary Lutein, Vegetable and Nut Intake, and Open-Angle Glaucoma: The Maastricht Study",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43045013/"
+    "t": "Grafting vs Intraoperative Mitomycin C for Preventing Pterygium Recurrence: A Randomized Clinical Trial",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 19",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43056092/"
    },
    {
-    "t": "Evaluating the Effectiveness of Telemedicine Questionnaire Visits for Post-Operative Strabismus Patients",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43044711/"
-   },
-   {
-    "t": "Structure-Function Correlates of Radiation Chorioretinopathy: Insights from Microperimetry and Swept-Source OCTA",
+    "t": "Macular Vortex Veins in Idiopathic Choroidal Neovascularization: A Pilot Case Series",
     "src": "Retina",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43043838/"
+    "d": "2026 Nov 19",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43055620/"
+   },
+   {
+    "t": "Relationship Between Chromatic Sensitivity and Retinal Structure in Early Glaucoma",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43055596/"
    }
   ],
-  "updated": "2026-11-19"
+  "updated": "2026-11-20"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-19"
+  "updated": "2026-11-20"
  },
- "checked": "2026-11-19T02:55+00:00",
+ "checked": "2026-11-20T02:48+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -107,6 +107,12 @@
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Coffee saucer grading system: a novel method for stratifying corneal trauma in the International Globe and Adnexal Trauma Epidemiology Study (IGATES) registry",
+    "src": "Eye",
+    "d": "2026 Nov 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43052411/"
+   },
    {
     "t": "From area under the curve to clinical readiness: A framework for AI-assisted ectasia risk assessment before refractive surgery",
     "src": "Acta Ophthalmologica",
@@ -136,15 +142,15 @@
     "src": "Cornea",
     "d": "2026 Nov 11",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43042475/"
-   },
-   {
-    "t": "Trends in Corneal Transplantation at a Large Canadian Tertiary Centre Between 2012 and 2024",
-    "src": "Cornea",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43042469/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Relationship Between Chromatic Sensitivity and Retinal Structure in Early Glaucoma",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43055596/"
+   },
    {
     "t": "Intraocular Pressure Change After Cataract Surgery in Normal-Tension Glaucoma and Nonglaucomatous Eyes: Predictors of Postoperative Response",
     "src": "J Cataract Refract Surg",
@@ -174,15 +180,21 @@
     "src": "Ophthalmology",
     "d": "2026 Nov 12",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43020385/"
-   },
-   {
-    "t": "Implications of Image-Level Duplication in Public Glaucoma Datasets",
-    "src": "JAMA Ophthalmology",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43018943/"
    }
   ],
   "medret": [
+   {
+    "t": "Spatio-Temporal Choriocapillaris Flow Deficits Are Associated With Outer Retinal Degeneration and Visual Function in Geographic Atrophy",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43055595/"
+   },
+   {
+    "t": "Angiopoietin-2 in Retinal Vascular Fibrosis: Mechanisms and Therapeutic Implications for Diabetic Retinopathy",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Nov 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43051421/"
+   },
    {
     "t": "Formulation Matters: Nutrient Availability and Label Accuracy of Supplements for Age-Related Macular Degeneration",
     "src": "IOVS",
@@ -206,21 +218,21 @@
     "src": "Eye",
     "d": "2026 Nov 15",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43035550/"
-   },
-   {
-    "t": "Biennial versus Annual Screening: Predicting Yearly Progression of Diabetic Retinopathy in a Large Veteran Population from Tabular Data",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43034723/"
-   },
-   {
-    "t": "Early intraretinal fluid volume dynamics after switching from aflibercept 2 mg to faricimab in diabetic macular oedema",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 14",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43031481/"
    }
   ],
   "vr": [
+   {
+    "t": "Incidence and visual outcomes of post-intravitreal injection endophthalmitis: a single-centre analysis of 224,397 injections",
+    "src": "Eye",
+    "d": "2026 Nov 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43052414/"
+   },
+   {
+    "t": "Trends in hospitalized primary rhegmatogenous retinal detachment in China, 2016 - 2021: A nationwide retrospective tertiary-hospital database study",
+    "src": "Asia-Pacific Journal of Ophthalmology",
+    "d": "2026 Nov 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43051317/"
+   },
    {
     "t": "Pediatric post-traumatic endophthalmitis: a systematic review and meta-analysis",
     "src": "Graefe's Archive",
@@ -244,18 +256,6 @@
     "src": "Retina",
     "d": "2026 Nov 11",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43012660/"
-   },
-   {
-    "t": "Human amniotic membrane transplantation for macular hole-associated retinal detachment: A systematic review of outcomes in refractory and complex cases",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43003356/"
-   },
-   {
-    "t": "Long-term biocompatibility and efficacy of DNA supramolecular hydrogels as vitreous substitutes in a rabbit model of retinal detachment",
-    "src": "Graefe's Archive",
-    "d": "2026 Nov 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43000571/"
    }
   ],
   "neuro": [
@@ -298,6 +298,18 @@
   ],
   "paeds": [
    {
+    "t": "Low-Concentration Atropine Eye Drops in Children With Myopia and Intermittent Exotropia: The AMIXT2 Randomized Clinical Trial",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 19",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43056108/"
+   },
+   {
+    "t": "Retinopathy of prematurity: causes, treatment and prevention",
+    "src": "Progress in Retinal and Eye Research",
+    "d": "2026 Nov 18",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43051313/"
+   },
+   {
     "t": "Efficacy and safety of current interventions for high myopia control in children: a systematic review and network meta-analysis",
     "src": "Graefe's Archive",
     "d": "2026 Nov 18",
@@ -320,20 +332,8 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43037401/"
-   },
-   {
-    "t": "Impairment of Contrast Sensitivity Function and Stereopsis in Successfully Treated Bilateral Pediatric Cataract Patients",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43037400/"
-   },
-   {
-    "t": "High-Dose Intravitreal Topotecan for Refractory or Recurrent Retinoblastoma: Efficacy, Safety and Intraocular Cytokine Profiles",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 10",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43009085/"
    }
   ],
-  "updated": "2026-11-19"
+  "updated": "2026-11-20"
  }
 }
