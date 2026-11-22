@@ -38,10 +38,28 @@
     "d": "2026-11-11"
    }
   ],
-  "updated": "2026-11-21"
+  "updated": "2026-11-22"
  },
  "sea": {
   "items": [
+   {
+    "t": "Nasal versus Temporal Deep Sclerectomy in Primary Congenital Glaucoma: Outcomes and Predictors of Survival",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Nov 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43064155/"
+   },
+   {
+    "t": "Systematic review of artificial intelligence for ocular imaging-based ageing measures: evidence, challenges, and clinical potential",
+    "src": "Asia-Pacific Journal of Ophthalmology",
+    "d": "2026 Nov 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43064073/"
+   },
+   {
+    "t": "Association of allergic conjunctivitis severity with meibomian gland abnormalities in children: a cross-sectional study",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43064053/"
+   },
    {
     "t": "Long-term Outcomes of Combined Phacoemulsification and Intravitreal Dexamethasone Implant in Diabetic Macular Oedema",
     "src": "Retina",
@@ -59,27 +77,9 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43062418/"
-   },
-   {
-    "t": "Integrative Multi-Omics in Glaucoma: Defining Mechanistic Axes and Enabling Precision Management",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43062417/"
-   },
-   {
-    "t": "Gender disparities in cataract-related blindness and visual impairment: analysis of data from 204 countries",
-    "src": "Eye",
-    "d": "2026 Nov 19",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43058199/"
-   },
-   {
-    "t": "Rhegmatogenous Retinal Detachment: A Contemporary Review of Repair Techniques, Common Complications, Advances in Imaging and Access to Care",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 19",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43057624/"
    }
   ],
-  "updated": "2026-11-21"
+  "updated": "2026-11-22"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-21"
+  "updated": "2026-11-22"
  },
- "checked": "2026-11-21T02:57+00:00",
+ "checked": "2026-11-22T01:51+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -146,6 +146,12 @@
   ],
   "glaucoma": [
    {
+    "t": "Nasal versus Temporal Deep Sclerectomy in Primary Congenital Glaucoma: Outcomes and Predictors of Survival",
+    "src": "Ophthalmology Glaucoma",
+    "d": "2026 Nov 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43064155/"
+   },
+   {
     "t": "The Emory Optic Nerve Head Atlas: Using 3D Anatomical Mapping to Study Optic Neuropathies With an Initial Focus on Glaucoma",
     "src": "IOVS",
     "d": "2026 Nov 2",
@@ -174,12 +180,6 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43055596/"
-   },
-   {
-    "t": "Intraocular Pressure Change After Cataract Surgery in Normal-Tension Glaucoma and Nonglaucomatous Eyes: Predictors of Postoperative Response",
-    "src": "J Cataract Refract Surg",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43050598/"
    }
   ],
   "medret": [
@@ -234,7 +234,7 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/43052414/"
    },
    {
-    "t": "Trends in hospitalized primary rhegmatogenous retinal detachment in China, 2016 - 2021: A nationwide retrospective tertiary-hospital database study",
+    "t": "Trends in hospitalized primary rhegmatogenous retinal detachment in China, 2016 - 2021: a nationwide retrospective tertiary-hospital database study",
     "src": "Asia-Pacific Journal of Ophthalmology",
     "d": "2026 Nov 18",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43051317/"
@@ -334,6 +334,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/43037401/"
    }
   ],
-  "updated": "2026-11-21"
+  "updated": "2026-11-22"
  }
 }
