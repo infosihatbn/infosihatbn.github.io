@@ -26,10 +26,10 @@ button,select,input{font:inherit;color:inherit}
 .stage.con1{background:#000;color:#fff}.stage.con2{color:#e1e1e1}
 .ladder{width:100%;padding:6px 0 18px}
 .ladder.mir,.chart.mir{transform:scaleX(-1)}
-.row{display:flex;align-items:center;gap:12px;padding-inline:20px;cursor:pointer;border-left:4px solid transparent}
+.row{position:relative;display:flex;align-items:center;justify-content:center;padding-inline:20px;cursor:pointer;border-left:4px solid transparent}
 .row.cur{border-left-color:var(--acc)}
-.row .lt{flex:1;display:flex;align-items:center;min-width:0}
-.rl{flex:none;font-size:15px;color:#555;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row .lt{display:flex;align-items:center;justify-content:center;min-width:0}
+.rl{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:15px;color:#555;font-variant-numeric:tabular-nums;white-space:nowrap}
 .con1 .rl,.con1 .lab,.con1 .fn{color:#9aa}.con2 .rl,.con2 .lab{color:#777}
 .fn{font-size:13px;color:#888;padding:4px 20px;margin:0}.nofit{padding:20px;text-align:center;color:#888}
 .chart{display:flex;align-items:center;justify-content:center}
@@ -95,14 +95,14 @@ const IC = { up: '<path d="M12 19V5M5 12l7-7 7 7"/>', dn: '<path d="M12 5v14M5 1
 const ic = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>`;
 
 // ---------------- optotypes (drawn on a 5 x 5 grid, stroke = 1/5 of the height, like Sloan letters) ----------------
-const SL = { C: '<path d="M4.33 1.5A2 2 0 1 0 4.33 3.5"/>', D: '<path d="M.5 .5H2.5A2 2 0 0 1 2.5 4.5H.5Z"/>', H: '<path d="M.5 0V5M4.5 0V5M1 2.5H4"/>', K: '<path d="M.5 0V5M4.6 .1 1 3.2M2.2 2.1 4.6 4.9"/>', N: '<path d="M.5 0V5M4.5 0V5M.75 .3 4.25 4.7"/>', O: '<circle cx="2.5" cy="2.5" r="2"/>', R: '<path d="M.5 5V.5H3A1.5 1.5 0 0 1 3 3.5H.5M2.6 3.5 4.6 5"/>', S: '<path d="M4.4 1.2C3.9 .4 1 .2 .7 1.4C.4 2.8 4.6 2.2 4.4 3.7C4.1 5 1 4.8 .5 3.8"/>', V: '<path d="M.45 0 2.5 4.6 4.55 0"/>', Z: '<path d="M.5 .5H4.5L.5 4.5H4.5"/>' };
+const SL = { C: '<path d="M4.436 2A2 2 0 1 0 4.436 3"/>', D: '<path d="M.5 0V5M0 .5H2.5A2 2 0 0 1 2.5 4.5H0"/>', H: '<path d="M.5 0V5M4.5 0V5M1 2.5H4"/>', K: '<path d="M.5 0V5M.6 3.6 5.2-.4M1.9 2.4 5.3 5.6"/>', N: '<path d="M.5 0V5M4.5 0V5M.55-.3 4.45 5.3"/>', O: '<circle cx="2.5" cy="2.5" r="2"/>', R: '<path d="M.5 5.2V.5H3A1.5 1.5 0 0 1 3 3.5H.5M2.6 3.3 4.9 5.4"/>', S: '<path d="M4.23 1A2 1 0 0 0 2.5 .5A2 1 0 0 0 .5 1.5A2 1 0 0 0 2.5 2.5A2 1 0 0 1 4.5 3.5A2 1 0 0 1 2.5 4.5A2 1 0 0 1 .77 4"/>', V: '<path d="M.3-.3 2.5 4.6 4.7-.3"/>', Z: '<path d="M0 .5H4.5L.5 4.5H5"/>' };
 const PIC = { circle: '<circle cx="2.5" cy="2.5" r="2.1"/>', square: '<rect x=".45" y=".45" width="4.1" height="4.1"/>', house: '<path d="M2.5 .4 4.6 2.2V4.6H.4V2.2Z"/>', heart: '<path d="M2.5 4.5C-.5 2.6 .6-.3 2.5 1.5C4.4-.3 5.5 2.6 2.5 4.5Z"/>' };
 const PICN = { circle: 'Circle', square: 'Square', house: 'House', heart: 'Heart' };
 const DIRS = { 0: '→', 90: '↓', 180: '←', 270: '↑' };
 const CHARTS = { L: 'Letters (Sloan)', N: 'Numbers', E: 'Tumbling E (children, non-readers)', C: 'Landolt C', P: 'Pictures (young children)' };
 const svgOpt = (o, h) => {
   const a = `class="opt" width="${h}" height="${h}" viewBox="0 0 5 5"`;
-  if (o.k === 'L') return `<svg ${a}><g fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="bevel">${SL[o.v]}</g></svg>`;
+  if (o.k === 'L') return `<svg ${a}><clipPath id="sbx"><rect width="5" height="5"/></clipPath><g clip-path="url(#sbx)" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="miter" stroke-miterlimit="10">${SL[o.v]}</g></svg>`;
   if (o.k === 'N') return `<svg ${a}><text x="2.5" y="5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="6.98" fill="currentColor">${o.v}</text></svg>`;
   if (o.k === 'E') return `<svg ${a}><g transform="rotate(${o.v} 2.5 2.5)" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 .5H.5V4.5H5M.5 2.5H5"/></g></svg>`;
   if (o.k === 'C') return `<svg ${a}><g transform="rotate(${o.v} 2.5 2.5)" fill="none" stroke="currentColor" stroke-width="1"><path d="M4.436 2A2 2 0 1 0 4.436 3"/></g></svg>`;
@@ -228,13 +228,13 @@ function display() {
     stage.className = 'stage con' + S.con + (S.view === 'chart' ? ' scroll' : '');
     let html = '', notes = [];
     if (S.view === 'chart') {
-      const LW = Math.min(150, W * .3), big = [], small = [];
+      const LW = Math.min(140, W * .25), big = [], small = [];
       LINES.forEach((L, i) => {
         const h = hpx(i);
         if (h * dpr < 6) { small.push(L[0]); return; }
-        if (h > W - LW || h > H * .9) { big.push(L[0]); return; }
-        let n = L[2]; while (n > 1 && n * h + (n - 1) * h > W - LW) n--; S.ns[i] = n;
-        html += `<div class="row${i === S.li ? ' cur' : ''}" data-row="${i}" style="padding-block:${Math.max(10, h * .3).toFixed(1)}px"><div class="lt" style="gap:${h.toFixed(2)}px">${S.rows[i].slice(0, n).map(o => svgOpt(o, h.toFixed(2))).join('')}</div><span class="rl">${lab(L[0], d)}</span></div>`;
+        if (h > W - 2 * LW || h > H * .9) { big.push(L[0]); return; }
+        let n = L[2]; while (n > 1 && n * h + (n - 1) * h > W - 2 * LW) n--; S.ns[i] = n;
+        html += `<div class="row${i === S.li ? ' cur' : ''}" data-row="${i}" style="padding-block:${Math.max(12, h * .5).toFixed(1)}px"><div class="lt" style="gap:${h.toFixed(2)}px">${S.rows[i].slice(0, n).map(o => svgOpt(o, h.toFixed(2))).join('')}</div><span class="rl">${lab(L[0], d)}</span></div>`;
       });
       if (big.length) notes.push(`${big.map(x => note(x, S.note)).join(', ')} too big for this screen at ${fmtD(d)}.`);
       if (small.length) notes.push(`${small.map(x => note(x, S.note)).join(', ')} too small to draw sharply at ${fmtD(d)} on this screen: test from further away or use a sharper screen.`);
