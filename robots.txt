@@ -3,6 +3,5 @@ Allow: /
 Disallow: /doktor/
 Disallow: /english/doctors/
 Disallow: /embeds/
-Disallow: /champion/
 
 Sitemap: https://matakitani.com/sitemap.xml

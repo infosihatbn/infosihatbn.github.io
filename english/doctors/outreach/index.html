@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex"><title>Vision Tools · MataKitani for Doctors</title>
+<link rel="icon" href="/assets/favicon-32.png">
+<style>
+/* MataKitani outreach vision tools (Haziq, 2026-11-22): calibrated visual acuity chart, phone remote by QR, colour vision plates */
+:root{--ink:#10283a;--mut:#5a6b78;--acc:#1e6fa8;--acc2:#e7f1f9;--line:#d9e3ea;--ok:#1f8a4c;--bad:#c0392b;--bg:#f4f7fa}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;color:var(--ink);background:#fff;-webkit-tap-highlight-color:transparent}
+button,select,input{font:inherit;color:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-weight:600}
+.btn:hover{border-color:var(--acc)}.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}.btn.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.btn.on{background:var(--acc2);border-color:var(--acc);color:var(--acc)}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* display (PC / TV) */
+#app{display:flex;flex-direction:column;height:100%;height:100dvh}
+.top{display:flex;align-items:center;gap:10px;padding:10px max(14px,env(safe-area-inset-left));border-bottom:1px solid var(--line);background:var(--bg);flex-wrap:wrap}
+.top .brand{font-weight:800;margin-right:6px;white-space:nowrap}.top .brand small{display:block;font-weight:600;color:var(--mut);font-size:12px}
+.tabs{display:flex;gap:4px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:3px}
+.tabs button{border:0;background:none;padding:8px 14px;border-radius:11px;font-weight:700;cursor:pointer;color:var(--mut)}.tabs button[aria-selected=true]{background:var(--acc);color:#fff}
+.top .sp{flex:1}.back{color:var(--acc);text-decoration:none;font-weight:600;font-size:14px}
+.stage{flex:1;position:relative;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+.chart{display:flex;align-items:center;justify-content:center}
+.chart.mir{transform:scaleX(-1)}
+.opt{display:block;flex:none}
+.crowd{outline-style:solid;outline-color:#000}
+.lab{position:absolute;left:14px;bottom:10px;font-size:13px;color:#9aa7b1;font-variant-numeric:tabular-nums}
+.warn{position:absolute;left:50%;top:12px;transform:translateX(-50%);background:#fff4e5;color:#8a4b00;border:1px solid #f2c48d;border-radius:10px;padding:6px 12px;font-size:14px;max-width:90%;text-align:center}
+.bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px;border-top:1px solid var(--line);background:var(--bg)}
+.hide-ui .top,.hide-ui .bar{display:none}
+.hint{font-size:12.5px;color:var(--mut);text-align:center;padding:0 10px 8px;background:var(--bg)}
+.hide-ui .hint{display:none}
+/* colour vision */
+.cv{display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px;width:100%;height:100%;justify-content:center}
+.cv canvas{width:min(62vh,88vw);height:min(62vh,88vw);border-radius:50%;background:#fff}
+.cv .ttl{font-weight:700;color:var(--mut)}
+.cv .ans{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.res{max-width:620px;padding:18px 22px;border:1px solid var(--line);border-radius:18px;background:var(--bg)}
+.res h2{margin:0 0 6px;font-size:22px}.res ul{margin:8px 0;padding-left:20px}.res .note{font-size:14px;color:var(--mut)}
+.peek{font-size:14px;color:var(--mut);min-height:20px}
+/* dialogs */
+dialog{border:0;border-radius:20px;padding:0;max-width:min(560px,94vw);width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(10,30,45,.45)}
+.dlg{padding:18px 20px 20px}.dlg h2{margin:0 0 4px;font-size:20px}.dlg p{margin:6px 0;color:var(--mut);font-size:14.5px}
+.dlg label{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0;font-weight:600}
+.dlg select,.dlg input[type=number]{min-height:40px;border:1.5px solid var(--line);border-radius:10px;padding:4px 8px;background:#fff;min-width:150px}
+.dlg .x{float:right;border:0;background:none;font-size:22px;cursor:pointer;line-height:1}
+.card{height:54px;border:2.5px solid var(--acc);border-radius:7px;margin:10px 0;background:repeating-linear-gradient(90deg,var(--acc2) 0 10px,#fff 10px 20px)}
+.qr{display:grid;place-items:center;background:#fff;padding:10px;margin:8px auto;width:min(280px,80vw)}.qr svg{width:100%;height:auto}
+.url{font-size:12px;word-break:break-all;text-align:center;color:var(--mut)}
+.st{text-align:center;font-weight:700}.rm .st{font-size:13px;font-weight:600;color:var(--mut);text-align:right;max-width:55%}.st.ok{color:var(--ok)}
+/* phone remote */
+.rm{max-width:560px;margin:0 auto;padding:max(12px,env(safe-area-inset-top)) 14px max(16px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:12px;min-height:100%}
+.rm h1{font-size:18px;margin:0;display:flex;justify-content:space-between;align-items:center}
+.rm .big{font-size:40px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums;line-height:1.1}
+.rm .sub2{text-align:center;color:var(--mut);font-size:14px}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.chips button{min-width:52px;min-height:52px;border-radius:14px;border:2px solid var(--line);background:#fff;font-size:26px;font-weight:800;cursor:pointer}
+.chips button.x{border-color:var(--bad);background:#fdecea;color:var(--bad);text-decoration:line-through}
+.chips button.cur{border-color:var(--acc)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rm .btn{min-height:54px;font-size:16px}
+.rm .huge{min-height:70px;font-size:19px}
+.rec{background:var(--bg);border-radius:14px;padding:10px 12px;font-size:15px}.rec b{display:block;margin-bottom:4px}.rec ol{margin:0;padding-left:20px}
+.rm select{min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:4px 8px;background:#fff;width:100%}
+.ansbig{font-size:46px;font-weight:900;text-align:center;letter-spacing:.04em}
+.ansbig .l{color:#c2185b}.ansbig .r{color:#6a1b9a}
+@media (max-width:700px){.top .brand small{display:none}.bar .btn span{display:none}}
+</style></head>
+<body>
+<div id="app"></div>
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const LS = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } } };
+const IC = { up: '<path d="M12 19V5M5 12l7-7 7 7"/>', dn: '<path d="M12 5v14M5 12l7 7 7-7"/>', sh: '<path d="M4 4v6h6M20 20v-6h-6"/><path d="M5 13a7 7 0 0 0 12 3M19 11A7 7 0 0 0 7 8"/>', one: '<rect x="8" y="5" width="8" height="14" rx="1"/>', mir: '<path d="M12 3v18M9 7 4 12l5 5M15 7l5 5-5 5"/>', ph: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>', gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>', full: '<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/>', eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>' };
+const ic = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>`;
+
+// ---------------- optotypes (drawn on a 5 x 5 grid, stroke = 1/5 of the height, like Sloan letters) ----------------
+const SL = { C: '<path d="M4.33 1.5A2 2 0 1 0 4.33 3.5"/>', D: '<path d="M.5 .5H2.5A2 2 0 0 1 2.5 4.5H.5Z"/>', H: '<path d="M.5 0V5M4.5 0V5M1 2.5H4"/>', K: '<path d="M.5 0V5M4.6 .1 1 3.2M2.2 2.1 4.6 4.9"/>', N: '<path d="M.5 0V5M4.5 0V5M.75 .3 4.25 4.7"/>', O: '<circle cx="2.5" cy="2.5" r="2"/>', R: '<path d="M.5 5V.5H3A1.5 1.5 0 0 1 3 3.5H.5M2.6 3.5 4.6 5"/>', S: '<path d="M4.4 1.2C3.9 .4 1 .2 .7 1.4C.4 2.8 4.6 2.2 4.4 3.7C4.1 5 1 4.8 .5 3.8"/>', V: '<path d="M.45 0 2.5 4.6 4.55 0"/>', Z: '<path d="M.5 .5H4.5L.5 4.5H4.5"/>' };
+const PIC = { circle: '<circle cx="2.5" cy="2.5" r="2.1"/>', square: '<rect x=".45" y=".45" width="4.1" height="4.1"/>', house: '<path d="M2.5 .4 4.6 2.2V4.6H.4V2.2Z"/>', heart: '<path d="M2.5 4.5C-.5 2.6 .6-.3 2.5 1.5C4.4-.3 5.5 2.6 2.5 4.5Z"/>' };
+const PICN = { circle: 'Circle', square: 'Square', house: 'House', heart: 'Heart' };
+const DIRS = { 0: '→', 90: '↓', 180: '←', 270: '↑' };
+const CHARTS = { L: 'Letters (Sloan)', N: 'Numbers', E: 'Tumbling E (children, non-readers)', C: 'Landolt C', P: 'Pictures (young children)' };
+const svgOpt = (o, h) => {
+  const a = `class="opt" width="${h}" height="${h}" viewBox="0 0 5 5"`;
+  if (o.k === 'L') return `<svg ${a}><g fill="none" stroke="#000" stroke-width="1" stroke-linejoin="bevel">${SL[o.v]}</g></svg>`;
+  if (o.k === 'N') return `<svg ${a}><text x="2.5" y="5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="6.98" fill="#000">${o.v}</text></svg>`;
+  if (o.k === 'E') return `<svg ${a}><g transform="rotate(${o.v} 2.5 2.5)" fill="none" stroke="#000" stroke-width="1"><path d="M5 .5H.5V4.5H5M.5 2.5H5"/></g></svg>`;
+  if (o.k === 'C') return `<svg ${a}><g transform="rotate(${o.v} 2.5 2.5)" fill="none" stroke="#000" stroke-width="1"><path d="M4.436 2A2 2 0 1 0 4.436 3"/></g></svg>`;
+  return `<svg ${a}><g fill="none" stroke="#000" stroke-width=".75" stroke-linejoin="round">${PIC[o.v]}</g></svg>`;
+};
+const optTxt = o => o.k === 'E' || o.k === 'C' ? DIRS[o.v] : o.k === 'P' ? PICN[o.v] : o.v;
+const POOL = { L: Object.keys(SL), N: ['2', '3', '4', '5', '6', '7', '8', '9'], E: [0, 90, 180, 270], C: [0, 90, 180, 270], P: Object.keys(PIC) };
+const pickOpts = (k, n) => { const p = POOL[k], out = []; while (out.length < n) { const v = p[(Math.random() * p.length) | 0]; if (out.length && out[out.length - 1].v === v) continue; if (p.length > 5 && out.some(o => o.v === v)) continue; out.push({ k, v }); } return out; };
+
+// lines: Snellen denominator at 6 m, logMAR, optotypes per line
+const LINES = [[60, 1.0, 1], [36, .78, 2], [24, .6, 3], [18, .48, 4], [12, .3, 5], [9, .18, 5], [7.5, .1, 5], [6, 0, 5], [5, -.08, 5]];
+const note = (x, n) => n === 'ft' ? '20/' + Math.round(x * 20 / 6) : n === 'log' ? 'logMAR ' + LINES.find(l => l[0] === x)[1].toFixed(2) : n === 'dec' ? (6 / x).toFixed(2) : '6/' + x;
+const allNotes = x => `6/${x} · 20/${Math.round(x * 20 / 6)} · logMAR ${LINES.find(l => l[0] === x)[1].toFixed(2)}`;
+
+// ---------------- colour vision plates (original MataKitani designs, not Ishihara plates) ----------------
+// Figure and background colours were picked with the Machado et al. (2009) dichromacy model so that they look alike to
+// protans and deutans; lightness is jittered so brightness gives nothing away.
+const PAL = {
+  bg: [[160, 175, 120], [170, 180, 130], [150, 170, 110], [140, 165, 100]],
+  van: [[240, 136, 112], [240, 152, 128], [240, 128, 104], [248, 104, 88]],
+  demo: [[176, 84, 40], [160, 70, 36], [190, 96, 50]],
+  grey: [[150, 150, 155], [165, 160, 165], [156, 154, 160]],
+  pc: [[232, 128, 152], [248, 136, 160], [224, 152, 168]],   // hard for protans to see (deutans see it)
+  dc: [[240, 80, 160], [248, 96, 168], [232, 88, 160]]       // hard for deutans to see (protans see it)
+};
+const VAN = ['8', '29', '5', '3', '15', '74', '6', '45', '7', '16', '73', '57', '2', '42'];
+const CLS = ['26', '42', '35', '96', '48', '53'];
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0;[a[i], a[j]] = [a[j], a[i]]; } return a; };
+const newSeq = () => { const v = shuffle(VAN.slice()).slice(0, 6), c = shuffle(CLS.slice()).slice(0, 2); return [{ t: 'demo', n: '12' }, ...v.map(n => ({ t: 'van', n })), ...c.map(n => ({ t: 'cls', n }))]; };
+const drawPlate = (cv, p, seed) => {
+  const S = cv.width, R = S / 2 - 2, g = cv.getContext('2d'); let s = seed || 1; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const m = document.createElement('canvas'); m.width = m.height = S; const mg = m.getContext('2d');
+  mg.textAlign = 'center'; mg.textBaseline = 'middle';
+  if (p.t === 'cls') { mg.font = `900 ${S * .42}px Arial,Helvetica,sans-serif`; mg.fillStyle = '#f00'; mg.fillText(p.n[0], S * .33, S * .53); mg.fillStyle = '#00f'; mg.fillText(p.n[1], S * .67, S * .53); }
+  else { mg.font = `900 ${S * (p.n.length > 1 ? .46 : .56)}px Arial,Helvetica,sans-serif`; mg.fillStyle = '#f00'; mg.fillText(p.n, S / 2, S * .53); }
+  const md = mg.getImageData(0, 0, S, S).data;
+  g.clearRect(0, 0, S, S); g.fillStyle = '#fff'; g.beginPath(); g.arc(S / 2, S / 2, R + 2, 0, 7); g.fill();
+  const cell = S * .025, grid = new Map(), dots = [], key = (x, y) => ((x / cell) | 0) + ',' + ((y / cell) | 0);
+  const minR = S * .007, maxR = S * .02;
+  for (let tries = 0; tries < 26000; tries++) {
+    const a = rnd() * Math.PI * 2, rr = Math.sqrt(rnd()) * R, x = S / 2 + Math.cos(a) * rr, y = S / 2 + Math.sin(a) * rr;
+    let r = minR + Math.pow(rnd(), 1.6) * (maxR - minR); if (rr + r > R) continue;
+    let ok = true; const cx = (x / cell) | 0, cy = (y / cell) | 0, span = Math.ceil((maxR * 2 + S * .003) / cell);
+    for (let i = -span; i <= span && ok; i++) for (let j = -span; j <= span && ok; j++) { const L = grid.get((cx + i) + ',' + (cy + j)); if (L) for (const d of L) { if (Math.hypot(d[0] - x, d[1] - y) < d[2] + r + S * .003) { ok = false; break; } } }
+    if (!ok) continue; const d = [x, y, r]; dots.push(d); const k = key(x, y); (grid.get(k) || grid.set(k, []).get(k)).push(d);
+  }
+  const pick = a => a[(rnd() * a.length) | 0];
+  for (const [x, y, r] of dots) {
+    const i = ((y | 0) * S + (x | 0)) * 4, inR = md[i] > 128, inB = md[i + 2] > 128;
+    let c;
+    if (p.t === 'demo') c = inR ? pick(PAL.demo) : pick(PAL.bg);
+    else if (p.t === 'van') c = inR ? pick(PAL.van) : pick(PAL.bg);
+    else c = inR ? pick(PAL.pc) : inB ? pick(PAL.dc) : pick(PAL.grey);
+    const k = .86 + rnd() * .2; g.fillStyle = `rgb(${Math.min(255, c[0] * k) | 0},${Math.min(255, c[1] * k) | 0},${Math.min(255, c[2] * k) | 0})`;
+    g.beginPath(); g.arc(x, y, r, 0, 7); g.fill();
+  }
+};
+const cvResult = (seq, ans) => {
+  const n = seq.length; if (ans.filter(a => a).length < n) return null;
+  if (ans[0] !== 'right') return { h: 'Result not valid', b: ['The demonstration plate was not read. Everyone with normal or colour-deficient vision should see it.', 'Check visual acuity, understanding and attention, then repeat the test.'], c: 'bad' };
+  const vi = seq.map((p, i) => p.t === 'van' ? i : -1).filter(i => i >= 0), wrong = vi.filter(i => ans[i] !== 'right').length;
+  const ci = seq.map((p, i) => p.t === 'cls' ? i : -1).filter(i => i >= 0), cls = ci.map(i => ans[i]);
+  const lo = cls.filter(a => a === 'left').length, ro = cls.filter(a => a === 'rightonly').length, ne = cls.filter(a => a === 'neither').length;
+  const fine = wrong <= 1 && cls.every(a => a === 'both');
+  if (fine) return { h: 'No red-green colour vision deficiency detected', b: [`Read ${vi.length - wrong} of ${vi.length} screening plates and both digits on the classification plates.`], c: 'ok' };
+  let type = 'Type unclear: refer for full colour vision testing.';
+  if (lo > ro) type = 'Pattern suggests a DEUTAN (green-weak) defect, the most common type.';
+  else if (ro > lo) type = 'Pattern suggests a PROTAN (red-weak) defect.';
+  else if (ne === cls.length && wrong >= 3) type = 'Could not see the classification digits: possibly a severe defect. Type unclear.';
+  return { h: 'Possible red-green colour vision deficiency', b: [`Missed ${wrong} of ${vi.length} screening plates.`, type, 'Advise a full assessment with an optometrist or eye clinic (Ishihara, with HRR or anomaloscope if needed). Mention it for school, driving or work that relies on colour.'], c: 'bad' };
+};
+
+// ---------------- peer link (PeerJS, vendored) ----------------
+const loadJS = src => new Promise((ok, no) => { if (src.includes('peerjs') && window.Peer || src.includes('qrcode') && window.qrcode) return ok(); const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+const qs = new URLSearchParams(location.search), RID = qs.get('r');
+if (RID) remote(RID); else display();
+
+// ================= the screen the patient looks at =================
+function display() {
+  const S = Object.assign({ tab: 'va', dist: 3, chart: 'L', note: 'm', single: false, crowd: true, mirror: false, li: 4, si: 0, opts: [], cv: { seq: newSeq(), i: 0, ans: [], seed: 1 + ((Math.random() * 1e6) | 0) } }, LS.get('mk-vt', {}));
+  S.cv = S.cv && S.cv.seq ? S.cv : { seq: newSeq(), i: 0, ans: [], seed: 1 }; S.opts = [];
+  let pxmm = LS.get('mk-vt-pxmm', 96 / 25.4), conns = [], peer = null;
+  const app = $('#app');
+  app.innerHTML = `<div class="top"><div class="brand">Vision Tools<small>MataKitani · community outreach</small></div>
+    <div class="tabs" role="tablist"><button role="tab" data-tab="va">Vision chart</button><button role="tab" data-tab="cv">Colour vision</button></div>
+    <span class="sp"></span><button class="btn" data-a="remote">${ic('ph')}<span>Phone remote</span></button><button class="btn" data-a="set">${ic('gear')}<span>Settings</span></button><button class="btn" data-a="full">${ic('full')}<span>Full screen</span></button><a class="back" href="../#oph">← Doctors</a></div>
+    <div class="stage" id="stage"></div>
+    <div class="bar" id="bar"></div><p class="hint" id="hint"></p>
+    <dialog id="dset"><div class="dlg"><button class="x" data-close>×</button><h2>Chart settings</h2>
+      <label>Test distance <select data-s="dist"><option value="1.5">1.5 m</option><option value="2">2 m</option><option value="3">3 m</option><option value="4">4 m</option><option value="5">5 m</option><option value="6">6 m</option></select></label>
+      <label>Chart <select data-s="chart">${Object.entries(CHARTS).map(([k, v]) => `<option value="${k}">${v}</option>`).join('')}</select></label>
+      <label>Notation <select data-s="note"><option value="m">6/6 (metres)</option><option value="ft">20/20 (feet)</option><option value="log">logMAR</option><option value="dec">Decimal</option></select></label>
+      <label>One optotype at a time <input type="checkbox" data-s="single"></label>
+      <label>Crowding bars (single optotype) <input type="checkbox" data-s="crowd"></label>
+      <label>Mirror image (reading through a mirror) <input type="checkbox" data-s="mirror"></label>
+      <h2 style="margin-top:16px">Screen calibration</h2><p>Hold a bank card (or any ID card, 85.6 mm wide) against the screen and drag the slider until the box is exactly as wide as the card. Do this once on each screen. On a TV, use a ruler: the box should then be 85.6 mm wide.</p>
+      <div class="card" id="card"></div><input type="range" id="cal" min="120" max="1400" step="1" style="width:100%"><p id="calt"></p></div></dialog>
+    <dialog id="drem"><div class="dlg"><button class="x" data-close>×</button><h2>Phone remote</h2><p>Scan this code with the examiner's phone. The phone then changes the line, shows the letters to check the answers, and records results. Both devices need the internet.</p><div class="qr" id="qr"></div><p class="st" id="rst">Getting ready…</p><p class="url" id="rurl"></p></div></dialog>`;
+  const stage = $('#stage'), bar = $('#bar'), hint = $('#hint'), dset = $('#dset'), drem = $('#drem');
+  const save = () => LS.set('mk-vt', { tab: S.tab, dist: S.dist, chart: S.chart, note: S.note, single: S.single, crowd: S.crowd, mirror: S.mirror, li: S.li, cv: S.cv });
+  const send = () => { const snap = JSON.parse(JSON.stringify(S)); snap.lineN = note(LINES[S.li][0], 'm'); snap.all = allNotes(LINES[S.li][0]); conns.forEach(c => { try { if (c.open) c.send({ t: 'st', s: snap }); } catch (e) { } }); };
+  const newLine = () => { S.opts = pickOpts(S.chart, LINES[S.li][2] === 5 || S.single ? 5 : LINES[S.li][2]); S.si = 0; };
+  const renderVA = () => {
+    if (!S.opts.length || S.opts[0].k !== S.chart) newLine();
+    const [x] = LINES[S.li], mar = x / 6, hmm = S.dist * 1000 * Math.tan(5 * mar / 60 * Math.PI / 180), h = hmm * pxmm;
+    const W = stage.clientWidth * .94, H = stage.clientHeight * .86; let warn = '', hh = h;
+    let opts = S.single ? [S.opts[S.si % S.opts.length]] : S.opts.slice(0, LINES[S.li][2]);
+    const need = n => n * hh + (n - 1) * hh * 1;
+    while (!S.single && opts.length > 1 && need(opts.length) > W) opts = opts.slice(0, opts.length - 1);
+    if (hh > H || hh > W) { warn = `Too big for this screen at ${S.dist} m. Shown smaller than true size: move closer or use the next line.`; hh = Math.min(H, W); }
+    else if (hh < 10) warn = `Only ${hh.toFixed(1)} px tall at ${S.dist} m, too small to draw accurately. Increase the test distance or use a bigger screen.`;
+    const gap = hh, cb = S.single && S.crowd ? `style="outline:${(hh / 5).toFixed(2)}px solid #000;outline-offset:${(hh / 5 * 2.5).toFixed(2)}px"` : '';
+    stage.innerHTML = `<div class="chart${S.mirror ? ' mir' : ''}" style="gap:${gap}px"><span style="display:contents">${opts.map(o => svgOpt(o, hh.toFixed(2))).join('')}</span></div>${warn ? `<div class="warn">${warn}</div>` : ''}<div class="lab">${note(x, S.note)} · ${S.dist} m${S.mirror ? ' · mirror' : ''}</div>`;
+    if (cb) stage.querySelector('.opt').setAttribute('style', cb.slice(7, -1));
+    bar.innerHTML = `<button class="btn" data-a="bigger">${ic('up')}<span>Bigger</span></button><button class="btn" data-a="smaller">${ic('dn')}<span>Smaller</span></button><button class="btn" data-a="new">${ic('sh')}<span>New letters</span></button><button class="btn${S.single ? ' on' : ''}" data-a="single">${ic('one')}<span>One at a time</span></button>${S.single ? `<button class="btn" data-a="nexto">Next ›</button>` : ''}<button class="btn${S.mirror ? ' on' : ''}" data-a="mirror">${ic('mir')}<span>Mirror</span></button><button class="btn" data-a="hide">${ic('eye')}<span>Hide buttons</span></button>`;
+    hint.textContent = 'Keys: ↑ bigger · ↓ smaller · N new · O one at a time · → next · M mirror · H hide buttons · F full screen. Calibrate the screen once in Settings.';
+  };
+  const renderCV = () => {
+    const c = S.cv, p = c.seq[c.i], r = cvResult(c.seq, c.ans);
+    if (c.i >= c.seq.length || r) {
+      const rr = r || { h: 'Incomplete', b: [], c: '' };
+      stage.innerHTML = `<div class="cv"><div class="res"><h2 style="color:var(--${rr.c || 'ink'})">${rr.h}</h2><ul>${rr.b.map(t => `<li>${t}</li>`).join('')}</ul><p class="note">Screening only. These plates are original MataKitani designs, not the Ishihara test, and screen colours vary. Blue-yellow (tritan) defects are not tested.</p><div class="ans"><button class="btn pri" data-a="cvrestart">Test another person</button></div></div></div>`;
+      bar.innerHTML = ''; hint.textContent = ''; return;
+    }
+    const S2 = Math.round(Math.min(stage.clientHeight * .72, stage.clientWidth * .9) * Math.min(2, devicePixelRatio || 1));
+    stage.innerHTML = `<div class="cv"><div class="ttl">Plate ${c.i + 1} of ${c.seq.length}${p.t === 'demo' ? ' · demonstration' : p.t === 'cls' ? ' · two digits' : ''}</div><canvas width="${S2}" height="${S2}" aria-label="Colour vision plate"></canvas><div class="peek" id="peek"></div></div>`;
+    drawPlate(stage.querySelector('canvas'), p, c.seed + c.i * 7919);
+    const A = p.t === 'cls' ? `<button class="btn ok" data-cv="both">Read both digits</button><button class="btn" data-cv="left">Left digit only</button><button class="btn" data-cv="rightonly">Right digit only</button><button class="btn bad" data-cv="neither">Neither</button>` : `<button class="btn ok" data-cv="right">Read correctly</button><button class="btn bad" data-cv="wrong">Wrong / nothing</button>`;
+    bar.innerHTML = `${c.i ? '<button class="btn" data-a="cvback">‹ Back</button>' : ''}${A}<button class="btn" data-a="peek">Show answer</button>`;
+    hint.textContent = 'Seat the person about 75 cm from the screen in good light, screen brightness high, night mode and blue-light filters off. Allow about 3 seconds a plate.';
+  };
+  const render = () => { stage.parentElement.dataset.mode = S.tab; app.querySelectorAll('button[data-tab]').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === S.tab)); S.tab === 'va' ? renderVA() : renderCV(); save(); send(); };
+  const act = (a, v) => {
+    if (a === 'bigger') { S.li = Math.max(0, S.li - 1); newLine(); }
+    else if (a === 'smaller') { S.li = Math.min(LINES.length - 1, S.li + 1); newLine(); }
+    else if (a === 'new') newLine();
+    else if (a === 'single') { S.single = !S.single; newLine(); }
+    else if (a === 'nexto') S.si = (S.si + 1) % 5;
+    else if (a === 'prevo') S.si = (S.si + 4) % 5;
+    else if (a === 'mirror') S.mirror = !S.mirror;
+    else if (a === 'hide') { app.classList.toggle('hide-ui'); setTimeout(render, 30); return; }
+    else if (a === 'tab') { S.tab = v; app.classList.remove('hide-ui'); }
+    else if (a === 'set') { const [k, val] = v; S[k] = val; if (k === 'chart' || k === 'single') newLine(); }
+    else if (a === 'line') { S.li = Math.max(0, Math.min(LINES.length - 1, +v)); newLine(); }
+    else if (a === 'cv') { const c = S.cv; if (c.i < c.seq.length) { c.ans[c.i] = v; c.i++; } }
+    else if (a === 'cvback') { const c = S.cv; if (c.i > 0) { c.i--; c.ans.length = c.i; } }
+    else if (a === 'cvrestart') S.cv = { seq: newSeq(), i: 0, ans: [], seed: 1 + ((Math.random() * 1e6) | 0) };
+    else if (a === 'peek') { const p = S.cv.seq[S.cv.i]; const pk = $('#peek'); if (pk) { pk.textContent = p.t === 'cls' ? `Normal: ${p.n}. Protan sees ${p.n[1]} only · deutan sees ${p.n[0]} only` : `Answer: ${p.n}`; setTimeout(() => { if (pk.isConnected) pk.textContent = ''; }, 2500); } return; }
+    render();
+  };
+  app.addEventListener('click', e => {
+    const t = e.target.closest('button[data-tab]'); if (t) return act('tab', t.dataset.tab);
+    const c = e.target.closest('[data-cv]'); if (c) return act('cv', c.dataset.cv);
+    const b = e.target.closest('[data-a]'); if (!b) return; const a = b.dataset.a;
+    if (a === 'set') { syncSet(); dset.showModal(); return; }
+    if (a === 'remote') { drem.showModal(); startPeer(); return; }
+    if (a === 'full') { const d = document; try { (d.fullscreenElement ? d.exitFullscreen() : d.documentElement.requestFullscreen()).catch(() => { }); } catch (x) { } return; }
+    act(a);
+  });
+  app.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => b.closest('dialog').close()));
+  const syncSet = () => { dset.querySelectorAll('[data-s]').forEach(el => { const k = el.dataset.s; if (el.type === 'checkbox') el.checked = !!S[k]; else el.value = String(S[k]); }); const cal = $('#cal'); cal.value = Math.round(pxmm * 85.6); calUi(); };
+  const calUi = () => { $('#card').style.width = (pxmm * 85.6) + 'px'; $('#calt').textContent = `${(pxmm).toFixed(2)} screen pixels per mm${LS.get('mk-vt-pxmm', null) ? '' : ' (not calibrated yet: sizes are a rough guess)'}.`; };
+  dset.addEventListener('change', e => { const el = e.target, k = el.dataset.s; if (!k) return; const v = el.type === 'checkbox' ? el.checked : (k === 'dist' ? +el.value : el.value); act('set', [k, v]); });
+  $('#cal').addEventListener('input', e => { pxmm = +e.target.value / 85.6; LS.set('mk-vt-pxmm', pxmm); calUi(); render(); });
+  addEventListener('keydown', e => {
+    if (e.target.closest('input,select') || dset.open || drem.open) return; const k = e.key.toLowerCase();
+    if (S.tab === 'va') { const m = { arrowup: 'bigger', arrowdown: 'smaller', n: 'new', o: 'single', arrowright: 'nexto', arrowleft: 'prevo', m: 'mirror', h: 'hide' }[k]; if (m) { e.preventDefault(); act(m); } }
+    else if (k === 'arrowleft') act('cvback');
+    if (k === 'f') app.querySelector('[data-a=full]').click();
+  });
+  let rt = 0; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 120); });
+  const startPeer = async () => {
+    const st = $('#rst'); if (peer && !peer.destroyed && !peer.disconnected) return; st.textContent = 'Getting ready…'; st.classList.remove('ok');
+    try { await loadJS('/assets/xr/peerjs.min.js'); await loadJS('/assets/xr/qrcode.js'); } catch (e) { st.textContent = 'Could not load. Check the internet connection.'; return; }
+    try { if (peer) peer.destroy(); } catch (e) { }
+    peer = new window.Peer('mk-vt-' + Math.random().toString(36).slice(2, 9));
+    peer.on('open', id => { const url = location.origin + location.pathname + '?r=' + encodeURIComponent(id); const q = window.qrcode(0, 'M'); q.addData(url); q.make(); $('#qr').innerHTML = q.createSvgTag(6, 2); $('#rurl').textContent = url; st.textContent = 'Scan with the phone camera'; });
+    peer.on('connection', c => {
+      c.on('open', () => { conns.push(c); st.textContent = 'Phone connected'; st.classList.add('ok'); send(); setTimeout(() => { if (drem.open) drem.close(); }, 1200); });
+      c.on('data', d => { if (!d || typeof d !== 'object') return; if (d.c === 'hello') return send(); act(d.c, d.v); });
+      c.on('close', () => { conns = conns.filter(x => x !== c); });
+    });
+    peer.on('error', () => { st.textContent = 'Could not connect. Check the internet and try again.'; });
+  };
+  render();
+}
+
+// ================= the examiner's phone =================
+function remote(id) {
+  document.body.style.background = '#fff';
+  const app = $('#app'); let S = null, conn = null, marks = [], recs = [];
+  const send = (c, v) => { try { if (conn && conn.open) conn.send({ c, v }); } catch (e) { } };
+  app.innerHTML = `<div class="rm"><h1>Vision Tools remote <span class="st" id="st">Connecting…</span></h1><div id="body"><p class="sub2">Connecting to the screen…</p></div></div>`;
+  const body = $('#body'), st = $('#st');
+  const render = () => {
+    if (!S) return;
+    const tabs = `<div class="tabs" style="align-self:center;justify-content:center"><button data-tab="va" aria-selected="${S.tab === 'va'}">Vision chart</button><button data-tab="cv" aria-selected="${S.tab === 'cv'}">Colour vision</button></div>`;
+    if (S.tab === 'va') {
+      const L = LINES[S.li], n = S.single ? 5 : L[2], ops = S.opts.slice(0, n);
+      if (marks.length !== ops.length) marks = ops.map(() => false);
+      const wrong = marks.filter(Boolean).length, res = note(L[0], S.note) + (wrong ? ` −${wrong}` : '');
+      body.innerHTML = `${tabs}<div class="big">${note(L[0], S.note)}</div><p class="sub2">${S.all} · ${S.dist} m · ${CHARTS[S.chart].split(' (')[0]}</p>
+        <p class="sub2">Tap an optotype the person got wrong.</p><div class="chips">${ops.map((o, i) => `<button data-mk="${i}" class="${marks[i] ? 'x' : ''}${S.single && i === S.si % 5 ? ' cur' : ''}">${optTxt(o)}</button>`).join('')}</div>
+        <div class="g2"><button class="btn pri huge" data-c="bigger">▲ Bigger</button><button class="btn pri huge" data-c="smaller">▼ Smaller</button></div>
+        <div class="g3"><button class="btn" data-c="new">New</button><button class="btn${S.single ? ' on' : ''}" data-c="single">One at a time</button><button class="btn" data-c="nexto">Next ›</button></div>
+        <div class="g2"><button class="btn ok" data-rec="Right eye">Record right eye: ${res}</button><button class="btn ok" data-rec="Left eye">Record left eye: ${res}</button></div>
+        <div class="g2"><select data-set="chart">${Object.entries(CHARTS).map(([k, v]) => `<option value="${k}"${k === S.chart ? ' selected' : ''}>${v.split(' (')[0]}</option>`).join('')}</select><select data-set="dist">${[1.5, 2, 3, 4, 5, 6].map(d => `<option value="${d}"${d === S.dist ? ' selected' : ''}>${d} m</option>`).join('')}</select></div>
+        ${recs.length ? `<div class="rec"><b>Recorded (this phone only, cleared when you close it)</b><ol>${recs.map(r => `<li>${r}</li>`).join('')}</ol></div>` : ''}`;
+    } else {
+      const c = S.cv, r = cvResult(c.seq, c.ans);
+      if (c.i >= c.seq.length || r) { const rr = r || { h: 'Incomplete', b: [] }; body.innerHTML = `${tabs}<div class="res"><h2>${rr.h}</h2><ul>${rr.b.map(t => `<li>${t}</li>`).join('')}</ul></div><button class="btn pri huge" data-c="cvrestart">Test another person</button>`; return; }
+      const p = c.seq[c.i];
+      body.innerHTML = `${tabs}<p class="sub2">Plate ${c.i + 1} of ${c.seq.length}${p.t === 'demo' ? ' · demonstration' : ''}</p>
+        ${p.t === 'cls' ? `<div class="ansbig"><span class="l">${p.n[0]}</span> <span class="r">${p.n[1]}</span></div><p class="sub2">Normal reads ${p.n}. Deutan sees ${p.n[0]} only, protan sees ${p.n[1]} only.</p>
+          <div class="g2"><button class="btn ok huge" data-v="both">Both</button><button class="btn bad huge" data-v="neither">Neither</button><button class="btn huge" data-v="left">${p.n[0]} only</button><button class="btn huge" data-v="rightonly">${p.n[1]} only</button></div>`
+        : `<div class="ansbig">${p.n}</div><div class="g2"><button class="btn ok huge" data-v="right">Correct</button><button class="btn bad huge" data-v="wrong">Wrong / nothing</button></div>`}
+        ${c.i ? '<button class="btn" data-c="cvback">‹ Back one plate</button>' : ''}`;
+    }
+  };
+  body.addEventListener('click', e => {
+    const t = e.target.closest('button[data-tab]'); if (t) return send('tab', t.dataset.tab);
+    const m = e.target.closest('[data-mk]'); if (m) { marks[+m.dataset.mk] = !marks[+m.dataset.mk]; render(); return; }
+    const r = e.target.closest('[data-rec]'); if (r) { const L = LINES[S.li], w = marks.filter(Boolean).length; recs.push(`${r.dataset.rec}: ${note(L[0], S.note)}${w ? ' −' + w : ''} (${CHARTS[S.chart].split(' (')[0]}, ${S.dist} m)`); render(); return; }
+    const v = e.target.closest('[data-v]'); if (v) { if (navigator.vibrate) navigator.vibrate(10); return send('cv', v.dataset.v); }
+    const b = e.target.closest('[data-c]'); if (b) { if (['bigger', 'smaller', 'new', 'single'].includes(b.dataset.c)) marks = []; send(b.dataset.c); }
+  });
+  body.addEventListener('change', e => { const k = e.target.dataset.set; if (!k) return; marks = []; send('set', [k, k === 'dist' ? +e.target.value : e.target.value]); });
+  (async () => {
+    try { await loadJS('/assets/xr/peerjs.min.js'); } catch (e) { st.textContent = 'Offline'; return; }
+    const connect = () => { const peer = new window.Peer(); peer.on('open', () => { conn = peer.connect(id, { reliable: true }); conn.on('open', () => { st.textContent = 'Connected'; st.classList.add('ok'); conn.send({ c: 'hello' }); }); conn.on('data', d => { if (d && d.t === 'st') { const ch = !S || S.li !== d.s.li || JSON.stringify(S.opts) !== JSON.stringify(d.s.opts); S = d.s; if (ch) marks = []; render(); } }); conn.on('close', () => { st.textContent = 'Disconnected'; st.classList.remove('ok'); }); }); peer.on('error', () => { st.textContent = 'Not connected: scan again'; }); };
+    connect();
+  })();
+}
+})();
+</script>
+</body></html>
