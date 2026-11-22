@@ -12,24 +12,42 @@ button,select,input{font:inherit;color:inherit}
 .btn:hover{border-color:var(--acc)}.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}.btn.bad{background:var(--bad);border-color:var(--bad);color:#fff}
 .btn.on{background:var(--acc2);border-color:var(--acc);color:var(--acc)}
 .btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-/* display (PC / TV) */
+/* display (PC / TV), layout after Haziq's reference app (2026-11-22) */
 #app{display:flex;flex-direction:column;height:100%;height:100dvh}
-.top{display:flex;align-items:center;gap:10px;padding:10px max(14px,env(safe-area-inset-left));border-bottom:1px solid var(--line);background:var(--bg);flex-wrap:wrap}
-.top .brand{font-weight:800;margin-right:6px;white-space:nowrap}.top .brand small{display:block;font-weight:600;color:var(--mut);font-size:12px}
-.tabs{display:flex;gap:4px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:3px}
-.tabs button{border:0;background:none;padding:8px 14px;border-radius:11px;font-weight:700;cursor:pointer;color:var(--mut)}.tabs button[aria-selected=true]{background:var(--acc);color:#fff}
-.top .sp{flex:1}.back{color:var(--acc);text-decoration:none;font-weight:600;font-size:14px}
-.stage{flex:1;position:relative;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+.top{display:flex;align-items:center;gap:6px;padding:8px max(12px,env(safe-area-inset-right)) 8px max(10px,env(safe-area-inset-left));background:#fff}
+.ib{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;border:0;background:none;color:#000;cursor:pointer;flex:none;text-decoration:none}
+.ib:hover{background:#f0f3f6}.ib svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ib.gl svg{width:26px;height:26px;stroke:none}.tools{display:flex;gap:2px}
+.tabs{display:flex;gap:2px;background:#f0f3f6;border-radius:12px;padding:3px}
+.tabs button{border:0;background:none;padding:6px 12px;border-radius:9px;font-weight:700;cursor:pointer;color:var(--mut);font-size:14.5px}.tabs button[aria-selected=true]{background:#000;color:#fff}
+.top .sp{flex:1}
+.stage{flex:1;position:relative;overflow:hidden;background:#fff;color:#000;display:flex;align-items:center;justify-content:center}
+.stage.scroll{overflow-y:auto;align-items:flex-start;justify-content:stretch}
+.stage.con1{background:#000;color:#fff}.stage.con2{color:#e1e1e1}
+.ladder{width:100%;padding:6px 0 18px}
+.ladder.mir,.chart.mir{transform:scaleX(-1)}
+.row{display:flex;align-items:center;gap:12px;padding-inline:20px;cursor:pointer;border-left:4px solid transparent}
+.row.cur{border-left-color:var(--acc)}
+.row .lt{flex:1;display:flex;align-items:center;min-width:0}
+.rl{flex:none;font-size:15px;color:#555;font-variant-numeric:tabular-nums;white-space:nowrap}
+.con1 .rl,.con1 .lab,.con1 .fn{color:#9aa}.con2 .rl,.con2 .lab{color:#777}
+.fn{font-size:13px;color:#888;padding:4px 20px;margin:0}.nofit{padding:20px;text-align:center;color:#888}
 .chart{display:flex;align-items:center;justify-content:center}
-.chart.mir{transform:scaleX(-1)}
 .opt{display:block;flex:none}
-.crowd{outline-style:solid;outline-color:#000}
-.lab{position:absolute;left:14px;bottom:10px;font-size:13px;color:#9aa7b1;font-variant-numeric:tabular-nums}
+.lab{position:absolute;right:18px;bottom:12px;font-size:15px;color:#555;font-variant-numeric:tabular-nums}
+.updn{position:absolute;left:12px;bottom:10px;display:flex;gap:6px}.updn .ib{background:#f0f3f6;color:#000}.con1 .updn .ib{background:#222;color:#fff}
 .warn{position:absolute;left:50%;top:12px;transform:translateX(-50%);background:#fff4e5;color:#8a4b00;border:1px solid #f2c48d;border-radius:10px;padding:6px 12px;font-size:14px;max-width:90%;text-align:center}
-.bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px;border-top:1px solid var(--line);background:var(--bg)}
-.hide-ui .top,.hide-ui .bar{display:none}
-.hint{font-size:12.5px;color:var(--mut);text-align:center;padding:0 10px 8px;background:var(--bg)}
-.hide-ui .hint{display:none}
+.bar{display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 14px max(12px,env(safe-area-inset-bottom));background:#fff}
+.cd{margin:0;font-weight:700;font-size:16px;font-variant-numeric:tabular-nums}.cd.sm{font-weight:500;font-size:13px;color:var(--mut);text-align:center}
+.seg{display:flex;border:1.5px solid #000;border-radius:10px;overflow:hidden;max-width:100%}
+.seg button{border:0;background:#fff;padding:9px 22px;font-size:17px;cursor:pointer;color:#000}.seg button+button{border-left:1px solid #ddd}
+.seg button[aria-checked=true]{background:#000;color:#fff}
+.btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.hide-ui .top,.hide-ui .bar,.hide-ui .updn{display:none}
+.hide-ui .row.cur{border-left-color:transparent}
+@media (max-width:560px){.seg button{padding:8px 12px;font-size:15px}.top{gap:2px;padding-inline:4px}.tools{gap:0}.ib{width:36px;height:36px}.ib svg{width:22px;height:22px}.ib.gl svg{width:21px;height:21px}.top .hp{display:none}.tabs{padding:2px}.tabs button{padding:5px 8px;font-size:13.5px}}
+.uncal{margin:0;font-size:13.5px;color:#8a4b00;background:#fff4e5;border-radius:8px;padding:4px 10px;cursor:pointer;border:0}
+.keys{font-size:13px}
 /* colour vision */
 .cv{display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px;width:100%;height:100%;justify-content:center}
 .cv canvas{width:min(62vh,88vw);height:min(62vh,88vw);border-radius:50%;background:#fff}
@@ -65,7 +83,6 @@ dialog::backdrop{background:rgba(10,30,45,.45)}
 .rm select{min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:4px 8px;background:#fff;width:100%}
 .ansbig{font-size:46px;font-weight:900;text-align:center;letter-spacing:.04em}
 .ansbig .l{color:#c2185b}.ansbig .r{color:#6a1b9a}
-@media (max-width:700px){.top .brand small{display:none}.bar .btn span{display:none}}
 </style></head>
 <body>
 <div id="app"></div>
@@ -74,7 +91,7 @@ dialog::backdrop{background:rgba(10,30,45,.45)}
 'use strict';
 const $ = (s, r = document) => r.querySelector(s);
 const LS = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } } };
-const IC = { up: '<path d="M12 19V5M5 12l7-7 7 7"/>', dn: '<path d="M12 5v14M5 12l7 7 7-7"/>', sh: '<path d="M4 4v6h6M20 20v-6h-6"/><path d="M5 13a7 7 0 0 0 12 3M19 11A7 7 0 0 0 7 8"/>', one: '<rect x="8" y="5" width="8" height="14" rx="1"/>', mir: '<path d="M12 3v18M9 7 4 12l5 5M15 7l5 5-5 5"/>', ph: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>', gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>', full: '<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/>', eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>' };
+const IC = { up: '<path d="M12 19V5M5 12l7-7 7 7"/>', dn: '<path d="M12 5v14M5 12l7 7 7-7"/>', sh: '<path d="M4 4v6h6M20 20v-6h-6"/><path d="M5 13a7 7 0 0 0 12 3M19 11A7 7 0 0 0 7 8"/>', one: '<rect x="8" y="5" width="8" height="14" rx="1"/>', mir: '<path d="M12 3v18M9 7 4 12l5 5M15 7l5 5-5 5"/>', ph: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>', gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>', full: '<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/>', eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>', back: '<path d="M15 4l-8 8 8 8"/>', shuf: '<path d="M3 7h3.5c4.5 0 6.5 10 11 10H21M3 17h3.5c1.8 0 3-1.6 4.2-3.6M13.3 9.6C14.5 8.2 15.7 7 17.5 7H21M18 4l3 3-3 3M18 14l3 3-3 3"/>', lines: '<path d="M4 6h16M4 12h11M4 18h6" stroke-width="3"/>', line1: '<path d="M4 12h16" stroke-width="3"/><path d="M4 7h16M4 17h16" stroke-width="1" opacity=".35"/>', one: '<rect x="7" y="6" width="10" height="12" rx="1"/><path d="M10 10h4M10 14h4"/>', con: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/>', info: '<circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.5"/>', nx: '<path d="M9 5l7 7-7 7"/>' };
 const ic = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>`;
 
 // ---------------- optotypes (drawn on a 5 x 5 grid, stroke = 1/5 of the height, like Sloan letters) ----------------
@@ -85,11 +102,11 @@ const DIRS = { 0: '→', 90: '↓', 180: '←', 270: '↑' };
 const CHARTS = { L: 'Letters (Sloan)', N: 'Numbers', E: 'Tumbling E (children, non-readers)', C: 'Landolt C', P: 'Pictures (young children)' };
 const svgOpt = (o, h) => {
   const a = `class="opt" width="${h}" height="${h}" viewBox="0 0 5 5"`;
-  if (o.k === 'L') return `<svg ${a}><g fill="none" stroke="#000" stroke-width="1" stroke-linejoin="bevel">${SL[o.v]}</g></svg>`;
-  if (o.k === 'N') return `<svg ${a}><text x="2.5" y="5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="6.98" fill="#000">${o.v}</text></svg>`;
-  if (o.k === 'E') return `<svg ${a}><g transform="rotate(${o.v} 2.5 2.5)" fill="none" stroke="#000" stroke-width="1"><path d="M5 .5H.5V4.5H5M.5 2.5H5"/></g></svg>`;
-  if (o.k === 'C') return `<svg ${a}><g transform="rotate(${o.v} 2.5 2.5)" fill="none" stroke="#000" stroke-width="1"><path d="M4.436 2A2 2 0 1 0 4.436 3"/></g></svg>`;
-  return `<svg ${a}><g fill="none" stroke="#000" stroke-width=".75" stroke-linejoin="round">${PIC[o.v]}</g></svg>`;
+  if (o.k === 'L') return `<svg ${a}><g fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="bevel">${SL[o.v]}</g></svg>`;
+  if (o.k === 'N') return `<svg ${a}><text x="2.5" y="5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="6.98" fill="currentColor">${o.v}</text></svg>`;
+  if (o.k === 'E') return `<svg ${a}><g transform="rotate(${o.v} 2.5 2.5)" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 .5H.5V4.5H5M.5 2.5H5"/></g></svg>`;
+  if (o.k === 'C') return `<svg ${a}><g transform="rotate(${o.v} 2.5 2.5)" fill="none" stroke="currentColor" stroke-width="1"><path d="M4.436 2A2 2 0 1 0 4.436 3"/></g></svg>`;
+  return `<svg ${a}><g fill="none" stroke="currentColor" stroke-width=".75" stroke-linejoin="round">${PIC[o.v]}</g></svg>`;
 };
 const optTxt = o => o.k === 'E' || o.k === 'C' ? DIRS[o.v] : o.k === 'P' ? PICN[o.v] : o.v;
 const POOL = { L: Object.keys(SL), N: ['2', '3', '4', '5', '6', '7', '8', '9'], E: [0, 90, 180, 270], C: [0, 90, 180, 270], P: Object.keys(PIC) };
@@ -98,6 +115,7 @@ const pickOpts = (k, n) => { const p = POOL[k], out = []; while (out.length < n)
 // lines: Snellen denominator at 6 m, logMAR, optotypes per line
 const LINES = [[60, 1.0, 1], [36, .78, 2], [24, .6, 3], [18, .48, 4], [12, .3, 5], [9, .18, 5], [7.5, .1, 5], [6, 0, 5], [5, -.08, 5]];
 const note = (x, n) => n === 'ft' ? '20/' + Math.round(x * 20 / 6) : n === 'log' ? 'logMAR ' + LINES.find(l => l[0] === x)[1].toFixed(2) : n === 'dec' ? (6 / x).toFixed(2) : '6/' + x;
+const fmtD = d => d < 1 ? Math.round(d * 100) + ' cm' : d + ' m';
 const allNotes = x => `6/${x} · 20/${Math.round(x * 20 / 6)} · logMAR ${LINES.find(l => l[0] === x)[1].toFixed(2)}`;
 
 // ---------------- colour vision plates (original MataKitani designs, not Ishihara plates) ----------------
@@ -165,71 +183,109 @@ if (RID) remote(RID); else display();
 
 // ================= the screen the patient looks at =================
 function display() {
-  const S = Object.assign({ tab: 'va', dist: 3, chart: 'L', note: 'm', single: false, crowd: true, mirror: false, li: 4, si: 0, opts: [], cv: { seq: newSeq(), i: 0, ans: [], seed: 1 + ((Math.random() * 1e6) | 0) } }, LS.get('mk-vt', {}));
-  S.cv = S.cv && S.cv.seq ? S.cv : { seq: newSeq(), i: 0, ans: [], seed: 1 }; S.opts = [];
-  let pxmm = LS.get('mk-vt-pxmm', 96 / 25.4), conns = [], peer = null;
+  const D0 = { tab: 'va', far: 3, near: .4, dm: 'far', chart: 'L', note: 'm', view: 'chart', con: 0, crowd: true, mirror: false, li: 4, si: 0, rows: [], cv: null };
+  const S = Object.assign({}, D0, LS.get('mk-vt', {}));
+  if (!S.cv || !S.cv.seq) S.cv = { seq: newSeq(), i: 0, ans: [], seed: 1 + ((Math.random() * 1e6) | 0) };
+  S.rows = [];
+  const GUESS = matchMedia('(pointer:coarse)').matches ? (Math.min(screen.width, screen.height) < 500 ? 6.1 : 5.2) : 96 / 25.4;
+  let pxmm = LS.get('mk-vt-pxmm', GUESS), conns = [], peer = null;
   const app = $('#app');
-  app.innerHTML = `<div class="top"><div class="brand">Vision Tools<small>MataKitani · community outreach</small></div>
-    <div class="tabs" role="tablist"><button role="tab" data-tab="va">Vision chart</button><button role="tab" data-tab="cv">Colour vision</button></div>
-    <span class="sp"></span><button class="btn" data-a="remote">${ic('ph')}<span>Phone remote</span></button><button class="btn" data-a="set">${ic('gear')}<span>Settings</span></button><button class="btn" data-a="full">${ic('full')}<span>Full screen</span></button><a class="back" href="../#oph">← Doctors</a></div>
+  app.innerHTML = `<div class="top"><a class="ib" href="../#oph" aria-label="Back to doctors">${ic('back')}</a>
+    <div class="tabs" role="tablist"><button role="tab" data-tab="va">Chart</button><button role="tab" data-tab="cv">Colour</button></div>
+    <span class="sp"></span><span class="tools" id="tools"></span>
+    <button class="ib" data-a="remote" aria-label="Phone remote" title="Phone remote">${ic('ph')}</button><button class="ib hp" data-a="full" aria-label="Full screen" title="Full screen">${ic('full')}</button><button class="ib" data-a="set" aria-label="Settings and calibration" title="Settings and calibration">${ic('info')}</button></div>
     <div class="stage" id="stage"></div>
-    <div class="bar" id="bar"></div><p class="hint" id="hint"></p>
+    <div class="bar" id="bar"></div>
     <dialog id="dset"><div class="dlg"><button class="x" data-close>×</button><h2>Chart settings</h2>
-      <label>Test distance <select data-s="dist"><option value="1.5">1.5 m</option><option value="2">2 m</option><option value="3">3 m</option><option value="4">4 m</option><option value="5">5 m</option><option value="6">6 m</option></select></label>
+      <label>Distance test <select data-s="far"><option value="1.5">1.5 m</option><option value="2">2 m</option><option value="3">3 m</option><option value="4">4 m</option><option value="5">5 m</option><option value="6">6 m</option></select></label>
+      <label>Near test <select data-s="near"><option value="0.25">25 cm</option><option value="0.33">33 cm</option><option value="0.4">40 cm</option></select></label>
       <label>Chart <select data-s="chart">${Object.entries(CHARTS).map(([k, v]) => `<option value="${k}">${v}</option>`).join('')}</select></label>
       <label>Notation <select data-s="note"><option value="m">6/6 (metres)</option><option value="ft">20/20 (feet)</option><option value="log">logMAR</option><option value="dec">Decimal</option></select></label>
-      <label>One optotype at a time <input type="checkbox" data-s="single"></label>
-      <label>Crowding bars (single optotype) <input type="checkbox" data-s="crowd"></label>
+      <label>Crowding bars (one letter view) <input type="checkbox" data-s="crowd"></label>
       <label>Mirror image (reading through a mirror) <input type="checkbox" data-s="mirror"></label>
       <h2 style="margin-top:16px">Screen calibration</h2><p>Hold a bank card (or any ID card, 85.6 mm wide) against the screen and drag the slider until the box is exactly as wide as the card. Do this once on each screen. On a TV, use a ruler: the box should then be 85.6 mm wide.</p>
-      <div class="card" id="card"></div><input type="range" id="cal" min="120" max="1400" step="1" style="width:100%"><p id="calt"></p></div></dialog>
-    <dialog id="drem"><div class="dlg"><button class="x" data-close>×</button><h2>Phone remote</h2><p>Scan this code with the examiner's phone. The phone then changes the line, shows the letters to check the answers, and records results. Both devices need the internet.</p><div class="qr" id="qr"></div><p class="st" id="rst">Getting ready…</p><p class="url" id="rurl"></p></div></dialog>`;
-  const stage = $('#stage'), bar = $('#bar'), hint = $('#hint'), dset = $('#dset'), drem = $('#drem');
-  const save = () => LS.set('mk-vt', { tab: S.tab, dist: S.dist, chart: S.chart, note: S.note, single: S.single, crowd: S.crowd, mirror: S.mirror, li: S.li, cv: S.cv });
-  const send = () => { const snap = JSON.parse(JSON.stringify(S)); snap.lineN = note(LINES[S.li][0], 'm'); snap.all = allNotes(LINES[S.li][0]); conns.forEach(c => { try { if (c.open) c.send({ t: 'st', s: snap }); } catch (e) { } }); };
-  const newLine = () => { S.opts = pickOpts(S.chart, LINES[S.li][2] === 5 || S.single ? 5 : LINES[S.li][2]); S.si = 0; };
+      <div class="card" id="card"></div><input type="range" id="cal" min="120" max="1400" step="1" style="width:100%"><p id="calt"></p>
+      <p class="keys">Keys: ↑ ↓ line · N new letters · V view · T chart type · C contrast · 1 2 3 near, intermediate, distance · M mirror · H hide buttons · F full screen.</p></div></dialog>
+    <dialog id="drem"><div class="dlg"><button class="x" data-close>×</button><h2>Phone remote</h2><p>Scan this code with the examiner's phone. The phone then moves the line, shows the letters to check answers, and records results. Both devices need the internet.</p><div class="qr" id="qr"></div><p class="st" id="rst">Getting ready…</p><p class="url" id="rurl"></p></div></dialog>`;
+  const stage = $('#stage'), bar = $('#bar'), tools = $('#tools'), dset = $('#dset'), drem = $('#drem');
+  const dist = () => S.dm === 'near' ? S.near : S.dm === 'int' ? .66 : S.far;
+  const save = () => LS.set('mk-vt', { tab: S.tab, far: S.far, near: S.near, dm: S.dm, chart: S.chart, note: S.note, view: S.view, con: S.con, crowd: S.crowd, mirror: S.mirror, li: S.li, cv: S.cv });
+  const snap = () => { S.dist = dist(); S.single = S.view === 'one'; S.opts = S.rows[S.li] || []; const s = JSON.parse(JSON.stringify(S)); delete s.rows; s.all = allNotes(LINES[S.li][0]); return s; };
+  const send = () => { if (!conns.length) return; const s = snap(); conns.forEach(c => { try { if (c.open) c.send({ t: 'st', s }); } catch (e) { } }); };
+  const newRow = i => { S.rows[i] = pickOpts(S.chart, 5); S.si = 0; };
+  const newAll = () => { LINES.forEach((_, i) => newRow(i)); };
+  const hpx = i => { const x = LINES[i][0]; return dist() * 1000 * Math.tan(5 * (x / 6) / 60 * Math.PI / 180) * pxmm; };
+  const CON = ['Normal', 'White on black', 'Low contrast (about 25%)'];
+  const VIEW = { chart: 'Full chart', line: 'One line', one: 'One letter' };
+  const renderTools = () => {
+    if (S.tab !== 'va') { tools.innerHTML = ''; return; }
+    tools.innerHTML = `<button class="ib" data-a="new" aria-label="New letters" title="New letters (N)">${ic('shuf')}</button><button class="ib" data-a="view" aria-label="View: ${VIEW[S.view]}" title="View: ${VIEW[S.view]} (V)">${ic(S.view === 'chart' ? 'lines' : S.view === 'line' ? 'line1' : 'one')}</button><button class="ib gl" data-a="type" aria-label="Chart type: ${CHARTS[S.chart]}" title="Chart type: ${CHARTS[S.chart]} (T)">${svgOpt({ k: S.chart, v: { L: 'S', N: '5', E: 0, C: 0, P: 'heart' }[S.chart] }, 26)}</button><button class="ib" data-a="con" aria-label="Contrast: ${CON[S.con]}" title="Contrast: ${CON[S.con]} (C)">${ic('con')}</button>`;
+  };
+  const lab = (x, d) => `@${fmtD(d)}: ${note(x, S.note)}`;
   const renderVA = () => {
-    if (!S.opts.length || S.opts[0].k !== S.chart) newLine();
-    const [x] = LINES[S.li], mar = x / 6, hmm = S.dist * 1000 * Math.tan(5 * mar / 60 * Math.PI / 180), h = hmm * pxmm;
-    const W = stage.clientWidth * .94, H = stage.clientHeight * .86; let warn = '', hh = h;
-    let opts = S.single ? [S.opts[S.si % S.opts.length]] : S.opts.slice(0, LINES[S.li][2]);
-    const need = n => n * hh + (n - 1) * hh * 1;
-    while (!S.single && opts.length > 1 && need(opts.length) > W) opts = opts.slice(0, opts.length - 1);
-    if (hh > H || hh > W) { warn = `Too big for this screen at ${S.dist} m. Shown smaller than true size: move closer or use the next line.`; hh = Math.min(H, W); }
-    else if (hh < 10) warn = `Only ${hh.toFixed(1)} px tall at ${S.dist} m, too small to draw accurately. Increase the test distance or use a bigger screen.`;
-    const gap = hh, cb = S.single && S.crowd ? `style="outline:${(hh / 5).toFixed(2)}px solid #000;outline-offset:${(hh / 5 * 2.5).toFixed(2)}px"` : '';
-    stage.innerHTML = `<div class="chart${S.mirror ? ' mir' : ''}" style="gap:${gap}px"><span style="display:contents">${opts.map(o => svgOpt(o, hh.toFixed(2))).join('')}</span></div>${warn ? `<div class="warn">${warn}</div>` : ''}<div class="lab">${note(x, S.note)} · ${S.dist} m${S.mirror ? ' · mirror' : ''}</div>`;
-    if (cb) stage.querySelector('.opt').setAttribute('style', cb.slice(7, -1));
-    bar.innerHTML = `<button class="btn" data-a="bigger">${ic('up')}<span>Bigger</span></button><button class="btn" data-a="smaller">${ic('dn')}<span>Smaller</span></button><button class="btn" data-a="new">${ic('sh')}<span>New letters</span></button><button class="btn${S.single ? ' on' : ''}" data-a="single">${ic('one')}<span>One at a time</span></button>${S.single ? `<button class="btn" data-a="nexto">Next ›</button>` : ''}<button class="btn${S.mirror ? ' on' : ''}" data-a="mirror">${ic('mir')}<span>Mirror</span></button><button class="btn" data-a="hide">${ic('eye')}<span>Hide buttons</span></button>`;
-    hint.textContent = 'Keys: ↑ bigger · ↓ smaller · N new · O one at a time · → next · M mirror · H hide buttons · F full screen. Calibrate the screen once in Settings.';
+    if (S.rows.length !== LINES.length || !S.rows[0] || S.rows[0][0].k !== S.chart) newAll();
+    S.ns = {}; const d = dist(), dpr = devicePixelRatio || 1, W = stage.clientWidth - 40, H = stage.clientHeight;
+    stage.className = 'stage con' + S.con + (S.view === 'chart' ? ' scroll' : '');
+    let html = '', notes = [];
+    if (S.view === 'chart') {
+      const LW = Math.min(150, W * .3), big = [], small = [];
+      LINES.forEach((L, i) => {
+        const h = hpx(i);
+        if (h * dpr < 6) { small.push(L[0]); return; }
+        if (h > W - LW || h > H * .9) { big.push(L[0]); return; }
+        let n = L[2]; while (n > 1 && n * h + (n - 1) * h > W - LW) n--; S.ns[i] = n;
+        html += `<div class="row${i === S.li ? ' cur' : ''}" data-row="${i}" style="padding-block:${Math.max(10, h * .3).toFixed(1)}px"><div class="lt" style="gap:${h.toFixed(2)}px">${S.rows[i].slice(0, n).map(o => svgOpt(o, h.toFixed(2))).join('')}</div><span class="rl">${lab(L[0], d)}</span></div>`;
+      });
+      if (big.length) notes.push(`${big.map(x => note(x, S.note)).join(', ')} too big for this screen at ${fmtD(d)}.`);
+      if (small.length) notes.push(`${small.map(x => note(x, S.note)).join(', ')} too small to draw sharply at ${fmtD(d)} on this screen: test from further away or use a sharper screen.`);
+      stage.innerHTML = `<div class="ladder${S.mirror ? ' mir' : ''}">${html || '<p class="nofit">Nothing fits at this distance. Check the calibration in Settings.</p>'}${notes.map(t => `<p class="fn">${t}</p>`).join('')}</div>`;
+      const cur = stage.querySelector('.row.cur'); if (cur && !renderVA.noScroll) requestAnimationFrame(() => cur.scrollIntoView({ block: 'nearest' }));
+    } else {
+      const [x] = LINES[S.li]; let hh = hpx(S.li), warn = '';
+      const Wl = stage.clientWidth * .94, Hl = H * .8;
+      let opts = S.view === 'one' ? [S.rows[S.li][S.si % 5]] : S.rows[S.li].slice(0, LINES[S.li][2]);
+      while (S.view !== 'one' && opts.length > 1 && opts.length * hh * 2 - hh > Wl) opts = opts.slice(0, -1); S.ns[S.li] = S.view === 'one' ? 5 : opts.length;
+      if (hh > Hl || hh > Wl) { warn = `Too big for this screen at ${fmtD(d)}: shown smaller than true size.`; hh = Math.min(Hl, Wl); }
+      else if (hh * dpr < 6) warn = `Too small to draw sharply at ${fmtD(d)} on this screen.`;
+      const cb = S.view === 'one' && S.crowd ? ` style="outline:${(hh / 5).toFixed(2)}px solid currentColor;outline-offset:${(hh / 2).toFixed(2)}px"` : '';
+      stage.innerHTML = `<div class="chart${S.mirror ? ' mir' : ''}" style="gap:${hh.toFixed(2)}px">${opts.map(o => svgOpt(o, hh.toFixed(2))).join('')}</div>${warn ? `<div class="warn">${warn}</div>` : ''}<div class="lab">${lab(x, d)}</div>
+        <div class="updn"><button class="ib big" data-a="bigger" aria-label="Bigger line">${ic('up')}</button><button class="ib big" data-a="smaller" aria-label="Smaller line">${ic('dn')}</button>${S.view === 'one' ? `<button class="ib big" data-a="nexto" aria-label="Next letter">${ic('nx')}</button>` : ''}</div>`;
+      if (cb) stage.querySelector('.opt').setAttribute('style', cb.slice(8, -1));
+    }
+    const seg = [['near', 'Near'], ['int', 'Intermediate'], ['far', 'Distance']];
+    bar.innerHTML = `${LS.get('mk-vt-pxmm', null) ? '' : '<button class="uncal" data-a="set">Screen not calibrated yet, so sizes are a guess. Tap to calibrate with a bank card.</button>'}<p class="cd">Current distance: ${fmtD(d)}${d < 1 ? ` (${(1 / d).toFixed(2)} D)` : ''}</p><div class="seg" role="radiogroup">${seg.map(([k, t]) => `<button role="radio" aria-checked="${S.dm === k}" data-dm="${k}">${t}</button>`).join('')}</div>`;
   };
   const renderCV = () => {
     const c = S.cv, p = c.seq[c.i], r = cvResult(c.seq, c.ans);
+    stage.className = 'stage';
     if (c.i >= c.seq.length || r) {
       const rr = r || { h: 'Incomplete', b: [], c: '' };
       stage.innerHTML = `<div class="cv"><div class="res"><h2 style="color:var(--${rr.c || 'ink'})">${rr.h}</h2><ul>${rr.b.map(t => `<li>${t}</li>`).join('')}</ul><p class="note">Screening only. These plates are original MataKitani designs, not the Ishihara test, and screen colours vary. Blue-yellow (tritan) defects are not tested.</p><div class="ans"><button class="btn pri" data-a="cvrestart">Test another person</button></div></div></div>`;
-      bar.innerHTML = ''; hint.textContent = ''; return;
+      bar.innerHTML = ''; return;
     }
     const S2 = Math.round(Math.min(stage.clientHeight * .72, stage.clientWidth * .9) * Math.min(2, devicePixelRatio || 1));
     stage.innerHTML = `<div class="cv"><div class="ttl">Plate ${c.i + 1} of ${c.seq.length}${p.t === 'demo' ? ' · demonstration' : p.t === 'cls' ? ' · two digits' : ''}</div><canvas width="${S2}" height="${S2}" aria-label="Colour vision plate"></canvas><div class="peek" id="peek"></div></div>`;
     drawPlate(stage.querySelector('canvas'), p, c.seed + c.i * 7919);
     const A = p.t === 'cls' ? `<button class="btn ok" data-cv="both">Read both digits</button><button class="btn" data-cv="left">Left digit only</button><button class="btn" data-cv="rightonly">Right digit only</button><button class="btn bad" data-cv="neither">Neither</button>` : `<button class="btn ok" data-cv="right">Read correctly</button><button class="btn bad" data-cv="wrong">Wrong / nothing</button>`;
-    bar.innerHTML = `${c.i ? '<button class="btn" data-a="cvback">‹ Back</button>' : ''}${A}<button class="btn" data-a="peek">Show answer</button>`;
-    hint.textContent = 'Seat the person about 75 cm from the screen in good light, screen brightness high, night mode and blue-light filters off. Allow about 3 seconds a plate.';
+    bar.innerHTML = `<div class="btns">${c.i ? '<button class="btn" data-a="cvback">‹ Back</button>' : ''}${A}<button class="btn" data-a="peek">Show answer</button></div><p class="cd sm">Seat the person about 75 cm away in good light. Screen brightness high, night mode and blue-light filters off. About 3 seconds a plate.</p>`;
   };
-  const render = () => { stage.parentElement.dataset.mode = S.tab; app.querySelectorAll('button[data-tab]').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === S.tab)); S.tab === 'va' ? renderVA() : renderCV(); save(); send(); };
+  const render = () => { app.dataset.mode = S.tab; app.querySelectorAll('button[data-tab]').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === S.tab)); renderTools(); S.tab === 'va' ? renderVA() : renderCV(); save(); send(); };
   const act = (a, v) => {
-    if (a === 'bigger') { S.li = Math.max(0, S.li - 1); newLine(); }
-    else if (a === 'smaller') { S.li = Math.min(LINES.length - 1, S.li + 1); newLine(); }
-    else if (a === 'new') newLine();
-    else if (a === 'single') { S.single = !S.single; newLine(); }
+    if (a === 'bigger') { S.li = Math.max(0, S.li - 1); S.si = 0; }
+    else if (a === 'smaller') { S.li = Math.min(LINES.length - 1, S.li + 1); S.si = 0; }
+    else if (a === 'new') { S.view === 'chart' ? newAll() : newRow(S.li); }
+    else if (a === 'view') S.view = v || { chart: 'line', line: 'one', one: 'chart' }[S.view];
+    else if (a === 'single') S.view = S.view === 'one' ? 'line' : 'one';
+    else if (a === 'type') { const k = Object.keys(CHARTS); S.chart = v || k[(k.indexOf(S.chart) + 1) % k.length]; newAll(); }
+    else if (a === 'con') S.con = v != null ? +v : (S.con + 1) % 3;
+    else if (a === 'dm') S.dm = v;
     else if (a === 'nexto') S.si = (S.si + 1) % 5;
     else if (a === 'prevo') S.si = (S.si + 4) % 5;
     else if (a === 'mirror') S.mirror = !S.mirror;
     else if (a === 'hide') { app.classList.toggle('hide-ui'); setTimeout(render, 30); return; }
     else if (a === 'tab') { S.tab = v; app.classList.remove('hide-ui'); }
-    else if (a === 'set') { const [k, val] = v; S[k] = val; if (k === 'chart' || k === 'single') newLine(); }
-    else if (a === 'line') { S.li = Math.max(0, Math.min(LINES.length - 1, +v)); newLine(); }
+    else if (a === 'set') { const [k, val] = v; if (k === 'dist') { if (val < 1) { S.dm = val > .5 ? 'int' : 'near'; if (val <= .5) S.near = val; } else { S.dm = 'far'; S.far = val; } } else S[k] = val; if (k === 'chart') newAll(); }
+    else if (a === 'line') { S.li = Math.max(0, Math.min(LINES.length - 1, +v)); S.si = 0; }
     else if (a === 'cv') { const c = S.cv; if (c.i < c.seq.length) { c.ans[c.i] = v; c.i++; } }
     else if (a === 'cvback') { const c = S.cv; if (c.i > 0) { c.i--; c.ans.length = c.i; } }
     else if (a === 'cvrestart') S.cv = { seq: newSeq(), i: 0, ans: [], seed: 1 + ((Math.random() * 1e6) | 0) };
@@ -239,6 +295,8 @@ function display() {
   app.addEventListener('click', e => {
     const t = e.target.closest('button[data-tab]'); if (t) return act('tab', t.dataset.tab);
     const c = e.target.closest('[data-cv]'); if (c) return act('cv', c.dataset.cv);
+    const m = e.target.closest('[data-dm]'); if (m) return act('dm', m.dataset.dm);
+    const r = e.target.closest('[data-row]'); if (r) { renderVA.noScroll = true; act('line', r.dataset.row); renderVA.noScroll = false; return; }
     const b = e.target.closest('[data-a]'); if (!b) return; const a = b.dataset.a;
     if (a === 'set') { syncSet(); dset.showModal(); return; }
     if (a === 'remote') { drem.showModal(); startPeer(); return; }
@@ -248,11 +306,11 @@ function display() {
   app.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => b.closest('dialog').close()));
   const syncSet = () => { dset.querySelectorAll('[data-s]').forEach(el => { const k = el.dataset.s; if (el.type === 'checkbox') el.checked = !!S[k]; else el.value = String(S[k]); }); const cal = $('#cal'); cal.value = Math.round(pxmm * 85.6); calUi(); };
   const calUi = () => { $('#card').style.width = (pxmm * 85.6) + 'px'; $('#calt').textContent = `${(pxmm).toFixed(2)} screen pixels per mm${LS.get('mk-vt-pxmm', null) ? '' : ' (not calibrated yet: sizes are a rough guess)'}.`; };
-  dset.addEventListener('change', e => { const el = e.target, k = el.dataset.s; if (!k) return; const v = el.type === 'checkbox' ? el.checked : (k === 'dist' ? +el.value : el.value); act('set', [k, v]); });
+  dset.addEventListener('change', e => { const el = e.target, k = el.dataset.s; if (!k) return; const v = el.type === 'checkbox' ? el.checked : (k === 'far' || k === 'near' ? +el.value : el.value); act('set', [k, v]); });
   $('#cal').addEventListener('input', e => { pxmm = +e.target.value / 85.6; LS.set('mk-vt-pxmm', pxmm); calUi(); render(); });
   addEventListener('keydown', e => {
     if (e.target.closest('input,select') || dset.open || drem.open) return; const k = e.key.toLowerCase();
-    if (S.tab === 'va') { const m = { arrowup: 'bigger', arrowdown: 'smaller', n: 'new', o: 'single', arrowright: 'nexto', arrowleft: 'prevo', m: 'mirror', h: 'hide' }[k]; if (m) { e.preventDefault(); act(m); } }
+    if (S.tab === 'va') { const m = { arrowup: 'bigger', arrowdown: 'smaller', n: 'new', v: 'view', o: 'single', t: 'type', c: 'con', arrowright: 'nexto', arrowleft: 'prevo', m: 'mirror', h: 'hide' }[k]; if (m) { e.preventDefault(); act(m); } const dm = { 1: 'near', 2: 'int', 3: 'far' }[k]; if (dm) act('dm', dm); }
     else if (k === 'arrowleft') act('cvback');
     if (k === 'f') app.querySelector('[data-a=full]').click();
   });
@@ -284,15 +342,15 @@ function remote(id) {
     if (!S) return;
     const tabs = `<div class="tabs" style="align-self:center;justify-content:center"><button data-tab="va" aria-selected="${S.tab === 'va'}">Vision chart</button><button data-tab="cv" aria-selected="${S.tab === 'cv'}">Colour vision</button></div>`;
     if (S.tab === 'va') {
-      const L = LINES[S.li], n = S.single ? 5 : L[2], ops = S.opts.slice(0, n);
+      const L = LINES[S.li], n = S.single ? 5 : (S.ns && S.ns[S.li]) || L[2], ops = S.opts.slice(0, n);
       if (marks.length !== ops.length) marks = ops.map(() => false);
       const wrong = marks.filter(Boolean).length, res = note(L[0], S.note) + (wrong ? ` −${wrong}` : '');
-      body.innerHTML = `${tabs}<div class="big">${note(L[0], S.note)}</div><p class="sub2">${S.all} · ${S.dist} m · ${CHARTS[S.chart].split(' (')[0]}</p>
+      body.innerHTML = `${tabs}<div class="big">${note(L[0], S.note)}</div><p class="sub2">${S.all} · ${fmtD(S.dist)} · ${CHARTS[S.chart].split(' (')[0]}</p>
         <p class="sub2">Tap an optotype the person got wrong.</p><div class="chips">${ops.map((o, i) => `<button data-mk="${i}" class="${marks[i] ? 'x' : ''}${S.single && i === S.si % 5 ? ' cur' : ''}">${optTxt(o)}</button>`).join('')}</div>
         <div class="g2"><button class="btn pri huge" data-c="bigger">▲ Bigger</button><button class="btn pri huge" data-c="smaller">▼ Smaller</button></div>
-        <div class="g3"><button class="btn" data-c="new">New</button><button class="btn${S.single ? ' on' : ''}" data-c="single">One at a time</button><button class="btn" data-c="nexto">Next ›</button></div>
+        <div class="g3"><button class="btn" data-c="new">New letters</button><button class="btn" data-c="view">View: ${{ chart: 'full chart', line: 'one line', one: 'one letter' }[S.view]}</button>${S.single ? '<button class="btn" data-c="nexto">Next letter ›</button>' : `<button class="btn" data-c="con">Contrast: ${['normal', 'inverted', 'low'][S.con]}</button>`}</div>
         <div class="g2"><button class="btn ok" data-rec="Right eye">Record right eye: ${res}</button><button class="btn ok" data-rec="Left eye">Record left eye: ${res}</button></div>
-        <div class="g2"><select data-set="chart">${Object.entries(CHARTS).map(([k, v]) => `<option value="${k}"${k === S.chart ? ' selected' : ''}>${v.split(' (')[0]}</option>`).join('')}</select><select data-set="dist">${[1.5, 2, 3, 4, 5, 6].map(d => `<option value="${d}"${d === S.dist ? ' selected' : ''}>${d} m</option>`).join('')}</select></div>
+        <div class="g2"><select data-set="chart">${Object.entries(CHARTS).map(([k, v]) => `<option value="${k}"${k === S.chart ? ' selected' : ''}>${v.split(' (')[0]}</option>`).join('')}</select><select data-set="dist">${[.25, .33, .4, .66, 1.5, 2, 3, 4, 5, 6].map(d => `<option value="${d}"${d === S.dist ? ' selected' : ''}>${fmtD(d)}${d < .5 ? ' (near)' : d < 1 ? ' (intermediate)' : ''}</option>`).join('')}</select></div>
         ${recs.length ? `<div class="rec"><b>Recorded (this phone only, cleared when you close it)</b><ol>${recs.map(r => `<li>${r}</li>`).join('')}</ol></div>` : ''}`;
     } else {
       const c = S.cv, r = cvResult(c.seq, c.ans);
@@ -308,7 +366,7 @@ function remote(id) {
   body.addEventListener('click', e => {
     const t = e.target.closest('button[data-tab]'); if (t) return send('tab', t.dataset.tab);
     const m = e.target.closest('[data-mk]'); if (m) { marks[+m.dataset.mk] = !marks[+m.dataset.mk]; render(); return; }
-    const r = e.target.closest('[data-rec]'); if (r) { const L = LINES[S.li], w = marks.filter(Boolean).length; recs.push(`${r.dataset.rec}: ${note(L[0], S.note)}${w ? ' −' + w : ''} (${CHARTS[S.chart].split(' (')[0]}, ${S.dist} m)`); render(); return; }
+    const r = e.target.closest('[data-rec]'); if (r) { const L = LINES[S.li], w = marks.filter(Boolean).length; recs.push(`${r.dataset.rec}: ${note(L[0], S.note)}${w ? ' −' + w : ''} (${CHARTS[S.chart].split(' (')[0]}, ${fmtD(S.dist)})`); render(); return; }
     const v = e.target.closest('[data-v]'); if (v) { if (navigator.vibrate) navigator.vibrate(10); return send('cv', v.dataset.v); }
     const b = e.target.closest('[data-c]'); if (b) { if (['bigger', 'smaller', 'new', 'single'].includes(b.dataset.c)) marks = []; send(b.dataset.c); }
   });
