@@ -2,6 +2,12 @@
  "news": {
   "items": [
    {
+    "t": "Hibiscus EP (Brunei) B.V. strengthens community well-being through eye health initiative",
+    "src": "Borneo Bulletin",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQTUhPYy0zWjY1RTdUck92M0N3R2hUT2NySXVJb1l6MU9FeFZ0ZFdLMnktNnZ2YldhcUxkMVZjWmlZQnJ5YnlKY2xLb3F3dkdOaVQ1dWZ2Y2JWSnFhbVBOdTQ5NktwZ3Vqb0pTOU56c05od3AwN05iNHRtOW84Sm1NYjFZVzFqNEE2dTc4SVdDS0VsMDNBZGNock45ZVYtSXdUZHhVM2RJVkxtR18tRlUwVzRXc3NjVVk?oc=5",
+    "d": "2026-11-22"
+   },
+   {
     "t": "Brunei air quality remains good",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1vTW56MkdtendON3A5ZVczNmI3c1FDeGg3THUwRHBFZE5La3NXdFhHQkxVMzJzT29Nb3lOTnZ4SkpxU3Q0d3g4dlU2bFBOSkdyeVBYaTVZaWtjWGZuYVhOSkx4bm9aWjAySzdVNEFldw?oc=5",
@@ -24,62 +30,50 @@
     "src": "The Star",
     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQcEdnS21DMUF0UHZnTFZmeTBJX2tKUDN4RTRRY1N0QjRNRVJXcV9iYVBmaVRPNHo5Z3VYSFZsYy1GVVRCeFcydzZoY0VxN2dyd1FTd2FMQ0g0Q3pCalI4cy04dXoyc3hLVnNxN1h1cHRLam9RLUtaaXZDS294M0FfaF9YQlhXSHNyczU4UWJseDNxRE92WTM0cVdzMnl6VXVQTmR6aWVrc0NjelgwbXZkaWhqNmdxN1lvX2FlSTFwSnpvMXp1bVJUTlFGSko?oc=5",
     "d": "2026-11-13"
-   },
-   {
-    "t": "Brunei Launches Ten-Year Health Plan to Prevent and Control Chronic Diseases and Obesity",
-    "src": "联合日报",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1LcXZEZGZqaTdpdWZ1VGtSdXV4VDhWaUlfNVlYRDEwSDFXZVRGS3ZWZlNzcElXek5oTmRfajllLXdTRDNZbTVObG9YZWc0WDFGZnJMODFJWW9PazdEYWN3Q2hCNk9kOUNHUlY2QlE3OA?oc=5",
-    "d": "2026-11-11"
-   },
-   {
-    "t": "Brunei Launches New Health Initiative: Cross-Sector Collaboration to Fight Obesity",
-    "src": "联合日报",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBhUWJ5Nm4xOFlDbjY3MWNvYy1kTHpLTUVSZzJlMEhlelF1aDJ4MG9Lck14QzZQWVhKeU1lWVZCalhueUV3MjhqS0ZPNHhmUmQzcGxiVktjNk9kVjliWU1VcW9HVzNGS3pXMDdzWFpucw?oc=5",
-    "d": "2026-11-11"
    }
   ],
-  "updated": "2026-11-22"
+  "updated": "2026-11-23"
  },
  "sea": {
   "items": [
    {
-    "t": "Nasal versus Temporal Deep Sclerectomy in Primary Congenital Glaucoma: Outcomes and Predictors of Survival",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Nov 20",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43064155/"
+    "t": "Cell Density Mapped Retinal Nonperfusion and Low-Luminance Visual Acuity in Diabetic Retinopathy",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43067915/"
    },
    {
-    "t": "Systematic review of artificial intelligence for ocular imaging-based ageing measures: evidence, challenges, and clinical potential",
-    "src": "Asia-Pacific Journal of Ophthalmology",
-    "d": "2026 Nov 20",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43064073/"
+    "t": "Choroidal Thickness and Risk of Incident Myopic Maculopathy: A Longitudinal Study in a Japanese Community",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43067905/"
    },
    {
-    "t": "Association of allergic conjunctivitis severity with meibomian gland abnormalities in children: a cross-sectional study",
+    "t": "A Novel TEAD2 Variant Disrupts Eye Development Resulting in Microphthalmia and Ocular Coloboma",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43067898/"
+   },
+   {
+    "t": "Safety and clinical outcomes of cataract surgery follow-up at urban hospitals versus rural vision centres",
+    "src": "Eye",
+    "d": "2026 Nov 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43067621/"
+   },
+   {
+    "t": "Vaccination against shingles and prevention of long-term ocular morbidity-a retrospective study of cost implications to the NHS",
+    "src": "Eye",
+    "d": "2026 Nov 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43067620/"
+   },
+   {
+    "t": "Retinal Structure Reflects Cumulative Blast Exposure and Blast-Related Mild Traumatic Brain Injury",
     "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 20",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43064053/"
-   },
-   {
-    "t": "Long-term Outcomes of Combined Phacoemulsification and Intravitreal Dexamethasone Implant in Diabetic Macular Oedema",
-    "src": "Retina",
-    "d": "2026 Nov 20",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43062470/"
-   },
-   {
-    "t": "The Emory Optic Nerve Head Atlas: Using 3D Anatomical Mapping to Study Optic Neuropathies With an Initial Focus on Glaucoma",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43062419/"
-   },
-   {
-    "t": "Topographic Ellipsoid Zone Reflectivity in Hereditary Optic Neuropathies",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43062418/"
+    "d": "2026 Nov 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43067492/"
    }
   ],
-  "updated": "2026-11-22"
+  "updated": "2026-11-23"
  },
  "bimj": {
   "items": [
@@ -96,11 +90,11 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-22"
+  "updated": "2026-11-23"
  },
- "checked": "2026-11-22T01:51+00:00",
+ "checked": "2026-11-23T02:08+00:00",
  "status": {
-  "news": "ok (6)",
+  "news": "ok (5)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
@@ -184,6 +178,18 @@
   ],
   "medret": [
    {
+    "t": "Cell Density Mapped Retinal Nonperfusion and Low-Luminance Visual Acuity in Diabetic Retinopathy",
+    "src": "Ophthalmology Science",
+    "d": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43067915/"
+   },
+   {
+    "t": "MOSAIC: A global study of the clinical, humanistic and economic burden of geographic atrophy in patients and caregivers",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43066519/"
+   },
+   {
     "t": "Long-term Outcomes of Combined Phacoemulsification and Intravitreal Dexamethasone Implant in Diabetic Macular Oedema",
     "src": "Retina",
     "d": "2026 Nov 20",
@@ -202,22 +208,10 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/43055595/"
    },
    {
-    "t": "Angiopoietin-2 in Retinal Vascular Fibrosis: Mechanisms and Therapeutic Implications for Diabetic Retinopathy",
+    "t": "Angiopoietin-2 in retinal vascular fibrosis: Mechanisms and therapeutic implications for diabetic retinopathy",
     "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 18",
+    "d": "2026 Nov 19",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43051421/"
-   },
-   {
-    "t": "Formulation Matters: Nutrient Availability and Label Accuracy of Supplements for Age-Related Macular Degeneration",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43043343/"
-   },
-   {
-    "t": "Automated retinal layer thickness segmentation in neovascular age-related macular degeneration: a comparison of two algorithms",
-    "src": "Eye",
-    "d": "2026 Nov 16",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43039982/"
    }
   ],
   "vr": [
@@ -334,6 +328,6 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/43037401/"
    }
   ],
-  "updated": "2026-11-22"
+  "updated": "2026-11-23"
  }
 }
