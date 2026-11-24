@@ -37,43 +37,43 @@
  "sea": {
   "items": [
    {
-    "t": "Cell Density Mapped Retinal Nonperfusion and Low-Luminance Visual Acuity in Diabetic Retinopathy",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43067915/"
+    "t": "Anti-Vascular Endothelial Growth Factor for Non-Proliferative Diabetic Retinopathy Without Center-Involving Diabetic Macular Edema: An Updated Systematic Review and Meta-Analysis of Randomized Controlled Trials",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Nov 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43072646/"
    },
    {
-    "t": "Choroidal Thickness and Risk of Incident Myopic Maculopathy: A Longitudinal Study in a Japanese Community",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43067905/"
+    "t": "Evidence and Consensus Based Imaging Guidelines in Ocular Syphilis. Multimodal imaging in Uveitis (MUV) Taskforce Report 21",
+    "src": "Ophthalmology Retina",
+    "d": "2026 Nov 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43072635/"
    },
    {
-    "t": "A Novel TEAD2 Variant Disrupts Eye Development Resulting in Microphthalmia and Ocular Coloboma",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43067898/"
-   },
-   {
-    "t": "Safety and clinical outcomes of cataract surgery follow-up at urban hospitals versus rural vision centres",
-    "src": "Eye",
-    "d": "2026 Nov 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43067621/"
-   },
-   {
-    "t": "Vaccination against shingles and prevention of long-term ocular morbidity-a retrospective study of cost implications to the NHS",
-    "src": "Eye",
-    "d": "2026 Nov 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43067620/"
-   },
-   {
-    "t": "Retinal Structure Reflects Cumulative Blast Exposure and Blast-Related Mild Traumatic Brain Injury",
+    "t": "High Prevalence of Retinal Ischemic Perivascular Lesions in Central Serous Chorioretinopathy Patients",
     "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43067492/"
+    "d": "2026 Nov 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43072621/"
+   },
+   {
+    "t": "Sex-Related Patterns in the Etiology and Complications of Noninfectious Uveitis: A Population-Based Cohort Study",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43072620/"
+   },
+   {
+    "t": "Longitudinal Alterations in Retinal Microvasculature and Their Association With Myopia Progression in Children: The Hong Kong Children Eye Study",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43070601/"
+   },
+   {
+    "t": "Central Serous Chorioretinopathy in a Neural Crest-Specific Angpt1 Knockout Mouse Model of Choroidal Venous Insufficiency",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43070600/"
    }
   ],
-  "updated": "2026-11-23"
+  "updated": "2026-11-24"
  },
  "bimj": {
   "items": [
@@ -90,11 +90,11 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-23"
+  "updated": "2026-11-24"
  },
- "checked": "2026-11-23T02:08+00:00",
+ "checked": "2026-11-24T05:42+00:00",
  "status": {
-  "news": "ok (5)",
+  "news": "failed: HTTPError: HTTP Error 503: Service Unavailable",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
@@ -102,43 +102,61 @@
  "sub": {
   "cornea": [
    {
-    "t": "Coffee saucer grading system: a novel method for stratifying corneal trauma in the International Globe and Adnexal Trauma Epidemiology Study (IGATES) registry",
-    "src": "Eye",
-    "d": "2026 Nov 18",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43052411/"
+    "t": "Multicenter Outcomes of Mitomycin C Intravascular Chemoembolization (MICE) for Refractory Corneal Neovascularization",
+    "src": "Cornea",
+    "d": "2026 Nov 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43071586/"
    },
    {
-    "t": "From area under the curve to clinical readiness: A framework for AI-assisted ectasia risk assessment before refractive surgery",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 18",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43049258/"
+    "t": "Evolution of Corneal Transplantation Practice in Taiwan Over Two Decades: Impact of a National Eye Bank on Donor Sourcing and Surgical Techniques",
+    "src": "Cornea",
+    "d": "2026 Nov 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43071584/"
    },
    {
-    "t": "Clinical feasibility of non-contact in vivo conjunctival goblet cell imaging in ocular surface disease: a prospective study",
-    "src": "The Ocular Surface",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43044759/"
-   },
-   {
-    "t": "Umbilical cord and cord blood-derived therapies in the treatment of ocular surface diseases: a scoping review of factors, mechanisms of action, and clinical applicability",
-    "src": "The Ocular Surface",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43044758/"
-   },
-   {
-    "t": "Micro-Aberrations Scattering Index (MASI) as a Novel Metric for Subclinical Optical Degradation in Early Fuchs Endothelial Corneal Dystrophy",
+    "t": "The Differential Tension Sign: Confirming Type 1 Big-Bubble Formation in Deep Anterior Lamellar Keratoplasty When Visualization Is Limited",
     "src": "Cornea",
     "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43042478/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43071583/"
    },
    {
-    "t": "Risk Factors for Treatment Failure of Infectious Keratitis: An IRIS Registry Analysis",
+    "t": "Detection of Endothelial Plaque in Microbial Keratitis Using Anterior Segment Optical Coherence Tomography: Findings From the METRIC Study",
     "src": "Cornea",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43042475/"
+    "d": "2026 Nov 12",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43071580/"
+   },
+   {
+    "t": "Early Postoperative Dry Eye Following ICL Implantation Versus KLEx for Moderate-to-High Myopia",
+    "src": "J Cataract Refract Surg",
+    "d": "2026 Nov 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43070877/"
+   },
+   {
+    "t": "Liraglutide Realigns Corneal Circadian Output Programs and Ameliorates Ocular Surface Abnormalities Under High-Fat-Diet-Induced Metabolic Stress",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43070597/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Early Outcomes of the Paul Glaucoma Implant in Children With Refractory Glaucoma",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43071858/"
+   },
+   {
+    "t": "Risk Factors for Normal-tension Glaucoma Progression: A Review",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43071855/"
+   },
+   {
+    "t": "Relationship Between Chromatic Sensitivity and Retinal Structure in Early Glaucoma",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43055596/"
+   },
    {
     "t": "Nasal versus Temporal Deep Sclerectomy in Primary Congenital Glaucoma: Outcomes and Predictors of Survival",
     "src": "Ophthalmology Glaucoma",
@@ -156,27 +174,33 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43062417/"
-   },
-   {
-    "t": "Trends in initial glaucoma surgery for patients with primary open angle glaucoma from 2015 to 2025: a national database study",
-    "src": "Graefe's Archive",
-    "d": "2026 Nov 20",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43058358/"
-   },
-   {
-    "t": "Outcomes of Initial Surgical Treatment of Neovascular Glaucoma with Tube Shunt or Transscleral Cyclophotocoagulation: A Retrospective, Comparative Study",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Nov 19",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43057521/"
-   },
-   {
-    "t": "Relationship Between Chromatic Sensitivity and Retinal Structure in Early Glaucoma",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43055596/"
    }
   ],
   "medret": [
+   {
+    "t": "Anti-Vascular Endothelial Growth Factor for Non-Proliferative Diabetic Retinopathy Without Center-Involving Diabetic Macular Edema: An Updated Systematic Review and Meta-Analysis of Randomized Controlled Trials",
+    "src": "Survey of Ophthalmology",
+    "d": "2026 Nov 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43072646/"
+   },
+   {
+    "t": "High Prevalence of Retinal Ischemic Perivascular Lesions in Central Serous Chorioretinopathy Patients",
+    "src": "American Journal of Ophthalmology",
+    "d": "2026 Nov 23",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43072621/"
+   },
+   {
+    "t": "Central Serous Chorioretinopathy in a Neural Crest-Specific Angpt1 Knockout Mouse Model of Choroidal Venous Insufficiency",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43070600/"
+   },
+   {
+    "t": "Spatio-Temporal Choriocapillaris Flow Deficits Are Associated With Outer Retinal Degeneration and Visual Function in Geographic Atrophy",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43055595/"
+   },
    {
     "t": "Cell Density Mapped Retinal Nonperfusion and Low-Luminance Visual Acuity in Diabetic Retinopathy",
     "src": "Ophthalmology Science",
@@ -188,30 +212,6 @@
     "src": "Acta Ophthalmologica",
     "d": "2026 Nov 21",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43066519/"
-   },
-   {
-    "t": "Long-term Outcomes of Combined Phacoemulsification and Intravitreal Dexamethasone Implant in Diabetic Macular Oedema",
-    "src": "Retina",
-    "d": "2026 Nov 20",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43062470/"
-   },
-   {
-    "t": "Network Meta-Analysis of Complement Inhibitors for Geographic Atrophy in Age-Related Macular Degeneration",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 19",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43057623/"
-   },
-   {
-    "t": "Spatio-Temporal Choriocapillaris Flow Deficits Are Associated With Outer Retinal Degeneration and Visual Function in Geographic Atrophy",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43055595/"
-   },
-   {
-    "t": "Angiopoietin-2 in retinal vascular fibrosis: Mechanisms and therapeutic implications for diabetic retinopathy",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 19",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43051421/"
    }
   ],
   "vr": [
@@ -292,6 +292,12 @@
   ],
   "paeds": [
    {
+    "t": "Longitudinal Alterations in Retinal Microvasculature and Their Association With Myopia Progression in Children: The Hong Kong Children Eye Study",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43070601/"
+   },
+   {
     "t": "Low-Concentration Atropine Eye Drops in Children With Myopia and Intermittent Exotropia: The AMIXT2 Randomized Clinical Trial",
     "src": "JAMA Ophthalmology",
     "d": "2026 Nov 19",
@@ -320,14 +326,8 @@
     "src": "Graefe's Archive",
     "d": "2026 Nov 17",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43043434/"
-   },
-   {
-    "t": "Contrast Sensitivity Across the Visual Field in Children With Amblyopia",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43037401/"
    }
   ],
-  "updated": "2026-11-23"
+  "updated": "2026-11-24"
  }
 }
