@@ -14,6 +14,12 @@
     "d": "2026-11-20"
    },
    {
+    "t": "Two Health Supplements Found With Banned Substances – Brunei MOH Bans Import and Sale",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9xRi1VaElET25xMkhQUWhsblJRNlBQUTc1WUlzUkZSY3dTMGl3RWZsSHpWQ1VIUEJ2aDV4WUFpOWQ0ekxDYlZIRzVIbUNlVkNXNVBEUzRGX0ptSHhHdUdDUC1nX1dueGtKd3lTelNxZw?oc=5",
+    "d": "2026-11-19"
+   },
+   {
     "t": "JNC Signs 2 MoUs With Brunei Health Institutions to Employ Jordanian Nurses",
     "src": "وكالة الانباء الاردنية",
     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQMlJENVBReElIbVlfU0M5NHB2MjRwcDRQRWdRM1lnc3k0bUtkTENpZ0VTVTlpem5CUk9Yem0yWklrTVZ2Z2hZekhSLUFYaTY5VUdEYzQ4ZUQ5ZUtvaWNXaHBQV2YwMVJSU2NCdVZRSUxEWDJySUZXSVZhb1ZYbk5DY01FWTZ6MUUxeHcwbEdVUHhhQm52bHNSMFRBTERuNmJ3SHMxekw4Zw?oc=5",
@@ -32,48 +38,48 @@
     "d": "2026-11-13"
    }
   ],
-  "updated": "2026-11-23"
+  "updated": "2026-11-25"
  },
  "sea": {
   "items": [
    {
-    "t": "Anti-Vascular Endothelial Growth Factor for Non-Proliferative Diabetic Retinopathy Without Center-Involving Diabetic Macular Edema: An Updated Systematic Review and Meta-Analysis of Randomized Controlled Trials",
-    "src": "Survey of Ophthalmology",
-    "d": "2026 Nov 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43072646/"
+    "t": "Real-World Outcomes of Suprachoroidal Triamcinolone Acetonide Injection for the Treatment of Macular Edema Associated with Noninfectious Uveitis",
+    "src": "Retina",
+    "d": "2026 Nov 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076687/"
    },
    {
-    "t": "Evidence and Consensus Based Imaging Guidelines in Ocular Syphilis. Multimodal imaging in Uveitis (MUV) Taskforce Report 21",
-    "src": "Ophthalmology Retina",
-    "d": "2026 Nov 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43072635/"
+    "t": "Associations of Structural and Functional Macular Changes in Idiopathic Epiretinal Membrane a Longitudinal Functional and Imaging Study",
+    "src": "Retina",
+    "d": "2026 Nov 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076662/"
    },
    {
-    "t": "High Prevalence of Retinal Ischemic Perivascular Lesions in Central Serous Chorioretinopathy Patients",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43072621/"
-   },
-   {
-    "t": "Sex-Related Patterns in the Etiology and Complications of Noninfectious Uveitis: A Population-Based Cohort Study",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43072620/"
-   },
-   {
-    "t": "Longitudinal Alterations in Retinal Microvasculature and Their Association With Myopia Progression in Children: The Hong Kong Children Eye Study",
+    "t": "ODC1-Mediated Polyamine Dysregulation Promotes Retinal Neurodegeneration in Alzheimer's Disease by Impairing Autophagy-Lysosomal Homeostasis",
     "src": "IOVS",
     "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43070601/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076485/"
    },
    {
-    "t": "Central Serous Chorioretinopathy in a Neural Crest-Specific Angpt1 Knockout Mouse Model of Choroidal Venous Insufficiency",
+    "t": "AAV-Mediated C3 Inhibition Prevents Geographic Atrophy in a Retinal Degeneration Model: A Novel Gene Therapy Approach",
     "src": "IOVS",
     "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43070600/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076484/"
+   },
+   {
+    "t": "Empagliflozin Attenuates High-Glucose-Induced Corneal Epithelial Injury via VCAM1 Modulation",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076483/"
+   },
+   {
+    "t": "TIM-4 Blockade Upregulates NLRP3 to Activate the STING Pathway in Macrophages for the Treatment of Herpes Simplex Keratitis",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076482/"
    }
   ],
-  "updated": "2026-11-24"
+  "updated": "2026-11-25"
  },
  "bimj": {
   "items": [
@@ -90,17 +96,35 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-24"
+  "updated": "2026-11-25"
  },
- "checked": "2026-11-24T05:42+00:00",
+ "checked": "2026-11-25T04:44+00:00",
  "status": {
-  "news": "failed: HTTPError: HTTP Error 503: Service Unavailable",
+  "news": "ok (6)",
   "sea": "ok (6)",
   "bimj": "ok (2)",
   "sub": "ok (cornea 6, glaucoma 6, medret 6, vr 6, neuro 6, paeds 6)"
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Empagliflozin Attenuates High-Glucose-Induced Corneal Epithelial Injury via VCAM1 Modulation",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076483/"
+   },
+   {
+    "t": "TIM-4 Blockade Upregulates NLRP3 to Activate the STING Pathway in Macrophages for the Treatment of Herpes Simplex Keratitis",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076482/"
+   },
+   {
+    "t": "Risk Factors for Intraocular Pressure Elevation After Deep Anterior Lamellar Keratoplasty",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43075910/"
+   },
    {
     "t": "Multicenter Outcomes of Mitomycin C Intravascular Chemoembolization (MICE) for Refractory Corneal Neovascularization",
     "src": "Cornea",
@@ -118,27 +142,27 @@
     "src": "Cornea",
     "d": "2026 Nov 11",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43071583/"
-   },
-   {
-    "t": "Detection of Endothelial Plaque in Microbial Keratitis Using Anterior Segment Optical Coherence Tomography: Findings From the METRIC Study",
-    "src": "Cornea",
-    "d": "2026 Nov 12",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43071580/"
-   },
-   {
-    "t": "Early Postoperative Dry Eye Following ICL Implantation Versus KLEx for Moderate-to-High Myopia",
-    "src": "J Cataract Refract Surg",
-    "d": "2026 Nov 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43070877/"
-   },
-   {
-    "t": "Liraglutide Realigns Corneal Circadian Output Programs and Ameliorates Ocular Surface Abnormalities Under High-Fat-Diet-Induced Metabolic Stress",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43070597/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Model-Based Evidence for Reduced Gain and Enlarged Spatial Integration in Glaucoma",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076481/"
+   },
+   {
+    "t": "Multidimensional Modeling to Improve Intraocular Pressure Estimation in Glaucoma",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43075912/"
+   },
+   {
+    "t": "Risk Factors for Intraocular Pressure Elevation After Deep Anterior Lamellar Keratoplasty",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43075910/"
+   },
    {
     "t": "Early Outcomes of the Paul Glaucoma Implant in Children With Refractory Glaucoma",
     "src": "J Glaucoma",
@@ -156,27 +180,21 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43055596/"
-   },
-   {
-    "t": "Nasal versus Temporal Deep Sclerectomy in Primary Congenital Glaucoma: Outcomes and Predictors of Survival",
-    "src": "Ophthalmology Glaucoma",
-    "d": "2026 Nov 20",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43064155/"
-   },
-   {
-    "t": "The Emory Optic Nerve Head Atlas: Using 3D Anatomical Mapping to Study Optic Neuropathies With an Initial Focus on Glaucoma",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43062419/"
-   },
-   {
-    "t": "Integrative Multi-Omics in Glaucoma: Defining Mechanistic Axes and Enabling Precision Management",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43062417/"
    }
   ],
   "medret": [
+   {
+    "t": "Real-World Outcomes of Suprachoroidal Triamcinolone Acetonide Injection for the Treatment of Macular Edema Associated with Noninfectious Uveitis",
+    "src": "Retina",
+    "d": "2026 Nov 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076687/"
+   },
+   {
+    "t": "AAV-Mediated C3 Inhibition Prevents Geographic Atrophy in a Retinal Degeneration Model: A Novel Gene Therapy Approach",
+    "src": "IOVS",
+    "d": "2026 Nov 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076484/"
+   },
    {
     "t": "Anti-Vascular Endothelial Growth Factor for Non-Proliferative Diabetic Retinopathy Without Center-Involving Diabetic Macular Edema: An Updated Systematic Review and Meta-Analysis of Randomized Controlled Trials",
     "src": "Survey of Ophthalmology",
@@ -200,21 +218,15 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43055595/"
-   },
-   {
-    "t": "Cell Density Mapped Retinal Nonperfusion and Low-Luminance Visual Acuity in Diabetic Retinopathy",
-    "src": "Ophthalmology Science",
-    "d": "2026 Dec",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43067915/"
-   },
-   {
-    "t": "MOSAIC: A global study of the clinical, humanistic and economic burden of geographic atrophy in patients and caregivers",
-    "src": "Acta Ophthalmologica",
-    "d": "2026 Nov 21",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43066519/"
    }
   ],
   "vr": [
+   {
+    "t": "Associations of Structural and Functional Macular Changes in Idiopathic Epiretinal Membrane a Longitudinal Functional and Imaging Study",
+    "src": "Retina",
+    "d": "2026 Nov 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076662/"
+   },
    {
     "t": "Rhegmatogenous Retinal Detachment: A Contemporary Review of Repair Techniques, Common Complications, Advances in Imaging and Access to Care",
     "src": "Survey of Ophthalmology",
@@ -244,15 +256,15 @@
     "src": "IOVS",
     "d": "2026 Nov 2",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43037404/"
-   },
-   {
-    "t": "The integral role of artificial intelligence models in retinal detachment diagnostics: a systematic review and meta-analysis",
-    "src": "Graefe's Archive",
-    "d": "2026 Nov 14",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43033233/"
    }
   ],
   "neuro": [
+   {
+    "t": "OCT RNFL Sector-Specific Analysis for Papilledema Detection: PHOMS or Drusen Coexistence in 41% of Cases Does Not Reverse Diagnostic Discrimination",
+    "src": "J Neuro-Ophthalmology",
+    "d": "2026 Nov 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43076157/"
+   },
    {
     "t": "The Emory Optic Nerve Head Atlas: Using 3D Anatomical Mapping to Study Optic Neuropathies With an Initial Focus on Glaucoma",
     "src": "IOVS",
@@ -282,15 +294,15 @@
     "src": "Ophthalmology",
     "d": "2026 Nov 9",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43003350/"
-   },
-   {
-    "t": "Prevalence and OCT Characteristics of Glaucoma-Like Optic Neuropathy in a Real-World Population",
-    "src": "J Glaucoma",
-    "d": "2026 Nov 1",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42976315/"
    }
   ],
   "paeds": [
+   {
+    "t": "Sectoral Melanocytosis in an Infant With Unilateral Retinoblastoma: Case Report",
+    "src": "J Pediatr Ophthalmol Strabismus",
+    "d": "2026 Nov-Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43075969/"
+   },
    {
     "t": "Longitudinal Alterations in Retinal Microvasculature and Their Association With Myopia Progression in Children: The Hong Kong Children Eye Study",
     "src": "IOVS",
@@ -320,14 +332,8 @@
     "src": "American Journal of Ophthalmology",
     "d": "2026 Nov 17",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43044711/"
-   },
-   {
-    "t": "Platelet parameters and treatment-requiring reactivation after intravitreal ranibizumab for retinopathy of prematurity: a retrospective single-center study",
-    "src": "Graefe's Archive",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43043434/"
    }
   ],
-  "updated": "2026-11-24"
+  "updated": "2026-11-25"
  }
 }
