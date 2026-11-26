@@ -2,16 +2,22 @@
  "news": {
   "items": [
    {
+    "t": "Gleneagles JPMC, Brunei renew health programmes partnership",
+    "src": "Healthcare Asia Magazine",
+    "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdUhSWVNSU2VPRDRIOEtoNGhFVS1rVXItdi1fa0ZQSEJLLXpiWWtqZFBxNFV2cjVqekV2RGUtemZQYm10OVFCdXNKVXNqcWlCQmpfLW9LQ2xuUFBWN05ESEN5N2ZTSEZJaFBMUnc4SFJMbFc3TzJ0QTRJRmg4Qlc0X2xYa25kSlpEcmZjTlJXSXk2TkhsWHF5RWxpRHdpNWs?oc=5",
+    "d": "2026-11-26"
+   },
+   {
+    "t": "8 Measles Cases Confirmed in Brunei in 11 Days; Ministry of Health Urges High-Risk Groups to Stay Vigilant",
+    "src": "联合日报",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE13N2d6WVgtaXRlenJlbkZndFFqdW9wUF94TTlibWlWU3NkUThhYnUxSk5HTHIwY1hpUm1mNmRMQlFOazliSFRnUDBsaV9PVzFOYTBoeFU5ZUZMZ0ZtcFVXRW5VSl9XVF9WX0VaRVloMA?oc=5",
+    "d": "2026-11-24"
+   },
+   {
     "t": "Hibiscus EP (Brunei) B.V. strengthens community well-being through eye health initiative",
     "src": "Borneo Bulletin",
     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQTUhPYy0zWjY1RTdUck92M0N3R2hUT2NySXVJb1l6MU9FeFZ0ZFdLMnktNnZ2YldhcUxkMVZjWmlZQnJ5YnlKY2xLb3F3dkdOaVQ1dWZ2Y2JWSnFhbVBOdTQ5NktwZ3Vqb0pTOU56c05od3AwN05iNHRtOW84Sm1NYjFZVzFqNEE2dTc4SVdDS0VsMDNBZGNock45ZVYtSXdUZHhVM2RJVkxtR18tRlUwVzRXc3NjVVk?oc=5",
     "d": "2026-11-22"
-   },
-   {
-    "t": "Brunei air quality remains good",
-    "src": "Borneo Bulletin",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1vTW56MkdtendON3A5ZVczNmI3c1FDeGg3THUwRHBFZE5La3NXdFhHQkxVMzJzT29Nb3lOTnZ4SkpxU3Q0d3g4dlU2bFBOSkdyeVBYaTVZaWtjWGZuYVhOSkx4bm9aWjAySzdVNEFldw?oc=5",
-    "d": "2026-11-20"
    },
    {
     "t": "Two Health Supplements Found With Banned Substances – Brunei MOH Bans Import and Sale",
@@ -30,56 +36,50 @@
     "src": "联合日报",
     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE90QkdLZEhhVFVTX2lCSF9kTkNsY0FKaWlLY2V0eFZ2VW1EOUhRTzNfRURqZVlzYTlUazViaFF3eURoMEIxN3hZeVFIV1BuajhSUlcxUXVoaDZEOWg1bExVVmRRQXVxTWNfRlowY3pjUQ?oc=5",
     "d": "2026-11-14"
-   },
-   {
-    "t": "'All clear now' Wet weather helps keep air quality good in Brunei",
-    "src": "The Star",
-    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQcEdnS21DMUF0UHZnTFZmeTBJX2tKUDN4RTRRY1N0QjRNRVJXcV9iYVBmaVRPNHo5Z3VYSFZsYy1GVVRCeFcydzZoY0VxN2dyd1FTd2FMQ0g0Q3pCalI4cy04dXoyc3hLVnNxN1h1cHRLam9RLUtaaXZDS294M0FfaF9YQlhXSHNyczU4UWJseDNxRE92WTM0cVdzMnl6VXVQTmR6aWVrc0NjelgwbXZkaWhqNmdxN1lvX2FlSTFwSnpvMXp1bVJUTlFGSko?oc=5",
-    "d": "2026-11-13"
    }
   ],
-  "updated": "2026-11-25"
+  "updated": "2026-11-26"
  },
  "sea": {
   "items": [
    {
-    "t": "Real-World Outcomes of Suprachoroidal Triamcinolone Acetonide Injection for the Treatment of Macular Edema Associated with Noninfectious Uveitis",
-    "src": "Retina",
-    "d": "2026 Nov 24",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43076687/"
+    "t": "Trends in Self-Reported Vision Difficulty and Eye Care Utilization Among Adults With Diabetes",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 25",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43084389/"
    },
    {
-    "t": "Associations of Structural and Functional Macular Changes in Idiopathic Epiretinal Membrane a Longitudinal Functional and Imaging Study",
-    "src": "Retina",
-    "d": "2026 Nov 24",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43076662/"
+    "t": "Anterior Chamber Stardustlike Features in Coats Disease",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 25",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43084311/"
    },
    {
-    "t": "ODC1-Mediated Polyamine Dysregulation Promotes Retinal Neurodegeneration in Alzheimer's Disease by Impairing Autophagy-Lysosomal Homeostasis",
+    "t": "What May Come Next for the Clinician-Scientist in Ophthalmology",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 25",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43084278/"
+   },
+   {
+    "t": "Complications From Herpes Zoster Ophthalmicus: A Post Hoc Analysis of the ZEDS Randomized Clinical Trial",
+    "src": "JAMA Ophthalmology",
+    "d": "2026 Nov 25",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43084259/"
+   },
+   {
+    "t": "Distinct T-Cell Immune Responses in CMV-Positive and PCR-Negative Posner-Schlossman Syndrome",
     "src": "IOVS",
     "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43076485/"
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43082254/"
    },
    {
-    "t": "AAV-Mediated C3 Inhibition Prevents Geographic Atrophy in a Retinal Degeneration Model: A Novel Gene Therapy Approach",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43076484/"
-   },
-   {
-    "t": "Empagliflozin Attenuates High-Glucose-Induced Corneal Epithelial Injury via VCAM1 Modulation",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43076483/"
-   },
-   {
-    "t": "TIM-4 Blockade Upregulates NLRP3 to Activate the STING Pathway in Macrophages for the Treatment of Herpes Simplex Keratitis",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43076482/"
+    "t": "Automating systematic reviews in ophthalmology with the use of large language model deep research tools",
+    "src": "Acta Ophthalmologica",
+    "d": "2026 Nov 25",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43081692/"
    }
   ],
-  "updated": "2026-11-25"
+  "updated": "2026-11-26"
  },
  "bimj": {
   "items": [
@@ -96,9 +96,9 @@
     "url": "https://moh.gov.bn/wp-content/uploads/2025/05/BIMJ2025-21-12-21.pdf"
    }
   ],
-  "updated": "2026-11-25"
+  "updated": "2026-11-26"
  },
- "checked": "2026-11-25T04:44+00:00",
+ "checked": "2026-11-26T03:54+00:00",
  "status": {
   "news": "ok (6)",
   "sea": "ok (6)",
@@ -107,6 +107,18 @@
  },
  "sub": {
   "cornea": [
+   {
+    "t": "Keratoconus Severity and Relationship With Corneal Endothelial Morphology in a Multicenter, Randomized, Double-Masked, Sham-Controlled Phase 3 Study to Evaluate the Efficacy and Safety of Epithelium-On Corneal Crosslinking",
+    "src": "Cornea",
+    "d": "2026 Nov 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43082287/"
+   },
+   {
+    "t": "Apicobasal Polarity-Determinant PARD3 Protects Corneal Epithelial Cells by Coordinating their Mitotic Fidelity and Genome Stability",
+    "src": "The Ocular Surface",
+    "d": "2026 Nov 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43078269/"
+   },
    {
     "t": "Empagliflozin Attenuates High-Glucose-Induced Corneal Epithelial Injury via VCAM1 Modulation",
     "src": "IOVS",
@@ -130,21 +142,15 @@
     "src": "Cornea",
     "d": "2026 Nov 23",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43071586/"
-   },
-   {
-    "t": "Evolution of Corneal Transplantation Practice in Taiwan Over Two Decades: Impact of a National Eye Bank on Donor Sourcing and Surgical Techniques",
-    "src": "Cornea",
-    "d": "2026 Nov 23",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43071584/"
-   },
-   {
-    "t": "The Differential Tension Sign: Confirming Type 1 Big-Bubble Formation in Deep Anterior Lamellar Keratoplasty When Visualization Is Limited",
-    "src": "Cornea",
-    "d": "2026 Nov 11",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43071583/"
    }
   ],
   "glaucoma": [
+   {
+    "t": "Twenty-Four-Months Effects of Omidenepag Isopropyl 0.002% on Intraocular Pressure and Anterior Segment Parameters in Glaucoma",
+    "src": "J Glaucoma",
+    "d": "2026 Nov 25",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43084824/"
+   },
    {
     "t": "Model-Based Evidence for Reduced Gain and Enlarged Spatial Integration in Glaucoma",
     "src": "IOVS",
@@ -174,12 +180,6 @@
     "src": "J Glaucoma",
     "d": "2026 Nov 20",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43071855/"
-   },
-   {
-    "t": "Relationship Between Chromatic Sensitivity and Retinal Structure in Early Glaucoma",
-    "src": "IOVS",
-    "d": "2026 Nov 2",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43055596/"
    }
   ],
   "medret": [
@@ -260,6 +260,12 @@
   ],
   "neuro": [
    {
+    "t": "OCT angiography and ocular Doppler biomarkers for predicting traumatic optic neuropathy after orbital fracture: a prospective randomized controlled study",
+    "src": "Graefe's Archive",
+    "d": "2026 Nov 25",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43078950/"
+   },
+   {
     "t": "OCT RNFL Sector-Specific Analysis for Papilledema Detection: PHOMS or Drusen Coexistence in 41% of Cases Does Not Reverse Diagnostic Discrimination",
     "src": "J Neuro-Ophthalmology",
     "d": "2026 Nov 20",
@@ -288,15 +294,15 @@
     "src": "Ophthalmology",
     "d": "2026 Nov 12",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43020384/"
-   },
-   {
-    "t": "Intravenous pulse methylprednisolone versus placebo for ethambutol-induced optic neuropathy (EtON): A double-blind randomized placebo-controlled trial",
-    "src": "Ophthalmology",
-    "d": "2026 Nov 9",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43003350/"
    }
   ],
   "paeds": [
+   {
+    "t": "Association of a Biphasic Oxygen Protocol with Treatment in Retinopathy of Prematurity by Race",
+    "src": "Ophthalmology Retina",
+    "d": "2026 Nov 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43078428/"
+   },
    {
     "t": "Sectoral Melanocytosis in an Infant With Unilateral Retinoblastoma: Case Report",
     "src": "J Pediatr Ophthalmol Strabismus",
@@ -326,14 +332,8 @@
     "src": "Graefe's Archive",
     "d": "2026 Nov 18",
     "url": "https://pubmed.ncbi.nlm.nih.gov/43049921/"
-   },
-   {
-    "t": "Evaluating the Effectiveness of Telemedicine Questionnaire Visits for Post-Operative Strabismus Patients",
-    "src": "American Journal of Ophthalmology",
-    "d": "2026 Nov 17",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/43044711/"
    }
   ],
-  "updated": "2026-11-25"
+  "updated": "2026-11-26"
  }
 }
